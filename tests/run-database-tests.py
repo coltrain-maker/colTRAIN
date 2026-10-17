@@ -38,6 +38,8 @@ try:
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     result = sql((root / 'tests/invitation-email-results.sql').read_text())
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
+    result = sql((root / 'tests/training-security.sql').read_text())
+    print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     store = sql("select id from public.organizations where name='Concurrency test store';").stdout.strip()
     def reserve(index):
         return sql(f"""begin; set local role authenticated;
@@ -50,5 +52,23 @@ try:
     assert all(result.returncode == 0 or 'No available seats' in result.stderr for result in outcomes)
     assert sql(f"select count(*) from public.invitations where organization_id='{store}' and revoked_at is null;").stdout.strip() == '1'
     print('Passed concurrent seat reservation test (one seat, two requests).')
+    training_assignment = sql("select id from public.training_assignments where membership_id='20000000-0000-0000-0000-000000000022';").stdout.strip()
+    duplicate_key = str(uuid.uuid4())
+    def submit_training(key):
+        return sql(f"""begin; set local role authenticated;
+          set local request.jwt.claim.sub='00000000-0000-0000-0000-000000000022';
+          select public.submit_training_quiz('{training_assignment}',test.training_answers(0),'{key}');
+          select pg_sleep(0.15); commit;""", check=False)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        duplicates = list(pool.map(submit_training, [duplicate_key, duplicate_key]))
+    assert all(result.returncode == 0 for result in duplicates), [r.stderr for r in duplicates]
+    assert sql(f"select count(*) from public.training_attempts where assignment_id='{training_assignment}';").stdout.strip() == '2'
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        remaining = list(pool.map(submit_training, [str(uuid.uuid4()), str(uuid.uuid4())]))
+    assert sum(result.returncode == 0 for result in remaining) == 1, 'Only one final attempt may be consumed'
+    assert all(result.returncode == 0 or 'Ask your manager' in result.stderr for result in remaining)
+    assert sql(f"select count(*) from public.training_attempts where assignment_id='{training_assignment}';").stdout.strip() == '3'
+    print('Passed concurrent quiz submissions: duplicate key uses one attempt; competing requests cannot exceed the attempt limit.')
+
 finally:
     subprocess.run(['docker', 'stop', name], check=False, capture_output=True)

@@ -35,3 +35,7 @@ Edit `templates/index.html`, `styles.css`, and `app.js`, then run `python script
 The root index includes its styling and JavaScript so the chat's single-file preview can render the cards and interactions without loading sibling files. The root index and downloadable prototype have identical contents.
 
 To serve source files, run `python -m http.server 3000 --bind 0.0.0.0` from the project directory. The standalone file can also be opened directly without running this command.
+
+## Connected training workspace
+
+Step 3 now adds `accounts/training.js` and `accounts/training.css`, bundled with the real-account page. After the incremental training migration and a website redeployment, **Open training** connects the course/quiz/results/manager screens to real records. See `supabase/TRAINING_SETUP.md` for activation and test evidence. The deployed root redirects to `/accounts/`; the unchanged sample prototype is packaged separately at `/preview/`. Competitions and Team Corner in that sample remain separate from real accounts until Step 4.

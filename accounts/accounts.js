@@ -1,3 +1,4 @@
+import {mountTraining} from './training.js';
 import {createClient} from '@supabase/supabase-js';
 const root=document.querySelector('#accounts-app'),message=document.querySelector('#account-message');
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -6,6 +7,8 @@ function sessionStorageForAuth(){try{return window.sessionStorage;}catch{const v
 const client=__SUPABASE_KEY__?createClient(__SUPABASE_URL__,__SUPABASE_KEY__,{auth:{storage:sessionStorageForAuth(),persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
 const emailRedirect=/^https?:$/.test(location.protocol)?location.origin+location.pathname:undefined;
 const invitationId=new URLSearchParams(location.search).get('invitation_id');
+let trainingOpen=false,trainingController=null;
+const accountForms=new Set(['auth-form','password-form','profile-form','join-form','store-form','invite-form']);
 let view='signin',user=null,profile=null,members=[],admin=false,stores=[],seats=[],invitations=[],busy=false,recovering=location.hash.includes('type=recovery')||location.hash.includes('type=invite');
 function notice(text,error=false){message.className=error?'error':'success';message.textContent=text;if(text)message.scrollIntoView({block:'nearest'});}
 async function sendEmailInvitation(body){const {data,error}=await client.functions.invoke('invite-employee',{body});if(error){let details;try{details=await error.context?.json();}catch{}throw new Error(details?.error||'Email invitations are temporarily unavailable. Please contact colTRAIN support.');}if(data?.error)throw new Error(data.error);return data;}
@@ -29,25 +32,27 @@ async function loadWorkspace(){
  profile=p.data;members=m.data;admin=a.data.length>0;stores=o.data;
  const own=members.find(m=>m.user_id===user.id&&m.status==='active');
  const canManage=admin||own?.role==='manager';
+ if(trainingOpen&&(own||admin)&&stores.length){trainingController?.close();trainingController=await mountTraining({client,root,user,profile,stores,initialStore:own?.organization_id||stores[0].id,onAccounts:async()=>{trainingOpen=false;await loadWorkspace();},notify:notice});return;}
  if(canManage){const [s,i]=await Promise.all([client.from('seats').select('*'),client.from('invitations').select('id,organization_id,email,role,created_at,expires_at,accepted_at,revoked_at,invitee_name,email_status,last_email_attempt_at').order('created_at',{ascending:false})]);if(s.error)throw s.error;if(i.error)throw new Error('Invitation details could not be loaded. Please contact colTRAIN support.');seats=s.data;invitations=i.data;}
- root.innerHTML=`<div class="account-toolbar"><div><h1>${own?'Your store account':'Welcome, '+esc(profile?.full_name||'teammate')}</h1><p class="muted">${esc(user.email)}${admin?' · colTRAIN administrator':''}</p></div>${button('Sign out','signout')}</div>${!own&&!admin?'<div class="account-note">No active store membership. Accept your invitation below, or contact your manager if your access was removed.</div>':''}<div class="stack"><div class="account-form-grid">${profileForm()}${!own?joinForm():`<section class="panel"><h2>${esc(stores.find(s=>s.id===own.organization_id)?.name||'Your store')}</h2><p class="muted" style="margin-top:15px">Role: ${esc(own.role)}</p><p class="account-note">Your real account is connected. Course assignments and learning records will be connected in Step 3. The separate design preview still uses sample data.</p></section>`}</div>${admin?adminPanel():''}${canManage?stores.map(managerPanel).join(''):''}</div>`;
+ root.innerHTML=`<div class="account-toolbar"><div><h1>${own?'Your store account':'Welcome, '+esc(profile?.full_name||'teammate')}</h1><p class="muted">${esc(user.email)}${admin?' · colTRAIN administrator':''}</p></div><div class="account-row-actions">${own||admin&&stores.length?button('Open training','open-training',''):''}${button('Sign out','signout')}</div></div>${!own&&!admin?'<div class="account-note">No active store membership. Accept your invitation below, or contact your manager if your access was removed.</div>':''}<div class="stack"><div class="account-form-grid">${profileForm()}${!own?joinForm():`<section class="panel"><h2>${esc(stores.find(s=>s.id===own.organization_id)?.name||'Your store')}</h2><p class="muted" style="margin-top:15px">Role: ${esc(own.role)}</p><p class="account-note">Your account is connected. Open training to view assigned courses, complete lessons and quizzes, and see saved progress.</p></section>`}</div>${admin?adminPanel():''}${canManage?stores.map(managerPanel).join(''):''}</div>`;
 }
-async function perform(action){if(busy)return;busy=true;root.querySelectorAll('button').forEach(b=>b.disabled=true);try{await action();}catch(error){notice(error.message||'The request could not be completed.',true);}finally{busy=false;root.querySelectorAll('button').forEach(b=>b.disabled=false);}}
+async function perform(action){if(busy)return;busy=true;const buttons=[...root.querySelectorAll('button')].map(button=>({button,disabled:button.disabled}));buttons.forEach(({button})=>button.disabled=true);try{await action();}catch(error){notice(error.message||'The request could not be completed.',true);}finally{busy=false;buttons.forEach(({button,disabled})=>{if(button.isConnected)button.disabled=disabled;});}}
 document.addEventListener('click',event=>{
  // Embedded previews may allow scripts while blocking native form submissions.
  const submit=event.target.closest('button');
- if(submit?.form&&root.contains(submit)&&submit.type==='submit'){event.preventDefault();if(submit.form.reportValidity())submitForm(submit.form);return;}
+ if(submit?.form&&root.contains(submit)&&accountForms.has(submit.form.id)&&submit.type==='submit'){event.preventDefault();if(submit.form.reportValidity())submitForm(submit.form);return;}
  const target=event.target.closest('[data-action]');if(!target)return;const action=target.dataset.action;
  if(['signin','signup','reset'].includes(action)){view=action;notice('');authScreen();return;}
  perform(async()=>{
-  if(action==='signout'){const {error}=await client.auth.signOut({scope:'local'});if(error)throw error;user=null;members=[];stores=[];profile=null;admin=false;authScreen();notice('You are signed out.');}
+  if(action==='open-training'){trainingOpen=true;try{await loadWorkspace();}catch(error){trainingOpen=false;throw error;}}
+  if(action==='signout'){trainingController?.close();trainingController=null;trainingOpen=false;const {error}=await client.auth.signOut({scope:'local'});if(error)throw error;user=null;members=[];stores=[];profile=null;admin=false;authScreen();notice('You are signed out.');}
   if(action==='send-reset'){const {error}=await client.auth.resetPasswordForEmail(target.dataset.email,{redirectTo:emailRedirect});if(error)throw error;notice('Password reset requested. The employee should check their inbox.');}
   if(action==='remove'){if(!confirm('Remove this employee’s store access and free their seat? Their membership record will be retained.'))return;const {error}=await client.rpc('deactivate_member',{member:target.dataset.member});if(error)throw error;await loadWorkspace();notice('Store access removed and the seat is available.');}
   if(action==='reissue'){const invite=invitations.find(i=>i.id===target.dataset.invitation);if(invite?.invitee_name){try{const result=await sendEmailInvitation({action:'resend',store:target.dataset.store,invitation:target.dataset.invitation});await loadWorkspace();notice(result.message);}catch(error){await loadWorkspace();throw error;}}else{const {data,error}=await client.rpc('reissue_invitation',{invitation:target.dataset.invitation});if(error)throw error;await loadWorkspace();showInvitationCode(data[0],target.dataset.email);notice('New invitation code created. The previous code no longer works.');}}
   if(action==='revoke'){const {error}=await client.rpc('revoke_invitation',{invitation:target.dataset.invitation});if(error)throw error;await loadWorkspace();notice('Invitation revoked. You can issue a new code if needed.');}
  });
 });
-document.addEventListener('submit',event=>{if(!root.contains(event.target))return;event.preventDefault();submitForm(event.target);});
+document.addEventListener('submit',event=>{if(!root.contains(event.target)||!accountForms.has(event.target.id))return;event.preventDefault();submitForm(event.target);});
 function submitForm(form){const data=new FormData(form);perform(async()=>{
  if(form.id==='auth-form'){
   if(view==='signup'){const {error}=await client.auth.signUp({email:data.get('email').trim(),password:data.get('password'),options:{data:{full_name:data.get('name').trim()},emailRedirectTo:emailRedirect}});if(error)throw error;view='signin';authScreen();notice('Check your email to confirm your account, then sign in.');}
@@ -60,12 +65,12 @@ function submitForm(form){const data=new FormData(form);perform(async()=>{
  if(form.id==='store-form'){const {error}=await client.rpc('create_store',{store_name:data.get('name').trim(),seat_count:Number(data.get('seats'))});if(error)throw error;await loadWorkspace();notice('Store created. Invite its manager using the form below.');}
  if(form.id==='invite-form'){const submit=form.querySelector('button');submit.textContent='Sending invitation…';try{const result=await sendEmailInvitation({action:'create',store:form.dataset.store,email:data.get('email').trim(),name:data.get('name').trim(),role:data.get('role')||'employee'});await loadWorkspace();notice(result.message);}catch(error){await loadWorkspace();throw error;}finally{if(submit.isConnected)submit.textContent='Send invitation';}}
  });}
-if(!client){root.innerHTML='<section class="panel account-not-configured"><h1>Account connection is not configured yet</h1><p class="muted" style="margin-top:15px">The Supabase publishable key and database setup are still needed. Follow SUPABASE_SETUP.md before using real accounts.</p><a class="text-link" href="../index.html">Return to the working design preview →</a></section>';}
+if(!client){root.innerHTML='<section class="panel account-not-configured"><h1>Account connection is not configured yet</h1><p class="muted" style="margin-top:15px">The Supabase publishable key and database setup are still needed. Follow SUPABASE_SETUP.md before using real accounts.</p><a class="text-link" href="/preview/">View the sample design preview →</a></section>';}
 else{
  client.auth.onAuthStateChange((event,session)=>{
   user=session?.user||null;
   if(event==='PASSWORD_RECOVERY'){recovering=true;recoveryScreen();}
-  if(event==='SIGNED_OUT'){user=null;authScreen();}
+  if(event==='SIGNED_OUT'){trainingController?.close();trainingController=null;trainingOpen=false;user=null;authScreen();}
  });
  client.auth.getSession().then(async({data,error})=>{if(error)throw error;user=data.session?.user||null;await loadWorkspace();}).catch(error=>{recovering=false;authScreen();notice(error.message||'This sign-in link could not be opened. Ask your manager to resend the invitation.',true);});
 }

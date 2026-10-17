@@ -1,0 +1,325 @@
+const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const trophy = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v7a4 4 0 0 1-8 0V3z M8 5H4v3a4 4 0 0 0 4 4 M16 5h4v3a4 4 0 0 1-4 4 M12 14v6 M8 21h8"/></svg>';
+const btn = (label, action, extra = "", kind = "") => `<button type="button" class="button ${kind}" data-training-action="${action}" ${extra}>${label}</button>`;
+const bar = (pct) => `<div class="progress-track" aria-label="${pct}% complete"><span style="width:${pct}%"></span></div>`;
+const day = (value) => value ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(/* @__PURE__ */ new Date(value + "T12:00:00Z")) : "No deadline";
+function defaultDeadline(zone) {
+  const parts = new Intl.DateTimeFormat("en-US", { timeZone: zone || "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(/* @__PURE__ */ new Date());
+  const part = (type) => parts.find((p) => p.type === type).value;
+  const today = /* @__PURE__ */ new Date(`${part("year")}-${part("month")}-${part("day")}T12:00:00Z`);
+  today.setUTCDate(today.getUTCDate() + 30);
+  return today.toISOString().slice(0, 10);
+}
+async function mountTraining({ client, root, user, profile, stores, initialStore, onAccounts, notify }) {
+  const events = new AbortController();
+  let active = true, busy = false, view = "home", menu = false, storeId = initialStore, workspace, selectedCourse, assignment, lessons = [], questions = [], completions = [], lessonIndex = 0, quizQuestions = [], questionIndex = 0, answers = {}, submissionKey = null, result = null, review = [], librarySearch = "";
+  const context = document.querySelector("header .store");
+  const originalContext = context?.innerHTML;
+  const headerButton = document.createElement("button");
+  headerButton.className = "icon-button training-menu-toggle";
+  headerButton.type = "button";
+  headerButton.dataset.trainingAction = "menu";
+  headerButton.setAttribute("aria-label", "Open menu");
+  headerButton.setAttribute("aria-expanded", "false");
+  headerButton.textContent = "\u2630";
+  document.querySelector("header")?.append(headerButton);
+  root.classList.add("training-main");
+  async function rpc(name, args) {
+    const { data, error } = await client.rpc(name, args);
+    if (error) throw new Error(error.code === "PGRST202" || error.code === "42P01" ? "Training is not available yet. Please contact colTRAIN support." : error.message);
+    return data;
+  }
+  async function refresh() {
+    workspace = await rpc("get_training_workspace", { store: storeId });
+    if (context) context.textContent = workspace.store.name;
+  }
+  const courseById = (id) => workspace.courses.find((c) => c.id === id);
+  const mine = () => workspace.assignments.filter((a) => a.membership_id === workspace.my_membership);
+  const progress = (a) => a.completed_at ? 100 : Math.floor(a.lessons_completed / ((courseById(a.course_id)?.lesson_count || 0) + 1) * 100);
+  const status = (a) => !a ? "Not assigned" : a.completed_at ? "Completed" : a.attempts_used >= a.attempt_limit ? "Manager help needed" : a.started_at ? "In progress" : "Not started";
+  const title = (name, copy = "", action = "") => `<div class="page-heading"><div><h1>${esc(name)}</h1>${copy ? `<p>${esc(copy)}</p>` : ""}</div>${action}</div>`;
+  const stat = (number, label) => `<div class="stat"><div><strong>${esc(number)}</strong><small>${esc(label)}</small></div></div>`;
+  function navigation() {
+    return menu ? `<div class="training-menu-shade"><nav class="training-drawer" aria-label="Main navigation"><div class="panel-top"><h2>colTRAIN</h2>${btn("Close", "menu", "", "secondary")}</div>${[["home", workspace.can_manage ? "Dashboard" : "Home"], ["courses", "My training"], ["library", "Course library"], ...workspace.can_manage ? [["assign", "Assign training"], ["departments", "Departments"]] : []].map(([page, label]) => `<button type="button" data-training-action="navigate" data-view="${page}" ${view === page ? 'aria-current="page"' : ""}>${label}</button>`).join("")}<button type="button" data-training-action="accounts">Account & team settings</button><button type="button" class="account-danger" data-action="signout">Sign out</button></nav></div>` : "";
+  }
+  function cover() {
+    return '<div class="course-cover"><div class="cover-grid"></div><div class="cover-scene"><div class="scene-person"></div><div class="scene-person second"></div><div class="scene-desk"></div><div class="scene-chat">\xB7\xB7\xB7</div></div></div>';
+  }
+  function courseCard(c, a) {
+    const pct = a ? progress(a) : 0;
+    return `<article class="course-card">${cover()}<div class="course-info"><div class="chips"><span class="chip">${esc(c.category)}</span><span class="chip ${a?.completed_at ? "green" : a?.overdue ? "amber" : "gray"}">${esc(a ? status(a) : c.released ? "Available to your store" : "Not released to this store")}</span></div><h2>${esc(c.title)}</h2><p class="library-description">${esc(c.description)}</p><div class="meta"><span>${c.lesson_count} lessons</span><span>${c.question_count} questions</span><span>Up to ${c.question_count * 10} points</span></div>${a ? `<p class="training-due ${a.overdue ? "account-danger" : ""}">${a.overdue ? "Overdue \xB7 " : ""}Due ${day(a.due_date)}</p><p class="progress-label">${a.lessons_completed} of ${c.lesson_count} lessons complete \xB7 ${pct}%</p>${bar(pct)}` : ""}<div class="course-bottom">${btn(a?.completed_at ? "Review course" : a?.started_at ? "Continue learning" : a ? "Start learning" : "Preview course", "open-course", `data-course="${c.id}"`)}${a?.latest_attempt ? btn("View result", "latest-result", `data-assignment="${a.id}"`, "secondary") : ""}${workspace.can_manage && c.released ? btn("Assign training", "assign-course", `data-course="${c.id}"`, "secondary") : ""}${workspace.is_admin ? btn(c.released ? "Remove from library" : "Make available to store", "release", `data-course="${c.id}" data-available="${!c.released}"`, "secondary") : ""}</div></div></article>`;
+  }
+  function learningHome() {
+    const items = mine();
+    const first = items.find((a) => !a.completed_at);
+    const c = first && courseById(first.course_id);
+    return title(`Welcome, ${profile?.full_name?.split(" ")[0] || "teammate"}`, "One useful lesson at a time.") + `<div class="stats">${stat(workspace.totals.lifetime_points, "Lifetime points")}${stat(workspace.totals.completed_courses, "Courses completed")}${stat(workspace.totals.trophies, "Trophies earned")}</div><section class="learning-section"><div class="section-title"><h2>Your next chapter</h2>${btn("All my training", "navigate", 'data-view="courses"', "secondary")}</div>${first ? `<section class="panel training-progress"><h2>Your course progress</h2><p>${progress(first)}% complete \xB7 ${first.lessons_completed} of ${c.lesson_count} lessons</p>${bar(progress(first))}</section>${courseCard(c, first)}` : `<section class="panel"><h2>${items.length ? "You\u2019re all caught up." : "Your training starts here."}</h2><p class="muted">${items.length ? "Your completed courses and trophies are saved." : "Your manager will assign courses and set deadlines. You can explore the store\u2019s course library while you wait."}</p></section>`}</section>`;
+  }
+  function alerts(items, heading) {
+    return items?.length ? `<section class="panel training-alerts"><h2>${heading}</h2><p class="muted">At least three different employees missed these questions on their first attempt. Review the lesson with your team.</p>${items.map((a) => `<div class="training-alert"><strong>${esc(a.course_title)}</strong><p>${esc(a.prompt)}</p><span>${a.missed_count} employees \xB7 no individual answers shown</span></div>`).join("")}</section>` : "";
+  }
+  function managerHome() {
+    const members = workspace.members.filter((m) => m.status === "active" && m.role === "employee");
+    const assignments = workspace.assignments.filter((a) => workspace.members.some((m) => m.id === a.membership_id && m.status === "active"));
+    const locked = assignments.filter((a) => !a.completed_at && a.attempts_used >= a.attempt_limit);
+    return title("Your team, learning together.", "Assignments, deadlines, and lifelong progress in one place.", btn("Assign training", "navigate", 'data-view="assign"')) + `<div class="stats manager-stats">${stat(members.length, "Active employees")}${stat(assignments.filter((a) => a.completed_at).length, "Completed assignments")}${stat(assignments.filter((a) => a.overdue).length, "Overdue assignments")}${stat(members.reduce((sum, m) => sum + m.lifetime_points, 0), "Team lifetime points")}</div><section class="panel"><h2>Your team: current competition & lifetime points</h2><p class="muted">No competition scheduled.</p><div class="manager-table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Course status</th><th>Current course</th><th>Competition points</th><th>Lifetime points</th></tr></thead><tbody>${members.length ? members.flatMap((m) => {
+      const assigned = assignments.filter((a) => a.membership_id === m.id);
+      return (assigned.length ? assigned : [null]).map((a) => `<tr><td><strong>${esc(m.name)}</strong><small>${m.departments.map((d) => esc(workspace.departments.find((x) => x.id === d)?.name || "")).join(", ") || "No department"}</small></td><td>${esc(status(a))}${a ? `<small>${progress(a)}% \xB7 ${a.attempts_used} attempts${a.latest_attempt ? ` \xB7 Latest score ${a.latest_attempt.score}%` : ""}</small>` : ""}</td><td>${a ? `${esc(courseById(a.course_id)?.title)}<small class="${a.overdue ? "account-danger" : ""}">${a.overdue ? "Overdue \xB7 " : ""}Due ${day(a.due_date)}</small>` : "\u2014"}</td><td>\u2014</td><td>${m.lifetime_points}</td></tr>`);
+    }).join("") : '<tr><td colspan="5">Invite employees in Account & team settings to get started.</td></tr>'}</tbody></table></div></section>${locked.length ? `<section class="panel"><h2>Help an employee retry</h2><p class="muted">Review the material together, then unlock one additional attempt. Previous points and attempts stay saved.</p><form id="training-unlock-form"><label class="field">Assignment<select name="assignment">${locked.map((a) => `<option value="${a.id}">${esc(workspace.members.find((m) => m.id === a.membership_id)?.name)} \xB7 ${esc(courseById(a.course_id)?.title)}</option>`).join("")}</select></label><label class="field">How did you help?<textarea name="reason" minlength="5" maxlength="500" required></textarea></label><button class="button">Unlock one attempt</button></form></section>` : ""}${alerts(workspace.question_alerts, "Questions to revisit with your store")}${workspace.is_admin ? alerts(workspace.global_question_alerts, "Questions to revisit across all stores") : ""}`;
+  }
+  function myCourses() {
+    return title("My training", "Your assigned courses, deadlines, and saved progress.") + `<div class="stack">${mine().length ? mine().map((a) => courseCard(courseById(a.course_id), a)).join("") : '<section class="panel"><h2>No courses assigned yet</h2><p class="muted">Your manager can assign training from the store\u2019s library.</p></section>'}</div>`;
+  }
+  function library() {
+    const visible = workspace.courses.filter((c) => `${c.title} ${c.category} ${c.description}`.toLowerCase().includes(librarySearch.toLowerCase()));
+    return title("Course library", `Courses available to ${workspace.store.name}. Availability does not automatically assign training.`) + `<form id="training-search-form" class="panel"><label class="field">Search courses<input name="search" type="search" value="${esc(librarySearch)}"></label><button class="button secondary">Search</button></form><div class="stack">${visible.length ? visible.map((c) => courseCard(c, mine().find((a) => a.course_id === c.id))).join("") : '<section class="panel"><h2>No courses available</h2><p class="muted">Your colTRAIN administrator releases courses to this store.</p></section>'}</div>`;
+  }
+  function assignPage() {
+    const released = workspace.courses.filter((c) => c.released);
+    return title("Assign training", "Choose employees, departments, or the whole team. Existing progress is kept when you change a deadline.") + `<section class="panel">${released.length ? `<form id="training-assign-form"><label class="field">Course<select name="course">${released.map((c) => `<option value="${c.id}" ${c.id === selectedCourse ? "selected" : ""}>${esc(c.title)}</option>`).join("")}</select></label><label class="field">Deadline<input type="date" name="deadline" value="${defaultDeadline(workspace.store.time_zone)}" required></label><p class="muted">The starting deadline is 30 days from today. Assign a new hire separately to give them their own deadline.</p><fieldset><legend>Employees</legend><label class="training-check"><input type="checkbox" name="all" value="yes">All active employees</label>${workspace.members.filter((m) => m.status === "active").map((m) => `<label class="training-check"><input type="checkbox" name="employee" value="${m.id}">${esc(m.name)}${m.role === "manager" ? " (manager)" : ""}</label>`).join("")}</fieldset><fieldset><legend>Departments</legend>${workspace.departments.length ? workspace.departments.map((d) => `<label class="training-check"><input type="checkbox" name="department" value="${d.id}">${esc(d.name)}</label>`).join("") : '<p class="muted">Create departments and place employees in them on the Departments page.</p>'}</fieldset><button class="button">Assign course</button></form>` : '<h2>No released courses yet</h2><p class="muted">Ask the colTRAIN administrator to make a course available to your store first.</p>'}</section>`;
+  }
+  function departmentsPage() {
+    return title("Departments", "Employees can belong to more than one department.") + `<section class="panel"><h2>Add a department</h2><form id="training-department-form"><label class="field">Department name<input name="name" maxlength="100" required></label><button class="button">Add department</button></form></section><section class="panel"><h2>Employee departments</h2><form id="training-membership-form"><label class="field">Employee<select name="member" id="training-department-member">${workspace.members.filter((m) => m.status === "active").map((m) => `<option value="${m.id}">${esc(m.name)}</option>`).join("")}</select></label><div id="training-department-options">${departmentOptions(workspace.members.find((m) => m.status === "active"))}</div><button class="button" ${!workspace.departments.length ? "disabled" : ""}>Save departments</button></form></section>`;
+  }
+  function departmentOptions(member) {
+    return workspace.departments.length ? workspace.departments.map((d) => `<label class="training-check"><input type="checkbox" name="department" value="${d.id}" ${member?.departments.includes(d.id) ? "checked" : ""}>${esc(d.name)}</label>`).join("") : '<p class="muted">Add your first department above.</p>';
+  }
+  function content(blocks) {
+    return blocks.map((b) => b.type === "heading" ? `<h3>${esc(b.text)}</h3>` : b.type === "callout" ? `<div class="callout">${esc(b.text)}</div>` : b.type === "bullet" ? `<p class="training-bullet">\u2022 ${esc(b.text)}</p>` : `<p>${esc(b.text)}</p>`).join("");
+  }
+  function lessonPage() {
+    const c = courseById(selectedCourse), l = lessons[lessonIndex];
+    if (!l) return '<section class="panel">This course has no lessons yet.</section>';
+    const done = completions.includes(l.id), unlocked = !assignment || lessonIndex === 0 || completions.includes(lessons[lessonIndex - 1].id);
+    return `<div class="breadcrumb">${btn("My training", "navigate", 'data-view="courses"', "secondary")} / ${esc(c.category)}</div><div class="course-layout"><aside class="panel lesson-nav"><h3>${esc(c.title)}</h3><p>${completions.length} of ${lessons.length} lessons complete</p>${bar(assignment ? progress(assignment) : 0)}${lessons.map((item, i) => `<button type="button" class="lesson-item ${i === lessonIndex ? "active" : ""}" data-training-action="lesson" data-index="${i}" ${assignment && i > 0 && !completions.includes(lessons[i - 1].id) ? "disabled" : ""}><span class="lesson-number">${completions.includes(item.id) ? "\u2713" : i + 1}</span><span>${esc(item.title)}</span></button>`).join("")}${btn("Knowledge check", "start-quiz", "", "secondary")}</aside><article class="panel lesson-content"><div class="chips"><span class="chip">Lesson ${lessonIndex + 1} of ${lessons.length}</span>${!assignment ? '<span class="chip gray">Course preview</span>' : ""}</div><h1>${esc(l.title)}</h1>${content(l.body)}<div class="lesson-actions"><span>${done ? "\u2713 Lesson complete." : assignment ? "Mark complete when you\u2019re ready to continue." : "Preview only. Your manager must assign this course before you can earn points or a trophy."}</span>${assignment ? btn(lessonIndex === lessons.length - 1 ? "Complete & take quiz" : "Mark complete & continue", "complete-lesson", unlocked ? "" : "disabled") : btn(lessonIndex === lessons.length - 1 ? "Back to library" : "Next lesson", "preview-next")}</div>${assignment ? `<p class="quiz-note">Lessons earn completion checkmarks. Quiz answers earn points. Due ${day(assignment.due_date)}${assignment.overdue ? " \xB7 Overdue training remains available." : ""}</p>` : ""}</article></div>`;
+  }
+  function quizPage() {
+    if (!assignment) return "";
+    if (assignment.completed_at) return '<section class="panel"><h2>Course already completed</h2><p>Your trophy and points are saved.</p></section>';
+    if (assignment.attempts_used >= assignment.attempt_limit) return `<section class="panel result-panel"><h1>A little teamwork can help.</h1><p>You\u2019ve used all ${assignment.attempt_limit} available attempts. Ask your manager to review the lesson with you and unlock one more.</p>${btn("Back to course", "open-course", `data-course="${selectedCourse}"`)}</section>`;
+    const q = quizQuestions[questionIndex];
+    return `<div class="quiz-wrap"><div class="quiz-header"><span>Question ${questionIndex + 1} of ${quizQuestions.length}</span><span>Attempt ${assignment.attempts_used + 1} of ${assignment.attempt_limit}</span></div>${bar(Math.round((questionIndex + 1) / quizQuestions.length * 100))}<section class="panel quiz-panel"><h2>${esc(q.prompt)}</h2><form id="training-quiz-form">${q.options.map((option, i) => `<label class="option"><input type="radio" name="answer" value="${i}" ${answers[q.id] === i ? "checked" : ""} required><span>${esc(option)}</span></label>`).join("")}<div class="lesson-actions">${btn("Back", "quiz-back", questionIndex === 0 ? "disabled" : "", "secondary")}<button class="button">${questionIndex === quizQuestions.length - 1 ? "Finish quiz" : "Next question"}</button></div></form></section><p class="quiz-note">${courseById(selectedCourse).passing_percent}% to pass. Earn 10 points the first time each answer is correct. No speed bonuses.<br>Only submitting the completed quiz uses an attempt. Refreshing before submission clears your unsaved answers.</p></div>`;
+  }
+  function resultsPage() {
+    return `<section class="panel result-panel"><div class="trophy-big">${result.passed ? trophy : "\u2726"}</div><span class="chip ${result.passed ? "green" : "amber"}">${result.passed ? "Course passed" : "Keep learning"}</span><h1>${result.passed ? "Trust starts with you." : "You\u2019re getting there."}</h1><p>${result.passed ? "Your course completion and standard trophy are saved." : "Review the explanations and return to the lessons before trying again."}</p><div class="result-stats"><div><strong>${result.score}%</strong><small>${result.correct_count} of ${result.question_count} correct</small></div><div><strong>+${result.new_points}</strong><small>New points this attempt</small></div><div><strong>${result.course_points}</strong><small>Course points earned</small></div></div>${!result.passed ? `<div class="answer-review"><h2>A few things to revisit</h2>${review.filter((r) => !r.is_correct).map((r) => `<p><strong>${esc(r.prompt)}</strong><br>Correct answer: ${esc(r.options[r.correct_option])}<br>${esc(r.explanation)}</p>`).join("")}</div>` : ""}<div class="result-actions">${btn("Back to home", "navigate", 'data-view="home"', "secondary")}${btn(result.passed ? "Review course" : "Review lessons", "open-course", `data-course="${selectedCourse}"`)}</div><p class="quiz-note">${result.attempts_used} of ${result.attempt_limit} attempts used. Previously earned points are kept.</p></section>`;
+  }
+  function render() {
+    if (!active) return;
+    headerButton.setAttribute("aria-expanded", String(menu));
+    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : ""}</div>${navigation()}`;
+  }
+  async function run(action) {
+    if (busy) return;
+    busy = true;
+    const buttons = [...root.querySelectorAll("button")].map((button) => ({ button, disabled: button.disabled }));
+    buttons.forEach(({ button }) => button.disabled = true);
+    try {
+      await action();
+    } catch (e) {
+      notify(e.message || "The request could not be completed.", true);
+    } finally {
+      busy = false;
+      buttons.forEach(({ button, disabled }) => {
+        if (button.isConnected) button.disabled = disabled;
+      });
+    }
+  }
+  async function openCourse(id) {
+    selectedCourse = id;
+    assignment = mine().find((a) => a.course_id === id);
+    const responses = await Promise.all([client.from("training_lessons").select("id,title,body,position").eq("course_id", id).order("position"), client.from("training_questions").select("id,prompt,options,position").eq("course_id", id).order("position"), assignment ? client.from("training_lesson_completions").select("lesson_id").eq("assignment_id", assignment.id) : Promise.resolve({ data: [] })]);
+    const error = responses.find((r) => r.error)?.error;
+    if (error) throw error;
+    lessons = responses[0].data;
+    questions = responses[1].data;
+    completions = responses[2].data.map((d) => d.lesson_id);
+    lessonIndex = Math.max(0, lessons.findIndex((l) => !completions.includes(l.id)));
+    view = "course";
+    render();
+  }
+  function startQuiz() {
+    if (!assignment) throw new Error("Ask your manager to assign this course first.");
+    if (completions.length < lessons.length) throw new Error("Complete all lessons before taking the quiz.");
+    if (assignment.completed_at) throw new Error("This course is already passed. Your trophy and points are saved.");
+    quizQuestions = [...questions];
+    for (let i = quizQuestions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [quizQuestions[i], quizQuestions[j]] = [quizQuestions[j], quizQuestions[i]];
+    }
+    questionIndex = 0;
+    answers = {};
+    submissionKey = crypto.randomUUID();
+    view = "quiz";
+    render();
+  }
+  async function showResult(attempt, related) {
+    assignment = related;
+    selectedCourse = related.course_id;
+    result = { ...attempt, course_points: related.course_points, attempts_used: related.attempts_used, attempt_limit: related.attempt_limit };
+    review = await rpc("get_training_attempt_review", { attempt: attempt.id });
+    view = "results";
+    render();
+  }
+  async function handleForm(form) {
+    const data = new FormData(form);
+    if (form.id === "training-search-form") {
+      librarySearch = data.get("search").trim();
+      render();
+      return;
+    }
+    if (form.id === "training-quiz-form") {
+      answers[quizQuestions[questionIndex].id] = Number(data.get("answer"));
+      if (questionIndex < quizQuestions.length - 1) {
+        questionIndex++;
+        render();
+        return;
+      }
+      const answerPayload = quizQuestions.map((q) => ({ question_id: q.id, option: answers[q.id] }));
+      const finished = await rpc("submit_training_quiz", { assignment: assignment.id, answers: answerPayload, submission: submissionKey });
+      await refresh();
+      await showResult(finished, mine().find((a) => a.id === assignment.id));
+      notify(finished.passed ? "Course passed. Your points and trophy are saved." : "Quiz saved. Review the explanations before trying again.");
+      return;
+    }
+    if (form.id === "training-assign-form") {
+      const count = await rpc("assign_training", { course: data.get("course"), store: storeId, employee_ids: data.getAll("employee"), department_ids: data.getAll("department"), all_employees: data.get("all") === "yes", deadline: data.get("deadline") });
+      await refresh();
+      view = "home";
+      render();
+      notify(`Training assigned to ${count} ${count === 1 ? "person" : "people"}.`);
+    }
+    if (form.id === "training-department-form") {
+      await rpc("create_training_department", { store: storeId, department_name: data.get("name").trim() });
+      await refresh();
+      render();
+      notify("Department created.");
+    }
+    if (form.id === "training-membership-form") {
+      await rpc("set_training_departments", { member: data.get("member"), departments: data.getAll("department") });
+      await refresh();
+      render();
+      notify("Departments saved.");
+    }
+    if (form.id === "training-unlock-form") {
+      await rpc("unlock_training_retry", { assignment: data.get("assignment"), support_note: data.get("reason").trim() });
+      await refresh();
+      render();
+      notify("One additional quiz attempt is available.");
+    }
+  }
+  document.addEventListener("submit", (e) => {
+    if (!active || !root.contains(e.target) || !e.target.id.startsWith("training-")) return;
+    e.preventDefault();
+    run(() => handleForm(e.target));
+  }, { signal: events.signal });
+  document.addEventListener("change", (e) => {
+    if (!active) return;
+    if (e.target.id === "training-department-member") document.querySelector("#training-department-options").innerHTML = departmentOptions(workspace.members.find((m) => m.id === e.target.value));
+    if (e.target.id === "training-store") run(async () => {
+      storeId = e.target.value;
+      await refresh();
+      view = "home";
+      render();
+    });
+    if (e.target.closest("#training-quiz-form") && e.target.name === "answer") answers[quizQuestions[questionIndex].id] = Number(e.target.value);
+  }, { signal: events.signal });
+  document.addEventListener("click", (e) => {
+    if (!active) return;
+    const submit = e.target.closest("button");
+    if (submit?.form?.id.startsWith("training-") && submit.type === "submit") {
+      e.preventDefault();
+      if (submit.form.reportValidity()) run(() => handleForm(submit.form));
+      return;
+    }
+    const target = e.target.closest("[data-training-action]");
+    if (!target) return;
+    run(async () => {
+      const action = target.dataset.trainingAction;
+      if (action === "menu") {
+        menu = !menu;
+        render();
+        return;
+      }
+      if (action === "accounts") {
+        close();
+        await onAccounts();
+        return;
+      }
+      if (action === "navigate") {
+        view = target.dataset.view;
+        menu = false;
+        await refresh();
+        render();
+        return;
+      }
+      if (action === "assign-course") {
+        selectedCourse = target.dataset.course;
+        view = "assign";
+        render();
+        return;
+      }
+      if (action === "release") {
+        await rpc("release_training_course", { store: storeId, course: target.dataset.course, available: target.dataset.available === "true" });
+        await refresh();
+        render();
+        notify(target.dataset.available === "true" ? "Course is available to this store. Assign it when you\u2019re ready." : "Course removed from the library. Existing assignments remain available.");
+        return;
+      }
+      if (action === "open-course") {
+        await openCourse(target.dataset.course);
+        return;
+      }
+      if (action === "lesson") {
+        lessonIndex = Number(target.dataset.index);
+        render();
+        return;
+      }
+      if (action === "preview-next") {
+        if (lessonIndex === lessons.length - 1) view = "library";
+        else lessonIndex++;
+        render();
+        return;
+      }
+      if (action === "complete-lesson") {
+        const last = lessonIndex === lessons.length - 1;
+        await rpc("complete_training_lesson", { assignment: assignment.id, lesson: lessons[lessonIndex].id });
+        await refresh();
+        await openCourse(selectedCourse);
+        if (last) startQuiz();
+        return;
+      }
+      if (action === "start-quiz") {
+        startQuiz();
+        return;
+      }
+      if (action === "quiz-back") {
+        questionIndex = Math.max(0, questionIndex - 1);
+        render();
+        return;
+      }
+      if (action === "latest-result") {
+        const a = mine().find((a2) => a2.id === target.dataset.assignment);
+        await showResult(a.latest_attempt, a);
+      }
+    });
+  }, { signal: events.signal });
+  function close() {
+    if (!active) return;
+    active = false;
+    events.abort();
+    headerButton.remove();
+    root.classList.remove("training-main");
+    if (context) context.innerHTML = originalContext;
+  }
+  try {
+    await refresh();
+    render();
+  } catch (e) {
+    close();
+    throw e;
+  }
+  return { close };
+}
+export {
+  mountTraining
+};

@@ -4,6 +4,10 @@ Project URL: `https://flhdeftduysnjvqnhhee.supabase.co`
 
 The screen prototype remains at the root `index.html`. A separate account foundation has been prepared in `accounts/`. The owner reports that `supabase/SETUP.sql` completed successfully. On October 17, 2026, live read-only checks confirmed that the project's Auth API accepts the supplied publishable key, email sign-in is enabled with email confirmation, and all six account tables reject anonymous reads. Local SQL and mocked browser checks passed. The owner has since verified manager setup and an existing-account email invitation through password setup and an employee membership. First-time invitation delivery hit an Auth rate limit, and a separate status-recording permission repair is prepared; see supabase/EMAIL_INVITATIONS.md. Broad hosted permission isolation, standard signup/recovery flows, and real file uploads still need verification.
 
+## Connected training update
+
+Step 3 is now prepared: a real-account training workspace, private server-side quiz scoring, assignments/departments/deadlines, points/trophies, supported retries, and manager progress. See [Step 3 activation and checks](supabase/TRAINING_SETUP.md). The new migration has **not** been applied to the hosted project by the agent. Apply only `202610170005_training.sql`, then deploy the updated website ZIP to the existing Netlify project.
+
 ## Email invitation update
 
 The owner has successfully created the pilot store and joined as its manager. A named email invitation flow is now prepared: managers enter the employee’s name and email; colTRAIN generates the token and reserves a seat; the employee follows the email to choose a password and join. This update still requires the incremental migration, HTTPS hosting, Auth callback configuration, email delivery configuration, and deployment of the server function. See [Email invitation activation](supabase/EMAIL_INVITATIONS.md). Do not rerun full SETUP.sql on the existing project.
