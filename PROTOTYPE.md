@@ -14,6 +14,7 @@ Your prototype interactions are stored in the browser. Clearing browser storage,
 ## Screens and interactions
 
 - Employee home: optional current competition, lifetime points, ordered course progress above the Customer Service course, and Team Corner link. No eyebrow headings or at-a-glance card.
+- Course library appears directly below My training in both employee and manager menus. My training shows assigned learning; Course library shows the store's available catalog. The sample library has search, category/department/completion filters, clear filters, an empty state, course descriptions, audience requirements, durations, points, and live completion status. Employees start, continue, or review courses; managers can also assign a course through the existing employee/department selector. Only the shared Customer Service course is currently available. Catalog filtering is illustrative; production authorization must be enforced by the backend.
 - Three ordered lessons, five quiz questions, 80% passing score, 10 points per newly correct answer, three total attempts, standard trophy, and manager-assisted retry unlock. The correct choices are C, False, A, C, True.
 - Manager home is Dashboard, without a duplicate dashboard menu item. Columns: Employee, Course status, Current course, Competition points, Lifetime points.
 - Assign training: choose one, several, or all employees or departments and set a due date. Choices save locally and send no notifications.
