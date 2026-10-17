@@ -1,3 +1,11 @@
+const starterDepartments = [
+  "Front Counter & Customer Service",
+  "Paint",
+  "Hardware & Fasteners",
+  "Plumbing",
+  "Electrical",
+  "Lawn & Garden"
+];
 const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const trophy = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v7a4 4 0 0 1-8 0V3z M8 5H4v3a4 4 0 0 0 4 4 M16 5h4v3a4 4 0 0 1-4 4 M12 14v6 M8 21h8"/></svg>';
 const btn = (label, action, extra = "", kind = "") => `<button type="button" class="button ${kind}" data-training-action="${action}" ${extra}>${label}</button>`;
@@ -78,8 +86,35 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     const released = workspace.courses.filter((c) => c.released);
     return title("Assign training", "Choose employees, departments, or the whole team. Existing progress is kept when you change a deadline.") + `<section class="panel">${released.length ? `<form id="training-assign-form"><label class="field">Course<select name="course">${released.map((c) => `<option value="${c.id}" ${c.id === selectedCourse ? "selected" : ""}>${esc(c.title)}</option>`).join("")}</select></label><label class="field">Deadline<input type="date" name="deadline" value="${defaultDeadline(workspace.store.time_zone)}" required></label><p class="muted">The starting deadline is 30 days from today. Assign a new hire separately to give them their own deadline.</p><fieldset><legend>Employees</legend><label class="training-check"><input type="checkbox" name="all" value="yes">All active employees</label>${workspace.members.filter((m) => m.status === "active").map((m) => `<label class="training-check"><input type="checkbox" name="employee" value="${m.id}">${esc(m.name)}${m.role === "manager" ? " (manager)" : ""}</label>`).join("")}</fieldset><fieldset><legend>Departments</legend>${workspace.departments.length ? workspace.departments.map((d) => `<label class="training-check"><input type="checkbox" name="department" value="${d.id}">${esc(d.name)}</label>`).join("") : '<p class="muted">Create departments and place employees in them on the Departments page.</p>'}</fieldset><button class="button">Assign course</button></form>` : '<h2>No released courses yet</h2><p class="muted">Ask the colTRAIN administrator to make a course available to your store first.</p>'}</section>`;
   }
+  function missingStarterDepartments() {
+    const existing = new Set(workspace.departments.map((d) => d.name.trim().toLocaleLowerCase()));
+    return starterDepartments.filter((name) => !existing.has(name.toLocaleLowerCase()));
+  }
+  async function addStarterDepartments() {
+    let created = 0;
+    try {
+      await refresh();
+      for (const name of missingStarterDepartments()) {
+        try {
+          await rpc("create_training_department", { store: storeId, department_name: name });
+          created++;
+        } catch (error) {
+          // Another manager may have created the same name since our last read.
+          await refresh();
+          if (!workspace.departments.some((d) => d.name.trim().toLocaleLowerCase() === name.toLocaleLowerCase())) throw error;
+        }
+      }
+      await refresh();
+      render();
+      notify(created ? `${created} starter ${created === 1 ? "department added" : "departments added"}. Existing departments and employee placements are kept.` : "All starter departments are already available in this store.");
+    } catch (error) {
+      await refresh();
+      render();
+      throw error;
+    }
+  }
   function departmentsPage() {
-    return title("Departments", "Employees can belong to more than one department.") + `<section class="panel"><h2>Add a department</h2><form id="training-department-form"><label class="field">Department name<input name="name" maxlength="100" required></label><button class="button">Add department</button></form></section><section class="panel"><h2>Employee departments</h2><form id="training-membership-form"><label class="field">Employee<select name="member" id="training-department-member">${workspace.members.filter((m) => m.status === "active").map((m) => `<option value="${m.id}">${esc(m.name)}</option>`).join("")}</select></label><div id="training-department-options">${departmentOptions(workspace.members.find((m) => m.status === "active"))}</div><button class="button" ${!workspace.departments.length ? "disabled" : ""}>Save departments</button></form></section>`;
+    return title("Departments", "Employees can belong to more than one department.") + `<section class="panel training-department-template"><h2>Starter departments</h2><p class="muted">Start with these six departments, then add others to match your store. Existing departments and employee placements are kept.</p><ul>${starterDepartments.map((name) => `<li>${esc(name)}</li>`).join("")}</ul>${btn("Add starter departments", "starter-departments", missingStarterDepartments().length ? "" : "disabled")}${missingStarterDepartments().length ? "" : '<p class="muted">All six starter departments are available in this store.</p>'}</section><section class="panel"><h2>Add a department</h2><form id="training-department-form"><label class="field">Department name<input name="name" maxlength="100" required></label><button class="button">Add department</button></form></section><section class="panel"><h2>Employee departments</h2><form id="training-membership-form"><label class="field">Employee<select name="member" id="training-department-member">${workspace.members.filter((m) => m.status === "active").map((m) => `<option value="${m.id}">${esc(m.name)}</option>`).join("")}</select></label><div id="training-department-options">${departmentOptions(workspace.members.find((m) => m.status === "active"))}</div><button class="button" ${!workspace.departments.length ? "disabled" : ""}>Save departments</button></form></section>`;
   }
   function departmentOptions(member) {
     return workspace.departments.length ? workspace.departments.map((d) => `<label class="training-check"><input type="checkbox" name="department" value="${d.id}" ${member?.departments.includes(d.id) ? "checked" : ""}>${esc(d.name)}</label>`).join("") : '<p class="muted">Add your first department above.</p>';
@@ -266,6 +301,10 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         menu = false;
         await refresh();
         render();
+        return;
+      }
+      if (action === "starter-departments") {
+        await addStarterDepartments();
         return;
       }
       if (action === "assign-course") {

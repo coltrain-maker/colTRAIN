@@ -113,9 +113,23 @@ try:
   page.locator('#training-department-options input').check()
   page.get_by_role('button',name='Save departments',exact=True).click()
   expect(page.locator('#account-message')).to_have_text('Departments saved.')
+  paint_id=sql("select id from public.training_departments where name='Paint'")
+  page.locator('#training-department-form input[name=name]').fill('Receiving')
+  page.locator('#training-department-form button').click()
+  expect(page.locator('#account-message')).to_have_text('Department created.')
+  page.get_by_role('button',name='Add starter departments',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('5 starter departments added. Existing departments and employee placements are kept.')
+  expect(page.get_by_role('button',name='Add starter departments',exact=True)).to_be_disabled()
+  assert sql('select count(*) from public.training_departments')=='7'
+  assert sql("select id from public.training_departments where name='Paint'")==paint_id
+  assert sql("select department_id from public.training_member_departments where membership_id='20000000-0000-0000-0000-000000000004'")==paint_id
+  assert sql("select count(*) from public.training_departments where name='Receiving'")=='1'
+  navigate('Departments')
+  expect(page.get_by_role('button',name='Add starter departments',exact=True)).to_be_disabled()
+  assert sql('select count(*) from public.training_departments')=='7'
   navigate('Assign training')
   page.locator('#training-assign-form input[name=all]').check()
-  page.locator('#training-assign-form input[name=department]').check()
+  page.locator('#training-assign-form input[name=department][value="'+paint_id+'"]').check()
   page.get_by_role('button',name='Assign course',exact=True).click()
   expect(page.locator('#account-message')).to_have_text('Training assigned to 1 person.')
   signout()
@@ -206,7 +220,7 @@ try:
   assert sql('select count(*) from public.training_trophies')=='1'
   assert sql('select sum(points) from private.training_point_awards')=='40'
   assert sql('select count(*) from public.training_attempts')=='4'
-  print('Passed browser + actual SQL/RLS: admin release, departments, assignment, sequential lessons, failed quiz explanations, completed-lesson review navigation, three-attempt block, manager unlock, passing retry, points/trophy, reload persistence, manager reporting, mobile, account navigation.')
+  print('Passed browser + actual SQL/RLS: admin release, starter departments preserving existing departments/placements without duplicates, assignment, sequential lessons, failed quiz explanations, completed-lesson review navigation, three-attempt block, manager unlock, passing retry, points/trophy, reload persistence, manager reporting, mobile, account navigation.')
   browser.close()
 finally:
  subprocess.run(['docker','stop',name],capture_output=True)

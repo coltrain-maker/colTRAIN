@@ -1,8 +1,8 @@
 # Step 3: connected sample training
 
-The owner has applied the Step 3 migration and deployed the initial training website. On October 17, 2026, they confirmed course release and assignment, ordered lesson completion, a live 100% quiz result with 50 points and a trophy, persistence after signing back in, and the matching manager report. A separate controlled employee failed three times and was blocked from a fourth attempt. Manager-assisted unlock still needs live acceptance. Local automated tests create only isolated test data, never hosted training records.
+The owner has applied the Step 3 migration and deployed the initial training website. On October 17, 2026, they confirmed course release and assignment, ordered lesson completion, a live 100% quiz result with 50 points and a trophy, persistence after signing back in, and the matching manager report. A separate controlled employee failed three times and was blocked from a fourth attempt. The owner subsequently verified a manager-assisted fourth attempt, a 100% passing score, saved points/trophy, and the matching manager view. Local automated tests create only isolated test data, never hosted training records.
 
-The completed-lesson review navigation fix below is now prepared on `codex/coltrain-prototype`, but requires another website ZIP deployment. It needs no additional SQL migration. The original migration instructions remain reference material; do not rerun the already-applied training migration on this project.
+The owner deployed the completed-lesson review navigation fix below. The newer approved starter-department template is prepared on `codex/coltrain-prototype` and requires a website-only ZIP update. Neither change needs another SQL migration. The original migration instructions remain reference material; do not rerun the already-applied training migration on this project.
 
 ## What is included
 
@@ -87,3 +87,20 @@ The owner reported that marking an already-completed lesson again during review 
 Completed lessons now show **Next lesson** and an explicit already-completed note instead of requiring another completion write. The last lesson shows **Try knowledge check again**, **Get manager help** after the limit, or **View course result** after passing. These same actions are reflected in the sidebar. Opening a course or starting the quiz refreshes the saved assignment so a new manager unlock is recognized. Lesson review itself does not consume attempts or earn points.
 
 Deploy the updated `design/coltrain-website.zip` to the existing Netlify project's Deploys upload area. No SQL or Edge Function changes are required. The real-SQL browser regression now covers reviewing all lessons after failure, three failed attempts and the block, manager-assisted unlock, successful fourth attempt, and completed-course review without an extra submission.
+
+## Approved starter department template
+
+The owner approved these initial department names for Coltrain Hardware:
+
+- Front Counter & Customer Service
+- Paint
+- Hardware & Fasteners
+- Plumbing
+- Electrical
+- Lawn & Garden
+
+The Departments page now offers **Add starter departments** with a visible list of all six names. Applying it uses the existing manager-authorized `create_training_department` RPC for the selected store only. It refreshes current department names, skips names already present (case-insensitively), keeps custom departments and existing employee placements, and becomes disabled once all six names are available. If a partial request fails, created departments stay saved and retrying adds only missing names. Employees are not placed into departments or assigned courses automatically.
+
+This template needs only the updated website ZIP deployed to the existing Netlify project. No SQL or Edge Function update is needed. After deployment, sign in as manager, open training, use the hamburger menu to open Departments, then select Add starter departments. In Employee departments, choose a person, check one or more departments, and Save departments.
+
+The real-SQL browser test starts with an existing Paint department and employee placement plus a custom Receiving department. Applying the template adds only five names, preserves both existing department IDs/placements and Receiving, and does not duplicate names on a subsequent visit. Department assignment remains covered by the existing SQL and browser flow. The owner still needs to apply the template to the hosted store and verify a department-targeted assignment.
