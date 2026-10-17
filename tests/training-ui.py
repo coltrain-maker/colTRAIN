@@ -146,7 +146,7 @@ try:
    answers={'A customer asks a product question you cannot answer. What is the best response?':2,'Good customer service requires knowing every answer immediately.':1,'Which action best demonstrates “teach, don’t just sell”?':0,'Which is the best way to build product knowledge?':2,'Asking a knowledgeable teammate for help can build customer trust.':0}
    for i in range(5):
     prompt=page.locator('.quiz-panel h2').inner_text()
-    choice=answers[prompt] if correct and prompt!='Asking a knowledgeable teammate for help can build customer trust.' else (answers[prompt]+1)%page.locator('.option').count()
+    choice=answers[prompt] if correct and (correct=='all' or prompt!='Asking a knowledgeable teammate for help can build customer trust.') else (answers[prompt]+1)%page.locator('.option').count()
     page.locator('.option input').nth(choice).check()
     page.locator('#training-quiz-form button[type=submit], #training-quiz-form button:not([type])').click()
   quiz(False)
@@ -213,6 +213,60 @@ try:
   assert page.locator('body').evaluate('element=>element.scrollWidth<=innerWidth')
   page.set_viewport_size({'width':1280,'height':1000})
   page.screenshot(path=str(root/'design/training-manager.png'),full_page=True)
+  navigate('Competitions')
+  page.get_by_role('button',name='Start competition',exact=True).click()
+  page.locator('#training-competition-form input[name=name]').fill('Service review challenge')
+  page.locator('#training-competition-form input[name=reward]').fill('Pizza with the team')
+  page.locator('#training-competition-form button').click()
+  expect(page.locator('#account-message')).to_have_text('Competition saved for 1 employee.')
+  expect(page.locator('.training-competition-card')).to_contain_text('Service review challenge')
+  expect(page.locator('.competition-metrics').first).to_contain_text('0%')
+  assert sql("select due_date=(now() at time zone 'America/New_York')::date+30 from public.training_assignments")=='t'
+  signout()
+  login('employee.a@example.test')
+  spotlight=page.locator('.training-competition-spotlight')
+  expect(spotlight).to_contain_text('Service review challenge')
+  assert spotlight.bounding_box()['y']<page.get_by_role('heading',name='Your next chapter').bounding_box()['y']
+  page.get_by_role('button',name='Take competition challenge',exact=True).click()
+  quiz(False)
+  expect(page.get_by_role('heading',name='Challenge saved')).to_be_visible()
+  expect(page.locator('.answer-review')).to_contain_text('Correct answer:')
+  page.get_by_role('button',name='See standings',exact=True).click()
+  expect(page.locator('.training-standings tbody tr')).to_contain_text('Pilot Employee')
+  assert page.get_by_text('Total team learning time',exact=True).count()==0
+  page.get_by_role('button',name='Try challenge again',exact=True).click()
+  quiz(True)
+  page.get_by_role('button',name='See standings',exact=True).click()
+  expect(page.locator('.training-standings tbody tr td').nth(2)).to_have_text('40')
+  page.get_by_role('button',name='Try challenge again',exact=True).click()
+  quiz('all')
+  page.get_by_role('button',name='See standings',exact=True).click()
+  expect(page.locator('.training-standings tbody tr td').nth(2)).to_have_text('50')
+  expect(page.get_by_text('All challenge attempts used. Ask your manager for help.',exact=True)).to_be_visible()
+  page.get_by_role('button',name='Lifetime',exact=True).click()
+  expect(page.locator('.training-standings tbody tr td').nth(2)).to_have_text('40')
+  assert sql('select count(*) from public.training_attempts')=='4'
+  assert sql('select count(*) from public.training_trophies')=='1'
+  page.set_viewport_size({'width':390,'height':844})
+  assert page.locator('body').evaluate('element=>element.scrollWidth<=innerWidth')
+  page.screenshot(path=str(root/'design/competition-employee-mobile.png'),full_page=True)
+  signout()
+  login('manager.a@example.test')
+  row=page.locator('.table tbody tr').filter(has_text='Pilot Employee')
+  expect(row.locator('td').nth(3)).to_have_text('50')
+  expect(row.locator('td').nth(4)).to_have_text('40')
+  navigate('Competitions')
+  expect(page.locator('.competition-metrics').first).to_contain_text('100%')
+  page.locator('#training-challenge-unlock-form textarea').fill('Reviewed the competition questions together.')
+  page.get_by_role('button',name='Unlock one challenge attempt',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('One additional challenge attempt is available.')
+  page.set_viewport_size({'width':1280,'height':1000})
+  page.screenshot(path=str(root/'design/competition-manager.png'),full_page=True)
+  page.on('dialog',lambda dialog:dialog.accept())
+  page.get_by_role('button',name='End competition now',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('Competition closed. History is saved.')
+  expect(page.locator('.competition-history')).to_contain_text('Service review challenge')
+  expect(page.locator('.competition-history')).to_contain_text('100%')
   navigate('Account & team settings')
   expect(page.get_by_role('heading',name='Your store account')).to_be_visible()
   assert page.get_by_role('button',name='Open menu').count()==0
@@ -220,7 +274,7 @@ try:
   assert sql('select count(*) from public.training_trophies')=='1'
   assert sql('select sum(points) from private.training_point_awards')=='40'
   assert sql('select count(*) from public.training_attempts')=='4'
-  print('Passed browser + actual SQL/RLS: admin release, starter departments preserving existing departments/placements without duplicates, assignment, sequential lessons, failed quiz explanations, completed-lesson review navigation, three-attempt block, manager unlock, passing retry, points/trophy, reload persistence, manager reporting, mobile, account navigation.')
+  print('Passed browser + actual SQL/RLS: admin release, starter departments preserving existing departments/placements without duplicates, assignment, sequential lessons, failed quiz explanations, completed-lesson review navigation, three-attempt block, manager unlock, passing retry, points/trophy, reload persistence, manager reporting, mobile, review competition for an already-passed employee, separate scores/attempts, three-attempt challenge limit, manager challenge unlock, lifetime leaderboard, competition history, account navigation.')
   browser.close()
 finally:
  subprocess.run(['docker','stop',name],capture_output=True)

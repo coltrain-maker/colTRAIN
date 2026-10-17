@@ -1,3 +1,5 @@
+import { competitionSpotlight, competitionPoints, competitionsPage, startCompetitionPage, competitionRecipients, leaderboardPage } from './competitions.js';
+import { learningTimer } from './learning-time.js';
 const starterDepartments = [
   "Front Counter & Customer Service",
   "Paint",
@@ -11,15 +13,17 @@ const trophy = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v7a4 
 const btn = (label, action, extra = "", kind = "") => `<button type="button" class="button ${kind}" data-training-action="${action}" ${extra}>${label}</button>`;
 const bar = (pct) => `<div class="progress-track" aria-label="${pct}% complete"><span style="width:${pct}%"></span></div>`;
 const day = (value) => value ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(/* @__PURE__ */ new Date(value + "T12:00:00Z")) : "No deadline";
-function defaultDeadline(zone) {
+function defaultDeadline(zone, offset = 30) {
   const parts = new Intl.DateTimeFormat("en-US", { timeZone: zone || "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(/* @__PURE__ */ new Date());
   const part = (type) => parts.find((p) => p.type === type).value;
   const today = /* @__PURE__ */ new Date(`${part("year")}-${part("month")}-${part("day")}T12:00:00Z`);
-  today.setUTCDate(today.getUTCDate() + 30);
+  today.setUTCDate(today.getUTCDate() + offset);
   return today.toISOString().slice(0, 10);
 }
 async function mountTraining({ client, root, user, profile, stores, initialStore, onAccounts, notify }) {
   const events = new AbortController();
+  const timer = learningTimer(client);
+  let selectedCompetition, leaderboardTab = "competition", challengeMode = false, challengeResult = null;
   let active = true, busy = false, view = "home", menu = false, storeId = initialStore, workspace, selectedCourse, assignment, lessons = [], questions = [], completions = [], lessonIndex = 0, quizQuestions = [], questionIndex = 0, answers = {}, submissionKey = null, result = null, review = [], librarySearch = "";
   const context = document.querySelector("header .store");
   const originalContext = context?.innerHTML;
@@ -48,7 +52,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   const title = (name, copy = "", action = "") => `<div class="page-heading"><div><h1>${esc(name)}</h1>${copy ? `<p>${esc(copy)}</p>` : ""}</div>${action}</div>`;
   const stat = (number, label) => `<div class="stat"><div><strong>${esc(number)}</strong><small>${esc(label)}</small></div></div>`;
   function navigation() {
-    return menu ? `<div class="training-menu-shade"><nav class="training-drawer" aria-label="Main navigation"><div class="panel-top"><h2>colTRAIN</h2>${btn("Close", "menu", "", "secondary")}</div>${[["home", workspace.can_manage ? "Dashboard" : "Home"], ["courses", "My training"], ["library", "Course library"], ...workspace.can_manage ? [["assign", "Assign training"], ["departments", "Departments"]] : []].map(([page, label]) => `<button type="button" data-training-action="navigate" data-view="${page}" ${view === page ? 'aria-current="page"' : ""}>${label}</button>`).join("")}<button type="button" data-training-action="accounts">Account & team settings</button><button type="button" class="account-danger" data-action="signout">Sign out</button></nav></div>` : "";
+    return menu ? `<div class="training-menu-shade"><nav class="training-drawer" aria-label="Main navigation"><div class="panel-top"><h2>colTRAIN</h2>${btn("Close", "menu", "", "secondary")}</div>${[["home", workspace.can_manage ? "Dashboard" : "Home"], ["courses", "My training"], ["library", "Course library"], ["leaderboard", "Store leaderboard"], ["competitions", "Competitions"], ...workspace.can_manage ? [["assign", "Assign training"], ["departments", "Departments"]] : []].map(([page, label]) => `<button type="button" data-training-action="navigate" data-view="${page}" ${view === page ? 'aria-current="page"' : ""}>${label}</button>`).join("")}<button type="button" data-training-action="accounts">Account & team settings</button><button type="button" class="account-danger" data-action="signout">Sign out</button></nav></div>` : "";
   }
   function cover() {
     return '<div class="course-cover"><div class="cover-grid"></div><div class="cover-scene"><div class="scene-person"></div><div class="scene-person second"></div><div class="scene-desk"></div><div class="scene-chat">\xB7\xB7\xB7</div></div></div>';
@@ -61,7 +65,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     const items = mine();
     const first = items.find((a) => !a.completed_at);
     const c = first && courseById(first.course_id);
-    return title(`Welcome, ${profile?.full_name?.split(" ")[0] || "teammate"}`, "One useful lesson at a time.") + `<div class="stats">${stat(workspace.totals.lifetime_points, "Lifetime points")}${stat(workspace.totals.completed_courses, "Courses completed")}${stat(workspace.totals.trophies, "Trophies earned")}</div><section class="learning-section"><div class="section-title"><h2>Your next chapter</h2>${btn("All my training", "navigate", 'data-view="courses"', "secondary")}</div>${first ? `<section class="panel training-progress"><h2>Your course progress</h2><p>${progress(first)}% complete \xB7 ${first.lessons_completed} of ${c.lesson_count} lessons</p>${bar(progress(first))}</section>${courseCard(c, first)}` : `<section class="panel"><h2>${items.length ? "You\u2019re all caught up." : "Your training starts here."}</h2><p class="muted">${items.length ? "Your completed courses and trophies are saved." : "Your manager will assign courses and set deadlines. You can explore the store\u2019s course library while you wait."}</p></section>`}</section>`;
+    return title(`Welcome, ${profile?.full_name?.split(" ")[0] || "teammate"}`, "One useful lesson at a time.") + competitionSpotlight(workspace) + `<div class="stats">${stat(workspace.totals.lifetime_points, "Lifetime points")}${stat(workspace.totals.completed_courses, "Courses completed")}${stat(workspace.totals.trophies, "Trophies earned")}</div><section class="learning-section"><div class="section-title"><h2>Your next chapter</h2>${btn("All my training", "navigate", 'data-view="courses"', "secondary")}</div>${first ? `<section class="panel training-progress"><h2>Your course progress</h2><p>${progress(first)}% complete \xB7 ${first.lessons_completed} of ${c.lesson_count} lessons</p>${bar(progress(first))}</section>${courseCard(c, first)}` : `<section class="panel"><h2>${items.length ? "You\u2019re all caught up." : "Your training starts here."}</h2><p class="muted">${items.length ? "Your completed courses and trophies are saved." : "Your manager will assign courses and set deadlines. You can explore the store\u2019s course library while you wait."}</p></section>`}</section>`;
   }
   function alerts(items, heading) {
     return items?.length ? `<section class="panel training-alerts"><h2>${heading}</h2><p class="muted">At least three different employees missed these questions on their first attempt. Review the lesson with your team.</p>${items.map((a) => `<div class="training-alert"><strong>${esc(a.course_title)}</strong><p>${esc(a.prompt)}</p><span>${a.missed_count} employees \xB7 no individual answers shown</span></div>`).join("")}</section>` : "";
@@ -70,9 +74,9 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     const members = workspace.members.filter((m) => m.status === "active" && m.role === "employee");
     const assignments = workspace.assignments.filter((a) => workspace.members.some((m) => m.id === a.membership_id && m.status === "active"));
     const locked = assignments.filter((a) => !a.completed_at && a.attempts_used >= a.attempt_limit);
-    return title("Your team, learning together.", "Assignments, deadlines, and lifelong progress in one place.", btn("Assign training", "navigate", 'data-view="assign"')) + `<div class="stats manager-stats">${stat(members.length, "Active employees")}${stat(assignments.filter((a) => a.completed_at).length, "Completed assignments")}${stat(assignments.filter((a) => a.overdue).length, "Overdue assignments")}${stat(members.reduce((sum, m) => sum + m.lifetime_points, 0), "Team lifetime points")}</div><section class="panel"><h2>Your team: current competition & lifetime points</h2><p class="muted">No competition scheduled.</p><div class="manager-table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Course status</th><th>Current course</th><th>Competition points</th><th>Lifetime points</th></tr></thead><tbody>${members.length ? members.flatMap((m) => {
+    return title("Your team, learning together.", "Assignments, deadlines, and lifelong progress in one place.", btn("Assign training", "navigate", 'data-view="assign"')) + competitionSpotlight(workspace) + `<div class="stats manager-stats">${stat(members.length, "Active employees")}${stat(assignments.filter((a) => a.completed_at).length, "Completed assignments")}${stat(assignments.filter((a) => a.overdue).length, "Overdue assignments")}${stat(members.reduce((sum, m) => sum + m.lifetime_points, 0), "Team lifetime points")}</div><section class="panel"><h2>Your team: current competition & lifetime points</h2><p class="muted">Competition scores come from the separate challenge. Lifetime points stay saved.</p><div class="manager-table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Course status</th><th>Current course</th><th>Competition points</th><th>Lifetime points</th></tr></thead><tbody>${members.length ? members.flatMap((m) => {
       const assigned = assignments.filter((a) => a.membership_id === m.id);
-      return (assigned.length ? assigned : [null]).map((a) => `<tr><td><strong>${esc(m.name)}</strong><small>${m.departments.map((d) => esc(workspace.departments.find((x) => x.id === d)?.name || "")).join(", ") || "No department"}</small></td><td>${esc(status(a))}${a ? `<small>${progress(a)}% \xB7 ${a.attempts_used} attempts${a.latest_attempt ? ` \xB7 Latest score ${a.latest_attempt.score}%` : ""}</small>` : ""}</td><td>${a ? `${esc(courseById(a.course_id)?.title)}<small class="${a.overdue ? "account-danger" : ""}">${a.overdue ? "Overdue \xB7 " : ""}Due ${day(a.due_date)}</small>` : "\u2014"}</td><td>\u2014</td><td>${m.lifetime_points}</td></tr>`);
+      return (assigned.length ? assigned : [null]).map((a) => `<tr><td><strong>${esc(m.name)}</strong><small>${m.departments.map((d) => esc(workspace.departments.find((x) => x.id === d)?.name || "")).join(", ") || "No department"}</small></td><td>${esc(status(a))}${a ? `<small>${progress(a)}% \xB7 ${a.attempts_used} attempts${a.latest_attempt ? ` \xB7 Latest score ${a.latest_attempt.score}%` : ""}</small>` : ""}</td><td>${a ? `${esc(courseById(a.course_id)?.title)}<small class="${a.overdue ? "account-danger" : ""}">${a.overdue ? "Overdue \xB7 " : ""}Due ${day(a.due_date)}</small>` : "\u2014"}</td><td>${competitionPoints(workspace,m.id)}</td><td>${m.lifetime_points}</td></tr>`);
     }).join("") : '<tr><td colspan="5">Invite employees in Account & team settings to get started.</td></tr>'}</tbody></table></div></section>${locked.length ? `<section class="panel"><h2>Help an employee retry</h2><p class="muted">Review the material together, then unlock one additional attempt. Previous points and attempts stay saved.</p><form id="training-unlock-form"><label class="field">Assignment<select name="assignment">${locked.map((a) => `<option value="${a.id}">${esc(workspace.members.find((m) => m.id === a.membership_id)?.name)} \xB7 ${esc(courseById(a.course_id)?.title)}</option>`).join("")}</select></label><label class="field">How did you help?<textarea name="reason" minlength="5" maxlength="500" required></textarea></label><button class="button">Unlock one attempt</button></form></section>` : ""}${alerts(workspace.question_alerts, "Questions to revisit with your store")}${workspace.is_admin ? alerts(workspace.global_question_alerts, "Questions to revisit across all stores") : ""}`;
   }
   function myCourses() {
@@ -137,6 +141,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     return `<div class="breadcrumb">${btn("My training", "navigate", 'data-view="courses"', "secondary")} / ${esc(c.category)}</div><div class="course-layout"><aside class="panel lesson-nav"><h3>${esc(c.title)}</h3><p>${completions.length} of ${lessons.length} lessons complete</p>${bar(assignment ? progress(assignment) : 0)}${lessons.map((item, i) => `<button type="button" class="lesson-item ${i === lessonIndex ? "active" : ""}" data-training-action="lesson" data-index="${i}" ${assignment && i > 0 && !completions.includes(lessons[i - 1].id) ? "disabled" : ""}><span class="lesson-number">${completions.includes(item.id) ? "\u2713" : i + 1}</span><span>${esc(item.title)}</span></button>`).join("")}${quizEntryButton()}</aside><article class="panel lesson-content"><div class="chips"><span class="chip">Lesson ${lessonIndex + 1} of ${lessons.length}</span>${!assignment ? '<span class="chip gray">Course preview</span>' : ""}</div><h1>${esc(l.title)}</h1>${content(l.body)}<div class="lesson-actions"><span>${done ? "\u2713 Lesson already complete. You can review it without marking it again." : assignment ? "Mark complete when you\u2019re ready to continue." : "Preview only. Your manager must assign this course before you can earn points or a trophy."}</span>${action}</div>${assignment ? `<p class="quiz-note">Lessons earn completion checkmarks. Quiz answers earn points. Due ${day(assignment.due_date)}${assignment.overdue ? " \xB7 Overdue training remains available." : ""}</p>` : ""}</article></div>`;
   }
   function quizPage() {
+    if (challengeMode) return challengeQuizPage();
     if (!assignment) return "";
     if (assignment.completed_at) return '<section class="panel"><h2>Course already completed</h2><p>Your trophy and points are saved.</p></section>';
     if (assignment.attempts_used >= assignment.attempt_limit) return `<section class="panel result-panel"><h1>A little teamwork can help.</h1><p>You\u2019ve used all ${assignment.attempt_limit} available attempts. Ask your manager to review the lesson with you and unlock one more.</p>${btn("Back to course", "open-course", `data-course="${selectedCourse}"`)}</section>`;
@@ -146,10 +151,28 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   function resultsPage() {
     return `<section class="panel result-panel"><div class="trophy-big">${result.passed ? trophy : "\u2726"}</div><span class="chip ${result.passed ? "green" : "amber"}">${result.passed ? "Course passed" : "Keep learning"}</span><h1>${result.passed ? "Trust starts with you." : "You\u2019re getting there."}</h1><p>${result.passed ? "Your course completion and standard trophy are saved." : "Review the explanations and return to the lessons before trying again."}</p><div class="result-stats"><div><strong>${result.score}%</strong><small>${result.correct_count} of ${result.question_count} correct</small></div><div><strong>+${result.new_points}</strong><small>New points this attempt</small></div><div><strong>${result.course_points}</strong><small>Course points earned</small></div></div>${!result.passed ? `<div class="answer-review"><h2>A few things to revisit</h2>${review.filter((r) => !r.is_correct).map((r) => `<p><strong>${esc(r.prompt)}</strong><br>Correct answer: ${esc(r.options[r.correct_option])}<br>${esc(r.explanation)}</p>`).join("")}</div>` : ""}<div class="result-actions">${btn("Back to home", "navigate", 'data-view="home"', "secondary")}${btn(result.passed ? "Review course" : "Review lessons", "open-course", `data-course="${selectedCourse}"`)}</div><p class="quiz-note">${result.attempts_used} of ${result.attempt_limit} attempts used. Previously earned points are kept.</p></section>`;
   }
+  function challengeQuizPage() {
+    const q=quizQuestions[questionIndex];
+    return `<div class="quiz-wrap"><h1>Competition knowledge check</h1><p class="muted">Question ${questionIndex+1} of ${quizQuestions.length}. Your best score counts. Lifetime points and course attempts stay saved.</p><section class="panel quiz-panel"><h2>${esc(q.prompt)}</h2><form id="training-quiz-form">${q.options.map((option,i)=>`<label class="option"><input type="radio" name="answer" value="${i}" ${answers[q.id]===i?'checked':''} required><span>${esc(option)}</span></label>`).join('')}<div class="lesson-actions">${btn("Back","quiz-back",questionIndex===0?'disabled':'',"secondary")}<button class="button">${questionIndex===quizQuestions.length-1?'Finish challenge':'Next question'}</button></div></form></section></div>`;
+  }
+  function challengeResultsPage(){return `<section class="panel result-panel"><h1>Challenge saved</h1><p>${challengeResult.correct_count} of ${challengeResult.question_count} correct · ${challengeResult.points} competition points on this attempt.</p><p>Your best challenge score counts. Lifetime points, course credit, and trophies stay saved.</p><p>${challengeResult.attempts_used} of ${challengeResult.attempt_limit} attempts used.</p><div class="answer-review">${challengeResult.review.filter(r=>!r.is_correct).map(r=>`<p><strong>${esc(r.prompt)}</strong><br>Correct answer: ${esc(r.correct_answer)}<br>${esc(r.explanation)}</p>`).join('')}</div>${btn("See standings","competition-standings",`data-competition="${selectedCompetition}"`)}</section>`;}
+  async function startChallenge(id){
+    await refresh();
+    const event=workspace.competitions.find(c=>c.id===id), participant=event?.standings.find(p=>p.is_you&&!p.withdrawn);
+    if(!participant||event.status!=='active')throw new Error('An active competition invitation is required.');
+    if(!participant.course_completed)throw new Error('Pass the required course first, then return for the competition knowledge check.');
+    if(participant.attempts_used>=participant.attempt_limit)throw new Error('Ask your manager to help and unlock another challenge attempt.');
+    selectedCompetition=id; selectedCourse=event.course_id;
+    assignment=mine().find(a=>a.course_id===selectedCourse);
+    const response=await client.from('training_questions').select('id,prompt,options,position').eq('course_id',selectedCourse).order('position');
+    if(response.error)throw response.error;
+    quizQuestions=[...response.data].sort(()=>Math.random()-.5);questionIndex=0;answers={};submissionKey=crypto.randomUUID();challengeMode=true;view='quiz';render();
+  }
   function render() {
     if (!active) return;
     headerButton.setAttribute("aria-expanded", String(menu));
-    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : ""}</div>${navigation()}`;
+    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
+    timer.set(!menu && (view === "course" || view === "quiz" && (challengeMode || assignment && !assignment.completed_at && assignment.attempts_used < assignment.attempt_limit)) ? assignment?.id || null : null);
   }
   async function run(action) {
     if (busy) return;
@@ -168,6 +191,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     }
   }
   async function openCourse(id) {
+    challengeMode=false;
     await refresh();
     selectedCourse = id;
     assignment = mine().find((a) => a.course_id === id);
@@ -182,6 +206,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     render();
   }
   async function startQuiz() {
+    challengeMode=false;
     await refresh();
     assignment = mine().find((a) => a.course_id === selectedCourse);
     if (!assignment) throw new Error("Ask your manager to assign this course first.");
@@ -226,11 +251,22 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         return;
       }
       const answerPayload = quizQuestions.map((q) => ({ question_id: q.id, option: answers[q.id] }));
+      if(challengeMode){
+        challengeResult=await rpc('submit_training_challenge',{competition:selectedCompetition,answers:answerPayload,submission:submissionKey});
+        await refresh();view='challenge-results';render();notify('Competition challenge saved. Your best score counts.');return;
+      }
       const finished = await rpc("submit_training_quiz", { assignment: assignment.id, answers: answerPayload, submission: submissionKey });
       await refresh();
       await showResult(finished, mine().find((a) => a.id === assignment.id));
       notify(finished.passed ? "Course passed. Your points and trophy are saved." : "Quiz saved. Review the explanations before trying again.");
       return;
+    }
+    if(form.id==='training-competition-form'){
+      const event=await rpc('create_training_competition',{store:storeId,course:data.get('course'),competition_name:data.get('name').trim(),starts_on:data.get('start'),ends_on:data.get('end'),prize:data.get('reward').trim(),prize_type:data.get('reward_type'),employee_ids:data.getAll('employee'),department_ids:data.getAll('department'),all_employees:data.get('all')==='yes'});
+      selectedCompetition=event.competition_id;await refresh();view='competitions';render();notify(`Competition saved for ${event.participants} ${event.participants === 1 ? "employee" : "employees"}.`);return;
+    }
+    if(form.id==='training-challenge-unlock-form'){
+      await rpc('unlock_training_challenge',{competition:data.get('competition'),member:data.get('member'),support_note:data.get('reason').trim()});await refresh();render();notify('One additional challenge attempt is available.');return;
     }
     if (form.id === "training-assign-form") {
       const count = await rpc("assign_training", { course: data.get("course"), store: storeId, employee_ids: data.getAll("employee"), department_ids: data.getAll("department"), all_employees: data.get("all") === "yes", deadline: data.get("deadline") });
@@ -265,6 +301,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   }, { signal: events.signal });
   document.addEventListener("change", (e) => {
     if (!active) return;
+    if(e.target.id==='training-competition-course')document.querySelector('#training-competition-recipients').innerHTML=competitionRecipients(workspace,e.target.value);
+    if(e.target.matches('#training-competition-form input[name=start]'))document.querySelector('#training-competition-form input[name=end]').min=e.target.value;
     if (e.target.id === "training-department-member") document.querySelector("#training-department-options").innerHTML = departmentOptions(workspace.members.find((m) => m.id === e.target.value));
     if (e.target.id === "training-store") run(async () => {
       storeId = e.target.value;
@@ -302,6 +340,17 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         await refresh();
         render();
         return;
+      }
+      if(action==='competition-new'){await refresh();view='competition-new';menu=false;render();return;}
+      if(action==='competition-standings'||action==='leaderboard-lifetime'||action==='leaderboard-tab'){
+        if(target.dataset.competition)selectedCompetition=target.dataset.competition;
+        leaderboardTab=action==='leaderboard-lifetime'?'lifetime':action==='leaderboard-tab'?target.dataset.tab:'competition';
+        await refresh();view='leaderboard';render();return;
+      }
+      if(action==='competition-challenge'){await startChallenge(target.dataset.competition);return;}
+      if(action==='competition-finish'){
+        if(!window.confirm(target.dataset.state==='scheduled'?'Cancel this scheduled competition? Course assignments will remain available.':'End this competition now? Current scores will become final.'))return;
+        await rpc('finish_training_competition',{competition:target.dataset.competition});await refresh();render();notify('Competition closed. History is saved.');return;
       }
       if (action === "starter-departments") {
         await addStarterDepartments();
@@ -366,6 +415,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   function close() {
     if (!active) return;
     active = false;
+    timer.close();
     events.abort();
     headerButton.remove();
     root.classList.remove("training-main");

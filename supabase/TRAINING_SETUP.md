@@ -2,7 +2,7 @@
 
 The owner has applied the Step 3 migration and deployed the initial training website. On October 17, 2026, they confirmed course release and assignment, ordered lesson completion, a live 100% quiz result with 50 points and a trophy, persistence after signing back in, and the matching manager report. A separate controlled employee failed three times and was blocked from a fourth attempt. The owner subsequently verified a manager-assisted fourth attempt, a 100% passing score, saved points/trophy, and the matching manager view. Local automated tests create only isolated test data, never hosted training records.
 
-The owner deployed the completed-lesson review navigation fix below. The newer approved starter-department template is prepared on `codex/coltrain-prototype` and requires a website-only ZIP update. Neither change needs another SQL migration. The original migration instructions remain reference material; do not rerun the already-applied training migration on this project.
+The owner deployed the completed-lesson review navigation fix below. The owner also deployed and applied the approved starter-department template, verified multi-department placement, and confirmed that a department-targeted deadline update changed only the selected employee while preserving completion, points, and trophy. Neither change needs another SQL migration. The original migration instructions remain reference material; do not rerun the already-applied training migration on this project.
 
 ## What is included
 
@@ -16,7 +16,7 @@ The owner deployed the completed-lesson review navigation fix below. The newer a
 - Standard trophy on passing. Previously earned points are retained after failure; passing at 80% may earn 40 of the available 50 points. Passed courses are reviewable, with no further scored attempts. Rejoining through another seat does not duplicate points/trophies or inherit another employee's history.
 - Learner-only missed-answer explanations after a submitted quiz. Managers and administrators see progress/scores but cannot retrieve another person's selections, answer review, or question-level point records.
 - Manager-assisted retry unlock after all available attempts are used. A short assistance note is saved; each unlock allows one additional attempt and does not reset prior scores or points.
-- Manager dashboard with the agreed employee/status/course/competition-points/lifetime-points column order. Competition values remain blank until Step 4. Progress, due dates, overdue status, latest scores, and lifetime points come from the database. Departed employee histories stay available to the store's manager/admin while active employees cannot access former memberships' training.
+- Manager dashboard with the agreed employee/status/course/competition-points/lifetime-points column order. Step 4 adds competition values separately; see COMPETITIONS_SETUP.md. Progress, due dates, overdue status, latest scores, and lifetime points come from the database. Departed employee histories stay available to the store's manager/admin while active employees cannot access former memberships' training.
 - Store question alerts for three distinct employees missing the same question on their first attempt; administrator alerts aggregate across stores. No individual answer names are disclosed. These are in-app summaries; email notification delivery is still Step 5.
 - Frozen course versions once assigned. Future authoring should create a new version rather than changing existing learners' lesson/quiz content. Removing a course from a store library prevents new assignments but preserves existing assignments to that version.
 
@@ -78,7 +78,7 @@ The existing account browser test and email handler tests remain applicable. A s
 
 ## Remaining stages
 
-Step 4 connects competitions and Team Corner. Step 5 adds active-learning time tracking, assignment/reminder notification delivery and preferences, home-screen installation, and broader pilot checks. The calendar, news feed, AI assistant, expanded catalog, commercial billing, and full course authoring remain outside this Step 3 slice. Lesson media/upload tools and authoring for manager-created onboarding need their own implementation; the first connected course uses the existing text lessons.
+Step 4a now prepares competitions, review challenges for previous graduates, and active-learning estimates; see COMPETITIONS_SETUP.md for its incremental migration, deployment, and tests. Team Corner is the next Step 4 slice. Step 5 adds assignment/reminder notification delivery and preferences, home-screen installation, and broader pilot checks. The calendar, news feed, AI assistant, expanded catalog, commercial billing, and full course authoring remain outside this Step 3 slice. Lesson media/upload tools and authoring for manager-created onboarding need their own implementation; the first connected course uses the existing text lessons.
 
 ## Completed-lesson review navigation update
 
@@ -103,4 +103,4 @@ The Departments page now offers **Add starter departments** with a visible list 
 
 This template needs only the updated website ZIP deployed to the existing Netlify project. No SQL or Edge Function update is needed. After deployment, sign in as manager, open training, use the hamburger menu to open Departments, then select Add starter departments. In Employee departments, choose a person, check one or more departments, and Save departments.
 
-The real-SQL browser test starts with an existing Paint department and employee placement plus a custom Receiving department. Applying the template adds only five names, preserves both existing department IDs/placements and Receiving, and does not duplicate names on a subsequent visit. Department assignment remains covered by the existing SQL and browser flow. The owner still needs to apply the template to the hosted store and verify a department-targeted assignment.
+The real-SQL browser test starts with an existing Paint department and employee placement plus a custom Receiving department. Applying the template adds only five names, preserves both existing department IDs/placements and Receiving, and does not duplicate names on a subsequent visit. Department assignment remains covered by the existing SQL and browser flow. The owner confirmed applying the template, placing a controlled employee in Paint and Front Counter & Customer Service, and verifying department-targeted assignment results.

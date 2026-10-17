@@ -122,7 +122,7 @@ Local SQL tests exercise the database rules and concurrent seat reservations. Br
 
 ## Current limits
 
-- Courses, points, assignments, trophies, and the feed in the original design prototype still use sample browser data. They will be connected in Steps 3 and 4.
+- The original design prototype still uses sample browser data. The separate accounts/training interface connects real course assignments, lessons, quizzes, points, and trophies through Step 3. Step 4a adds competitions/review challenges and learning-time estimates; apply only its incremental migration and website update as described in `supabase/COMPETITIONS_SETUP.md`. Team Corner remains the next implementation slice.
 - Removing a member revokes access to the store; it does not ban their Supabase Auth identity globally. Historical membership records remain. Global account deletion/ban workflows are not implemented here.
 - Owner/regional-manager permissions and temporary administrator support access to store feeds remain future work. Administrator status alone cannot bypass team-file privacy.
 - Training emails are not wired yet; the optional-email preference is stored for Step 5.
