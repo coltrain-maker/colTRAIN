@@ -39,6 +39,8 @@ python scripts/build-hosting.py
 
 The ZIP is also saved on the development branch for download through GitHub's **Download raw file** action, which avoids the chat preview's broken download control. A build alone does not publish anything.
 
+The owner has supplied the pilot origin `https://stalwart-custard-7be489.netlify.app` and reports saving the Site URL and invitation redirect entries. The cloud environment could not independently check Netlify because its egress proxy denied that hostname; that denial does not establish a website failure. Deployment of the migration/function and live email checks are still pending.
+
 ### 3. Configure Auth callbacks and email delivery
 
 In Supabase **Authentication → URL Configuration**:
@@ -64,7 +66,7 @@ supabase functions deploy invite-employee
 
 The CLI credentials must be supplied through the CLI's secure login/environment mechanism, never chat or browser code. `supabase/config.toml` turns off the legacy gateway JWT check for this function so new publishable keys work. The handler still requires and verifies the caller's actual Auth session with `getUser()`, and calls the seat/role RPC using that person's JWT before constructing the privileged email client. Do not deploy a handler that skips these checks. The function uses the same pinned Supabase JS version as the browser.
 
-A dashboard-based deployment must include both `index.ts` and `handler.js` from `supabase/functions/invite-employee/`, the `COLTRAIN_APP_URL` secret, and the equivalent gateway setting. A single-file paste of `index.ts` alone will not work.
+For dashboard deployment, first run `node scripts/build-invite-function.mjs`. This creates `supabase/invite-employee-dashboard.ts`, a self-contained entry containing the same tested handler. In Edge Functions, create/deploy a function named **invite-employee** through the editor and replace its default code with that entire generated file. Set `COLTRAIN_APP_URL` to `https://stalwart-custard-7be489.netlify.app` in Edge Function secrets and turn off **Verify JWT with legacy secret** for this function; the handler performs its own user validation. No service-role key is copied into the editor or browser. The alternative CLI deployment above uses the original two source files. A single-file paste of the source `index.ts` alone will not work.
 
 ### 5. Verify with controlled accounts before employee rollout
 
