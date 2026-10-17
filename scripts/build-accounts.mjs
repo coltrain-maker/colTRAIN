@@ -2,8 +2,9 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import {build} from 'esbuild';
 if(existsSync('.env.local'))process.loadEnvFile('.env.local');
-const url=process.env.SUPABASE_URL||'https://flhdeftduysnjvqnhhee.supabase.co';
-const key=process.env.SUPABASE_PUBLISHABLE_KEY||'';
+const publicConfig=existsSync('accounts/public-config.json')?JSON.parse(await readFile('accounts/public-config.json','utf8')):{};
+const url=process.env.SUPABASE_URL||publicConfig.supabaseUrl||'https://flhdeftduysnjvqnhhee.supabase.co';
+const key=process.env.SUPABASE_PUBLISHABLE_KEY||publicConfig.supabasePublishableKey||'';
 if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(url))throw new Error('SUPABASE_URL must be the project HTTPS URL.');
 if(key&&!key.startsWith('sb_publishable_')){
  let role;
@@ -16,5 +17,8 @@ const css=(await readFile('styles.css','utf8'))+'\n'+(await readFile('accounts/a
 // Escape closing script sequences in the generated inline bundle.
 const js=bundle.outputFiles[0].text.replace(/<\/script/gi,'<\\/script');
 await mkdir('accounts',{recursive:true});
-await writeFile('accounts/index.html',template.replace('</head>','<style>'+css+'</style></head>').replace('</body>','<script>'+js+'</script></body>'));
+const html=template.replace('</head>','<style>'+css+'</style></head>').replace('</body>','<script>'+js+'</script></body>');
+await writeFile('accounts/index.html',html);
+await mkdir('design',{recursive:true});
+await writeFile('design/coltrain-accounts.html',html);
 console.log(key?'Built account interface with public Supabase configuration.':'Built account interface in unconfigured state; SUPABASE_PUBLISHABLE_KEY is still required.');

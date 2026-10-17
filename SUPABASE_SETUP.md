@@ -2,7 +2,7 @@
 
 Project URL: `https://flhdeftduysnjvqnhhee.supabase.co`
 
-The screen prototype remains at the root `index.html`. A separate account foundation has been prepared in `accounts/`. Its SQL and browser wiring have been tested locally, but nothing has been applied to the hosted project yet. Live Supabase authentication and real email delivery remain unverified.
+The screen prototype remains at the root `index.html`. A separate account foundation has been prepared in `accounts/`. The owner reports that `supabase/SETUP.sql` completed successfully. On October 17, 2026, live read-only checks confirmed that the project's Auth API accepts the supplied publishable key, email sign-in is enabled with email confirmation, and all six account tables reject anonymous reads. Local SQL and mocked browser checks passed. Signed-in hosted permissions, confirmation/recovery delivery, and real file uploads still need live verification.
 
 ## 1. Create the database and access rules
 
@@ -33,6 +33,10 @@ This step does not create fake employees, issue invitations, charge anyone, or s
 
 ## 2. Supply the public browser configuration
 
+The owner has now supplied the publishable key, and it is saved in `accounts/public-config.json` alongside the project URL. This is intentionally public website configuration, not a privileged credential. The builder uses it automatically; no manual environment-settings entry is needed for the development page. Environment variables still override these values for other deployments. Never place a secret/service-role key in this file.
+
+`npm run build:accounts` also creates the self-contained `design/coltrain-accounts.html` for viewing the account interface. This page connects to the real development Supabase project; use only your own pilot/test accounts. The original screen prototype continues to use sample data. The environment draft has also been prefilled with the public values, so review/save/publish can be handled when publishing the environment rather than requiring manual key entry now.
+
 In Supabase **Project Settings → API Keys**, locate the **publishable key** (normally begins `sb_publishable_`). Do not use a secret key, service-role key, database password, or personal access token.
 
 In this cloud environment's settings, review the saved configuration fields:
@@ -44,7 +48,7 @@ In this cloud environment's settings, review the saved configuration fields:
 
 The draft also adds `flhdeftduysnjvqnhhee.supabase.co` to network access. Existing package-manager presets remain intact. Save the settings and publish the environment so the saved configuration and prepared files can be retained. A draft save alone does not update the running process or publish the environment.
 
-Only these public values are needed by the browser. Never enter privileged credentials into the browser build. The build rejects Supabase secret keys and service-role JWTs.
+Only these public values are needed by the browser. Never enter privileged credentials into the browser build. The build rejects Supabase secret keys and service-role JWTs, including values read from public-config.json.
 
 For a separate local development checkout, copy `.env.example` to `.env.local`, fill in the public URL/key there, then run:
 
@@ -70,6 +74,8 @@ The app requests confirmation/reset emails only when a person submits the releva
 ## 4. Appoint the first administrator
 
 The first administrator is deliberately not assigned automatically to whoever signs up first.
+
+For the initial development owner, before a hosted email callback URL is ready, you can create your own login directly in **Supabase Authentication → Users → Add user → Create new user**, enter your own email and private password, and enable **Auto Confirm User** if offered. This creates a confirmed development owner without depending on an unfinished email redirect. Never share the password in chat. Keep normal signup email confirmation enabled for subsequent employee accounts. This initial owner setup does not test confirmation email delivery.
 
 1. Create your own account in the configured account page.
 2. Confirm the email and sign in.
