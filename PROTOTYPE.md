@@ -27,6 +27,8 @@ Production work still includes authentication, store isolation, actual assignmen
 
 ## Development
 
-Build the standalone download with `python scripts/build-preview.py`.
+Edit `templates/index.html`, `styles.css`, and `app.js`, then run `python scripts/build-preview.py`. This generates a self-contained root `index.html` and the standalone downloads from the same source. Do not edit the generated HTML directly.
+
+The root index includes its styling and JavaScript so the chat's single-file preview can render the cards and interactions without loading sibling files. The root index and downloadable prototype have identical contents.
 
 To serve source files, run `python -m http.server 3000 --bind 0.0.0.0` from the project directory. The standalone file can also be opened directly without running this command.
