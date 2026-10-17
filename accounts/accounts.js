@@ -31,7 +31,11 @@ async function loadWorkspace(){
  root.innerHTML=`<div class="account-toolbar"><div><h1>${own?'Your store account':'Welcome, '+esc(profile?.full_name||'teammate')}</h1><p class="muted">${esc(user.email)}${admin?' · colTRAIN administrator':''}</p></div>${button('Sign out','signout')}</div>${!own&&!admin?'<div class="account-note">No active store membership. Accept your invitation below, or contact your manager if your access was removed.</div>':''}<div class="stack"><div class="account-form-grid">${profileForm()}${!own?joinForm():`<section class="panel"><h2>${esc(stores.find(s=>s.id===own.organization_id)?.name||'Your store')}</h2><p class="muted" style="margin-top:15px">Role: ${esc(own.role)}</p><p class="account-note">Your real account is connected. Course assignments and learning records will be connected in Step 3. The separate design preview still uses sample data.</p></section>`}</div>${admin?adminPanel():''}${canManage?stores.map(managerPanel).join(''):''}</div>`;
 }
 async function perform(action){if(busy)return;busy=true;root.querySelectorAll('button').forEach(b=>b.disabled=true);try{await action();}catch(error){notice(error.message||'The request could not be completed.',true);}finally{busy=false;root.querySelectorAll('button').forEach(b=>b.disabled=false);}}
-document.addEventListener('click',event=>{const target=event.target.closest('[data-action]');if(!target)return;const action=target.dataset.action;
+document.addEventListener('click',event=>{
+ // Embedded previews may allow scripts while blocking native form submissions.
+ const submit=event.target.closest('button');
+ if(submit?.form&&root.contains(submit)&&submit.type==='submit'){event.preventDefault();if(submit.form.reportValidity())submitForm(submit.form);return;}
+ const target=event.target.closest('[data-action]');if(!target)return;const action=target.dataset.action;
  if(['signin','signup','reset'].includes(action)){view=action;notice('');authScreen();return;}
  perform(async()=>{
   if(action==='signout'){const {error}=await client.auth.signOut({scope:'local'});if(error)throw error;user=null;members=[];stores=[];profile=null;admin=false;authScreen();notice('You are signed out.');}
@@ -41,7 +45,8 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
   if(action==='revoke'){const {error}=await client.rpc('revoke_invitation',{invitation:target.dataset.invitation});if(error)throw error;await loadWorkspace();notice('Invitation revoked. You can issue a new code if needed.');}
  });
 });
-document.addEventListener('submit',event=>{event.preventDefault();const form=event.target,data=new FormData(form);perform(async()=>{
+document.addEventListener('submit',event=>{if(!root.contains(event.target))return;event.preventDefault();submitForm(event.target);});
+function submitForm(form){const data=new FormData(form);perform(async()=>{
  if(form.id==='auth-form'){
   if(view==='signup'){const {error}=await client.auth.signUp({email:data.get('email').trim(),password:data.get('password'),options:{data:{full_name:data.get('name').trim()},emailRedirectTo:emailRedirect}});if(error)throw error;view='signin';authScreen();notice('Check your email to confirm your account, then sign in.');}
   else if(view==='reset'){const {error}=await client.auth.resetPasswordForEmail(data.get('email').trim(),{redirectTo:emailRedirect});if(error)throw error;notice('If an account is available, a reset link will be sent.');}
@@ -52,7 +57,7 @@ document.addEventListener('submit',event=>{event.preventDefault();const form=eve
  if(form.id==='join-form'){const {error}=await client.rpc('accept_invitation',{invitation_code:data.get('code').trim()});if(error)throw error;await loadWorkspace();notice('You joined your store.');}
  if(form.id==='store-form'){const {error}=await client.rpc('create_store',{store_name:data.get('name').trim(),seat_count:Number(data.get('seats'))});if(error)throw error;await loadWorkspace();notice('Store created. Invite its manager using the form below.');}
  if(form.id==='invite-form'){const {data:result,error}=await client.rpc('create_invitation',{store:form.dataset.store,employee_email:data.get('email').trim(),member_role:data.get('role')||'employee'});if(error)throw error;await loadWorkspace();showInvitationCode(result[0],data.get('email'));notice('Invitation created. Save the code before leaving this page.');}
- });});
+ });}
 if(!client){root.innerHTML='<section class="panel account-not-configured"><h1>Account connection is not configured yet</h1><p class="muted" style="margin-top:15px">The Supabase publishable key and database setup are still needed. Follow SUPABASE_SETUP.md before using real accounts.</p><a class="text-link" href="../index.html">Return to the working design preview →</a></section>';}
 else{
  client.auth.onAuthStateChange((event,session)=>{

@@ -94,6 +94,20 @@ try:
         assert not errors, errors
         assert ('POST', '/rest/v1/rpc/create_invitation') in calls
         print('Passed mocked account UI: sign-in/out, profile preferences, invite/reissue, password reset, deactivate, registration screen, mobile layout.')
+        # Chat previews allow JavaScript but may omit the allow-forms sandbox permission.
+        sandbox_page = browser.new_page()
+        sandbox_page.route('**/*', handle)
+        sandbox_page.on('pageerror', lambda error: errors.append(str(error)))
+        sandbox_page.set_content('<iframe sandbox="allow-scripts" style="width:900px;height:900px"></iframe>')
+        sandbox_page.locator('iframe').evaluate('(el, html) => el.srcdoc = html', html)
+        frame = sandbox_page.frame_locator('iframe')
+        frame.locator('input[name=email]').fill('manager@example.test')
+        frame.locator('input[name=password]').fill('short-pass')
+        frame.get_by_role('button', name='Sign in', exact=True).click()
+        expect(frame.get_by_role('heading', name='Your store account')).to_be_visible()
+        expect(frame.locator('#account-message')).to_have_text('Signed in.')
+        assert not errors, errors
+        print('Passed sign-in inside an opaque preview iframe without allow-forms.')
         browser.close()
     # A privileged key must never be embedded in the browser artifact.
     rejected = subprocess.run(['node', 'scripts/build-accounts.mjs'], cwd=root,
