@@ -1,0 +1,16 @@
+{
+  "name": "coltrain",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:accounts": "node scripts/build-accounts.mjs",
+    "build:preview": "python scripts/build-preview.py",
+    "test:database": "python tests/run-database-tests.py"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

@@ -26,6 +26,8 @@ Your prototype interactions are stored in the browser. Clearing browser storage,
 
 Production work still includes authentication, store isolation, actual assignments, question shuffling, persistent records, moderation, notifications/preferences, PWA installation, and database/file storage.
 
+Step 2 now has a separate account foundation under `accounts/` and database migrations under `supabase/`. See `SUPABASE_SETUP.md` for project connection, migration, and live-verification steps. The design preview remains sample-only; preparing the account foundation does not mean the hosted database has been migrated or connected.
+
 ## Development
 
 Edit `templates/index.html`, `styles.css`, and `app.js`, then run `python scripts/build-preview.py`. This generates a self-contained root `index.html` and the standalone downloads from the same source. Do not edit the generated HTML directly.
