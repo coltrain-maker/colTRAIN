@@ -69,7 +69,7 @@ try:
         page.goto('https://accounts.example/accounts/index.html', wait_until='networkidle')
         expect(page.get_by_role('heading', name='Welcome to colTRAIN')).to_be_visible()
         page.locator('#auth-form input[name=email]').fill('manager@example.test')
-        page.locator('#auth-form input[name=password]').fill('Local test password only')
+        page.locator('#auth-form input[name=password]').fill('short-pass')
         page.locator('#auth-form button[type=submit]').click()
         expect(page.get_by_role('heading', name='Your store account')).to_be_visible()
         expect(page.get_by_role('heading', name='Pilot Hardware', exact=True).first).to_be_visible()
@@ -90,6 +90,7 @@ try:
         expect(page.get_by_role('heading', name='Welcome to colTRAIN')).to_be_visible()
         page.get_by_role('button', name='Create account', exact=True).click()
         expect(page.get_by_role('heading', name='Create your account')).to_be_visible()
+        assert page.locator('input[name=password]').get_attribute('minlength') == '12'
         assert not errors, errors
         assert ('POST', '/rest/v1/rpc/create_invitation') in calls
         print('Passed mocked account UI: sign-in/out, profile preferences, invite/reissue, password reset, deactivate, registration screen, mobile layout.')
