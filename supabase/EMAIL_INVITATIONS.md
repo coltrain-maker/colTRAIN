@@ -101,3 +101,11 @@ Repair prepared in this repository:
 5. These repairs do not raise Auth sending limits. Before retrying the pending invitation, review the Auth rate-limit details and configure verified custom SMTP for real employee delivery. Default-sender testing limits and allowed recipients remain separate from application seat limits. Do not repeatedly resend while the provider is rate limiting.
 
 The new database regression test uses a service_role with BYPASSRLS and **no invitation table grants**, reproducing the missing-privilege condition; it verifies the status RPC works while managers, browser administrators, and anonymous clients cannot forge delivery results. Server tests cover 429 responses, restricted recipients, and failed status recording after an accepted email. Hosted repair and first-time account delivery still require verification after the owner applies/deploys these changes.
+
+## Pending-invitation display diagnosis after SMTP setup
+
+The owner reports verifying coltrainlearning.com in Resend, saving custom SMTP settings in Supabase, and then seeing **Replace code / Revoke code** instead of **Resend invitation**. After revoking that invitation and submitting another name/email, no email arrived; the exact submission response and whether this was the hosted page or a downloaded copy are not yet known.
+
+A browser bug was reproduced locally: an error fetching name/delivery fields was silently ignored, making email invitations appear to be manual invitations. The source now fetches all permitted invitation columns together and shows a load error instead of silently inferring manual mode from unavailable data. Browser regression tests model actual column projection and a failed detail read. The rebuilt account page and hosting ZIP contain this correction; the owner must redeploy the website to activate it. This display fix does not establish why the latest email did not arrive.
+
+The cloud’s latest read-only request to the hosted account page returned HTTP 401, so deployed page contents could not be independently inspected. The next diagnosis needs the actual submission message and, if the request was accepted, the corresponding event in Resend's Emails log. Avoid further invitations/resends until that evidence is available; repeated requests can obscure the pending-seat state and hit sending limits.

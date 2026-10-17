@@ -5,6 +5,7 @@ import json
 import os
 import subprocess
 import time
+from urllib.parse import urlparse, parse_qs
 from playwright.sync_api import sync_playwright, expect
 
 root = Path(__file__).resolve().parent.parent
@@ -23,6 +24,7 @@ team = [
 ]
 invites = []
 calls = []
+invitation_read_error = False
 def handle(route):
     url = route.request.url
     if url.startswith('https://accounts.example/accounts/index.html'):
@@ -40,7 +42,11 @@ def handle(route):
     elif path == '/rest/v1/platform_admins': result = []
     elif path == '/rest/v1/organizations': result = [{'id': store, 'name': 'Pilot Hardware'}]
     elif path == '/rest/v1/seats': result = [{'id': 'seat1', 'organization_id': store}, {'id': 'seat2', 'organization_id': store}]
-    elif path == '/rest/v1/invitations': result = invites
+    elif path == '/rest/v1/invitations':
+        columns = parse_qs(urlparse(url).query).get('select', ['*'])[0]
+        if invitation_read_error and 'invitee_name' in columns:
+            return route.fulfill(status=403, content_type='application/json', headers={'access-control-allow-origin': '*'}, body=json.dumps({'code': '42501', 'message': 'permission denied'}))
+        result = invites if columns == '*' else [{key: row.get(key) for key in columns.split(',')} for row in invites]
     elif path == '/rest/v1/rpc/save_my_profile':
         assert route.request.post_data_json['display_name'] == 'Store Manager'
         result = None
@@ -133,6 +139,17 @@ try:
         assert '?' not in callback_page.url and '#' not in callback_page.url
         assert not errors, errors
         print('Passed invitation callback: choose password, join store, remove URL tokens.')
+        invitation_read_error = True
+        unavailable_page = browser.new_page()
+        unavailable_page.route('**/*', handle)
+        unavailable_page.goto('https://accounts.example/accounts/index.html')
+        unavailable_page.locator('input[name=email]').fill('manager@example.test')
+        unavailable_page.locator('input[name=password]').fill('short-pass')
+        unavailable_page.get_by_role('button', name='Sign in', exact=True).click()
+        expect(unavailable_page.locator('#account-message')).to_have_text('Invitation details could not be loaded. Please contact colTRAIN support.')
+        assert unavailable_page.get_by_role('button', name='Replace code', exact=True).count() == 0
+        assert unavailable_page.get_by_text('Manual invitation', exact=True).count() == 0
+        print('Passed invitation-detail failure: never silently labels email invitations as manual codes.')
         browser.close()
     # A privileged key must never be embedded in the browser artifact.
     rejected = subprocess.run(['node', 'scripts/build-accounts.mjs'], cwd=root,
