@@ -138,11 +138,47 @@ try:
   quiz(False)
   expect(page.get_by_role('heading',name='A few things to revisit')).to_be_visible()
   expect(page.locator('.result-stats strong').first).to_have_text('0%')
-  page.get_by_role('button',name='Review lessons',exact=True).click()
-  page.get_by_role('button',name='Knowledge check',exact=True).click()
+  def review_lessons():
+   page.get_by_role('button',name='Review lessons',exact=True).click()
+   expect(page.locator('.lesson-content h1')).to_have_text('Help customers find the answer')
+   assert page.get_by_role('button',name='Mark complete & continue',exact=True).count()==0
+   page.locator('.lesson-content').get_by_role('button',name='Next lesson',exact=True).click()
+   expect(page.locator('.lesson-content h1')).to_have_text('Teach, don’t just sell')
+   page.locator('.lesson-content').get_by_role('button',name='Next lesson',exact=True).click()
+   expect(page.locator('.lesson-content h1')).to_have_text('Build your product knowledge')
+   assert sql('select count(*) from public.training_lesson_completions')=='3'
+  review_lessons()
+  assert sql('select count(*) from public.training_attempts')=='1'
+  page.locator('.lesson-content').get_by_role('button',name='Try knowledge check again',exact=True).click()
+  quiz(False)
+  review_lessons()
+  page.locator('.lesson-content').get_by_role('button',name='Try knowledge check again',exact=True).click()
+  quiz(False)
+  review_lessons()
+  page.locator('.lesson-content').get_by_role('button',name='Get manager help',exact=True).click()
+  expect(page.get_by_role('heading',name='A little teamwork can help.')).to_be_visible()
+  assert sql('select count(*) from public.training_attempts')=='3'
+  signout()
+  login('manager.a@example.test')
+  expect(page.get_by_role('heading',name='Help an employee retry')).to_be_visible()
+  page.locator('#training-unlock-form textarea').fill('Reviewed reliable product resources together.')
+  page.get_by_role('button',name='Unlock one attempt',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('One additional quiz attempt is available.')
+  signout()
+  login('employee.a@example.test')
+  page.get_by_role('button',name='Continue learning',exact=True).click()
+  page.locator('.lesson-content').get_by_role('button',name='Next lesson',exact=True).click()
+  page.locator('.lesson-content').get_by_role('button',name='Next lesson',exact=True).click()
+  page.locator('.lesson-content').get_by_role('button',name='Try knowledge check again',exact=True).click()
   quiz(True)
   expect(page.locator('.result-stats strong').first).to_have_text('80%')
   expect(page.locator('.result-stats strong').nth(1)).to_have_text('+40')
+  page.get_by_role('button',name='Review course',exact=True).click()
+  page.locator('.lesson-content').get_by_role('button',name='Next lesson',exact=True).click()
+  page.locator('.lesson-content').get_by_role('button',name='Next lesson',exact=True).click()
+  page.locator('.lesson-content').get_by_role('button',name='View course result',exact=True).click()
+  expect(page.locator('.result-stats strong').first).to_have_text('80%')
+  assert sql('select count(*) from public.training_attempts')=='4'
   page.screenshot(path=str(root/'design/training-results.png'),full_page=True)
   expect(page.locator('#account-message')).to_have_text('Course passed. Your points and trophy are saved.')
   page.set_viewport_size({'width':390,'height':844})
@@ -169,8 +205,8 @@ try:
   assert not errors,errors
   assert sql('select count(*) from public.training_trophies')=='1'
   assert sql('select sum(points) from private.training_point_awards')=='40'
-  assert sql('select count(*) from public.training_attempts')=='2'
-  print('Passed browser + actual SQL/RLS: admin release, departments, assignment, sequential lessons, failed quiz explanations, passing retry, points/trophy, reload persistence, manager reporting, mobile, account navigation.')
+  assert sql('select count(*) from public.training_attempts')=='4'
+  print('Passed browser + actual SQL/RLS: admin release, departments, assignment, sequential lessons, failed quiz explanations, completed-lesson review navigation, three-attempt block, manager unlock, passing retry, points/trophy, reload persistence, manager reporting, mobile, account navigation.')
   browser.close()
 finally:
  subprocess.run(['docker','stop',name],capture_output=True)

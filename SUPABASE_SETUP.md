@@ -6,7 +6,7 @@ The screen prototype remains at the root `index.html`. A separate account founda
 
 ## Connected training update
 
-Step 3 is now prepared: a real-account training workspace, private server-side quiz scoring, assignments/departments/deadlines, points/trophies, supported retries, and manager progress. See [Step 3 activation and checks](supabase/TRAINING_SETUP.md). The new migration has **not** been applied to the hosted project by the agent. Apply only `202610170005_training.sql`, then deploy the updated website ZIP to the existing Netlify project.
+The owner has applied `202610170005_training.sql`, deployed the training website, and verified the live assignment/lesson/quiz/points/trophy flow and manager report. They also verified that three failed attempts block another attempt. A completed-lesson review navigation fix is prepared for the next website-only deployment; manager-assisted unlock and broader hosted isolation checks remain pending. See [Step 3 activation and checks](supabase/TRAINING_SETUP.md). Do not rerun the training migration on this project.
 
 ## Email invitation update
 

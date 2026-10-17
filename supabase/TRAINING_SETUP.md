@@ -1,6 +1,8 @@
 # Step 3: connected sample training
 
-Prepared on October 17, 2026. This implementation is saved on `codex/coltrain-prototype` and tested locally. The owner still needs to apply the incremental migration and replace the deployed website. No hosted training records have been created by the development tests.
+The owner has applied the Step 3 migration and deployed the initial training website. On October 17, 2026, they confirmed course release and assignment, ordered lesson completion, a live 100% quiz result with 50 points and a trophy, persistence after signing back in, and the matching manager report. A separate controlled employee failed three times and was blocked from a fourth attempt. Manager-assisted unlock still needs live acceptance. Local automated tests create only isolated test data, never hosted training records.
+
+The completed-lesson review navigation fix below is now prepared on `codex/coltrain-prototype`, but requires another website ZIP deployment. It needs no additional SQL migration. The original migration instructions remain reference material; do not rerun the already-applied training migration on this project.
 
 ## What is included
 
@@ -77,3 +79,11 @@ The existing account browser test and email handler tests remain applicable. A s
 ## Remaining stages
 
 Step 4 connects competitions and Team Corner. Step 5 adds active-learning time tracking, assignment/reminder notification delivery and preferences, home-screen installation, and broader pilot checks. The calendar, news feed, AI assistant, expanded catalog, commercial billing, and full course authoring remain outside this Step 3 slice. Lesson media/upload tools and authoring for manager-created onboarding need their own implementation; the first connected course uses the existing text lessons.
+
+## Completed-lesson review navigation update
+
+The owner reported that marking an already-completed lesson again during review appeared to do nothing, requiring use of the Knowledge Check sidebar link. The cause was the completion handler reopening the first unfinished lesson; when all lessons were complete, it returned to lesson one.
+
+Completed lessons now show **Next lesson** and an explicit already-completed note instead of requiring another completion write. The last lesson shows **Try knowledge check again**, **Get manager help** after the limit, or **View course result** after passing. These same actions are reflected in the sidebar. Opening a course or starting the quiz refreshes the saved assignment so a new manager unlock is recognized. Lesson review itself does not consume attempts or earn points.
+
+Deploy the updated `design/coltrain-website.zip` to the existing Netlify project's Deploys upload area. No SQL or Edge Function changes are required. The real-SQL browser regression now covers reviewing all lessons after failure, three failed attempts and the block, manager-assisted unlock, successful fourth attempt, and completed-course review without an extra submission.
