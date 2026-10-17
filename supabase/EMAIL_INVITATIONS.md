@@ -1,6 +1,6 @@
 # Employee invitations by email
 
-Implementation is prepared and locally tested. It is **not deployed or enabled in the hosted Supabase project yet**. The existing downloaded account file remains a separate older copy. No real invitation emails were sent during development tests.
+The owner has deployed the website and invitation function, applied the email invitation migration, configured callbacks and COLTRAIN_APP_URL, and successfully tested an existing-account invitation through password setup and an employee seat claim. First-time email delivery is not yet verified. Local automated tests send no real emails.
 
 ## Employee experience
 
@@ -87,3 +87,17 @@ python tests/account-ui.py
 ```
 
 Database tests include email matching, verified-email requirements, roles, store boundaries, single-use claims, resends, and throttling. Server tests use fake clients and send no emails. Browser tests mock the email endpoint and Auth callbacks. No deployment credentials are needed for those tests.
+
+## October 17 live test: rate limit and delivery-status permission repair
+
+The owner’s log screenshot shows POST `/auth/v1/invite` returning **429**, followed by PATCH `/rest/v1/invitations` returning **403 / 42501 permission denied**. The former is an Auth invitation rate limit; the exact rate-limit code was not expanded in the screenshot. The latter is a separate delivery-status bug: the server’s ability to bypass row security does not supply missing table privileges. The original local tests did not exercise this server role's status-write permissions.
+
+Repair prepared in this repository:
+
+1. Apply **only** `supabase/migrations/202610170004_invitation_email_results.sql` in the existing project’s SQL Editor. It creates a narrowly scoped, server-only status RPC. It does not grant browser clients direct writes or grant the server general invitation table access.
+2. Run `node scripts/build-invite-function.mjs` when rebuilding from source. The generated `supabase/invite-employee-dashboard.ts` is already saved on the development branch.
+3. Update the **existing invite-employee function → Code → index.ts** with the entire updated generated file, then deploy the update. Retain its current endpoint, COLTRAIN_APP_URL, and disabled legacy JWT verification setting.
+4. The handler now records delivery through the server-only RPC, checks its error, logs only invitation IDs/error codes, and distinguishes rate limits and recipient restrictions. If email was accepted but status recording failed, the UI warns about status recording without suggesting that no email was sent.
+5. These repairs do not raise Auth sending limits. Before retrying the pending invitation, review the Auth rate-limit details and configure verified custom SMTP for real employee delivery. Default-sender testing limits and allowed recipients remain separate from application seat limits. Do not repeatedly resend while the provider is rate limiting.
+
+The new database regression test uses a service_role with BYPASSRLS and **no invitation table grants**, reproducing the missing-privilege condition; it verifies the status RPC works while managers, browser administrators, and anonymous clients cannot forge delivery results. Server tests cover 429 responses, restricted recipients, and failed status recording after an accepted email. Hosted repair and first-time account delivery still require verification after the owner applies/deploys these changes.

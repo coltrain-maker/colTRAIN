@@ -1,6 +1,8 @@
 -- Minimal Supabase Auth interfaces for disposable PostgreSQL tests only.
 create role anon nologin;
 create role authenticated nologin;
+-- Match Supabase: bypassing RLS alone does not grant table privileges.
+create role service_role nologin bypassrls;
 create schema auth;
 create table auth.users(id uuid primary key,email text not null unique,email_confirmed_at timestamptz);
 create function auth.uid() returns uuid language sql stable as $$
@@ -9,10 +11,10 @@ $$;
 grant usage on schema public,auth to anon,authenticated;
 grant execute on function auth.uid() to anon,authenticated;
 create schema test;
-grant usage on schema test to authenticated,anon;
+grant usage on schema test to authenticated,anon,service_role;
 create table test.results(name text);
 create table test.codes(label text primary key,code text);
-grant select,insert on test.results,test.codes to authenticated;
+grant select,insert on test.results,test.codes to authenticated,service_role;
 create function test.ok(condition boolean,label text) returns void language plpgsql as $$
 begin
  if condition is distinct from true then raise exception 'FAILED: %',label; end if;
@@ -30,7 +32,7 @@ begin
  perform test.ok(rejected,label);
 end;
 $$;
-grant execute on all functions in schema test to authenticated;
+grant execute on all functions in schema test to authenticated,service_role;
 create schema storage;
 grant usage on schema storage to authenticated;
 create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);

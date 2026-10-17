@@ -2,7 +2,7 @@
 
 Project URL: `https://flhdeftduysnjvqnhhee.supabase.co`
 
-The screen prototype remains at the root `index.html`. A separate account foundation has been prepared in `accounts/`. The owner reports that `supabase/SETUP.sql` completed successfully. On October 17, 2026, live read-only checks confirmed that the project's Auth API accepts the supplied publishable key, email sign-in is enabled with email confirmation, and all six account tables reject anonymous reads. Local SQL and mocked browser checks passed. Signed-in hosted permissions, confirmation/recovery delivery, and real file uploads still need live verification.
+The screen prototype remains at the root `index.html`. A separate account foundation has been prepared in `accounts/`. The owner reports that `supabase/SETUP.sql` completed successfully. On October 17, 2026, live read-only checks confirmed that the project's Auth API accepts the supplied publishable key, email sign-in is enabled with email confirmation, and all six account tables reject anonymous reads. Local SQL and mocked browser checks passed. The owner has since verified manager setup and an existing-account email invitation through password setup and an employee membership. First-time invitation delivery hit an Auth rate limit, and a separate status-recording permission repair is prepared; see supabase/EMAIL_INVITATIONS.md. Broad hosted permission isolation, standard signup/recovery flows, and real file uploads still need verification.
 
 ## Email invitation update
 

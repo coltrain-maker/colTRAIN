@@ -1,5 +1,5 @@
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-export function createInviteHandler({createClient, env}) {
+export function createInviteHandler({createClient, env, log=details=>console.warn('colTRAIN invitation email',details)}) {
  return async request => {
   let appUrl;
   try {
@@ -44,9 +44,17 @@ export function createInviteHandler({createClient, env}) {
     outcome = await server.auth.resetPasswordForEmail(invite.email,{redirectTo:callback.href});
    }
    const status = outcome.error?'failed':'sent';
-   await server.from('invitations').update({email_status:status}).eq('id',invite.invitation_id);
-   if(outcome.error) return reply(502,{error:'The invitation was saved, but the email service could not send it. Check pending invitations and try Resend invitation after one minute.',invitation_id:invite.invitation_id});
-   return reply(200,{invitation_id:invite.invitation_id,message:'Invitation email requested. Ask the employee to check their inbox and spam folder.'});
+   const {error:statusError} = await server.rpc('record_invitation_email_result',{invitation:invite.invitation_id,delivery_status:status});
+   // Log only identifiers and error codes, never email links, tokens, or credentials.
+   if(statusError) log({event:'delivery_status_failed',invitation_id:invite.invitation_id,code:statusError.code||'unknown'});
+   if(outcome.error) {
+    log({event:'email_request_failed',invitation_id:invite.invitation_id,code:outcome.error.code||'unknown',status:outcome.error.status});
+    const limited = outcome.error.status===429 || outcome.error.code==='over_email_send_rate_limit';
+    const restricted = outcome.error.code==='email_address_not_authorized';
+    const message = limited?'The invitation was saved, but the email sending limit has been reached. Contact colTRAIN support before trying again.':restricted?'The invitation was saved, but the email service is not configured to send to this address. Contact colTRAIN support.':'The invitation was saved, but the email service could not send it. Contact colTRAIN support before trying again.';
+    return reply(limited?429:502,{error:message,invitation_id:invite.invitation_id});
+   }
+   return reply(200,{invitation_id:invite.invitation_id,message:statusError?'Invitation email requested, but its status could not be saved. Contact colTRAIN support before resending.':'Invitation email requested. Ask the employee to check their inbox and spam folder.'});
   } catch { return reply(500,{error:'The invitation could not be completed. Check pending invitations before trying again.'}); }
  };
 }

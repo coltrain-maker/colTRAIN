@@ -6,9 +6,9 @@ function fixture(options={}) {
  const calls=[];
  const env=name=>({COLTRAIN_APP_URL:options.appUrl??'https://training.example',SUPABASE_URL:'https://project.supabase.co',SUPABASE_ANON_KEY:'public-test-key',SUPABASE_SERVICE_ROLE_KEY:'server-test-key'})[name];
  const caller={auth:{getUser:async()=>options.invalidSession?{error:{message:'Invalid'}}:{data:{user:{id:'manager-id'}}}},rpc:async(name,args)=>{calls.push(['rpc',name,args]);return options.rpcError?{error:{message:options.rpcError}}:{data:[{invitation_id:invitation,email:'employee@example.test',invitee_name:'Employee Name'}]};}};
- const server={auth:{admin:{inviteUserByEmail:async(email,opts)=>{calls.push(['invite',email,opts]);return {error:options.emailError||null};}},resetPasswordForEmail:async(email,opts)=>{calls.push(['recover',email,opts]);return {error:options.recoveryError||null};}},from:()=>({update:values=>({eq:async(column,id)=>{calls.push(['status',values,column,id]);return {error:null};}})})};
+ const server={auth:{admin:{inviteUserByEmail:async(email,opts)=>{calls.push(['invite',email,opts]);return {error:options.emailError||null};}},resetPasswordForEmail:async(email,opts)=>{calls.push(['recover',email,opts]);return {error:options.recoveryError||null};}},rpc:async(name,args)=>{calls.push(['status',args,name]);return {error:options.statusError||null};}};
  const createClient=(url,key,config)=>{calls.push(['client',key,config]);return key==='server-test-key'?server:caller;};
- const handle=createInviteHandler({createClient,env});
+ const handle=createInviteHandler({createClient,env,log:details=>calls.push(['log',details])});
  const send=(body={action:'create',store,email:'employee@example.test',name:'Employee Name'},headers={Origin:'https://training.example',Authorization:'Bearer caller-session'})=>handle(new Request('https://project.supabase.co/functions/v1/invite-employee',{method:'POST',headers:{'Content-Type':'application/json',...headers},body:JSON.stringify(body)}));
  return {calls,send,handle};
 }
@@ -21,7 +21,7 @@ test('authenticated manager invitation reserves through caller JWT before server
  const email=f.calls.find(c=>c[0]==='invite');
  assert.equal(email[1],'employee@example.test');
  assert.deepEqual(email[2],{redirectTo:'https://training.example/accounts/?invitation_id='+invitation,data:{full_name:'Employee Name'}});
- assert.deepEqual(f.calls.find(c=>c[0]==='status')[1],{email_status:'sent'});
+ assert.deepEqual(f.calls.find(c=>c[0]==='status')[1],{invitation,delivery_status:'sent'});
  assert.ok(!(await response.text()).includes('server-test-key'));
 });
 test('invalid session never creates privileged client or emails',async()=>{
@@ -38,7 +38,7 @@ test('existing account receives recovery email at same fixed callback',async()=>
 });
 test('email failures preserve pending seat and report failure instead of success',async()=>{
  const f=fixture({emailError:{code:'unexpected_failure',message:'Internal provider details'}});const response=await f.send();assert.equal(response.status,502);
- assert.deepEqual(f.calls.find(c=>c[0]==='status')[1],{email_status:'failed'});
+ assert.deepEqual(f.calls.find(c=>c[0]==='status')[1],{invitation,delivery_status:'failed'});
  assert.ok(!f.calls.some(c=>c[0]==='recover'));assert.ok(!(await response.text()).includes('Internal provider details'));
 });
 test('resend invokes database with original invitation ID',async()=>{
@@ -56,4 +56,26 @@ test('localhost and missing deployment configuration cannot produce localhost em
  for(const appUrl of ['', 'http://localhost:3000','https://localhost','https://training.example/accounts/']) {
   const f=fixture({appUrl});assert.equal((await f.send()).status,503);assert.equal(f.calls.length,0);
  }
+});
+
+test('429 email limit is distinguished and its failed status is recorded',async()=>{
+ const f=fixture({emailError:{code:'over_email_send_rate_limit',status:429}});
+ const response=await f.send();assert.equal(response.status,429);
+ assert.match((await response.json()).error,/sending limit/);
+ const saved=f.calls.find(c=>c[0]==='status');
+ assert.equal(saved[2],'record_invitation_email_result');
+ assert.equal(saved[1].delivery_status,'failed');
+ assert.ok(!f.calls.some(c=>c[0]==='recover'));
+});
+test('restricted sender is explained without exposing provider details',async()=>{
+ const f=fixture({emailError:{code:'email_address_not_authorized'}});
+ const response=await f.send();assert.equal(response.status,502);
+ assert.match((await response.json()).error,/not configured to send to this address/);
+});
+test('accepted email plus failed status write does not encourage sending a duplicate',async()=>{
+ const f=fixture({statusError:{code:'42501'}});
+ const response=await f.send();assert.equal(response.status,200);
+ assert.match((await response.json()).message,/email requested, but its status could not be saved/);
+ assert.deepEqual(f.calls.find(c=>c[0]==='log')[1],{event:'delivery_status_failed',invitation_id:invitation,code:'42501'});
+ assert.equal(f.calls.filter(c=>c[0]==='invite').length,1);
 });

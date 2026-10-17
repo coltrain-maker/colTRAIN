@@ -1,0 +1,26 @@
+set role authenticated;
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000010';
+insert into test.codes select 'email-status-id',invitation_id::text from public.prepare_employee_invitation('10000000-0000-0000-0000-000000000010','status.employee@example.test','Status Employee');
+select test.rejects($q$select public.record_invitation_email_result((select code::uuid from test.codes where label='email-status-id'),'sent')$q$,'permission denied','manager cannot forge an email delivery status');
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000001';
+select test.rejects($q$select public.record_invitation_email_result((select code::uuid from test.codes where label='email-status-id'),'sent')$q$,'permission denied','browser administrator cannot forge email status');
+reset role;
+set role service_role;
+select test.rejects('select email_status from public.invitations','permission denied','server role has no implicit invitation SELECT privileges');
+select test.rejects($q$update public.invitations set email_status='sent'$q$,'permission denied','server role has no implicit direct invitation UPDATE privileges');
+select public.record_invitation_email_result((select code::uuid from test.codes where label='email-status-id'),'failed');
+select test.rejects($q$select public.record_invitation_email_result((select code::uuid from test.codes where label='email-status-id'),'accepted')$q$,'Invalid delivery status','server helper rejects unsupported status');
+reset role;
+select test.ok((select email_status='failed' from public.invitations where id=(select code::uuid from test.codes where label='email-status-id')),'server records failed delivery without table grants');
+-- A stale result must not overwrite an earlier result.
+set role service_role;
+select public.record_invitation_email_result((select code::uuid from test.codes where label='email-status-id'),'sent');
+reset role;
+select test.ok((select email_status='failed' from public.invitations where id=(select code::uuid from test.codes where label='email-status-id')),'stale delivery result cannot overwrite a completed attempt');
+update public.invitations set email_status='pending' where id=(select code::uuid from test.codes where label='email-status-id');
+set role service_role;
+select public.record_invitation_email_result((select code::uuid from test.codes where label='email-status-id'),'sent');
+reset role;
+select test.ok((select email_status='sent' from public.invitations where id=(select code::uuid from test.codes where label='email-status-id')),'server records successful delivery without table grants');
+select test.ok(not has_function_privilege('anon','public.record_invitation_email_result(uuid,text)','execute'),'anonymous client cannot record delivery status');
+select 'Passed email delivery status checks ('||count(*)||' total SQL assertions).' from test.results;
