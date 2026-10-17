@@ -4,6 +4,10 @@ Project URL: `https://flhdeftduysnjvqnhhee.supabase.co`
 
 The screen prototype remains at the root `index.html`. A separate account foundation has been prepared in `accounts/`. The owner reports that `supabase/SETUP.sql` completed successfully. On October 17, 2026, live read-only checks confirmed that the project's Auth API accepts the supplied publishable key, email sign-in is enabled with email confirmation, and all six account tables reject anonymous reads. Local SQL and mocked browser checks passed. Signed-in hosted permissions, confirmation/recovery delivery, and real file uploads still need live verification.
 
+## Email invitation update
+
+The owner has successfully created the pilot store and joined as its manager. A named email invitation flow is now prepared: managers enter the employee’s name and email; colTRAIN generates the token and reserves a seat; the employee follows the email to choose a password and join. This update still requires the incremental migration, HTTPS hosting, Auth callback configuration, email delivery configuration, and deployment of the server function. See [Email invitation activation](supabase/EMAIL_INVITATIONS.md). Do not rerun full SETUP.sql on the existing project.
+
 ## 1. Create the database and access rules
 
 Use the new, empty development project. Do not manually create tables first.
@@ -16,7 +20,7 @@ Use the new, empty development project. Do not manually create tables first.
 
 If the SQL file is difficult to copy from the chat viewer, use `supabase/coltrain-database-setup.txt`; it has identical contents. The error `query: Too small: expected string to have >=1 characters` usually means the editor submitted empty query text. Check that the SQL is visible, clear any blank selection, and try `select 1;` in a separate query to verify the editor can execute text.
 
-Run this setup once. It intentionally fails rather than overwriting existing tables if run again. The two ordered migrations are transactions. If a later migration fails, report the error before rerunning the combined script; earlier successful migrations may already be present.
+Run this setup once. It intentionally fails rather than overwriting existing tables if run again. The ordered migrations are transactions. If a later migration fails, report the error before rerunning the combined script; earlier successful migrations may already be present.
 
 The setup creates:
 
@@ -69,7 +73,7 @@ Before real account testing:
 3. Once the application's served development or deployed URL is known, add its exact `/accounts/` callback URL under Authentication's URL Configuration. Set an appropriate Site URL. Do not add arbitrary wildcard callback origins.
 4. Test signup confirmation and password recovery using your own email first. Supabase's default email service has development limits; employee invitations should wait until delivery has been verified. A custom email provider can be configured before the store pilot.
 
-The app requests confirmation/reset emails only when a person submits the relevant form. Creating an invitation code currently does not send an email; the manager shares the code directly. **Replace code** invalidates the old code and displays the replacement once.
+The original downloaded account file uses manually shared codes. The updated account interface has **Employee name**, **Employee email**, and **Send invitation**; this requires the server/email activation steps linked above. Legacy **Replace code** remains manual. Once activated, **Resend invitation** requests a fresh email and invalidates the previous store invitation. Account setup and password-reset emails are essential account messages, separate from optional training/team email preferences.
 
 ## 4. Appoint the first administrator
 

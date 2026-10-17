@@ -25,7 +25,7 @@ invites = []
 calls = []
 def handle(route):
     url = route.request.url
-    if url == 'https://accounts.example/accounts/index.html':
+    if url.startswith('https://accounts.example/accounts/index.html'):
         return route.fulfill(status=200, content_type='text/html', body=html)
     if not url.startswith('https://flhdeftduysnjvqnhhee.supabase.co/'):
         raise AssertionError('Unexpected network destination')
@@ -44,6 +44,17 @@ def handle(route):
     elif path == '/rest/v1/rpc/save_my_profile':
         assert route.request.post_data_json['display_name'] == 'Store Manager'
         result = None
+    elif path == '/functions/v1/invite-employee':
+        data = route.request.post_data_json
+        assert data['store'] == store
+        if data['action'] == 'create':
+            assert data['name'] == 'New Employee'
+            invites.append({'id': '40000000-0000-0000-0000-000000000001', 'organization_id': store, 'email': data['email'], 'invitee_name': data['name'], 'email_status': 'sent', 'role': 'employee', 'expires_at': '2099-01-01T00:00:00Z', 'accepted_at': None, 'revoked_at': None})
+        else: assert data['action'] == 'resend'
+        result = {'message': 'Invitation email requested.'}
+    elif path == '/rest/v1/rpc/accept_email_invitation':
+        assert route.request.post_data_json['invitation'] == '40000000-0000-0000-0000-000000000001'
+        result = team[0]['id']
     elif path == '/rest/v1/rpc/create_invitation':
         data = route.request.post_data_json
         assert data['store'] == store and data['member_role'] == 'employee'
@@ -75,11 +86,13 @@ try:
         expect(page.get_by_role('heading', name='Pilot Hardware', exact=True).first).to_be_visible()
         page.locator('#profile-form button[type=submit]').click()
         expect(page.locator('#account-message')).to_have_text('Profile and email preference saved.')
+        page.locator('#invite-form input[name=name]').fill('New Employee')
         page.locator('#invite-form input[name=email]').fill('new.employee@example.test')
-        page.locator('#invite-form').get_by_role('button', name='Create invitation code', exact=True).click()
-        expect(page.locator('.account-code')).to_have_text('LOCAL_TEST_INVITATION_ONE')
-        page.get_by_role('button', name='Replace code', exact=True).click()
-        expect(page.locator('.account-code')).to_have_text('LOCAL_TEST_REPLACEMENT_CODE')
+        page.locator('#invite-form').get_by_role('button', name='Send invitation', exact=True).click()
+        expect(page.locator('#account-message')).to_have_text('Invitation email requested.')
+        expect(page.get_by_text('New Employee', exact=True)).to_be_visible()
+        page.get_by_role('button', name='Resend invitation', exact=True).click()
+        expect(page.locator('#account-message')).to_have_text('Invitation email requested.')
         page.get_by_role('button', name='Send reset link', exact=True).last.click()
         expect(page.locator('#account-message')).to_contain_text('Password reset requested')
         page.get_by_role('button', name='Remove access', exact=True).click()
@@ -92,7 +105,7 @@ try:
         expect(page.get_by_role('heading', name='Create your account')).to_be_visible()
         assert page.locator('input[name=password]').get_attribute('minlength') == '12'
         assert not errors, errors
-        assert ('POST', '/rest/v1/rpc/create_invitation') in calls
+        assert ('POST', '/functions/v1/invite-employee') in calls
         print('Passed mocked account UI: sign-in/out, profile preferences, invite/reissue, password reset, deactivate, registration screen, mobile layout.')
         # Chat previews allow JavaScript but may omit the allow-forms sandbox permission.
         sandbox_page = browser.new_page()
@@ -108,6 +121,18 @@ try:
         expect(frame.locator('#account-message')).to_have_text('Signed in.')
         assert not errors, errors
         print('Passed sign-in inside an opaque preview iframe without allow-forms.')
+        callback_page = browser.new_page()
+        callback_page.route('**/*', handle)
+        callback_page.on('pageerror', lambda error: errors.append(str(error)))
+        callback_page.goto('https://accounts.example/accounts/index.html?invitation_id=40000000-0000-0000-0000-000000000001#access_token='+token+'&refresh_token=local-test-refresh&type=invite&expires_in=3600&token_type=bearer')
+        expect(callback_page.get_by_role('heading', name='Create your password')).to_be_visible()
+        callback_page.locator('input[name=password]').fill('New password for local testing')
+        callback_page.get_by_role('button', name='Save password and join store').click()
+        expect(callback_page.locator('#account-message')).to_have_text('Your password is saved and you have joined your store.')
+        assert calls.index(('PUT','/auth/v1/user')) < calls.index(('POST','/rest/v1/rpc/accept_email_invitation'))
+        assert '?' not in callback_page.url and '#' not in callback_page.url
+        assert not errors, errors
+        print('Passed invitation callback: choose password, join store, remove URL tokens.')
         browser.close()
     # A privileged key must never be embedded in the browser artifact.
     rejected = subprocess.run(['node', 'scripts/build-accounts.mjs'], cwd=root,

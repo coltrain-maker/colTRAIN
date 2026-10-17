@@ -1,0 +1,4 @@
+[functions.invite-employee]
+# Browser publishable keys are not legacy JWTs. The handler explicitly validates
+# the caller's session with Auth and performs seat/role checks using that JWT.
+verify_jwt = false

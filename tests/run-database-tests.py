@@ -34,6 +34,8 @@ try:
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     result = sql((root / 'tests/team-media-security.sql').read_text())
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
+    result = sql((root / 'tests/email-invitations.sql').read_text())
+    print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     store = sql("select id from public.organizations where name='Concurrency test store';").stdout.strip()
     def reserve(index):
         return sql(f"""begin; set local role authenticated;
