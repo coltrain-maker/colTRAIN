@@ -14,6 +14,8 @@ Use the new, empty development project. Do not manually create tables first.
 4. Paste the script and select **Run**.
 5. A successful run normally ends with **Success. No rows returned**. If there is an error, share the error message, not passwords or keys.
 
+If the SQL file is difficult to copy from the chat viewer, use `supabase/coltrain-database-setup.txt`; it has identical contents. The error `query: Too small: expected string to have >=1 characters` usually means the editor submitted empty query text. Check that the SQL is visible, clear any blank selection, and try `select 1;` in a separate query to verify the editor can execute text.
+
 Run this setup once. It intentionally fails rather than overwriting existing tables if run again. The two ordered migrations are transactions. If a later migration fails, report the error before rerunning the combined script; earlier successful migrations may already be present.
 
 The setup creates:
