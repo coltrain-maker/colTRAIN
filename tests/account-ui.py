@@ -26,8 +26,9 @@ invites = []
 calls = []
 invitation_read_error = False
 display_name = 'Store Manager'
+team_nickname = None
 def handle(route):
-    global display_name
+    global display_name, team_nickname
     url = route.request.url
     if url.startswith('https://accounts.example/accounts/index.html'):
         return route.fulfill(status=200, content_type='text/html', body=html)
@@ -39,7 +40,7 @@ def handle(route):
         result = {'access_token': token, 'refresh_token': 'local-test-refresh', 'token_type': 'bearer', 'expires_in': 3600, 'user': person}
     elif path == '/auth/v1/user': result = person
     elif path in ['/auth/v1/logout', '/auth/v1/recover']: result = {}
-    elif path == '/rest/v1/profiles': result = [{'user_id': uid, 'full_name': display_name, 'optional_email_notifications': False}]
+    elif path == '/rest/v1/profiles': result = [{'user_id': uid, 'full_name': display_name, 'team_corner_nickname': team_nickname, 'optional_email_notifications': False}]
     elif path == '/rest/v1/organization_memberships': result = team
     elif path == '/rest/v1/platform_admins': result = []
     elif path == '/rest/v1/organizations': result = [{'id': store, 'name': 'Pilot Hardware'}]
@@ -54,8 +55,9 @@ def handle(route):
                   'members':[{'id':m['id'],'name':'Store Manager' if m['user_id']==uid else 'Employee','email':m['email'],'role':m['role'],'status':m['status'],'departments':[],'lifetime_points':0} for m in team],
                   'courses':[],'assignments':[],'departments':[],'totals':{'lifetime_points':0,'trophies':0,'completed_courses':0},'question_alerts':[],'global_question_alerts':[],
                   'competitions':[],'lifetime_standings':[],'team_learning_seconds':0}
-    elif path == '/rest/v1/rpc/save_my_profile':
+    elif path == '/rest/v1/rpc/save_my_account_preferences':
         display_name=route.request.post_data_json['display_name']
+        team_nickname=route.request.post_data_json['team_nickname']
         result = None
     elif path == '/functions/v1/invite-employee':
         data = route.request.post_data_json
@@ -106,9 +108,12 @@ try:
         expect(page.get_by_role('heading',name='Your store account')).to_be_visible()
         expect(page.get_by_role('heading', name='Pilot Hardware', exact=True).first).to_be_visible()
         page.locator('#profile-form input[name=name]').fill('Renamed Manager')
+        page.get_by_label('Team Corner nickname (optional)').fill('Paint Pro')
         page.locator('#profile-form button[type=submit]').click()
         expect(page.locator('#account-message')).to_have_text('Profile and email preference saved.')
         expect(page.locator('header .account-identity')).to_contain_text('Renamed Manager')
+        expect(page.get_by_label('Team Corner nickname (optional)')).to_have_value('Paint Pro')
+        assert team_nickname == 'Paint Pro'
         page.locator('#invite-form input[name=name]').fill('New Employee')
         page.locator('#invite-form input[name=email]').fill('new.employee@example.test')
         page.locator('#invite-form').get_by_role('button', name='Send invitation', exact=True).click()

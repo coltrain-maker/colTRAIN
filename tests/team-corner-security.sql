@@ -132,4 +132,28 @@ select test.ok(jsonb_array_length(public.get_team_corner_comments('90000000-0000
 reset role;
 select test.ok(not has_function_privilege('anon','public.get_team_corner(uuid,timestamptz,uuid)','execute'),'anonymous feed reads denied');
 select test.ok(not has_table_privilege('authenticated','private.team_corner_support','select'),'support audit records are private');
+-- Posting must also work for the original manager who never saved a profile.
+reset role;
+delete from public.profiles where user_id='00000000-0000-0000-0000-000000000052';
+set role authenticated;
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000052';
+select public.create_team_corner_post('10000000-0000-0000-0000-000000000050','92000000-0000-4000-8000-000000000052','No profile yet');
+select public.create_team_corner_comment('92000000-0000-4000-8000-000000000052','93000000-0000-4000-8000-000000000052','No profile comment');
+select test.ok((select author_name='corner52' from public.team_corner_posts where id='92000000-0000-4000-8000-000000000052'),'missing profile resolves author without exposing full email');
+select test.ok((select author_name='corner52' from public.team_corner_comments where id='93000000-0000-4000-8000-000000000052'),'missing profile resolves comment author');
+select public.save_my_profile('Sarah Coltrain',false);
+select test.ok((select author_name='Sarah Coltrain' from public.team_corner_posts where id='92000000-0000-4000-8000-000000000052'),'saving profile repairs previous post author');
+select test.ok((select author_name='Sarah Coltrain' from public.team_corner_comments where id='93000000-0000-4000-8000-000000000052'),'saving profile repairs previous comment author');
+select public.save_my_profile('Sarah Updated',false);
+select test.ok((select author_name='Sarah Updated' from public.team_corner_posts where id='92000000-0000-4000-8000-000000000052'),'profile name updates keep authors current');
+select public.save_my_account_preferences('Sarah Updated',false,'Paint Pro');
+select test.ok((select author_name='Paint Pro' from public.team_corner_posts where id='92000000-0000-4000-8000-000000000052'),'optional nickname is shown on existing posts');
+select test.ok((select author_name='Paint Pro' from public.team_corner_comments where id='93000000-0000-4000-8000-000000000052'),'optional nickname is shown on comments');
+select test.ok((select full_name='Sarah Updated' from public.profiles where user_id=auth.uid()),'nickname preserves actual name for training records');
+select test.rejects($q$select public.save_my_account_preferences('Wrong',false,repeat('x',61))$q$,'60 characters','oversized nickname rejected before changing profile');
+select test.ok((select full_name='Sarah Updated' from public.profiles where user_id=auth.uid()),'invalid nickname leaves profile unchanged');
+select public.save_my_account_preferences('Sarah Updated',false,'   ');
+select test.ok((select author_name='Sarah Updated' from public.team_corner_posts where id='92000000-0000-4000-8000-000000000052'),'clearing nickname restores actual name');
+select test.ok(not has_function_privilege('authenticated','private.team_corner_author_name(uuid)','execute'),'author lookup cannot be used to enumerate other users');
+reset role;
 select 'Passed Team Corner security, photos, moderation, support, and paging ('||count(*)||' total SQL assertions).' from test.results;

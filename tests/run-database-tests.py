@@ -44,6 +44,13 @@ try:
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     result = sql((root / 'tests/team-corner-security.sql').read_text())
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
+    # Reproduce a legacy placeholder and exercise the incremental repair itself.
+    sql("update public.team_corner_posts set author_name='Teammate' where id='92000000-0000-4000-8000-000000000052'; update public.team_corner_comments set author_name='Teammate' where id='93000000-0000-4000-8000-000000000052';")
+    repair = (root / 'supabase/migrations/202610180008_team_corner_author_names.sql').read_text()
+    sql(repair[repair.index('update public.team_corner_posts set author_name=private.team_corner_author_name(author_id)'):repair.index("notify pgrst")])
+    assert sql("select author_name from public.team_corner_posts where id='92000000-0000-4000-8000-000000000052'").stdout.strip() == 'Sarah Updated'
+    assert sql("select author_name from public.team_corner_comments where id='93000000-0000-4000-8000-000000000052'").stdout.strip() == 'Sarah Updated'
+    print('Passed incremental repair of existing placeholder post and comment authors.')
     store = sql("select id from public.organizations where name='Concurrency test store';").stdout.strip()
     def reserve(index):
         return sql(f"""begin; set local role authenticated;
