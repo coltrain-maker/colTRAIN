@@ -50,6 +50,7 @@ def handle(route):
         if invitation_read_error and 'invitee_name' in columns:
             return route.fulfill(status=403, content_type='application/json', headers={'access-control-allow-origin': '*'}, body=json.dumps({'code': '42501', 'message': 'permission denied'}))
         result = invites if columns == '*' else [{key: row.get(key) for key in columns.split(',')} for row in invites]
+    elif path == '/rest/v1/rpc/get_my_training_notifications': result = {'items': [], 'unread_count': 0}
     elif path == '/rest/v1/rpc/get_training_workspace':
         result = {'store': {'id':store,'name':'Pilot Hardware','time_zone':'America/New_York'},'my_membership':team[0]['id'],'can_manage':True,'is_admin':False,
                   'members':[{'id':m['id'],'name':'Store Manager' if m['user_id']==uid else 'Employee','email':m['email'],'role':m['role'],'status':m['status'],'departments':[],'lifetime_points':0} for m in team],

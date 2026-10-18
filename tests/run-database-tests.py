@@ -44,6 +44,16 @@ try:
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     result = sql((root / 'tests/team-corner-security.sql').read_text())
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
+    result = sql((root / 'tests/notifications-security.sql').read_text())
+    print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
+    sql("update public.organization_memberships set status='active',deactivated_at=null where id='20000000-0000-0000-0000-000000000062'; delete from private.training_notifications where user_id='00000000-0000-0000-0000-000000000062';")
+    def read_notifications(index):
+        return sql("begin;set local role authenticated;set local request.jwt.claim.sub='00000000-0000-0000-0000-000000000062';select public.get_my_training_notifications('10000000-0000-0000-0000-000000000060');select pg_sleep(.1);commit;",check=False)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        inboxes=list(pool.map(read_notifications,[1,2]))
+    assert all(r.returncode==0 for r in inboxes),[r.stderr for r in inboxes]
+    assert sql("select count(*) from private.training_notifications where user_id='00000000-0000-0000-0000-000000000062'").stdout.strip()=='1'
+    print('Passed concurrent notification refresh: one persistent receipt per event across two tabs.')
     # Reproduce a legacy placeholder and exercise the incremental repair itself.
     sql("update public.team_corner_posts set author_name='Teammate' where id='92000000-0000-4000-8000-000000000052'; update public.team_corner_comments set author_name='Teammate' where id='93000000-0000-4000-8000-000000000052';")
     repair = (root / 'supabase/migrations/202610180008_team_corner_author_names.sql').read_text()
