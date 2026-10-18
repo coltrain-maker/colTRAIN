@@ -41,7 +41,7 @@ Existing Supabase callback URLs under `/accounts/` continue to work. Open the ho
 ## 3. Release and assign the course
 
 1. Sign in with the existing administrator/manager account at `https://stalwart-custard-7be489.netlify.app/accounts/`.
-2. Select **Open training**. The top-right hamburger opens the main menu. Account & team settings returns to invitations, employee access, and profile preferences.
+2. Signing in opens the manager Dashboard or employee Home directly. The top-right hamburger contains courses, competitions, account & team settings, and Sign out. Account & team settings retains that same menu for returning to the Dashboard/Home.
 3. Open **Course library**. As administrator, select **Make available to store** on the sample course. If overseeing multiple stores, select the intended store first. Only administrators can release global courses.
 4. Choose **Assign training**, select the course, a deadline, and one controlled test employee. Select **Assign course**. Assigning one test employee first avoids distributing an untested course to the whole team.
 5. Optionally create **Departments** and place people in one or more departments. Assignment targets select the union of departments and individually checked employees. Check **All active employees** to assign to the entire active employee team; managers are included only when explicitly checked.
@@ -50,7 +50,7 @@ Existing Supabase callback URLs under `/accounts/` continue to work. Open the ho
 
 Before inviting all nine employees:
 
-- Employee signs in, selects Open training, sees the assignment and due date, completes the lessons in order, submits a quiz, and receives the appropriate points/result and trophy only on passing.
+- Employee signs in directly to Home, sees the assignment and due date, completes the lessons in order, submits a quiz, and receives the appropriate points/result and trophy only on passing.
 - Sign out/in or refresh to confirm progress is saved in Supabase. A lesson should never award points, and retrying the same previously correct questions should not award them again.
 - Manager signs in and sees that employee's progress, score, completion, and lifetime points, without their missed-answer details.
 - A separate controlled account deliberately fails three times; a fourth submission is blocked. Manager supplies help and a note and unlocks one retry. All prior attempts/points stay saved.
@@ -101,6 +101,6 @@ The owner approved these initial department names for Coltrain Hardware:
 
 The Departments page now offers **Add starter departments** with a visible list of all six names. Applying it uses the existing manager-authorized `create_training_department` RPC for the selected store only. It refreshes current department names, skips names already present (case-insensitively), keeps custom departments and existing employee placements, and becomes disabled once all six names are available. If a partial request fails, created departments stay saved and retrying adds only missing names. Employees are not placed into departments or assigned courses automatically.
 
-This template needs only the updated website ZIP deployed to the existing Netlify project. No SQL or Edge Function update is needed. After deployment, sign in as manager, open training, use the hamburger menu to open Departments, then select Add starter departments. In Employee departments, choose a person, check one or more departments, and Save departments.
+This template needs only the updated website ZIP deployed to the existing Netlify project. No SQL or Edge Function update is needed. After deployment, sign in as manager, use the hamburger menu to open Departments, then select Add starter departments. In Employee departments, choose a person, check one or more departments, and Save departments.
 
 The real-SQL browser test starts with an existing Paint department and employee placement plus a custom Receiving department. Applying the template adds only five names, preserves both existing department IDs/placements and Receiving, and does not duplicate names on a subsequent visit. Department assignment remains covered by the existing SQL and browser flow. The owner confirmed applying the template, placing a controlled employee in Paint and Front Counter & Customer Service, and verifying department-targeted assignment results.

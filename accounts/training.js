@@ -1,3 +1,4 @@
+import { setAccountHeader } from './header.js';
 import { competitionSpotlight, competitionPoints, competitionsPage, startCompetitionPage, competitionRecipients, leaderboardPage } from './competitions.js';
 import { learningTimer } from './learning-time.js';
 const starterDepartments = [
@@ -20,13 +21,12 @@ function defaultDeadline(zone, offset = 30) {
   today.setUTCDate(today.getUTCDate() + offset);
   return today.toISOString().slice(0, 10);
 }
-async function mountTraining({ client, root, user, profile, stores, initialStore, onAccounts, notify }) {
+async function mountTraining({ client, root, user, profile, stores, initialStore, initialView = "home", onNavigate, onAccounts, notify }) {
   const events = new AbortController();
   const timer = learningTimer(client);
   let selectedCompetition, leaderboardTab = "competition", challengeMode = false, challengeResult = null, refresherCompetition = null;
-  let active = true, busy = false, view = "home", menu = false, storeId = initialStore, workspace, selectedCourse, assignment, lessons = [], questions = [], completions = [], lessonIndex = 0, quizQuestions = [], questionIndex = 0, answers = {}, submissionKey = null, result = null, review = [], librarySearch = "";
-  const context = document.querySelector("header .store");
-  const originalContext = context?.innerHTML;
+  let active = true, busy = false, view = initialView, menu = false, storeId = initialStore, workspace, selectedCourse, assignment, lessons = [], questions = [], completions = [], lessonIndex = 0, quizQuestions = [], questionIndex = 0, answers = {}, submissionKey = null, result = null, review = [], librarySearch = "";
+  let accountMarkup = "";
   const headerButton = document.createElement("button");
   headerButton.className = "icon-button training-menu-toggle";
   headerButton.type = "button";
@@ -43,7 +43,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   }
   async function refresh() {
     workspace = await rpc("get_training_workspace", { store: storeId });
-    if (context) context.textContent = workspace.store.name;
+    const role = workspace.is_admin ? 'Administrator' : workspace.members.find(m => m.id === workspace.my_membership)?.role === 'manager' ? 'Manager' : 'Employee';
+    setAccountHeader({storeName:workspace.store.name,profile,user,role});
   }
   const courseById = (id) => workspace.courses.find((c) => c.id === id);
   const mine = () => workspace.assignments.filter((a) => a.membership_id === workspace.my_membership);
@@ -52,7 +53,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   const title = (name, copy = "", action = "") => `<div class="page-heading"><div><h1>${esc(name)}</h1>${copy ? `<p>${esc(copy)}</p>` : ""}</div>${action}</div>`;
   const stat = (number, label) => `<div class="stat"><div><strong>${esc(number)}</strong><small>${esc(label)}</small></div></div>`;
   function navigation() {
-    return menu ? `<div class="training-menu-shade"><nav class="training-drawer" aria-label="Main navigation"><div class="panel-top"><h2>colTRAIN</h2>${btn("Close", "menu", "", "secondary")}</div>${[["home", workspace.can_manage ? "Dashboard" : "Home"], ["courses", "My training"], ["library", "Course library"], ["leaderboard", "Store leaderboard"], ["competitions", "Competitions"], ...workspace.can_manage ? [["assign", "Assign training"], ["departments", "Departments"]] : []].map(([page, label]) => `<button type="button" data-training-action="navigate" data-view="${page}" ${view === page ? 'aria-current="page"' : ""}>${label}</button>`).join("")}<button type="button" data-training-action="accounts">Account & team settings</button><button type="button" class="account-danger" data-action="signout">Sign out</button></nav></div>` : "";
+    return menu ? `<div class="training-menu-shade"><nav class="training-drawer" aria-label="Main navigation"><div class="panel-top"><h2>colTRAIN</h2>${btn("Close", "menu", "", "secondary")}</div>${[["home", workspace.can_manage ? "Dashboard" : "Home"], ["courses", "My training"], ["library", "Course library"], ["leaderboard", "Store leaderboard"], ["competitions", "Competitions"], ...workspace.can_manage ? [["assign", "Assign training"], ["departments", "Departments"]] : []].map(([page, label]) => `<button type="button" data-training-action="navigate" data-view="${page}" ${view === page ? 'aria-current="page"' : ""}>${label}</button>`).join("")}<button type="button" data-training-action="accounts" ${view === "accounts" ? 'aria-current="page"' : ""}>Account & team settings</button><button type="button" class="account-danger" data-action="signout">Sign out</button></nav></div>` : "";
   }
   function cover() {
     return '<div class="course-cover"><div class="cover-grid"></div><div class="cover-scene"><div class="scene-person"></div><div class="scene-person second"></div><div class="scene-desk"></div><div class="scene-chat">\xB7\xB7\xB7</div></div></div>';
@@ -176,8 +177,9 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   }
   function render() {
     if (!active) return;
+    onNavigate?.(view,storeId);
     headerButton.setAttribute("aria-expanded", String(menu));
-    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
+    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "accounts" ? `<div class="training-account-settings">${accountMarkup}</div>` : view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
     timer.set(!menu && (view === "course" || view === "quiz" && (challengeMode || assignment && !assignment.completed_at && assignment.attempts_used < assignment.attempt_limit)) ? assignment?.id || null : null);
   }
   async function run(action) {
@@ -337,8 +339,10 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         return;
       }
       if (action === "accounts") {
-        close();
-        await onAccounts();
+        accountMarkup = await onAccounts();
+        view = "accounts";
+        menu = false;
+        render();
         return;
       }
       if (action === "navigate") {
@@ -427,10 +431,11 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     events.abort();
     headerButton.remove();
     root.classList.remove("training-main");
-    if (context) context.innerHTML = originalContext;
+    setAccountHeader();
   }
   try {
     await refresh();
+    if (view === "accounts") accountMarkup = await onAccounts();
     render();
   } catch (e) {
     close();

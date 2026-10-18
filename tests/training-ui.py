@@ -93,7 +93,10 @@ try:
    page.locator('#auth-form input[name=email]').fill(email)
    page.locator('#auth-form input[name=password]').fill('Local test password')
    page.locator('#auth-form button[type=submit]').click()
-   page.get_by_role('button',name='Open training',exact=True).click()
+   expect(page.locator('.page-heading h1')).to_be_visible()
+   expect(page.locator('header .account-identity')).to_contain_text('Coltrain Hardware')
+   expect(page.locator('header .account-identity')).to_contain_text('Signed in as Pilot')
+   assert page.get_by_role('button',name='Open training',exact=True).count()==0
   def navigate(label):
    page.get_by_role('button',name='Open menu').click()
    page.locator('.training-drawer').get_by_role('button',name=label,exact=True).click()
@@ -201,7 +204,7 @@ try:
   assert page.locator('body').evaluate('element=>element.scrollWidth<=innerWidth')
   page.screenshot(path=str(root/'design/training-employee-mobile.png'),full_page=True)
   page.reload()
-  page.get_by_role('button',name='Open training',exact=True).click()
+  expect(page.locator('header .account-identity')).to_contain_text('Signed in as Pilot Employee')
   expect(page.get_by_text('You’re all caught up.',exact=True)).to_be_visible()
   signout()
   login('manager.a@example.test')
@@ -279,12 +282,33 @@ try:
   expect(page.locator('.competition-history')).to_contain_text('100%')
   navigate('Account & team settings')
   expect(page.get_by_role('heading',name='Your store account')).to_be_visible()
-  assert page.get_by_role('button',name='Open menu').count()==0
+  expect(page.get_by_role('button',name='Open menu')).to_be_visible()
+  assert page.get_by_role('button',name='Open training',exact=True).count()==0
+  page.locator('#profile-form input[name=name]').fill('Pilot Manager Updated')
+  page.locator('#profile-form button[type=submit]').click()
+  expect(page.locator('#account-message')).to_have_text('Profile and email preference saved.')
+  expect(page.locator('header .account-identity')).to_contain_text('Signed in as Pilot Manager Updated')
+  navigate('Dashboard')
+  expect(page.get_by_role('heading',name='Your team, learning together.')).to_be_visible()
+  page.set_viewport_size({'width':390,'height':844})
+  expect(page.locator('header .account-identity')).to_be_visible()
+  expect(page.locator('header .account-identity')).to_contain_text('Coltrain Hardware')
+  assert page.locator('body').evaluate('element=>element.scrollWidth<=innerWidth')
+  page.screenshot(path=str(root/'design/manager-header-mobile.png'),full_page=True)
+  signout()
+  expect(page.locator('header')).not_to_contain_text('Pilot Manager Updated')
+  login('employee.a@example.test')
+  expect(page.locator('header')).to_contain_text('Pilot Employee')
+  expect(page.locator('header')).not_to_contain_text('Pilot Manager Updated')
+  navigate('Account & team settings')
+  expect(page.locator('#profile-form')).to_be_visible()
+  navigate('Home')
+  expect(page.get_by_role('heading',name='Your next chapter')).to_be_visible()
   assert not errors,errors
   assert sql('select count(*) from public.training_trophies')=='1'
   assert sql('select sum(points) from private.training_point_awards')=='40'
   assert sql('select count(*) from public.training_attempts')=='4'
-  print('Passed browser + actual SQL/RLS: admin release, starter departments preserving existing departments/placements without duplicates, assignment, sequential lessons, failed quiz explanations, completed-lesson review navigation, three-attempt block, manager unlock, passing retry, points/trophy, reload persistence, manager reporting, mobile, review competition for an already-passed employee, separate scores/attempts, three-attempt challenge limit, manager challenge unlock, lifetime leaderboard, competition history, account navigation.')
+  print('Passed browser + actual SQL/RLS: admin release, starter departments preserving existing departments/placements without duplicates, assignment, sequential lessons, failed quiz explanations, completed-lesson review navigation, three-attempt block, manager unlock, passing retry, points/trophy, reload persistence, manager reporting, mobile, review competition for an already-passed employee, separate scores/attempts, three-attempt challenge limit, manager challenge unlock, lifetime leaderboard, competition history, direct manager/employee home entry, persistent settings menu, profile identity updates, mobile identity, sign-out and account switching.')
   browser.close()
 finally:
  subprocess.run(['docker','stop',name],capture_output=True)

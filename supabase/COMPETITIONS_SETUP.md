@@ -47,7 +47,7 @@ No Edge Function, SMTP, callback URL, or secret change is needed. The ZIP contai
 
 ## 3. Verify with controlled accounts
 
-1. As manager, **Open training → menu → Competitions → Start competition**. Choose the released sample, today's start, a later end, and a reward. Uncheck **All active employees**, then select one controlled employee who already passed. Submit.
+1. As manager, **Dashboard → hamburger menu → Competitions → Start competition**. Choose the released sample, today's start, a later end, and a reward. Uncheck **All active employees**, then select one controlled employee who already passed. Submit.
 2. Sign in as that employee. Confirm the competition appears above training. Choose **Review lessons** for an optional refresher or **Take competition quiz** to begin directly. The refresher page also links directly to the competition quiz; lesson completion, original attempts, lifetime points, and trophy stay saved. Answer and submit the competition quiz. See standings, switch to Lifetime, refresh, and confirm scores persist separately.
 3. Repeat with a lower challenge score; the competition best must stay unchanged. Original course attempts, lifetime points, completion, and trophy must stay saved. Three submissions use all available challenge attempts; further submissions are blocked until manager assistance.
 4. As manager, confirm the competition and lifetime dashboard columns, the separate report's completion/time, and a supported challenge retry with an assistance note.
@@ -65,3 +65,9 @@ Start with controlled accounts; inviting all nine employees is part of later pil
 ## Optional refresher shortcut
 
 The owner verified the live competition quiz flow and matching separate totals. A website-only follow-up adds **Review lessons** beside **Take competition quiz** for graduates on the Home competition card and standings. The refresher shows the existing course lessons with a direct route back to the competition quiz. It does not repeat completion writes or consume attempts. After exhausting challenge attempts, reviewing remains available while the quiz follows the existing manager-assisted unlock rule. Deploy the latest ZIP to the same Netlify site; do not rerun SQL or change the Edge Function.
+
+## Direct home and shared navigation
+
+A website-only update opens active employees directly on Home and managers/admins directly on the Dashboard after login, refresh, or invitation acceptance. **Open training** has been removed. The same top-right hamburger remains available on Account & team settings, including profile preferences, invitations, courses, and Sign out. Employees without an active store membership still receive the join/account setup screen instead of a training dashboard.
+
+The top bar shows the selected store and **Signed in as [name] · [role]** on desktop and phones. Profile updates refresh the name, and signing out clears the previous identity. Administrators retain the selected store when returning from settings. Deploy the current website ZIP to the existing Netlify project; no SQL, Edge Function, or credential changes are needed. Local browser tests cover manager/employee direct entry, returning through settings, profile updates, sign-out/account switching, and visible mobile identity.

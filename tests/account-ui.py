@@ -25,7 +25,9 @@ team = [
 invites = []
 calls = []
 invitation_read_error = False
+display_name = 'Store Manager'
 def handle(route):
+    global display_name
     url = route.request.url
     if url.startswith('https://accounts.example/accounts/index.html'):
         return route.fulfill(status=200, content_type='text/html', body=html)
@@ -37,7 +39,7 @@ def handle(route):
         result = {'access_token': token, 'refresh_token': 'local-test-refresh', 'token_type': 'bearer', 'expires_in': 3600, 'user': person}
     elif path == '/auth/v1/user': result = person
     elif path in ['/auth/v1/logout', '/auth/v1/recover']: result = {}
-    elif path == '/rest/v1/profiles': result = [{'user_id': uid, 'full_name': 'Store Manager', 'optional_email_notifications': False}]
+    elif path == '/rest/v1/profiles': result = [{'user_id': uid, 'full_name': display_name, 'optional_email_notifications': False}]
     elif path == '/rest/v1/organization_memberships': result = team
     elif path == '/rest/v1/platform_admins': result = []
     elif path == '/rest/v1/organizations': result = [{'id': store, 'name': 'Pilot Hardware'}]
@@ -47,8 +49,13 @@ def handle(route):
         if invitation_read_error and 'invitee_name' in columns:
             return route.fulfill(status=403, content_type='application/json', headers={'access-control-allow-origin': '*'}, body=json.dumps({'code': '42501', 'message': 'permission denied'}))
         result = invites if columns == '*' else [{key: row.get(key) for key in columns.split(',')} for row in invites]
+    elif path == '/rest/v1/rpc/get_training_workspace':
+        result = {'store': {'id':store,'name':'Pilot Hardware','time_zone':'America/New_York'},'my_membership':team[0]['id'],'can_manage':True,'is_admin':False,
+                  'members':[{'id':m['id'],'name':'Store Manager' if m['user_id']==uid else 'Employee','email':m['email'],'role':m['role'],'status':m['status'],'departments':[],'lifetime_points':0} for m in team],
+                  'courses':[],'assignments':[],'departments':[],'totals':{'lifetime_points':0,'trophies':0,'completed_courses':0},'question_alerts':[],'global_question_alerts':[],
+                  'competitions':[],'lifetime_standings':[],'team_learning_seconds':0}
     elif path == '/rest/v1/rpc/save_my_profile':
-        assert route.request.post_data_json['display_name'] == 'Store Manager'
+        display_name=route.request.post_data_json['display_name']
         result = None
     elif path == '/functions/v1/invite-employee':
         data = route.request.post_data_json
@@ -88,10 +95,20 @@ try:
         page.locator('#auth-form input[name=email]').fill('manager@example.test')
         page.locator('#auth-form input[name=password]').fill('short-pass')
         page.locator('#auth-form button[type=submit]').click()
-        expect(page.get_by_role('heading', name='Your store account')).to_be_visible()
+        expect(page.get_by_role('heading', name='Your team, learning together.')).to_be_visible()
+        expect(page.locator('header .account-identity')).to_contain_text('Pilot Hardware')
+        expect(page.locator('header .account-identity')).to_contain_text('Signed in as Store Manager')
+        assert page.get_by_role('button',name='Open training',exact=True).count()==0
+        def navigate(label):
+            page.get_by_role('button',name='Open menu').click()
+            page.locator('.training-drawer').get_by_role('button',name=label,exact=True).click()
+        navigate('Account & team settings')
+        expect(page.get_by_role('heading',name='Your store account')).to_be_visible()
         expect(page.get_by_role('heading', name='Pilot Hardware', exact=True).first).to_be_visible()
+        page.locator('#profile-form input[name=name]').fill('Renamed Manager')
         page.locator('#profile-form button[type=submit]').click()
         expect(page.locator('#account-message')).to_have_text('Profile and email preference saved.')
+        expect(page.locator('header .account-identity')).to_contain_text('Renamed Manager')
         page.locator('#invite-form input[name=name]').fill('New Employee')
         page.locator('#invite-form input[name=email]').fill('new.employee@example.test')
         page.locator('#invite-form').get_by_role('button', name='Send invitation', exact=True).click()
@@ -105,14 +122,16 @@ try:
         expect(page.get_by_text('employee · inactive', exact=True)).to_be_visible()
         page.set_viewport_size({'width': 390, 'height': 844})
         assert page.locator('body').evaluate('(el)=>el.scrollWidth<=innerWidth')
-        page.get_by_role('button', name='Sign out', exact=True).click()
+        expect(page.locator('header .account-identity')).to_be_visible()
+        page.get_by_role('button',name='Open menu').click()
+        page.locator('.training-drawer').get_by_role('button', name='Sign out', exact=True).click()
         expect(page.get_by_role('heading', name='Welcome to colTRAIN')).to_be_visible()
         page.get_by_role('button', name='Create account', exact=True).click()
         expect(page.get_by_role('heading', name='Create your account')).to_be_visible()
         assert page.locator('input[name=password]').get_attribute('minlength') == '12'
         assert not errors, errors
         assert ('POST', '/functions/v1/invite-employee') in calls
-        print('Passed mocked account UI: sign-in/out, profile preferences, invite/reissue, password reset, deactivate, registration screen, mobile layout.')
+        print('Passed mocked account UI: direct dashboard login, shared settings navigation, visible mobile identity, profile name refresh, sign-in/out, invite/reissue, password reset, deactivate, registration screen, mobile layout.')
         # Chat previews allow JavaScript but may omit the allow-forms sandbox permission.
         sandbox_page = browser.new_page()
         sandbox_page.route('**/*', handle)
@@ -123,7 +142,7 @@ try:
         frame.locator('input[name=email]').fill('manager@example.test')
         frame.locator('input[name=password]').fill('short-pass')
         frame.get_by_role('button', name='Sign in', exact=True).click()
-        expect(frame.get_by_role('heading', name='Your store account')).to_be_visible()
+        expect(frame.get_by_role('heading', name='Your team, learning together.')).to_be_visible()
         expect(frame.locator('#account-message')).to_have_text('Signed in.')
         assert not errors, errors
         print('Passed sign-in inside an opaque preview iframe without allow-forms.')
@@ -146,6 +165,9 @@ try:
         unavailable_page.locator('input[name=email]').fill('manager@example.test')
         unavailable_page.locator('input[name=password]').fill('short-pass')
         unavailable_page.get_by_role('button', name='Sign in', exact=True).click()
+        expect(unavailable_page.get_by_role('heading',name='Your team, learning together.')).to_be_visible()
+        unavailable_page.get_by_role('button',name='Open menu').click()
+        unavailable_page.locator('.training-drawer').get_by_role('button',name='Account & team settings',exact=True).click()
         expect(unavailable_page.locator('#account-message')).to_have_text('Invitation details could not be loaded. Please contact colTRAIN support.')
         assert unavailable_page.get_by_role('button', name='Replace code', exact=True).count() == 0
         assert unavailable_page.get_by_text('Manual invitation', exact=True).count() == 0
