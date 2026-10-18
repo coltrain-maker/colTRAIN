@@ -39,7 +39,7 @@ def handle(route):
  if url.startswith('https://training.example/accounts/') and asset_path in ['/accounts/manifest.webmanifest','/accounts/icons/coltrain.svg','/accounts/icons/apple-touch-icon.png','/accounts/icons/icon-192.png','/accounts/icons/icon-512.png','/accounts/icons/icon-maskable-512.png']:
      mime='application/manifest+json' if asset_path.endswith('.webmanifest') else 'image/svg+xml' if asset_path.endswith('.svg') else 'image/png'
      return route.fulfill(content_type=mime,body=(root/asset_path.lstrip('/')).read_bytes())
- if url=='https://training.example/accounts/':return route.fulfill(content_type='text/html',body=html)
+ if url.startswith('https://training.example/accounts/') and urlparse(url).path=='/accounts/':return route.fulfill(content_type='text/html',body=html)
  assert url.startswith('https://flhdeftduysnjvqnhhee.supabase.co/'),url
  parsed=urlparse(url);path=parsed.path;params=parse_qs(parsed.query)
  header=route.request.headers.get('authorization','').removeprefix('Bearer ')
@@ -150,7 +150,7 @@ try:
    page.locator('.training-drawer').get_by_role('button',name='Close',exact=True).click()
   def signout():
    page.get_by_role('button',name='Open menu').click()
-   page.locator('.training-drawer').get_by_role('button',name='Sign out',exact=True).click()
+   page.locator('.training-drawer').get_by_role('button',name='Sign out and switch accounts',exact=True).click()
    expect(page.get_by_role('heading',name='Welcome to colTRAIN')).to_be_visible()
   login('admin@example.test')
   navigate('Course library')

@@ -34,7 +34,7 @@ def handle(route):
     if url.startswith('https://accounts.example/accounts/') and asset_path in ['/accounts/manifest.webmanifest','/accounts/icons/coltrain.svg','/accounts/icons/apple-touch-icon.png','/accounts/icons/icon-192.png','/accounts/icons/icon-512.png','/accounts/icons/icon-maskable-512.png']:
         mime='application/manifest+json' if asset_path.endswith('.webmanifest') else 'image/svg+xml' if asset_path.endswith('.svg') else 'image/png'
         return route.fulfill(content_type=mime,body=(root/asset_path.lstrip('/')).read_bytes())
-    if url.startswith('https://accounts.example/accounts/index.html'):
+    if url.startswith('https://accounts.example/accounts/') and urlparse(url).path in ('/accounts/','/accounts/index.html'):
         return route.fulfill(status=200, content_type='text/html', body=html)
     if not url.startswith('https://flhdeftduysnjvqnhhee.supabase.co/'):
         raise AssertionError('Unexpected network destination')
@@ -134,7 +134,7 @@ try:
         assert page.locator('body').evaluate('(el)=>el.scrollWidth<=innerWidth')
         expect(page.locator('header .account-identity')).to_be_visible()
         page.get_by_role('button',name='Open menu').click()
-        page.locator('.training-drawer').get_by_role('button', name='Sign out', exact=True).click()
+        page.locator('.training-drawer').get_by_role('button', name='Sign out and switch accounts', exact=True).click()
         expect(page.get_by_role('heading', name='Welcome to colTRAIN')).to_be_visible()
         page.get_by_role('button', name='Create account', exact=True).click()
         expect(page.get_by_role('heading', name='Create your account')).to_be_visible()
