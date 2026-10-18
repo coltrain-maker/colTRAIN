@@ -2,6 +2,8 @@
 
 The owner has confirmed Team Corner posts/photos, author names and optional nicknames, photo comments, closing/reopening comments, removal, and the smaller white comment styling. Cross-store hosted support-isolation testing, real staff access outside the owner's Netlify login, and broader pilot acceptance remain separate.
 
+The owner applied 009, deployed the website, and confirmed the screen appears correct. Live delivery/read-state acceptance still awaits a new unfinished assignment or changed deadline.
+
 This slice adds **Notifications** inside the existing hamburger menu, with an unread number and a small indicator on the menu button. No extra top navigation or duplicate dashboard is introduced.
 
 ## Behavior
@@ -42,4 +44,4 @@ Use only the manager and an active test employee you control.
 - `npm run test:database`: fresh pinned PostgreSQL, real RPCs/RLS, own-store recipients, other-user mutation denial, admin isolation, denied anonymous/inactive access, store-local deadline stages, duplicate refreshes, changed deadlines, read persistence, resolved/completed work, original and competition help/unlocks, and concurrent first reads. Existing accounts, invitation, training, competition, and Team Corner checks remain enabled.
 - `python tests/training-ui.py`: browser plus actual local SQL/RLS, mocked Auth/storage only. Exercises notification menu/indicator, mark all/read persistence after reload, opening a course, manager help links and employee retry notifications alongside existing end-to-end training/competition/feed flows. No hosted writes or emails.
 - `python tests/account-ui.py`: mocked account and profile flows, including existing optional nickname and secure sign-in/callback behavior.
-- Build with `npm run build:accounts`, `python scripts/build-supabase-setup.py`, `python scripts/build-hosting.py`. The combined setup is for new projects only. Verify the ZIP still includes exactly three public HTML files with no privileged keys or test-only configuration.
+- Build with `npm run build:accounts`, `python scripts/build-supabase-setup.py`, `python scripts/build-hosting.py`. The combined setup is for new projects only. Verify the ZIP uses the explicit public allowlist and includes no privileged keys or test-only configuration. The home-screen installation update adds public manifest/icon/worker files to the original three HTML files; see HOME_SCREEN_INSTALLATION.md.

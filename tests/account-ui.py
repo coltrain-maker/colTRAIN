@@ -30,6 +30,10 @@ team_nickname = None
 def handle(route):
     global display_name, team_nickname
     url = route.request.url
+    asset_path=urlparse(url).path
+    if url.startswith('https://accounts.example/accounts/') and asset_path in ['/accounts/manifest.webmanifest','/accounts/icons/coltrain.svg','/accounts/icons/apple-touch-icon.png','/accounts/icons/icon-192.png','/accounts/icons/icon-512.png','/accounts/icons/icon-maskable-512.png']:
+        mime='application/manifest+json' if asset_path.endswith('.webmanifest') else 'image/svg+xml' if asset_path.endswith('.svg') else 'image/png'
+        return route.fulfill(content_type=mime,body=(root/asset_path.lstrip('/')).read_bytes())
     if url.startswith('https://accounts.example/accounts/index.html'):
         return route.fulfill(status=200, content_type='text/html', body=html)
     if not url.startswith('https://flhdeftduysnjvqnhhee.supabase.co/'):
@@ -88,7 +92,7 @@ def handle(route):
 try:
     with sync_playwright() as p:
         browser = p.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
-        page = browser.new_page(viewport={'width': 1200, 'height': 1000})
+        page = browser.new_page(service_workers='block',viewport={'width': 1200, 'height': 1000})
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
         page.on('dialog', lambda dialog: dialog.accept())
@@ -139,7 +143,7 @@ try:
         assert ('POST', '/functions/v1/invite-employee') in calls
         print('Passed mocked account UI: direct dashboard login, shared settings navigation, visible mobile identity, profile name refresh, sign-in/out, invite/reissue, password reset, deactivate, registration screen, mobile layout.')
         # Chat previews allow JavaScript but may omit the allow-forms sandbox permission.
-        sandbox_page = browser.new_page()
+        sandbox_page = browser.new_page(service_workers='block')
         sandbox_page.route('**/*', handle)
         sandbox_page.on('pageerror', lambda error: errors.append(str(error)))
         sandbox_page.set_content('<iframe sandbox="allow-scripts" style="width:900px;height:900px"></iframe>')
@@ -152,7 +156,7 @@ try:
         expect(frame.locator('#account-message')).to_have_text('Signed in.')
         assert not errors, errors
         print('Passed sign-in inside an opaque preview iframe without allow-forms.')
-        callback_page = browser.new_page()
+        callback_page = browser.new_page(service_workers='block')
         callback_page.route('**/*', handle)
         callback_page.on('pageerror', lambda error: errors.append(str(error)))
         callback_page.goto('https://accounts.example/accounts/index.html?invitation_id=40000000-0000-0000-0000-000000000001#access_token='+token+'&refresh_token=local-test-refresh&type=invite&expires_in=3600&token_type=bearer')
@@ -165,7 +169,7 @@ try:
         assert not errors, errors
         print('Passed invitation callback: choose password, join store, remove URL tokens.')
         invitation_read_error = True
-        unavailable_page = browser.new_page()
+        unavailable_page = browser.new_page(service_workers='block')
         unavailable_page.route('**/*', handle)
         unavailable_page.goto('https://accounts.example/accounts/index.html')
         unavailable_page.locator('input[name=email]').fill('manager@example.test')

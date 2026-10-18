@@ -40,7 +40,7 @@ Do not rerun the complete `SETUP.sql`/new-project text file or migrations 001–
 3. In the existing Netlify project **stalwart-custard-7be489 → Deploys**, upload that extracted folder.
 4. Refresh `https://stalwart-custard-7be489.netlify.app/accounts/` and sign in. Choose **hamburger menu → Team Corner**.
 
-No Edge Function, SMTP, Auth callback, or secret changes are required. The ZIP contains three public HTML files with the application code embedded; SQL and privileged server credentials are excluded. The source `/preview/` feed remains sample data.
+No Edge Function, SMTP, Auth callback, or secret changes are required. The ZIP contains three public HTML files with the application code embedded, plus public home-screen installation assets; SQL and privileged server credentials are excluded. The source `/preview/` feed remains sample data.
 
 ## 3. Controlled live acceptance
 

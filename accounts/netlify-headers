@@ -1,0 +1,11 @@
+/accounts/sw.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: no-store
+  Service-Worker-Allowed: /accounts/
+/accounts/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: no-cache
+/accounts/
+  Cache-Control: no-cache
+/accounts/index.html
+  Cache-Control: no-cache

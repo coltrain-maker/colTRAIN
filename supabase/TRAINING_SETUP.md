@@ -34,7 +34,7 @@ The prepared download is `design/coltrain-website.zip` on the development branch
 
 In the **existing** Netlify project `stalwart-custard-7be489`, open **Deploys** and upload that extracted folder as a new manual deployment. Do not create another Netlify project: the current Auth redirect settings and invitation function use this exact hostname. No Supabase Edge Function update or new secrets are required for Step 3.
 
-The published root now sends visitors to `/accounts/`. The separate `/preview/` page is clearly a sample-only design preview. The source repository's root `index.html` remains the prototype for design development. Only three public HTML files are in the ZIP; SQL, tests, server functions, and privileged credentials are excluded.
+The published root now sends visitors to `/accounts/`. The separate `/preview/` page is clearly a sample-only design preview. The source repository's root `index.html` remains the prototype for design development. The ZIP includes three public HTML files plus public home-screen installation assets; SQL, tests, server functions, and privileged credentials are excluded.
 
 Existing Supabase callback URLs under `/accounts/` continue to work. Open the hosted URL, refresh the page, and sign in normally. Downloaded HTML files do not update automatically and are not the supported live training entry.
 

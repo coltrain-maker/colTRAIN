@@ -43,7 +43,7 @@ After SQL succeeds:
 3. Open the existing Netlify project **stalwart-custard-7be489 → Deploys** and upload that extracted folder in the manual deployment area. Keep the current project and URL.
 4. Refresh `https://stalwart-custard-7be489.netlify.app/accounts/` and sign in normally. Downloaded HTML files do not update themselves.
 
-No Edge Function, SMTP, callback URL, or secret change is needed. The ZIP contains exactly three public HTML files, with the application code embedded; SQL and server credentials are excluded. `/preview/` remains sample data.
+No Edge Function, SMTP, callback URL, or secret change is needed. The ZIP contains three public HTML files with the application code embedded, plus public home-screen installation assets; SQL and server credentials are excluded. `/preview/` remains sample data.
 
 ## 3. Verify with controlled accounts
 

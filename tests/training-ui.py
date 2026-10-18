@@ -35,6 +35,10 @@ lost_upload_response=False
 def handle(route):
  global lost_upload_response
  url=route.request.url
+ asset_path=urlparse(url).path
+ if url.startswith('https://training.example/accounts/') and asset_path in ['/accounts/manifest.webmanifest','/accounts/icons/coltrain.svg','/accounts/icons/apple-touch-icon.png','/accounts/icons/icon-192.png','/accounts/icons/icon-512.png','/accounts/icons/icon-maskable-512.png']:
+     mime='application/manifest+json' if asset_path.endswith('.webmanifest') else 'image/svg+xml' if asset_path.endswith('.svg') else 'image/png'
+     return route.fulfill(content_type=mime,body=(root/asset_path.lstrip('/')).read_bytes())
  if url=='https://training.example/accounts/':return route.fulfill(content_type='text/html',body=html)
  assert url.startswith('https://flhdeftduysnjvqnhhee.supabase.co/'),url
  parsed=urlparse(url);path=parsed.path;params=parse_qs(parsed.query)
@@ -113,7 +117,7 @@ try:
  insert into public.seats(organization_id,membership_id) select organization_id,id from public.organization_memberships;""")
  with sync_playwright() as p:
   browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
-  page=browser.new_page(viewport={'width':1280,'height':1000});errors=[]
+  page=browser.new_page(service_workers='block',viewport={'width':1280,'height':1000});errors=[]
   page.on('pageerror',lambda error:errors.append(str(error)))
   page.route('**/*',handle)
   page.goto('https://training.example/accounts/')
@@ -128,6 +132,12 @@ try:
   def navigate(label):
    page.get_by_role('button',name='Open menu').click()
    page.locator('.training-drawer').get_by_role('button',name=label,exact=True).click()
+  def check_install_entry():
+   page.get_by_role('button',name='Open menu').click()
+   page.locator('.training-drawer').get_by_role('button',name='Add to home screen',exact=True).click()
+   expect(page.get_by_role('heading',name='Add colTRAIN to your home screen',exact=True)).to_be_visible()
+   page.get_by_role('button',name='Close installation instructions',exact=True).click()
+   page.locator('.training-drawer').get_by_role('button',name='Close',exact=True).click()
   def signout():
    page.get_by_role('button',name='Open menu').click()
    page.locator('.training-drawer').get_by_role('button',name='Sign out',exact=True).click()
@@ -165,6 +175,7 @@ try:
   expect(page.locator('#account-message')).to_have_text('Training assigned to 1 person.')
   signout()
   login('employee.a@example.test')
+  check_install_entry()
   expect(page.get_by_role('heading',name='Your next chapter',exact=True)).to_be_visible()
   expect(page.locator('.notification-dot')).to_be_visible()
   navigate('Notifications')
@@ -219,6 +230,7 @@ try:
   assert sql('select count(*) from public.training_attempts')=='3'
   signout()
   login('manager.a@example.test')
+  check_install_entry()
   expect(page.get_by_role('heading',name='Help an employee retry')).to_be_visible()
   navigate('Notifications')
   expect(page.locator('.training-notification h2')).to_have_text('An employee needs quiz help')
@@ -461,7 +473,7 @@ try:
   expect(page.locator('.team-composer')).to_have_count(0)
   expect(page.get_by_role('button',name='Remove post',exact=True)).to_have_count(0)
   support_page=page
-  page=browser.new_page(viewport={'width':1280,'height':1000})
+  page=browser.new_page(service_workers='block',viewport={'width':1280,'height':1000})
   page.on('pageerror',lambda error:errors.append(str(error)))
   page.on('dialog',lambda dialog:dialog.accept())
   page.route('**/*',handle)

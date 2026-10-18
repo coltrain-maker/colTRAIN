@@ -1,0 +1,17 @@
+{
+  "id": "/accounts/",
+  "name": "colTRAIN",
+  "short_name": "colTRAIN",
+  "description": "Learning, friendly competition, and team connection for hardware stores.",
+  "lang": "en-US",
+  "start_url": "/accounts/",
+  "scope": "/accounts/",
+  "display": "standalone",
+  "background_color": "#f6f8fc",
+  "theme_color": "#214bd7",
+  "icons": [
+    {"src": "/accounts/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/accounts/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "/accounts/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
