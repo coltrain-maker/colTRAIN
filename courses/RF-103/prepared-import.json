@@ -1,0 +1,795 @@
+{
+  "course": {
+    "id": "df3b37e8-d81d-5b5e-b1db-003fcaf46759",
+    "slug": "rf-103-store-safety-fundamentals",
+    "version": 1,
+    "title": "Store Safety Fundamentals",
+    "description": "Learn to spot common hazards, work safely, and report concerns in a hardware store.",
+    "category": "Retail Foundations",
+    "passing_percent": 80
+  },
+  "lessons": [
+    {
+      "id": "e62fd1be-4555-5882-b4e3-dfd311cc6c73",
+      "position": 1,
+      "title": "Spot Hazards Before They Cause Problems",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "A small problem can become a serious injury. A loose box, blocked aisle, or wet floor can affect customers and coworkers."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Look at the path"
+        },
+        {
+          "type": "paragraph",
+          "text": "Watch for spills, loose products, cords, and clutter. Keep walkways and exits clear."
+        },
+        {
+          "type": "heading",
+          "text": "Recognize changing conditions"
+        },
+        {
+          "type": "paragraph",
+          "text": "A busy delivery or crowded display can create a new hazard. Check your area as work changes."
+        },
+        {
+          "type": "heading",
+          "text": "Protect the area"
+        },
+        {
+          "type": "paragraph",
+          "text": "If a hazard is safe to address within your training, follow store procedures. If not, keep people away and alert the right person."
+        },
+        {
+          "type": "heading",
+          "text": "Do not improvise"
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not handle unknown chemicals, damaged electrical items, or unstable loads without proper training and instructions."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "You notice a carton in a main aisle. A customer is walking toward it. You warn the customer, protect the area, and move the carton only if it is safe and allowed by store procedures."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Stay alert while walking through the store."
+        },
+        {
+          "type": "bullet",
+          "text": "Warn others about an immediate hazard."
+        },
+        {
+          "type": "bullet",
+          "text": "Follow store procedures to remove or isolate the hazard."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Walking past a hazard without reporting it."
+        },
+        {
+          "type": "bullet",
+          "text": "Trying to clean an unknown spill without knowing the substance."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a supervisor about hazards you cannot safely fix. Get help for unknown spills, damaged wiring, and unstable merchandise."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Watch for spills, loose products, cords, and clutter."
+        },
+        {
+          "type": "bullet",
+          "text": "Follow store procedures to remove or isolate the hazard."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask for help when a task is outside your training."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "RF-103-L01-P01: A small liquid spill appears near the checkout. You do not know what spilled. What should you do first?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Ignore it until the next cleaning round."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Warn others, keep the area clear, and notify the appropriate employee."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Touch the liquid to identify it."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Cover it with merchandise."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: Unknown liquids may be hazardous. Protect people and follow the store's spill response process."
+        }
+      ]
+    },
+    {
+      "id": "009d1a84-d337-56c8-ab70-81349f89bd20",
+      "position": 2,
+      "title": "Lift, Move, and Store Merchandise Safely",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hardware stores carry heavy, sharp, and awkward products. A rushed move can hurt someone or damage merchandise."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Plan before lifting"
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the item's size, shape, and path. Decide whether you need help or approved equipment."
+        },
+        {
+          "type": "heading",
+          "text": "Use a stable movement"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep a secure grip and avoid sudden twisting. Do not carry a load that blocks your view."
+        },
+        {
+          "type": "heading",
+          "text": "Ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use team lifting or approved material-handling equipment when a load is too heavy or awkward for you."
+        },
+        {
+          "type": "heading",
+          "text": "Store with care"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep heavy merchandise secure. Do not create unstable stacks or block aisles, exits, or emergency equipment."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer needs a large bag of concrete. The bag is awkward for you to move alone. You arrange help or use approved equipment instead of forcing the lift."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Check the load and the route."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask for help before lifting an awkward item."
+        },
+        {
+          "type": "bullet",
+          "text": "Keep storage areas orderly and stable."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Lifting beyond your ability to save time."
+        },
+        {
+          "type": "bullet",
+          "text": "Stacking products where they could fall."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask for help with heavy, sharp, oversized, or unstable items. Follow store rules for carts, ladders, and lifting devices."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Check the item's size, shape, and path."
+        },
+        {
+          "type": "bullet",
+          "text": "Keep storage areas orderly and stable."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask for help when a task is outside your training."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "RF-103-L02-P01: A tall carton blocks your view while you carry it. What is the best choice?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Keep walking slowly."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Lift it higher above your head."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Stop and arrange a safer way to move it."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Ask a customer to guide you."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: C"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: You need a clear path and safe control of the load. Use help or approved equipment."
+        }
+      ]
+    },
+    {
+      "id": "3a11614d-470d-5ae9-a8e4-5f274acae2ca",
+      "position": 3,
+      "title": "Know Your Limits with Tools and Equipment",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stores may use ladders, cutters, powered equipment, and service tools. Familiar equipment can still cause injuries."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Use only authorized equipment"
+        },
+        {
+          "type": "paragraph",
+          "text": "Complete required training before using powered equipment or specialized store tools."
+        },
+        {
+          "type": "heading",
+          "text": "Check before use"
+        },
+        {
+          "type": "paragraph",
+          "text": "Follow the store's inspection steps and the manufacturer's instructions. Report damaged tools or missing guards."
+        },
+        {
+          "type": "heading",
+          "text": "Respect restricted areas"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stay outside marked work zones. Do not distract someone who is operating equipment."
+        },
+        {
+          "type": "heading",
+          "text": "Stop when unsure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not guess about equipment operation or attempt repairs beyond your training."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A coworker asks you to use a powered pallet jack. You have not been trained or authorized. You decline and contact a qualified employee."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Check whether you are authorized."
+        },
+        {
+          "type": "bullet",
+          "text": "Follow the equipment instructions and store procedures."
+        },
+        {
+          "type": "bullet",
+          "text": "Report damage and stop unsafe work."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Using a machine because you have watched someone else use it."
+        },
+        {
+          "type": "bullet",
+          "text": "Removing a guard to finish a job faster."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a supervisor before using unfamiliar equipment. Only trained and authorized people should perform restricted tasks."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Complete required training before using powered equipment or specialized store tools."
+        },
+        {
+          "type": "bullet",
+          "text": "Report damage and stop unsafe work."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask for help when a task is outside your training."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "RF-103-L03-P01: You are asked to operate equipment you have never been trained to use. What should you do?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Try it carefully with a coworker watching."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Watch an online video and begin."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Use it only for a short task."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Explain that you need training and an authorized operator."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: D"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: Observation alone is not authorization. Use equipment only after the required training and approval."
+        }
+      ]
+    },
+    {
+      "id": "54f7e84f-985f-59f5-8df0-55d37ab5b3eb",
+      "position": 4,
+      "title": "Respond to Spills, Injuries, and Emergencies",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fast, calm action can protect people. Every store needs clear procedures for incidents and emergencies."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "For immediate danger"
+        },
+        {
+          "type": "paragraph",
+          "text": "Move away from danger and alert others. Contact emergency services when needed, using local procedures."
+        },
+        {
+          "type": "heading",
+          "text": "For an injury"
+        },
+        {
+          "type": "paragraph",
+          "text": "Notify the designated person. Get emergency help for serious injuries. Do not provide care beyond your training."
+        },
+        {
+          "type": "heading",
+          "text": "For a spill"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep others away. Identify the substance only through safe, approved methods. Follow the store's spill procedure and safety information."
+        },
+        {
+          "type": "heading",
+          "text": "For an alarm or evacuation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Follow the store's emergency plan. Use designated exits and assembly points. Do not block emergency responders."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer falls near a display and says they cannot stand. You alert the designated employee and request emergency help as appropriate. You do not move the customer unless immediate danger makes it necessary."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Know how to alert a manager and emergency responders."
+        },
+        {
+          "type": "bullet",
+          "text": "Keep others away from danger."
+        },
+        {
+          "type": "bullet",
+          "text": "Follow the store emergency plan."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Assuming someone else called for help."
+        },
+        {
+          "type": "bullet",
+          "text": "Moving an injured person without a safety reason or proper training."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a manager for the store's emergency contacts, evacuation plan, and incident process. Emergency services should handle urgent medical or fire emergencies."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Move away from danger and alert others."
+        },
+        {
+          "type": "bullet",
+          "text": "Follow the store emergency plan."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask for help when a task is outside your training."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "RF-103-L04-P01: A customer is seriously injured. Which action best fits your role?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Follow the emergency plan, alert the designated person, and call for emergency help as needed."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Move the customer immediately to a chair."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Wait until the customer asks for help."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Post a message in the team chat first."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: A"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: Use the store emergency plan and seek urgent help when needed. Do not move an injured person without a compelling safety reason."
+        }
+      ]
+    },
+    {
+      "id": "e17dd363-2cb1-5a89-a488-ac33301f6bb5",
+      "position": 5,
+      "title": "Speak Up and Report Safety Concerns",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Reporting gives the team a chance to fix a problem before someone gets hurt. A near miss is an event that could have caused harm but did not."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Report promptly"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tell the appropriate person about hazards, injuries, damaged equipment, and near misses."
+        },
+        {
+          "type": "heading",
+          "text": "Be specific"
+        },
+        {
+          "type": "paragraph",
+          "text": "Describe what happened, where it happened, and what immediate action you took."
+        },
+        {
+          "type": "heading",
+          "text": "Share facts"
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not guess about causes or blame people. Use the store's reporting process."
+        },
+        {
+          "type": "heading",
+          "text": "Follow through"
+        },
+        {
+          "type": "paragraph",
+          "text": "Confirm that the concern reached the right person. Do not assume a report means the area is now safe."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A stack of buckets shifts and nearly falls. No one is hurt. You keep the area clear and report the location, what moved, and what you observed."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Report near misses as well as injuries."
+        },
+        {
+          "type": "bullet",
+          "text": "Give clear facts and a precise location."
+        },
+        {
+          "type": "bullet",
+          "text": "Keep the area protected until the hazard is addressed."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Ignoring a near miss because nobody was hurt."
+        },
+        {
+          "type": "bullet",
+          "text": "Guessing about the cause instead of sharing observations."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a manager which reporting form or channel your store uses. Escalate an unresolved immediate hazard right away."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Tell the appropriate person about hazards, injuries, damaged equipment, and near misses."
+        },
+        {
+          "type": "bullet",
+          "text": "Keep the area protected until the hazard is addressed."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask for help when a task is outside your training."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "RF-103-L05-P01: A stack of merchandise almost falls, but no one is hurt. What should you do?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Say nothing because there was no injury."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Report the near miss and keep people away from the unstable stack."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Wait for the next staff meeting."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Restack it alone without checking the cause."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: A near miss is useful safety information. Report it and protect the area."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "7614494c-e55d-524b-991f-891cca280928",
+      "position": 1,
+      "prompt": "You see a loose cord across an aisle. A shopper is approaching. What is your best first action?",
+      "options": [
+        "Step over it and continue working.",
+        "Warn the shopper, keep the area clear, and follow the store's process to address it.",
+        "Wait for the closing team.",
+        "Move a display in front of it without telling anyone."
+      ],
+      "correct_option": 1,
+      "explanation": "A visible trip hazard needs prompt attention. Warn others and follow the approved response."
+    },
+    {
+      "id": "4b2eb405-2c46-5bfc-8f5e-697c371cb153",
+      "position": 2,
+      "prompt": "You need to move an awkward box. You cannot see over it when carrying it. What should you do?",
+      "options": [
+        "Carry it slowly and hope the aisle stays clear.",
+        "Ask a customer to carry one side.",
+        "Use help or approved equipment to move it safely.",
+        "Hold it above your head."
+      ],
+      "correct_option": 2,
+      "explanation": "Keep control of the load and a clear view of the route. Ask for help or use approved equipment."
+    },
+    {
+      "id": "02914b8b-caa7-5d24-99cd-061bb5427fd2",
+      "position": 3,
+      "prompt": "A coworker asks you to use a store machine. You have not completed the required training. What should you do?",
+      "options": [
+        "Decline and ask for an authorized operator or training.",
+        "Try the controls with no load.",
+        "Use it if the manager is busy.",
+        "Copy what you saw another employee do."
+      ],
+      "correct_option": 0,
+      "explanation": "Powered or specialized equipment requires the appropriate training and authorization."
+    },
+    {
+      "id": "72a34295-5dd2-5583-b5f8-4cfd08a3965b",
+      "position": 4,
+      "prompt": "A customer collapses near the front counter. What is the best response?",
+      "options": [
+        "Offer water before telling anyone.",
+        "Move the customer to a chair immediately.",
+        "Wait for the customer to recover.",
+        "Follow the emergency plan and call for emergency help as needed."
+      ],
+      "correct_option": 3,
+      "explanation": "Follow the emergency plan and seek emergency help promptly. Do not move the person unless necessary for immediate safety."
+    },
+    {
+      "id": "d2ab29f9-a04a-52f1-a148-e274e8508ab9",
+      "position": 5,
+      "prompt": "A shelf bracket bends, but no product falls and no one is injured. What should you do?",
+      "options": [
+        "Ignore it because nothing fell.",
+        "Report the near miss, describe the location, and keep the area protected.",
+        "Fix it without reporting it.",
+        "Tell a coworker later if you remember."
+      ],
+      "correct_option": 1,
+      "explanation": "Near misses should be reported. Clear facts help the store address hazards before injuries occur."
+    }
+  ]
+}

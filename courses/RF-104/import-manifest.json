@@ -1,0 +1,23 @@
+{
+  "course_code": "RF-104",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "57d15a1b-42bf-5b91-b376-e82d787fef8c",
+  "source_file": "source/RF-104_complete_course_v1.0.0.md",
+  "source_sha256": "04533007c3448add348a97c60c253192ec320898d7b2204d98e509246d22dcd4",
+  "source_content_edits": [],
+  "published": false,
+  "delivery": "Text-only lessons, readable unscored practice, private-key final quiz",
+  "not_imported_as_features": [
+    "Empty media placeholders",
+    "Enforced prerequisites",
+    "Learning paths",
+    "Per-course completion messages",
+    "Estimated duration display"
+  ],
+  "review_pending": [
+    "Owner editorial approval",
+    "Store-specific terminology/procedures",
+    "Employee timing test"
+  ]
+}

@@ -1,16 +1,23 @@
-"""Exercise the actual RF-101 import and training rules in isolated PostgreSQL.
+"""Exercise RF-101–104 imports and training rules in isolated PostgreSQL.
 No hosted writes, emails, website builds, or Netlify deployments.
 """
 from pathlib import Path
 import json
 import subprocess
+import sys
 import time
 import uuid
 
 root = Path(__file__).resolve().parent.parent
-subprocess.run(['python', 'scripts/build-rf101-import.py'], cwd=root, check=True)
-data = json.loads((root / 'courses/RF-101/prepared-import.json').read_text())
-script = (root / 'supabase/course-imports/RF-101_IMPORT_DRAFT.sql').read_text()
+code = sys.argv[1] if len(sys.argv) > 1 else 'RF-101'
+assert code in ('RF-101', 'RF-102', 'RF-103', 'RF-104')
+batch = '--batch' in sys.argv[2:]
+assert not batch or code != 'RF-101'
+builder = 'build-rf101-import.py' if code == 'RF-101' else 'build-retail-foundations-import.py'
+subprocess.run(['python', 'scripts/' + builder], cwd=root, check=True)
+data = json.loads((root / f'courses/{code}/prepared-import.json').read_text())
+filename = 'RF-102_103_104_IMPORT_DRAFTS.sql' if batch else code + '_IMPORT_DRAFT.sql'
+script = (root / 'supabase/course-imports' / filename).read_text()
 course = data['course']['id']
 name = 'coltrain-rf101-' + uuid.uuid4().hex[:8]
 image = 'postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24'
@@ -68,10 +75,19 @@ try:
         sql(migration.read_text())
     # Reuse only identity/store setup, not other suites' deactivation scenarios.
     sql((root / 'tests/accounts-security.sql').read_text().split('\nset role authenticated;', 1)[0])
+    if code != 'RF-101':
+        sql((root / 'supabase/course-imports/RF-101_IMPORT_DRAFT.sql').read_text())
+        first_course = sql("select to_jsonb(c) from public.training_courses c where slug='rf-101-your-first-day-in-hardware-retail'")
     baseline = sql("select to_jsonb(c) from public.training_courses c where slug='customer-trust'")
     invalid = sql(script.replace('"position": 1', '"position": 0', 1), False)
     equal(invalid.returncode != 0, True, 'invalid lesson aborts transaction')
     equal(sql(f"select count(*) from public.training_courses where id='{course}'"), '0', 'failed import leaves no partial course')
+    if batch:
+        # Break the last course after the earlier courses have been inserted.
+        index = script.rfind('"position": 1')
+        result = sql(script[:index] + script[index:].replace('"position": 1', '"position": 0', 1), False)
+        equal(result.returncode != 0, True, 'last-course failure aborts batch')
+        equal(sql("select count(*) from public.training_courses where slug like 'rf-10_-%' and slug not like 'rf-101-%'"), '0', 'all three draft inserts roll back together')
     sql(script)
     sql(script)
     equal(sql("select to_jsonb(c) from public.training_courses c where slug='customer-trust'"), baseline, 'original course untouched')
@@ -89,8 +105,9 @@ try:
         texts = [b['text'] for b in lesson['body']]
         equal(all(x in texts for x in ['Why this matters', 'Hardware-store example', 'What to say or do', 'Common mistakes', 'When to ask for help', 'Key takeaways']), True, 'editorial sections preserved')
         equal(any('[Needed]' in t for t in texts), False, 'no empty media placeholders')
-        equal('Practice answer and explanation' in texts, True, 'practice includes feedback')
-    conflict = script.replace('Learn how independent hardware stores serve their communities.', 'CHANGED DESCRIPTION', 1)
+        has_feedback = 'Practice answer and explanation' in texts if code == 'RF-101' else any(t.startswith('Answer:') for t in texts) and any(t.startswith('Explanation:') for t in texts)
+        equal(has_feedback, True, 'practice includes feedback')
+    conflict = script.replace(data['course']['description'], 'CHANGED DESCRIPTION', 1)
     result = sql(conflict, False)
     equal(result.returncode != 0 and 'course differs' in result.stderr, True, 'changed import refuses overwrite')
     equal(sql(f"select description from public.training_courses where id='{course}'"), data['course']['description'], 'conflict leaves original intact')
@@ -136,6 +153,8 @@ try:
     equal(result['passed'], True, 'graduate can repeat quiz for competition')
     equal(sql(f"select sum(points) from private.training_point_awards where course_id='{course}' and user_id='{employee}'"), '50', 'review challenge duplicates no lifetime points')
     equal(sql(f"select count(*) from public.training_trophies where course_id='{course}' and user_id='{employee}'"), '1', 'review challenge duplicates no trophy')
-    print(f'Passed {checks} RF-101 import/content/RLS/training assertions in isolated PostgreSQL.')
+    if code != 'RF-101':
+        equal(sql("select to_jsonb(c) from public.training_courses c where slug='rf-101-your-first-day-in-hardware-retail'"), first_course, 'RF-101 preserved')
+    print(f'Passed {checks} {code} {"batch" if batch else "single-course"} import/content/RLS/training assertions in isolated PostgreSQL.')
 finally:
     subprocess.run(['docker', 'stop', name], check=False, capture_output=True)

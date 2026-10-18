@@ -1,0 +1,23 @@
+{
+  "course_code": "RF-102",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "b24247d7-0237-51ca-9f36-82037a9cc61d",
+  "source_file": "source/RF-102_complete_course_v1.0.0.md",
+  "source_sha256": "2d99498562c3d33ce535539d1d930e9b9918405901447322432345cd1a67bcb0",
+  "source_content_edits": [],
+  "published": false,
+  "delivery": "Text-only lessons, readable unscored practice, private-key final quiz",
+  "not_imported_as_features": [
+    "Empty media placeholders",
+    "Enforced prerequisites",
+    "Learning paths",
+    "Per-course completion messages",
+    "Estimated duration display"
+  ],
+  "review_pending": [
+    "Owner editorial approval",
+    "Store-specific terminology/procedures",
+    "Employee timing test"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "course_code": "RF-103",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "df3b37e8-d81d-5b5e-b1db-003fcaf46759",
+  "source_file": "source/RF-103_complete_course_v1.0.0.md",
+  "source_sha256": "72878b0a56af27821e580db7d0ab150cda7dd2f65b15c83ab827dbc33152df4d",
+  "source_content_edits": [],
+  "published": false,
+  "delivery": "Text-only lessons, readable unscored practice, private-key final quiz",
+  "not_imported_as_features": [
+    "Empty media placeholders",
+    "Enforced prerequisites",
+    "Learning paths",
+    "Per-course completion messages",
+    "Estimated duration display"
+  ],
+  "review_pending": [
+    "Owner editorial approval",
+    "Store-specific terminology/procedures",
+    "Employee timing test",
+    "Emergency response, equipment authorization, and incident procedures; no external safety references supplied"
+  ]
+}
