@@ -46,6 +46,8 @@ try:
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     result = sql((root / 'tests/notifications-security.sql').read_text())
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
+    result = sql((root / 'tests/profile-avatars-security.sql').read_text())
+    print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     sql("update public.organization_memberships set status='active',deactivated_at=null where id='20000000-0000-0000-0000-000000000062'; delete from private.training_notifications where user_id='00000000-0000-0000-0000-000000000062';")
     def read_notifications(index):
         return sql("begin;set local role authenticated;set local request.jwt.claim.sub='00000000-0000-0000-0000-000000000062';select public.get_my_training_notifications('10000000-0000-0000-0000-000000000060');select pg_sleep(.1);commit;",check=False)

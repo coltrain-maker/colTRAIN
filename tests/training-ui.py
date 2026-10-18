@@ -50,9 +50,12 @@ def handle(route):
   elif path=='/auth/v1/user':result=person(uid)
   elif path=='/auth/v1/logout':result={}
   elif path.startswith('/storage/v1/object/'):
-   object_name=path.removeprefix('/storage/v1/object/').removeprefix('authenticated/').removeprefix('team-media/')
+   storage_path=path.removeprefix('/storage/v1/object/').removeprefix('authenticated/')
+   bucket,_,object_name=storage_path.partition('/')
+   assert bucket in ('team-media','profile-photos')
+   storage_key=bucket+'/'+object_name
    if route.request.method=='POST':
-    if object_name in storage_bytes:
+    if storage_key in storage_bytes:
      return route.fulfill(status=409,content_type='application/json',body=json.dumps({'statusCode':409,'error':'Duplicate','message':'The resource already exists'}))
     payload=route.request.post_data_buffer
     content_type=route.request.headers.get('content-type','')
@@ -61,16 +64,23 @@ def handle(route):
      image_part=next(part for part in message.iter_parts() if part.get_content_maintype()=='image')
      payload=image_part.get_payload(decode=True);content_type=image_part.get_content_type()
     assert len(payload)<=1048576 and content_type=='image/jpeg'
-    object_id=query_as(uid,"insert into storage.objects(bucket_id,name) values('team-media',"+quote(object_name)+") returning id")
-    storage_bytes[object_name]=payload
+    object_id=query_as(uid,"insert into storage.objects(bucket_id,name) values("+quote(bucket)+","+quote(object_name)+") returning id")
+    storage_bytes[storage_key]=payload
     if lost_upload_response:
      lost_upload_response=False
      return route.fulfill(status=500,content_type='application/json',body=json.dumps({'statusCode':500,'error':'Test failure','message':'Test response lost after storage commit'}))
-    result={'Key':'team-media/'+object_name,'Id':object_id}
+    result={'Key':storage_key,'Id':object_id}
    elif route.request.method=='GET':
-    allowed=query_as(uid,"select count(*) from storage.objects where bucket_id='team-media' and name="+quote(object_name))
+    allowed=query_as(uid,"select count(*) from storage.objects where bucket_id="+quote(bucket)+" and name="+quote(object_name))
     if allowed!='1':return route.fulfill(status=403,content_type='application/json',body=json.dumps({'statusCode':403,'error':'Forbidden','message':'Photo not available'}))
-    return route.fulfill(status=200,content_type='image/jpeg',body=storage_bytes[object_name])
+    return route.fulfill(status=200,content_type='image/jpeg',body=storage_bytes[storage_key])
+   elif route.request.method=='DELETE':
+    removed=[]
+    for name_to_remove in route.request.post_data_json['prefixes']:
+     deleted=query_as(uid,'delete from storage.objects where bucket_id='+quote(bucket)+' and name='+quote(name_to_remove)+' returning name')
+     if deleted:
+      storage_bytes.pop(bucket+'/'+name_to_remove,None);removed.append({'name':name_to_remove})
+    result=removed
    else:raise AssertionError('Unexpected storage method')
   elif path.startswith('/rest/v1/rpc/'):
    function=path.rsplit('/',1)[1];assert re.fullmatch('[a-z_]+',function)
@@ -410,6 +420,38 @@ try:
   page.locator('[data-team-form="comment"]').get_by_role('button',name='Comment',exact=True).click()
   expect(page.locator('.team-comment')).to_have_count(1)
   expect(page.locator('.team-comment .team-message')).to_have_text('Could we share this with the paint team?')
+  navigate('Account & team settings')
+  page.locator('[data-profile-photo]').set_input_files(photo)
+  expect(page.locator('#profile-photo-form img[alt="Selected profile picture"]')).to_be_visible()
+  # Simulate an upload committed on the server whose response was lost.
+  lost_upload_response=True
+  page.get_by_role('button',name='Save photo',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('Profile picture saved.')
+  page.wait_for_function("document.querySelector('header .profile-avatar img')?.naturalWidth===512")
+  expect(page.locator('header .profile-avatar img')).to_be_visible()
+  first_avatar=sql("select avatar_path from public.profiles where user_id='00000000-0000-0000-0000-000000000004'")
+  assert sql("select count(*) from storage.objects where bucket_id='profile-photos'")=='1'
+  navigate('Team Corner')
+  expect(page.locator('.team-post .panel-top .profile-avatar img')).to_be_visible()
+  expect(page.locator('.team-comment-top .profile-avatar img')).to_be_visible()
+  navigate('Store leaderboard')
+  page.get_by_role('button',name='Lifetime',exact=True).click()
+  expect(page.locator('.training-standings .profile-avatar img')).to_be_visible()
+  navigate('Account & team settings')
+  page.locator('[data-profile-photo]').set_input_files(photo)
+  expect(page.locator('#profile-photo-form img[alt="Selected profile picture"]')).to_be_visible()
+  page.get_by_role('button',name='Save photo',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('Profile picture saved.')
+  assert sql("select avatar_path from public.profiles where user_id='00000000-0000-0000-0000-000000000004'")!=first_avatar
+  assert sql("select count(*) from storage.objects where bucket_id='profile-photos'")=='1'
+  page.get_by_role('button',name='Remove photo',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('Profile picture removed.')
+  expect(page.locator('header .profile-avatar img')).to_have_count(0)
+  assert sql("select count(*) from storage.objects where bucket_id='profile-photos'")=='0'
+  navigate('Team Corner')
+  expect(page.locator('.team-post .panel-top .profile-avatar img')).to_have_count(0)
+  expect(page.locator('.team-comment-top .profile-avatar img')).to_have_count(0)
+
   navigate('Account & team settings')
   page.get_by_label('Team Corner nickname (optional)').fill('Paint Pro')
   page.locator('#profile-form button[type=submit]').click()
