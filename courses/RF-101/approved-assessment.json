@@ -1,0 +1,142 @@
+{
+  "title": "RF-101 Final Assessment",
+  "passing_score_percent": 80,
+  "allow_retake": true,
+  "questions": [
+    {
+      "question_id": "RF-101-FINAL-Q01",
+      "position": 1,
+      "type": "single_choice",
+      "prompt": "A customer asks why they should shop at your independent hardware store. Which answer best describes the store’s value?",
+      "options": [
+        {
+          "id": "A",
+          "text": "We always have the lowest prices."
+        },
+        {
+          "id": "B",
+          "text": "We offer personal service and products that reflect local needs."
+        },
+        {
+          "id": "C",
+          "text": "Our products are always better than those sold elsewhere."
+        },
+        {
+          "id": "D",
+          "text": "Every customer wants the same products."
+        }
+      ],
+      "correct_option_id": "B",
+      "explanation": "Independent stores can build relationships and respond to local needs. Avoid promises you cannot verify.",
+      "points": 10
+    },
+    {
+      "question_id": "RF-101-FINAL-Q02",
+      "position": 2,
+      "type": "single_choice",
+      "prompt": "You finish stocking a delivery. Several boxes were not checked against the receiving paperwork. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Leave them. Your shelves are finished."
+        },
+        {
+          "id": "B",
+          "text": "Put the boxes on any open shelf."
+        },
+        {
+          "id": "C",
+          "text": "Tell the right coworker and follow the receiving process."
+        },
+        {
+          "id": "D",
+          "text": "Ignore the boxes until the next delivery."
+        }
+      ],
+      "correct_option_id": "C",
+      "explanation": "Accurate receiving helps the team find products and keep correct records.",
+      "points": 10
+    },
+    {
+      "question_id": "RF-101-FINAL-Q03",
+      "position": 3,
+      "type": "single_choice",
+      "prompt": "You put products in the wrong location. A coworker points out the mistake. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Acknowledge the mistake, fix it, and learn the correct location."
+        },
+        {
+          "id": "B",
+          "text": "Blame confusing labels."
+        },
+        {
+          "id": "C",
+          "text": "Ignore the comment."
+        },
+        {
+          "id": "D",
+          "text": "Hide the mistake and hope nobody notices."
+        }
+      ],
+      "correct_option_id": "A",
+      "explanation": "Accountability means owning mistakes and helping correct them.",
+      "points": 10
+    },
+    {
+      "question_id": "RF-101-FINAL-Q04",
+      "position": 4,
+      "type": "single_choice",
+      "prompt": "You are stocking shelves. A customer needs help. The cashier also asks for support. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Keep stocking until your manager tells you to stop."
+        },
+        {
+          "id": "B",
+          "text": "Acknowledge the customer and coordinate help with coworkers or a supervisor."
+        },
+        {
+          "id": "C",
+          "text": "Leave your assignment without telling anyone."
+        },
+        {
+          "id": "D",
+          "text": "Assume another employee will handle both requests."
+        }
+      ],
+      "correct_option_id": "B",
+      "explanation": "Good teamwork means recognizing priorities and communicating changes.",
+      "points": 10
+    },
+    {
+      "question_id": "RF-101-FINAL-Q05",
+      "position": 5,
+      "type": "single_choice",
+      "prompt": "Which sequence best describes a complete customer interaction?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Recommend a product, ask about the project, then return to your task."
+        },
+        {
+          "id": "B",
+          "text": "Greet the customer, point to an aisle, then help someone else."
+        },
+        {
+          "id": "C",
+          "text": "Acknowledge the customer, ask about the project, assist with reliable information, and close by confirming the next step and thanking them."
+        },
+        {
+          "id": "D",
+          "text": "Wait for the customer to choose a product, then explain why it should work."
+        }
+      ],
+      "correct_option_id": "C",
+      "explanation": "Acknowledge, Ask, Assist, and Close covers the full interaction: welcome the customer, understand the project, help without guessing, and confirm the next step before thanking them.",
+      "points": 10
+    }
+  ]
+}

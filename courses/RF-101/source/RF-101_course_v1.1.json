@@ -1,0 +1,964 @@
+{
+  "course_id": "RF-101",
+  "title": "Your First Day in Hardware Retail",
+  "academy": "Retail Foundations",
+  "level": "Onboarding",
+  "audience": "All employees",
+  "learning_path": "New Retail Employee",
+  "version": "1.1.0",
+  "status": "ready_for_review",
+  "language": "en-US",
+  "estimated_minutes": 25,
+  "duration_is_provisional": true,
+  "passing_score_percent": 80,
+  "allow_retake": true,
+  "requires_workplace_activity": false,
+  "platform": "Supabase",
+  "description": "Learn how independent hardware stores serve their communities. Build the habits of a dependable teammate. Practice clear communication and helpful customer interactions.",
+  "learning_objectives": [
+    "Describe how independent hardware stores serve local communities.",
+    "Identify common store responsibilities and how they connect.",
+    "Demonstrate reliability, accountability, and initiative.",
+    "Communicate priorities and support coworkers during busy periods.",
+    "Use four steps to begin and complete a customer interaction."
+  ],
+  "lessons": [
+    {
+      "lesson_id": "RF-101-L01",
+      "course_id": "RF-101",
+      "position": 1,
+      "title": "What Makes Independent Hardware Stores Different?",
+      "estimated_minutes": 4,
+      "content_blocks": [
+        {
+          "type": "heading",
+          "text": "Lesson introduction"
+        },
+        {
+          "type": "paragraph",
+          "text": "Every community needs places to buy supplies for homes and businesses."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hardware stores help meet those needs."
+        },
+        {
+          "type": "paragraph",
+          "text": "A homeowner may need supplies to repair a fence. A contractor may need materials for a job. A gardener may need soil or fertilizer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Each customer has a different goal."
+        },
+        {
+          "type": "paragraph",
+          "text": "Independent hardware stores serve these customers through local knowledge, useful products, and personal service."
+        },
+        {
+          "type": "heading",
+          "text": "What is an independent hardware store?"
+        },
+        {
+          "type": "paragraph",
+          "text": "An independent hardware store is owned by an individual, family, or independent company."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some stores belong to purchasing cooperatives. These groups help stores buy merchandise and access business resources."
+        },
+        {
+          "type": "paragraph",
+          "text": "Independent stores often make their own decisions about products and services."
+        },
+        {
+          "type": "paragraph",
+          "text": "These decisions can reflect local needs."
+        },
+        {
+          "type": "bullet",
+          "text": "A coastal store may carry extra storm supplies and rust-resistant hardware."
+        },
+        {
+          "type": "bullet",
+          "text": "A rural store may stock fencing, irrigation supplies, and farm equipment parts."
+        },
+        {
+          "type": "bullet",
+          "text": "A downtown store may offer specialty products for repairing older homes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Each store can adjust its selection to serve local customers."
+        },
+        {
+          "type": "heading",
+          "text": "Why independent hardware stores matter"
+        },
+        {
+          "type": "paragraph",
+          "text": "Independent hardware stores provide more than merchandise."
+        },
+        {
+          "type": "paragraph",
+          "text": "They can support their communities in several ways."
+        },
+        {
+          "type": "bullet",
+          "text": "Local jobs: Stores employ people nearby. Employees gain experience and useful skills."
+        },
+        {
+          "type": "bullet",
+          "text": "Community support: Many stores support local schools, charities, and events."
+        },
+        {
+          "type": "bullet",
+          "text": "Local knowledge: Employees learn about common projects in their area."
+        },
+        {
+          "type": "bullet",
+          "text": "Customer relationships: Employees may recognize returning customers and remember their projects."
+        },
+        {
+          "type": "paragraph",
+          "text": "These relationships can help build trust."
+        },
+        {
+          "type": "heading",
+          "text": "Your role in the store"
+        },
+        {
+          "type": "paragraph",
+          "text": "Every employee contributes to the business."
+        },
+        {
+          "type": "paragraph",
+          "text": "You may stock shelves, operate a register, or assist customers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Each task matters."
+        },
+        {
+          "type": "paragraph",
+          "text": "Organized shelves help customers find products. Accurate transactions help the store operate smoothly. Friendly service makes customers feel welcome."
+        },
+        {
+          "type": "paragraph",
+          "text": "Your work also affects the store’s reputation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Customers notice how employees treat them. They notice clean aisles and organized merchandise."
+        },
+        {
+          "type": "paragraph",
+          "text": "Positive experiences give customers a reason to return."
+        }
+      ],
+      "knowledge_check": {
+        "question_id": "RF-101-L01-KC01",
+        "type": "single_choice",
+        "prompt": "Customers often request specialty fasteners for older homes. What is one advantage of an independent hardware store?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The store must carry every type of fastener."
+          },
+          {
+            "id": "B",
+            "text": "The store can adjust its product selection to meet local needs."
+          },
+          {
+            "id": "C",
+            "text": "The store should only sell products found in national chains."
+          },
+          {
+            "id": "D",
+            "text": "The store should ignore requests from local customers."
+          }
+        ],
+        "correct_option_id": "B",
+        "explanation": "Independent stores can select products based on the needs of their communities."
+      },
+      "takeaway": "Independent hardware stores serve their communities through useful products, local knowledge, and personal service. Every employee contributes to that mission."
+    },
+    {
+      "lesson_id": "RF-101-L02",
+      "course_id": "RF-101",
+      "position": 2,
+      "title": "How a Hardware Store Works",
+      "estimated_minutes": 4,
+      "content_blocks": [
+        {
+          "type": "heading",
+          "text": "Lesson introduction"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer needs a replacement faucet cartridge."
+        },
+        {
+          "type": "paragraph",
+          "text": "The shelf is empty. The inventory system shows three in stock."
+        },
+        {
+          "type": "paragraph",
+          "text": "An employee checks another display. A coworker checks the receiving area."
+        },
+        {
+          "type": "paragraph",
+          "text": "They find the part and help the customer."
+        },
+        {
+          "type": "paragraph",
+          "text": "This is teamwork. Store jobs are connected."
+        },
+        {
+          "type": "heading",
+          "text": "Common store responsibilities"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hardware stores have many daily tasks."
+        },
+        {
+          "type": "bullet",
+          "text": "Customer assistance: Help shoppers find products and understand their options."
+        },
+        {
+          "type": "bullet",
+          "text": "Checkout: Process purchases and returns accurately."
+        },
+        {
+          "type": "bullet",
+          "text": "Receiving: Check deliveries and record merchandise."
+        },
+        {
+          "type": "bullet",
+          "text": "Stocking: Put products in the correct locations."
+        },
+        {
+          "type": "bullet",
+          "text": "Merchandising: Keep displays, signs, and shelves clear and organized."
+        },
+        {
+          "type": "bullet",
+          "text": "Store services: Perform approved tasks such as key cutting or paint mixing."
+        },
+        {
+          "type": "bullet",
+          "text": "Housekeeping: Keep work areas clean and safe."
+        },
+        {
+          "type": "paragraph",
+          "text": "In a small store, one employee may perform several of these jobs."
+        },
+        {
+          "type": "heading",
+          "text": "Your work affects other people"
+        },
+        {
+          "type": "paragraph",
+          "text": "Imagine a shipment of drill bits arrives."
+        },
+        {
+          "type": "paragraph",
+          "text": "The receiving employee checks the boxes. The products are then placed in the wrong area."
+        },
+        {
+          "type": "paragraph",
+          "text": "Later, a sales associate cannot find them for a customer."
+        },
+        {
+          "type": "paragraph",
+          "text": "The system shows the products in stock. The shelf is empty."
+        },
+        {
+          "type": "paragraph",
+          "text": "One mistake can affect several people."
+        },
+        {
+          "type": "heading",
+          "text": "Three habits that help"
+        },
+        {
+          "type": "bullet",
+          "text": "Finish the task: Complete each step of your assignment."
+        },
+        {
+          "type": "bullet",
+          "text": "Share information: Report missing, damaged, or misplaced products."
+        },
+        {
+          "type": "bullet",
+          "text": "Think about the next person: Leave clear information for the coworker who follows you."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask about the correct process when you are unsure."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not change inventory records or move products without permission."
+        }
+      ],
+      "knowledge_check": {
+        "question_id": "RF-101-L02-KC01",
+        "type": "single_choice",
+        "prompt": "A customer needs a faucet cartridge. The system shows three in stock, but the shelf is empty. What should you do?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Tell the customer the inventory system is wrong."
+          },
+          {
+            "id": "B",
+            "text": "Check other possible locations and ask the right coworker for help."
+          },
+          {
+            "id": "C",
+            "text": "Tell the customer to return another day."
+          },
+          {
+            "id": "D",
+            "text": "Assume the product is unavailable without checking."
+          }
+        ],
+        "correct_option_id": "B",
+        "explanation": "An empty shelf does not always mean an item is unavailable. Check approved locations and verify availability before making a promise."
+      },
+      "takeaway": "Every store job is connected. Complete tasks carefully and share useful information with your team."
+    },
+    {
+      "lesson_id": "RF-101-L03",
+      "course_id": "RF-101",
+      "position": 3,
+      "title": "Being a Dependable Team Member",
+      "estimated_minutes": 4,
+      "content_blocks": [
+        {
+          "type": "heading",
+          "text": "Lesson introduction"
+        },
+        {
+          "type": "paragraph",
+          "text": "Two employees finish stocking their assigned shelves."
+        },
+        {
+          "type": "paragraph",
+          "text": "One leaves the aisle right away."
+        },
+        {
+          "type": "paragraph",
+          "text": "The other notices several products in the wrong spots."
+        },
+        {
+          "type": "paragraph",
+          "text": "That employee checks the labels and fixes the problem."
+        },
+        {
+          "type": "paragraph",
+          "text": "Both finished the assigned work. One also helped the next shift."
+        },
+        {
+          "type": "heading",
+          "text": "What dependability looks like"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dependability means people can count on you."
+        },
+        {
+          "type": "bullet",
+          "text": "Reliability: Arrive ready for work and complete your assignments."
+        },
+        {
+          "type": "bullet",
+          "text": "Accountability: Admit mistakes and help correct them."
+        },
+        {
+          "type": "bullet",
+          "text": "Initiative: Notice problems and take appropriate action."
+        },
+        {
+          "type": "bullet",
+          "text": "Respect: Treat customers and coworkers professionally."
+        },
+        {
+          "type": "bullet",
+          "text": "Learning: Ask questions and accept feedback."
+        },
+        {
+          "type": "bullet",
+          "text": "Communication: Tell the team about changes or problems."
+        },
+        {
+          "type": "heading",
+          "text": "Take ownership"
+        },
+        {
+          "type": "paragraph",
+          "text": "You are restocking screws. Several shelf labels do not match the packages."
+        },
+        {
+          "type": "paragraph",
+          "text": "Customers may see the wrong price. The cashier may face a pricing dispute."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the information. Then follow your store’s process for correcting labels."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a supervisor if you do not have permission to make changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ownership does not mean doing every job yourself."
+        },
+        {
+          "type": "paragraph",
+          "text": "It means taking a problem seriously and helping it reach the right person."
+        },
+        {
+          "type": "heading",
+          "text": "Learn from mistakes"
+        },
+        {
+          "type": "paragraph",
+          "text": "You place fasteners in the wrong location."
+        },
+        {
+          "type": "paragraph",
+          "text": "A coworker notices the mistake."
+        },
+        {
+          "type": "paragraph",
+          "text": "Thank the coworker. Fix the problem. Ask how to prevent it next time."
+        },
+        {
+          "type": "paragraph",
+          "text": "New employees will make mistakes."
+        },
+        {
+          "type": "paragraph",
+          "text": "A dependable employee learns and improves."
+        }
+      ],
+      "knowledge_check": {
+        "question_id": "RF-101-L03-KC01",
+        "type": "single_choice",
+        "prompt": "You notice products in the wrong locations. Your assigned work is almost finished. What should you do?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ignore the products. They were not part of your assignment."
+          },
+          {
+            "id": "B",
+            "text": "Move them wherever you think they belong."
+          },
+          {
+            "id": "C",
+            "text": "Verify the correct locations. Fix the problem if permitted, or tell the right coworker."
+          },
+          {
+            "id": "D",
+            "text": "Wait for another employee to notice the problem."
+          }
+        ],
+        "correct_option_id": "C",
+        "explanation": "Dependability includes noticing problems and taking responsible action. Check information before making changes."
+      },
+      "takeaway": "Dependability grows through daily actions. Be prepared, follow through, and take responsibility."
+    },
+    {
+      "lesson_id": "RF-101-L04",
+      "course_id": "RF-101",
+      "position": 4,
+      "title": "Working Together When Things Get Busy",
+      "estimated_minutes": 4,
+      "content_blocks": [
+        {
+          "type": "heading",
+          "text": "Lesson introduction"
+        },
+        {
+          "type": "paragraph",
+          "text": "It is Saturday morning. The store is busy."
+        },
+        {
+          "type": "paragraph",
+          "text": "A delivery truck arrives. The checkout line grows."
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer needs help loading concrete. Another customer needs help in plumbing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Several tasks need attention."
+        },
+        {
+          "type": "paragraph",
+          "text": "The team must decide what comes first."
+        },
+        {
+          "type": "heading",
+          "text": "Recognize priorities"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by looking for immediate safety concerns."
+        },
+        {
+          "type": "paragraph",
+          "text": "Acknowledge waiting customers. Ask a coworker for help as needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Think about your current assignment. Can you pause it safely?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tell the right person about changes to your work."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some tasks cannot be left without securing the work area."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, never leave operating equipment or an unsecured load unattended."
+        },
+        {
+          "type": "heading",
+          "text": "Communicate clearly"
+        },
+        {
+          "type": "paragraph",
+          "text": "Clear requests help coworkers respond."
+        },
+        {
+          "type": "paragraph",
+          "text": "Unclear: “Somebody needs to help up front.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Clear: “The checkout line is growing. Can an available cashier help?”"
+        },
+        {
+          "type": "paragraph",
+          "text": "State the problem. Say where help is needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Explain any urgent details."
+        },
+        {
+          "type": "heading",
+          "text": "Handle disagreements with respect"
+        },
+        {
+          "type": "paragraph",
+          "text": "Busy shifts can feel stressful."
+        },
+        {
+          "type": "paragraph",
+          "text": "Coworkers may disagree about priorities."
+        },
+        {
+          "type": "paragraph",
+          "text": "Focus on the problem. Avoid blame."
+        },
+        {
+          "type": "paragraph",
+          "text": "Listen to the other person. They may be handling a task you cannot see."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a supervisor for guidance when priorities conflict."
+        },
+        {
+          "type": "heading",
+          "text": "Work as one team"
+        },
+        {
+          "type": "paragraph",
+          "text": "You may need to change tasks during a busy shift."
+        },
+        {
+          "type": "paragraph",
+          "text": "Help customers and coworkers without losing track of your assignment."
+        },
+        {
+          "type": "paragraph",
+          "text": "Good teamwork uses clear communication and sound judgment."
+        }
+      ],
+      "knowledge_check": {
+        "question_id": "RF-101-L04-KC01",
+        "type": "single_choice",
+        "prompt": "You are stocking shelves. A customer asks for help loading concrete. Your manager also needs the stocking finished. What should you do?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Tell the customer you are too busy."
+          },
+          {
+            "id": "B",
+            "text": "Arrange help for the customer and communicate any change to your assigned work."
+          },
+          {
+            "id": "C",
+            "text": "Leave the stocking area without telling anyone."
+          },
+          {
+            "id": "D",
+            "text": "Promise to finish both tasks without asking for help."
+          }
+        ],
+        "correct_option_id": "B",
+        "explanation": "Help the customer and keep your team informed. Ask for support when priorities compete."
+      },
+      "takeaway": "Busy stores need clear communication, smart priorities, and teamwork. Never sacrifice safety to work faster."
+    },
+    {
+      "lesson_id": "RF-101-L05",
+      "course_id": "RF-101",
+      "position": 5,
+      "title": "Making Your First Customer Interaction Count",
+      "estimated_minutes": 4,
+      "content_blocks": [
+        {
+          "type": "heading",
+          "text": "Lesson introduction"
+        },
+        {
+          "type": "paragraph",
+          "text": "You are organizing merchandise."
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer approaches you."
+        },
+        {
+          "type": "paragraph",
+          "text": "“I want to hang a shelf in my garage. I am not sure what I need.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "You recognize some products. You do not know which ones fit this project."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by asking questions."
+        },
+        {
+          "type": "heading",
+          "text": "Step 1 — Acknowledge"
+        },
+        {
+          "type": "paragraph",
+          "text": "Greet the customer. Give them your attention."
+        },
+        {
+          "type": "paragraph",
+          "text": "You might say, “Good morning! What can I help you find today?”"
+        },
+        {
+          "type": "paragraph",
+          "text": "A friendly greeting makes customers feel welcome."
+        },
+        {
+          "type": "heading",
+          "text": "Step 2 — Ask"
+        },
+        {
+          "type": "paragraph",
+          "text": "Learn about the customer’s project."
+        },
+        {
+          "type": "bullet",
+          "text": "“What are you working on?”"
+        },
+        {
+          "type": "bullet",
+          "text": "“Where will you use the product?”"
+        },
+        {
+          "type": "bullet",
+          "text": "“Are you replacing something?”"
+        },
+        {
+          "type": "bullet",
+          "text": "“Do you have a picture or an old part?”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Listen to the answers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not recommend a product before you understand the project."
+        },
+        {
+          "type": "heading",
+          "text": "Step 3 — Assist"
+        },
+        {
+          "type": "paragraph",
+          "text": "Help the customer find suitable products or information."
+        },
+        {
+          "type": "paragraph",
+          "text": "Show them where products are located."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a knowledgeable coworker for help when needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not guess about safety or product suitability."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verify important details before making a recommendation."
+        },
+        {
+          "type": "heading",
+          "text": "Step 4 — Close"
+        },
+        {
+          "type": "paragraph",
+          "text": "Make sure the customer knows the next step."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask whether they need anything else."
+        },
+        {
+          "type": "paragraph",
+          "text": "You might say, “Is there anything else I can help you find?”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Thank the customer for visiting."
+        },
+        {
+          "type": "heading",
+          "text": "Put the steps together"
+        },
+        {
+          "type": "paragraph",
+          "text": "Return to the customer who wants to hang a shelf."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask about the wall material."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask how much weight the shelf will hold."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask whether the customer has mounting instructions."
+        },
+        {
+          "type": "paragraph",
+          "text": "These details help determine the correct hardware."
+        },
+        {
+          "type": "paragraph",
+          "text": "Share the information with an experienced coworker as needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stay involved when possible. Each interaction is a chance to learn."
+        }
+      ],
+      "knowledge_check": {
+        "question_id": "RF-101-L05-KC01",
+        "type": "single_choice",
+        "prompt": "A customer needs hardware for a heavy shelf. What should you do first?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Recommend the largest wall anchors."
+          },
+          {
+            "id": "B",
+            "text": "Ask about the wall material, shelf weight, and mounting instructions."
+          },
+          {
+            "id": "C",
+            "text": "Send the customer to the hardware aisle to choose."
+          },
+          {
+            "id": "D",
+            "text": "Choose the first product you see without asking questions."
+          }
+        ],
+        "correct_option_id": "B",
+        "explanation": "The project details help determine the correct hardware. Ask questions before recommending products."
+      },
+      "takeaway": "Follow four steps: Acknowledge, Ask, Assist, and Close."
+    }
+  ],
+  "final_assessment": {
+    "title": "RF-101 Final Assessment",
+    "passing_score_percent": 80,
+    "allow_retake": true,
+    "questions": [
+      {
+        "question_id": "RF-101-FINAL-Q01",
+        "position": 1,
+        "type": "single_choice",
+        "prompt": "A customer asks why they should shop at your independent hardware store. Which answer best describes the store’s value?",
+        "options": [
+          {
+            "id": "A",
+            "text": "We always have the lowest prices."
+          },
+          {
+            "id": "B",
+            "text": "We offer personal service and products that reflect local needs."
+          },
+          {
+            "id": "C",
+            "text": "Our products are always better than those sold elsewhere."
+          },
+          {
+            "id": "D",
+            "text": "Every customer wants the same products."
+          }
+        ],
+        "correct_option_id": "B",
+        "explanation": "Independent stores can build relationships and respond to local needs. Avoid promises you cannot verify.",
+        "points": 10
+      },
+      {
+        "question_id": "RF-101-FINAL-Q02",
+        "position": 2,
+        "type": "single_choice",
+        "prompt": "You finish stocking a delivery. Several boxes were not checked against the receiving paperwork. What should you do?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Leave them. Your shelves are finished."
+          },
+          {
+            "id": "B",
+            "text": "Put the boxes on any open shelf."
+          },
+          {
+            "id": "C",
+            "text": "Tell the right coworker and follow the receiving process."
+          },
+          {
+            "id": "D",
+            "text": "Ignore the boxes until the next delivery."
+          }
+        ],
+        "correct_option_id": "C",
+        "explanation": "Accurate receiving helps the team find products and keep correct records.",
+        "points": 10
+      },
+      {
+        "question_id": "RF-101-FINAL-Q03",
+        "position": 3,
+        "type": "single_choice",
+        "prompt": "You put products in the wrong location. A coworker points out the mistake. What should you do?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Acknowledge the mistake, fix it, and learn the correct location."
+          },
+          {
+            "id": "B",
+            "text": "Blame confusing labels."
+          },
+          {
+            "id": "C",
+            "text": "Ignore the comment."
+          },
+          {
+            "id": "D",
+            "text": "Hide the mistake and hope nobody notices."
+          }
+        ],
+        "correct_option_id": "A",
+        "explanation": "Accountability means owning mistakes and helping correct them.",
+        "points": 10
+      },
+      {
+        "question_id": "RF-101-FINAL-Q04",
+        "position": 4,
+        "type": "single_choice",
+        "prompt": "You are stocking shelves. A customer needs help. The cashier also asks for support. What should you do?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Keep stocking until your manager tells you to stop."
+          },
+          {
+            "id": "B",
+            "text": "Acknowledge the customer and coordinate help with coworkers or a supervisor."
+          },
+          {
+            "id": "C",
+            "text": "Leave your assignment without telling anyone."
+          },
+          {
+            "id": "D",
+            "text": "Assume another employee will handle both requests."
+          }
+        ],
+        "correct_option_id": "B",
+        "explanation": "Good teamwork means recognizing priorities and communicating changes.",
+        "points": 10
+      },
+      {
+        "question_id": "RF-101-FINAL-Q05",
+        "position": 5,
+        "type": "single_choice",
+        "prompt": "A customer asks about an electrical component. You do not know its specifications. What should you do?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Recommend it because it looks similar."
+          },
+          {
+            "id": "B",
+            "text": "Tell the customer you cannot help."
+          },
+          {
+            "id": "C",
+            "text": "Verify the specifications and seek qualified help."
+          },
+          {
+            "id": "D",
+            "text": "Use the component without checking its rating."
+          }
+        ],
+        "correct_option_id": "C",
+        "explanation": "Do not guess about technical requirements. Verify information and seek appropriate help.",
+        "points": 10
+      }
+    ]
+  },
+  "max_quiz_attempts": 3,
+  "quiz_points_per_correct": 10,
+  "max_quiz_points": 50,
+  "minimum_correct_to_pass": 4,
+  "award_lifetime_points_once_per_question": true,
+  "award_standard_trophy_once": true,
+  "competition_scoring_separate": true,
+  "store_availability_admin_controlled": true,
+  "employee_testing": "deferred",
+  "culturing": "paused",
+  "scope": "general_colTRAIN",
+  "review_date": "2026-10-18"
+}
