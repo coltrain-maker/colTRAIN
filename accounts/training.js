@@ -23,7 +23,7 @@ function defaultDeadline(zone, offset = 30) {
 async function mountTraining({ client, root, user, profile, stores, initialStore, onAccounts, notify }) {
   const events = new AbortController();
   const timer = learningTimer(client);
-  let selectedCompetition, leaderboardTab = "competition", challengeMode = false, challengeResult = null;
+  let selectedCompetition, leaderboardTab = "competition", challengeMode = false, challengeResult = null, refresherCompetition = null;
   let active = true, busy = false, view = "home", menu = false, storeId = initialStore, workspace, selectedCourse, assignment, lessons = [], questions = [], completions = [], lessonIndex = 0, quizQuestions = [], questionIndex = 0, answers = {}, submissionKey = null, result = null, review = [], librarySearch = "";
   const context = document.querySelector("header .store");
   const originalContext = context?.innerHTML;
@@ -127,6 +127,12 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     return blocks.map((b) => b.type === "heading" ? `<h3>${esc(b.text)}</h3>` : b.type === "callout" ? `<div class="callout">${esc(b.text)}</div>` : b.type === "bullet" ? `<p class="training-bullet">\u2022 ${esc(b.text)}</p>` : `<p>${esc(b.text)}</p>`).join("");
   }
   function quizEntryButton() {
+    if (refresherCompetition) {
+      const event = workspace.competitions.find(c => c.id === refresherCompetition);
+      const participant = event?.standings.find(p => p.is_you && !p.withdrawn);
+      const available = event?.status === 'active' && participant && participant.attempts_used < participant.attempt_limit;
+      return btn(available ? participant.attempts_used ? 'Retake competition quiz' : 'Take competition quiz' : 'Back to competition', available ? 'competition-challenge' : 'competition-standings', `data-competition="${refresherCompetition}"`, 'secondary');
+    }
     if (!assignment) return btn("Knowledge check", "start-quiz", "disabled", "secondary");
     if (assignment.completed_at) return btn("View course result", "latest-result", `data-assignment="${assignment.id}"`, "secondary");
     const label = assignment.attempts_used >= assignment.attempt_limit ? "Get manager help" : assignment.attempts_used ? "Try knowledge check again" : "Knowledge check";
@@ -138,7 +144,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     const done = completions.includes(l.id), unlocked = !assignment || lessonIndex === 0 || completions.includes(lessons[lessonIndex - 1].id);
     const last = lessonIndex === lessons.length - 1;
     const action = !assignment ? btn(last ? "Back to library" : "Next lesson", "preview-next") : done ? last ? quizEntryButton() : btn("Next lesson", "review-next") : btn(last ? "Complete & take quiz" : "Mark complete & continue", "complete-lesson", unlocked ? "" : "disabled");
-    return `<div class="breadcrumb">${btn("My training", "navigate", 'data-view="courses"', "secondary")} / ${esc(c.category)}</div><div class="course-layout"><aside class="panel lesson-nav"><h3>${esc(c.title)}</h3><p>${completions.length} of ${lessons.length} lessons complete</p>${bar(assignment ? progress(assignment) : 0)}${lessons.map((item, i) => `<button type="button" class="lesson-item ${i === lessonIndex ? "active" : ""}" data-training-action="lesson" data-index="${i}" ${assignment && i > 0 && !completions.includes(lessons[i - 1].id) ? "disabled" : ""}><span class="lesson-number">${completions.includes(item.id) ? "\u2713" : i + 1}</span><span>${esc(item.title)}</span></button>`).join("")}${quizEntryButton()}</aside><article class="panel lesson-content"><div class="chips"><span class="chip">Lesson ${lessonIndex + 1} of ${lessons.length}</span>${!assignment ? '<span class="chip gray">Course preview</span>' : ""}</div><h1>${esc(l.title)}</h1>${content(l.body)}<div class="lesson-actions"><span>${done ? "\u2713 Lesson already complete. You can review it without marking it again." : assignment ? "Mark complete when you\u2019re ready to continue." : "Preview only. Your manager must assign this course before you can earn points or a trophy."}</span>${action}</div>${assignment ? `<p class="quiz-note">Lessons earn completion checkmarks. Quiz answers earn points. Due ${day(assignment.due_date)}${assignment.overdue ? " \xB7 Overdue training remains available." : ""}</p>` : ""}</article></div>`;
+    return `${refresherCompetition ? `<section class="panel"><h2>Review before your competition quiz</h2><p class="muted">This refresher is optional. Your lessons are already complete. Review any lesson, or go straight to the competition quiz.</p>${quizEntryButton()}</section>` : ''}<div class="breadcrumb">${btn("My training", "navigate", 'data-view="courses"', "secondary")} / ${esc(c.category)}</div><div class="course-layout"><aside class="panel lesson-nav"><h3>${esc(c.title)}</h3><p>${completions.length} of ${lessons.length} lessons complete</p>${bar(assignment ? progress(assignment) : 0)}${lessons.map((item, i) => `<button type="button" class="lesson-item ${i === lessonIndex ? "active" : ""}" data-training-action="lesson" data-index="${i}" ${assignment && i > 0 && !completions.includes(lessons[i - 1].id) ? "disabled" : ""}><span class="lesson-number">${completions.includes(item.id) ? "\u2713" : i + 1}</span><span>${esc(item.title)}</span></button>`).join("")}${quizEntryButton()}</aside><article class="panel lesson-content"><div class="chips"><span class="chip">Lesson ${lessonIndex + 1} of ${lessons.length}</span>${!assignment ? '<span class="chip gray">Course preview</span>' : ""}</div><h1>${esc(l.title)}</h1>${content(l.body)}<div class="lesson-actions"><span>${done ? "\u2713 Lesson already complete. You can review it without marking it again." : assignment ? "Mark complete when you\u2019re ready to continue." : "Preview only. Your manager must assign this course before you can earn points or a trophy."}</span>${action}</div>${assignment ? `<p class="quiz-note">Lessons earn completion checkmarks. Quiz answers earn points. Due ${day(assignment.due_date)}${assignment.overdue ? " \xB7 Overdue training remains available." : ""}</p>` : ""}</article></div>`;
   }
   function quizPage() {
     if (challengeMode) return challengeQuizPage();
@@ -190,7 +196,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
       });
     }
   }
-  async function openCourse(id) {
+  async function openCourse(id, competition = null) {
+    refresherCompetition = competition;
     challengeMode=false;
     await refresh();
     selectedCourse = id;
@@ -347,6 +354,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         leaderboardTab=action==='leaderboard-lifetime'?'lifetime':action==='leaderboard-tab'?target.dataset.tab:'competition';
         await refresh();view='leaderboard';render();return;
       }
+      if(action==='competition-review'){await openCourse(target.dataset.course,target.dataset.competition);return;}
       if(action==='competition-challenge'){await startChallenge(target.dataset.competition);return;}
       if(action==='competition-finish'){
         if(!window.confirm(target.dataset.state==='scheduled'?'Cancel this scheduled competition? Course assignments will remain available.':'End this competition now? Current scores will become final.'))return;

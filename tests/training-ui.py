@@ -227,18 +227,28 @@ try:
   spotlight=page.locator('.training-competition-spotlight')
   expect(spotlight).to_contain_text('Service review challenge')
   assert spotlight.bounding_box()['y']<page.get_by_role('heading',name='Your next chapter').bounding_box()['y']
-  page.get_by_role('button',name='Take competition challenge',exact=True).click()
+  expect(spotlight.get_by_role('button',name='Take competition quiz',exact=True)).to_be_visible()
+  spotlight.get_by_role('button',name='Review lessons',exact=True).click()
+  expect(page.get_by_role('heading',name='Review before your competition quiz')).to_be_visible()
+  expect(page.locator('.lesson-content h1')).to_have_text('Help customers find the answer')
+  page.locator('.lesson-content').get_by_role('button',name='Next lesson',exact=True).click()
+  page.locator('.lesson-content').get_by_role('button',name='Next lesson',exact=True).click()
+  assert sql('select count(*) from public.training_lesson_completions')=='3'
+  assert sql('select count(*) from public.training_attempts')=='4'
+  assert sql('select count(*) from private.training_challenge_attempts')=='0'
+  assert sql('select sum(points) from private.training_point_awards')=='40'
+  page.locator('.lesson-content').get_by_role('button',name='Take competition quiz',exact=True).click()
   quiz(False)
   expect(page.get_by_role('heading',name='Challenge saved')).to_be_visible()
   expect(page.locator('.answer-review')).to_contain_text('Correct answer:')
   page.get_by_role('button',name='See standings',exact=True).click()
   expect(page.locator('.training-standings tbody tr')).to_contain_text('Pilot Employee')
   assert page.get_by_text('Total team learning time',exact=True).count()==0
-  page.get_by_role('button',name='Try challenge again',exact=True).click()
+  page.get_by_role('button',name='Retake competition quiz',exact=True).click()
   quiz(True)
   page.get_by_role('button',name='See standings',exact=True).click()
   expect(page.locator('.training-standings tbody tr td').nth(2)).to_have_text('40')
-  page.get_by_role('button',name='Try challenge again',exact=True).click()
+  page.get_by_role('button',name='Retake competition quiz',exact=True).click()
   quiz('all')
   page.get_by_role('button',name='See standings',exact=True).click()
   expect(page.locator('.training-standings tbody tr td').nth(2)).to_have_text('50')
