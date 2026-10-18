@@ -12,6 +12,7 @@ root = Path(__file__).resolve().parent.parent
 code = sys.argv[1] if len(sys.argv) > 1 else 'RF-101'
 assert code in ('RF-101', 'RF-102', 'RF-103', 'RF-104')
 batch = '--batch' in sys.argv[2:]
+legacy_catalog = '--legacy-catalog' in sys.argv[2:]
 assert not batch or code != 'RF-101'
 builder = 'build-rf101-import.py' if code == 'RF-101' else 'build-retail-foundations-import.py'
 subprocess.run(['python', 'scripts/' + builder], cwd=root, check=True)
@@ -72,6 +73,8 @@ try:
         raise RuntimeError('PostgreSQL did not become ready')
     sql((root / 'tests/supabase-auth-fixture.sql').read_text())
     for migration in sorted((root / 'supabase/migrations').glob('*.sql')):
+        if legacy_catalog and migration.name.endswith('0011_course_catalog.sql'):
+            continue
         sql(migration.read_text())
     # Reuse only identity/store setup, not other suites' deactivation scenarios.
     sql((root / 'tests/accounts-security.sql').read_text().split('\nset role authenticated;', 1)[0])
@@ -155,6 +158,12 @@ try:
     equal(sql(f"select count(*) from public.training_trophies where course_id='{course}' and user_id='{employee}'"), '1', 'review challenge duplicates no trophy')
     if code != 'RF-101':
         equal(sql("select to_jsonb(c) from public.training_courses c where slug='rf-101-your-first-day-in-hardware-retail'"), first_course, 'RF-101 preserved')
+    if legacy_catalog:
+        sql((root / 'supabase/migrations/202610180011_course_catalog.sql').read_text())
+        sql(script)
+        equal(sql(f"select sum(points) from private.training_point_awards where course_id='{course}' and user_id='{employee}'"), '50', 'migration and import preserve earned points')
+    classification = json.loads(query(employee, f"select jsonb_build_object('code',course_code,'level',skill_level,'paths',learning_paths) from public.training_course_catalog where course_id='{course}'"))
+    equal(classification, {'code':code,'level':'foundations','paths':['New Retail Employee']}, 'classification present regardless of import/migration order')
     print(f'Passed {checks} {code} {"batch" if batch else "single-course"} import/content/RLS/training assertions in isolated PostgreSQL.')
 finally:
     subprocess.run(['docker', 'stop', name], check=False, capture_output=True)

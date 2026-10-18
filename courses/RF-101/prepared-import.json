@@ -1199,5 +1199,25 @@
       "correct_option": 2,
       "explanation": "Acknowledge, Ask, Assist, and Close covers the full interaction: welcome the customer, understand the project, help without guessing, and confirm the next step before thanking them."
     }
-  ]
+  ],
+  "catalog": {
+    "course_code": "RF-101",
+    "skill_level": "foundations",
+    "topics": [
+      "Onboarding",
+      "Teamwork",
+      "Customer service"
+    ],
+    "keywords": [
+      "first day",
+      "independent retail",
+      "acknowledge",
+      "ask",
+      "assist",
+      "close"
+    ],
+    "learning_paths": [
+      "New Retail Employee"
+    ]
+  }
 }

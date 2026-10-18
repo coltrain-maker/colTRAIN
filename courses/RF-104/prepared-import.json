@@ -731,5 +731,24 @@
       "correct_option": 2,
       "explanation": "A useful handoff shares relevant facts and helps the next employee continue the work."
     }
-  ]
+  ],
+  "catalog": {
+    "course_code": "RF-104",
+    "skill_level": "foundations",
+    "topics": [
+      "Store operations",
+      "Departments",
+      "Customer service"
+    ],
+    "keywords": [
+      "store layout",
+      "receiving",
+      "backstock",
+      "store services",
+      "customer handoff"
+    ],
+    "learning_paths": [
+      "New Retail Employee"
+    ]
+  }
 }

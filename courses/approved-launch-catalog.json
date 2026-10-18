@@ -1,0 +1,215 @@
+{
+  "version": "2.0",
+  "status": "Approved launch catalog",
+  "skill_level": "foundations",
+  "academies": [
+    {
+      "name": "Retail Foundations",
+      "courses": [
+        {
+          "code": "RF-101",
+          "title": "Your First Day in Hardware Retail"
+        },
+        {
+          "code": "RF-102",
+          "title": "Retail Terms & Hardware Vocabulary"
+        },
+        {
+          "code": "RF-103",
+          "title": "Store Safety Fundamentals"
+        },
+        {
+          "code": "RF-104",
+          "title": "Understanding the Hardware Store"
+        }
+      ]
+    },
+    {
+      "name": "Customer Experience & Sales",
+      "courses": [
+        {
+          "code": "CS-101",
+          "title": "Customer Service Fundamentals"
+        },
+        {
+          "code": "CS-102",
+          "title": "Selling Skills for Hardware Retail"
+        },
+        {
+          "code": "CS-103",
+          "title": "Helping Customers When You Don't Know the Answer"
+        }
+      ]
+    },
+    {
+      "name": "Inventory & Merchandising",
+      "courses": [
+        {
+          "code": "IM-101",
+          "title": "Inventory Management Fundamentals"
+        },
+        {
+          "code": "IM-102",
+          "title": "Loss Prevention Fundamentals"
+        },
+        {
+          "code": "IM-103",
+          "title": "Merchandising Fundamentals"
+        }
+      ]
+    },
+    {
+      "name": "Hardware & Tools",
+      "courses": [
+        {
+          "code": "HT-101",
+          "title": "Hardware & Fasteners Fundamentals"
+        },
+        {
+          "code": "HT-102",
+          "title": "Hand Tools Fundamentals"
+        },
+        {
+          "code": "HT-103",
+          "title": "Power Tools Fundamentals"
+        }
+      ]
+    },
+    {
+      "name": "Home Systems & Building Materials",
+      "courses": [
+        {
+          "code": "HB-101",
+          "title": "Electrical & Lighting Fundamentals"
+        },
+        {
+          "code": "HB-102",
+          "title": "Plumbing Fundamentals"
+        },
+        {
+          "code": "HB-103",
+          "title": "Heating & Cooling Fundamentals"
+        },
+        {
+          "code": "HB-104",
+          "title": "Lumber & Building Materials Fundamentals"
+        }
+      ]
+    },
+    {
+      "name": "Paint & Decorating",
+      "courses": [
+        {
+          "code": "PD-101",
+          "title": "Paint Fundamentals"
+        },
+        {
+          "code": "PD-102",
+          "title": "Paint Sales & Customer Consultation"
+        },
+        {
+          "code": "PD-103",
+          "title": "Surface Preparation & Painting Tools"
+        }
+      ]
+    },
+    {
+      "name": "Lawn, Garden & Outdoor Power",
+      "courses": [
+        {
+          "code": "LG-101",
+          "title": "Lawn & Garden Fundamentals"
+        },
+        {
+          "code": "LG-102",
+          "title": "Outdoor Power Equipment Fundamentals"
+        }
+      ]
+    },
+    {
+      "name": "Business Operations & Leadership",
+      "courses": [
+        {
+          "code": "BL-101",
+          "title": "Retail Pricing Fundamentals"
+        },
+        {
+          "code": "BL-102",
+          "title": "Leadership & Managing a Retail Team"
+        },
+        {
+          "code": "BL-103",
+          "title": "Time Management & Prioritization"
+        }
+      ]
+    }
+  ],
+  "learning_paths": [
+    {
+      "name": "New Retail Employee",
+      "core_courses": [
+        "RF-101",
+        "RF-102",
+        "RF-103",
+        "RF-104",
+        "CS-101",
+        "CS-103"
+      ]
+    },
+    {
+      "name": "Sales Floor Associate",
+      "core_courses": [
+        "CS-102",
+        "HT-101",
+        "HT-102",
+        "HT-103",
+        "IM-103"
+      ]
+    },
+    {
+      "name": "Department Specialist",
+      "core_courses": [],
+      "select_from": [
+        "HB-101",
+        "HB-102",
+        "HB-103",
+        "HB-104",
+        "PD-101",
+        "PD-102",
+        "PD-103",
+        "LG-101",
+        "LG-102"
+      ],
+      "selection_rule": "Choose 2–4 relevant courses per specialization; do not automatically assign all options."
+    },
+    {
+      "name": "Inventory & Merchandising Associate",
+      "core_courses": [
+        "IM-101",
+        "IM-102",
+        "IM-103"
+      ]
+    },
+    {
+      "name": "Department Lead/Supervisor",
+      "core_courses": [
+        "BL-101",
+        "BL-102",
+        "BL-103"
+      ],
+      "selection_rule": "Add relevant department courses chosen by the manager; specific optional-course mapping is not yet defined."
+    },
+    {
+      "name": "Store Manager/Owner",
+      "core_courses": [
+        "BL-101",
+        "BL-102",
+        "BL-103",
+        "IM-101",
+        "IM-102",
+        "IM-103"
+      ],
+      "future_advanced_courses": true
+    }
+  ]
+}

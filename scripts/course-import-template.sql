@@ -52,6 +52,15 @@ begin
     values((q->>'id')::uuid,(q->>'correct_option')::integer,q->>'explanation');
   end loop;
  end if;
+ -- Optional metadata: imports remain compatible before the catalog migration.
+ if to_regclass('public.training_course_catalog') is not null then
+  insert into public.training_course_catalog(course_id,course_code,skill_level,topics,keywords,learning_paths)
+  values(target,payload->'catalog'->>'course_code',payload->'catalog'->>'skill_level',
+   array(select jsonb_array_elements_text(payload->'catalog'->'topics')),
+   array(select jsonb_array_elements_text(payload->'catalog'->'keywords')),
+   array(select jsonb_array_elements_text(payload->'catalog'->'learning_paths')))
+  on conflict(course_id) do nothing;
+ end if;
 end;
 $courseimport$;
 commit;

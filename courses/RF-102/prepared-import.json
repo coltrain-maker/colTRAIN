@@ -783,5 +783,26 @@
       "correct_option": 1,
       "explanation": "A word like “universal” does not prove compatibility. Check manufacturer specifications and ask for help when needed."
     }
-  ]
+  ],
+  "catalog": {
+    "course_code": "RF-102",
+    "skill_level": "foundations",
+    "topics": [
+      "Retail vocabulary",
+      "Inventory",
+      "Product knowledge"
+    ],
+    "keywords": [
+      "SKU",
+      "UPC",
+      "stock keeping unit",
+      "barcode",
+      "nominal size",
+      "fasteners",
+      "trimmer line"
+    ],
+    "learning_paths": [
+      "New Retail Employee"
+    ]
+  }
 }

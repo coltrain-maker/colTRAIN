@@ -791,5 +791,25 @@
       "correct_option": 1,
       "explanation": "Near misses should be reported. Clear facts help the store address hazards before injuries occur."
     }
-  ]
+  ],
+  "catalog": {
+    "course_code": "RF-103",
+    "skill_level": "foundations",
+    "topics": [
+      "Safety",
+      "Equipment",
+      "Emergency response"
+    ],
+    "keywords": [
+      "hazards",
+      "lifting",
+      "spills",
+      "near misses",
+      "evacuation",
+      "incident reporting"
+    ],
+    "learning_paths": [
+      "New Retail Employee"
+    ]
+  }
 }

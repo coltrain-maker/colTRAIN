@@ -7,6 +7,7 @@ from pathlib import Path
 import json
 import re
 import uuid
+from course_catalog import metadata
 
 root = Path(__file__).resolve().parent.parent
 folder = root / 'courses/RF-101'
@@ -77,7 +78,7 @@ assert [q['position'] for q in questions] == list(range(1, 6))
 course = {'id': course_id, 'slug': 'rf-101-your-first-day-in-hardware-retail', 'version': 1,
           'title': source['title'], 'description': source['description'],
           'category': source['academy'], 'passing_percent': 80}
-payload = {'course': course, 'lessons': lessons, 'questions': questions}
+payload = {'course': course, 'lessons': lessons, 'questions': questions, 'catalog': metadata('RF-101')}
 # This file contains final answers: it is an administrator/developer artifact,
 # deliberately outside hosting/ and the public website build allowlist.
 (folder / 'prepared-import.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n')
@@ -136,6 +137,15 @@ begin
    insert into private.training_answer_keys(question_id,correct_option,explanation)
     values((q->>'id')::uuid,(q->>'correct_option')::integer,q->>'explanation');
   end loop;
+ end if;
+ -- Optional metadata: imports remain compatible before the catalog migration.
+ if to_regclass('public.training_course_catalog') is not null then
+  insert into public.training_course_catalog(course_id,course_code,skill_level,topics,keywords,learning_paths)
+  values(target,payload->'catalog'->>'course_code',payload->'catalog'->>'skill_level',
+   array(select jsonb_array_elements_text(payload->'catalog'->'topics')),
+   array(select jsonb_array_elements_text(payload->'catalog'->'keywords')),
+   array(select jsonb_array_elements_text(payload->'catalog'->'learning_paths')))
+  on conflict(course_id) do nothing;
  end if;
 end;
 $rf101import$;

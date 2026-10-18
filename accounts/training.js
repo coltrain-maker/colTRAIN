@@ -1,4 +1,5 @@
 import {avatarMarkup} from './avatars.js';
+import {skillLevels,skillLabel,libraryTopics,libraryPaths,filterLibrary} from './course-library.js';
 import { notificationsPage } from './notifications.js';
 import { createTeamCorner, teamSupportRequests } from './team-corner.js';
 import { setAccountHeader } from './header.js';
@@ -30,6 +31,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   let selectedCompetition, leaderboardTab = "competition", challengeMode = false, challengeResult = null, refresherCompetition = null;
   let active = true, busy = false, view = initialView, menu = false, storeId = initialStore, workspace, selectedCourse, assignment, lessons = [], questions = [], completions = [], lessonIndex = 0, quizQuestions = [], questionIndex = 0, answers = {}, submissionKey = null, result = null, review = [], librarySearch = "";
   let notifications = {items:[],unread_count:0};
+  let libraryLevel='',libraryTopic='',libraryPath='';
   let accountMarkup = "", corner = null, cornerStore = null, supportRequests = [];
   async function loadTeam(){
     if(!corner || cornerStore !== storeId){corner?.close();cornerStore=storeId;corner=createTeamCorner({client,store:storeId,user,notify,onRender:()=>{if(active&&view==='team')render();},isVisible:()=>active&&view==='team'});}
@@ -73,7 +75,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   }
   function courseCard(c, a) {
     const pct = a ? progress(a) : 0;
-    return `<article class="course-card">${cover()}<div class="course-info"><div class="chips"><span class="chip">${esc(c.category)}</span><span class="chip ${a?.completed_at ? "green" : a?.overdue ? "amber" : "gray"}">${esc(a ? status(a) : c.released ? "Available to your store" : "Not released to this store")}</span></div><h2>${esc(c.title)}</h2><p class="library-description">${esc(c.description)}</p><div class="meta"><span>${c.lesson_count} lessons</span><span>${c.question_count} questions</span><span>Up to ${c.question_count * 10} points</span></div>${a ? `<p class="training-due ${a.overdue ? "account-danger" : ""}">${a.overdue ? "Overdue \xB7 " : ""}Due ${day(a.due_date)}</p><p class="progress-label">${a.lessons_completed} of ${c.lesson_count} lessons complete \xB7 ${pct}%</p>${bar(pct)}` : ""}<div class="course-bottom">${btn(a?.completed_at ? "Review course" : a?.started_at ? "Continue learning" : a ? "Start learning" : "Preview course", "open-course", `data-course="${c.id}"`)}${a?.latest_attempt ? btn("View result", "latest-result", `data-assignment="${a.id}"`, "secondary") : ""}${workspace.can_manage && c.released ? btn("Assign training", "assign-course", `data-course="${c.id}"`, "secondary") : ""}${workspace.is_admin ? btn(c.released ? "Remove from library" : "Make available to store", "release", `data-course="${c.id}" data-available="${!c.released}"`, "secondary") : ""}</div></div></article>`;
+    return `<article class="course-card">${cover()}<div class="course-info"><div class="chips"><span class="chip">${esc(c.category)}</span><span class="chip gray">${esc(skillLabel(c))}</span><span class="chip ${a?.completed_at ? "green" : a?.overdue ? "amber" : "gray"}">${esc(a ? status(a) : c.released ? "Available to your store" : "Not released to this store")}</span></div><h2>${esc(c.title)}</h2><p class="library-description">${esc(c.description)}</p><div class="meta"><span>${c.lesson_count} lessons</span><span>${c.question_count} questions</span><span>Up to ${c.question_count * 10} points</span></div>${a ? `<p class="training-due ${a.overdue ? "account-danger" : ""}">${a.overdue ? "Overdue \xB7 " : ""}Due ${day(a.due_date)}</p><p class="progress-label">${a.lessons_completed} of ${c.lesson_count} lessons complete \xB7 ${pct}%</p>${bar(pct)}` : ""}<div class="course-bottom">${btn(a?.completed_at ? "Review course" : a?.started_at ? "Continue learning" : a ? "Start learning" : "Preview course", "open-course", `data-course="${c.id}"`)}${a?.latest_attempt ? btn("View result", "latest-result", `data-assignment="${a.id}"`, "secondary") : ""}${workspace.can_manage && c.released ? btn("Assign training", "assign-course", `data-course="${c.id}"`, "secondary") : ""}${workspace.is_admin ? btn(c.released ? "Remove from library" : "Make available to store", "release", `data-course="${c.id}" data-available="${!c.released}"`, "secondary") : ""}</div></div></article>`;
   }
   function learningHome() {
     const items = mine();
@@ -97,8 +99,9 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     return title("My training", "Your assigned courses, deadlines, and saved progress.") + `<div class="stack">${mine().length ? mine().map((a) => courseCard(courseById(a.course_id), a)).join("") : '<section class="panel"><h2>No courses assigned yet</h2><p class="muted">Your manager can assign training from the store\u2019s library.</p></section>'}</div>`;
   }
   function library() {
-    const visible = workspace.courses.filter((c) => `${c.title} ${c.category} ${c.description}`.toLowerCase().includes(librarySearch.toLowerCase()));
-    return title("Course library", `Courses available to ${workspace.store.name}. Availability does not automatically assign training.`) + `<form id="training-search-form" class="panel"><label class="field">Search courses<input name="search" type="search" value="${esc(librarySearch)}"></label><button class="button secondary">Search</button></form><div class="stack">${visible.length ? visible.map((c) => courseCard(c, mine().find((a) => a.course_id === c.id))).join("") : '<section class="panel"><h2>No courses available</h2><p class="muted">Your colTRAIN administrator releases courses to this store.</p></section>'}</div>`;
+    const visible=filterLibrary(workspace.courses,{search:librarySearch,level:libraryLevel,topic:libraryTopic,path:libraryPath});
+    const filtered=Boolean(librarySearch||libraryLevel||libraryTopic||libraryPath);
+    return title("Course library", `Explore training for ${workspace.store.name}. Your manager assigns courses and deadlines.`) + `<form id="training-search-form" class="panel library-filters"><div class="library-filter-fields"><label class="field">Skill level<select name="level" aria-label="Skill level"><option value="">All skill levels</option>${skillLevels.map(([value,label])=>`<option value="${value}" ${libraryLevel===value?'selected':''}>${label}</option>`).join('')}</select></label><label class="field">Topic or academy<select name="topic" aria-label="Topic or academy"><option value="">All topics and academies</option>${libraryTopics(workspace.courses).map(topic=>`<option value="${esc(topic)}" ${libraryTopic===topic?'selected':''}>${esc(topic)}</option>`).join('')}</select></label><label class="field">Learning path<select name="path" aria-label="Learning path"><option value="">All learning paths</option>${libraryPaths(workspace.courses).map(path=>`<option value="${esc(path)}" ${libraryPath===path?'selected':''}>${esc(path)}</option>`).join('')}</select></label><label class="field library-keywords">Search courses<input name="search" type="search" placeholder="Course name, code, or keywords" value="${esc(librarySearch)}"></label></div><div class="library-filter-actions"><button class="button" type="submit">Search</button>${btn('Clear filters','clear-library','','secondary')}</div></form><p class="library-result-count" role="status">${visible.length} ${visible.length===1?'course':'courses'}${filtered?(visible.length===1?' matches your search':' match your search'):' available to browse'}</p><div class="stack">${visible.length ? visible.map((c) => courseCard(c, mine().find((a) => a.course_id === c.id))).join("") : `<section class="panel"><h2>${workspace.courses.length?'No matching courses':'No courses available'}</h2><p class="muted">${workspace.courses.length?'Try another skill level, topic, learning path, or keyword, or clear your filters.':'Your colTRAIN administrator releases courses to this store.'}</p></section>`}</div>`;
   }
   function assignPage() {
     const released = workspace.courses.filter((c) => c.released);
@@ -269,6 +272,9 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     const data = new FormData(form);
     if (form.id === "training-search-form") {
       librarySearch = data.get("search").trim();
+      libraryLevel=data.get('level')||'';
+      libraryTopic=data.get('topic')||'';
+      libraryPath=data.get('path')||'';
       render();
       return;
     }
@@ -337,7 +343,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     if(e.target.matches('#training-competition-form input[name=start]'))document.querySelector('#training-competition-form input[name=end]').min=e.target.value;
     if (e.target.id === "training-department-member") document.querySelector("#training-department-options").innerHTML = departmentOptions(workspace.members.find((m) => m.id === e.target.value));
     if (e.target.id === "training-store") run(async () => {
-      storeId = e.target.value;
+      storeId = e.target.value;librarySearch='';libraryLevel='';libraryTopic='';libraryPath='';
       await refresh();
       view = "home";
       render();
@@ -377,6 +383,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         render();
         return;
       }
+      if(action==='clear-library'){librarySearch='';libraryLevel='';libraryTopic='';libraryPath='';render();return;}
       if(action==='notifications-refresh'){await refresh();render();return;}
       if(action==='notifications-read-all'||action==='notifications-read'||action==='notifications-open'){
         const item=notifications.items.find(n=>n.id===target.dataset.notification);
@@ -392,7 +399,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         render();return;
       }
       if(action==='team-support-open'){
-        storeId=target.dataset.store;await refresh();await loadTeam();view='team';menu=false;render();return;
+        storeId=target.dataset.store;librarySearch='';libraryLevel='';libraryTopic='';libraryPath='';await refresh();await loadTeam();view='team';menu=false;render();return;
       }
       if(action==='team-support-refresh'){supportRequests=await rpc('get_team_corner_support_requests',{});render();return;}
       if(action.startsWith('team-')){await corner.action(target);render();return;}

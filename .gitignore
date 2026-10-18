@@ -7,3 +7,5 @@ accounts/config.js
 accounts/index.html
 
 hosting/
+__pycache__/
+*.pyc

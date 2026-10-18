@@ -8,6 +8,7 @@ import json
 import hashlib
 import re
 import uuid
+from course_catalog import metadata as catalog_metadata
 
 root = Path(__file__).resolve().parent.parent
 namespace = uuid.UUID('16574c65-11aa-47dd-a055-e8ef7ca9498a')
@@ -135,7 +136,8 @@ def read_course(code):
     assert set(keys) == {m.group(1) for m in matches}
     payload = {'course': {'id': identifier(code + ':1.0.0'), 'slug': code.lower() + '-' + slugs[code],
                           'version': 1, 'title': titles[code], 'description': description,
-                          'category': category, 'passing_percent': 80}, 'lessons': lessons, 'questions': questions}
+                          'category': category, 'passing_percent': 80}, 'lessons': lessons, 'questions': questions,
+               'catalog': catalog_metadata(code)}
     (folder / 'prepared-import.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n')
     manifest = {'course_code': code, 'source_version': '1.0.0', 'database_revision': 1,
                 'course_uuid': payload['course']['id'],

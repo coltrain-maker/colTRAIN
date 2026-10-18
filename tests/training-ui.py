@@ -152,7 +152,66 @@ try:
    page.get_by_role('button',name='Open menu').click()
    page.locator('.training-drawer').get_by_role('button',name='Sign out and switch accounts',exact=True).click()
    expect(page.get_by_role('heading',name='Welcome to colTRAIN')).to_be_visible()
+  def check_library_filters(is_admin=False):
+   # Temporary local fixtures are removed before normal assignment checks.
+   sql("""insert into public.training_courses(id,slug,title,description,category,published) values
+    ('c9000000-0000-4000-8000-000000000001','pt-201','Project Consultation','Choose a suitable coating.','Paint & Decorating',true),
+    ('c9000000-0000-4000-8000-000000000002','pt-301','Failure Analysis','Analyze paint problems.','Paint & Decorating',true),
+    ('c9000000-0000-4000-8000-000000000003','hidden-library','Hidden Library Course','Not released.','Private Academy',true);
+    insert into public.training_course_catalog(course_id,course_code,skill_level,topics,keywords) values
+    ('c9000000-0000-4000-8000-000000000001','PT-201','application',array['Paint'],array['rollers','adhesion']),
+    ('c9000000-0000-4000-8000-000000000002','PT-301','expertise',array['Paint'],array['adhesion']),
+    ('c9000000-0000-4000-8000-000000000003','HIDDEN','expertise',array['Secret topic'],array['secret']);
+    update public.training_course_catalog set learning_paths=array['Sales Floor Associate'] where course_code='PT-201';
+    update public.training_course_catalog set learning_paths=array['Private path'] where course_code='HIDDEN';
+    insert into public.training_course_releases(organization_id,course_id,released_by)
+    select '10000000-0000-0000-0000-000000000099',id,'00000000-0000-0000-0000-000000000001'
+    from public.training_courses where slug in ('pt-201','pt-301');""")
+   navigate('Course library')
+   expect(page.locator('.course-card')).to_have_count(4 if is_admin else 3)
+   if not is_admin:
+    assert 'Secret topic' not in page.locator('#training-search-form select[name=topic]').inner_text()
+    assert 'Private Academy' not in page.locator('#training-search-form select[name=topic]').inner_text()
+    assert 'Private path' not in page.get_by_label('Learning path',exact=True).inner_text()
+   page.get_by_label('Skill level',exact=True).select_option('application')
+   page.get_by_label('Topic or academy',exact=True).select_option('Paint')
+   page.get_by_label('Learning path',exact=True).select_option('Sales Floor Associate')
+   page.get_by_label('Search courses',exact=True).fill('  ROLLERS coating  ')
+   page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
+   expect(page.locator('.course-card h2')).to_have_text('Project Consultation')
+   expect(page.locator('.library-result-count')).to_have_text('1 course matches your search')
+   expect(page.locator('.course-card')).to_contain_text('Level 2 — Application')
+   navigate('Home' if not is_admin else 'Dashboard')
+   navigate('Course library')
+   expect(page.get_by_label('Skill level',exact=True)).to_have_value('application')
+   expect(page.get_by_label('Learning path',exact=True)).to_have_value('Sales Floor Associate')
+   expect(page.locator('.course-card h2')).to_have_text('Project Consultation')
+   page.get_by_label('Skill level',exact=True).select_option('expertise')
+   page.get_by_label('Learning path',exact=True).select_option('')
+   page.get_by_label('Search courses',exact=True).fill('adhesion')
+   page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
+   expect(page.locator('.course-card h2')).to_have_text('Failure Analysis')
+   page.get_by_label('Search courses',exact=True).fill('no such course')
+   page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
+   expect(page.get_by_role('heading',name='No matching courses')).to_be_visible()
+   expect(page.get_by_label('Search courses',exact=True)).to_have_value('no such course')
+   page.get_by_role('button',name='Clear filters',exact=True).click()
+   expect(page.locator('.course-card')).to_have_count(4 if is_admin else 3)
+   page.get_by_label('Search courses',exact=True).fill('pt-201')
+   page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
+   expect(page.locator('.course-card h2')).to_have_text('Project Consultation')
+   page.set_viewport_size({'width':390,'height':844})
+   assert page.locator('body').evaluate('element=>element.scrollWidth<=innerWidth')
+   page.screenshot(path='/tmp/coltrain-library-mobile.png',full_page=True)
+   page.set_viewport_size({'width':1280,'height':1000})
+   page.get_by_role('button',name='Clear filters',exact=True).click()
+   sql("""delete from public.training_course_releases where course_id::text like 'c9000000-%';
+    delete from public.training_course_catalog where course_id::text like 'c9000000-%';
+    delete from public.training_courses where id::text like 'c9000000-%';""")
+   navigate('Course library')
+   expect(page.locator('.course-card')).to_have_count(1)
   login('admin@example.test')
+  check_library_filters(True)
   navigate('Course library')
   page.get_by_role('button',name='Make available to store',exact=True).click()
   expect(page.locator('#account-message')).to_contain_text('Course is available')
@@ -185,6 +244,8 @@ try:
   expect(page.locator('#account-message')).to_have_text('Training assigned to 1 person.')
   signout()
   login('employee.a@example.test')
+  check_library_filters()
+  navigate('Home')
   check_install_entry()
   expect(page.get_by_role('heading',name='Your next chapter',exact=True)).to_be_visible()
   expect(page.locator('.notification-dot')).to_be_visible()
