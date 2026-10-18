@@ -78,7 +78,7 @@ The existing account browser test and email handler tests remain applicable. A s
 
 ## Remaining stages
 
-Step 4a now prepares competitions, review challenges for previous graduates, and active-learning estimates; see COMPETITIONS_SETUP.md for its incremental migration, deployment, and tests. Team Corner is the next Step 4 slice. Step 5 adds assignment/reminder notification delivery and preferences, home-screen installation, and broader pilot checks. The calendar, news feed, AI assistant, expanded catalog, commercial billing, and full course authoring remain outside this Step 3 slice. Lesson media/upload tools and authoring for manager-created onboarding need their own implementation; the first connected course uses the existing text lessons.
+Step 4a now prepares competitions, review challenges for previous graduates, and active-learning estimates; see COMPETITIONS_SETUP.md for its incremental migration, deployment, and tests. Step 4b prepares the connected Team Corner; see TEAM_CORNER_SETUP.md for its incremental migration, photo/privacy checks, and pilot deployment. Step 5 adds assignment/reminder notification delivery and preferences, home-screen installation, and broader pilot checks. The calendar, news feed, AI assistant, expanded catalog, commercial billing, and full course authoring remain outside this Step 3 slice. Lesson media/upload tools and authoring for manager-created onboarding need their own implementation; the first connected course uses the existing text lessons.
 
 ## Completed-lesson review navigation update
 

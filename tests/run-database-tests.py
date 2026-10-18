@@ -42,6 +42,8 @@ try:
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     result = sql((root / 'tests/competitions-security.sql').read_text())
     print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
+    result = sql((root / 'tests/team-corner-security.sql').read_text())
+    print(next(line for line in result.stdout.splitlines() if line.startswith('Passed ')))
     store = sql("select id from public.organizations where name='Concurrency test store';").stdout.strip()
     def reserve(index):
         return sql(f"""begin; set local role authenticated;
@@ -88,6 +90,42 @@ try:
     assert sum(result.returncode==0 for result in outcomes)==1, [r.stderr for r in outcomes]
     assert sql(f"select count(*) from private.training_challenge_attempts where competition_id='{review_event}'").stdout.strip()=='3'
     print('Passed concurrent review challenges: idempotent replay and three-attempt maximum.')
+    corner_store='10000000-0000-0000-0000-000000000050'
+    corner_user='00000000-0000-0000-0000-000000000052'
+    corner_key=str(uuid.uuid4())
+    def corner_post(index):
+        return sql(f"""begin;set local role authenticated;set local request.jwt.claim.sub='{corner_user}';
+          select public.create_team_corner_post('{corner_store}','{corner_key}','Concurrent post');
+          select pg_sleep(.1);commit;""",check=False)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        outcomes=list(pool.map(corner_post,[1,2]))
+    assert all(result.returncode==0 for result in outcomes),[r.stderr for r in outcomes]
+    assert sql(f"select count(*) from public.team_corner_posts where id='{corner_key}'").stdout.strip()=='1'
+    photo_key=str(uuid.uuid4())
+    photo_path=sql(f"""set role authenticated;set request.jwt.claim.sub='{corner_user}';
+      select public.register_team_corner_media('{corner_store}','{photo_key}')->>'object_name';""").stdout.strip()
+    sql(f"set role authenticated;set request.jwt.claim.sub='{corner_user}';insert into storage.objects(bucket_id,name) values('team-media','{photo_path}');")
+    race_keys=[str(uuid.uuid4()),str(uuid.uuid4())]
+    def attach_photo(key):
+        return sql(f"""begin;set local role authenticated;set local request.jwt.claim.sub='{corner_user}';
+          select public.create_team_corner_post('{corner_store}','{key}','Attach once',array['{photo_key}'::uuid]);
+          select pg_sleep(.1);commit;""",check=False)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        outcomes=list(pool.map(attach_photo,race_keys))
+    assert sum(result.returncode==0 for result in outcomes)==1,[r.stderr for r in outcomes]
+    assert all(r.returncode==0 or 'Photo is not available' in r.stderr for r in outcomes)
+    assert sql(f"select count(*) from public.team_corner_posts where id in ('{race_keys[0]}','{race_keys[1]}')").stdout.strip()=='1'
+    comment_key=str(uuid.uuid4())
+    def corner_comment(index):
+        return sql(f"""begin;set local role authenticated;set local request.jwt.claim.sub='{corner_user}';
+          select public.create_team_corner_comment('{corner_key}','{comment_key}','Concurrent comment');
+          select pg_sleep(.1);commit;""",check=False)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        outcomes=list(pool.map(corner_comment,[1,2]))
+    assert all(r.returncode==0 for r in outcomes),[r.stderr for r in outcomes]
+    assert sql(f"select count(*) from public.team_corner_comments where id='{comment_key}'").stdout.strip()=='1'
+    print('Passed concurrent Team Corner submissions: one post/comment per key; a photo attaches only once.')
+
 
 
 finally:

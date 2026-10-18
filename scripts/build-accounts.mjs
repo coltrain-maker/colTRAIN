@@ -13,7 +13,7 @@ if(key&&!key.startsWith('sb_publishable_')){
 }
 const bundle=await build({entryPoints:['accounts/accounts.js'],bundle:true,write:false,format:'iife',platform:'browser',target:['es2022'],minify:true,define:{__SUPABASE_URL__:JSON.stringify(url),__SUPABASE_KEY__:JSON.stringify(key)},logLevel:'warning'});
 const template=await readFile('accounts/template.html','utf8');
-const css=(await readFile('styles.css','utf8'))+'\n'+(await readFile('accounts/accounts.css','utf8'))+'\n'+(await readFile('accounts/training.css','utf8'));
+const css=(await readFile('styles.css','utf8'))+'\n'+(await readFile('accounts/accounts.css','utf8'))+'\n'+(await readFile('accounts/training.css','utf8'))+'\n'+(await readFile('accounts/team-corner.css','utf8'));
 // Escape closing script sequences in the generated inline bundle.
 const js=bundle.outputFiles[0].text.replace(/<\/script/gi,'<\\/script');
 await mkdir('accounts',{recursive:true});

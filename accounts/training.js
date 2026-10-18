@@ -1,3 +1,4 @@
+import { createTeamCorner, teamSupportRequests } from './team-corner.js';
 import { setAccountHeader } from './header.js';
 import { competitionSpotlight, competitionPoints, competitionsPage, startCompetitionPage, competitionRecipients, leaderboardPage } from './competitions.js';
 import { learningTimer } from './learning-time.js';
@@ -26,7 +27,11 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   const timer = learningTimer(client);
   let selectedCompetition, leaderboardTab = "competition", challengeMode = false, challengeResult = null, refresherCompetition = null;
   let active = true, busy = false, view = initialView, menu = false, storeId = initialStore, workspace, selectedCourse, assignment, lessons = [], questions = [], completions = [], lessonIndex = 0, quizQuestions = [], questionIndex = 0, answers = {}, submissionKey = null, result = null, review = [], librarySearch = "";
-  let accountMarkup = "";
+  let accountMarkup = "", corner = null, cornerStore = null, supportRequests = [];
+  async function loadTeam(){
+    if(!corner || cornerStore !== storeId){corner?.close();cornerStore=storeId;corner=createTeamCorner({client,store:storeId,user,notify,onRender:()=>{if(active&&view==='team')render();},isVisible:()=>active&&view==='team'});}
+    await corner.load();
+  }
   const headerButton = document.createElement("button");
   headerButton.className = "icon-button training-menu-toggle";
   headerButton.type = "button";
@@ -53,7 +58,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   const title = (name, copy = "", action = "") => `<div class="page-heading"><div><h1>${esc(name)}</h1>${copy ? `<p>${esc(copy)}</p>` : ""}</div>${action}</div>`;
   const stat = (number, label) => `<div class="stat"><div><strong>${esc(number)}</strong><small>${esc(label)}</small></div></div>`;
   function navigation() {
-    return menu ? `<div class="training-menu-shade"><nav class="training-drawer" aria-label="Main navigation"><div class="panel-top"><h2>colTRAIN</h2>${btn("Close", "menu", "", "secondary")}</div>${[["home", workspace.can_manage ? "Dashboard" : "Home"], ["courses", "My training"], ["library", "Course library"], ["leaderboard", "Store leaderboard"], ["competitions", "Competitions"], ...workspace.can_manage ? [["assign", "Assign training"], ["departments", "Departments"]] : []].map(([page, label]) => `<button type="button" data-training-action="navigate" data-view="${page}" ${view === page ? 'aria-current="page"' : ""}>${label}</button>`).join("")}<button type="button" data-training-action="accounts" ${view === "accounts" ? 'aria-current="page"' : ""}>Account & team settings</button><button type="button" class="account-danger" data-action="signout">Sign out</button></nav></div>` : "";
+    return menu ? `<div class="training-menu-shade"><nav class="training-drawer" aria-label="Main navigation"><div class="panel-top"><h2>colTRAIN</h2>${btn("Close", "menu", "", "secondary")}</div>${[["home", workspace.can_manage ? "Dashboard" : "Home"], ["courses", "My training"], ["library", "Course library"], ["leaderboard", "Store leaderboard"], ["competitions", "Competitions"], ["team", "Team Corner"], ...workspace.is_admin ? [["team-support", "Team support"]] : [], ...workspace.can_manage ? [["assign", "Assign training"], ["departments", "Departments"]] : []].map(([page, label]) => `<button type="button" data-training-action="navigate" data-view="${page}" ${view === page ? 'aria-current="page"' : ""}>${label}</button>`).join("")}<button type="button" data-training-action="accounts" ${view === "accounts" ? 'aria-current="page"' : ""}>Account & team settings</button><button type="button" class="account-danger" data-action="signout">Sign out</button></nav></div>` : "";
   }
   function cover() {
     return '<div class="course-cover"><div class="cover-grid"></div><div class="cover-scene"><div class="scene-person"></div><div class="scene-person second"></div><div class="scene-desk"></div><div class="scene-chat">\xB7\xB7\xB7</div></div></div>';
@@ -179,7 +184,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     if (!active) return;
     onNavigate?.(view,storeId);
     headerButton.setAttribute("aria-expanded", String(menu));
-    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "accounts" ? `<div class="training-account-settings">${accountMarkup}</div>` : view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
+    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "team-support" ? teamSupportRequests(supportRequests) : view === "team" ? corner?.html() || "" : view === "accounts" ? `<div class="training-account-settings">${accountMarkup}</div>` : view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
+    if(view==='team')corner?.hydrate(root);else corner?.pause();
     timer.set(!menu && (view === "course" || view === "quiz" && (challengeMode || assignment && !assignment.completed_at && assignment.attempts_used < assignment.attempt_limit)) ? assignment?.id || null : null);
   }
   async function run(action) {
@@ -246,6 +252,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     render();
   }
   async function handleForm(form) {
+    if(form.dataset.teamForm){await corner.submit(form);render();return;}
     const data = new FormData(form);
     if (form.id === "training-search-form") {
       librarySearch = data.get("search").trim();
@@ -308,8 +315,11 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     e.preventDefault();
     run(() => handleForm(e.target));
   }, { signal: events.signal });
+  document.addEventListener('input',e=>{if(active&&view==='team')corner?.input(e.target);},{signal:events.signal});
   document.addEventListener("change", (e) => {
     if (!active) return;
+    if(view==='team')corner?.input(e.target);
+    if(e.target.matches('[data-team-files]')){run(async()=>{await corner.choosePhotos(e.target);render();});return;}
     if(e.target.id==='training-competition-course')document.querySelector('#training-competition-recipients').innerHTML=competitionRecipients(workspace,e.target.value);
     if(e.target.matches('#training-competition-form input[name=start]'))document.querySelector('#training-competition-form input[name=end]').min=e.target.value;
     if (e.target.id === "training-department-member") document.querySelector("#training-department-options").innerHTML = departmentOptions(workspace.members.find((m) => m.id === e.target.value));
@@ -349,9 +359,16 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         view = target.dataset.view;
         menu = false;
         await refresh();
+        if(view==='team')await loadTeam();
+        if(view==='team-support')supportRequests=await rpc('get_team_corner_support_requests',{});
         render();
         return;
       }
+      if(action==='team-support-open'){
+        storeId=target.dataset.store;await refresh();await loadTeam();view='team';menu=false;render();return;
+      }
+      if(action==='team-support-refresh'){supportRequests=await rpc('get_team_corner_support_requests',{});render();return;}
+      if(action.startsWith('team-')){await corner.action(target);render();return;}
       if(action==='competition-new'){await refresh();view='competition-new';menu=false;render();return;}
       if(action==='competition-standings'||action==='leaderboard-lifetime'||action==='leaderboard-tab'){
         if(target.dataset.competition)selectedCompetition=target.dataset.competition;
@@ -428,6 +445,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     if (!active) return;
     active = false;
     timer.close();
+    corner?.close();
     events.abort();
     headerButton.remove();
     root.classList.remove("training-main");
@@ -436,6 +454,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   try {
     await refresh();
     if (view === "accounts") accountMarkup = await onAccounts();
+    if (view === "team") await loadTeam();
+    if (view === "team-support") supportRequests=await rpc('get_team_corner_support_requests',{});
     render();
   } catch (e) {
     close();

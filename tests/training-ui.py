@@ -2,6 +2,8 @@
 No hosted database access, real credentials, or outbound emails are used.
 """
 from pathlib import Path
+from email.parser import BytesParser
+from email.policy import default as mail_policy
 import base64, json, os, re, subprocess, time, uuid
 from urllib.parse import urlparse, parse_qs
 from playwright.sync_api import sync_playwright, expect
@@ -28,7 +30,10 @@ encode=lambda value:base64.urlsafe_b64encode(json.dumps(value).encode()).decode(
 people={'admin@example.test':'00000000-0000-0000-0000-000000000001','manager.a@example.test':'00000000-0000-0000-0000-000000000002','employee.a@example.test':'00000000-0000-0000-0000-000000000004'}
 def person(uid):return {'id':uid,'email':next(email for email,value in people.items() if value==uid),'aud':'authenticated','role':'authenticated','user_metadata':{},'app_metadata':{'provider':'email'}}
 def token(uid):return encode({'alg':'HS256','typ':'JWT'})+'.'+encode({'sub':uid,'role':'authenticated','exp':int(time.time())+3600})+'.local-test'
+storage_bytes={}
+lost_upload_response=False
 def handle(route):
+ global lost_upload_response
  url=route.request.url
  if url=='https://training.example/accounts/':return route.fulfill(content_type='text/html',body=html)
  assert url.startswith('https://flhdeftduysnjvqnhhee.supabase.co/'),url
@@ -40,6 +45,29 @@ def handle(route):
    uid=people[route.request.post_data_json['email']];result={'access_token':token(uid),'refresh_token':'local-refresh','expires_in':3600,'token_type':'bearer','user':person(uid)}
   elif path=='/auth/v1/user':result=person(uid)
   elif path=='/auth/v1/logout':result={}
+  elif path.startswith('/storage/v1/object/'):
+   object_name=path.removeprefix('/storage/v1/object/').removeprefix('authenticated/').removeprefix('team-media/')
+   if route.request.method=='POST':
+    if object_name in storage_bytes:
+     return route.fulfill(status=409,content_type='application/json',body=json.dumps({'statusCode':409,'error':'Duplicate','message':'The resource already exists'}))
+    payload=route.request.post_data_buffer
+    content_type=route.request.headers.get('content-type','')
+    if content_type.startswith('multipart/form-data'):
+     message=BytesParser(policy=mail_policy).parsebytes(('Content-Type: '+content_type+'\r\nMIME-Version: 1.0\r\n\r\n').encode()+payload)
+     image_part=next(part for part in message.iter_parts() if part.get_content_maintype()=='image')
+     payload=image_part.get_payload(decode=True);content_type=image_part.get_content_type()
+    assert len(payload)<=1048576 and content_type=='image/jpeg'
+    object_id=query_as(uid,"insert into storage.objects(bucket_id,name) values('team-media',"+quote(object_name)+") returning id")
+    storage_bytes[object_name]=payload
+    if lost_upload_response:
+     lost_upload_response=False
+     return route.fulfill(status=500,content_type='application/json',body=json.dumps({'statusCode':500,'error':'Test failure','message':'Test response lost after storage commit'}))
+    result={'Key':'team-media/'+object_name,'Id':object_id}
+   elif route.request.method=='GET':
+    allowed=query_as(uid,"select count(*) from storage.objects where bucket_id='team-media' and name="+quote(object_name))
+    if allowed!='1':return route.fulfill(status=403,content_type='application/json',body=json.dumps({'statusCode':403,'error':'Forbidden','message':'Photo not available'}))
+    return route.fulfill(status=200,content_type='image/jpeg',body=storage_bytes[object_name])
+   else:raise AssertionError('Unexpected storage method')
   elif path.startswith('/rest/v1/rpc/'):
    function=path.rsplit('/',1)[1];assert re.fullmatch('[a-z_]+',function)
    arguments=','.join('"'+key+'"=>'+arg(value) for key,value in route.request.post_data_json.items())
@@ -304,6 +332,109 @@ try:
   expect(page.locator('#profile-form')).to_be_visible()
   navigate('Home')
   expect(page.get_by_role('heading',name='Your next chapter')).to_be_visible()
+  # Team Corner: browser uploads and reads use actual SQL/RLS, with test-only byte storage.
+  navigate('Team Corner')
+  expect(page.get_by_role('heading',name='Team Corner',exact=True)).to_be_visible()
+  expect(page.locator('.team-composer')).to_have_css('border-top-width','2px')
+  png=base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=')
+  photo={'name':'counter.png','mimeType':'image/png','buffer':png}
+  message='A paint counter win. <img src=x onerror="window.teamAttack=1">'
+  page.locator('#training-team-post-form textarea').fill(message)
+  page.locator('[data-team-files="post"]').set_input_files(photo)
+  expect(page.locator('.team-photo-previews img')).to_have_count(1)
+  # Opening the menu must preserve the typed message and prepared photo.
+  page.get_by_role('button',name='Open menu').click()
+  page.locator('.training-drawer').get_by_role('button',name='Close',exact=True).click()
+  expect(page.locator('#training-team-post-form textarea')).to_have_value(message)
+  expect(page.locator('.team-photo-previews img')).to_have_count(1)
+  lost_upload_response=True
+  page.get_by_role('button',name='Post to team',exact=True).click()
+  expect(page.locator('#account-message')).to_contain_text('The photo could not be uploaded')
+  expect(page.locator('#training-team-post-form textarea')).to_have_value(message)
+  assert sql('select count(*) from public.team_corner_posts')=='0'
+  # Retry verifies the existing reserved upload and publishes exactly one post.
+  page.get_by_role('button',name='Post to team',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('Your post is shared with the team.')
+  expect(page.locator('.team-post')).to_have_count(1)
+  expect(page.locator('.team-post .team-message').first).to_have_text(message)
+  assert page.evaluate('window.teamAttack') is None
+  post_id=sql('select id from public.team_corner_posts')
+  page.locator('.team-post .team-photo-grid img').scroll_into_view_if_needed()
+  page.wait_for_function("document.querySelector('.team-post .team-photo-grid img').naturalWidth>0")
+  assert sql('select count(*) from storage.objects')=='1'
+  page.get_by_role('button',name='Like · 0',exact=True).click()
+  expect(page.get_by_role('button',name='Liked · 1',exact=True)).to_be_visible()
+  page.get_by_role('button',name='Liked · 1',exact=True).click()
+  expect(page.get_by_role('button',name='Like · 0',exact=True)).to_be_visible()
+  page.locator('[data-team-form="comment"] textarea').fill('Could we share this with the paint team?')
+  page.locator('[data-team-files="'+post_id+'"]').set_input_files(photo)
+  expect(page.locator('[data-team-form="comment"] .team-photo-previews img')).to_have_count(1)
+  page.locator('[data-team-form="comment"]').get_by_role('button',name='Comment',exact=True).click()
+  expect(page.locator('.team-comment')).to_have_count(1)
+  expect(page.locator('.team-comment .team-message')).to_have_text('Could we share this with the paint team?')
+  page.locator('.team-comment img').scroll_into_view_if_needed()
+  page.wait_for_function("document.querySelector('.team-comment img').naturalWidth>0")
+  assert sql('select count(*) from public.team_corner_media where comment_id is not null')=='1'
+  assert page.locator('body').evaluate('element=>element.scrollWidth<=innerWidth')
+  page.screenshot(path=str(root/'design/team-corner-employee-mobile.png'),full_page=True)
+  signout()
+  login('admin@example.test')
+  navigate('Team Corner')
+  expect(page.get_by_role('heading',name='This team feed is private')).to_be_visible()
+  expect(page.locator('.team-post')).to_have_count(0)
+  signout()
+  login('manager.a@example.test')
+  navigate('Team Corner')
+  expect(page.locator('.team-post')).to_have_count(1)
+  page.get_by_role('button',name='Pin announcement',exact=True).click()
+  expect(page.locator('.team-post-pinned')).to_have_css('border-top-width','3px')
+  page.get_by_role('button',name='Turn off comments',exact=True).click()
+  expect(page.get_by_text('Comments are turned off for this post.',exact=True)).to_be_visible()
+  expect(page.locator('[data-team-form="comment"]')).to_have_count(0)
+  signout()
+  login('employee.a@example.test')
+  navigate('Team Corner')
+  expect(page.get_by_text('Pinned announcement',exact=True)).to_be_visible()
+  expect(page.locator('[data-team-form="comment"]')).to_have_count(0)
+  expect(page.get_by_role('button',name='Turn on comments',exact=True)).to_have_count(0)
+  signout()
+  login('manager.a@example.test')
+  navigate('Team Corner')
+  page.get_by_role('button',name='Turn on comments',exact=True).click()
+  page.locator('.team-comment').get_by_role('button',name='Remove',exact=True).click()
+  expect(page.locator('.team-comment')).to_have_count(0)
+  page.locator('#training-team-support-form textarea').fill('Please help us review this store announcement.')
+  page.get_by_role('button',name='Request admin support',exact=True).click()
+  expect(page.get_by_role('button',name='Revoke support access',exact=True)).to_be_visible()
+  page.set_viewport_size({'width':1280,'height':1000})
+  page.screenshot(path=str(root/'design/team-corner-manager.png'),full_page=True)
+  signout()
+  login('admin@example.test')
+  navigate('Team Corner')
+  navigate('Team support')
+  expect(page.get_by_role('heading',name='Team support requests')).to_be_visible()
+  page.get_by_role('button',name='Open store feed',exact=True).click()
+  expect(page.get_by_role('heading',name='Read-only support access')).to_be_visible()
+  expect(page.locator('.team-post')).to_have_count(1)
+  expect(page.locator('.team-composer')).to_have_count(0)
+  expect(page.get_by_role('button',name='Remove post',exact=True)).to_have_count(0)
+  support_page=page
+  page=browser.new_page(viewport={'width':1280,'height':1000})
+  page.on('pageerror',lambda error:errors.append(str(error)))
+  page.on('dialog',lambda dialog:dialog.accept())
+  page.route('**/*',handle)
+  page.goto('https://training.example/accounts/')
+  login('manager.a@example.test')
+  navigate('Team Corner')
+  page.get_by_role('button',name='Revoke support access',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('Administrator support access revoked.')
+  support_page.get_by_role('button',name='Refresh feed',exact=True).click()
+  expect(support_page.get_by_role('heading',name='This team feed is private')).to_be_visible()
+  page.get_by_role('button',name='Remove post',exact=True).click()
+  expect(page.locator('.team-post')).to_have_count(0)
+  assert sql('select count(*) from public.team_corner_posts where deleted_at is not null')=='1'
+  assert query_as(people['employee.a@example.test'],"select count(*) from storage.objects")=='0'
+  print('Passed Team Corner browser + SQL/RLS: draft preservation, lost upload response/retry without duplicates, private photos in posts/comments, escaped text, likes, manager pin/comment controls/removal, admin lock, read-only support and revocation, mobile layout.')
   assert not errors,errors
   assert sql('select count(*) from public.training_trophies')=='1'
   assert sql('select sum(points) from private.training_point_awards')=='40'
