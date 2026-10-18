@@ -1,0 +1,641 @@
+{
+  "course_information": {
+    "code": "PD-102",
+    "title": "Paint Sales & Customer Consultation",
+    "description": "Guide a customer from a paint project question to a practical product-and-supplies plan.",
+    "academy": "Paint & Decorating",
+    "skill_level": "Foundations",
+    "audience": "Department employees",
+    "relevant_departments": [
+      "Paint & Decorating"
+    ],
+    "scope": "General independent hardware retail; not store-specific",
+    "restrictions": "Retail product consultation only. No licensed trade, lead remediation, mold remediation, or hazardous-material handling instruction.",
+    "estimated_completion_minutes": 30,
+    "estimated_lessons_minutes": 25,
+    "estimated_quiz_minutes": 5,
+    "prerequisites": [
+      "PD-101 recommended",
+      "CS-102 recommended"
+    ],
+    "learning_objectives": [
+      "Use discovery questions to understand a paint project.",
+      "Explain coverage estimates without guaranteeing quantities.",
+      "Compare products using relevant label-backed benefits.",
+      "Recommend a complete but appropriate project supply list.",
+      "Confirm next steps and escalate technical uncertainties."
+    ],
+    "version": "1.0.0",
+    "review_date": "2026-10-18",
+    "status": "Ready for review",
+    "learning_progression": {
+      "application": "Future paint project application course; not part of approved 25",
+      "expertise": "Future advanced paint consultation course; not part of approved 25"
+    }
+  },
+  "source_materials": [
+    {
+      "title": "Product labels, technical data sheets, and safety data sheets for actual products stocked",
+      "organization": "Relevant paint and accessory manufacturers",
+      "url_or_file": "[Needed: actual store product selection and current manufacturer documents]",
+      "sections": "Intended use; substrates; preparation; coverage; application; ventilation; dry/recoat/cure; cleanup; safety",
+      "claims_supported": "To be verified against actual manufacturer documents before publication",
+      "permission_or_accuracy_questions": "Which brands and product lines are stocked? Confirm current instructions and any image-use permissions."
+    },
+    {
+      "title": "Local paint and solvent disposal requirements",
+      "organization": "Local solid-waste authority",
+      "url_or_file": "[Needed: local jurisdiction guidance]",
+      "sections": "Paint, solvents, and hazardous waste",
+      "claims_supported": "Disposal guidance requires local verification",
+      "permission_or_accuracy_questions": "Which store regions are supported?"
+    }
+  ],
+  "lesson_outline": [
+    {
+      "id": "PD-102-L01",
+      "title": "Discover the Project Before the Product",
+      "minutes": 5,
+      "objective": "Lead a useful paint conversation with project questions."
+    },
+    {
+      "id": "PD-102-L02",
+      "title": "Estimate Paint Quantities Responsibly",
+      "minutes": 5,
+      "objective": "Explain how to estimate coverage and why actual use varies."
+    },
+    {
+      "id": "PD-102-L03",
+      "title": "Compare Paint Options Without Pressure",
+      "minutes": 5,
+      "objective": "Use customer priorities and verified claims to compare choices."
+    },
+    {
+      "id": "PD-102-L04",
+      "title": "Build the Right Supply List",
+      "minutes": 5,
+      "objective": "Identify needed preparation, application, and cleanup items."
+    },
+    {
+      "id": "PD-102-L05",
+      "title": "Close with a Project Recap",
+      "minutes": 5,
+      "objective": "Confirm the plan and help the customer leave prepared."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "PD-102-L01",
+      "title": "Discover the Project Before the Product",
+      "estimated_minutes": 5,
+      "objective": "Lead a useful paint conversation with project questions.",
+      "why_this_matters": "The customer may ask for a specific product before describing the actual job.",
+      "content": [
+        {
+          "heading": "Begin with the surface",
+          "text": "Ask what is being painted, whether it is new or previously coated, and whether it is indoors or outdoors."
+        },
+        {
+          "heading": "Understand the result",
+          "text": "Ask what matters most: appearance, cleaning, exposure, timing, or budget. Do not assume the most expensive option is best."
+        },
+        {
+          "heading": "Confirm constraints",
+          "text": "Find out whether the customer has tools, how soon the area must be used, and whether there are damaged or damp surfaces."
+        }
+      ],
+      "hardware_store_example": "A customer requests “bathroom paint.” You learn the issue is recurring moisture and peeling. You avoid promising paint alone will fix the cause.",
+      "what_to_say_or_do": "Ask: “What is happening on the wall now, and has the moisture problem been addressed?”",
+      "common_mistakes": "Starting with price; recommending a coating before asking about surface condition.",
+      "when_to_ask_for_help": "Refer unresolved moisture, suspected mold, or unknown previous coatings to appropriate help.",
+      "supporting_materials": [
+        {
+          "id": "PD-102-L01-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Photo of associate reviewing a simple paint project checklist with a customer (illustrative; not a real customer).",
+          "alt_text": "Photo of associate reviewing a simple paint project checklist with a customer (illustrative; not a real customer).",
+          "caption": "Photo of associate reviewing a simple paint project checklist with a customer (illustrative; not a real customer).",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Ask what is being painted, whether it is new or previously coated, and whether it is indoors or outdoors.",
+        "Ask what matters most: appearance, cleaning, exposure, timing, or budget.",
+        "Find out whether the customer has tools, how soon the area must be used, and whether there are damaged or damp surfaces."
+      ],
+      "unscored_practice": {
+        "id": "PD-102-L01-P01",
+        "question": "Which question is the strongest opening?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "How much do you want to spend?"
+          },
+          {
+            "id": "B",
+            "text": "What surface are you painting and what is on it now?"
+          },
+          {
+            "id": "C",
+            "text": "Would you like our most expensive paint?"
+          },
+          {
+            "id": "D",
+            "text": "Do you want two gallons?"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "The surface and current condition determine the useful next questions."
+      }
+    },
+    {
+      "id": "PD-102-L02",
+      "title": "Estimate Paint Quantities Responsibly",
+      "estimated_minutes": 5,
+      "objective": "Explain how to estimate coverage and why actual use varies.",
+      "why_this_matters": "Too little paint delays a project. Too much may create unnecessary expense.",
+      "content": [
+        {
+          "heading": "Measure the area",
+          "text": "For a rectangular wall, multiply width by height to estimate square footage. Add wall areas for the full project. Openings can be accounted for when practical."
+        },
+        {
+          "heading": "Check product coverage",
+          "text": "Use the coverage range printed on the chosen product or its official calculator. Surface texture, porosity, application method, and number of coats affect the result."
+        },
+        {
+          "heading": "Explain the estimate",
+          "text": "A coverage figure is an estimate, not a promise. Round purchases based on available container sizes and the customer’s project needs."
+        }
+      ],
+      "hardware_store_example": "A customer has two walls measuring 10 feet wide by 8 feet high. You calculate 160 square feet before considering doors, windows, and coats. You then check the selected product’s coverage.",
+      "what_to_say_or_do": "Say: “This is the wall area. Let’s check this paint’s stated coverage and the number of coats your project needs.”",
+      "common_mistakes": "Using one universal coverage rate; forgetting multiple coats; guaranteeing the estimate.",
+      "when_to_ask_for_help": "Ask a specialist for unusual textures, spray application, or large commercial estimates.",
+      "supporting_materials": [
+        {
+          "id": "PD-102-L02-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Diagram of two 10 ft × 8 ft walls showing 160 sq ft total before adjustments.",
+          "alt_text": "Diagram of two 10 ft × 8 ft walls showing 160 sq ft total before adjustments.",
+          "caption": "Diagram of two 10 ft × 8 ft walls showing 160 sq ft total before adjustments.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "For a rectangular wall, multiply width by height to estimate square footage.",
+        "Use the coverage range printed on the chosen product or its official calculator.",
+        "A coverage figure is an estimate, not a promise."
+      ],
+      "unscored_practice": {
+        "id": "PD-102-L02-P01",
+        "question": "Two 10-by-8-foot walls have what combined area before openings?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "80 sq ft"
+          },
+          {
+            "id": "B",
+            "text": "100 sq ft"
+          },
+          {
+            "id": "C",
+            "text": "160 sq ft"
+          },
+          {
+            "id": "D",
+            "text": "200 sq ft"
+          }
+        ],
+        "correct_answer": "C",
+        "explanation": "Each wall is 10 × 8 = 80 square feet. Two walls total 160 square feet."
+      }
+    },
+    {
+      "id": "PD-102-L03",
+      "title": "Compare Paint Options Without Pressure",
+      "estimated_minutes": 5,
+      "objective": "Use customer priorities and verified claims to compare choices.",
+      "why_this_matters": "Customers benefit from a clear explanation of value, not a sales pitch.",
+      "content": [
+        {
+          "heading": "Compare relevant features",
+          "text": "Review intended use, sheen options, preparation requirements, coverage, and manufacturer-stated performance."
+        },
+        {
+          "heading": "Explain price in context",
+          "text": "A lower shelf price may not reflect the full project cost if preparation or extra coats differ. Do not promise fewer coats unless the specific product supports that claim."
+        },
+        {
+          "heading": "Offer a choice",
+          "text": "Present two appropriate options and explain a meaningful difference. Let the customer decide."
+        }
+      ],
+      "hardware_store_example": "A customer is repainting a high-traffic hallway. You compare two suitable wall paints using their published cleaning guidance and prices.",
+      "what_to_say_or_do": "Say: “Both are labeled for interior walls. This one has a different cleaning claim. Would you like to compare the label details?”",
+      "common_mistakes": "Calling one product “best” without context; inventing durability claims.",
+      "when_to_ask_for_help": "Escalate warranty, special-use, and performance claims you cannot verify.",
+      "supporting_materials": [
+        {
+          "id": "PD-102-L03-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Comparison card with two fictional products and blank fields for label-backed claims.",
+          "alt_text": "Comparison card with two fictional products and blank fields for label-backed claims.",
+          "caption": "Comparison card with two fictional products and blank fields for label-backed claims.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Review intended use, sheen options, preparation requirements, coverage, and manufacturer-stated performance.",
+        "A lower shelf price may not reflect the full project cost if preparation or extra coats differ.",
+        "Present two appropriate options and explain a meaningful difference."
+      ],
+      "unscored_practice": {
+        "id": "PD-102-L03-P01",
+        "question": "What makes a responsible product comparison?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "A claim that expensive paint is always better"
+          },
+          {
+            "id": "B",
+            "text": "A comparison based on customer needs and verified product information"
+          },
+          {
+            "id": "C",
+            "text": "A promise of no future touch-ups"
+          },
+          {
+            "id": "D",
+            "text": "A guarantee that one coat always works"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Use the customer’s project and the selected products’ documented claims."
+      }
+    },
+    {
+      "id": "PD-102-L04",
+      "title": "Build the Right Supply List",
+      "estimated_minutes": 5,
+      "objective": "Identify needed preparation, application, and cleanup items.",
+      "why_this_matters": "A good sale helps the customer complete the project without avoidable return trips.",
+      "content": [
+        {
+          "heading": "Think through the steps",
+          "text": "Consider cleaning, repairs, masking, protecting nearby surfaces, priming if needed, applying, and cleaning up."
+        },
+        {
+          "heading": "Match tools to the task",
+          "text": "Brushes, rollers, trays, extension poles, drop cloths, tape, and abrasives vary by job. Use the coating label for compatible applicators."
+        },
+        {
+          "heading": "Recommend, do not bundle blindly",
+          "text": "Explain why each item may be useful. Check what the customer already owns."
+        }
+      ],
+      "hardware_store_example": "A customer buys paint for a small bedroom and already owns a roller frame. You ask whether they have the right cover, a tray, a brush for edges, and surface protection.",
+      "what_to_say_or_do": "Say: “What tools do you already have? We can fill in only what is missing.”",
+      "common_mistakes": "Adding unrelated items; forgetting cleanup or surface protection.",
+      "when_to_ask_for_help": "Ask for help with specialty coatings, spray equipment, or respiratory protection requirements.",
+      "supporting_materials": [
+        {
+          "id": "PD-102-L04-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Flat-lay photo of brush, roller cover, tray, drop cloth, tape, and cleaning supplies with labels.",
+          "alt_text": "Flat-lay photo of brush, roller cover, tray, drop cloth, tape, and cleaning supplies with labels.",
+          "caption": "Flat-lay photo of brush, roller cover, tray, drop cloth, tape, and cleaning supplies with labels.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Consider cleaning, repairs, masking, protecting nearby surfaces, priming if needed, applying, and cleaning up.",
+        "Brushes, rollers, trays, extension poles, drop cloths, tape, and abrasives vary by job.",
+        "Explain why each item may be useful."
+      ],
+      "unscored_practice": {
+        "id": "PD-102-L04-P01",
+        "question": "What is the best way to recommend add-on supplies?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Include every accessory in the department"
+          },
+          {
+            "id": "B",
+            "text": "Ask what the customer has and explain supplies needed for the steps"
+          },
+          {
+            "id": "C",
+            "text": "Avoid discussing preparation"
+          },
+          {
+            "id": "D",
+            "text": "Sell only the paint"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Relevant supplies support project success; unnecessary items do not."
+      }
+    },
+    {
+      "id": "PD-102-L05",
+      "title": "Close with a Project Recap",
+      "estimated_minutes": 5,
+      "objective": "Confirm the plan and help the customer leave prepared.",
+      "why_this_matters": "A clear final recap reduces confusion after the customer gets home.",
+      "content": [
+        {
+          "heading": "Repeat the plan",
+          "text": "Summarize the surface, selected product, estimated quantity, key preparation, and application guidance."
+        },
+        {
+          "heading": "Point to trusted instructions",
+          "text": "Show the label or official technical guidance for timing, ventilation, and cleanup. Do not replace those instructions with guesses."
+        },
+        {
+          "heading": "Invite follow-up",
+          "text": "Tell the customer how to get more help if an unexpected condition appears before application."
+        }
+      ],
+      "hardware_store_example": "A customer chooses paint for a previously painted door. You recap cleaning, checking for damage, label-based prep, and appropriate application tools.",
+      "what_to_say_or_do": "Say: “Before you go, here is what we selected and what the label says to do first.”",
+      "common_mistakes": "Ending immediately after payment; promising a specific finish result.",
+      "when_to_ask_for_help": "Escalate if the customer describes bubbling, widespread peeling, or unexplained dampness.",
+      "supporting_materials": [
+        {
+          "id": "PD-102-L05-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "One-page paint project recap card with blanks for surface, product, prep, supplies, and instructions.",
+          "alt_text": "One-page paint project recap card with blanks for surface, product, prep, supplies, and instructions.",
+          "caption": "One-page paint project recap card with blanks for surface, product, prep, supplies, and instructions.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Summarize the surface, selected product, estimated quantity, key preparation, and application guidance.",
+        "Show the label or official technical guidance for timing, ventilation, and cleanup.",
+        "Tell the customer how to get more help if an unexpected condition appears before application."
+      ],
+      "unscored_practice": {
+        "id": "PD-102-L05-P01",
+        "question": "What is the strongest final step in a paint consultation?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Guarantee the result"
+          },
+          {
+            "id": "B",
+            "text": "Review the plan and point out product instructions"
+          },
+          {
+            "id": "C",
+            "text": "Add more products without asking"
+          },
+          {
+            "id": "D",
+            "text": "Tell the customer to search online"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "A recap helps the customer understand the purchase and the next steps."
+      }
+    }
+  ],
+  "final_scored_quiz": {
+    "recommended_question_count": 5,
+    "questions_employee_facing": [
+      {
+        "id": "PD-102-Q01",
+        "objective_assessed": "Use discovery questions to understand a paint project.",
+        "related_lesson_id": "PD-102-L01",
+        "question": "A customer requests paint for a peeling bathroom wall. What is the best first action?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Offer the most expensive can"
+          },
+          {
+            "id": "B",
+            "text": "Ask about surface condition and moisture before selecting a coating"
+          },
+          {
+            "id": "C",
+            "text": "Promise paint will stop moisture"
+          },
+          {
+            "id": "D",
+            "text": "Recommend gloss without questions"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-102-L01",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-102-Q02",
+        "objective_assessed": "Explain coverage estimates without guaranteeing quantities.",
+        "related_lesson_id": "PD-102-L02",
+        "question": "Two walls are each 10 feet by 8 feet. What is their combined area before openings?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "80 square feet"
+          },
+          {
+            "id": "B",
+            "text": "120 square feet"
+          },
+          {
+            "id": "C",
+            "text": "160 square feet"
+          },
+          {
+            "id": "D",
+            "text": "200 square feet"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-102-L02",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-102-Q03",
+        "objective_assessed": "Compare products using relevant label-backed benefits.",
+        "related_lesson_id": "PD-102-L03",
+        "question": "Which is the most responsible way to compare two paints?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Say the costliest always lasts longest"
+          },
+          {
+            "id": "B",
+            "text": "Use the customer’s priorities and verified product claims"
+          },
+          {
+            "id": "C",
+            "text": "Guarantee one coat"
+          },
+          {
+            "id": "D",
+            "text": "Ignore the surface"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-102-L03",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-102-Q04",
+        "objective_assessed": "Recommend a complete but appropriate project supply list.",
+        "related_lesson_id": "PD-102-L04",
+        "question": "A customer already owns a roller frame. How should you discuss accessories?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Sell a second frame anyway"
+          },
+          {
+            "id": "B",
+            "text": "Ask what else they own and identify supplies needed for the project"
+          },
+          {
+            "id": "C",
+            "text": "Add every accessory"
+          },
+          {
+            "id": "D",
+            "text": "Avoid preparation questions"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-102-L04",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-102-Q05",
+        "objective_assessed": "Confirm next steps and escalate technical uncertainties.",
+        "related_lesson_id": "PD-102-L05",
+        "question": "Before the customer leaves, what should the associate do?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Guarantee the outcome"
+          },
+          {
+            "id": "B",
+            "text": "Recap the selected product, preparation, and label directions"
+          },
+          {
+            "id": "C",
+            "text": "Change the product without asking"
+          },
+          {
+            "id": "D",
+            "text": "Skip instructions"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-102-L05",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      }
+    ],
+    "answer_key_manager_only": [
+      {
+        "question_id": "PD-102-Q01",
+        "correct_answer": "B",
+        "explanation": "The surface and current condition determine the useful next questions.",
+        "review_reference": "PD-102-L01",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-102-Q02",
+        "correct_answer": "C",
+        "explanation": "Each wall is 10 × 8 = 80 square feet. Two walls total 160 square feet.",
+        "review_reference": "PD-102-L02",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-102-Q03",
+        "correct_answer": "B",
+        "explanation": "Use the customer’s project and the selected products’ documented claims.",
+        "review_reference": "PD-102-L03",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-102-Q04",
+        "correct_answer": "B",
+        "explanation": "Relevant supplies support project success; unnecessary items do not.",
+        "review_reference": "PD-102-L04",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-102-Q05",
+        "correct_answer": "B",
+        "explanation": "A recap helps the customer understand the purchase and the next steps.",
+        "review_reference": "PD-102-L05",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      }
+    ]
+  },
+  "completion_content": {
+    "passing_percent": 80,
+    "minimum_correct": 4,
+    "points_per_correct_question": 10,
+    "lifetime_points_rule": "Award 10 lifetime points for each question answered correctly only once across attempts.",
+    "attempt_limit": 3,
+    "manager_assistance_after_attempts": 3,
+    "required_lessons_before_first_quiz": true,
+    "feedback_after_failed_quiz": "Show explanations for missed questions.",
+    "trophy_rule": "Award one standard trophy upon first pass.",
+    "replay_rule": "After passing, quiz replay for competitions is allowed. Competition points are separate from lifetime points and trophies; lesson review optional.",
+    "availability_rule": "Store availability is controlled by an administrator; publishing does not assign to every store.",
+    "completion_message": "You completed PD-102: Paint Sales & Customer Consultation. Use your project questions and the product label to guide your next customer conversation.",
+    "practical_next_step": "Practice asking a customer about their project and verifying the product label before recommending an item."
+  },
+  "manager_guidance": {
+    "suggested_audience": "Department employees",
+    "usual_completion_window_days": 30,
+    "manager_can_adjust_window": true,
+    "coaching_prompts": [
+      "What question would you ask before recommending a product?",
+      "Which product label statement would you verify?",
+      "When would you involve a specialist?"
+    ],
+    "optional_unscored_team_activity": "Compare two products or application tools from the actual store assortment. Have the employee explain one meaningful difference using the package directions. No activity required for course completion.",
+    "optional_competition_name": "Paint Counter Challenge",
+    "optional_reward_idea": "Manager-selected recognition or reward; no reward is included by default."
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lesson_content": true,
+    "sources_verified": false,
+    "missing_media_listed": true,
+    "store_specific_content_identified": true,
+    "mobile_readable": true,
+    "employee_personal_information_included": false,
+    "technical_claims_need_review": true
+  },
+  "items_needed_from_me": [
+    "Confirm stocked paint brands and current product lines.",
+    "Provide current labels or manufacturer technical data sheets for brand-specific recommendations.",
+    "Confirm store escalation contacts and any paint-mixing/tinting policies (not taught in these general courses).",
+    "Confirm local disposal guidance for supported stores.",
+    "Supply or approve licensed photos/original diagrams for identified image placements.",
+    "Review technical accuracy, quiz answers, and completion time before publishing."
+  ]
+}

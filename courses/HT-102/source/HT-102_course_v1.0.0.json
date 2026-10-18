@@ -1,0 +1,652 @@
+{
+  "course_code": "HT-102",
+  "title": "Hand Tools Fundamentals",
+  "description": "Identify common hand tools, select them by task, and explain basic safe use and care.",
+  "academy": "Hardware & Tools",
+  "skill_level": "Foundations",
+  "original_catalog_designation": "Foundational",
+  "scope": "General, not store-specific",
+  "intended_audience": [
+    "All store employees",
+    "New and experienced employees unfamiliar with topic"
+  ],
+  "relevant_departments": [
+    "Hardware",
+    "Tools",
+    "General sales floor"
+  ],
+  "restrictions": [
+    "Not a substitute for manufacturer instructions, qualified tradespeople, or safety certification"
+  ],
+  "estimated_completion_minutes": {
+    "lessons": 25,
+    "quiz": 5,
+    "total": 30,
+    "validated": false
+  },
+  "prerequisites": {
+    "required": [],
+    "recommended": [
+      "RF-102",
+      "RF-103"
+    ]
+  },
+  "learning_objectives": [
+    "Recognize common hand tools and their purposes.",
+    "Match tools to fasteners, materials, and working space.",
+    "Explain basic measuring and layout tools.",
+    "Recognize common risks and safe boundaries.",
+    "Describe basic inspection, cleaning, and storage."
+  ],
+  "version": "1.0.0",
+  "review_date": "2026-10-18",
+  "status": "Ready for review",
+  "source_materials": [
+    {
+      "title": "Original colTRAIN instructional draft",
+      "organization": "colTRAIN",
+      "url": null,
+      "supported_claims": "General product identification and retail decision-making; no external source supplied",
+      "verification_needed": "Review product-specific, safety, compatibility, load, blade, battery, and manufacturer claims against official current instructions before publication."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "lesson_id": "HT-102-L01",
+      "title": "Know the Main Hand Tool Families",
+      "estimated_minutes": 5,
+      "objective": "Recognize common hand tools and their purposes."
+    },
+    {
+      "lesson_id": "HT-102-L02",
+      "title": "Choose the Right Size and Fit",
+      "estimated_minutes": 5,
+      "objective": "Match tools to fasteners, materials, and working space."
+    },
+    {
+      "lesson_id": "HT-102-L03",
+      "title": "Measure, Mark, and Check Work",
+      "estimated_minutes": 5,
+      "objective": "Explain basic measuring and layout tools."
+    },
+    {
+      "lesson_id": "HT-102-L04",
+      "title": "Explain Basic Hand Tool Safety",
+      "estimated_minutes": 5,
+      "objective": "Recognize common risks and safe boundaries."
+    },
+    {
+      "lesson_id": "HT-102-L05",
+      "title": "Care for and Store Hand Tools",
+      "estimated_minutes": 5,
+      "objective": "Describe basic inspection, cleaning, and storage."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "HT-102-L01",
+      "title": "Know the Main Hand Tool Families",
+      "estimated_minutes": 5,
+      "objective": "Recognize common hand tools and their purposes.",
+      "why_this_matters": "A customer may describe a job without knowing the name of the tool.",
+      "content_sections": [
+        {
+          "heading": "Driving and turning",
+          "paragraphs": [
+            "Screwdrivers turn screws. Wrenches and sockets turn matching nuts or bolt heads. Pliers grip, bend, or cut within their intended use."
+          ]
+        },
+        {
+          "heading": "Measuring and marking",
+          "paragraphs": [
+            "Tape measures, squares, and levels help check dimensions, angles, and alignment. Marking tools help transfer measurements to a workpiece."
+          ]
+        },
+        {
+          "heading": "Cutting and striking",
+          "paragraphs": [
+            "Hand saws cut suitable materials. Utility knives cut materials allowed by the blade and tool instructions. Hammers strike nails or other items when designed for that purpose."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer asks for a tool to tighten a hex nut under a sink. You show a correctly sized wrench and ask about clearance before recommending one.",
+      "what_to_say_or_do": [
+        "Ask what the customer needs to do.",
+        "Identify the fastener or material.",
+        "Show two suitable tool categories when helpful.",
+        "Explain each tool in everyday language."
+      ],
+      "common_mistakes": [
+        "Recommending a tool from its appearance alone.",
+        "Using a cutting tool for a task it was not designed to perform."
+      ],
+      "when_to_ask_for_help": "Ask for help with specialized tools, energized systems, and applications requiring professional qualifications.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Identify tool/fastener features and compare real products",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Screwdrivers turn screws.",
+        "Ask what the customer needs to do.",
+        "Ask for help with specialized tools, energized systems, and applications requiring professional qualifications."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-102-P01",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer asks for a tool to tighten a hex nut under a sink. You show a correctly sized wrench and ask about clearance before recommending one.",
+        "answer": "Ask what the customer needs to do. Identify the fastener or material.",
+        "explanation": "A customer may describe a job without knowing the name of the tool. Ask for help with specialized tools, energized systems, and applications requiring professional qualifications.",
+        "scored": false
+      }
+    },
+    {
+      "id": "HT-102-L02",
+      "title": "Choose the Right Size and Fit",
+      "estimated_minutes": 5,
+      "objective": "Match tools to fasteners, materials, and working space.",
+      "why_this_matters": "A correct tool type can still be wrong if it does not fit.",
+      "content_sections": [
+        {
+          "heading": "Fit first",
+          "paragraphs": [
+            "Choose a screwdriver tip, socket, or wrench that matches the fastener type and size. Poor fit can round or strip parts."
+          ]
+        },
+        {
+          "heading": "Consider access",
+          "paragraphs": [
+            "A deep socket, short handle, or different wrench shape may help in a tight area. Check the actual clearance before recommending a specific design."
+          ]
+        },
+        {
+          "heading": "Choose by job",
+          "paragraphs": [
+            "A hand saw must be appropriate for the material. A measuring tool must offer the range and precision the customer needs. Verify tool specifications rather than assuming."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer needs to tighten a bolt behind a cabinet. You ask about the space around the bolt and the head size. You compare tool options without guaranteeing clearance.",
+      "what_to_say_or_do": [
+        "Confirm size and shape.",
+        "Ask about working space.",
+        "Check packaging for material and tool limits.",
+        "Encourage a safe fit check."
+      ],
+      "common_mistakes": [
+        "Using adjustable tools carelessly on a poorly matched head.",
+        "Choosing by handle color."
+      ],
+      "when_to_ask_for_help": "Escalate if the customer cannot identify the fastener or if tool use could damage safety-critical equipment.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Identify tool/fastener features and compare real products",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Choose a screwdriver tip, socket, or wrench that matches the fastener type and size.",
+        "Confirm size and shape.",
+        "Escalate if the customer cannot identify the fastener or if tool use could damage safety-critical equipment."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-102-P02",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer needs to tighten a bolt behind a cabinet. You ask about the space around the bolt and the head size. You compare tool options without guaranteeing clearance.",
+        "answer": "Confirm size and shape. Ask about working space.",
+        "explanation": "A correct tool type can still be wrong if it does not fit. Escalate if the customer cannot identify the fastener or if tool use could damage safety-critical equipment.",
+        "scored": false
+      }
+    },
+    {
+      "id": "HT-102-L03",
+      "title": "Measure, Mark, and Check Work",
+      "estimated_minutes": 5,
+      "objective": "Explain basic measuring and layout tools.",
+      "why_this_matters": "A small measuring mistake can waste materials or make parts fail to fit.",
+      "content_sections": [
+        {
+          "heading": "Measure carefully",
+          "paragraphs": [
+            "Start at the correct reference point. Read the unit marks and record the number. Measure again before cutting."
+          ]
+        },
+        {
+          "heading": "Keep things straight",
+          "paragraphs": [
+            "A level checks orientation against level or plumb. A square helps check or mark right angles. Use each tool according to its design."
+          ]
+        },
+        {
+          "heading": "Communicate measurements",
+          "paragraphs": [
+            "Repeat the number and unit. A measurement of 24 inches is not the same as 24 centimeters. Ask whether the measurement is exact or approximate."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer wants a shelf cut to size. You ask whether their measurement includes brackets and have them confirm the unit and finished dimension.",
+      "what_to_say_or_do": [
+        "Say the unit with every measurement.",
+        "Check the reference edge.",
+        "Measure twice before an irreversible cut.",
+        "Verify store cutting policies separately."
+      ],
+      "common_mistakes": [
+        "Mixing units.",
+        "Measuring from the wrong end of a damaged tape."
+      ],
+      "when_to_ask_for_help": "Ask for help with precision layout, building-code questions, and store cutting services.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Identify tool/fastener features and compare real products",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Start at the correct reference point.",
+        "Say the unit with every measurement.",
+        "Ask for help with precision layout, building-code questions, and store cutting services."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-102-P03",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer wants a shelf cut to size. You ask whether their measurement includes brackets and have them confirm the unit and finished dimension.",
+        "answer": "Say the unit with every measurement. Check the reference edge.",
+        "explanation": "A small measuring mistake can waste materials or make parts fail to fit. Ask for help with precision layout, building-code questions, and store cutting services.",
+        "scored": false
+      }
+    },
+    {
+      "id": "HT-102-L04",
+      "title": "Explain Basic Hand Tool Safety",
+      "estimated_minutes": 5,
+      "objective": "Recognize common risks and safe boundaries.",
+      "why_this_matters": "Even simple hand tools can injure users if damaged or misused.",
+      "content_sections": [
+        {
+          "heading": "Inspect before use",
+          "paragraphs": [
+            "Look for cracked handles, loose heads, damaged cutting edges, and other defects. Do not use or sell a tool as safe when damage is suspected."
+          ]
+        },
+        {
+          "heading": "Use tools as intended",
+          "paragraphs": [
+            "Wear protective equipment specified by the tool and task. Keep cutting edges away from the body. Secure workpieces when appropriate. Follow manufacturer instructions."
+          ]
+        },
+        {
+          "heading": "Know what not to advise",
+          "paragraphs": [
+            "Do not suggest using ordinary hand tools on live electrical parts. Do not improvise a tool as a lever or striking device beyond its intended use."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer asks if a regular screwdriver can be used on an energized outlet. You do not advise working live. You direct them to a qualified electrician and appropriate safety guidance.",
+      "what_to_say_or_do": [
+        "Check tool condition.",
+        "Explain the intended use.",
+        "Refer to the manufacturer safety instructions.",
+        "Stop when a task involves electrical or other serious hazards."
+      ],
+      "common_mistakes": [
+        "Treating all screwdrivers as safe for electrical work.",
+        "Ignoring a loose hammer head."
+      ],
+      "when_to_ask_for_help": "Refer electrical, gas, structural, and other high-risk tasks to qualified professionals.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Illustrate the correct selection or safe tool-handling decision",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Look for cracked handles, loose heads, damaged cutting edges, and other defects.",
+        "Check tool condition.",
+        "Refer electrical, gas, structural, and other high-risk tasks to qualified professionals."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-102-P04",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer asks if a regular screwdriver can be used on an energized outlet. You do not advise working live. You direct them to a qualified electrician and appropriate safety guidance.",
+        "answer": "Check tool condition. Explain the intended use.",
+        "explanation": "Even simple hand tools can injure users if damaged or misused. Refer electrical, gas, structural, and other high-risk tasks to qualified professionals.",
+        "scored": false
+      }
+    },
+    {
+      "id": "HT-102-L05",
+      "title": "Care for and Store Hand Tools",
+      "estimated_minutes": 5,
+      "objective": "Describe basic inspection, cleaning, and storage.",
+      "why_this_matters": "Well-kept tools are easier to find and less likely to fail unexpectedly.",
+      "content_sections": [
+        {
+          "heading": "Clean and dry",
+          "paragraphs": [
+            "Remove ordinary dirt after use using manufacturer-approved methods. Dry tools before storage when appropriate. Follow instructions for rust prevention."
+          ]
+        },
+        {
+          "heading": "Protect edges and moving parts",
+          "paragraphs": [
+            "Store sharp tools with guards when provided. Keep tools organized to prevent accidental contact and damage. Do not attempt repairs outside approved procedures."
+          ]
+        },
+        {
+          "heading": "Know replacement signs",
+          "paragraphs": [
+            "Damaged handles, cracked sockets, or badly worn drivers may need replacement. Manufacturer guidance determines whether repair is allowed."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer asks how to store hand tools in a damp shed. You suggest a dry, organized location and checking the tool maker’s care guidance for rust prevention.",
+      "what_to_say_or_do": [
+        "Recommend a dry storage space.",
+        "Keep sharp edges protected.",
+        "Inspect tools before use.",
+        "Refer damaged tools to appropriate service guidance."
+      ],
+      "common_mistakes": [
+        "Leaving tools wet in a closed container.",
+        "Continuing to use a cracked tool."
+      ],
+      "when_to_ask_for_help": "Ask a supervisor or manufacturer service contact about uncertain repairs or warranty questions.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Illustrate the correct selection or safe tool-handling decision",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Remove ordinary dirt after use using manufacturer-approved methods.",
+        "Recommend a dry storage space.",
+        "Ask a supervisor or manufacturer service contact about uncertain repairs or warranty questions."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-102-P05",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer asks how to store hand tools in a damp shed. You suggest a dry, organized location and checking the tool maker’s care guidance for rust prevention.",
+        "answer": "Recommend a dry storage space. Keep sharp edges protected.",
+        "explanation": "Well-kept tools are easier to find and less likely to fail unexpectedly. Ask a supervisor or manufacturer service contact about uncertain repairs or warranty questions.",
+        "scored": false
+      }
+    }
+  ],
+  "final_quiz": {
+    "employee_facing_questions": [
+      {
+        "id": "HT-102-Q01",
+        "objective_assessed": "Recognize common hand tools and their purposes.",
+        "related_lesson_id": "HT-102-L01",
+        "question": "Which tool family is commonly used to turn a hex nut?",
+        "choices": {
+          "A": "Level",
+          "B": "Wrench",
+          "C": "Tape measure",
+          "D": "Handsaw"
+        },
+        "points": 10,
+        "review_reference": "HT-102-L01"
+      },
+      {
+        "id": "HT-102-Q02",
+        "objective_assessed": "Match tools to fasteners, materials, and working space.",
+        "related_lesson_id": "HT-102-L02",
+        "question": "A customer has a 10 mm hex-head fastener. What should you check?",
+        "choices": {
+          "A": "The matching wrench or socket size",
+          "B": "The most expensive screwdriver",
+          "C": "The hammer weight",
+          "D": "The tape measure color"
+        },
+        "points": 10,
+        "review_reference": "HT-102-L02"
+      },
+      {
+        "id": "HT-102-Q03",
+        "objective_assessed": "Explain basic measuring and layout tools.",
+        "related_lesson_id": "HT-102-L03",
+        "question": "A customer says a board needs to be “24 long.” What should you ask?",
+        "choices": {
+          "A": "What is the price?",
+          "B": "Do you mean 24 inches or another unit?",
+          "C": "Do you need a hammer?",
+          "D": "What is your favorite brand?"
+        },
+        "points": 10,
+        "review_reference": "HT-102-L03"
+      },
+      {
+        "id": "HT-102-Q04",
+        "objective_assessed": "Recognize common risks and safe boundaries.",
+        "related_lesson_id": "HT-102-L04",
+        "question": "A customer wants to use a standard screwdriver on live wiring. What is the safest response?",
+        "choices": {
+          "A": "Tell them it is fine",
+          "B": "Suggest turning the screwdriver faster",
+          "C": "Do not advise live work; refer to a qualified professional",
+          "D": "Recommend a larger screwdriver"
+        },
+        "points": 10,
+        "review_reference": "HT-102-L04"
+      },
+      {
+        "id": "HT-102-Q05",
+        "objective_assessed": "Describe basic inspection, cleaning, and storage.",
+        "related_lesson_id": "HT-102-L05",
+        "question": "A hammer handle is cracked. What is the best action?",
+        "choices": {
+          "A": "Keep using it",
+          "B": "Tape it and guarantee safety",
+          "C": "Stop using it and follow repair or replacement guidance",
+          "D": "Store it with the crack hidden"
+        },
+        "points": 10,
+        "review_reference": "HT-102-L05"
+      }
+    ],
+    "instructor_answer_key": [
+      {
+        "id": "HT-102-Q01",
+        "correct_answer": "B",
+        "explanation": "Wrenches are designed to engage matching nut or bolt-head shapes.",
+        "review_reference": "HT-102-L01",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-102-Q02",
+        "correct_answer": "A",
+        "explanation": "Tool size must match the fastener.",
+        "review_reference": "HT-102-L02",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-102-Q03",
+        "correct_answer": "B",
+        "explanation": "A measurement without a unit is incomplete.",
+        "review_reference": "HT-102-L03",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-102-Q04",
+        "correct_answer": "C",
+        "explanation": "Working on energized wiring presents serious hazards.",
+        "review_reference": "HT-102-L04",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-102-Q05",
+        "correct_answer": "C",
+        "explanation": "A cracked handle can make a striking tool unsafe.",
+        "review_reference": "HT-102-L05",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      }
+    ],
+    "questions_full": [
+      {
+        "id": "HT-102-Q01",
+        "objective_assessed": "Recognize common hand tools and their purposes.",
+        "related_lesson_id": "HT-102-L01",
+        "question": "Which tool family is commonly used to turn a hex nut?",
+        "choices": {
+          "A": "Level",
+          "B": "Wrench",
+          "C": "Tape measure",
+          "D": "Handsaw"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Wrenches are designed to engage matching nut or bolt-head shapes.",
+        "review_reference": "HT-102-L01",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-102-Q02",
+        "objective_assessed": "Match tools to fasteners, materials, and working space.",
+        "related_lesson_id": "HT-102-L02",
+        "question": "A customer has a 10 mm hex-head fastener. What should you check?",
+        "choices": {
+          "A": "The matching wrench or socket size",
+          "B": "The most expensive screwdriver",
+          "C": "The hammer weight",
+          "D": "The tape measure color"
+        },
+        "correct_answer": "A",
+        "points": 10,
+        "explanation": "Tool size must match the fastener.",
+        "review_reference": "HT-102-L02",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-102-Q03",
+        "objective_assessed": "Explain basic measuring and layout tools.",
+        "related_lesson_id": "HT-102-L03",
+        "question": "A customer says a board needs to be “24 long.” What should you ask?",
+        "choices": {
+          "A": "What is the price?",
+          "B": "Do you mean 24 inches or another unit?",
+          "C": "Do you need a hammer?",
+          "D": "What is your favorite brand?"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "A measurement without a unit is incomplete.",
+        "review_reference": "HT-102-L03",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-102-Q04",
+        "objective_assessed": "Recognize common risks and safe boundaries.",
+        "related_lesson_id": "HT-102-L04",
+        "question": "A customer wants to use a standard screwdriver on live wiring. What is the safest response?",
+        "choices": {
+          "A": "Tell them it is fine",
+          "B": "Suggest turning the screwdriver faster",
+          "C": "Do not advise live work; refer to a qualified professional",
+          "D": "Recommend a larger screwdriver"
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Working on energized wiring presents serious hazards.",
+        "review_reference": "HT-102-L04",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-102-Q05",
+        "objective_assessed": "Describe basic inspection, cleaning, and storage.",
+        "related_lesson_id": "HT-102-L05",
+        "question": "A hammer handle is cracked. What is the best action?",
+        "choices": {
+          "A": "Keep using it",
+          "B": "Tape it and guarantee safety",
+          "C": "Stop using it and follow repair or replacement guidance",
+          "D": "Store it with the crack hidden"
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "A cracked handle can make a striking tool unsafe.",
+        "review_reference": "HT-102-L05",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      }
+    ]
+  },
+  "completion_rules": {
+    "passing_score_percent": 80,
+    "correct_answers_required": 4,
+    "max_attempts_before_manager_assistance": 3,
+    "correct_answer_points": 10,
+    "lifetime_points_once_per_question_across_attempts": true,
+    "standard_trophy_once_after_pass": true,
+    "missed_question_explanations_after_failed_attempt": true,
+    "required_lessons_before_first_attempt": true,
+    "competition_replay_allowed_after_pass": true,
+    "competition_points_separate": true,
+    "optional_lesson_review_for_replay": true,
+    "store_availability_controlled_by_admin": true
+  },
+  "completion_message": "You completed Hand Tools Fundamentals. Use these skills to ask better questions, verify product information, and know when to ask for help.",
+  "practical_next_step": "During your next shift, compare two actual products and identify one verified difference. This is optional and unscored.",
+  "manager_guidance": {
+    "suggested_audience": "All associates who assist customers with hardware or tools",
+    "suggested_completion_window_days": 30,
+    "manager_can_adjust": true,
+    "coaching_prompts": [
+      "Which question should you ask before recommending an item?",
+      "What product information would you verify?",
+      "When should you stop and ask for specialist help?"
+    ],
+    "optional_team_activity": "Use two labeled products from the store. Compare their intended use and identify one important difference. No live tool operation required.",
+    "optional_competition": {
+      "name": "Product Match Challenge",
+      "reward": "Manager-selected recognition or reward"
+    }
+  },
+  "media": {
+    "actual_assets": [],
+    "suggested_placeholders": "Annotated product photographs or diagrams, optional; no externally licensed stock image embedded",
+    "accessibility": "Provide descriptive alt text and readable text equivalents"
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "answers_supported_by_lessons": true,
+    "sources_verified": false,
+    "missing_media_identified": true,
+    "store_specific_items_identified": true,
+    "mobile_readable": true,
+    "personal_information_included": false,
+    "timing_validated": false
+  },
+  "items_needed_from_user": [
+    "Review and approve the course.",
+    "Confirm store-specific services, demonstrations, and escalation policies.",
+    "Supply or approve accurate product photos/diagrams if desired.",
+    "Validate manufacturer safety and compatibility details before publication."
+  ]
+}

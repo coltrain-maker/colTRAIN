@@ -1,0 +1,810 @@
+{
+  "course_information": {
+    "code": "IM-103",
+    "title": "Merchandising Fundamentals",
+    "description": "Learn how clear product presentation, accurate shelf information, and thoughtful displays help customers shop confidently.",
+    "academy": "Inventory & Merchandising",
+    "level": "Foundations",
+    "original_catalog_designation": "Foundational",
+    "intended_audience": "All employees; especially sales floor, merchandising, and department associates",
+    "relevant_departments": "All departments",
+    "scope": "General; store-specific policies must be supplied separately",
+    "restrictions": "No authority to perform inventory adjustments, investigations, detentions, security review, equipment operation, or price overrides without store authorization.",
+    "estimated_completion_minutes": 29,
+    "estimated_lessons_minutes": 25,
+    "estimated_quiz_minutes": 4,
+    "prerequisites": "None",
+    "learning_objectives": [
+      "Explain how merchandising helps customers find and compare products.",
+      "Match products to accurate shelf labels and approved locations.",
+      "Describe simple display principles including visibility, organization, and safety.",
+      "Identify common merchandising problems and appropriate corrections.",
+      "Use customer questions and observations to improve displays through approved processes."
+    ],
+    "version": "1.0.0",
+    "review_date": "2026-10-18",
+    "status": "Ready for review",
+    "progression": {
+      "level": "Foundations",
+      "future_application_course": "Not yet approved",
+      "future_expertise_course": "Not yet approved"
+    }
+  },
+  "source_materials": [
+    {
+      "title": "colTRAIN original course authoring",
+      "organization": "colTRAIN",
+      "url": null,
+      "support": "General retail operational principles and teaching examples; not an external reference.",
+      "verification": "Review with retail subject matter expert and local store policy owner before publication."
+    },
+    {
+      "title": "Store-specific policies and system instructions",
+      "organization": "Each participating retailer",
+      "url": null,
+      "support": "Receiving, inventory adjustments, loss prevention, reporting, promotions, pricing, and escalation permissions.",
+      "verification": "Needed; not supplied. Do not present general steps as the store’s actual procedures."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "id": "IM-103-L01",
+      "title": "See the Store Through the Customer’s Eyes",
+      "minutes": 5,
+      "objective": "Understand how product presentation affects shopping."
+    },
+    {
+      "id": "IM-103-L02",
+      "title": "Match Products, Locations, and Shelf Labels",
+      "minutes": 5,
+      "objective": "Keep merchandise and price information aligned."
+    },
+    {
+      "id": "IM-103-L03",
+      "title": "Build Useful and Safe Displays",
+      "minutes": 5,
+      "objective": "Recognize practical display principles and safety limits."
+    },
+    {
+      "id": "IM-103-L04",
+      "title": "Maintain Shelves and Seasonal Areas",
+      "minutes": 5,
+      "objective": "Recognize common merchandising maintenance tasks."
+    },
+    {
+      "id": "IM-103-L05",
+      "title": "Improve Displays Using Customer Questions",
+      "minutes": 5,
+      "objective": "Use simple observations to identify display improvements."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "IM-103-L01",
+      "title": "See the Store Through the Customer’s Eyes",
+      "estimated_minutes": 5,
+      "objective": "Understand how product presentation affects shopping.",
+      "why_this_matters": "Merchandising is the way a store organizes and presents products for customers. Good merchandising helps a shopper find the right item, compare choices, and understand what else a project may require.",
+      "content_sections": [
+        {
+          "heading": "Make products easy to find",
+          "text": "Clear categories, readable signs, and organized shelves reduce confusion. Customers should not need to guess where related items are kept."
+        },
+        {
+          "heading": "Help customers compare",
+          "text": "Group products according to the store’s approved plan. Make differences such as size, use, and package count visible."
+        },
+        {
+          "heading": "Keep information accurate",
+          "text": "A tidy display is not helpful if the shelf label belongs to another product."
+        }
+      ],
+      "hardware_store_example": "A shopper needs a paint roller. The associate points to a section where roller covers are arranged by size and type, with clear labels.",
+      "what_to_say_or_do": [
+        "Walk an aisle as a first-time shopper would.",
+        "Check whether categories and labels make sense.",
+        "Report confusing signs or mixed products."
+      ],
+      "common_mistakes": [
+        "Assuming customers know store terminology.",
+        "Using an attractive sign that is hard to read.",
+        "Ignoring misplaced products."
+      ],
+      "when_to_ask_for_help": "Ask a department lead before changing the store’s layout or category grouping.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Walk an aisle as a first-time shopper would.",
+        "Check whether categories and labels make sense.",
+        "Ask a department lead before changing the store’s layout or category grouping."
+      ],
+      "practice": {
+        "id": "IM-103-P01",
+        "scored": false,
+        "question": "What is the main purpose of good merchandising?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Make every shelf look full at any cost."
+          },
+          {
+            "id": "B",
+            "text": "Help customers find and understand products."
+          },
+          {
+            "id": "C",
+            "text": "Hide slower-selling items."
+          },
+          {
+            "id": "D",
+            "text": "Reduce employee conversations."
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Merchandising supports clear, confident shopping."
+      }
+    },
+    {
+      "id": "IM-103-L02",
+      "title": "Match Products, Locations, and Shelf Labels",
+      "estimated_minutes": 5,
+      "objective": "Keep merchandise and price information aligned.",
+      "why_this_matters": "Shelf tags and signs should identify the product actually displayed. Similar packages can vary in size, quantity, finish, or price. Always check the item identifier rather than guessing from appearance.",
+      "content_sections": [
+        {
+          "heading": "Read the details",
+          "text": "Confirm SKU or barcode, description, size, unit, and price display according to store policy. If the label seems wrong, request verification before replacing it."
+        },
+        {
+          "heading": "Follow the approved plan",
+          "text": "A planogram is a diagram or guide showing where products should be placed. Not every store uses one. Follow the store’s approved shelf arrangement or manager direction."
+        },
+        {
+          "heading": "Avoid misleading displays",
+          "text": "Do not place a product under a price or promotion sign that applies to something else. Refer uncertain price questions to authorized staff."
+        }
+      ],
+      "hardware_store_example": "Two tubes of adhesive have similar packaging but different uses. The associate checks each item against its shelf tag before filling the hooks.",
+      "what_to_say_or_do": [
+        "Match the product identifier to the shelf label.",
+        "Check size and unit differences.",
+        "Report uncertain pricing or signage."
+      ],
+      "common_mistakes": [
+        "Placing products based on package color.",
+        "Handwriting a price without permission.",
+        "Mixing items behind one label."
+      ],
+      "when_to_ask_for_help": "Ask the pricing or merchandising lead when the tag, price, or placement does not match.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Match the product identifier to the shelf label.",
+        "Check size and unit differences.",
+        "Ask the pricing or merchandising lead when the tag, price, or placement does not match."
+      ],
+      "practice": {
+        "id": "IM-103-P02",
+        "scored": false,
+        "question": "Two products look alike but have different SKUs. What should you do?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Place them together behind one tag."
+          },
+          {
+            "id": "B",
+            "text": "Match each SKU to its approved shelf label."
+          },
+          {
+            "id": "C",
+            "text": "Choose the label with the lower price."
+          },
+          {
+            "id": "D",
+            "text": "Remove both labels."
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Accurate product-to-label matching prevents confusion."
+      }
+    },
+    {
+      "id": "IM-103-L03",
+      "title": "Build Useful and Safe Displays",
+      "estimated_minutes": 5,
+      "objective": "Recognize practical display principles and safety limits.",
+      "why_this_matters": "A display should make a product easy to see and select without creating a hazard. Good displays balance visibility, clear information, accessibility, and safe storage.",
+      "content_sections": [
+        {
+          "heading": "Show the purpose",
+          "text": "A small project display can group related items, such as a paint tray, roller cover, painter’s tape, and drop cloth. Keep labels and prices clear for each product."
+        },
+        {
+          "heading": "Respect safe limits",
+          "text": "Do not stack heavy or unstable products beyond approved limits. Keep exits, safety equipment, and walking routes clear. Ask for authorized help with ladders or powered equipment."
+        },
+        {
+          "heading": "Keep it shoppable",
+          "text": "Customers should be able to take a product without pulling down a pile or disturbing another display. Replace damaged packaging through approved procedures."
+        }
+      ],
+      "hardware_store_example": "A fall cleanup display pairs leaf bags with gloves and rakes. The team checks that the products are secure and the display does not narrow the aisle.",
+      "what_to_say_or_do": [
+        "Use approved display fixtures and locations.",
+        "Keep products reachable and stable.",
+        "Show related products with clear individual labels."
+      ],
+      "common_mistakes": [
+        "Blocking a walkway with promotional merchandise.",
+        "Overloading a shelf.",
+        "Creating a display without accurate price information."
+      ],
+      "when_to_ask_for_help": "Ask a manager about fixture limits, heavy merchandise, or new display locations.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Use approved display fixtures and locations.",
+        "Keep products reachable and stable.",
+        "Ask a manager about fixture limits, heavy merchandise, or new display locations."
+      ],
+      "practice": {
+        "id": "IM-103-P03",
+        "scored": false,
+        "question": "Which display is most helpful?",
+        "options": [
+          {
+            "id": "A",
+            "text": "An unstable tower of products."
+          },
+          {
+            "id": "B",
+            "text": "A clear project display with accurate labels and open walkways."
+          },
+          {
+            "id": "C",
+            "text": "Mixed products with one price tag."
+          },
+          {
+            "id": "D",
+            "text": "A display blocking a fire extinguisher."
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Useful displays are clear, accurate, and safe."
+      }
+    },
+    {
+      "id": "IM-103-L04",
+      "title": "Maintain Shelves and Seasonal Areas",
+      "estimated_minutes": 5,
+      "objective": "Recognize common merchandising maintenance tasks.",
+      "why_this_matters": "Displays need attention after customers shop them. Empty hooks, mixed products, damaged packages, and outdated signs can confuse shoppers.",
+      "content_sections": [
+        {
+          "heading": "Recover the aisle",
+          "text": "Recovery means returning products to their proper locations and straightening shelves. Check item labels as you go rather than pushing everything forward without looking."
+        },
+        {
+          "heading": "Check promotions",
+          "text": "Use the current approved promotion information. Remove or report outdated signs according to store procedure. Do not promise a promotion that cannot be verified."
+        },
+        {
+          "heading": "Think seasonally",
+          "text": "Seasonal products should be easy to find when demand rises. Follow the approved calendar and layout. Do not move stock into a new location without approval."
+        }
+      ],
+      "hardware_store_example": "After a weekend sale, an associate finds spring seed packets mixed into fall lawn-care supplies. They sort them into approved locations and flag an expired sign.",
+      "what_to_say_or_do": [
+        "Check for misplaced products.",
+        "Report empty locations and expired signs.",
+        "Follow the approved seasonal merchandising plan."
+      ],
+      "common_mistakes": [
+        "Leaving an expired sale sign up.",
+        "Moving seasonal stock without telling the team.",
+        "Ignoring damaged display packaging."
+      ],
+      "when_to_ask_for_help": "Ask a manager about promotional timing, seasonal resets, or unavailable replacement signs.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Check for misplaced products.",
+        "Report empty locations and expired signs.",
+        "Ask a manager about promotional timing, seasonal resets, or unavailable replacement signs."
+      ],
+      "practice": {
+        "id": "IM-103-P04",
+        "scored": false,
+        "question": "You notice an expired promotion sign. What is the best response?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Leave it because it looks nice."
+          },
+          {
+            "id": "B",
+            "text": "Verify and follow the approved sign-correction process."
+          },
+          {
+            "id": "C",
+            "text": "Promise the discount anyway."
+          },
+          {
+            "id": "D",
+            "text": "Move it to another aisle."
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Current, accurate signs reduce customer confusion."
+      }
+    },
+    {
+      "id": "IM-103-L05",
+      "title": "Improve Displays Using Customer Questions",
+      "estimated_minutes": 5,
+      "objective": "Use simple observations to identify display improvements.",
+      "why_this_matters": "Customers show us where merchandising is confusing. Repeated questions about a location, size, or difference between products can point to a sign or layout problem.",
+      "content_sections": [
+        {
+          "heading": "Notice repeated questions",
+          "text": "If several shoppers cannot find the same product, check whether the location or sign is clear. One question does not prove the layout is wrong."
+        },
+        {
+          "heading": "Share a specific suggestion",
+          "text": "Describe the customer problem and a possible improvement. Example: “Three shoppers asked where hose washers are. Could we add a clearer sign near the hose fittings?”"
+        },
+        {
+          "heading": "Make changes with approval",
+          "text": "Managers may consider space, inventory, brand requirements, and safety before approving a new sign or display. Do not change prices or permanent layouts on your own."
+        }
+      ],
+      "hardware_store_example": "Customers regularly ask which sandpaper grit to choose. An associate suggests an approved comparison sign that explains grit ranges in plain language, subject to product accuracy review.",
+      "what_to_say_or_do": [
+        "Record the recurring customer question.",
+        "Propose a clear, specific improvement.",
+        "Request approval before changing fixtures or permanent signs."
+      ],
+      "common_mistakes": [
+        "Changing prices to make a display simpler.",
+        "Treating one complaint as proof.",
+        "Adding unverified technical claims to signage."
+      ],
+      "when_to_ask_for_help": "Ask a manager to review new signs, product claims, or layout changes.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Record the recurring customer question.",
+        "Propose a clear, specific improvement.",
+        "Ask a manager to review new signs, product claims, or layout changes."
+      ],
+      "practice": {
+        "id": "IM-103-P05",
+        "scored": false,
+        "question": "Several customers cannot find hose washers. What is a useful next step?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ignore the questions."
+          },
+          {
+            "id": "B",
+            "text": "Move the washers without telling anyone."
+          },
+          {
+            "id": "C",
+            "text": "Suggest a clearer sign or location to the department lead."
+          },
+          {
+            "id": "D",
+            "text": "Tell customers to search harder."
+          }
+        ],
+        "correct_answer": "C",
+        "explanation": "Specific feedback can guide an approved improvement."
+      }
+    }
+  ],
+  "final_quiz": {
+    "scored": true,
+    "question_count": 5,
+    "points_per_correct_answer": 10,
+    "pass_percentage": 80,
+    "questions_correct_to_pass": 4,
+    "questions": [
+      {
+        "id": "IM-103-Q01",
+        "objective_assessed": "Explain how merchandising helps customers find and compare products.",
+        "related_lesson": "IM-103-L01",
+        "question": "What is a key purpose of merchandising?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Make shopping harder."
+          },
+          {
+            "id": "B",
+            "text": "Help customers find and compare products."
+          },
+          {
+            "id": "C",
+            "text": "Keep all products in storage."
+          },
+          {
+            "id": "D",
+            "text": "Avoid using labels."
+          }
+        ],
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Merchandising makes product selection clearer.",
+        "review_reference": "IM-103-L01",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      },
+      {
+        "id": "IM-103-Q02",
+        "objective_assessed": "Match products to accurate shelf labels and approved locations.",
+        "related_lesson": "IM-103-L02",
+        "question": "Two similar products have different SKUs. What should you check?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Only package color."
+          },
+          {
+            "id": "B",
+            "text": "Which box is heavier."
+          },
+          {
+            "id": "C",
+            "text": "The correct product-to-shelf-label match."
+          },
+          {
+            "id": "D",
+            "text": "Which shelf is empty."
+          }
+        ],
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "The item identifier helps prevent incorrect shelf placement.",
+        "review_reference": "IM-103-L02",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      },
+      {
+        "id": "IM-103-Q03",
+        "objective_assessed": "Describe simple display principles including visibility, organization, and safety.",
+        "related_lesson": "IM-103-L03",
+        "question": "Which display follows good merchandising practice?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "One blocking an exit."
+          },
+          {
+            "id": "B",
+            "text": "One with unstable stacks."
+          },
+          {
+            "id": "C",
+            "text": "One with clear labels and safe access."
+          },
+          {
+            "id": "D",
+            "text": "One using a single price for different products."
+          }
+        ],
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Displays must be clear, accurate, and safe.",
+        "review_reference": "IM-103-L03",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      },
+      {
+        "id": "IM-103-Q04",
+        "objective_assessed": "Identify common merchandising problems and appropriate corrections.",
+        "related_lesson": "IM-103-L04",
+        "question": "You see an outdated promotional sign. What should you do?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Leave it in place."
+          },
+          {
+            "id": "B",
+            "text": "Follow the approved sign-correction process."
+          },
+          {
+            "id": "C",
+            "text": "Promise the old price without checking."
+          },
+          {
+            "id": "D",
+            "text": "Move the sign to another product."
+          }
+        ],
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Promotional information must be current and verified.",
+        "review_reference": "IM-103-L04",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      },
+      {
+        "id": "IM-103-Q05",
+        "objective_assessed": "Use customer questions and observations to improve displays through approved processes.",
+        "related_lesson": "IM-103-L05",
+        "question": "Several customers ask where the same item is located. What should you do?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Suggest a clear signage or placement improvement to the lead."
+          },
+          {
+            "id": "B",
+            "text": "Change all shelf locations without permission."
+          },
+          {
+            "id": "C",
+            "text": "Assume customers are careless."
+          },
+          {
+            "id": "D",
+            "text": "Remove the product."
+          }
+        ],
+        "correct_answer": "A",
+        "points": 10,
+        "explanation": "Repeated questions can reveal a merchandising improvement opportunity.",
+        "review_reference": "IM-103-L05",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      }
+    ],
+    "employee_facing_questions": [
+      {
+        "id": "IM-103-Q01",
+        "question": "What is a key purpose of merchandising?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Make shopping harder."
+          },
+          {
+            "id": "B",
+            "text": "Help customers find and compare products."
+          },
+          {
+            "id": "C",
+            "text": "Keep all products in storage."
+          },
+          {
+            "id": "D",
+            "text": "Avoid using labels."
+          }
+        ]
+      },
+      {
+        "id": "IM-103-Q02",
+        "question": "Two similar products have different SKUs. What should you check?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Only package color."
+          },
+          {
+            "id": "B",
+            "text": "Which box is heavier."
+          },
+          {
+            "id": "C",
+            "text": "The correct product-to-shelf-label match."
+          },
+          {
+            "id": "D",
+            "text": "Which shelf is empty."
+          }
+        ]
+      },
+      {
+        "id": "IM-103-Q03",
+        "question": "Which display follows good merchandising practice?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "One blocking an exit."
+          },
+          {
+            "id": "B",
+            "text": "One with unstable stacks."
+          },
+          {
+            "id": "C",
+            "text": "One with clear labels and safe access."
+          },
+          {
+            "id": "D",
+            "text": "One using a single price for different products."
+          }
+        ]
+      },
+      {
+        "id": "IM-103-Q04",
+        "question": "You see an outdated promotional sign. What should you do?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Leave it in place."
+          },
+          {
+            "id": "B",
+            "text": "Follow the approved sign-correction process."
+          },
+          {
+            "id": "C",
+            "text": "Promise the old price without checking."
+          },
+          {
+            "id": "D",
+            "text": "Move the sign to another product."
+          }
+        ]
+      },
+      {
+        "id": "IM-103-Q05",
+        "question": "Several customers ask where the same item is located. What should you do?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Suggest a clear signage or placement improvement to the lead."
+          },
+          {
+            "id": "B",
+            "text": "Change all shelf locations without permission."
+          },
+          {
+            "id": "C",
+            "text": "Assume customers are careless."
+          },
+          {
+            "id": "D",
+            "text": "Remove the product."
+          }
+        ]
+      }
+    ],
+    "answer_key": [
+      {
+        "id": "IM-103-Q01",
+        "correct_answer": "B",
+        "explanation": "Merchandising makes product selection clearer.",
+        "review_reference": "IM-103-L01"
+      },
+      {
+        "id": "IM-103-Q02",
+        "correct_answer": "C",
+        "explanation": "The item identifier helps prevent incorrect shelf placement.",
+        "review_reference": "IM-103-L02"
+      },
+      {
+        "id": "IM-103-Q03",
+        "correct_answer": "C",
+        "explanation": "Displays must be clear, accurate, and safe.",
+        "review_reference": "IM-103-L03"
+      },
+      {
+        "id": "IM-103-Q04",
+        "correct_answer": "B",
+        "explanation": "Promotional information must be current and verified.",
+        "review_reference": "IM-103-L04"
+      },
+      {
+        "id": "IM-103-Q05",
+        "correct_answer": "A",
+        "explanation": "Repeated questions can reveal a merchandising improvement opportunity.",
+        "review_reference": "IM-103-L05"
+      }
+    ]
+  },
+  "completion_content": {
+    "required_lessons_before_first_quiz": true,
+    "pass_percentage": 80,
+    "max_attempts_before_manager_assistance": 3,
+    "feedback": "After a failed attempt, show explanations for missed questions and direct learners to the related lesson.",
+    "lifetime_points": "10 points per correctly answered question, awarded only once per question across attempts.",
+    "trophy": "One standard course trophy awarded once after passing.",
+    "competition": "Quiz replay after passing is allowed; competition points remain separate from lifetime points and trophies.",
+    "publishing": "Publishing does not assign the course to every store; administrator controls store availability.",
+    "completion_message": "You completed Merchandising Fundamentals. Use these habits in your next shift and ask your manager when store procedures are unclear.",
+    "practical_next_step": "Look for one opportunity to use the lesson skills during a normal shift; no mandatory workplace activity."
+  },
+  "manager_guidance": {
+    "suggested_audience": "All employees; especially sales floor, merchandising, and department associates",
+    "suggested_completion_window": "Within 30 days of assignment; manager-adjustable",
+    "coaching_prompts": [
+      "Which situation from this course could happen in our store?",
+      "Which parts of our local process differ from the general lesson?",
+      "When should you ask a manager for help?"
+    ],
+    "optional_team_activity": "In a short huddle, discuss one realistic customer or inventory scenario. No scoring or required workplace demonstration.",
+    "optional_competition_name": "IM-103 Knowledge Challenge",
+    "reward": "Manager selects any reward; none is required."
+  },
+  "final_review_checklist": [
+    {
+      "item": "Objectives taught and assessed",
+      "status": "Draft complete; reviewer confirmation needed"
+    },
+    {
+      "item": "Answers supported by lessons",
+      "status": "Checked"
+    },
+    {
+      "item": "External sources and local policies",
+      "status": "Local policy verification needed"
+    },
+    {
+      "item": "Missing media listed",
+      "status": "Optional visuals identified; no stock imagery embedded"
+    },
+    {
+      "item": "Store-specific material separated",
+      "status": "Yes"
+    },
+    {
+      "item": "Mobile readability",
+      "status": "Short sections; employee test deferred"
+    },
+    {
+      "item": "Employee personal information",
+      "status": "None included"
+    },
+    {
+      "item": "Timing",
+      "status": "Estimated; employee validation deferred"
+    }
+  ],
+  "items_needed_from_me": [
+    "Confirm store-specific procedures and escalation contacts before publishing.",
+    "Review product and inventory terminology against the connected POS and inventory systems.",
+    "Decide whether optional shelf/product photos would improve lessons; use licensed or store-owned imagery with alt text if added.",
+    "Approve course content after subject-matter review."
+  ]
+}

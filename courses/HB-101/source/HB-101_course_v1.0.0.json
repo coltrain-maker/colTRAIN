@@ -1,0 +1,588 @@
+{
+  "course_code": "HB-101",
+  "title": "Electrical & Lighting Fundamentals",
+  "description": "Build basic retail product knowledge and safe customer guidance for electrical and lighting.",
+  "academy": "Home Systems & Building Materials",
+  "skill_level": "Foundations",
+  "original_catalog_designation": "Foundational",
+  "scope": "General; no store-specific policy",
+  "intended_audience": [
+    "All store employees",
+    "New employees and employees unfamiliar with this department"
+  ],
+  "relevant_departments": [
+    "Electrical and Lighting",
+    "Customer service"
+  ],
+  "restrictions": [
+    "Product identification and customer consultation only; no installation certification or licensed trade instruction.",
+    "Never diagnose hazards or promise compliance with codes or product compatibility."
+  ],
+  "estimated_completion_minutes": {
+    "lessons": 25,
+    "quiz": 5,
+    "total": 30,
+    "validated": false
+  },
+  "prerequisites": {
+    "required": [],
+    "recommended": [
+      "RF-102",
+      "RF-103",
+      "CS-103"
+    ]
+  },
+  "learning_objectives": [
+    "Identify basic electrical merchandise.",
+    "Locate ratings and compatibility information.",
+    "Compare bulb and fixture information.",
+    "Recognize environmental and use restrictions.",
+    "Use a safe retail handoff."
+  ],
+  "version": "1.0.0",
+  "review_date": "2026-10-18",
+  "status": "Ready for review",
+  "source_materials": [
+    {
+      "title": "colTRAIN original course draft",
+      "organization": "colTRAIN",
+      "url": null,
+      "supported_claims": "Original retail explanations, examples, and scenarios; not external verification.",
+      "verification_needed": "Review technical statements with qualified subject-matter expert and manufacturer guidance before publication."
+    },
+    {
+      "title": "Manufacturer product labels, manuals, and compatibility guides",
+      "organization": "Applicable product manufacturer",
+      "url": null,
+      "supported_claims": "Product ratings, permitted use, compatibility, installation restrictions.",
+      "verification_needed": "Select specific current documents for products sold by each store; URLs and permissions not supplied."
+    },
+    {
+      "title": "Applicable local building, electrical, plumbing, and mechanical codes",
+      "organization": "Authority having jurisdiction",
+      "url": null,
+      "supported_claims": "Installation and licensing requirements",
+      "verification_needed": "Jurisdiction-specific rules are outside this general course and must be confirmed."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "lesson_id": "HB-101-L01",
+      "title": "Recognize Common Electrical Products",
+      "estimated_minutes": 5,
+      "main_objective": "Identify basic electrical merchandise"
+    },
+    {
+      "lesson_id": "HB-101-L02",
+      "title": "Read Electrical Labels Without Guessing",
+      "estimated_minutes": 5,
+      "main_objective": "Locate ratings and compatibility information"
+    },
+    {
+      "lesson_id": "HB-101-L03",
+      "title": "Understand Common Lighting Choices",
+      "estimated_minutes": 5,
+      "main_objective": "Compare bulb and fixture information"
+    },
+    {
+      "lesson_id": "HB-101-L04",
+      "title": "Match Products to Location and Use",
+      "estimated_minutes": 5,
+      "main_objective": "Recognize environmental and use restrictions"
+    },
+    {
+      "lesson_id": "HB-101-L05",
+      "title": "Know When Electrical Questions Need an Expert",
+      "estimated_minutes": 5,
+      "main_objective": "Use a safe retail handoff"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "HB-101-L01",
+      "title": "Recognize Common Electrical Products",
+      "estimated_minutes": 5,
+      "objective": "Identify basic electrical merchandise",
+      "why_this_matters": "Customers often know what stopped working but not the name of the part.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Electrical aisles may include switches, receptacles, cover plates, cords, connectors, breakers, and lighting products. A receptacle is the outlet where a plug connects. A switch controls a circuit or device. These items have different purposes."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Look for the product label and any rating printed on the package. A product that looks similar may have different electrical ratings or installation requirements. Do not assume that matching color or shape means matching function."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Your job is to identify the category and gather information. Never tell a customer to work on energized equipment or bypass a protective device."
+        }
+      ],
+      "hardware_store_example": "A customer asks for “the thing the lamp plugs into.” Ask whether they mean a wall receptacle, an extension cord, or a power strip before walking them to an aisle.",
+      "what_to_say_or_do": "Ask: “What are you connecting, and can you describe the part you need?” Show labeled product categories without claiming compatibility.",
+      "common_mistakes": [
+        "Handing over a look-alike electrical part without checking its label."
+      ],
+      "when_to_ask_for_help": "If the customer describes damaged wiring, sparking, heat, or repeated breaker trips, stop product matching and direct them to qualified help.",
+      "supporting_materials": [
+        {
+          "id": "HB-101-IMG01",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 1, after content",
+          "purpose": "Labeled photo of receptacle, switch, cover plate, and power strip",
+          "alt_text_draft": "Labeled photo of receptacle, switch, cover plate, and power strip",
+          "caption_draft": "Labeled photo of receptacle, switch, cover plate, and power strip",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Electrical aisles may include switches, receptacles, cover plates, cords, connectors, breakers, and lighting products.",
+        "Look for the product label and any rating printed on the package.",
+        "Your job is to identify the category and gather information."
+      ],
+      "optional_practice": {
+        "id": "HB-101-P01",
+        "scored": false,
+        "question": "Which detail best distinguishes a switch from a receptacle?",
+        "choices": {
+          "A": "A switch controls; a receptacle accepts a plug",
+          "B": "They are interchangeable",
+          "C": "A receptacle is always outdoors",
+          "D": "Both are types of light bulbs"
+        },
+        "correct_answer": "A",
+        "explanation": "A switch controls a circuit or device. A receptacle provides a connection point for a plug."
+      }
+    },
+    {
+      "id": "HB-101-L02",
+      "title": "Read Electrical Labels Without Guessing",
+      "estimated_minutes": 5,
+      "objective": "Locate ratings and compatibility information",
+      "why_this_matters": "Similar-looking electrical products may be designed for different conditions.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Packages may show voltage, amperage, wattage, location rating, or compatible equipment. Voltage describes electrical potential. Amperage relates to current. Wattage describes power use."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "These values are not a license to choose a replacement by appearance. A correct choice also depends on the existing circuit, equipment, installation, and applicable codes."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Point to the label, read the exact wording, and compare it with verified requirements. If the customer cannot confirm those requirements, do not guess."
+        }
+      ],
+      "hardware_store_example": "A customer wants a replacement breaker based only on its color. Explain that the exact panel and manufacturer compatibility must be confirmed.",
+      "what_to_say_or_do": "Say: “Let’s find the model information and check the manufacturer’s listed compatibility.”",
+      "common_mistakes": [
+        "Claiming that any breaker with the same amperage will fit."
+      ],
+      "when_to_ask_for_help": "Escalate breaker selection, wiring alterations, unclear ratings, and code questions to a qualified electrician or authorized specialist.",
+      "supporting_materials": [
+        {
+          "id": "HB-101-IMG02",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 2, after content",
+          "purpose": "Annotated close-up of a sample electrical package rating label",
+          "alt_text_draft": "Annotated close-up of a sample electrical package rating label",
+          "caption_draft": "Annotated close-up of a sample electrical package rating label",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Packages may show voltage, amperage, wattage, location rating, or compatible equipment.",
+        "These values are not a license to choose a replacement by appearance.",
+        "Point to the label, read the exact wording, and compare it with verified requirements."
+      ],
+      "optional_practice": {
+        "id": "HB-101-P02",
+        "scored": false,
+        "question": "What should you do when a customer knows only a breaker’s amperage?",
+        "choices": {
+          "A": "Choose any breaker with that number",
+          "B": "Match by color",
+          "C": "Verify the panel and manufacturer compatibility",
+          "D": "Recommend the least expensive option"
+        },
+        "correct_answer": "C",
+        "explanation": "Amperage alone does not establish panel compatibility."
+      }
+    },
+    {
+      "id": "HB-101-L03",
+      "title": "Understand Common Lighting Choices",
+      "estimated_minutes": 5,
+      "objective": "Compare bulb and fixture information",
+      "why_this_matters": "A customer may need a specific light output, fit, or use location.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Lighting labels often list lumens, watts, color temperature, and base type. Lumens describe light output. Watts describe energy use. Color temperature describes whether the light appears warmer or cooler."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Check the fixture label for bulb type, maximum permitted wattage, and other restrictions. A bulb must physically fit and meet the fixture’s instructions. An enclosed fixture may require a bulb rated for enclosed use."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Dimmable lamps and dimmer controls must be compatible. Outdoor or damp locations require products rated for that environment."
+        }
+      ],
+      "hardware_store_example": "A customer says their new LED bulb flickers on a dimmer. Ask for the bulb and dimmer models instead of promising that a different wattage will fix it.",
+      "what_to_say_or_do": "Ask: “Is this on a dimmer? Is the fixture enclosed? What base does your current bulb use?”",
+      "common_mistakes": [
+        "Choosing a bulb using only the old bulb’s wattage."
+      ],
+      "when_to_ask_for_help": "Refer uncertain fixture restrictions or dimmer compatibility to manufacturer documentation or qualified help.",
+      "supporting_materials": [
+        {
+          "id": "HB-101-IMG03",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 3, after content",
+          "purpose": "Comparison image: bulb bases, lumens, and warm/cool color appearance",
+          "alt_text_draft": "Comparison image: bulb bases, lumens, and warm/cool color appearance",
+          "caption_draft": "Comparison image: bulb bases, lumens, and warm/cool color appearance",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Lighting labels often list lumens, watts, color temperature, and base type.",
+        "Check the fixture label for bulb type, maximum permitted wattage, and other restrictions.",
+        "Dimmable lamps and dimmer controls must be compatible."
+      ],
+      "optional_practice": {
+        "id": "HB-101-P03",
+        "scored": false,
+        "question": "Which label most directly describes how much light a bulb produces?",
+        "choices": {
+          "A": "Lumens",
+          "B": "Watts",
+          "C": "Package weight",
+          "D": "Brand color"
+        },
+        "correct_answer": "A",
+        "explanation": "Lumens measure light output. Watts describe power use."
+      }
+    },
+    {
+      "id": "HB-101-L04",
+      "title": "Match Products to Location and Use",
+      "estimated_minutes": 5,
+      "objective": "Recognize environmental and use restrictions",
+      "why_this_matters": "An indoor product may be unsafe in a wet or exposed location.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Product packages may specify dry, damp, or wet locations. These labels are not interchangeable. Ask where the item will be installed and whether it will face rain, moisture, or other exposure."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Extension cords and power strips have intended uses and ratings. Do not suggest running cords through walls, hiding them under rugs, or using them as permanent wiring."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "When a customer requests a solution for a bathroom, garage, porch, or outdoor project, the location matters as much as the product name."
+        }
+      ],
+      "hardware_store_example": "A customer wants a porch light. Ask whether the fixture will be directly exposed to rain and confirm the manufacturer’s location rating.",
+      "what_to_say_or_do": "Say: “Let’s check the package for the installation location it permits.”",
+      "common_mistakes": [
+        "Assuming a product is outdoor-rated because it looks sturdy."
+      ],
+      "when_to_ask_for_help": "Ask a qualified electrician about wiring, circuit design, grounding, and code compliance.",
+      "supporting_materials": [
+        {
+          "id": "HB-101-IMG04",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 4, after content",
+          "purpose": "Side-by-side dry/damp/wet location label examples",
+          "alt_text_draft": "Side-by-side dry/damp/wet location label examples",
+          "caption_draft": "Side-by-side dry/damp/wet location label examples",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Product packages may specify dry, damp, or wet locations.",
+        "Extension cords and power strips have intended uses and ratings.",
+        "When a customer requests a solution for a bathroom, garage, porch, or outdoor project, the location matters as much as the product name."
+      ],
+      "optional_practice": {
+        "id": "HB-101-P04",
+        "scored": false,
+        "question": "What is the best first question about an outdoor light fixture?",
+        "choices": {
+          "A": "Which color sells most?",
+          "B": "Will the fixture be exposed to rain or moisture?",
+          "C": "Is it on sale?",
+          "D": "Can it use any bulb?"
+        },
+        "correct_answer": "B",
+        "explanation": "Location exposure determines which manufacturer rating must be checked."
+      }
+    },
+    {
+      "id": "HB-101-L05",
+      "title": "Know When Electrical Questions Need an Expert",
+      "estimated_minutes": 5,
+      "objective": "Use a safe retail handoff",
+      "why_this_matters": "Electrical mistakes can cause fire, shock, or injury.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Employees can help locate packaged products and explain terms shown on labels. They should not diagnose live wiring, instruct customers to modify panels, or promise that a repair is code-compliant."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Listen for warning signs: burning smells, warm outlets, sparking, repeated tripping, water near electrical equipment, or exposed conductors. Do not suggest trial-and-error repairs."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Explain the limit without dismissing the customer. Summarize what you know and recommend a licensed electrician or appropriate emergency response for immediate danger."
+        }
+      ],
+      "hardware_store_example": "A customer reports an outlet that sparked and smells burned. Do not sell a replacement outlet as a complete solution.",
+      "what_to_say_or_do": "Say: “That could be hazardous. Please stop using it and contact a qualified electrician. If there is immediate danger, follow emergency guidance.”",
+      "common_mistakes": [
+        "Treating a potentially dangerous symptom as a simple parts sale."
+      ],
+      "when_to_ask_for_help": "Escalate hazards immediately according to store policy; use emergency services for an active emergency.",
+      "supporting_materials": [
+        {
+          "id": "HB-101-IMG05",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 5, after content",
+          "purpose": "Decision diagram: product identification vs hazardous electrical symptom",
+          "alt_text_draft": "Decision diagram: product identification vs hazardous electrical symptom",
+          "caption_draft": "Decision diagram: product identification vs hazardous electrical symptom",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Employees can help locate packaged products and explain terms shown on labels.",
+        "Listen for warning signs: burning smells, warm outlets, sparking, repeated tripping, water near electrical equipment, or exposed conductors.",
+        "Explain the limit without dismissing the customer."
+      ],
+      "optional_practice": {
+        "id": "HB-101-P05",
+        "scored": false,
+        "question": "A customer reports a hot outlet with a burning smell. What is the best response?",
+        "choices": {
+          "A": "Suggest a larger power strip",
+          "B": "Tell them to keep testing it",
+          "C": "Advise stopping use and seeking qualified help",
+          "D": "Offer a bulb instead"
+        },
+        "correct_answer": "C",
+        "explanation": "Heat and burning smells are warning signs; a retail employee should not diagnose or prescribe a repair."
+      }
+    }
+  ],
+  "final_quiz": {
+    "scored": true,
+    "question_count": 5,
+    "questions": [
+      {
+        "id": "HB-101-Q01",
+        "objective_assessed": "Identify basic electrical merchandise",
+        "related_lesson_id": "HB-101-L01",
+        "question": "Which response best follows this lesson when a customer needs help? Situation: A customer asks for “the thing the lamp plugs into.” Ask whether they mean a wall receptacle, an extension cord, or a power strip before walking them to an aisle.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Promise compatibility without reading product instructions.",
+          "C": "Ask: “What are you connecting, and can you describe the part you need?” Show labeled product categories without claiming compatibility.",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Ask: “What are you connecting, and can you describe the part you need?” Show labeled product categories without claiming compatibility. A switch controls a circuit or device. A receptacle provides a connection point for a plug. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-101-L01",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-101-Q02",
+        "objective_assessed": "Locate ratings and compatibility information",
+        "related_lesson_id": "HB-101-L02",
+        "question": "What is the safest way to confirm the right product? Situation: A customer wants a replacement breaker based only on its color. Explain that the exact panel and manufacturer compatibility must be confirmed.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Promise compatibility without reading product instructions.",
+          "C": "Ignore the customer’s application and select a popular item.",
+          "D": "Say: “Let’s find the model information and check the manufacturer’s listed compatibility.”"
+        },
+        "correct_answer": "D",
+        "points": 10,
+        "explanation": "Say: “Let’s find the model information and check the manufacturer’s listed compatibility.” Amperage alone does not establish panel compatibility. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-101-L02",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-101-Q03",
+        "objective_assessed": "Compare bulb and fixture information",
+        "related_lesson_id": "HB-101-L03",
+        "question": "Which approach best avoids a mistaken recommendation? Situation: A customer says their new LED bulb flickers on a dimmer. Ask for the bulb and dimmer models instead of promising that a different wattage will fix it.",
+        "choices": {
+          "A": "Ask: “Is this on a dimmer? Is the fixture enclosed? What base does your current bulb use?”",
+          "B": "Choose by appearance without checking details.",
+          "C": "Promise compatibility without reading product instructions.",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "A",
+        "points": 10,
+        "explanation": "Ask: “Is this on a dimmer? Is the fixture enclosed? What base does your current bulb use?” Lumens measure light output. Watts describe power use. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-101-L03",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-101-Q04",
+        "objective_assessed": "Recognize environmental and use restrictions",
+        "related_lesson_id": "HB-101-L04",
+        "question": "What should an employee do when product requirements are uncertain? Situation: A customer wants a porch light. Ask whether the fixture will be directly exposed to rain and confirm the manufacturer’s location rating.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Say: “Let’s check the package for the installation location it permits.”",
+          "C": "Promise compatibility without reading product instructions.",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Say: “Let’s check the package for the installation location it permits.” Location exposure determines which manufacturer rating must be checked. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-101-L04",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-101-Q05",
+        "objective_assessed": "Use a safe retail handoff",
+        "related_lesson_id": "HB-101-L05",
+        "question": "Which response best demonstrates responsible customer service? Situation: A customer reports an outlet that sparked and smells burned. Do not sell a replacement outlet as a complete solution.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Promise compatibility without reading product instructions.",
+          "C": "Say: “That could be hazardous. Please stop using it and contact a qualified electrician. If there is immediate danger, follow emergency guidance.”",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Say: “That could be hazardous. Please stop using it and contact a qualified electrician. If there is immediate danger, follow emergency guidance.” Heat and burning smells are warning signs; a retail employee should not diagnose or prescribe a repair. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-101-L05",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      }
+    ],
+    "employee_facing_hide_answer_key": true
+  },
+  "completion_rules": {
+    "pass_percentage": 80,
+    "points_per_correct_question": 10,
+    "lifetime_points_once_per_question_across_attempts": true,
+    "max_attempts_before_manager_assistance": 3,
+    "missed_question_explanations_after_failed_quiz": true,
+    "required_lessons_before_first_attempt": true,
+    "standard_trophy_once_on_pass": true,
+    "competition_replay_allowed_after_pass": true,
+    "competition_points_separate": true,
+    "store_availability_administrator_controlled": true,
+    "publication_does_not_auto_assign": true
+  },
+  "completion_message": "You completed Electrical & Lighting Fundamentals. Use product labels and verified guidance when helping customers.",
+  "practical_next_step": "Use the lesson questions during your next relevant customer interaction. Ask for help when requirements are unclear.",
+  "manager_guidance": {
+    "suggested_audience": "New hires and associates working in or supporting Electrical and Lighting",
+    "suggested_completion_window_days": 30,
+    "manager_adjustable": true,
+    "coaching_prompts": [
+      "Which product label would you check first?",
+      "What customer detail changes your recommendation?",
+      "When should you refer to a qualified professional?"
+    ],
+    "optional_unscored_team_activity": "Compare two actual product packages and identify what must be verified before recommending either.",
+    "optional_competition": {
+      "name": "Electrical and Lighting Label Detective",
+      "reward": "Manager chooses a suitable reward; no automatic reward."
+    }
+  },
+  "media": [
+    {
+      "id": "HB-101-IMG01",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 1, after content",
+      "purpose": "Labeled photo of receptacle, switch, cover plate, and power strip",
+      "alt_text_draft": "Labeled photo of receptacle, switch, cover plate, and power strip",
+      "caption_draft": "Labeled photo of receptacle, switch, cover plate, and power strip",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-101-IMG02",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 2, after content",
+      "purpose": "Annotated close-up of a sample electrical package rating label",
+      "alt_text_draft": "Annotated close-up of a sample electrical package rating label",
+      "caption_draft": "Annotated close-up of a sample electrical package rating label",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-101-IMG03",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 3, after content",
+      "purpose": "Comparison image: bulb bases, lumens, and warm/cool color appearance",
+      "alt_text_draft": "Comparison image: bulb bases, lumens, and warm/cool color appearance",
+      "caption_draft": "Comparison image: bulb bases, lumens, and warm/cool color appearance",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-101-IMG04",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 4, after content",
+      "purpose": "Side-by-side dry/damp/wet location label examples",
+      "alt_text_draft": "Side-by-side dry/damp/wet location label examples",
+      "caption_draft": "Side-by-side dry/damp/wet location label examples",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-101-IMG05",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 5, after content",
+      "purpose": "Decision diagram: product identification vs hazardous electrical symptom",
+      "alt_text_draft": "Decision diagram: product identification vs hazardous electrical symptom",
+      "caption_draft": "Decision diagram: product identification vs hazardous electrical symptom",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    }
+  ],
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lessons": true,
+    "sources_verified": false,
+    "missing_media_listed": true,
+    "store_specific_material_identified": true,
+    "mobile_readable": true,
+    "employee_personal_information_included": false,
+    "timing_validated": false
+  },
+  "items_needed_from_user": [
+    "Confirm actual brands and product categories stocked.",
+    "Confirm store escalation contacts and policies.",
+    "Supply approved manufacturer documentation for technical verification.",
+    "Choose and license appropriate instructional photos or approve original diagrams.",
+    "Confirm jurisdiction-specific restrictions where applicable."
+  ]
+}

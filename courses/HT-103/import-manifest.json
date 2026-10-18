@@ -1,0 +1,17 @@
+{
+  "course_code": "HT-103",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "bbf2069f-95c3-5b39-8ce2-919dcb455eb8",
+  "source_files": {
+    "HT-103_complete_course_v1.0.0.md": "fb3618b96325b8f39a66e2e762fb6be9dae5cb6010dc320c118191e1bfa83827",
+    "HT-103_course_v1.0.0.json": "6cb1c78cd33d907d68630c7cab18ce0a005b3d90082066f5f059c7020a96c652",
+    "README.md": "ea01c24505668ac423737c07074a60910d52c27aeeb484211f97417cade7ad1f"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

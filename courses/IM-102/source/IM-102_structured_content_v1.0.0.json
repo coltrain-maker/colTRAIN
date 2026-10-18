@@ -1,0 +1,806 @@
+{
+  "course_information": {
+    "code": "IM-102",
+    "title": "Loss Prevention Fundamentals",
+    "description": "Learn everyday habits that help protect people, merchandise, and store records without confrontation or profiling.",
+    "academy": "Inventory & Merchandising",
+    "level": "Foundations",
+    "original_catalog_designation": "Onboarding",
+    "intended_audience": "All store employees",
+    "relevant_departments": "All departments",
+    "scope": "General; store-specific policies must be supplied separately",
+    "restrictions": "No authority to perform inventory adjustments, investigations, detentions, security review, equipment operation, or price overrides without store authorization.",
+    "estimated_completion_minutes": 29,
+    "estimated_lessons_minutes": 25,
+    "estimated_quiz_minutes": 4,
+    "prerequisites": "None",
+    "learning_objectives": [
+      "Explain the difference between loss, shrink, and ordinary inventory error.",
+      "Identify everyday practices that reduce preventable loss.",
+      "Recognize and report suspicious situations without assumptions or profiling.",
+      "Respond safely to theft concerns using store policy.",
+      "Protect transaction information and report discrepancies through approved channels."
+    ],
+    "version": "1.0.0",
+    "review_date": "2026-10-18",
+    "status": "Ready for review",
+    "progression": {
+      "level": "Foundations",
+      "future_application_course": "Not yet approved",
+      "future_expertise_course": "Not yet approved"
+    }
+  },
+  "source_materials": [
+    {
+      "title": "colTRAIN original course authoring",
+      "organization": "colTRAIN",
+      "url": null,
+      "support": "General retail operational principles and teaching examples; not an external reference.",
+      "verification": "Review with retail subject matter expert and local store policy owner before publication."
+    },
+    {
+      "title": "Store-specific policies and system instructions",
+      "organization": "Each participating retailer",
+      "url": null,
+      "support": "Receiving, inventory adjustments, loss prevention, reporting, promotions, pricing, and escalation permissions.",
+      "verification": "Needed; not supplied. Do not present general steps as the store’s actual procedures."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "id": "IM-102-L01",
+      "title": "Understand Loss and Shrink",
+      "minutes": 5,
+      "objective": "Recognize common causes of missing or damaged merchandise."
+    },
+    {
+      "id": "IM-102-L02",
+      "title": "Reduce Loss Through Daily Habits",
+      "minutes": 5,
+      "objective": "Use routine accuracy and care to reduce preventable loss."
+    },
+    {
+      "id": "IM-102-L03",
+      "title": "Notice Concerns Without Profiling",
+      "minutes": 5,
+      "objective": "Describe objective observations and avoid unfair assumptions."
+    },
+    {
+      "id": "IM-102-L04",
+      "title": "Respond Safely to Suspected Theft",
+      "minutes": 5,
+      "objective": "Follow safe escalation practices instead of intervening."
+    },
+    {
+      "id": "IM-102-L05",
+      "title": "Protect Transactions and Report Errors",
+      "minutes": 5,
+      "objective": "Use careful checkout and reporting habits."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "IM-102-L01",
+      "title": "Understand Loss and Shrink",
+      "estimated_minutes": 5,
+      "objective": "Recognize common causes of missing or damaged merchandise.",
+      "why_this_matters": "Loss prevention means reducing avoidable losses while keeping employees and customers safe. Shrink is the difference between recorded inventory and the inventory actually accounted for. Theft can contribute, but so can damage, mistakes, miscounts, and process problems.",
+      "content_sections": [
+        {
+          "heading": "More than theft",
+          "text": "Examples include damaged bags of soil, incorrect receiving quantities, mis-scanned products, and items placed in the wrong location. Never treat a discrepancy alone as proof of theft."
+        },
+        {
+          "heading": "People come first",
+          "text": "Safety matters more than merchandise. Follow store policy for incidents and never confront, chase, restrain, or physically intervene with a suspected shoplifter."
+        }
+      ],
+      "hardware_store_example": "A box of screws is counted as twelve cartons instead of twelve pieces. The inventory record is wrong even though no product was stolen.",
+      "what_to_say_or_do": [
+        "Use neutral language such as “inventory difference.”",
+        "Report damaged or missing stock using approved channels.",
+        "Keep yourself and customers safe."
+      ],
+      "common_mistakes": [
+        "Assuming every shortage is theft.",
+        "Trying to recover merchandise by force.",
+        "Sharing suspicions as facts."
+      ],
+      "when_to_ask_for_help": "Ask a manager about an unexplained difference or any situation that feels unsafe.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Use neutral language such as “inventory difference.”",
+        "Report damaged or missing stock using approved channels.",
+        "Ask a manager about an unexplained difference or any situation that feels unsafe."
+      ],
+      "practice": {
+        "id": "IM-102-P01",
+        "scored": false,
+        "question": "A count is short by two items. What can you conclude?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The last customer stole them."
+          },
+          {
+            "id": "B",
+            "text": "A coworker is responsible."
+          },
+          {
+            "id": "C",
+            "text": "There is a discrepancy that needs review."
+          },
+          {
+            "id": "D",
+            "text": "The supplier always shipped too few."
+          }
+        ],
+        "correct_answer": "C",
+        "explanation": "A shortage alone does not identify a cause."
+      }
+    },
+    {
+      "id": "IM-102-L02",
+      "title": "Reduce Loss Through Daily Habits",
+      "estimated_minutes": 5,
+      "objective": "Use routine accuracy and care to reduce preventable loss.",
+      "why_this_matters": "Small, consistent actions protect merchandise. Accurate receiving, correct shelf labels, prompt damage reports, and careful transactions all matter.",
+      "content_sections": [
+        {
+          "heading": "Check products and labels",
+          "text": "Confirm the SKU and unit of measure when receiving or stocking. Keep small or high-value products in approved display locations without inventing new restrictions."
+        },
+        {
+          "heading": "Care for merchandise",
+          "text": "Report torn packaging, leaks, and broken displays. Follow the store’s approved damage and disposal process."
+        },
+        {
+          "heading": "Keep work areas clear",
+          "text": "A tidy checkout and organized receiving area make mistakes easier to spot. Keep customer walkways safe and maintain visibility according to store policy."
+        }
+      ],
+      "hardware_store_example": "An associate notices two nearly identical drill bits in the same bin. The associate separates them using the correct shelf tags and tells the department lead.",
+      "what_to_say_or_do": [
+        "Match product to label.",
+        "Record damage and returns correctly.",
+        "Ask before moving controlled or secured merchandise."
+      ],
+      "common_mistakes": [
+        "Guessing which SKU belongs to a product.",
+        "Throwing away damaged stock without recording it.",
+        "Moving high-value items without updating approved locations."
+      ],
+      "when_to_ask_for_help": "Ask the department lead about damaged merchandise, security fixtures, or labeling problems.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Match product to label.",
+        "Record damage and returns correctly.",
+        "Ask the department lead about damaged merchandise, security fixtures, or labeling problems."
+      ],
+      "practice": {
+        "id": "IM-102-P02",
+        "scored": false,
+        "question": "Which habit helps prevent avoidable inventory loss?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Putting similar items in one unlabeled bin."
+          },
+          {
+            "id": "B",
+            "text": "Recording damage through the approved process."
+          },
+          {
+            "id": "C",
+            "text": "Ignoring torn packages."
+          },
+          {
+            "id": "D",
+            "text": "Skipping receiving checks."
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Accurate damage records help explain missing or unsellable stock."
+      }
+    },
+    {
+      "id": "IM-102-L03",
+      "title": "Notice Concerns Without Profiling",
+      "estimated_minutes": 5,
+      "objective": "Describe objective observations and avoid unfair assumptions.",
+      "why_this_matters": "Good loss prevention focuses on behavior and store processes, not on a person’s appearance, age, race, clothing, or other personal traits. Ordinary shopping behavior can have many explanations.",
+      "content_sections": [
+        {
+          "heading": "Observe facts, not identities",
+          "text": "If a situation raises concern, note what you actually saw and where it happened. Do not label someone a thief or make a claim you cannot support."
+        },
+        {
+          "heading": "Use normal customer service",
+          "text": "Offer the same respectful assistance you would offer any customer. Do not follow, intimidate, or accuse a person."
+        },
+        {
+          "heading": "Keep reports private",
+          "text": "Share factual concerns only with designated staff using approved channels. Avoid discussing suspicions on the sales floor or in personal group chats."
+        }
+      ],
+      "hardware_store_example": "An employee notices an opened package on a shelf. They report the package location and condition to a manager without accusing nearby shoppers.",
+      "what_to_say_or_do": [
+        "Offer normal customer service.",
+        "Describe objective facts.",
+        "Tell the designated manager privately."
+      ],
+      "common_mistakes": [
+        "Making assumptions based on appearance.",
+        "Following or confronting a shopper.",
+        "Sharing an unverified accusation."
+      ],
+      "when_to_ask_for_help": "Contact a manager when you see damaged packaging, an unsafe situation, or a concerning incident.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Offer normal customer service.",
+        "Describe objective facts.",
+        "Contact a manager when you see damaged packaging, an unsafe situation, or a concerning incident."
+      ],
+      "practice": {
+        "id": "IM-102-P03",
+        "scored": false,
+        "question": "You find an opened package near several shoppers. What should you report?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Which shopper looks suspicious."
+          },
+          {
+            "id": "B",
+            "text": "The package condition and exact location."
+          },
+          {
+            "id": "C",
+            "text": "That a customer definitely stole something."
+          },
+          {
+            "id": "D",
+            "text": "Nothing, because you did not see the opening."
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Report observable facts without speculation."
+      }
+    },
+    {
+      "id": "IM-102-L04",
+      "title": "Respond Safely to Suspected Theft",
+      "estimated_minutes": 5,
+      "objective": "Follow safe escalation practices instead of intervening.",
+      "why_this_matters": "A loss-prevention concern is never a reason to put yourself or another person in danger. Your role is to stay safe, provide ordinary customer service if appropriate, and alert authorized staff.",
+      "content_sections": [
+        {
+          "heading": "Do not intervene physically",
+          "text": "Do not chase, block an exit, grab merchandise, search bags, or detain someone. Do not make accusations. Store rules and local laws may place additional limits on staff actions."
+        },
+        {
+          "heading": "Get help promptly",
+          "text": "Notify the designated manager or security contact according to store policy. If there is an immediate threat, move to safety and use the store’s emergency procedure."
+        },
+        {
+          "heading": "Preserve factual information",
+          "text": "If asked to report an incident, record only what you directly observed, such as time, location, and actions. Do not access or share video unless authorized."
+        }
+      ],
+      "hardware_store_example": "An associate thinks a customer may have left without paying. The associate does not pursue the person. They tell the manager what they directly observed.",
+      "what_to_say_or_do": [
+        "Stay safe and avoid confrontation.",
+        "Use the designated reporting channel.",
+        "Follow emergency procedures for threats."
+      ],
+      "common_mistakes": [
+        "Chasing someone into the parking lot.",
+        "Blocking an exit.",
+        "Posting incident images online."
+      ],
+      "when_to_ask_for_help": "Contact a manager immediately for suspected theft; use emergency procedures if anyone is threatened.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Stay safe and avoid confrontation.",
+        "Use the designated reporting channel.",
+        "Contact a manager immediately for suspected theft; use emergency procedures if anyone is threatened."
+      ],
+      "practice": {
+        "id": "IM-102-P04",
+        "scored": false,
+        "question": "A customer appears to leave with unpaid merchandise. What is the safest response?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Chase them into the lot."
+          },
+          {
+            "id": "B",
+            "text": "Block the doorway."
+          },
+          {
+            "id": "C",
+            "text": "Notify the designated manager without confrontation."
+          },
+          {
+            "id": "D",
+            "text": "Search their bag."
+          }
+        ],
+        "correct_answer": "C",
+        "explanation": "Staff safety comes before merchandise recovery."
+      }
+    },
+    {
+      "id": "IM-102-L05",
+      "title": "Protect Transactions and Report Errors",
+      "estimated_minutes": 5,
+      "objective": "Use careful checkout and reporting habits.",
+      "why_this_matters": "Transaction errors can cause loss even when no one intended harm. Accuracy at checkout, returns, discounts, and cash handling helps the store understand what happened.",
+      "content_sections": [
+        {
+          "heading": "Verify before completing a transaction",
+          "text": "Use the correct product barcode, quantity, and unit. Follow store procedures for discounts, returns, refunds, and overrides. Never share passwords or use another employee’s credentials."
+        },
+        {
+          "heading": "Correct mistakes openly",
+          "text": "If you notice a missed scan, wrong quantity, or incorrect refund, tell an authorized team member and follow the correction process. Do not quietly edit or hide it."
+        },
+        {
+          "heading": "Respect privacy",
+          "text": "Keep customer and payment information confidential. Use approved systems and channels for incident reports."
+        }
+      ],
+      "hardware_store_example": "A cashier notices that a customer bought two identical items but only one was scanned. The cashier follows the approved correction process and requests help if the sale is complete.",
+      "what_to_say_or_do": [
+        "Check item quantity and product identifiers.",
+        "Request authorized overrides or corrections.",
+        "Report errors without blame."
+      ],
+      "common_mistakes": [
+        "Using another employee’s login.",
+        "Applying unapproved discounts.",
+        "Concealing a scanning mistake."
+      ],
+      "when_to_ask_for_help": "Ask a supervisor about overrides, cash discrepancies, refunds, or suspected fraud.",
+      "supporting_materials": [
+        {
+          "type": "Visual",
+          "status": "Optional; not included",
+          "file": null,
+          "placement": "After example",
+          "purpose": "Only use a verified product or shelf photograph if it improves understanding.",
+          "accessibility": "Provide alt text identifying the relevant product/location and instructional point."
+        }
+      ],
+      "key_takeaways": [
+        "Check item quantity and product identifiers.",
+        "Request authorized overrides or corrections.",
+        "Ask a supervisor about overrides, cash discrepancies, refunds, or suspected fraud."
+      ],
+      "practice": {
+        "id": "IM-102-P05",
+        "scored": false,
+        "question": "You notice a completed sale has a quantity error. What should you do?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Edit the record secretly."
+          },
+          {
+            "id": "B",
+            "text": "Follow the store’s correction process with authorized help."
+          },
+          {
+            "id": "C",
+            "text": "Ignore it."
+          },
+          {
+            "id": "D",
+            "text": "Use a coworker’s password."
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Authorized corrections keep transaction records reliable."
+      }
+    }
+  ],
+  "final_quiz": {
+    "scored": true,
+    "question_count": 5,
+    "points_per_correct_answer": 10,
+    "pass_percentage": 80,
+    "questions_correct_to_pass": 4,
+    "questions": [
+      {
+        "id": "IM-102-Q01",
+        "objective_assessed": "Explain the difference between loss, shrink, and ordinary inventory error.",
+        "related_lesson": "IM-102-L01",
+        "question": "Which can cause inventory shrink besides theft?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "A receiving quantity error."
+          },
+          {
+            "id": "B",
+            "text": "A clean aisle."
+          },
+          {
+            "id": "C",
+            "text": "A correct shelf tag."
+          },
+          {
+            "id": "D",
+            "text": "A completed stock check."
+          }
+        ],
+        "correct_answer": "A",
+        "points": 10,
+        "explanation": "Shrink can come from process errors and damage as well as theft.",
+        "review_reference": "IM-102-L01",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      },
+      {
+        "id": "IM-102-Q02",
+        "objective_assessed": "Identify everyday practices that reduce preventable loss.",
+        "related_lesson": "IM-102-L02",
+        "question": "What should an employee do with damaged merchandise?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Discard it without recording it."
+          },
+          {
+            "id": "B",
+            "text": "Follow the approved damage-reporting process."
+          },
+          {
+            "id": "C",
+            "text": "Sell it without checking safety."
+          },
+          {
+            "id": "D",
+            "text": "Hide it behind the shelf."
+          }
+        ],
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Documenting damage helps protect inventory accuracy.",
+        "review_reference": "IM-102-L02",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      },
+      {
+        "id": "IM-102-Q03",
+        "objective_assessed": "Recognize and report suspicious situations without assumptions or profiling.",
+        "related_lesson": "IM-102-L03",
+        "question": "What is the best basis for a concern report?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "A customer’s clothing."
+          },
+          {
+            "id": "B",
+            "text": "A customer’s age."
+          },
+          {
+            "id": "C",
+            "text": "Specific actions and conditions directly observed."
+          },
+          {
+            "id": "D",
+            "text": "A guess about someone’s intentions."
+          }
+        ],
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Objective observations avoid unsupported assumptions and profiling.",
+        "review_reference": "IM-102-L03",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      },
+      {
+        "id": "IM-102-Q04",
+        "objective_assessed": "Respond safely to theft concerns using store policy.",
+        "related_lesson": "IM-102-L04",
+        "question": "If you suspect someone has taken merchandise, what should you do?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Chase them."
+          },
+          {
+            "id": "B",
+            "text": "Detain them."
+          },
+          {
+            "id": "C",
+            "text": "Notify the designated manager without confrontation."
+          },
+          {
+            "id": "D",
+            "text": "Demand to inspect their bag."
+          }
+        ],
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Avoid physical intervention and follow store policy.",
+        "review_reference": "IM-102-L04",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      },
+      {
+        "id": "IM-102-Q05",
+        "objective_assessed": "Protect transaction information and report discrepancies through approved channels.",
+        "related_lesson": "IM-102-L05",
+        "question": "A completed sale contains a scanning error. What is the best response?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Hide it."
+          },
+          {
+            "id": "B",
+            "text": "Use a coworker’s login to fix it."
+          },
+          {
+            "id": "C",
+            "text": "Tell authorized staff and follow the correction process."
+          },
+          {
+            "id": "D",
+            "text": "Blame the customer."
+          }
+        ],
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Transparent, authorized corrections protect records and trust.",
+        "review_reference": "IM-102-L05",
+        "source_reference": "Original colTRAIN instructional content; store-specific policies must be verified."
+      }
+    ],
+    "employee_facing_questions": [
+      {
+        "id": "IM-102-Q01",
+        "question": "Which can cause inventory shrink besides theft?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "A receiving quantity error."
+          },
+          {
+            "id": "B",
+            "text": "A clean aisle."
+          },
+          {
+            "id": "C",
+            "text": "A correct shelf tag."
+          },
+          {
+            "id": "D",
+            "text": "A completed stock check."
+          }
+        ]
+      },
+      {
+        "id": "IM-102-Q02",
+        "question": "What should an employee do with damaged merchandise?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Discard it without recording it."
+          },
+          {
+            "id": "B",
+            "text": "Follow the approved damage-reporting process."
+          },
+          {
+            "id": "C",
+            "text": "Sell it without checking safety."
+          },
+          {
+            "id": "D",
+            "text": "Hide it behind the shelf."
+          }
+        ]
+      },
+      {
+        "id": "IM-102-Q03",
+        "question": "What is the best basis for a concern report?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "A customer’s clothing."
+          },
+          {
+            "id": "B",
+            "text": "A customer’s age."
+          },
+          {
+            "id": "C",
+            "text": "Specific actions and conditions directly observed."
+          },
+          {
+            "id": "D",
+            "text": "A guess about someone’s intentions."
+          }
+        ]
+      },
+      {
+        "id": "IM-102-Q04",
+        "question": "If you suspect someone has taken merchandise, what should you do?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Chase them."
+          },
+          {
+            "id": "B",
+            "text": "Detain them."
+          },
+          {
+            "id": "C",
+            "text": "Notify the designated manager without confrontation."
+          },
+          {
+            "id": "D",
+            "text": "Demand to inspect their bag."
+          }
+        ]
+      },
+      {
+        "id": "IM-102-Q05",
+        "question": "A completed sale contains a scanning error. What is the best response?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Hide it."
+          },
+          {
+            "id": "B",
+            "text": "Use a coworker’s login to fix it."
+          },
+          {
+            "id": "C",
+            "text": "Tell authorized staff and follow the correction process."
+          },
+          {
+            "id": "D",
+            "text": "Blame the customer."
+          }
+        ]
+      }
+    ],
+    "answer_key": [
+      {
+        "id": "IM-102-Q01",
+        "correct_answer": "A",
+        "explanation": "Shrink can come from process errors and damage as well as theft.",
+        "review_reference": "IM-102-L01"
+      },
+      {
+        "id": "IM-102-Q02",
+        "correct_answer": "B",
+        "explanation": "Documenting damage helps protect inventory accuracy.",
+        "review_reference": "IM-102-L02"
+      },
+      {
+        "id": "IM-102-Q03",
+        "correct_answer": "C",
+        "explanation": "Objective observations avoid unsupported assumptions and profiling.",
+        "review_reference": "IM-102-L03"
+      },
+      {
+        "id": "IM-102-Q04",
+        "correct_answer": "C",
+        "explanation": "Avoid physical intervention and follow store policy.",
+        "review_reference": "IM-102-L04"
+      },
+      {
+        "id": "IM-102-Q05",
+        "correct_answer": "C",
+        "explanation": "Transparent, authorized corrections protect records and trust.",
+        "review_reference": "IM-102-L05"
+      }
+    ]
+  },
+  "completion_content": {
+    "required_lessons_before_first_quiz": true,
+    "pass_percentage": 80,
+    "max_attempts_before_manager_assistance": 3,
+    "feedback": "After a failed attempt, show explanations for missed questions and direct learners to the related lesson.",
+    "lifetime_points": "10 points per correctly answered question, awarded only once per question across attempts.",
+    "trophy": "One standard course trophy awarded once after passing.",
+    "competition": "Quiz replay after passing is allowed; competition points remain separate from lifetime points and trophies.",
+    "publishing": "Publishing does not assign the course to every store; administrator controls store availability.",
+    "completion_message": "You completed Loss Prevention Fundamentals. Use these habits in your next shift and ask your manager when store procedures are unclear.",
+    "practical_next_step": "Look for one opportunity to use the lesson skills during a normal shift; no mandatory workplace activity."
+  },
+  "manager_guidance": {
+    "suggested_audience": "All store employees",
+    "suggested_completion_window": "Within 30 days of assignment; manager-adjustable",
+    "coaching_prompts": [
+      "Which situation from this course could happen in our store?",
+      "Which parts of our local process differ from the general lesson?",
+      "When should you ask a manager for help?"
+    ],
+    "optional_team_activity": "In a short huddle, discuss one realistic customer or inventory scenario. No scoring or required workplace demonstration.",
+    "optional_competition_name": "IM-102 Knowledge Challenge",
+    "reward": "Manager selects any reward; none is required."
+  },
+  "final_review_checklist": [
+    {
+      "item": "Objectives taught and assessed",
+      "status": "Draft complete; reviewer confirmation needed"
+    },
+    {
+      "item": "Answers supported by lessons",
+      "status": "Checked"
+    },
+    {
+      "item": "External sources and local policies",
+      "status": "Local policy verification needed"
+    },
+    {
+      "item": "Missing media listed",
+      "status": "Optional visuals identified; no stock imagery embedded"
+    },
+    {
+      "item": "Store-specific material separated",
+      "status": "Yes"
+    },
+    {
+      "item": "Mobile readability",
+      "status": "Short sections; employee test deferred"
+    },
+    {
+      "item": "Employee personal information",
+      "status": "None included"
+    },
+    {
+      "item": "Timing",
+      "status": "Estimated; employee validation deferred"
+    }
+  ],
+  "items_needed_from_me": [
+    "Confirm store-specific procedures and escalation contacts before publishing.",
+    "Review product and inventory terminology against the connected POS and inventory systems.",
+    "Decide whether optional shelf/product photos would improve lessons; use licensed or store-owned imagery with alt text if added.",
+    "Approve course content after subject-matter review."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "course_code": "HT-102",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "09556b74-daa0-5e96-b719-47c557998823",
+  "source_files": {
+    "HT-102_complete_course_v1.0.0.md": "497d9e88ac15c384fd4e2ba930170788368598884a812705148a5eeb636ce7a2",
+    "HT-102_course_v1.0.0.json": "a8613a296f7a561a5dc822df3cc5237a80fdc439a6a9bd94c6f1a63099096153",
+    "README.md": "cfaf38ff1939be63b1a930052d669cc10abb96239ee44f4d20cf9eb25ee3bce5"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

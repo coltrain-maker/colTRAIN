@@ -1,0 +1,16 @@
+{
+  "course_code": "CS-102",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "22b7ea6f-154f-564a-ae6a-24dcc1c295b5",
+  "source_files": {
+    "CS-102_complete_course_v1.0.0.md": "08058d60e5f3b6af53425433f8d19675af507064ea827e3e968aeeebe0a672c8",
+    "CS-102_course_v1.0.0.json": "a1a1256611e7bd751126de5a1e5287c3dfd52ea2c988b2530f248ecb94b28cc0",
+    "README.md": "bfb4d705bfb770f5a831e5fb744980350326e1d49de77269f5cb09b555da5b88"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

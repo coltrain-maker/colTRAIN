@@ -1,0 +1,640 @@
+{
+  "course_information": {
+    "code": "LG-101",
+    "title": "Lawn & Garden Fundamentals",
+    "description": "Help customers identify basic plant, soil, fertilizer, watering, and garden-care needs using questions and verified product labels.",
+    "academy": "Lawn, Garden & Outdoor Power",
+    "skill_level": "Foundations",
+    "audience": "All employees",
+    "relevant_departments": [
+      "Lawn, Garden & Outdoor Power"
+    ],
+    "scope": "General independent hardware retail; not store-specific",
+    "restrictions": "Retail product consultation only. No pesticide application certification, hazardous repair procedures, or tree work instruction.",
+    "estimated_completion_minutes": 30,
+    "estimated_lessons_minutes": 25,
+    "estimated_quiz_minutes": 5,
+    "prerequisites": [
+      "RF-103 recommended"
+    ],
+    "learning_objectives": [
+      "Identify basic plant needs and growing conditions.",
+      "Distinguish soil, compost, mulch, and potting mix.",
+      "Read fertilizer and soil amendment labels without making unsupported claims.",
+      "Ask useful questions about watering and common garden problems.",
+      "Recognize when plant, pesticide, or environmental concerns need specialist guidance."
+    ],
+    "version": "1.0.0",
+    "review_date": "2026-10-18",
+    "status": "Ready for review",
+    "learning_progression": {
+      "application": "Future garden or outdoor power application course; not part of approved 25",
+      "expertise": "Future advanced garden or equipment consultation course; not part of approved 25"
+    }
+  },
+  "source_materials": [
+    {
+      "title": "Manufacturer labels, operator manuals, safety data sheets, and extension resources for actual products",
+      "organization": "Relevant garden and equipment manufacturers",
+      "url_or_file": "[Needed: actual store product selection and current manufacturer documents]",
+      "sections": "Approved use; compatibility; operating instructions; protective equipment; storage; maintenance; safety",
+      "claims_supported": "To be verified against actual manufacturer documents before publication",
+      "permission_or_accuracy_questions": "Which brands and product lines are stocked? Confirm current instructions and any image-use permissions."
+    },
+    {
+      "title": "Local local garden product disposal and pesticide guidance",
+      "organization": "Local solid-waste authority",
+      "url_or_file": "[Needed: local jurisdiction guidance]",
+      "sections": "Garden chemicals, batteries, and fuel disposal",
+      "claims_supported": "Disposal guidance requires local verification",
+      "permission_or_accuracy_questions": "Which store regions are supported?"
+    }
+  ],
+  "lesson_outline": [
+    {
+      "id": "LG-101-L01",
+      "title": "Start with the Plant and Its Location",
+      "minutes": 5,
+      "objective": "Gather the plant and site information needed to help a customer."
+    },
+    {
+      "id": "LG-101-L02",
+      "title": "Know Soil, Potting Mix, Compost, and Mulch",
+      "minutes": 5,
+      "objective": "Explain what common bagged garden products are for."
+    },
+    {
+      "id": "LG-101-L03",
+      "title": "Understand Fertilizer Labels",
+      "minutes": 5,
+      "objective": "Read basic fertilizer information without guessing at application rates."
+    },
+    {
+      "id": "LG-101-L04",
+      "title": "Ask Better Watering and Lawn Questions",
+      "minutes": 5,
+      "objective": "Help customers describe their watering and lawn-care situation."
+    },
+    {
+      "id": "LG-101-L05",
+      "title": "Know When to Seek Garden Expertise",
+      "minutes": 5,
+      "objective": "Recognize the limits of retail plant advice and label requirements."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "LG-101-L01",
+      "title": "Start with the Plant and Its Location",
+      "estimated_minutes": 5,
+      "objective": "Gather the plant and site information needed to help a customer.",
+      "why_this_matters": "The same plant may succeed in one location and struggle in another.",
+      "content": [
+        {
+          "heading": "Know the basics",
+          "text": "Plants need suitable light, water, air, growing medium, and temperature. Their needs vary by species. A tag or trusted growing guide gives better direction than a guess."
+        },
+        {
+          "heading": "Ask about the site",
+          "text": "Find out whether the plant will grow indoors, in a container, or in the ground. Ask how much direct sun reaches the location and whether water drains away."
+        },
+        {
+          "heading": "Use the plant label",
+          "text": "Check mature size, light requirements, and planting guidance. Climate suitability and seasonal timing can differ by region."
+        }
+      ],
+      "hardware_store_example": "A customer wants a flowering plant for a shady porch. Ask how many hours of direct sun the porch gets before recommending a plant labeled for those conditions.",
+      "what_to_say_or_do": "Say: “Is the space sunny, partly shaded, or mostly shaded? Let’s compare the plant tags.”",
+      "common_mistakes": "Calling every bright location “full sun”; promising a plant will thrive without site details.",
+      "when_to_ask_for_help": "Ask a garden specialist when a plant has unclear identification, unusual requirements, or local climate concerns.",
+      "supporting_materials": [
+        {
+          "id": "LG-101-L01-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Stock photograph: full sun and shade garden locations with labels.",
+          "alt_text": "Stock photograph: full sun and shade garden locations with labels.",
+          "caption": "Stock photograph: full sun and shade garden locations with labels.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Plants need suitable light, water, air, growing medium, and temperature.",
+        "Find out whether the plant will grow indoors, in a container, or in the ground.",
+        "Check mature size, light requirements, and planting guidance."
+      ],
+      "unscored_practice": {
+        "id": "LG-101-L01-P01",
+        "question": "Which detail should you ask before recommending a plant?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Pot color only"
+          },
+          {
+            "id": "B",
+            "text": "Available sunlight and planting location"
+          },
+          {
+            "id": "C",
+            "text": "Which display is nearest"
+          },
+          {
+            "id": "D",
+            "text": "Price tag font"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Light and growing location help narrow suitable plants."
+      }
+    },
+    {
+      "id": "LG-101-L02",
+      "title": "Know Soil, Potting Mix, Compost, and Mulch",
+      "estimated_minutes": 5,
+      "objective": "Explain what common bagged garden products are for.",
+      "why_this_matters": "Customers may use the word “dirt” for products with very different jobs.",
+      "content": [
+        {
+          "heading": "Garden soil and amendments",
+          "text": "Products sold as garden soil or soil amendments are intended for particular uses. Compost is decomposed organic material often used to improve soil properties. Always check the bag for intended use."
+        },
+        {
+          "heading": "Potting mix",
+          "text": "Container mixes are formulated for container growing and may differ from in-ground soil. A bag labeled for raised beds is not automatically the same as a container mix."
+        },
+        {
+          "heading": "Mulch",
+          "text": "Mulch covers the soil surface. It may help reduce evaporation and weeds when applied appropriately. Keep mulch away from direct contact with plant stems and trunks according to local guidance."
+        }
+      ],
+      "hardware_store_example": "A customer is filling patio pots and grabs bags of topsoil. Explain that container potting mix is generally the category to compare and verify the bag instructions.",
+      "what_to_say_or_do": "Ask: “Is this going in a pot, raised bed, or existing ground?” Then check the product label.",
+      "common_mistakes": "Selling mulch as potting mix; assuming all bagged soil products are interchangeable.",
+      "when_to_ask_for_help": "Ask for help with contaminated soil, drainage failures, or unusual planting media.",
+      "supporting_materials": [
+        {
+          "id": "LG-101-L02-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Four bagged products photographed side by side with intended-use labels visible.",
+          "alt_text": "Four bagged products photographed side by side with intended-use labels visible.",
+          "caption": "Four bagged products photographed side by side with intended-use labels visible.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Products sold as garden soil or soil amendments are intended for particular uses.",
+        "Container mixes are formulated for container growing and may differ from in-ground soil.",
+        "Mulch covers the soil surface."
+      ],
+      "unscored_practice": {
+        "id": "LG-101-L02-P01",
+        "question": "What should you recommend comparing for a patio container?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "A container potting mix labeled for the use"
+          },
+          {
+            "id": "B",
+            "text": "Driveway gravel only"
+          },
+          {
+            "id": "C",
+            "text": "Any bag marked mulch"
+          },
+          {
+            "id": "D",
+            "text": "A lawn seed bag"
+          }
+        ],
+        "correct_answer": "A",
+        "explanation": "Container growing calls for a medium intended for containers."
+      }
+    },
+    {
+      "id": "LG-101-L03",
+      "title": "Understand Fertilizer Labels",
+      "estimated_minutes": 5,
+      "objective": "Read basic fertilizer information without guessing at application rates.",
+      "why_this_matters": "Too much or the wrong fertilizer can harm plants and waste money.",
+      "content": [
+        {
+          "heading": "What N-P-K means",
+          "text": "A fertilizer label commonly shows three numbers for nitrogen, phosphate, and potash. The numbers describe the product’s nutrient analysis, not how many bags to buy."
+        },
+        {
+          "heading": "Match the use",
+          "text": "Products may be labeled for lawns, vegetables, flowering plants, or other uses. Some products also contain pesticides or herbicides and have additional legal label requirements."
+        },
+        {
+          "heading": "Follow directions",
+          "text": "Read the application rate, timing, coverage, and precautions on the actual label. Do not invent a rate or recommend using more than directed."
+        }
+      ],
+      "hardware_store_example": "A customer asks whether a lawn fertilizer can be used on tomatoes. Check the actual product label for permitted uses rather than relying on the fertilizer numbers alone.",
+      "what_to_say_or_do": "Say: “Let’s check whether this product is labeled for the plants you are growing.”",
+      "common_mistakes": "Treating a high nutrient number as automatically better; guessing application amounts.",
+      "when_to_ask_for_help": "Escalate suspected fertilizer burn, soil testing questions, and pesticide-containing products to qualified resources and label guidance.",
+      "supporting_materials": [
+        {
+          "id": "LG-101-L03-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Close-up of an example fertilizer label with N-P-K and use directions highlighted.",
+          "alt_text": "Close-up of an example fertilizer label with N-P-K and use directions highlighted.",
+          "caption": "Close-up of an example fertilizer label with N-P-K and use directions highlighted.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "A fertilizer label commonly shows three numbers for nitrogen, phosphate, and potash.",
+        "Products may be labeled for lawns, vegetables, flowering plants, or other uses.",
+        "Read the application rate, timing, coverage, and precautions on the actual label."
+      ],
+      "unscored_practice": {
+        "id": "LG-101-L03-P01",
+        "question": "What do the three main numbers on many fertilizer labels represent?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Plant height"
+          },
+          {
+            "id": "B",
+            "text": "Nutrient analysis"
+          },
+          {
+            "id": "C",
+            "text": "Number of watering days"
+          },
+          {
+            "id": "D",
+            "text": "Shelf life in months"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "N-P-K communicates nutrient analysis; directions determine use."
+      }
+    },
+    {
+      "id": "LG-101-L04",
+      "title": "Ask Better Watering and Lawn Questions",
+      "estimated_minutes": 5,
+      "objective": "Help customers describe their watering and lawn-care situation.",
+      "why_this_matters": "Yellow leaves and brown grass can have more than one cause.",
+      "content": [
+        {
+          "heading": "Gather observations",
+          "text": "Ask what is changing, when it started, how often watering occurs, and whether the soil stays wet or dries out. Weather, drainage, light, and pests may all matter."
+        },
+        {
+          "heading": "Compare watering tools",
+          "text": "Hoses, sprinklers, watering cans, timers, and drip products serve different situations. Ask about the area, water source, and desired coverage."
+        },
+        {
+          "heading": "Avoid a quick diagnosis",
+          "text": "Do not assume every yellow leaf needs fertilizer or every brown patch needs more water. Help customers gather facts before selecting a treatment."
+        }
+      ],
+      "hardware_store_example": "A customer shows a photo of brown grass. Ask about recent weather, irrigation pattern, pets, and whether the patch is spreading before suggesting a product.",
+      "what_to_say_or_do": "Say: “What have you noticed about moisture and when did this begin?”",
+      "common_mistakes": "Prescribing fertilizer for every yellow plant; claiming a photograph proves the cause.",
+      "when_to_ask_for_help": "Escalate persistent plant decline, irrigation system changes, or suspected disease to a garden specialist or local extension resource.",
+      "supporting_materials": [
+        {
+          "id": "LG-101-L04-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Photo of a sprinkler, drip line, and watering can with simple use captions.",
+          "alt_text": "Photo of a sprinkler, drip line, and watering can with simple use captions.",
+          "caption": "Photo of a sprinkler, drip line, and watering can with simple use captions.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Ask what is changing, when it started, how often watering occurs, and whether the soil stays wet or dries out.",
+        "Hoses, sprinklers, watering cans, timers, and drip products serve different situations.",
+        "Do not assume every yellow leaf needs fertilizer or every brown patch needs more water."
+      ],
+      "unscored_practice": {
+        "id": "LG-101-L04-P01",
+        "question": "A customer has brown lawn patches. What should you do first?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Promise fertilizer will fix it"
+          },
+          {
+            "id": "B",
+            "text": "Ask about watering, weather, and symptoms"
+          },
+          {
+            "id": "C",
+            "text": "Recommend the strongest treatment"
+          },
+          {
+            "id": "D",
+            "text": "Tell them to ignore it"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Several causes can look alike; gather facts first."
+      }
+    },
+    {
+      "id": "LG-101-L05",
+      "title": "Know When to Seek Garden Expertise",
+      "estimated_minutes": 5,
+      "objective": "Recognize the limits of retail plant advice and label requirements.",
+      "why_this_matters": "A mistaken treatment can damage plants, people, pets, or the environment.",
+      "content": [
+        {
+          "heading": "Identify before treating",
+          "text": "An insect on a plant is not automatically a pest. A symptom may reflect disease, water, nutrients, weather, or another cause."
+        },
+        {
+          "heading": "Read pesticide labels",
+          "text": "If a product is a pesticide, its label specifies permitted sites, pests, application directions, and precautions. Do not recommend off-label uses or mixing products without label support."
+        },
+        {
+          "heading": "Use reliable help",
+          "text": "Ask for clear photos, plant names, and site information. Refer uncertain identification to a garden specialist, local extension service, or manufacturer support."
+        }
+      ],
+      "hardware_store_example": "A customer wants insect spray for an unidentified bug on a vegetable plant. Pause and check pest identity and whether any proposed product is labeled for that crop and pest.",
+      "what_to_say_or_do": "Say: “We need to identify the issue and read the label before selecting a treatment.”",
+      "common_mistakes": "Suggesting an unlabeled pesticide use; assuming all insects should be eliminated.",
+      "when_to_ask_for_help": "Escalate pesticide questions, suspected exposure, invasive species, and unclear plant problems to qualified resources.",
+      "supporting_materials": [
+        {
+          "id": "LG-101-L05-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Decision diagram: identify issue, verify label, seek specialist if uncertain.",
+          "alt_text": "Decision diagram: identify issue, verify label, seek specialist if uncertain.",
+          "caption": "Decision diagram: identify issue, verify label, seek specialist if uncertain.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "An insect on a plant is not automatically a pest.",
+        "If a product is a pesticide, its label specifies permitted sites, pests, application directions, and precautions.",
+        "Ask for clear photos, plant names, and site information."
+      ],
+      "unscored_practice": {
+        "id": "LG-101-L05-P01",
+        "question": "A customer wants a pesticide for an unidentified problem. What is best?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Choose the strongest bottle"
+          },
+          {
+            "id": "B",
+            "text": "Identify the issue and verify label-approved use"
+          },
+          {
+            "id": "C",
+            "text": "Mix two products"
+          },
+          {
+            "id": "D",
+            "text": "Apply twice the listed rate"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Accurate identification and label instructions come before treatment."
+      }
+    }
+  ],
+  "final_scored_quiz": {
+    "recommended_question_count": 5,
+    "questions_employee_facing": [
+      {
+        "id": "LG-101-Q01",
+        "objective_assessed": "Identify basic plant needs and growing conditions.",
+        "related_lesson_id": "LG-101-L01",
+        "question": "Which detail should you ask before recommending a plant?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Pot color only"
+          },
+          {
+            "id": "B",
+            "text": "Available sunlight and planting location"
+          },
+          {
+            "id": "C",
+            "text": "Which display is nearest"
+          },
+          {
+            "id": "D",
+            "text": "Price tag font"
+          }
+        ],
+        "points": 10,
+        "review_reference": "LG-101-L01",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "LG-101-Q02",
+        "objective_assessed": "Distinguish soil, compost, mulch, and potting mix.",
+        "related_lesson_id": "LG-101-L02",
+        "question": "What should you recommend comparing for a patio container?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "A container potting mix labeled for the use"
+          },
+          {
+            "id": "B",
+            "text": "Driveway gravel only"
+          },
+          {
+            "id": "C",
+            "text": "Any bag marked mulch"
+          },
+          {
+            "id": "D",
+            "text": "A lawn seed bag"
+          }
+        ],
+        "points": 10,
+        "review_reference": "LG-101-L02",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "LG-101-Q03",
+        "objective_assessed": "Read fertilizer and soil amendment labels without making unsupported claims.",
+        "related_lesson_id": "LG-101-L03",
+        "question": "What do the three main numbers on many fertilizer labels represent?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Plant height"
+          },
+          {
+            "id": "B",
+            "text": "Nutrient analysis"
+          },
+          {
+            "id": "C",
+            "text": "Number of watering days"
+          },
+          {
+            "id": "D",
+            "text": "Shelf life in months"
+          }
+        ],
+        "points": 10,
+        "review_reference": "LG-101-L03",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "LG-101-Q04",
+        "objective_assessed": "Ask useful questions about watering and common garden problems.",
+        "related_lesson_id": "LG-101-L04",
+        "question": "A customer has brown lawn patches. What should you do first?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Promise fertilizer will fix it"
+          },
+          {
+            "id": "B",
+            "text": "Ask about watering, weather, and symptoms"
+          },
+          {
+            "id": "C",
+            "text": "Recommend the strongest treatment"
+          },
+          {
+            "id": "D",
+            "text": "Tell them to ignore it"
+          }
+        ],
+        "points": 10,
+        "review_reference": "LG-101-L04",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "LG-101-Q05",
+        "objective_assessed": "Recognize when plant, pesticide, or environmental concerns need specialist guidance.",
+        "related_lesson_id": "LG-101-L05",
+        "question": "A customer wants a pesticide for an unidentified problem. What is best?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Choose the strongest bottle"
+          },
+          {
+            "id": "B",
+            "text": "Identify the issue and verify label-approved use"
+          },
+          {
+            "id": "C",
+            "text": "Mix two products"
+          },
+          {
+            "id": "D",
+            "text": "Apply twice the listed rate"
+          }
+        ],
+        "points": 10,
+        "review_reference": "LG-101-L05",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      }
+    ],
+    "answer_key_manager_only": [
+      {
+        "question_id": "LG-101-Q01",
+        "correct_answer": "B",
+        "explanation": "Light and growing location help narrow suitable plants.",
+        "review_reference": "LG-101-L01",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "LG-101-Q02",
+        "correct_answer": "A",
+        "explanation": "Container growing calls for a medium intended for containers.",
+        "review_reference": "LG-101-L02",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "LG-101-Q03",
+        "correct_answer": "B",
+        "explanation": "N-P-K communicates nutrient analysis; directions determine use.",
+        "review_reference": "LG-101-L03",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "LG-101-Q04",
+        "correct_answer": "B",
+        "explanation": "Several causes can look alike; gather facts first.",
+        "review_reference": "LG-101-L04",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "LG-101-Q05",
+        "correct_answer": "B",
+        "explanation": "Accurate identification and label instructions come before treatment.",
+        "review_reference": "LG-101-L05",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      }
+    ]
+  },
+  "completion_content": {
+    "passing_percent": 80,
+    "minimum_correct": 4,
+    "points_per_correct_question": 10,
+    "lifetime_points_rule": "Award 10 lifetime points for each question answered correctly only once across attempts.",
+    "attempt_limit": 3,
+    "manager_assistance_after_attempts": 3,
+    "required_lessons_before_first_quiz": true,
+    "feedback_after_failed_quiz": "Show explanations for missed questions.",
+    "trophy_rule": "Award one standard trophy upon first pass.",
+    "replay_rule": "After passing, quiz replay for competitions is allowed. Competition points are separate from lifetime points and trophies; lesson review optional.",
+    "availability_rule": "Store availability is controlled by an administrator; publishing does not assign to every store.",
+    "completion_message": "You completed LG-101: Lawn & Garden Fundamentals. Ask about the customer’s project and verify product instructions before recommending an item.",
+    "practical_next_step": "Practice asking a customer about their project and checking the relevant product instructions."
+  },
+  "manager_guidance": {
+    "suggested_audience": "All employees",
+    "usual_completion_window_days": 30,
+    "manager_can_adjust_window": true,
+    "coaching_prompts": [
+      "What question would you ask before recommending a product?",
+      "Which product label statement would you verify?",
+      "When would you involve a specialist?"
+    ],
+    "optional_unscored_team_activity": "Compare two garden or outdoor power products from the actual store assortment. Have the employee explain one meaningful difference using the package directions. No activity required for course completion.",
+    "optional_competition_name": "Garden & Equipment Challenge",
+    "optional_reward_idea": "Manager-selected recognition or reward; no reward is included by default."
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lesson_content": true,
+    "sources_verified": false,
+    "missing_media_listed": true,
+    "store_specific_content_identified": true,
+    "mobile_readable": true,
+    "employee_personal_information_included": false,
+    "technical_claims_need_review": true
+  },
+  "items_needed_from_me": [
+    "Confirm stocked garden and outdoor power equipment brands and models.",
+    "Provide current labels or manufacturer technical data sheets for brand-specific recommendations.",
+    "Confirm store escalation contacts and any garden chemical and power-equipment safety policies.",
+    "Confirm local pesticide regulations, disposal rules, and extension resources for supported stores.",
+    "Supply or approve licensed photos/original diagrams for identified image placements.",
+    "Review technical accuracy, quiz answers, and completion time before publishing."
+  ]
+}

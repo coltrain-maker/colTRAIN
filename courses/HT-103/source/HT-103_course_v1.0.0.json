@@ -1,0 +1,652 @@
+{
+  "course_code": "HT-103",
+  "title": "Power Tools Fundamentals",
+  "description": "Recognize power tool categories, compare key features, and know essential safety boundaries.",
+  "academy": "Hardware & Tools",
+  "skill_level": "Foundations",
+  "original_catalog_designation": "Foundational",
+  "scope": "General, not store-specific",
+  "intended_audience": [
+    "All store employees",
+    "New and experienced employees unfamiliar with topic"
+  ],
+  "relevant_departments": [
+    "Hardware",
+    "Tools",
+    "General sales floor"
+  ],
+  "restrictions": [
+    "Not a substitute for manufacturer instructions, qualified tradespeople, or safety certification"
+  ],
+  "estimated_completion_minutes": {
+    "lessons": 25,
+    "quiz": 5,
+    "total": 30,
+    "validated": false
+  },
+  "prerequisites": {
+    "required": [],
+    "recommended": [
+      "RF-102",
+      "RF-103"
+    ]
+  },
+  "learning_objectives": [
+    "Match common power tool categories to jobs.",
+    "Explain practical differences without unsupported claims.",
+    "Recognize that accessories must match the tool and material.",
+    "Explain basic power tool safety and limits of retail advice.",
+    "Guide a responsible purchase and service handoff."
+  ],
+  "version": "1.0.0",
+  "review_date": "2026-10-18",
+  "status": "Ready for review",
+  "source_materials": [
+    {
+      "title": "Original colTRAIN instructional draft",
+      "organization": "colTRAIN",
+      "url": null,
+      "supported_claims": "General product identification and retail decision-making; no external source supplied",
+      "verification_needed": "Review product-specific, safety, compatibility, load, blade, battery, and manufacturer claims against official current instructions before publication."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "lesson_id": "HT-103-L01",
+      "title": "Recognize Common Power Tools",
+      "estimated_minutes": 5,
+      "objective": "Match common power tool categories to jobs."
+    },
+    {
+      "lesson_id": "HT-103-L02",
+      "title": "Compare Corded and Cordless Options",
+      "estimated_minutes": 5,
+      "objective": "Explain practical differences without unsupported claims."
+    },
+    {
+      "lesson_id": "HT-103-L03",
+      "title": "Understand Bits, Blades, and Accessories",
+      "estimated_minutes": 5,
+      "objective": "Recognize that accessories must match the tool and material."
+    },
+    {
+      "lesson_id": "HT-103-L04",
+      "title": "Teach Safety Before Features",
+      "estimated_minutes": 5,
+      "objective": "Explain basic power tool safety and limits of retail advice."
+    },
+    {
+      "lesson_id": "HT-103-L05",
+      "title": "Help Customers Choose and Maintain Tools",
+      "estimated_minutes": 5,
+      "objective": "Guide a responsible purchase and service handoff."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "HT-103-L01",
+      "title": "Recognize Common Power Tools",
+      "estimated_minutes": 5,
+      "objective": "Match common power tool categories to jobs.",
+      "why_this_matters": "Customers may ask for a tool by its appearance instead of the task it performs.",
+      "content_sections": [
+        {
+          "heading": "Drilling and driving",
+          "paragraphs": [
+            "Drills create holes with suitable bits. Drivers install or remove compatible fasteners. Impact drivers are a distinct category with different operating characteristics."
+          ]
+        },
+        {
+          "heading": "Cutting and shaping",
+          "paragraphs": [
+            "Circular saws and jigsaws cut suitable materials with the correct blade. Sanders remove or smooth surface material. Grinders have different hazards and uses."
+          ]
+        },
+        {
+          "heading": "Power sources",
+          "paragraphs": [
+            "Corded tools use mains electricity. Cordless tools use compatible battery systems. Do not assume batteries, chargers, or accessories are interchangeable."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer wants a tool to assemble furniture. You ask what fasteners are included and whether the instructions recommend a hand tool or powered driver.",
+      "what_to_say_or_do": [
+        "Ask what task the tool must perform.",
+        "Identify the material.",
+        "Check accessory and power requirements.",
+        "Show the relevant tool category."
+      ],
+      "common_mistakes": [
+        "Calling every driver a drill.",
+        "Assuming all batteries fit all tools."
+      ],
+      "when_to_ask_for_help": "Refer tool-specific operation and hazardous applications to manufacturer instructions or a qualified specialist.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Identify tool/fastener features and compare real products",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Drills create holes with suitable bits.",
+        "Ask what task the tool must perform.",
+        "Refer tool-specific operation and hazardous applications to manufacturer instructions or a qualified specialist."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-103-P01",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer wants a tool to assemble furniture. You ask what fasteners are included and whether the instructions recommend a hand tool or powered driver.",
+        "answer": "Ask what task the tool must perform. Identify the material.",
+        "explanation": "Customers may ask for a tool by its appearance instead of the task it performs. Refer tool-specific operation and hazardous applications to manufacturer instructions or a qualified specialist.",
+        "scored": false
+      }
+    },
+    {
+      "id": "HT-103-L02",
+      "title": "Compare Corded and Cordless Options",
+      "estimated_minutes": 5,
+      "objective": "Explain practical differences without unsupported claims.",
+      "why_this_matters": "The best power source depends on the work area and the tool requirements.",
+      "content_sections": [
+        {
+          "heading": "Corded tools",
+          "paragraphs": [
+            "Corded tools need an appropriate electrical supply and may suit work where a suitable outlet is available. Cord management is part of safe use."
+          ]
+        },
+        {
+          "heading": "Cordless tools",
+          "paragraphs": [
+            "Cordless tools use a battery and charger approved for the tool. Runtime varies by task, battery, and tool. Do not promise a fixed runtime without verified data."
+          ]
+        },
+        {
+          "heading": "Ask useful questions",
+          "paragraphs": [
+            "Where will the tool be used? Is power available? How often will it be used? Does the customer already own a compatible battery platform?"
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer needs a drill for projects around a large property. You ask whether outlets are nearby and whether they already own batteries in a particular tool system.",
+      "what_to_say_or_do": [
+        "Ask about access to power.",
+        "Check existing battery systems.",
+        "Compare manufacturer-listed specifications.",
+        "Explain tradeoffs without making guarantees."
+      ],
+      "common_mistakes": [
+        "Assuming higher voltage always means the better tool.",
+        "Mixing unapproved batteries and chargers."
+      ],
+      "when_to_ask_for_help": "Ask for help with electrical supply, battery compatibility, or tool selection for hazardous environments.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Identify tool/fastener features and compare real products",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Corded tools need an appropriate electrical supply and may suit work where a suitable outlet is available.",
+        "Ask about access to power.",
+        "Ask for help with electrical supply, battery compatibility, or tool selection for hazardous environments."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-103-P02",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer needs a drill for projects around a large property. You ask whether outlets are nearby and whether they already own batteries in a particular tool system.",
+        "answer": "Ask about access to power. Check existing battery systems.",
+        "explanation": "The best power source depends on the work area and the tool requirements. Ask for help with electrical supply, battery compatibility, or tool selection for hazardous environments.",
+        "scored": false
+      }
+    },
+    {
+      "id": "HT-103-L03",
+      "title": "Understand Bits, Blades, and Accessories",
+      "estimated_minutes": 5,
+      "objective": "Recognize that accessories must match the tool and material.",
+      "why_this_matters": "An incorrect accessory can damage a project or create serious injury risk.",
+      "content_sections": [
+        {
+          "heading": "Match the connection",
+          "paragraphs": [
+            "Drill bits, saw blades, and other accessories use specific shanks, mounts, or arbor sizes. Check the tool and accessory documentation."
+          ]
+        },
+        {
+          "heading": "Match the material",
+          "paragraphs": [
+            "A blade or bit suitable for wood may not be suitable for masonry or metal. Verify intended materials and limitations on packaging."
+          ]
+        },
+        {
+          "heading": "Check operating limits",
+          "paragraphs": [
+            "Accessories may have speed or other ratings. Never recommend an accessory that exceeds or conflicts with tool instructions. Guards and safety devices must remain in place."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer brings a photo of a circular saw and asks for a blade. You ask for the exact model and check the blade diameter, arbor, material, and tool instructions.",
+      "what_to_say_or_do": [
+        "Find the exact tool model.",
+        "Check mounting dimensions.",
+        "Verify intended material and operating limits.",
+        "Escalate uncertain matches."
+      ],
+      "common_mistakes": [
+        "Choosing a blade by diameter alone.",
+        "Suggesting removal of a guard to fit an accessory."
+      ],
+      "when_to_ask_for_help": "Escalate all unclear accessory fit, speed ratings, and guard questions to manufacturer documentation or a qualified specialist.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Identify tool/fastener features and compare real products",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Drill bits, saw blades, and other accessories use specific shanks, mounts, or arbor sizes.",
+        "Find the exact tool model.",
+        "Escalate all unclear accessory fit, speed ratings, and guard questions to manufacturer documentation or a qualified specialist."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-103-P03",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer brings a photo of a circular saw and asks for a blade. You ask for the exact model and check the blade diameter, arbor, material, and tool instructions.",
+        "answer": "Find the exact tool model. Check mounting dimensions.",
+        "explanation": "An incorrect accessory can damage a project or create serious injury risk. Escalate all unclear accessory fit, speed ratings, and guard questions to manufacturer documentation or a qualified specialist.",
+        "scored": false
+      }
+    },
+    {
+      "id": "HT-103-L04",
+      "title": "Teach Safety Before Features",
+      "estimated_minutes": 5,
+      "objective": "Explain basic power tool safety and limits of retail advice.",
+      "why_this_matters": "Power tools can cause serious injuries. Sales advice must not replace training or instructions.",
+      "content_sections": [
+        {
+          "heading": "Read instructions first",
+          "paragraphs": [
+            "Manufacturer manuals explain guards, personal protective equipment, setup, and operation. Never tell customers to bypass safeguards."
+          ]
+        },
+        {
+          "heading": "Prevent accidental starts",
+          "paragraphs": [
+            "Tools must be handled according to manufacturer guidance when changing accessories, transporting, or storing them. Unplugging or removing the battery may be required depending on the tool and task."
+          ]
+        },
+        {
+          "heading": "Recognize high-risk jobs",
+          "paragraphs": [
+            "Electrical, structural, overhead, and unfamiliar cutting tasks may require qualified help. Retail associates should not provide unverified operating or installation instructions."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer asks whether they can remove a saw guard for a difficult cut. You explain that safety devices should not be bypassed and refer to the tool manual and a qualified professional.",
+      "what_to_say_or_do": [
+        "Point customers to the manual.",
+        "Discuss required protective equipment as specified.",
+        "Never suggest defeating guards.",
+        "Stop and refer high-risk questions."
+      ],
+      "common_mistakes": [
+        "Demonstrating an unfamiliar tool without authorization.",
+        "Treating safety labels as optional."
+      ],
+      "when_to_ask_for_help": "Ask a supervisor before any in-store demonstration; refer complex or high-risk operation to trained professionals.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Illustrate the correct selection or safe tool-handling decision",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Manufacturer manuals explain guards, personal protective equipment, setup, and operation.",
+        "Point customers to the manual.",
+        "Ask a supervisor before any in-store demonstration; refer complex or high-risk operation to trained professionals."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-103-P04",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer asks whether they can remove a saw guard for a difficult cut. You explain that safety devices should not be bypassed and refer to the tool manual and a qualified professional.",
+        "answer": "Point customers to the manual. Discuss required protective equipment as specified.",
+        "explanation": "Power tools can cause serious injuries. Sales advice must not replace training or instructions. Ask a supervisor before any in-store demonstration; refer complex or high-risk operation to trained professionals.",
+        "scored": false
+      }
+    },
+    {
+      "id": "HT-103-L05",
+      "title": "Help Customers Choose and Maintain Tools",
+      "estimated_minutes": 5,
+      "objective": "Guide a responsible purchase and service handoff.",
+      "why_this_matters": "A complete recommendation includes the tool, compatible accessories, and realistic care needs.",
+      "content_sections": [
+        {
+          "heading": "Match the project and frequency",
+          "paragraphs": [
+            "Ask what tasks the customer will do and how often. Compare manufacturer-listed capacity and included items."
+          ]
+        },
+        {
+          "heading": "Check the box",
+          "paragraphs": [
+            "Some tools are sold without batteries or chargers. Verify package contents and compatible accessories before checkout."
+          ]
+        },
+        {
+          "heading": "Support care and service",
+          "paragraphs": [
+            "Explain that cleaning, storage, inspection, and maintenance follow the owner’s manual. Do not invent warranty coverage or service promises."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer selects a cordless drill kit. You check whether the box includes a battery, charger, and bits. You explain where to find the owner’s manual and store service information if applicable.",
+      "what_to_say_or_do": [
+        "Ask about intended jobs.",
+        "Verify box contents.",
+        "Confirm compatible accessories.",
+        "Refer maintenance and warranty questions to verified documentation."
+      ],
+      "common_mistakes": [
+        "Assuming a battery is included.",
+        "Guaranteeing a warranty outcome."
+      ],
+      "when_to_ask_for_help": "Refer uncertain repairs, service eligibility, and warranty coverage to the store manager or manufacturer.",
+      "supporting_materials": [
+        {
+          "type": "annotated product photograph or diagram",
+          "file": "[Needed — optional]",
+          "placement": "After lesson content",
+          "purpose": "Illustrate the correct selection or safe tool-handling decision",
+          "accessibility": "Provide descriptive alt text naming the visible components. Do not use imagery as the only teaching source.",
+          "actual_asset": false
+        }
+      ],
+      "key_takeaways": [
+        "Ask what tasks the customer will do and how often.",
+        "Ask about intended jobs.",
+        "Refer uncertain repairs, service eligibility, and warranty coverage to the store manager or manufacturer."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "HT-103-P05",
+        "type": "reflection_unscored",
+        "question": "Before recommending a product, what would you check in this situation? A customer selects a cordless drill kit. You check whether the box includes a battery, charger, and bits. You explain where to find the owner’s manual and store service information if applicable.",
+        "answer": "Ask about intended jobs. Verify box contents.",
+        "explanation": "A complete recommendation includes the tool, compatible accessories, and realistic care needs. Refer uncertain repairs, service eligibility, and warranty coverage to the store manager or manufacturer.",
+        "scored": false
+      }
+    }
+  ],
+  "final_quiz": {
+    "employee_facing_questions": [
+      {
+        "id": "HT-103-Q01",
+        "objective_assessed": "Match common power tool categories to jobs.",
+        "related_lesson_id": "HT-103-L01",
+        "question": "A customer wants to drill holes in wood. Which tool category is usually relevant?",
+        "choices": {
+          "A": "Drill with a suitable bit",
+          "B": "Paint roller",
+          "C": "Tape measure",
+          "D": "Garden rake"
+        },
+        "points": 10,
+        "review_reference": "HT-103-L01"
+      },
+      {
+        "id": "HT-103-Q02",
+        "objective_assessed": "Explain practical differences without unsupported claims.",
+        "related_lesson_id": "HT-103-L02",
+        "question": "What is most important when choosing a replacement battery?",
+        "choices": {
+          "A": "Matching its color",
+          "B": "Manufacturer-approved compatibility with the tool and charger",
+          "C": "Buying the heaviest battery",
+          "D": "Choosing any battery with similar shape"
+        },
+        "points": 10,
+        "review_reference": "HT-103-L02"
+      },
+      {
+        "id": "HT-103-Q03",
+        "objective_assessed": "Recognize that accessories must match the tool and material.",
+        "related_lesson_id": "HT-103-L03",
+        "question": "A customer needs a replacement saw blade. What should you verify?",
+        "choices": {
+          "A": "Only the blade color",
+          "B": "Tool model, blade size, arbor, and intended material",
+          "C": "The brand logo only",
+          "D": "Which blade is on sale"
+        },
+        "points": 10,
+        "review_reference": "HT-103-L03"
+      },
+      {
+        "id": "HT-103-Q04",
+        "objective_assessed": "Explain basic power tool safety and limits of retail advice.",
+        "related_lesson_id": "HT-103-L04",
+        "question": "A customer wants to remove a saw guard. What should you say?",
+        "choices": {
+          "A": "Remove it carefully",
+          "B": "A guard is optional",
+          "C": "Do not bypass safety devices; follow the manual",
+          "D": "Use a bigger blade instead"
+        },
+        "points": 10,
+        "review_reference": "HT-103-L04"
+      },
+      {
+        "id": "HT-103-Q05",
+        "objective_assessed": "Guide a responsible purchase and service handoff.",
+        "related_lesson_id": "HT-103-L05",
+        "question": "A customer chooses a cordless tool. What should you check before checkout?",
+        "choices": {
+          "A": "Only its color",
+          "B": "Whether the package includes the needed battery and charger",
+          "C": "Whether the box is large",
+          "D": "Whether the tool is the newest"
+        },
+        "points": 10,
+        "review_reference": "HT-103-L05"
+      }
+    ],
+    "instructor_answer_key": [
+      {
+        "id": "HT-103-Q01",
+        "correct_answer": "A",
+        "explanation": "A drill with an appropriate bit is designed to create holes.",
+        "review_reference": "HT-103-L01",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-103-Q02",
+        "correct_answer": "B",
+        "explanation": "Battery systems require verified compatibility.",
+        "review_reference": "HT-103-L02",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-103-Q03",
+        "correct_answer": "B",
+        "explanation": "A safe accessory match needs several verified specifications.",
+        "review_reference": "HT-103-L03",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-103-Q04",
+        "correct_answer": "C",
+        "explanation": "Manufacturer safeguards must remain in use as directed.",
+        "review_reference": "HT-103-L04",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-103-Q05",
+        "correct_answer": "B",
+        "explanation": "Package contents and compatibility affect whether the customer can use the tool.",
+        "review_reference": "HT-103-L05",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      }
+    ],
+    "questions_full": [
+      {
+        "id": "HT-103-Q01",
+        "objective_assessed": "Match common power tool categories to jobs.",
+        "related_lesson_id": "HT-103-L01",
+        "question": "A customer wants to drill holes in wood. Which tool category is usually relevant?",
+        "choices": {
+          "A": "Drill with a suitable bit",
+          "B": "Paint roller",
+          "C": "Tape measure",
+          "D": "Garden rake"
+        },
+        "correct_answer": "A",
+        "points": 10,
+        "explanation": "A drill with an appropriate bit is designed to create holes.",
+        "review_reference": "HT-103-L01",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-103-Q02",
+        "objective_assessed": "Explain practical differences without unsupported claims.",
+        "related_lesson_id": "HT-103-L02",
+        "question": "What is most important when choosing a replacement battery?",
+        "choices": {
+          "A": "Matching its color",
+          "B": "Manufacturer-approved compatibility with the tool and charger",
+          "C": "Buying the heaviest battery",
+          "D": "Choosing any battery with similar shape"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Battery systems require verified compatibility.",
+        "review_reference": "HT-103-L02",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-103-Q03",
+        "objective_assessed": "Recognize that accessories must match the tool and material.",
+        "related_lesson_id": "HT-103-L03",
+        "question": "A customer needs a replacement saw blade. What should you verify?",
+        "choices": {
+          "A": "Only the blade color",
+          "B": "Tool model, blade size, arbor, and intended material",
+          "C": "The brand logo only",
+          "D": "Which blade is on sale"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "A safe accessory match needs several verified specifications.",
+        "review_reference": "HT-103-L03",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-103-Q04",
+        "objective_assessed": "Explain basic power tool safety and limits of retail advice.",
+        "related_lesson_id": "HT-103-L04",
+        "question": "A customer wants to remove a saw guard. What should you say?",
+        "choices": {
+          "A": "Remove it carefully",
+          "B": "A guard is optional",
+          "C": "Do not bypass safety devices; follow the manual",
+          "D": "Use a bigger blade instead"
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Manufacturer safeguards must remain in use as directed.",
+        "review_reference": "HT-103-L04",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      },
+      {
+        "id": "HT-103-Q05",
+        "objective_assessed": "Guide a responsible purchase and service handoff.",
+        "related_lesson_id": "HT-103-L05",
+        "question": "A customer chooses a cordless tool. What should you check before checkout?",
+        "choices": {
+          "A": "Only its color",
+          "B": "Whether the package includes the needed battery and charger",
+          "C": "Whether the box is large",
+          "D": "Whether the tool is the newest"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Package contents and compatibility affect whether the customer can use the tool.",
+        "review_reference": "HT-103-L05",
+        "source_reference": "Course lesson; check manufacturer instructions where relevant"
+      }
+    ]
+  },
+  "completion_rules": {
+    "passing_score_percent": 80,
+    "correct_answers_required": 4,
+    "max_attempts_before_manager_assistance": 3,
+    "correct_answer_points": 10,
+    "lifetime_points_once_per_question_across_attempts": true,
+    "standard_trophy_once_after_pass": true,
+    "missed_question_explanations_after_failed_attempt": true,
+    "required_lessons_before_first_attempt": true,
+    "competition_replay_allowed_after_pass": true,
+    "competition_points_separate": true,
+    "optional_lesson_review_for_replay": true,
+    "store_availability_controlled_by_admin": true
+  },
+  "completion_message": "You completed Power Tools Fundamentals. Use these skills to ask better questions, verify product information, and know when to ask for help.",
+  "practical_next_step": "During your next shift, compare two actual products and identify one verified difference. This is optional and unscored.",
+  "manager_guidance": {
+    "suggested_audience": "All associates who assist customers with hardware or tools",
+    "suggested_completion_window_days": 30,
+    "manager_can_adjust": true,
+    "coaching_prompts": [
+      "Which question should you ask before recommending an item?",
+      "What product information would you verify?",
+      "When should you stop and ask for specialist help?"
+    ],
+    "optional_team_activity": "Use two labeled products from the store. Compare their intended use and identify one important difference. No live tool operation required.",
+    "optional_competition": {
+      "name": "Product Match Challenge",
+      "reward": "Manager-selected recognition or reward"
+    }
+  },
+  "media": {
+    "actual_assets": [],
+    "suggested_placeholders": "Annotated product photographs or diagrams, optional; no externally licensed stock image embedded",
+    "accessibility": "Provide descriptive alt text and readable text equivalents"
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "answers_supported_by_lessons": true,
+    "sources_verified": false,
+    "missing_media_identified": true,
+    "store_specific_items_identified": true,
+    "mobile_readable": true,
+    "personal_information_included": false,
+    "timing_validated": false
+  },
+  "items_needed_from_user": [
+    "Review and approve the course.",
+    "Confirm store-specific services, demonstrations, and escalation policies.",
+    "Supply or approve accurate product photos/diagrams if desired.",
+    "Validate manufacturer safety and compatibility details before publication."
+  ]
+}

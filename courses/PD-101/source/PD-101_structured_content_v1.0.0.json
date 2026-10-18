@@ -1,0 +1,640 @@
+{
+  "course_information": {
+    "code": "PD-101",
+    "title": "Paint Fundamentals",
+    "description": "Recognize common paint products, read labels, and guide customers toward an informed paint selection without guessing.",
+    "academy": "Paint & Decorating",
+    "skill_level": "Foundations",
+    "audience": "All employees",
+    "relevant_departments": [
+      "Paint & Decorating"
+    ],
+    "scope": "General independent hardware retail; not store-specific",
+    "restrictions": "Retail product consultation only. No licensed trade, lead remediation, mold remediation, or hazardous-material handling instruction.",
+    "estimated_completion_minutes": 30,
+    "estimated_lessons_minutes": 25,
+    "estimated_quiz_minutes": 5,
+    "prerequisites": [
+      "RF-103 recommended"
+    ],
+    "learning_objectives": [
+      "Distinguish paint, primer, stain, and clear coatings.",
+      "Identify common sheen choices and their tradeoffs.",
+      "Gather the basic facts needed to select an interior or exterior coating.",
+      "Explain why surface condition and label directions matter.",
+      "Recognize questions that require a product label or specialist."
+    ],
+    "version": "1.0.0",
+    "review_date": "2026-10-18",
+    "status": "Ready for review",
+    "learning_progression": {
+      "application": "Future paint project application course; not part of approved 25",
+      "expertise": "Future advanced paint consultation course; not part of approved 25"
+    }
+  },
+  "source_materials": [
+    {
+      "title": "Product labels, technical data sheets, and safety data sheets for actual products stocked",
+      "organization": "Relevant paint and accessory manufacturers",
+      "url_or_file": "[Needed: actual store product selection and current manufacturer documents]",
+      "sections": "Intended use; substrates; preparation; coverage; application; ventilation; dry/recoat/cure; cleanup; safety",
+      "claims_supported": "To be verified against actual manufacturer documents before publication",
+      "permission_or_accuracy_questions": "Which brands and product lines are stocked? Confirm current instructions and any image-use permissions."
+    },
+    {
+      "title": "Local paint and solvent disposal requirements",
+      "organization": "Local solid-waste authority",
+      "url_or_file": "[Needed: local jurisdiction guidance]",
+      "sections": "Paint, solvents, and hazardous waste",
+      "claims_supported": "Disposal guidance requires local verification",
+      "permission_or_accuracy_questions": "Which store regions are supported?"
+    }
+  ],
+  "lesson_outline": [
+    {
+      "id": "PD-101-L01",
+      "title": "Know the Main Coating Types",
+      "minutes": 5,
+      "objective": "Distinguish paint, primer, stain, and clear finishes."
+    },
+    {
+      "id": "PD-101-L02",
+      "title": "Choose Interior or Exterior Products",
+      "minutes": 5,
+      "objective": "Identify location and exposure before choosing paint."
+    },
+    {
+      "id": "PD-101-L03",
+      "title": "Understand Paint Sheen",
+      "minutes": 5,
+      "objective": "Explain common sheen choices without making absolute promises."
+    },
+    {
+      "id": "PD-101-L04",
+      "title": "Read the Paint Can",
+      "minutes": 5,
+      "objective": "Find the label details that guide a safe recommendation."
+    },
+    {
+      "id": "PD-101-L05",
+      "title": "Ask the Right Paint Questions",
+      "minutes": 5,
+      "objective": "Use a short consultation to narrow the options."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "PD-101-L01",
+      "title": "Know the Main Coating Types",
+      "estimated_minutes": 5,
+      "objective": "Distinguish paint, primer, stain, and clear finishes.",
+      "why_this_matters": "Customers may call every can of coating “paint.” The right product depends on the surface and the desired result.",
+      "content": [
+        {
+          "heading": "Paint and primer",
+          "text": "Paint adds color and a protective finish. Primer prepares certain surfaces for a topcoat. Some paints advertise built-in priming features, but that does not mean they replace a separate primer in every situation."
+        },
+        {
+          "heading": "Stain and clear finishes",
+          "text": "Stain changes the appearance of wood while allowing some grain to show. Clear finishes protect or change the sheen without adding an opaque color. Products vary by intended surface and exposure."
+        },
+        {
+          "heading": "Start with the project",
+          "text": "Ask what the customer is coating, whether it is indoors or outdoors, and whether the existing surface is bare, painted, or stained. Read the product label before recommending a category."
+        }
+      ],
+      "hardware_store_example": "A customer asks for “paint” to keep a new wooden bench looking natural. A clear exterior-rated finish or appropriate stain may be closer to the goal than opaque wall paint.",
+      "what_to_say_or_do": "Ask: “Do you want to see the wood grain, or cover it with color?” Then compare only products labeled for that surface and use.",
+      "common_mistakes": "Treating primer as a finish coat; assuming every clear finish works outdoors.",
+      "when_to_ask_for_help": "Ask a paint specialist when the surface or previous coating is unknown, or when product labels conflict.",
+      "supporting_materials": [
+        {
+          "id": "PD-101-L01-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Four labeled sample boards: opaque paint, primer, translucent stain, clear finish.",
+          "alt_text": "Four labeled sample boards: opaque paint, primer, translucent stain, clear finish.",
+          "caption": "Four labeled sample boards: opaque paint, primer, translucent stain, clear finish.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Paint adds color and a protective finish.",
+        "Stain changes the appearance of wood while allowing some grain to show.",
+        "Ask what the customer is coating, whether it is indoors or outdoors, and whether the existing surface is bare, painted, or stained."
+      ],
+      "unscored_practice": {
+        "id": "PD-101-L01-P01",
+        "question": "Which product category is most likely to preserve visible wood grain?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Opaque wall paint"
+          },
+          {
+            "id": "B",
+            "text": "Wood stain or a suitable clear finish"
+          },
+          {
+            "id": "C",
+            "text": "Drywall primer"
+          },
+          {
+            "id": "D",
+            "text": "Ceiling paint"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "A stain or clear finish can preserve the appearance of wood grain. The exact product must be suitable for the project."
+      }
+    },
+    {
+      "id": "PD-101-L02",
+      "title": "Choose Interior or Exterior Products",
+      "estimated_minutes": 5,
+      "objective": "Identify location and exposure before choosing paint.",
+      "why_this_matters": "Products designed for one setting may not be appropriate for another.",
+      "content": [
+        {
+          "heading": "Location comes first",
+          "text": "Ask whether the surface is indoors, outdoors, or in a special setting such as a porch floor. A covered porch still has temperature and moisture exposure."
+        },
+        {
+          "heading": "Exposure matters",
+          "text": "Sunlight, moisture, foot traffic, and frequent cleaning affect the product choice. A wall coating and a floor coating are not interchangeable."
+        },
+        {
+          "heading": "Use label language",
+          "text": "Look for the approved surfaces and uses on the label. Never promise weather resistance, washability, or durability beyond the product instructions."
+        }
+      ],
+      "hardware_store_example": "A customer wants leftover interior wall paint for outdoor shutters. You explain that exterior exposure calls for a coating labeled for that use.",
+      "what_to_say_or_do": "Ask: “Where is the surface, and what will it be exposed to?” Show the intended-use section on the can.",
+      "common_mistakes": "Assuming all paint works on all surfaces; treating a covered outdoor space as indoor.",
+      "when_to_ask_for_help": "Escalate unusual substrates, high moisture, or coatings with special handling instructions.",
+      "supporting_materials": [
+        {
+          "id": "PD-101-L02-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Side-by-side product labels highlighting intended indoor and outdoor uses.",
+          "alt_text": "Side-by-side product labels highlighting intended indoor and outdoor uses.",
+          "caption": "Side-by-side product labels highlighting intended indoor and outdoor uses.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Ask whether the surface is indoors, outdoors, or in a special setting such as a porch floor.",
+        "Sunlight, moisture, foot traffic, and frequent cleaning affect the product choice.",
+        "Look for the approved surfaces and uses on the label."
+      ],
+      "unscored_practice": {
+        "id": "PD-101-L02-P01",
+        "question": "A customer is painting an exterior door. What should you check first?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "The most popular color"
+          },
+          {
+            "id": "B",
+            "text": "The intended-use label for exterior doors and the door material"
+          },
+          {
+            "id": "C",
+            "text": "The largest container"
+          },
+          {
+            "id": "D",
+            "text": "The lowest sheen"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Confirm the product is labeled for the surface and exposure before discussing appearance."
+      }
+    },
+    {
+      "id": "PD-101-L03",
+      "title": "Understand Paint Sheen",
+      "estimated_minutes": 5,
+      "objective": "Explain common sheen choices without making absolute promises.",
+      "why_this_matters": "Sheen changes how a painted surface looks and how visible surface flaws may appear.",
+      "content": [
+        {
+          "heading": "Sheen is the finish appearance",
+          "text": "Flat and matte finishes reflect less light. Eggshell and satin show more reflection. Semi-gloss and gloss reflect more light."
+        },
+        {
+          "heading": "Compare tradeoffs",
+          "text": "Higher-sheen finishes may make surface imperfections more noticeable. Cleaning performance varies by product formulation, not just sheen."
+        },
+        {
+          "heading": "Match the room and preference",
+          "text": "Ask about lighting, surface condition, traffic, and desired look. Use the actual product sample and label rather than assuming every brand performs alike."
+        }
+      ],
+      "hardware_store_example": "A customer wants a low-shine bedroom wall but also asks about cleaning marks. You compare the manufacturer’s available finishes and washability information.",
+      "what_to_say_or_do": "Say: “Let’s compare the look and the cleaning claims on these two specific products.”",
+      "common_mistakes": "Claiming that every satin paint is washable; recommending gloss without asking about wall condition.",
+      "when_to_ask_for_help": "Seek help if a customer needs specialized scrubbability, commercial, or moisture-performance claims.",
+      "supporting_materials": [
+        {
+          "id": "PD-101-L03-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "One wall-color sample shown in flat, eggshell, satin, and semi-gloss under consistent light.",
+          "alt_text": "One wall-color sample shown in flat, eggshell, satin, and semi-gloss under consistent light.",
+          "caption": "One wall-color sample shown in flat, eggshell, satin, and semi-gloss under consistent light.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Flat and matte finishes reflect less light.",
+        "Higher-sheen finishes may make surface imperfections more noticeable.",
+        "Ask about lighting, surface condition, traffic, and desired look."
+      ],
+      "unscored_practice": {
+        "id": "PD-101-L03-P01",
+        "question": "What is the best way to explain sheen?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "All sheens clean equally"
+          },
+          {
+            "id": "B",
+            "text": "Sheen changes light reflection; performance also depends on the product"
+          },
+          {
+            "id": "C",
+            "text": "Gloss hides every flaw"
+          },
+          {
+            "id": "D",
+            "text": "Flat is always best for kitchens"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Sheen affects appearance. Product-specific claims determine cleaning and durability."
+      }
+    },
+    {
+      "id": "PD-101-L04",
+      "title": "Read the Paint Can",
+      "estimated_minutes": 5,
+      "objective": "Find the label details that guide a safe recommendation.",
+      "why_this_matters": "A product label is more reliable than memory when requirements vary.",
+      "content": [
+        {
+          "heading": "Look for intended surfaces",
+          "text": "Check approved substrates, interior or exterior use, and any exclusions."
+        },
+        {
+          "heading": "Find preparation and application directions",
+          "text": "Labels may specify cleaning, sanding, priming, application temperature, dry time, recoat time, and ventilation. Follow the specific product instructions."
+        },
+        {
+          "heading": "Know the difference between dry and recoat",
+          "text": "Dry-to-touch does not necessarily mean ready for another coat, washing, or heavy use. Explain the exact label timing."
+        }
+      ],
+      "hardware_store_example": "A customer wants to repaint a table tonight and use it tomorrow morning. You check the label for recoat and return-to-service guidance instead of guessing.",
+      "what_to_say_or_do": "Point to the label section that supports your answer. If the directions are unclear, consult the manufacturer’s technical data.",
+      "common_mistakes": "Making up cure times; overlooking ventilation and surface restrictions.",
+      "when_to_ask_for_help": "Escalate questions about hazardous coatings, old coatings of unknown origin, or unusual application conditions.",
+      "supporting_materials": [
+        {
+          "id": "PD-101-L04-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Annotated generic paint label: surfaces, prep, temperature, recoat, ventilation.",
+          "alt_text": "Annotated generic paint label: surfaces, prep, temperature, recoat, ventilation.",
+          "caption": "Annotated generic paint label: surfaces, prep, temperature, recoat, ventilation.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Check approved substrates, interior or exterior use, and any exclusions.",
+        "Labels may specify cleaning, sanding, priming, application temperature, dry time, recoat time, and ventilation.",
+        "Dry-to-touch does not necessarily mean ready for another coat, washing, or heavy use."
+      ],
+      "unscored_practice": {
+        "id": "PD-101-L04-P01",
+        "question": "Which statement is safest when a customer asks when they can use a painted surface?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "All paint cures overnight"
+          },
+          {
+            "id": "B",
+            "text": "Dry-to-touch means fully cured"
+          },
+          {
+            "id": "C",
+            "text": "Check the specific product’s use and cure guidance"
+          },
+          {
+            "id": "D",
+            "text": "Always wait exactly one hour"
+          }
+        ],
+        "correct_answer": "C",
+        "explanation": "Drying, recoating, and full use may have different timing requirements."
+      }
+    },
+    {
+      "id": "PD-101-L05",
+      "title": "Ask the Right Paint Questions",
+      "estimated_minutes": 5,
+      "objective": "Use a short consultation to narrow the options.",
+      "why_this_matters": "A few clear questions prevent a wrong purchase and unnecessary returns.",
+      "content": [
+        {
+          "heading": "Five questions",
+          "text": "Ask: What surface? Indoors or outdoors? Existing finish and condition? Desired appearance? How will the surface be used?"
+        },
+        {
+          "heading": "Do not skip preparation",
+          "text": "Peeling paint, dirt, grease, and damp surfaces can affect results. Customers may need cleaning, repairs, or a separate primer."
+        },
+        {
+          "heading": "Confirm before checkout",
+          "text": "Repeat the project and product choice. Identify supplies that are genuinely needed, without pressuring the customer."
+        }
+      ],
+      "hardware_store_example": "A customer says, “I need a gallon of white paint.” You learn it is for a stained exterior railing and pause to check preparation and product compatibility.",
+      "what_to_say_or_do": "Say: “Before we choose the can, can I ask what you are painting and what is on it now?”",
+      "common_mistakes": "Selecting only by color; assuming the customer knows the existing finish.",
+      "when_to_ask_for_help": "Ask for assistance with lead-paint concerns, mold, major moisture problems, or unfamiliar coating systems.",
+      "supporting_materials": [
+        {
+          "id": "PD-101-L05-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Simple five-question paint consultation checklist.",
+          "alt_text": "Simple five-question paint consultation checklist.",
+          "caption": "Simple five-question paint consultation checklist.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Ask: What surface? Indoors or outdoors? Existing finish and condition? Desired appearance? How will the surface be used?.",
+        "Peeling paint, dirt, grease, and damp surfaces can affect results.",
+        "Repeat the project and product choice."
+      ],
+      "unscored_practice": {
+        "id": "PD-101-L05-P01",
+        "question": "What should happen before choosing paint based only on color?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Ask about surface, location, condition, and use"
+          },
+          {
+            "id": "B",
+            "text": "Pick the highest-price paint"
+          },
+          {
+            "id": "C",
+            "text": "Assume the surface is drywall"
+          },
+          {
+            "id": "D",
+            "text": "Skip preparation questions"
+          }
+        ],
+        "correct_answer": "A",
+        "explanation": "A short project assessment helps select an appropriate coating and preparation steps."
+      }
+    }
+  ],
+  "final_scored_quiz": {
+    "recommended_question_count": 5,
+    "questions_employee_facing": [
+      {
+        "id": "PD-101-Q01",
+        "objective_assessed": "Distinguish paint, primer, stain, and clear coatings.",
+        "related_lesson_id": "PD-101-L01",
+        "question": "A customer wants to keep the wood grain visible on an outdoor bench. What should you do first?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Recommend interior wall paint"
+          },
+          {
+            "id": "B",
+            "text": "Ask about exposure and compare suitable exterior-rated stains or clear finishes"
+          },
+          {
+            "id": "C",
+            "text": "Recommend primer as the final coat"
+          },
+          {
+            "id": "D",
+            "text": "Choose by color alone"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-101-L01",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-101-Q02",
+        "objective_assessed": "Identify common sheen choices and their tradeoffs.",
+        "related_lesson_id": "PD-101-L02",
+        "question": "A customer wants to use interior paint on an exterior door. What is the best response?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Approve it because the door is covered"
+          },
+          {
+            "id": "B",
+            "text": "Check a product labeled for the door material and exterior exposure"
+          },
+          {
+            "id": "C",
+            "text": "Suggest any gloss paint"
+          },
+          {
+            "id": "D",
+            "text": "Tell them all paint is weatherproof"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-101-L02",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-101-Q03",
+        "objective_assessed": "Gather the basic facts needed to select an interior or exterior coating.",
+        "related_lesson_id": "PD-101-L03",
+        "question": "Which statement about sheen is most accurate?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Gloss always hides imperfections"
+          },
+          {
+            "id": "B",
+            "text": "All satin products have identical washability"
+          },
+          {
+            "id": "C",
+            "text": "Sheen changes reflected light; cleaning claims depend on the product"
+          },
+          {
+            "id": "D",
+            "text": "Flat finishes always clean best"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-101-L03",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-101-Q04",
+        "objective_assessed": "Explain why surface condition and label directions matter.",
+        "related_lesson_id": "PD-101-L04",
+        "question": "A customer asks when a newly painted table can be used. What should you check?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Only the dry-to-touch time"
+          },
+          {
+            "id": "B",
+            "text": "The product’s recoat and return-to-service instructions"
+          },
+          {
+            "id": "C",
+            "text": "The container size"
+          },
+          {
+            "id": "D",
+            "text": "A universal 24-hour rule"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-101-L04",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-101-Q05",
+        "objective_assessed": "Recognize questions that require a product label or specialist.",
+        "related_lesson_id": "PD-101-L05",
+        "question": "What is the strongest first step when a customer asks for white paint?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Choose the most popular can"
+          },
+          {
+            "id": "B",
+            "text": "Ask about surface, location, condition, and use"
+          },
+          {
+            "id": "C",
+            "text": "Sell a gallon immediately"
+          },
+          {
+            "id": "D",
+            "text": "Skip the existing finish question"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-101-L05",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      }
+    ],
+    "answer_key_manager_only": [
+      {
+        "question_id": "PD-101-Q01",
+        "correct_answer": "B",
+        "explanation": "A stain or clear finish can preserve the appearance of wood grain. The exact product must be suitable for the project.",
+        "review_reference": "PD-101-L01",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-101-Q02",
+        "correct_answer": "B",
+        "explanation": "Confirm the product is labeled for the surface and exposure before discussing appearance.",
+        "review_reference": "PD-101-L02",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-101-Q03",
+        "correct_answer": "C",
+        "explanation": "Sheen affects appearance. Product-specific claims determine cleaning and durability.",
+        "review_reference": "PD-101-L03",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-101-Q04",
+        "correct_answer": "B",
+        "explanation": "Drying, recoating, and full use may have different timing requirements.",
+        "review_reference": "PD-101-L04",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-101-Q05",
+        "correct_answer": "B",
+        "explanation": "A short project assessment helps select an appropriate coating and preparation steps.",
+        "review_reference": "PD-101-L05",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      }
+    ]
+  },
+  "completion_content": {
+    "passing_percent": 80,
+    "minimum_correct": 4,
+    "points_per_correct_question": 10,
+    "lifetime_points_rule": "Award 10 lifetime points for each question answered correctly only once across attempts.",
+    "attempt_limit": 3,
+    "manager_assistance_after_attempts": 3,
+    "required_lessons_before_first_quiz": true,
+    "feedback_after_failed_quiz": "Show explanations for missed questions.",
+    "trophy_rule": "Award one standard trophy upon first pass.",
+    "replay_rule": "After passing, quiz replay for competitions is allowed. Competition points are separate from lifetime points and trophies; lesson review optional.",
+    "availability_rule": "Store availability is controlled by an administrator; publishing does not assign to every store.",
+    "completion_message": "You completed PD-101: Paint Fundamentals. Use your project questions and the product label to guide your next customer conversation.",
+    "practical_next_step": "Practice asking a customer about their project and verifying the product label before recommending an item."
+  },
+  "manager_guidance": {
+    "suggested_audience": "All employees",
+    "usual_completion_window_days": 30,
+    "manager_can_adjust_window": true,
+    "coaching_prompts": [
+      "What question would you ask before recommending a product?",
+      "Which product label statement would you verify?",
+      "When would you involve a specialist?"
+    ],
+    "optional_unscored_team_activity": "Compare two products or application tools from the actual store assortment. Have the employee explain one meaningful difference using the package directions. No activity required for course completion.",
+    "optional_competition_name": "Paint Counter Challenge",
+    "optional_reward_idea": "Manager-selected recognition or reward; no reward is included by default."
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lesson_content": true,
+    "sources_verified": false,
+    "missing_media_listed": true,
+    "store_specific_content_identified": true,
+    "mobile_readable": true,
+    "employee_personal_information_included": false,
+    "technical_claims_need_review": true
+  },
+  "items_needed_from_me": [
+    "Confirm stocked paint brands and current product lines.",
+    "Provide current labels or manufacturer technical data sheets for brand-specific recommendations.",
+    "Confirm store escalation contacts and any paint-mixing/tinting policies (not taught in these general courses).",
+    "Confirm local disposal guidance for supported stores.",
+    "Supply or approve licensed photos/original diagrams for identified image placements.",
+    "Review technical accuracy, quiz answers, and completion time before publishing."
+  ]
+}

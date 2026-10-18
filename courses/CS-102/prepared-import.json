@@ -1,0 +1,903 @@
+{
+  "course": {
+    "id": "22b7ea6f-154f-564a-ae6a-24dcc1c295b5",
+    "slug": "cs-102-selling-skills-for-hardware-retail",
+    "version": 1,
+    "title": "Selling Skills for Hardware Retail",
+    "description": "Learn how to understand a customer’s project, compare suitable products, and suggest useful supplies without pressure.",
+    "category": "Customer Experience & Sales",
+    "passing_percent": 80
+  },
+  "lessons": [
+    {
+      "id": "0650b7cf-5534-5c23-8f88-f19d58830a7d",
+      "position": 1,
+      "title": "Discover the Customer’s Project",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer may name a product before explaining the job. A few questions can prevent a poor match."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Start with the project"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask what the customer wants to accomplish. Learn whether this is a repair, replacement, or new project. Ask what they have already tried."
+        },
+        {
+          "type": "heading",
+          "text": "Collect the useful details"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask about the material, size, location, and conditions. Ask whether the customer has a photo, old part, or instructions. Only collect details that matter to the choice."
+        },
+        {
+          "type": "heading",
+          "text": "Confirm what you heard"
+        },
+        {
+          "type": "paragraph",
+          "text": "Repeat the main need in plain language. For example: “You need a way to fasten this gate latch to a wood post. Is that right?”"
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer asks for screws. You ask what they are fastening. They say a gate latch to a wooden post outdoors. You now know the job and the location. You still need the latch instructions and size details before suggesting a fastener."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Ask: “What are you working on?”"
+        },
+        {
+          "type": "bullet",
+          "text": "Ask: “Where will you use it?”"
+        },
+        {
+          "type": "bullet",
+          "text": "Ask: “Do you have the old part or instructions?”"
+        },
+        {
+          "type": "bullet",
+          "text": "Repeat the project goal before moving to products."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Starting with the most expensive product."
+        },
+        {
+          "type": "bullet",
+          "text": "Assuming a familiar item fits every project."
+        },
+        {
+          "type": "bullet",
+          "text": "Asking many questions without explaining why."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a knowledgeable coworker when the customer cannot describe the job clearly. Refer to product instructions for load, electrical, structural, or other safety-sensitive applications."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Start with the customer’s goal."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask only useful questions."
+        },
+        {
+          "type": "bullet",
+          "text": "Confirm the project before choosing products."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "Practice ID: CS-102-P01"
+        },
+        {
+          "type": "paragraph",
+          "text": "Question: A customer asks for caulk. What should you ask first?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. “Which brand costs the most?”"
+        },
+        {
+          "type": "bullet",
+          "text": "B. “What surface or gap are you sealing?”"
+        },
+        {
+          "type": "bullet",
+          "text": "C. “Do you want two tubes?”"
+        },
+        {
+          "type": "bullet",
+          "text": "D. “Can you return tomorrow?”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: The surface and location help narrow the correct product. Price and quantity come later."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice"
+        },
+        {
+          "type": "bullet",
+          "text": "None."
+        }
+      ]
+    },
+    {
+      "id": "02758851-d3f0-5be3-aca1-8b014318da79",
+      "position": 2,
+      "title": "Match Features to Customer Needs",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Customers do not always know why two similar products have different prices or uses."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Features and benefits"
+        },
+        {
+          "type": "paragraph",
+          "text": "A feature is a product fact. A benefit explains why that fact matters to the customer. For example, a longer hose is a feature. Reaching a distant garden bed is the benefit."
+        },
+        {
+          "type": "heading",
+          "text": "Compare only relevant details"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the project to select comparison points. These may include dimensions, material, capacity, compatibility, maintenance, and price. Verify product claims on packaging or official instructions."
+        },
+        {
+          "type": "heading",
+          "text": "Be clear about limits"
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not promise that a product will work in every situation. If you cannot confirm compatibility, say what you need to check."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer needs a hose for a garden bed far from the spigot. You compare two hose lengths. You explain the reach of each option. You also ask about storage and the path to the garden."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Say: “This option may fit your project because…”"
+        },
+        {
+          "type": "bullet",
+          "text": "Point to a verified feature on the label."
+        },
+        {
+          "type": "bullet",
+          "text": "Explain a benefit in everyday words."
+        },
+        {
+          "type": "bullet",
+          "text": "Mention an important limitation."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Listing features without explaining them."
+        },
+        {
+          "type": "bullet",
+          "text": "Calling one product “best” for everyone."
+        },
+        {
+          "type": "bullet",
+          "text": "Making claims that are not on verified product information."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask for help when a product rating, compatibility requirement, warranty, or safety instruction is unclear. Use current manufacturer documentation."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Explain benefits, not just features."
+        },
+        {
+          "type": "bullet",
+          "text": "Compare products using the project."
+        },
+        {
+          "type": "bullet",
+          "text": "Verify claims before sharing them."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "Practice ID: CS-102-P02"
+        },
+        {
+          "type": "paragraph",
+          "text": "Question: A customer needs a hose to reach a distant garden bed. Which statement is most helpful?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. “This hose is popular.”"
+        },
+        {
+          "type": "bullet",
+          "text": "B. “This hose is the most expensive.”"
+        },
+        {
+          "type": "bullet",
+          "text": "C. “This longer hose may reach the bed. Let’s confirm the distance.”"
+        },
+        {
+          "type": "bullet",
+          "text": "D. “All hoses work the same.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: C"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: This answer connects a feature to the customer’s need. It also checks a missing detail."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice"
+        },
+        {
+          "type": "bullet",
+          "text": "None."
+        }
+      ]
+    },
+    {
+      "id": "7d9e5cb1-ef3a-56c2-8fd3-98a54dcd88a7",
+      "position": 3,
+      "title": "Build a Complete Project List",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer may get home and discover a missing supply. Helpful selling reduces extra trips."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Think through the job"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask what tools and materials the customer already has. Review the main steps of the project. Check instructions for required accessories and preparation."
+        },
+        {
+          "type": "heading",
+          "text": "Offer relevant items"
+        },
+        {
+          "type": "paragraph",
+          "text": "A paint project may also need tape, a drop cloth, a tray, and a suitable roller. These are examples, not a fixed shopping list. Match items to the surface and product instructions."
+        },
+        {
+          "type": "heading",
+          "text": "Respect the customer’s choice"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explain why each item may help. Let the customer decide. Do not add products without permission."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer buys paint for a bedroom. You ask whether they have a roller, tray, and supplies to protect the floor. They have a roller but need a tray. You show an appropriate option and explain its use."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Ask: “What supplies do you already have?”"
+        },
+        {
+          "type": "bullet",
+          "text": "Say: “You may also need this for the next step.”"
+        },
+        {
+          "type": "bullet",
+          "text": "Explain the reason for each suggestion."
+        },
+        {
+          "type": "bullet",
+          "text": "Accept a “no” without pressure."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Adding items to raise the sale total."
+        },
+        {
+          "type": "bullet",
+          "text": "Assuming every customer needs a full kit."
+        },
+        {
+          "type": "bullet",
+          "text": "Forgetting to check product instructions."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a department specialist about product compatibility or application requirements. Do not give unverified safety or installation advice."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Help customers avoid missing supplies."
+        },
+        {
+          "type": "bullet",
+          "text": "Explain each companion item."
+        },
+        {
+          "type": "bullet",
+          "text": "Respect customer decisions."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "Practice ID: CS-102-P03"
+        },
+        {
+          "type": "paragraph",
+          "text": "Question: A customer buys paint and says they already have brushes. What is the best next step?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Add new brushes to the sale."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Ask what other supplies they have and suggest only relevant missing items."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Tell them their brushes are probably wrong."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Avoid discussing any other supplies."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: A complete project list starts with what the customer owns. It does not require pressure."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice"
+        },
+        {
+          "type": "bullet",
+          "text": "None."
+        }
+      ]
+    },
+    {
+      "id": "8a217afc-eba1-5091-97f7-433492356d80",
+      "position": 4,
+      "title": "Discuss Price and Value Clearly",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Customers often weigh price against durability, convenience, and project needs."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Understand the budget"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask whether the customer has a price range. Do not assume the least expensive option is the best fit."
+        },
+        {
+          "type": "heading",
+          "text": "Compare total value"
+        },
+        {
+          "type": "paragraph",
+          "text": "Discuss verified differences that matter to the project. A lower price may be important. So may product life, quantity, or required accessories. Avoid unsupported claims about savings."
+        },
+        {
+          "type": "heading",
+          "text": "Respond without arguing"
+        },
+        {
+          "type": "paragraph",
+          "text": "Acknowledge the concern. Offer a clear comparison. Give the customer room to choose."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer says a drill costs more than expected. You ask how often they plan to use it. You compare two suitable models using verified specifications. You explain the differences and let them choose."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Say: “What price range works for you?”"
+        },
+        {
+          "type": "bullet",
+          "text": "Say: “Here are the differences that matter for your project.”"
+        },
+        {
+          "type": "bullet",
+          "text": "Offer a suitable lower-cost option when available."
+        },
+        {
+          "type": "bullet",
+          "text": "Do not criticize a customer’s budget."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Treating a price concern as an objection to defeat."
+        },
+        {
+          "type": "bullet",
+          "text": "Promising savings without evidence."
+        },
+        {
+          "type": "bullet",
+          "text": "Assuming expensive always means better."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a manager about promotions, price adjustments, financing, or return policies. Never invent store terms or discounts."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Listen to price concerns."
+        },
+        {
+          "type": "bullet",
+          "text": "Compare verified value."
+        },
+        {
+          "type": "bullet",
+          "text": "Let the customer decide."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "Practice ID: CS-102-P04"
+        },
+        {
+          "type": "paragraph",
+          "text": "Question: A customer says a drill is too expensive. What should you do?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Tell them they need the expensive one."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Offer an unapproved discount."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Ask about their use and budget. Compare suitable options."
+        },
+        {
+          "type": "bullet",
+          "text": "D. End the conversation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: C"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: The goal is a suitable choice within the customer’s needs and budget."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice"
+        },
+        {
+          "type": "bullet",
+          "text": "None."
+        }
+      ]
+    },
+    {
+      "id": "7193bd45-39ea-5314-a521-e39aeb87523a",
+      "position": 5,
+      "title": "Close the Sale with Confidence and Care",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "A good sale ends with a customer who understands the product and what happens next."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Confirm the choice"
+        },
+        {
+          "type": "paragraph",
+          "text": "Summarize the product and the project need. Ask whether the customer has remaining questions."
+        },
+        {
+          "type": "heading",
+          "text": "Check practical details"
+        },
+        {
+          "type": "paragraph",
+          "text": "Confirm quantity, size, color, or compatibility as appropriate. Mention product instructions and important use limits. Do not invent return or warranty rules."
+        },
+        {
+          "type": "heading",
+          "text": "End with a clear handoff"
+        },
+        {
+          "type": "paragraph",
+          "text": "Direct the customer to checkout or the right service desk. Thank them. If a specialist must finish the consultation, introduce the customer and share what you learned."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer selects a garden hose. You confirm the length and connector type shown on the package. You ask if they need anything else. Then you guide them toward checkout."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Say: “Does this meet what you need for the project?”"
+        },
+        {
+          "type": "bullet",
+          "text": "Confirm key details before checkout."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask: “Is there anything else you need?”"
+        },
+        {
+          "type": "bullet",
+          "text": "Thank the customer without pressure."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Rushing the customer to checkout."
+        },
+        {
+          "type": "bullet",
+          "text": "Making a final promise about unverified compatibility."
+        },
+        {
+          "type": "bullet",
+          "text": "Leaving the customer without a next step."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask for help with unresolved product questions, unusual orders, or store policy. For high-risk applications, refer to manufacturer guidance or a qualified professional."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Confirm the product and need."
+        },
+        {
+          "type": "bullet",
+          "text": "Check important details."
+        },
+        {
+          "type": "bullet",
+          "text": "Close with respect and clarity."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored lesson practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "Practice ID: CS-102-P05"
+        },
+        {
+          "type": "paragraph",
+          "text": "Question: A customer has chosen a replacement part. What is the best way to finish?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Promise it will fit without checking."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Confirm key details and ask about remaining questions."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Add an unrelated item to the purchase."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Leave without a handoff."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explanation: A final check can catch missing details and gives the customer a clear next step."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice"
+        },
+        {
+          "type": "bullet",
+          "text": "None."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "1e87f744-cdb9-59ae-bca1-12a04a84ef5c",
+      "position": 1,
+      "prompt": "A customer asks for an adhesive. Which first question best helps you make a useful recommendation?",
+      "options": [
+        "“Would you like the largest container?”",
+        "“What materials are you joining, and where will you use it?”",
+        "“Do you want our most expensive adhesive?”",
+        "“Can you tell me the brand you always buy?”"
+      ],
+      "correct_option": 1,
+      "explanation": "The materials and location help identify the right category and instructions. Brand, size, and price do not establish suitability."
+    },
+    {
+      "id": "ad6fe8e1-ce9b-5ab9-b791-3fe7685018dc",
+      "position": 2,
+      "prompt": "A customer compares two extension cords for a project. What should you do?",
+      "options": [
+        "Recommend the longest one without questions.",
+        "Say both cords are the same.",
+        "Verify the intended use and the relevant product ratings before comparing options.",
+        "Choose the cheapest cord regardless of specifications."
+      ],
+      "correct_option": 2,
+      "explanation": "Intended use and ratings matter. Do not guess about electrical product suitability."
+    },
+    {
+      "id": "db31b44a-ceea-53ad-ac02-3dc8d1ee9c72",
+      "position": 3,
+      "prompt": "A customer is buying a paint roller. Which approach supports a complete project sale?",
+      "options": [
+        "Ask about the surface and existing supplies. Suggest a suitable tray only if needed.",
+        "Add a tray without asking.",
+        "Insist on a full painting kit.",
+        "Avoid mentioning any supplies."
+      ],
+      "correct_option": 0,
+      "explanation": "Relevant suggestions begin with the project and what the customer already owns. Unrequested additions and pressure are not appropriate."
+    },
+    {
+      "id": "2cee9e59-1d4b-5424-8f2d-d53e0a52266f",
+      "position": 4,
+      "prompt": "A customer says a product is above their budget. What is the best response?",
+      "options": [
+        "Tell them quality always costs more.",
+        "Offer a discount without approval.",
+        "Suggest they buy it anyway.",
+        "Ask about their needs and compare suitable options within their budget."
+      ],
+      "correct_option": 3,
+      "explanation": "The customer’s needs and budget guide the comparison. Never promise discounts or pressure a purchase."
+    },
+    {
+      "id": "6b9a7f06-0a9f-5861-8270-eb577ba76cc4",
+      "position": 5,
+      "prompt": "A customer chooses a replacement garden hose connector. What should you do before checkout?",
+      "options": [
+        "Guarantee it fits every hose.",
+        "Confirm the relevant size or connection details and ask about remaining questions.",
+        "Add extra connectors without permission.",
+        "End the interaction immediately."
+      ],
+      "correct_option": 1,
+      "explanation": "A final detail check helps prevent mistakes. Never guarantee universal compatibility."
+    }
+  ],
+  "catalog": {
+    "course_code": "CS-102",
+    "skill_level": "foundations",
+    "topics": [
+      "Selling Skills for Hardware Retail"
+    ],
+    "keywords": [
+      "Discover the Customer’s Project",
+      "Match Features to Customer Needs",
+      "Build a Complete Project List",
+      "Discuss Price and Value Clearly",
+      "Close the Sale with Confidence and Care",
+      "Why this matters",
+      "Lesson content",
+      "Start with the project",
+      "Collect the useful details",
+      "Confirm what you heard",
+      "Hardware-store example",
+      "What to say or do",
+      "Common mistakes",
+      "When to ask for help",
+      "Key takeaways",
+      "Unscored lesson practice",
+      "Optional practice",
+      "Features and benefits",
+      "Compare only relevant details",
+      "Be clear about limits",
+      "Think through the job",
+      "Offer relevant items",
+      "Respect the customer’s choice",
+      "Understand the budget",
+      "Compare total value",
+      "Respond without arguing",
+      "Confirm the choice",
+      "Check practical details",
+      "End with a clear handoff",
+      "CS-102-",
+      "ID",
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05"
+    ],
+    "learning_paths": [
+      "Sales Floor Associate"
+    ]
+  }
+}

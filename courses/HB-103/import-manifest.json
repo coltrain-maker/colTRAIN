@@ -1,0 +1,18 @@
+{
+  "course_code": "HB-103",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "80c00da5-4a42-5791-acbf-f7ec6655cef7",
+  "source_files": {
+    "HB-103_complete_course_v1.0.0.md": "2ad62dbfae77946e7538f99f9b9da1acd08837e47b0d8a35c47656b90e87f735",
+    "HB-103_course_v1.0.0.json": "71a969ef250910fc5c524c124448ff8b66d3830c99814c6314de3ee57629bb64",
+    "README.md": "4e38193763016c481aac79dc626bdf0a3331273c83c7892a9a2df722ca20e20c"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "Final prompts include the recommended action in the scenario; revise for stronger assessment before publishing.",
+    "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

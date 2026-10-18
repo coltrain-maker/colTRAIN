@@ -210,8 +210,57 @@ try:
     delete from public.training_courses where id::text like 'c9000000-%';""")
    navigate('Course library')
    expect(page.locator('.course-card')).to_have_count(1)
+  def check_full_catalog_cards():
+   for filename in ['RF-101_IMPORT_DRAFT.sql','RF-102_103_104_IMPORT_DRAFTS.sql','REMAINING_21_IMPORT_DRAFTS.sql']:
+    sql((root/'supabase/course-imports'/filename).read_text())
+   navigate('Course library')
+   expect(page.locator('.library-course-card')).to_have_count(26) # 25 + original sample
+   assert page.locator('.library-cards .course-cover').count()==0
+   rects=page.locator('.library-course-card').evaluate_all('nodes=>nodes.slice(0,3).map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height}})')
+   assert len({round(r['y']) for r in rects})==1,rects
+   assert len({round(r['x']) for r in rects})==3,rects
+   assert all(r['h']<460 for r in rects),rects
+   page.screenshot(path='/tmp/coltrain-library-desktop-25.png',full_page=True)
+   page.get_by_label('Learning path',exact=True).select_option('Department Lead/Supervisor')
+   page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
+   expect(page.locator('.library-course-card')).to_have_count(3)
+   page.get_by_role('button',name='Clear filters',exact=True).click()
+   page.get_by_label('Skill level',exact=True).select_option('foundations')
+   page.get_by_label('Topic or academy',exact=True).select_option('Paint & Decorating')
+   page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
+   expect(page.locator('.library-course-card')).to_have_count(3)
+   page.get_by_label('Search courses',exact=True).fill('sheen')
+   page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
+   expect(page.locator('.library-course-card h2')).to_have_text('Paint Fundamentals')
+   page.get_by_role('button',name='Clear filters',exact=True).click()
+   page.get_by_label('Search courses',exact=True).fill('CS-101')
+   page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
+   expect(page.locator('.library-course-card h2')).to_have_text('Customer Service Fundamentals')
+   page.set_viewport_size({'width':390,'height':844})
+   assert page.locator('body').evaluate('element=>element.scrollWidth<=innerWidth')
+   assert page.locator('.library-course-card').evaluate('n=>n.getBoundingClientRect().height')<460
+   page.screenshot(path='/tmp/coltrain-library-mobile-25.png',full_page=True)
+   page.get_by_role('button',name='Preview course',exact=True).click()
+   expected=json.loads((root/'courses/CS-101/prepared-import.json').read_text())['lessons']
+   for i,lesson in enumerate(expected):
+    expect(page.locator('.lesson-content h1')).to_have_text(lesson['title'])
+    expect(page.locator('.lesson-content')).to_contain_text('Key takeaways')
+    if i<4:page.locator('.lesson-content').get_by_role('button',name='Next lesson',exact=True).click()
+   page.locator('.lesson-content').get_by_role('button',name='Back to library',exact=True).click()
+   expect(page.locator('.library-course-card')).to_have_count(1)
+   page.get_by_role('button',name='Clear filters',exact=True).click()
+   page.set_viewport_size({'width':1280,'height':1000})
+   sql("""delete from private.training_answer_keys where question_id in(select id from public.training_questions where course_id<>'c1000000-0000-4000-8000-000000000001');
+    delete from public.training_questions where course_id<>'c1000000-0000-4000-8000-000000000001';
+    delete from public.training_lessons where course_id<>'c1000000-0000-4000-8000-000000000001';
+    delete from public.training_course_catalog where course_id<>'c1000000-0000-4000-8000-000000000001';
+    delete from public.training_courses where id<>'c1000000-0000-4000-8000-000000000001';""")
+   navigate('Course library')
+   expect(page.locator('.course-card')).to_have_count(1)
+   print('Passed compact library: all 25 real draft courses, three-column desktop, phone layout, level/topic/path/keyword filters and full imported-lesson preview.')
   login('admin@example.test')
   check_library_filters(True)
+  check_full_catalog_cards()
   navigate('Course library')
   page.get_by_role('button',name='Make available to store',exact=True).click()
   expect(page.locator('#account-message')).to_contain_text('Course is available')

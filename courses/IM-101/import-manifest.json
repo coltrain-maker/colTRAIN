@@ -1,0 +1,17 @@
+{
+  "course_code": "IM-101",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "9cbd5d08-66bc-5844-aadb-fd69f546dc69",
+  "source_files": {
+    "IM-101_complete_course_v1.0.0.md": "67d0c763c0b2abb1a7073e752c5b08a2117956b0ac526f87c2028ac4be4145c7",
+    "IM-101_structured_content_v1.0.0.json": "2308fdf1164998905f5404758128a997bfefa0746f656e2b8a4af862af27dc07",
+    "README.md": "f0f7c81de756156e7ca84f17110eeabd32750dd1af31b1f330fb83a2309e3f7e"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "Final answer positions are repetitive (BCBCB); review distractors before publishing.",
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

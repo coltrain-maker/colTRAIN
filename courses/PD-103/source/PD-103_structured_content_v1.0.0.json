@@ -1,0 +1,640 @@
+{
+  "course_information": {
+    "code": "PD-103",
+    "title": "Surface Preparation & Painting Tools",
+    "description": "Identify common preparation steps and application tools so customers can prepare and paint more effectively.",
+    "academy": "Paint & Decorating",
+    "skill_level": "Foundations",
+    "audience": "Department employees",
+    "relevant_departments": [
+      "Paint & Decorating"
+    ],
+    "scope": "General independent hardware retail; not store-specific",
+    "restrictions": "Retail product consultation only. No licensed trade, lead remediation, mold remediation, or hazardous-material handling instruction.",
+    "estimated_completion_minutes": 30,
+    "estimated_lessons_minutes": 25,
+    "estimated_quiz_minutes": 5,
+    "prerequisites": [
+      "PD-101 recommended"
+    ],
+    "learning_objectives": [
+      "Describe why cleaning and surface condition affect coating results.",
+      "Identify common repair, sanding, masking, and protection supplies.",
+      "Compare brushes, rollers, and common application accessories.",
+      "Use label directions to explain preparation and cleanup.",
+      "Recognize hazardous or complex situations requiring escalation."
+    ],
+    "version": "1.0.0",
+    "review_date": "2026-10-18",
+    "status": "Ready for review",
+    "learning_progression": {
+      "application": "Future paint project application course; not part of approved 25",
+      "expertise": "Future advanced paint consultation course; not part of approved 25"
+    }
+  },
+  "source_materials": [
+    {
+      "title": "Product labels, technical data sheets, and safety data sheets for actual products stocked",
+      "organization": "Relevant paint and accessory manufacturers",
+      "url_or_file": "[Needed: actual store product selection and current manufacturer documents]",
+      "sections": "Intended use; substrates; preparation; coverage; application; ventilation; dry/recoat/cure; cleanup; safety",
+      "claims_supported": "To be verified against actual manufacturer documents before publication",
+      "permission_or_accuracy_questions": "Which brands and product lines are stocked? Confirm current instructions and any image-use permissions."
+    },
+    {
+      "title": "Local paint and solvent disposal requirements",
+      "organization": "Local solid-waste authority",
+      "url_or_file": "[Needed: local jurisdiction guidance]",
+      "sections": "Paint, solvents, and hazardous waste",
+      "claims_supported": "Disposal guidance requires local verification",
+      "permission_or_accuracy_questions": "Which store regions are supported?"
+    }
+  ],
+  "lesson_outline": [
+    {
+      "id": "PD-103-L01",
+      "title": "Start with a Clean, Sound Surface",
+      "minutes": 5,
+      "objective": "Explain why preparation comes before painting."
+    },
+    {
+      "id": "PD-103-L02",
+      "title": "Understand Patching and Sanding",
+      "minutes": 5,
+      "objective": "Recognize basic repair supplies and when they are appropriate."
+    },
+    {
+      "id": "PD-103-L03",
+      "title": "Mask and Protect the Work Area",
+      "minutes": 5,
+      "objective": "Identify tools that protect nearby surfaces and control paint placement."
+    },
+    {
+      "id": "PD-103-L04",
+      "title": "Select Brushes and Rollers",
+      "minutes": 5,
+      "objective": "Match application tools to the surface and coating."
+    },
+    {
+      "id": "PD-103-L05",
+      "title": "Plan Application and Cleanup",
+      "minutes": 5,
+      "objective": "Explain why timing, ventilation, and cleanup instructions matter."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "PD-103-L01",
+      "title": "Start with a Clean, Sound Surface",
+      "estimated_minutes": 5,
+      "objective": "Explain why preparation comes before painting.",
+      "why_this_matters": "Even a good coating can fail when the surface is dirty, loose, or wet.",
+      "content": [
+        {
+          "heading": "Inspect before coating",
+          "text": "Look for dust, grease, loose paint, damaged areas, and moisture. The customer should identify and correct underlying problems before painting."
+        },
+        {
+          "heading": "Clean as directed",
+          "text": "Cleaning methods vary by surface and coating. Use manufacturer instructions and allow required drying time."
+        },
+        {
+          "heading": "Do not paint over a problem",
+          "text": "Paint is not a fix for leaks, structural damage, or active mold. Old coatings may need special precautions."
+        }
+      ],
+      "hardware_store_example": "A customer wants to paint over peeling paint on a damp wall. You recommend investigating the moisture cause before buying a new topcoat.",
+      "what_to_say_or_do": "Ask: “Is the wall dry now, and do you know why the paint is peeling?”",
+      "common_mistakes": "Assuming primer solves moisture; coating over loose material.",
+      "when_to_ask_for_help": "Escalate suspected lead paint, mold, persistent dampness, and structural damage. Do not advise disturbing unknown older coatings.",
+      "supporting_materials": [
+        {
+          "id": "PD-103-L01-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Two close-up wall samples: clean/sound versus peeling/damp, with neutral labels.",
+          "alt_text": "Two close-up wall samples: clean/sound versus peeling/damp, with neutral labels.",
+          "caption": "Two close-up wall samples: clean/sound versus peeling/damp, with neutral labels.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Look for dust, grease, loose paint, damaged areas, and moisture.",
+        "Cleaning methods vary by surface and coating.",
+        "Paint is not a fix for leaks, structural damage, or active mold."
+      ],
+      "unscored_practice": {
+        "id": "PD-103-L01-P01",
+        "question": "What should happen when paint is peeling because a wall stays damp?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Paint immediately"
+          },
+          {
+            "id": "B",
+            "text": "Cover it with another coat"
+          },
+          {
+            "id": "C",
+            "text": "Address the moisture and loose coating before repainting"
+          },
+          {
+            "id": "D",
+            "text": "Use a larger roller"
+          }
+        ],
+        "correct_answer": "C",
+        "explanation": "The underlying condition must be addressed before repainting."
+      }
+    },
+    {
+      "id": "PD-103-L02",
+      "title": "Understand Patching and Sanding",
+      "estimated_minutes": 5,
+      "objective": "Recognize basic repair supplies and when they are appropriate.",
+      "why_this_matters": "Small defects may need repair before the final finish is applied.",
+      "content": [
+        {
+          "heading": "Match repair material to damage",
+          "text": "Spackling products, fillers, and patch materials have different intended uses. Confirm the surface, depth, and manufacturer directions."
+        },
+        {
+          "heading": "Sanding has a purpose",
+          "text": "Sanding can smooth a repair or prepare a surface when the coating instructions call for it. Grit numbers indicate abrasive coarseness; lower numbers are generally coarser."
+        },
+        {
+          "heading": "Control dust and exposure",
+          "text": "Follow product safety instructions. Do not recommend sanding suspected lead-containing paint or unknown hazardous coatings."
+        }
+      ],
+      "hardware_store_example": "A customer has a small nail hole in painted drywall. You help them locate a patching product labeled for small interior wall repairs and the recommended finishing supplies.",
+      "what_to_say_or_do": "Say: “How large is the hole, and is the surface drywall, wood, or something else?”",
+      "common_mistakes": "Using wood filler for every wall repair; recommending sanding without checking hazards.",
+      "when_to_ask_for_help": "Ask for help with large cracks, water damage, structural issues, or suspected lead coatings.",
+      "supporting_materials": [
+        {
+          "id": "PD-103-L02-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Photo showing sample spackle, putty knife, sanding sponge, and repaired drywall patch.",
+          "alt_text": "Photo showing sample spackle, putty knife, sanding sponge, and repaired drywall patch.",
+          "caption": "Photo showing sample spackle, putty knife, sanding sponge, and repaired drywall patch.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Spackling products, fillers, and patch materials have different intended uses.",
+        "Sanding can smooth a repair or prepare a surface when the coating instructions call for it.",
+        "Follow product safety instructions."
+      ],
+      "unscored_practice": {
+        "id": "PD-103-L02-P01",
+        "question": "Why ask about the surface before selecting filler?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "All fillers are identical"
+          },
+          {
+            "id": "B",
+            "text": "Repair materials are intended for different surfaces and defects"
+          },
+          {
+            "id": "C",
+            "text": "Filler is only for outdoor work"
+          },
+          {
+            "id": "D",
+            "text": "Sanding replaces filler"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Surface type and damage size guide the repair product choice."
+      }
+    },
+    {
+      "id": "PD-103-L03",
+      "title": "Mask and Protect the Work Area",
+      "estimated_minutes": 5,
+      "objective": "Identify tools that protect nearby surfaces and control paint placement.",
+      "why_this_matters": "Preparation saves cleanup time and protects the customer’s belongings.",
+      "content": [
+        {
+          "heading": "Cover what should not be painted",
+          "text": "Drop cloths and protective coverings help protect floors, furniture, and fixtures. Select materials suitable for the location."
+        },
+        {
+          "heading": "Use tape correctly",
+          "text": "Painter’s tapes differ in surface compatibility and removal timing. Check the package instructions; some delicate surfaces need special care."
+        },
+        {
+          "heading": "Plan safe access",
+          "text": "Use appropriate access equipment and follow its instructions. Do not suggest unsafe ladder setups or work near electrical hazards."
+        }
+      ],
+      "hardware_store_example": "A customer plans to paint trim beside a finished wood floor. You discuss floor protection and tape labeled for the adjoining surfaces.",
+      "what_to_say_or_do": "Ask: “What surfaces need protection, and are any freshly painted or delicate?”",
+      "common_mistakes": "Using any tape on any surface; forgetting floor protection.",
+      "when_to_ask_for_help": "Escalate high work areas, damaged ladders, or work around exposed wiring.",
+      "supporting_materials": [
+        {
+          "id": "PD-103-L03-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Photo of masked trim, protected floor, and a drop cloth; no unsafe ladder use.",
+          "alt_text": "Photo of masked trim, protected floor, and a drop cloth; no unsafe ladder use.",
+          "caption": "Photo of masked trim, protected floor, and a drop cloth; no unsafe ladder use.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Drop cloths and protective coverings help protect floors, furniture, and fixtures.",
+        "Painter’s tapes differ in surface compatibility and removal timing.",
+        "Use appropriate access equipment and follow its instructions."
+      ],
+      "unscored_practice": {
+        "id": "PD-103-L03-P01",
+        "question": "Why check painter’s tape packaging?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Tape color predicts the finish"
+          },
+          {
+            "id": "B",
+            "text": "Surface compatibility and removal directions vary"
+          },
+          {
+            "id": "C",
+            "text": "All tapes can stay on indefinitely"
+          },
+          {
+            "id": "D",
+            "text": "Tape replaces surface cleaning"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Tape selection and removal should follow the product instructions."
+      }
+    },
+    {
+      "id": "PD-103-L04",
+      "title": "Select Brushes and Rollers",
+      "estimated_minutes": 5,
+      "objective": "Match application tools to the surface and coating.",
+      "why_this_matters": "The right tool makes application easier and can improve consistency.",
+      "content": [
+        {
+          "heading": "Brushes for control",
+          "text": "Brushes are useful for edges, trim, and smaller areas. Bristle material and shape should match the coating and task per product guidance."
+        },
+        {
+          "heading": "Rollers for broad areas",
+          "text": "Roller cover nap, material, and width affect application. Textured surfaces may need a different cover than smooth walls."
+        },
+        {
+          "heading": "Accessories matter",
+          "text": "Trays, grids, extension poles, and compatible applicators support the job. Always check the coating label for recommended tools."
+        }
+      ],
+      "hardware_store_example": "A customer is painting a smooth interior wall and rough masonry. You explain why the same roller cover may not be ideal for both.",
+      "what_to_say_or_do": "Say: “Is the surface smooth or textured? Let’s check the paint’s recommended applicator.”",
+      "common_mistakes": "Assuming one roller works everywhere; choosing only by price.",
+      "when_to_ask_for_help": "Ask a specialist about specialty coatings, spraying, or incompatible applicator materials.",
+      "supporting_materials": [
+        {
+          "id": "PD-103-L04-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Side-by-side labeled roller covers for smooth and rough surfaces, plus angled brush.",
+          "alt_text": "Side-by-side labeled roller covers for smooth and rough surfaces, plus angled brush.",
+          "caption": "Side-by-side labeled roller covers for smooth and rough surfaces, plus angled brush.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Brushes are useful for edges, trim, and smaller areas.",
+        "Roller cover nap, material, and width affect application.",
+        "Trays, grids, extension poles, and compatible applicators support the job."
+      ],
+      "unscored_practice": {
+        "id": "PD-103-L04-P01",
+        "question": "What is a useful factor when choosing a roller cover?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Only the color of the handle"
+          },
+          {
+            "id": "B",
+            "text": "Surface texture and coating directions"
+          },
+          {
+            "id": "C",
+            "text": "The largest package"
+          },
+          {
+            "id": "D",
+            "text": "The brand name alone"
+          }
+        ],
+        "correct_answer": "B",
+        "explanation": "Surface texture and product directions guide roller-cover choice."
+      }
+    },
+    {
+      "id": "PD-103-L05",
+      "title": "Plan Application and Cleanup",
+      "estimated_minutes": 5,
+      "objective": "Explain why timing, ventilation, and cleanup instructions matter.",
+      "why_this_matters": "The project continues after the first coat is applied.",
+      "content": [
+        {
+          "heading": "Follow application conditions",
+          "text": "Product directions may set temperature, humidity, ventilation, and recoating requirements. Check them rather than using a universal rule."
+        },
+        {
+          "heading": "Separate recoat from full use",
+          "text": "A surface may be ready for another coat before it is ready for cleaning or heavy use."
+        },
+        {
+          "heading": "Clean up by product instructions",
+          "text": "Water-based and solvent-based products can require different cleanup and disposal practices. Follow the label and local disposal rules; never advise pouring leftover coatings or solvents into drains."
+        }
+      ],
+      "hardware_store_example": "A customer asks whether they can wash a newly painted wall tomorrow. You check the specific paint’s return-to-service and cleaning guidance.",
+      "what_to_say_or_do": "Say: “Let’s read this product’s instructions for recoating, cleaning, and disposal.”",
+      "common_mistakes": "Guessing dry times; suggesting disposal down a sink; ignoring ventilation.",
+      "when_to_ask_for_help": "Escalate solvent hazards, spray applications, disposal uncertainty, or symptoms from exposure.",
+      "supporting_materials": [
+        {
+          "id": "PD-103-L05-IMG01",
+          "type": "instructional stock photograph or original diagram",
+          "status": "Needed—not included",
+          "placement": "After lesson content, before scenario",
+          "description": "Annotated application timeline showing prep, first coat, recoat, and return-to-service as product-dependent.",
+          "alt_text": "Annotated application timeline showing prep, first coat, recoat, and return-to-service as product-dependent.",
+          "caption": "Annotated application timeline showing prep, first coat, recoat, and return-to-service as product-dependent.",
+          "licensing_note": "Use properly licensed stock imagery or an original illustration. Confirm visual accuracy before publishing."
+        }
+      ],
+      "key_takeaways": [
+        "Product directions may set temperature, humidity, ventilation, and recoating requirements.",
+        "A surface may be ready for another coat before it is ready for cleaning or heavy use.",
+        "Water-based and solvent-based products can require different cleanup and disposal practices."
+      ],
+      "unscored_practice": {
+        "id": "PD-103-L05-P01",
+        "question": "What is the best cleanup advice?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Pour unused paint down the drain"
+          },
+          {
+            "id": "B",
+            "text": "Use one method for all coatings"
+          },
+          {
+            "id": "C",
+            "text": "Follow the product label and local disposal requirements"
+          },
+          {
+            "id": "D",
+            "text": "Store solvent near a heater"
+          }
+        ],
+        "correct_answer": "C",
+        "explanation": "Cleanup and disposal depend on the coating and local rules."
+      }
+    }
+  ],
+  "final_scored_quiz": {
+    "recommended_question_count": 5,
+    "questions_employee_facing": [
+      {
+        "id": "PD-103-Q01",
+        "objective_assessed": "Describe why cleaning and surface condition affect coating results.",
+        "related_lesson_id": "PD-103-L01",
+        "question": "A wall is damp and peeling. What should happen before repainting?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Apply another topcoat"
+          },
+          {
+            "id": "B",
+            "text": "Cover with tape"
+          },
+          {
+            "id": "C",
+            "text": "Investigate and address moisture and loose material"
+          },
+          {
+            "id": "D",
+            "text": "Use a larger brush"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-103-L01",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-103-Q02",
+        "objective_assessed": "Identify common repair, sanding, masking, and protection supplies.",
+        "related_lesson_id": "PD-103-L02",
+        "question": "Why ask whether a hole is in drywall or wood?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "All fillers work on everything"
+          },
+          {
+            "id": "B",
+            "text": "Repair materials have different intended uses"
+          },
+          {
+            "id": "C",
+            "text": "Wood never needs repair"
+          },
+          {
+            "id": "D",
+            "text": "The surface does not matter"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-103-L02",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-103-Q03",
+        "objective_assessed": "Compare brushes, rollers, and common application accessories.",
+        "related_lesson_id": "PD-103-L03",
+        "question": "Why should an associate check the painter’s tape label?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Color determines performance"
+          },
+          {
+            "id": "B",
+            "text": "Surface compatibility and removal timing vary"
+          },
+          {
+            "id": "C",
+            "text": "All tape is permanent"
+          },
+          {
+            "id": "D",
+            "text": "Tape replaces cleaning"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-103-L03",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-103-Q04",
+        "objective_assessed": "Use label directions to explain preparation and cleanup.",
+        "related_lesson_id": "PD-103-L04",
+        "question": "A customer paints smooth drywall and rough masonry. What affects roller-cover selection?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Handle color"
+          },
+          {
+            "id": "B",
+            "text": "Surface texture and coating directions"
+          },
+          {
+            "id": "C",
+            "text": "Package artwork"
+          },
+          {
+            "id": "D",
+            "text": "Shelf position"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-103-L04",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "id": "PD-103-Q05",
+        "objective_assessed": "Recognize hazardous or complex situations requiring escalation.",
+        "related_lesson_id": "PD-103-L05",
+        "question": "A customer asks how to dispose of leftover coating. What should the associate do?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Recommend pouring it into a drain"
+          },
+          {
+            "id": "B",
+            "text": "Follow product instructions and local disposal requirements"
+          },
+          {
+            "id": "C",
+            "text": "Say all paint can go in household trash"
+          },
+          {
+            "id": "D",
+            "text": "Recommend mixing with solvent"
+          }
+        ],
+        "points": 10,
+        "review_reference": "PD-103-L05",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      }
+    ],
+    "answer_key_manager_only": [
+      {
+        "question_id": "PD-103-Q01",
+        "correct_answer": "C",
+        "explanation": "The underlying condition must be addressed before repainting.",
+        "review_reference": "PD-103-L01",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-103-Q02",
+        "correct_answer": "B",
+        "explanation": "Surface type and damage size guide the repair product choice.",
+        "review_reference": "PD-103-L02",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-103-Q03",
+        "correct_answer": "B",
+        "explanation": "Tape selection and removal should follow the product instructions.",
+        "review_reference": "PD-103-L03",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-103-Q04",
+        "correct_answer": "B",
+        "explanation": "Surface texture and product directions guide roller-cover choice.",
+        "review_reference": "PD-103-L04",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      },
+      {
+        "question_id": "PD-103-Q05",
+        "correct_answer": "B",
+        "explanation": "Cleanup and disposal depend on the coating and local rules.",
+        "review_reference": "PD-103-L05",
+        "source_reference": "Product-specific claims require verified product labels; general scenario based on original instructional content."
+      }
+    ]
+  },
+  "completion_content": {
+    "passing_percent": 80,
+    "minimum_correct": 4,
+    "points_per_correct_question": 10,
+    "lifetime_points_rule": "Award 10 lifetime points for each question answered correctly only once across attempts.",
+    "attempt_limit": 3,
+    "manager_assistance_after_attempts": 3,
+    "required_lessons_before_first_quiz": true,
+    "feedback_after_failed_quiz": "Show explanations for missed questions.",
+    "trophy_rule": "Award one standard trophy upon first pass.",
+    "replay_rule": "After passing, quiz replay for competitions is allowed. Competition points are separate from lifetime points and trophies; lesson review optional.",
+    "availability_rule": "Store availability is controlled by an administrator; publishing does not assign to every store.",
+    "completion_message": "You completed PD-103: Surface Preparation & Painting Tools. Use your project questions and the product label to guide your next customer conversation.",
+    "practical_next_step": "Practice asking a customer about their project and verifying the product label before recommending an item."
+  },
+  "manager_guidance": {
+    "suggested_audience": "Department employees",
+    "usual_completion_window_days": 30,
+    "manager_can_adjust_window": true,
+    "coaching_prompts": [
+      "What question would you ask before recommending a product?",
+      "Which product label statement would you verify?",
+      "When would you involve a specialist?"
+    ],
+    "optional_unscored_team_activity": "Compare two products or application tools from the actual store assortment. Have the employee explain one meaningful difference using the package directions. No activity required for course completion.",
+    "optional_competition_name": "Paint Counter Challenge",
+    "optional_reward_idea": "Manager-selected recognition or reward; no reward is included by default."
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lesson_content": true,
+    "sources_verified": false,
+    "missing_media_listed": true,
+    "store_specific_content_identified": true,
+    "mobile_readable": true,
+    "employee_personal_information_included": false,
+    "technical_claims_need_review": true
+  },
+  "items_needed_from_me": [
+    "Confirm stocked paint brands and current product lines.",
+    "Provide current labels or manufacturer technical data sheets for brand-specific recommendations.",
+    "Confirm store escalation contacts and any paint-mixing/tinting policies (not taught in these general courses).",
+    "Confirm local disposal guidance for supported stores.",
+    "Supply or approve licensed photos/original diagrams for identified image placements.",
+    "Review technical accuracy, quiz answers, and completion time before publishing."
+  ]
+}

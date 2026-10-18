@@ -1,0 +1,18 @@
+{
+  "course_code": "HT-101",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "224c41ca-92a8-5ed9-bc21-6a8f9cbe669e",
+  "source_files": {
+    "HT-101_complete_course_v1.0.0.md": "9df0d7af718b660470000ab67a4bc808243dd2536b50db104574a48fff1d44ea",
+    "HT-101_course_v1.0.0.json": "19e3520a125efb278b28cdae2d526f90fe3b71b7f0557a2e975e6bfc7d572527",
+    "README.md": "6cc2b55da57bd275a40790885f03dd7f382f0fef196d3ce874ad8fc1833bca0b"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "Final answer positions are repetitive (BCBBB); review distractors before publishing.",
+    "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

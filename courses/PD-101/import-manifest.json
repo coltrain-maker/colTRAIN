@@ -1,0 +1,18 @@
+{
+  "course_code": "PD-101",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "dd9e2966-3774-567f-8e22-ba592b95ba4f",
+  "source_files": {
+    "PD-101_complete_course_v1.0.0.md": "e11a920394ffe1992bf156a54095254d3770a8a6a5b8a3c2f45751b7e68c423f",
+    "PD-101_structured_content_v1.0.0.json": "9679af61f3a9b06a0bd400017b1dd7990b0c7bc047c8309117883467452a22e8",
+    "README.md": "816b7015d6434a7ee963f8f102da8316753daec0ea49dcff7bce912b06b6f51a"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "Final answer positions are repetitive (BBCBB); review distractors before publishing.",
+    "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

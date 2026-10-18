@@ -1,0 +1,18 @@
+{
+  "course_code": "LG-101",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "0a0c493c-7058-50cc-9842-c009d63aeefa",
+  "source_files": {
+    "LG-101_complete_course_v1.0.0.md": "ff1d3fc92fcd825b293e369fe904d9fa90a8e2a39a21927732e1049efbd53816",
+    "LG-101_structured_content_v1.0.0.json": "dbf40e3b36feb356f04928b87f9ab3dcdba6faffceb494c0de2302f40362fbe7",
+    "README.md": "a0a419ccc5d0f865b232c5da5eebcdae24d8724bcdda24e300fa70586a248c33"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "Final answer positions are repetitive (BABBB); review distractors before publishing.",
+    "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

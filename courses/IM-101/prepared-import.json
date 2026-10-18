@@ -1,0 +1,728 @@
+{
+  "course": {
+    "id": "9cbd5d08-66bc-5844-aadb-fd69f546dc69",
+    "slug": "im-101-inventory-management-fundamentals",
+    "version": 1,
+    "title": "Inventory Management Fundamentals",
+    "description": "Learn how products move through a hardware store, how inventory records support customer service, and how to handle common stock questions accurately.",
+    "category": "Inventory & Merchandising",
+    "passing_percent": 80
+  },
+  "lessons": [
+    {
+      "id": "1f1d99f3-99b2-5efa-81a6-c5b32cfded96",
+      "position": 1,
+      "title": "Inventory Is More Than What Is on the Shelf",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Inventory is the merchandise a store has for sale. A product may be in the aisle, in a back room, on a display, or waiting to be received. The computer record is useful, but it is not a promise that an item is ready for a customer to take home."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "paragraph",
+          "text": "Three useful numbers. On-hand means the quantity recorded as physically owned or held by the store. Available means the quantity that can be sold now under the store’s system rules. On-order means units expected from a supplier. These numbers can differ because of holds, pending transactions, receiving delays, or errors."
+        },
+        {
+          "type": "paragraph",
+          "text": "Why it matters. An incorrect count can lead to a missed sale, an unnecessary reorder, or a disappointed customer. Verify the item, size, and location before promising it is available."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer asks for twelve 3-inch deck screws in a specific package. The system shows twelve packages on hand, but only eight are on the shelf. The associate checks approved alternate locations and asks for help before promising twelve."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Confirm the exact SKU, size, and package quantity."
+        },
+        {
+          "type": "bullet",
+          "text": "Check the approved inventory view and the shelf location."
+        },
+        {
+          "type": "bullet",
+          "text": "Explain what you can verify, not what you assume."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Treating an on-hand count as a guarantee of availability."
+        },
+        {
+          "type": "bullet",
+          "text": "Confusing pieces with packages."
+        },
+        {
+          "type": "bullet",
+          "text": "Promising incoming stock before it is received."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask the inventory lead when a count, reservation, or shipment status is unclear."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Confirm the exact SKU, size, and package quantity."
+        },
+        {
+          "type": "bullet",
+          "text": "Check the approved inventory view and the shelf location."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask the inventory lead when a count, reservation, or shipment status is unclear."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice — unscored (IM-101-P01)"
+        },
+        {
+          "type": "paragraph",
+          "text": "A system shows 10 on hand, but only 6 are visible. What should you tell a customer?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Ten are definitely ready to buy."
+        },
+        {
+          "type": "bullet",
+          "text": "B. You can verify six now and check for the others."
+        },
+        {
+          "type": "bullet",
+          "text": "C. The system must be wrong."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Tell the customer to return tomorrow."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B. The visible six can be verified. Check other approved locations before promising more."
+        }
+      ]
+    },
+    {
+      "id": "08f4a144-2017-56ca-8574-d7bfe96d9e76",
+      "position": 2,
+      "title": "Follow a Product from Delivery to Sale",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "A product usually enters through an order and delivery. It is checked, received in the approved system, labeled or located, stocked, sold, and replenished when needed. Each step depends on accurate information from the previous step."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "paragraph",
+          "text": "Receiving is a checkpoint. Compare delivered products with the store’s receiving paperwork or system. Confirm product identity, units, and quantities. Record exceptions using the store’s process. Do not assume every box contains the expected item."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stocking supports finding. Place items in the correct approved location with readable labels. Keep the product identifier connected to the right shelf tag. A product placed in the wrong bay can appear missing even when it is in the building."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sales update records. A completed sale usually changes the system’s stock record. Returns, transfers, damage, and corrections may also change counts. Exact timing and permissions depend on the store’s software."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A carton marked “12” contains twelve individual hinges, but the store sells them in packs of two. The receiver checks the SKU and unit of measure before entering a quantity."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Check the item identifier and unit of measure."
+        },
+        {
+          "type": "bullet",
+          "text": "Follow the store’s receiving workflow."
+        },
+        {
+          "type": "bullet",
+          "text": "Set aside and report mismatches instead of guessing."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Receiving by carton count when the system expects eaches."
+        },
+        {
+          "type": "bullet",
+          "text": "Putting merchandise out before resolving an item mismatch."
+        },
+        {
+          "type": "bullet",
+          "text": "Leaving an unreadable shelf label in place."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a trained receiver or manager before posting a questionable receipt or correction."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Check the item identifier and unit of measure."
+        },
+        {
+          "type": "bullet",
+          "text": "Follow the store’s receiving workflow."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask a trained receiver or manager before posting a questionable receipt or correction."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice — unscored (IM-101-P02)"
+        },
+        {
+          "type": "paragraph",
+          "text": "A carton holds 12 individual pieces, but the system expects packs of two. What comes first?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Enter 12 packs."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Ignore the difference."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Verify the SKU and unit of measure."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Place everything on the shelf."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: C. The unit of measure determines how the quantity should be entered."
+        }
+      ]
+    },
+    {
+      "id": "9a83d0ce-57f4-5909-a071-e7f4a4a33750",
+      "position": 3,
+      "title": "Stock Shelves with Accuracy and Care",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Good stocking makes products easier to find and reduces avoidable mistakes. It also keeps aisles usable and prevents damage. Follow the store’s safety rules and do not use equipment you are not authorized to operate."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "paragraph",
+          "text": "Match the label. Read the SKU, size, color, and package count. Similar-looking products can be different. Compare the product to the shelf tag before placing it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep stock organized. Use the store’s rotation rules when they apply. Keep heavy products in approved locations. Do not block exits, fire equipment, or customer walkways."
+        },
+        {
+          "type": "paragraph",
+          "text": "Watch for damage. Do not place leaking, broken, or unsafe products on the sales floor. Follow the store’s process for isolating and reporting them."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "Two boxes of similar faucet connectors have different lengths. An associate checks both labels rather than placing them together behind one shelf tag."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Match product and shelf tag before stocking."
+        },
+        {
+          "type": "bullet",
+          "text": "Keep merchandise within approved shelf limits."
+        },
+        {
+          "type": "bullet",
+          "text": "Report damaged or mislabeled items."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Stocking by appearance alone."
+        },
+        {
+          "type": "bullet",
+          "text": "Hiding extra product in an unrecorded location."
+        },
+        {
+          "type": "bullet",
+          "text": "Blocking an aisle with cartons."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask for help with high, heavy, leaking, damaged, or uncertain merchandise."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Match product and shelf tag before stocking."
+        },
+        {
+          "type": "bullet",
+          "text": "Keep merchandise within approved shelf limits."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask for help with high, heavy, leaking, damaged, or uncertain merchandise."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice — unscored (IM-101-P03)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Two packages look alike but have different lengths. What is the best next step?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Put both behind the same tag."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Check each product identifier against its location."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Choose the more expensive shelf."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Leave them in the aisle."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B. The item identifier prevents a wrong-location error."
+        }
+      ]
+    },
+    {
+      "id": "d1fae175-99ab-511e-b113-45973a33ca1b",
+      "position": 4,
+      "title": "Investigate Inventory Differences",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "A discrepancy is a difference between what the system says and what staff can verify. A missing item does not always mean theft. It may be in another location, not yet received, sold under another identifier, or counted in the wrong unit."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start with the exact item. Check the SKU and unit of measure. Look at approved shelf, display, back-stock, and hold locations. Review available transaction details only if your role permits."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record what you found. Use the store’s approved count or discrepancy process. State the quantity you physically verified and where you checked. Do not quietly change records or accuse anyone."
+        },
+        {
+          "type": "paragraph",
+          "text": "Escalate adjustments. Inventory adjustments can affect ordering and financial records. Only authorized employees should make them."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A paint roller refill shows six on hand but none in its assigned bay. The associate checks the endcap and back-stock location, then reports the discrepancy with the SKU."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Verify the exact SKU."
+        },
+        {
+          "type": "bullet",
+          "text": "Check approved alternate locations."
+        },
+        {
+          "type": "bullet",
+          "text": "Document findings and request an authorized adjustment if needed."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Assuming missing stock was stolen."
+        },
+        {
+          "type": "bullet",
+          "text": "Changing counts without permission."
+        },
+        {
+          "type": "bullet",
+          "text": "Counting a similar item as the missing SKU."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask the inventory manager before any count correction, suspected loss investigation, or unexplained variance."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Verify the exact SKU."
+        },
+        {
+          "type": "bullet",
+          "text": "Check approved alternate locations."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask the inventory manager before any count correction, suspected loss investigation, or unexplained variance."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice — unscored (IM-101-P04)"
+        },
+        {
+          "type": "paragraph",
+          "text": "You find a count mismatch. What should you do first?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Accuse a coworker."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Change the count immediately."
+        },
+        {
+          "type": "bullet",
+          "text": "C. Verify the SKU and approved locations."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Delete the product record."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: C. Check identity and locations before escalating a documented discrepancy."
+        }
+      ]
+    },
+    {
+      "id": "a9ca136a-2c1f-5082-b023-596ffe6b2320",
+      "position": 5,
+      "title": "Help Customers with Stock Questions",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Customers want a reliable answer about whether they can buy an item today. Give the clearest verified answer you have. If the quantity is uncertain, say so and explain the next step."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "paragraph",
+          "text": "Separate facts from estimates. A shelf check is a verified observation. An expected delivery date may be an estimate. Do not promise a shipment or hold unless the store’s policy and system support it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Offer a useful next step. Check approved locations, request a stock check, or connect the customer with a team member who can confirm ordering options. Ask before suggesting a substitute because size or compatibility may matter."
+        },
+        {
+          "type": "paragraph",
+          "text": "Close the loop. If you promise to check, tell the customer what you found or who will follow up. Do not leave a customer waiting without an update."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer needs eight matching cabinet pulls. Six are confirmed on the shelf. The associate explains that six are available now and asks the inventory lead to check the remaining quantity."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "State the quantity you verified."
+        },
+        {
+          "type": "bullet",
+          "text": "Explain what still needs checking."
+        },
+        {
+          "type": "bullet",
+          "text": "Offer an approved next step or handoff."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Promising an arrival date without confirmation."
+        },
+        {
+          "type": "bullet",
+          "text": "Substituting a different size without checking fit."
+        },
+        {
+          "type": "bullet",
+          "text": "Saying “we have it” based only on a system count."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a supervisor about special orders, reservations, transfers, or uncertain delivery dates."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "State the quantity you verified."
+        },
+        {
+          "type": "bullet",
+          "text": "Explain what still needs checking."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask a supervisor about special orders, reservations, transfers, or uncertain delivery dates."
+        },
+        {
+          "type": "heading",
+          "text": "Optional practice — unscored (IM-101-P05)"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer needs eight pulls, but you can verify six. Which response is best?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. We definitely have eight."
+        },
+        {
+          "type": "bullet",
+          "text": "B. Six are here; I can check whether we have two more."
+        },
+        {
+          "type": "bullet",
+          "text": "C. You should buy a different style."
+        },
+        {
+          "type": "bullet",
+          "text": "D. Our computer is always correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B. A clear verified quantity plus a next step builds trust."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "1fb70fc2-8023-54bb-9ab7-3214e444ff1f",
+      "position": 1,
+      "prompt": "Which statement best describes an on-hand count?",
+      "options": [
+        "The exact number visible on the shelf.",
+        "The quantity recorded in the inventory system.",
+        "The number arriving tomorrow.",
+        "The number customers have reserved."
+      ],
+      "correct_option": 1,
+      "explanation": "On-hand is a recorded quantity. Physical availability still needs verification."
+    },
+    {
+      "id": "55d2cc48-1f40-5af5-a256-1b4ae1254322",
+      "position": 2,
+      "prompt": "Why must a receiver check the unit of measure?",
+      "options": [
+        "To make the boxes look neat.",
+        "To determine which employee gets credit.",
+        "To avoid counting pieces as packs or cartons.",
+        "To speed up price changes."
+      ],
+      "correct_option": 2,
+      "explanation": "A quantity entered in the wrong unit creates inaccurate inventory."
+    },
+    {
+      "id": "d06c411a-509b-5eeb-8f94-e49ff305ce34",
+      "position": 3,
+      "prompt": "What should an associate do with a damaged or leaking product?",
+      "options": [
+        "Stock it with a discount label.",
+        "Follow the store’s isolate-and-report process.",
+        "Hide it in back stock.",
+        "Throw it away without a record."
+      ],
+      "correct_option": 1,
+      "explanation": "Potentially unsafe merchandise must be handled through approved procedures."
+    },
+    {
+      "id": "2e971df5-34cd-5c11-9154-1f3107937b4b",
+      "position": 4,
+      "prompt": "The shelf count does not match the system. What is the best response?",
+      "options": [
+        "Change the count without asking.",
+        "Assume theft.",
+        "Verify SKU and locations, then report the difference.",
+        "Ignore it until the next delivery."
+      ],
+      "correct_option": 2,
+      "explanation": "Verification and documented escalation protect record accuracy."
+    },
+    {
+      "id": "f79efeac-26f4-5006-a302-1ace4cdd9237",
+      "position": 5,
+      "prompt": "A customer asks whether ten units are available, but you verified seven. What should you say?",
+      "options": [
+        "All ten are ready.",
+        "Seven are confirmed; I can check on the remaining three.",
+        "Come back later without explanation.",
+        "The computer must be wrong."
+      ],
+      "correct_option": 1,
+      "explanation": "Report the verified amount and offer a helpful next step."
+    }
+  ],
+  "catalog": {
+    "course_code": "IM-101",
+    "skill_level": "foundations",
+    "topics": [
+      "Inventory Management"
+    ],
+    "keywords": [
+      "Inventory Is More Than What Is on the Shelf",
+      "Follow a Product from Delivery to Sale",
+      "Stock Shelves with Accuracy and Care",
+      "Investigate Inventory Differences",
+      "Help Customers with Stock Questions",
+      "Why this matters",
+      "Lesson content",
+      "Hardware-store example",
+      "What to say or do",
+      "Common mistakes",
+      "When to ask for help",
+      "Key takeaways",
+      "Optional practice — unscored (IM-101-P01)",
+      "Optional practice — unscored (IM-101-P02)",
+      "Optional practice — unscored (IM-101-P03)",
+      "Optional practice — unscored (IM-101-P04)",
+      "Optional practice — unscored (IM-101-P05)",
+      "IM-101-",
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "SKU"
+    ],
+    "learning_paths": [
+      "Inventory & Merchandising Associate",
+      "Store Manager/Owner"
+    ]
+  }
+}

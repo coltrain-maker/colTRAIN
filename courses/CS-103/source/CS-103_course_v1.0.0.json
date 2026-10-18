@@ -1,0 +1,539 @@
+{
+  "course_code": "CS-103",
+  "title": "Helping Customers When You Don't Know the Answer",
+  "short_description": "Learn how to respond with confidence when a customer asks an unfamiliar question. Gather details, verify information, and make a helpful handoff.",
+  "academy": "Customer Experience & Sales",
+  "skill_level": "Foundations",
+  "version": "1.0.0",
+  "review_date": "2026-10-18",
+  "status": "Ready for review",
+  "scope": "General colTRAIN",
+  "intended_audience": [
+    "New hires",
+    "Experienced employees"
+  ],
+  "relevant_departments": [
+    "All sales and service departments"
+  ],
+  "store_restrictions": [],
+  "estimated_completion_minutes": {
+    "min": 25,
+    "max": 30,
+    "validated": false
+  },
+  "prerequisites": {
+    "required": [],
+    "recommended": [
+      "RF-101",
+      "CS-101"
+    ]
+  },
+  "learning_objectives": [
+    "Respond professionally when you do not know an answer.",
+    "Gather the information needed to research a customer question.",
+    "Check the best available source before giving technical advice.",
+    "Connect the customer with the right person and share what you learned.",
+    "Recognize questions that need a manager, manufacturer, or qualified professional."
+  ],
+  "source_materials": [
+    {
+      "title": "Original colTRAIN instructional draft",
+      "type": "original_content",
+      "file_or_url": null,
+      "information_supported": "General retail communication and practical scenarios",
+      "verification_notes": "No external user-provided sources. Store policies and specific manufacturer facts must be verified separately."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "lesson_id": "CS-103-L01",
+      "title": "Stay Calm and Take Ownership",
+      "estimated_minutes": 4,
+      "objective": "Respond professionally when you do not know an answer."
+    },
+    {
+      "lesson_id": "CS-103-L02",
+      "title": "Ask Questions That Find the Missing Detail",
+      "estimated_minutes": 4,
+      "objective": "Gather the information needed to research a customer question."
+    },
+    {
+      "lesson_id": "CS-103-L03",
+      "title": "Use Reliable Information",
+      "estimated_minutes": 4,
+      "objective": "Check the best available source before giving technical advice."
+    },
+    {
+      "lesson_id": "CS-103-L04",
+      "title": "Make a Helpful Handoff",
+      "estimated_minutes": 4,
+      "objective": "Connect the customer with the right person and share what you learned."
+    },
+    {
+      "lesson_id": "CS-103-L05",
+      "title": "Know When to Stop and Escalate",
+      "estimated_minutes": 4,
+      "objective": "Recognize questions that need a manager, manufacturer, or qualified professional."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "CS-103-L01",
+      "number": 1,
+      "title": "Stay Calm and Take Ownership",
+      "estimated_minutes": 4,
+      "learning_objective": "Respond professionally when you do not know an answer.",
+      "why_this_matters": "Customers expect help. They do not expect every new employee to know everything.",
+      "content_sections": [
+        {
+          "heading": "Be honest and helpful",
+          "paragraphs": [
+            "Say you want to verify the answer. Keep a calm tone. Avoid guessing or dismissing the customer."
+          ]
+        },
+        {
+          "heading": "Own the next step",
+          "paragraphs": [
+            "Explain what you will do next. You might check a label, consult a coworker, or find official instructions."
+          ]
+        },
+        {
+          "heading": "Stay connected",
+          "paragraphs": [
+            "Do not send a customer away without a clear handoff. If you must leave, explain where you are going and return as promised."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer asks whether a certain blade fits their saw. You are unsure. You say you will check the saw model and blade information before giving an answer.",
+      "what_to_say_or_do": [
+        "Say: “I want to make sure we get this right.”",
+        "Ask for the product model or package.",
+        "Explain the next step.",
+        "Return with an answer or a clear referral."
+      ],
+      "common_mistakes": [
+        "Guessing to sound confident.",
+        "Saying “I don’t know” and walking away.",
+        "Promising an answer you cannot verify."
+      ],
+      "when_to_ask_for_help": "Ask a specialist when product compatibility or safe use is uncertain. Never recommend an unverified blade or accessory.",
+      "supporting_materials": [],
+      "suggested_media": [],
+      "key_takeaways": [
+        "Be honest.",
+        "Take responsibility for the next step.",
+        "Keep the customer informed."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "CS-103-P01",
+        "type": "single_answer_multiple_choice",
+        "question": "You do not know whether a blade fits a saw. What should you say?",
+        "choices": {
+          "A": "“It probably fits.”",
+          "B": "“I’m new. Ask someone else.”",
+          "C": "“Let’s check the model and the blade specifications.”",
+          "D": "“All blades fit most saws.”"
+        },
+        "correct_answer": "C",
+        "explanation": "Checking the model and specifications is a useful next step. It avoids guessing.",
+        "scored": false
+      }
+    },
+    {
+      "id": "CS-103-L02",
+      "number": 2,
+      "title": "Ask Questions That Find the Missing Detail",
+      "estimated_minutes": 4,
+      "learning_objective": "Gather the information needed to research a customer question.",
+      "why_this_matters": "Many questions are hard to answer because key details are missing.",
+      "content_sections": [
+        {
+          "heading": "Clarify the problem",
+          "paragraphs": [
+            "Ask what the customer is trying to do. Find out what is not working or what needs replacing."
+          ]
+        },
+        {
+          "heading": "Identify the product",
+          "paragraphs": [
+            "Ask for a model number, measurements, old part, package, or photo. Do not assume similar-looking parts are interchangeable."
+          ]
+        },
+        {
+          "heading": "Repeat the request",
+          "paragraphs": [
+            "Summarize what you know. This helps the customer correct missing or misunderstood details."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer needs a replacement filter but does not know the size. You ask for the equipment model and the label on the old filter. You can now look for a verified match.",
+      "what_to_say_or_do": [
+        "Ask: “What equipment is this for?”",
+        "Ask: “Do you have the model number?”",
+        "Ask: “Can you show me the old part or a photo?”",
+        "Repeat the key details."
+      ],
+      "common_mistakes": [
+        "Searching without enough information.",
+        "Assuming size from appearance.",
+        "Asking for details unrelated to the problem."
+      ],
+      "when_to_ask_for_help": "Ask a coworker for help identifying a model or part. Use manufacturer documentation for compatibility.",
+      "supporting_materials": [],
+      "suggested_media": [],
+      "key_takeaways": [
+        "Find the missing detail.",
+        "Use product identifiers.",
+        "Confirm what you heard."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "CS-103-P02",
+        "type": "single_answer_multiple_choice",
+        "question": "A customer needs a filter but does not know the size. What detail would help most?",
+        "choices": {
+          "A": "Their favorite brand color.",
+          "B": "The equipment model or old filter label.",
+          "C": "The date of their last store visit.",
+          "D": "Their preferred checkout lane."
+        },
+        "correct_answer": "B",
+        "explanation": "A model or filter label can help verify compatibility.",
+        "scored": false
+      }
+    },
+    {
+      "id": "CS-103-L03",
+      "number": 3,
+      "title": "Use Reliable Information",
+      "estimated_minutes": 4,
+      "learning_objective": "Check the best available source before giving technical advice.",
+      "why_this_matters": "A confident guess can lead to a wrong purchase or unsafe use.",
+      "content_sections": [
+        {
+          "heading": "Start with the product",
+          "paragraphs": [
+            "Read the package and labels. Look for model numbers, sizes, ratings, and warnings. Do not treat packaging as a substitute for full instructions when more detail is needed."
+          ]
+        },
+        {
+          "heading": "Use official instructions",
+          "paragraphs": [
+            "For compatibility, safety, and warranty questions, prefer current manufacturer information. Check that the document matches the exact model."
+          ]
+        },
+        {
+          "heading": "Know what is not confirmed",
+          "paragraphs": [
+            "If you cannot verify a claim, tell the customer. Explain the next safe step."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer asks whether a particular battery works with a power tool. You compare the exact tool and battery models using official compatibility information. You do not rely on color or appearance.",
+      "what_to_say_or_do": [
+        "Say: “Let’s check the model information.”",
+        "Read the label with the customer.",
+        "Use current official product instructions when available.",
+        "State clearly what remains unverified."
+      ],
+      "common_mistakes": [
+        "Relying on memory for a safety claim.",
+        "Using instructions for a different model.",
+        "Treating an online comment as a manufacturer policy."
+      ],
+      "when_to_ask_for_help": "Ask a specialist or manager if official information is unavailable or unclear. Refer the customer to manufacturer support or a qualified professional when appropriate.",
+      "supporting_materials": [],
+      "suggested_media": [],
+      "key_takeaways": [
+        "Check exact models.",
+        "Prefer official instructions.",
+        "Do not present guesses as facts."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "CS-103-P03",
+        "type": "single_answer_multiple_choice",
+        "question": "A customer asks whether a battery fits a tool. Which source is strongest?",
+        "choices": {
+          "A": "A guess based on the color.",
+          "B": "A comment from an unknown forum.",
+          "C": "Current manufacturer compatibility information for the exact models.",
+          "D": "A similar product on the next shelf."
+        },
+        "correct_answer": "C",
+        "explanation": "Official information for the exact models is more reliable than appearance or guesses.",
+        "scored": false
+      }
+    },
+    {
+      "id": "CS-103-L04",
+      "number": 4,
+      "title": "Make a Helpful Handoff",
+      "estimated_minutes": 4,
+      "learning_objective": "Connect the customer with the right person and share what you learned.",
+      "why_this_matters": "A customer should not need to repeat the same story several times.",
+      "content_sections": [
+        {
+          "heading": "Choose the right helper",
+          "paragraphs": [
+            "Find a coworker with relevant product knowledge. Use a manager for store policy or an unresolved service issue."
+          ]
+        },
+        {
+          "heading": "Summarize the need",
+          "paragraphs": [
+            "Tell the next employee what the customer wants, what details you checked, and what remains unanswered."
+          ]
+        },
+        {
+          "heading": "Follow through",
+          "paragraphs": [
+            "Confirm that the handoff happened. If no one is available, explain the options without promising a time you cannot guarantee."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer needs a part for a pressure washer. You have the model number but cannot confirm the fitting. You introduce the customer to the power equipment specialist and share the model number and the question.",
+      "what_to_say_or_do": [
+        "Say: “I have the model number. Let me bring in our equipment specialist.”",
+        "Share the details already collected.",
+        "Confirm the customer knows who will help next.",
+        "Avoid promising a wait time without checking."
+      ],
+      "common_mistakes": [
+        "Pointing vaguely across the store.",
+        "Making the customer repeat every detail.",
+        "Leaving before confirming the handoff."
+      ],
+      "when_to_ask_for_help": "Ask a manager when a specialist is unavailable or a customer needs a policy decision. Refer technical work beyond retail advice to a qualified professional.",
+      "supporting_materials": [],
+      "suggested_media": [],
+      "key_takeaways": [
+        "Find the right helper.",
+        "Share the details.",
+        "Confirm the handoff."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "CS-103-P04",
+        "type": "single_answer_multiple_choice",
+        "question": "You need to transfer a customer to a plumbing specialist. What should you do?",
+        "choices": {
+          "A": "Tell the customer to find someone in plumbing.",
+          "B": "Introduce the specialist and share the details you already gathered.",
+          "C": "Walk away without explanation.",
+          "D": "Give an answer you are unsure about."
+        },
+        "correct_answer": "B",
+        "explanation": "A good handoff saves time and shows ownership of the customer’s need.",
+        "scored": false
+      }
+    },
+    {
+      "id": "CS-103-L05",
+      "number": 5,
+      "title": "Know When to Stop and Escalate",
+      "estimated_minutes": 4,
+      "learning_objective": "Recognize questions that need a manager, manufacturer, or qualified professional.",
+      "why_this_matters": "Some questions involve risks or decisions outside a retail employee’s authority.",
+      "content_sections": [
+        {
+          "heading": "Recognize higher-risk topics",
+          "paragraphs": [
+            "Electrical wiring, gas connections, structural loads, chemical mixing, and power equipment safety can involve serious hazards. Product advice is not a substitute for professional work."
+          ]
+        },
+        {
+          "heading": "Separate product facts from professional advice",
+          "paragraphs": [
+            "You may help locate a product or find official instructions. Do not design, approve, or certify work that requires a qualified professional."
+          ]
+        },
+        {
+          "heading": "Escalate clearly",
+          "paragraphs": [
+            "Explain why you need another source. Ask a manager for store policies. Use official manufacturer support for unresolved product questions. Recommend a qualified professional for work beyond your role."
+          ]
+        }
+      ],
+      "hardware_store_example": "A customer asks you to confirm that a fastener will support a heavy overhead load. You can help find product specifications. You do not approve the installation. You explain that the load and installation need qualified evaluation.",
+      "what_to_say_or_do": [
+        "Say: “I can help find the product specifications.”",
+        "Say: “I cannot confirm this installation is safe.”",
+        "Refer to a qualified professional for technical approval.",
+        "Ask a manager about store policy."
+      ],
+      "common_mistakes": [
+        "Treating a package rating as approval for every installation.",
+        "Giving installation advice outside your training.",
+        "Ignoring a warning because a customer wants a quick answer."
+      ],
+      "when_to_ask_for_help": "Escalate immediately when there is a safety concern, an unclear manufacturer warning, or a request for technical approval outside retail scope.",
+      "supporting_materials": [],
+      "suggested_media": [],
+      "key_takeaways": [
+        "Know your role limits.",
+        "Escalate safety-sensitive questions.",
+        "Give a clear next step."
+      ],
+      "optional_practice": null,
+      "unscored_practice": {
+        "id": "CS-103-P05",
+        "type": "single_answer_multiple_choice",
+        "question": "A customer asks you to approve hardware for a heavy overhead installation. What should you do?",
+        "choices": {
+          "A": "Guarantee the hardware is safe.",
+          "B": "Recommend the biggest fastener.",
+          "C": "Find product specifications and refer the installation decision to a qualified professional.",
+          "D": "Tell the customer any fastener will work."
+        },
+        "correct_answer": "C",
+        "explanation": "Retail employees can provide verified product facts. They should not certify a high-risk installation.",
+        "scored": false
+      }
+    }
+  ],
+  "final_quiz": {
+    "questions": [
+      {
+        "id": "CS-103-Q01",
+        "learning_objective_assessed": "Respond professionally when you do not know an answer.",
+        "related_lesson_id": "CS-103-L01",
+        "question": "A customer asks a question about a product you have never sold. What should you do first?",
+        "choices": {
+          "A": "Guess based on the product name.",
+          "B": "Say you will verify the information and explain the next step.",
+          "C": "Tell them to shop elsewhere.",
+          "D": "Promise the product will work."
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Honesty and a clear next step build trust. Guessing or dismissing the customer does not help.",
+        "review_reference": "Lesson 1: Be honest and helpful",
+        "source_reference": null
+      },
+      {
+        "id": "CS-103-Q02",
+        "learning_objective_assessed": "Gather the information needed to research a customer question.",
+        "related_lesson_id": "CS-103-L02",
+        "question": "A customer needs a replacement part for a tool. Which information is most useful?",
+        "choices": {
+          "A": "The tool model number and old part details.",
+          "B": "The customer’s preferred payment method.",
+          "C": "The color of the store sign.",
+          "D": "The day the customer usually shops."
+        },
+        "correct_answer": "A",
+        "points": 10,
+        "explanation": "Exact model and part details support a reliable match. The other details do not identify the part.",
+        "review_reference": "Lesson 2: Identify the product",
+        "source_reference": null
+      },
+      {
+        "id": "CS-103-Q03",
+        "learning_objective_assessed": "Check the best available source before giving technical advice.",
+        "related_lesson_id": "CS-103-L03",
+        "question": "A customer asks about a tool battery’s compatibility. What is the best next step?",
+        "choices": {
+          "A": "Choose one with the same color.",
+          "B": "Use a different tool’s manual.",
+          "C": "Ask another customer to guess.",
+          "D": "Check current manufacturer information for the exact tool and battery models."
+        },
+        "correct_answer": "D",
+        "points": 10,
+        "explanation": "Manufacturer compatibility information for exact models is the appropriate source. Appearance and unrelated manuals are not reliable.",
+        "review_reference": "Lesson 3: Use official instructions",
+        "source_reference": null
+      },
+      {
+        "id": "CS-103-Q04",
+        "learning_objective_assessed": "Connect the customer with the right person and share what you learned.",
+        "related_lesson_id": "CS-103-L04",
+        "question": "You have collected a pressure washer model number but need help finding a fitting. How should you hand off the customer?",
+        "choices": {
+          "A": "Point toward the equipment counter.",
+          "B": "Tell them to start the story over.",
+          "C": "Introduce a specialist and share the model and unanswered question.",
+          "D": "Leave without confirming anyone is available."
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "A direct handoff with the known details saves time and keeps the customer supported.",
+        "review_reference": "Lesson 4: Summarize the need",
+        "source_reference": null
+      },
+      {
+        "id": "CS-103-Q05",
+        "learning_objective_assessed": "Recognize questions that need a manager, manufacturer, or qualified professional.",
+        "related_lesson_id": "CS-103-L05",
+        "question": "A customer asks you to approve a fastener for a heavy overhead load. What is the best response?",
+        "choices": {
+          "A": "Promise it is safe if the package shows a high rating.",
+          "B": "Help locate specifications and refer the installation decision to a qualified professional.",
+          "C": "Recommend any larger fastener.",
+          "D": "Say you can certify the installation."
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Product ratings do not establish suitability for every installation. A qualified professional must evaluate the application.",
+        "review_reference": "Lesson 5: Separate product facts from professional advice",
+        "source_reference": null
+      }
+    ],
+    "answer_key_separate_from_employee_view": true,
+    "scored": true
+  },
+  "completion_rules": {
+    "passing_score_percent": 80,
+    "quiz_attempts_before_manager_assistance": 3,
+    "points_per_correct_question": 10,
+    "lifetime_points_once_per_question": true,
+    "standard_trophy_once": true,
+    "competition_scores_separate": true,
+    "lessons_required_before_first_quiz": true,
+    "repeat_passed_course_quiz_for_competition": true,
+    "optional_lesson_review_on_repeat": true,
+    "store_availability_admin_controlled": true
+  },
+  "correct_answers_required": 4,
+  "maximum_quiz_points": 50,
+  "completion_message": "Great work! You completed Helping Customers When You Don't Know the Answer. Use these skills during your next customer interaction.",
+  "practical_next_step": "Choose one useful question or action from this course and try it during your next shift.",
+  "manager_guidance": {
+    "suggested_assignment_audience": "Sales floor employees, new hires, and employees refreshing customer-facing skills.",
+    "suggested_completion_window_days": 30,
+    "manager_can_adjust_deadlines": true,
+    "coaching_prompts": [
+      "How do you tell a customer you need to check an answer?",
+      "Which product details help you verify compatibility?",
+      "When should you refer a question to a qualified professional?"
+    ],
+    "suggested_team_activity_optional_unscored": "Optional, unscored: Role-play a handoff for an unfamiliar replacement part. Practice summarizing the details.",
+    "optional_competition": {
+      "name": "Find the Right Answer Challenge",
+      "reward_idea": "Manager-selected recognition or a small team reward."
+    }
+  },
+  "media": {
+    "actual_files": [],
+    "actual_links": [],
+    "suggested_placeholders": [],
+    "rationale": "Text scenarios teach these decision skills without a decorative stock photo."
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "answers_supported_by_lessons": true,
+    "product_claims_verified_or_flagged": true,
+    "media_status_identified": true,
+    "scope_clear": true,
+    "mobile_readable": true,
+    "contains_employee_personal_info": false,
+    "employee_timing_validated": false
+  },
+  "items_needed_from_user": [
+    "Which official product information sources will your stores make available to employees?",
+    "Do you want optional images added after the text-only review?",
+    "Review and approve the course content."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "course_code": "IM-102",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "d55fd14c-b59a-523b-a706-4b8bc7017798",
+  "source_files": {
+    "IM-102_complete_course_v1.0.0.md": "117531596e1f17d2cdaace259d62c1779dabe08c3fb8d3a90dca04d9ef930b03",
+    "IM-102_structured_content_v1.0.0.json": "89ec0916edb552c03bf1776f6fecf6875340d6b7533a278dfb35c790c7488f43",
+    "README.md": "04b4ba7bd0a8c9679bc45584d96bfb5e598e7f296ed9e351a7228ee06e5abf30"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

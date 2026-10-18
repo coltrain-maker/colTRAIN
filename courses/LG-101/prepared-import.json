@@ -1,0 +1,701 @@
+{
+  "course": {
+    "id": "0a0c493c-7058-50cc-9842-c009d63aeefa",
+    "slug": "lg-101-lawn-garden-fundamentals",
+    "version": 1,
+    "title": "Lawn & Garden Fundamentals",
+    "description": "Help customers identify basic plant, soil, fertilizer, watering, and garden-care needs using questions and verified product labels.",
+    "category": "Lawn, Garden & Outdoor Power",
+    "passing_percent": 80
+  },
+  "lessons": [
+    {
+      "id": "7e878511-dfb6-5615-9bcd-7efab8677493",
+      "position": 1,
+      "title": "Start with the Plant and Its Location",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "The same plant may succeed in one location and struggle in another."
+        },
+        {
+          "type": "heading",
+          "text": "Know the basics"
+        },
+        {
+          "type": "paragraph",
+          "text": "Plants need suitable light, water, air, growing medium, and temperature. Their needs vary by species. A tag or trusted growing guide gives better direction than a guess."
+        },
+        {
+          "type": "heading",
+          "text": "Ask about the site"
+        },
+        {
+          "type": "paragraph",
+          "text": "Find out whether the plant will grow indoors, in a container, or in the ground. Ask how much direct sun reaches the location and whether water drains away."
+        },
+        {
+          "type": "heading",
+          "text": "Use the plant label"
+        },
+        {
+          "type": "paragraph",
+          "text": "Check mature size, light requirements, and planting guidance. Climate suitability and seasonal timing can differ by region."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer wants a flowering plant for a shady porch. Ask how many hours of direct sun the porch gets before recommending a plant labeled for those conditions."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "paragraph",
+          "text": "Say: “Is the space sunny, partly shaded, or mostly shaded? Let’s compare the plant tags.”"
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Calling every bright location “full sun”; promising a plant will thrive without site details."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask a garden specialist when a plant has unclear identification, unusual requirements, or local climate concerns."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Plants need suitable light, water, air, growing medium, and temperature."
+        },
+        {
+          "type": "bullet",
+          "text": "Find out whether the plant will grow indoors, in a container, or in the ground."
+        },
+        {
+          "type": "bullet",
+          "text": "Check mature size, light requirements, and planting guidance."
+        },
+        {
+          "type": "heading",
+          "text": "Optional unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "LG-101-L01-P01. Which detail should you ask before recommending a plant?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Pot color only"
+        },
+        {
+          "type": "bullet",
+          "text": "B. Available sunlight and planting location"
+        },
+        {
+          "type": "bullet",
+          "text": "C. Which display is nearest"
+        },
+        {
+          "type": "bullet",
+          "text": "D. Price tag font"
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B. Light and growing location help narrow suitable plants."
+        }
+      ]
+    },
+    {
+      "id": "5aab94ce-83dc-5f05-bfae-0e92846c42a4",
+      "position": 2,
+      "title": "Know Soil, Potting Mix, Compost, and Mulch",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Customers may use the word “dirt” for products with very different jobs."
+        },
+        {
+          "type": "heading",
+          "text": "Garden soil and amendments"
+        },
+        {
+          "type": "paragraph",
+          "text": "Products sold as garden soil or soil amendments are intended for particular uses. Compost is decomposed organic material often used to improve soil properties. Always check the bag for intended use."
+        },
+        {
+          "type": "heading",
+          "text": "Potting mix"
+        },
+        {
+          "type": "paragraph",
+          "text": "Container mixes are formulated for container growing and may differ from in-ground soil. A bag labeled for raised beds is not automatically the same as a container mix."
+        },
+        {
+          "type": "heading",
+          "text": "Mulch"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mulch covers the soil surface. It may help reduce evaporation and weeds when applied appropriately. Keep mulch away from direct contact with plant stems and trunks according to local guidance."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer is filling patio pots and grabs bags of topsoil. Explain that container potting mix is generally the category to compare and verify the bag instructions."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask: “Is this going in a pot, raised bed, or existing ground?” Then check the product label."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Selling mulch as potting mix; assuming all bagged soil products are interchangeable."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask for help with contaminated soil, drainage failures, or unusual planting media."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Products sold as garden soil or soil amendments are intended for particular uses."
+        },
+        {
+          "type": "bullet",
+          "text": "Container mixes are formulated for container growing and may differ from in-ground soil."
+        },
+        {
+          "type": "bullet",
+          "text": "Mulch covers the soil surface."
+        },
+        {
+          "type": "heading",
+          "text": "Optional unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "LG-101-L02-P01. What should you recommend comparing for a patio container?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. A container potting mix labeled for the use"
+        },
+        {
+          "type": "bullet",
+          "text": "B. Driveway gravel only"
+        },
+        {
+          "type": "bullet",
+          "text": "C. Any bag marked mulch"
+        },
+        {
+          "type": "bullet",
+          "text": "D. A lawn seed bag"
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: A. Container growing calls for a medium intended for containers."
+        }
+      ]
+    },
+    {
+      "id": "00def8de-b74c-5888-bdd1-14795d047d5f",
+      "position": 3,
+      "title": "Understand Fertilizer Labels",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Too much or the wrong fertilizer can harm plants and waste money."
+        },
+        {
+          "type": "heading",
+          "text": "What N-P-K means"
+        },
+        {
+          "type": "paragraph",
+          "text": "A fertilizer label commonly shows three numbers for nitrogen, phosphate, and potash. The numbers describe the product’s nutrient analysis, not how many bags to buy."
+        },
+        {
+          "type": "heading",
+          "text": "Match the use"
+        },
+        {
+          "type": "paragraph",
+          "text": "Products may be labeled for lawns, vegetables, flowering plants, or other uses. Some products also contain pesticides or herbicides and have additional legal label requirements."
+        },
+        {
+          "type": "heading",
+          "text": "Follow directions"
+        },
+        {
+          "type": "paragraph",
+          "text": "Read the application rate, timing, coverage, and precautions on the actual label. Do not invent a rate or recommend using more than directed."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer asks whether a lawn fertilizer can be used on tomatoes. Check the actual product label for permitted uses rather than relying on the fertilizer numbers alone."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "paragraph",
+          "text": "Say: “Let’s check whether this product is labeled for the plants you are growing.”"
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Treating a high nutrient number as automatically better; guessing application amounts."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Escalate suspected fertilizer burn, soil testing questions, and pesticide-containing products to qualified resources and label guidance."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "A fertilizer label commonly shows three numbers for nitrogen, phosphate, and potash."
+        },
+        {
+          "type": "bullet",
+          "text": "Products may be labeled for lawns, vegetables, flowering plants, or other uses."
+        },
+        {
+          "type": "bullet",
+          "text": "Read the application rate, timing, coverage, and precautions on the actual label."
+        },
+        {
+          "type": "heading",
+          "text": "Optional unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "LG-101-L03-P01. What do the three main numbers on many fertilizer labels represent?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Plant height"
+        },
+        {
+          "type": "bullet",
+          "text": "B. Nutrient analysis"
+        },
+        {
+          "type": "bullet",
+          "text": "C. Number of watering days"
+        },
+        {
+          "type": "bullet",
+          "text": "D. Shelf life in months"
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B. N-P-K communicates nutrient analysis; directions determine use."
+        }
+      ]
+    },
+    {
+      "id": "e49cb994-72c9-501c-9421-aea2cc00766d",
+      "position": 4,
+      "title": "Ask Better Watering and Lawn Questions",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Yellow leaves and brown grass can have more than one cause."
+        },
+        {
+          "type": "heading",
+          "text": "Gather observations"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask what is changing, when it started, how often watering occurs, and whether the soil stays wet or dries out. Weather, drainage, light, and pests may all matter."
+        },
+        {
+          "type": "heading",
+          "text": "Compare watering tools"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hoses, sprinklers, watering cans, timers, and drip products serve different situations. Ask about the area, water source, and desired coverage."
+        },
+        {
+          "type": "heading",
+          "text": "Avoid a quick diagnosis"
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not assume every yellow leaf needs fertilizer or every brown patch needs more water. Help customers gather facts before selecting a treatment."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer shows a photo of brown grass. Ask about recent weather, irrigation pattern, pets, and whether the patch is spreading before suggesting a product."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "paragraph",
+          "text": "Say: “What have you noticed about moisture and when did this begin?”"
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Prescribing fertilizer for every yellow plant; claiming a photograph proves the cause."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Escalate persistent plant decline, irrigation system changes, or suspected disease to a garden specialist or local extension resource."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Ask what is changing, when it started, how often watering occurs, and whether the soil stays wet or dries out."
+        },
+        {
+          "type": "bullet",
+          "text": "Hoses, sprinklers, watering cans, timers, and drip products serve different situations."
+        },
+        {
+          "type": "bullet",
+          "text": "Do not assume every yellow leaf needs fertilizer or every brown patch needs more water."
+        },
+        {
+          "type": "heading",
+          "text": "Optional unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "LG-101-L04-P01. A customer has brown lawn patches. What should you do first?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Promise fertilizer will fix it"
+        },
+        {
+          "type": "bullet",
+          "text": "B. Ask about watering, weather, and symptoms"
+        },
+        {
+          "type": "bullet",
+          "text": "C. Recommend the strongest treatment"
+        },
+        {
+          "type": "bullet",
+          "text": "D. Tell them to ignore it"
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B. Several causes can look alike; gather facts first."
+        }
+      ]
+    },
+    {
+      "id": "19872d56-7e64-5b4f-bc19-5749fbd579e1",
+      "position": 5,
+      "title": "Know When to Seek Garden Expertise",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "A mistaken treatment can damage plants, people, pets, or the environment."
+        },
+        {
+          "type": "heading",
+          "text": "Identify before treating"
+        },
+        {
+          "type": "paragraph",
+          "text": "An insect on a plant is not automatically a pest. A symptom may reflect disease, water, nutrients, weather, or another cause."
+        },
+        {
+          "type": "heading",
+          "text": "Read pesticide labels"
+        },
+        {
+          "type": "paragraph",
+          "text": "If a product is a pesticide, its label specifies permitted sites, pests, application directions, and precautions. Do not recommend off-label uses or mixing products without label support."
+        },
+        {
+          "type": "heading",
+          "text": "Use reliable help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask for clear photos, plant names, and site information. Refer uncertain identification to a garden specialist, local extension service, or manufacturer support."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer wants insect spray for an unidentified bug on a vegetable plant. Pause and check pest identity and whether any proposed product is labeled for that crop and pest."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "paragraph",
+          "text": "Say: “We need to identify the issue and read the label before selecting a treatment.”"
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suggesting an unlabeled pesticide use; assuming all insects should be eliminated."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Escalate pesticide questions, suspected exposure, invasive species, and unclear plant problems to qualified resources."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "An insect on a plant is not automatically a pest."
+        },
+        {
+          "type": "bullet",
+          "text": "If a product is a pesticide, its label specifies permitted sites, pests, application directions, and precautions."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask for clear photos, plant names, and site information."
+        },
+        {
+          "type": "heading",
+          "text": "Optional unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "LG-101-L05-P01. A customer wants a pesticide for an unidentified problem. What is best?"
+        },
+        {
+          "type": "bullet",
+          "text": "A. Choose the strongest bottle"
+        },
+        {
+          "type": "bullet",
+          "text": "B. Identify the issue and verify label-approved use"
+        },
+        {
+          "type": "bullet",
+          "text": "C. Mix two products"
+        },
+        {
+          "type": "bullet",
+          "text": "D. Apply twice the listed rate"
+        },
+        {
+          "type": "paragraph",
+          "text": "Answer: B. Accurate identification and label instructions come before treatment."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "8fba299d-fa6d-53f8-aad8-b2416ccad728",
+      "position": 1,
+      "prompt": "Which detail should you ask before recommending a plant?",
+      "options": [
+        "Pot color only",
+        "Available sunlight and planting location",
+        "Which display is nearest",
+        "Price tag font"
+      ],
+      "correct_option": 1,
+      "explanation": "Light and growing location help narrow suitable plants."
+    },
+    {
+      "id": "fdcd9cc7-f665-5e1b-b3f6-576ecbeab5a5",
+      "position": 2,
+      "prompt": "What should you recommend comparing for a patio container?",
+      "options": [
+        "A container potting mix labeled for the use",
+        "Driveway gravel only",
+        "Any bag marked mulch",
+        "A lawn seed bag"
+      ],
+      "correct_option": 0,
+      "explanation": "Container growing calls for a medium intended for containers."
+    },
+    {
+      "id": "a1e62192-287c-57ce-aae3-061246bf8d8d",
+      "position": 3,
+      "prompt": "What do the three main numbers on many fertilizer labels represent?",
+      "options": [
+        "Plant height",
+        "Nutrient analysis",
+        "Number of watering days",
+        "Shelf life in months"
+      ],
+      "correct_option": 1,
+      "explanation": "N-P-K communicates nutrient analysis; directions determine use."
+    },
+    {
+      "id": "f154d107-3332-5d57-882a-9f33d2d95186",
+      "position": 4,
+      "prompt": "A customer has brown lawn patches. What should you do first?",
+      "options": [
+        "Promise fertilizer will fix it",
+        "Ask about watering, weather, and symptoms",
+        "Recommend the strongest treatment",
+        "Tell them to ignore it"
+      ],
+      "correct_option": 1,
+      "explanation": "Several causes can look alike; gather facts first."
+    },
+    {
+      "id": "cfdb55fb-6b89-56d4-9c94-62aa07d962fd",
+      "position": 5,
+      "prompt": "A customer wants a pesticide for an unidentified problem. What is best?",
+      "options": [
+        "Choose the strongest bottle",
+        "Identify the issue and verify label-approved use",
+        "Mix two products",
+        "Apply twice the listed rate"
+      ],
+      "correct_option": 1,
+      "explanation": "Accurate identification and label instructions come before treatment."
+    }
+  ],
+  "catalog": {
+    "course_code": "LG-101",
+    "skill_level": "foundations",
+    "topics": [
+      "Lawn & Garden"
+    ],
+    "keywords": [
+      "Start with the Plant and Its Location",
+      "Know Soil, Potting Mix, Compost, and Mulch",
+      "Understand Fertilizer Labels",
+      "Ask Better Watering and Lawn Questions",
+      "Know When to Seek Garden Expertise",
+      "Why this matters",
+      "Know the basics",
+      "Ask about the site",
+      "Use the plant label",
+      "Hardware-store example",
+      "What to say or do",
+      "Common mistakes",
+      "When to ask for help",
+      "Key takeaways",
+      "Optional unscored practice",
+      "Garden soil and amendments",
+      "Potting mix",
+      "Mulch",
+      "What N-P-K means",
+      "Match the use",
+      "Follow directions",
+      "Gather observations",
+      "Compare watering tools",
+      "Avoid a quick diagnosis",
+      "Identify before treating",
+      "Read pesticide labels",
+      "Use reliable help",
+      "L01-P01",
+      "L02-P01",
+      "L03-P01",
+      "L04-P01",
+      "L05-P01",
+      "LG-101-",
+      "N-P-K"
+    ],
+    "learning_paths": [
+      "Department Specialist"
+    ]
+  }
+}

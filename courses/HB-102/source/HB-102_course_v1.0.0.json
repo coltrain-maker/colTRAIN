@@ -1,0 +1,588 @@
+{
+  "course_code": "HB-102",
+  "title": "Plumbing Fundamentals",
+  "description": "Build basic retail product knowledge and safe customer guidance for plumbing.",
+  "academy": "Home Systems & Building Materials",
+  "skill_level": "Foundations",
+  "original_catalog_designation": "Foundational",
+  "scope": "General; no store-specific policy",
+  "intended_audience": [
+    "All store employees",
+    "New employees and employees unfamiliar with this department"
+  ],
+  "relevant_departments": [
+    "Plumbing",
+    "Customer service"
+  ],
+  "restrictions": [
+    "Product identification and customer consultation only; no installation certification or licensed trade instruction.",
+    "Never diagnose hazards or promise compliance with codes or product compatibility."
+  ],
+  "estimated_completion_minutes": {
+    "lessons": 25,
+    "quiz": 5,
+    "total": 30,
+    "validated": false
+  },
+  "prerequisites": {
+    "required": [],
+    "recommended": [
+      "RF-102",
+      "RF-103",
+      "CS-103"
+    ]
+  },
+  "learning_objectives": [
+    "Identify common pipes, fittings, and valves.",
+    "Distinguish materials and joining methods.",
+    "Ask for the measurements that matter.",
+    "Collect useful details before selecting a part.",
+    "Identify when a question is beyond retail advice."
+  ],
+  "version": "1.0.0",
+  "review_date": "2026-10-18",
+  "status": "Ready for review",
+  "source_materials": [
+    {
+      "title": "colTRAIN original course draft",
+      "organization": "colTRAIN",
+      "url": null,
+      "supported_claims": "Original retail explanations, examples, and scenarios; not external verification.",
+      "verification_needed": "Review technical statements with qualified subject-matter expert and manufacturer guidance before publication."
+    },
+    {
+      "title": "Manufacturer product labels, manuals, and compatibility guides",
+      "organization": "Applicable product manufacturer",
+      "url": null,
+      "supported_claims": "Product ratings, permitted use, compatibility, installation restrictions.",
+      "verification_needed": "Select specific current documents for products sold by each store; URLs and permissions not supplied."
+    },
+    {
+      "title": "Applicable local building, electrical, plumbing, and mechanical codes",
+      "organization": "Authority having jurisdiction",
+      "url": null,
+      "supported_claims": "Installation and licensing requirements",
+      "verification_needed": "Jurisdiction-specific rules are outside this general course and must be confirmed."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "lesson_id": "HB-102-L01",
+      "title": "Recognize Common Plumbing Parts",
+      "estimated_minutes": 5,
+      "main_objective": "Identify common pipes, fittings, and valves"
+    },
+    {
+      "lesson_id": "HB-102-L02",
+      "title": "Understand Pipe Materials and Connections",
+      "estimated_minutes": 5,
+      "main_objective": "Distinguish materials and joining methods"
+    },
+    {
+      "lesson_id": "HB-102-L03",
+      "title": "Measure Plumbing Parts Correctly",
+      "estimated_minutes": 5,
+      "main_objective": "Ask for the measurements that matter"
+    },
+    {
+      "lesson_id": "HB-102-L04",
+      "title": "Help With Common Fixture Questions",
+      "estimated_minutes": 5,
+      "main_objective": "Collect useful details before selecting a part"
+    },
+    {
+      "lesson_id": "HB-102-L05",
+      "title": "Recognize Plumbing Safety and Escalation",
+      "estimated_minutes": 5,
+      "main_objective": "Identify when a question is beyond retail advice"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "HB-102-L01",
+      "title": "Recognize Common Plumbing Parts",
+      "estimated_minutes": 5,
+      "objective": "Identify common pipes, fittings, and valves",
+      "why_this_matters": "Correct product identification begins with understanding what each part does.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Pipes carry water or drain waste. Fittings join or change the direction of pipe runs. Valves control flow. Supply lines connect fixtures to water supplies."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Common fitting shapes include elbows, tees, couplings, and adapters. An elbow changes direction. A tee creates a branch. A coupling joins similar ends. An adapter changes connection types."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Names help locate a part, but do not prove that it fits. Size, material, pressure rating, connection type, and use must also match."
+        }
+      ],
+      "hardware_store_example": "A customer holds a curved fitting and asks for another. Identify it as an elbow, then ask what material and connection style the existing system uses.",
+      "what_to_say_or_do": "Say: “Is this for a water supply, drain, or another use? Do you have the old part or its markings?”",
+      "common_mistakes": [
+        "Choosing a fitting by shape alone."
+      ],
+      "when_to_ask_for_help": "Escalate unclear applications, unusual materials, or safety-critical systems to an experienced specialist.",
+      "supporting_materials": [
+        {
+          "id": "HB-102-IMG01",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 1, after content",
+          "purpose": "Labeled photograph of elbow, tee, coupling, adapter, and valve",
+          "alt_text_draft": "Labeled photograph of elbow, tee, coupling, adapter, and valve",
+          "caption_draft": "Labeled photograph of elbow, tee, coupling, adapter, and valve",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Pipes carry water or drain waste.",
+        "Common fitting shapes include elbows, tees, couplings, and adapters.",
+        "Names help locate a part, but do not prove that it fits."
+      ],
+      "optional_practice": {
+        "id": "HB-102-P01",
+        "scored": false,
+        "question": "What does a plumbing elbow primarily do?",
+        "choices": {
+          "A": "Measure pressure",
+          "B": "Change pipe direction",
+          "C": "Stop all leaks",
+          "D": "Heat water"
+        },
+        "correct_answer": "B",
+        "explanation": "An elbow changes the direction of a pipe run."
+      }
+    },
+    {
+      "id": "HB-102-L02",
+      "title": "Understand Pipe Materials and Connections",
+      "estimated_minutes": 5,
+      "objective": "Distinguish materials and joining methods",
+      "why_this_matters": "A fitting must suit the pipe material and connection method.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Common plumbing materials include copper, PEX, PVC, and CPVC. Their permitted uses and joining methods differ. Do not assume all plastic pipes are interchangeable."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Connections may be threaded, solvent-welded, crimped, clamped, compression, or push-to-connect. Each system has manufacturer instructions, compatible components, and limits."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Identify the material and read the product labeling before making a recommendation. Local code requirements and installation conditions may also apply."
+        }
+      ],
+      "hardware_store_example": "A customer asks for glue to connect two pieces of plastic pipe. Ask whether the pipe is PVC or CPVC and check the product instructions rather than choosing by bottle color.",
+      "what_to_say_or_do": "Ask: “What material is printed on the pipe, and is this for supply water or drainage?”",
+      "common_mistakes": [
+        "Assuming one cement or fitting works for every plastic pipe."
+      ],
+      "when_to_ask_for_help": "Ask a qualified plumber or manufacturer support about unmarked pipe, transitions, or code-restricted uses.",
+      "supporting_materials": [
+        {
+          "id": "HB-102-IMG02",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 2, after content",
+          "purpose": "Photo of labeled copper, PEX, PVC, and CPVC samples",
+          "alt_text_draft": "Photo of labeled copper, PEX, PVC, and CPVC samples",
+          "caption_draft": "Photo of labeled copper, PEX, PVC, and CPVC samples",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Common plumbing materials include copper, PEX, PVC, and CPVC.",
+        "Connections may be threaded, solvent-welded, crimped, clamped, compression, or push-to-connect.",
+        "Identify the material and read the product labeling before making a recommendation."
+      ],
+      "optional_practice": {
+        "id": "HB-102-P02",
+        "scored": false,
+        "question": "Why should you check the pipe material before selecting a connector?",
+        "choices": {
+          "A": "All pipe materials use the same connection",
+          "B": "Materials and joining methods have different requirements",
+          "C": "Only the pipe color matters",
+          "D": "Any connector works if tightened"
+        },
+        "correct_answer": "B",
+        "explanation": "Different pipe systems require compatible fittings and installation methods."
+      }
+    },
+    {
+      "id": "HB-102-L03",
+      "title": "Measure Plumbing Parts Correctly",
+      "estimated_minutes": 5,
+      "objective": "Ask for the measurements that matter",
+      "why_this_matters": "Nominal pipe sizes and actual dimensions can differ.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Plumbing parts may use nominal sizes. The number on the label may not equal a ruler measurement across the outside of the pipe. Different systems use different sizing conventions."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Check the printed size and material markings when possible. Ask for the old fitting or a clear photo showing markings. A measured outside diameter can help identify a system but should not be the only evidence."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Connections also vary by male or female threads and thread style. A size match without the correct connection style can still fail."
+        }
+      ],
+      "hardware_store_example": "A customer measures a pipe with a tape and requests a fitting. Ask for pipe markings and the connection type before choosing.",
+      "what_to_say_or_do": "Say: “Pipe sizes can be named differently from their measured diameter. Let’s confirm the system.”",
+      "common_mistakes": [
+        "Treating a ruler measurement as the product’s nominal size."
+      ],
+      "when_to_ask_for_help": "Escalate uncertain thread types, mixed materials, and specialty connections.",
+      "supporting_materials": [
+        {
+          "id": "HB-102-IMG03",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 3, after content",
+          "purpose": "Diagram of pipe outside diameter versus labeled nominal size",
+          "alt_text_draft": "Diagram of pipe outside diameter versus labeled nominal size",
+          "caption_draft": "Diagram of pipe outside diameter versus labeled nominal size",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Plumbing parts may use nominal sizes.",
+        "Check the printed size and material markings when possible.",
+        "Connections also vary by male or female threads and thread style."
+      ],
+      "optional_practice": {
+        "id": "HB-102-P03",
+        "scored": false,
+        "question": "What is the safest way to use a customer’s measured pipe diameter?",
+        "choices": {
+          "A": "Treat it as the only sizing detail",
+          "B": "Use it as one clue and confirm markings and system",
+          "C": "Ignore all markings",
+          "D": "Choose the closest-looking fitting"
+        },
+        "correct_answer": "B",
+        "explanation": "Measured diameter helps identification but does not replace system and size verification."
+      }
+    },
+    {
+      "id": "HB-102-L04",
+      "title": "Help With Common Fixture Questions",
+      "estimated_minutes": 5,
+      "objective": "Collect useful details before selecting a part",
+      "why_this_matters": "A leak symptom may have several possible causes.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Customers may ask about faucets, toilets, showerheads, drains, and supply connections. Ask which fixture is involved, where the issue appears, and whether the customer has the model number."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "A running toilet might involve more than one component. A dripping faucet may use a specific cartridge. Replacement parts can be model-specific."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Do not promise a repair based on symptoms alone. Help identify a likely product category and verify the manufacturer’s compatibility guidance."
+        }
+      ],
+      "hardware_store_example": "A customer needs a faucet cartridge. Ask for the faucet brand and model or a photo of the existing cartridge.",
+      "what_to_say_or_do": "Say: “Many cartridges look alike. Let’s identify the fixture before selecting one.”",
+      "common_mistakes": [
+        "Promising a universal cartridge will fit."
+      ],
+      "when_to_ask_for_help": "Refer uncertain repairs, hidden leaks, or water damage to a qualified plumber.",
+      "supporting_materials": [
+        {
+          "id": "HB-102-IMG04",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 4, after content",
+          "purpose": "Photo of faucet cartridge, supply line, fill valve, and drain trap",
+          "alt_text_draft": "Photo of faucet cartridge, supply line, fill valve, and drain trap",
+          "caption_draft": "Photo of faucet cartridge, supply line, fill valve, and drain trap",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Customers may ask about faucets, toilets, showerheads, drains, and supply connections.",
+        "A running toilet might involve more than one component.",
+        "Do not promise a repair based on symptoms alone."
+      ],
+      "optional_practice": {
+        "id": "HB-102-P04",
+        "scored": false,
+        "question": "What detail most helps select a faucet cartridge?",
+        "choices": {
+          "A": "The sink color",
+          "B": "Faucet brand and model",
+          "C": "The customer’s age",
+          "D": "The aisle number"
+        },
+        "correct_answer": "B",
+        "explanation": "Cartridges are often specific to the fixture model."
+      }
+    },
+    {
+      "id": "HB-102-L05",
+      "title": "Recognize Plumbing Safety and Escalation",
+      "estimated_minutes": 5,
+      "objective": "Identify when a question is beyond retail advice",
+      "why_this_matters": "Some plumbing problems risk flooding, contamination, or injury.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Active leaks, sewage backups, possible cross-connections, and water-heater issues may require prompt professional attention. Gas lines and gas-fired appliances are not general retail repair topics."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Employees should not advise customers to defeat safety devices or use products outside their listed applications. Potable-water products need appropriate approval for drinking-water contact."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Help customers find information and qualified support. For urgent flooding or immediate hazards, follow emergency and store procedures."
+        }
+      ],
+      "hardware_store_example": "A customer reports water flowing from a ceiling near a light fixture. Recognize both water and electrical hazards; do not give do-it-yourself instructions.",
+      "what_to_say_or_do": "Say: “That situation may be unsafe. Please seek qualified help promptly rather than trying a part at random.”",
+      "common_mistakes": [
+        "Focusing on selling a fitting while ignoring a serious hazard."
+      ],
+      "when_to_ask_for_help": "Escalate gas, sewage, water-heater safety, backflow, and combined electrical/water hazards.",
+      "supporting_materials": [
+        {
+          "id": "HB-102-IMG05",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 5, after content",
+          "purpose": "Simple chart: routine product question versus urgent plumbing hazard",
+          "alt_text_draft": "Simple chart: routine product question versus urgent plumbing hazard",
+          "caption_draft": "Simple chart: routine product question versus urgent plumbing hazard",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Active leaks, sewage backups, possible cross-connections, and water-heater issues may require prompt professional attention.",
+        "Employees should not advise customers to defeat safety devices or use products outside their listed applications.",
+        "Help customers find information and qualified support."
+      ],
+      "optional_practice": {
+        "id": "HB-102-P05",
+        "scored": false,
+        "question": "Which issue should be referred for urgent qualified assistance?",
+        "choices": {
+          "A": "Choosing a faucet finish",
+          "B": "Comparing showerhead styles",
+          "C": "Water leaking near an electrical fixture",
+          "D": "Locating a hose washer"
+        },
+        "correct_answer": "C",
+        "explanation": "Water near electrical equipment creates a potentially serious hazard."
+      }
+    }
+  ],
+  "final_quiz": {
+    "scored": true,
+    "question_count": 5,
+    "questions": [
+      {
+        "id": "HB-102-Q01",
+        "objective_assessed": "Identify common pipes, fittings, and valves",
+        "related_lesson_id": "HB-102-L01",
+        "question": "Which response best follows this lesson when a customer needs help? Situation: A customer holds a curved fitting and asks for another. Identify it as an elbow, then ask what material and connection style the existing system uses.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Promise compatibility without reading product instructions.",
+          "C": "Say: “Is this for a water supply, drain, or another use? Do you have the old part or its markings?”",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Say: “Is this for a water supply, drain, or another use? Do you have the old part or its markings?” An elbow changes the direction of a pipe run. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-102-L01",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-102-Q02",
+        "objective_assessed": "Distinguish materials and joining methods",
+        "related_lesson_id": "HB-102-L02",
+        "question": "What is the safest way to confirm the right product? Situation: A customer asks for glue to connect two pieces of plastic pipe. Ask whether the pipe is PVC or CPVC and check the product instructions rather than choosing by bottle color.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Promise compatibility without reading product instructions.",
+          "C": "Ignore the customer’s application and select a popular item.",
+          "D": "Ask: “What material is printed on the pipe, and is this for supply water or drainage?”"
+        },
+        "correct_answer": "D",
+        "points": 10,
+        "explanation": "Ask: “What material is printed on the pipe, and is this for supply water or drainage?” Different pipe systems require compatible fittings and installation methods. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-102-L02",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-102-Q03",
+        "objective_assessed": "Ask for the measurements that matter",
+        "related_lesson_id": "HB-102-L03",
+        "question": "Which approach best avoids a mistaken recommendation? Situation: A customer measures a pipe with a tape and requests a fitting. Ask for pipe markings and the connection type before choosing.",
+        "choices": {
+          "A": "Say: “Pipe sizes can be named differently from their measured diameter. Let’s confirm the system.”",
+          "B": "Choose by appearance without checking details.",
+          "C": "Promise compatibility without reading product instructions.",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "A",
+        "points": 10,
+        "explanation": "Say: “Pipe sizes can be named differently from their measured diameter. Let’s confirm the system.” Measured diameter helps identification but does not replace system and size verification. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-102-L03",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-102-Q04",
+        "objective_assessed": "Collect useful details before selecting a part",
+        "related_lesson_id": "HB-102-L04",
+        "question": "What should an employee do when product requirements are uncertain? Situation: A customer needs a faucet cartridge. Ask for the faucet brand and model or a photo of the existing cartridge.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Say: “Many cartridges look alike. Let’s identify the fixture before selecting one.”",
+          "C": "Promise compatibility without reading product instructions.",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Say: “Many cartridges look alike. Let’s identify the fixture before selecting one.” Cartridges are often specific to the fixture model. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-102-L04",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-102-Q05",
+        "objective_assessed": "Identify when a question is beyond retail advice",
+        "related_lesson_id": "HB-102-L05",
+        "question": "Which response best demonstrates responsible customer service? Situation: A customer reports water flowing from a ceiling near a light fixture. Recognize both water and electrical hazards; do not give do-it-yourself instructions.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Promise compatibility without reading product instructions.",
+          "C": "Say: “That situation may be unsafe. Please seek qualified help promptly rather than trying a part at random.”",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Say: “That situation may be unsafe. Please seek qualified help promptly rather than trying a part at random.” Water near electrical equipment creates a potentially serious hazard. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-102-L05",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      }
+    ],
+    "employee_facing_hide_answer_key": true
+  },
+  "completion_rules": {
+    "pass_percentage": 80,
+    "points_per_correct_question": 10,
+    "lifetime_points_once_per_question_across_attempts": true,
+    "max_attempts_before_manager_assistance": 3,
+    "missed_question_explanations_after_failed_quiz": true,
+    "required_lessons_before_first_attempt": true,
+    "standard_trophy_once_on_pass": true,
+    "competition_replay_allowed_after_pass": true,
+    "competition_points_separate": true,
+    "store_availability_administrator_controlled": true,
+    "publication_does_not_auto_assign": true
+  },
+  "completion_message": "You completed Plumbing Fundamentals. Use product labels and verified guidance when helping customers.",
+  "practical_next_step": "Use the lesson questions during your next relevant customer interaction. Ask for help when requirements are unclear.",
+  "manager_guidance": {
+    "suggested_audience": "New hires and associates working in or supporting Plumbing",
+    "suggested_completion_window_days": 30,
+    "manager_adjustable": true,
+    "coaching_prompts": [
+      "Which product label would you check first?",
+      "What customer detail changes your recommendation?",
+      "When should you refer to a qualified professional?"
+    ],
+    "optional_unscored_team_activity": "Compare two actual product packages and identify what must be verified before recommending either.",
+    "optional_competition": {
+      "name": "Plumbing Label Detective",
+      "reward": "Manager chooses a suitable reward; no automatic reward."
+    }
+  },
+  "media": [
+    {
+      "id": "HB-102-IMG01",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 1, after content",
+      "purpose": "Labeled photograph of elbow, tee, coupling, adapter, and valve",
+      "alt_text_draft": "Labeled photograph of elbow, tee, coupling, adapter, and valve",
+      "caption_draft": "Labeled photograph of elbow, tee, coupling, adapter, and valve",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-102-IMG02",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 2, after content",
+      "purpose": "Photo of labeled copper, PEX, PVC, and CPVC samples",
+      "alt_text_draft": "Photo of labeled copper, PEX, PVC, and CPVC samples",
+      "caption_draft": "Photo of labeled copper, PEX, PVC, and CPVC samples",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-102-IMG03",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 3, after content",
+      "purpose": "Diagram of pipe outside diameter versus labeled nominal size",
+      "alt_text_draft": "Diagram of pipe outside diameter versus labeled nominal size",
+      "caption_draft": "Diagram of pipe outside diameter versus labeled nominal size",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-102-IMG04",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 4, after content",
+      "purpose": "Photo of faucet cartridge, supply line, fill valve, and drain trap",
+      "alt_text_draft": "Photo of faucet cartridge, supply line, fill valve, and drain trap",
+      "caption_draft": "Photo of faucet cartridge, supply line, fill valve, and drain trap",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-102-IMG05",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 5, after content",
+      "purpose": "Simple chart: routine product question versus urgent plumbing hazard",
+      "alt_text_draft": "Simple chart: routine product question versus urgent plumbing hazard",
+      "caption_draft": "Simple chart: routine product question versus urgent plumbing hazard",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    }
+  ],
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lessons": true,
+    "sources_verified": false,
+    "missing_media_listed": true,
+    "store_specific_material_identified": true,
+    "mobile_readable": true,
+    "employee_personal_information_included": false,
+    "timing_validated": false
+  },
+  "items_needed_from_user": [
+    "Confirm actual brands and product categories stocked.",
+    "Confirm store escalation contacts and policies.",
+    "Supply approved manufacturer documentation for technical verification.",
+    "Choose and license appropriate instructional photos or approve original diagrams.",
+    "Confirm jurisdiction-specific restrictions where applicable."
+  ]
+}

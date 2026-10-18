@@ -1,0 +1,364 @@
+[
+  {
+    "course_code": "CS-101",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "00d22f7c-a06f-52b5-84d2-45569901ca4b",
+    "source_files": {
+      "CS-101_complete_course_v1.0.0.md": "81903536a8d7c6e82192233e75e128ca9f5d1f52944b1cb91753d5d9bb7d5599"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Markdown-only handoff; matching structured import generated here.",
+      "Final answer positions are repetitive (BCBCB); review distractors before publishing.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "CS-102",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "22b7ea6f-154f-564a-ae6a-24dcc1c295b5",
+    "source_files": {
+      "CS-102_complete_course_v1.0.0.md": "08058d60e5f3b6af53425433f8d19675af507064ea827e3e968aeeebe0a672c8",
+      "CS-102_course_v1.0.0.json": "a1a1256611e7bd751126de5a1e5287c3dfd52ea2c988b2530f248ecb94b28cc0",
+      "README.md": "bfb4d705bfb770f5a831e5fb744980350326e1d49de77269f5cb09b555da5b88"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "CS-103",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "f03c1354-7aec-596c-b72e-7df51d92be50",
+    "source_files": {
+      "CS-103_complete_course_v1.0.0.md": "61bce7c9326c50fdaf760e92f568d7e47bdcc566487acb38b0c1dfb5692a2223",
+      "CS-103_course_v1.0.0.json": "2be107fd1cd22fd6f04b32ab8537c2bdcdd2f4e4fcd038f10f3a466fafeac579",
+      "README.md": "65e07e194739f5832e886a44f86ce772e21e30e98d48c4b02554b5b2b031b34d"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "IM-101",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "9cbd5d08-66bc-5844-aadb-fd69f546dc69",
+    "source_files": {
+      "IM-101_complete_course_v1.0.0.md": "67d0c763c0b2abb1a7073e752c5b08a2117956b0ac526f87c2028ac4be4145c7",
+      "IM-101_structured_content_v1.0.0.json": "2308fdf1164998905f5404758128a997bfefa0746f656e2b8a4af862af27dc07",
+      "README.md": "f0f7c81de756156e7ca84f17110eeabd32750dd1af31b1f330fb83a2309e3f7e"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (BCBCB); review distractors before publishing.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "IM-102",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "d55fd14c-b59a-523b-a706-4b8bc7017798",
+    "source_files": {
+      "IM-102_complete_course_v1.0.0.md": "117531596e1f17d2cdaace259d62c1779dabe08c3fb8d3a90dca04d9ef930b03",
+      "IM-102_structured_content_v1.0.0.json": "89ec0916edb552c03bf1776f6fecf6875340d6b7533a278dfb35c790c7488f43",
+      "README.md": "04b4ba7bd0a8c9679bc45584d96bfb5e598e7f296ed9e351a7228ee06e5abf30"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "IM-103",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "7e20f6a5-e8da-5907-ae10-a34aa7b5836e",
+    "source_files": {
+      "IM-103_complete_course_v1.0.0.md": "1ba09acd73b03f71775227962d59c05a24c71ce3f0bebd120db50d46e259ff4d",
+      "IM-103_structured_content_v1.0.0.json": "c6c0aba76ab2ab316031f94f3ab23ce10a578a6c91381e6e8dac681131fa9492",
+      "README.md": "b816bb01be0922d166753e4a96bb24c01a563a52ca42b086f845fa316ff3b465"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "HT-101",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "224c41ca-92a8-5ed9-bc21-6a8f9cbe669e",
+    "source_files": {
+      "HT-101_complete_course_v1.0.0.md": "9df0d7af718b660470000ab67a4bc808243dd2536b50db104574a48fff1d44ea",
+      "HT-101_course_v1.0.0.json": "19e3520a125efb278b28cdae2d526f90fe3b71b7f0557a2e975e6bfc7d572527",
+      "README.md": "6cc2b55da57bd275a40790885f03dd7f382f0fef196d3ce874ad8fc1833bca0b"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (BCBBB); review distractors before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "HT-102",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "09556b74-daa0-5e96-b719-47c557998823",
+    "source_files": {
+      "HT-102_complete_course_v1.0.0.md": "497d9e88ac15c384fd4e2ba930170788368598884a812705148a5eeb636ce7a2",
+      "HT-102_course_v1.0.0.json": "a8613a296f7a561a5dc822df3cc5237a80fdc439a6a9bd94c6f1a63099096153",
+      "README.md": "cfaf38ff1939be63b1a930052d669cc10abb96239ee44f4d20cf9eb25ee3bce5"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "HT-103",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "bbf2069f-95c3-5b39-8ce2-919dcb455eb8",
+    "source_files": {
+      "HT-103_complete_course_v1.0.0.md": "fb3618b96325b8f39a66e2e762fb6be9dae5cb6010dc320c118191e1bfa83827",
+      "HT-103_course_v1.0.0.json": "6cb1c78cd33d907d68630c7cab18ce0a005b3d90082066f5f059c7020a96c652",
+      "README.md": "ea01c24505668ac423737c07074a60910d52c27aeeb484211f97417cade7ad1f"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "HB-101",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "e4853d09-ac6f-59ca-8a10-252bd4c93fe6",
+    "source_files": {
+      "HB-101_complete_course_v1.0.0.md": "9883f8ee8c037f86e2a9bcd16e3c60184c8fcf77d3d0207cf6307129b7b3af26",
+      "HB-101_course_v1.0.0.json": "abedb8b2d5c81e69c82df2c8f5171209223688c9a4f6cba4540c7a0954053af8",
+      "README.md": "68f972b3ac127b6278799a3663b7f391867fa5a3b84f49611f984918d7a37998"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final prompts include the recommended action in the scenario; revise for stronger assessment before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "HB-102",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "77594380-bd10-5b14-9fd0-6e94452702ff",
+    "source_files": {
+      "HB-102_complete_course_v1.0.0.md": "a636d611969f04f322deca039362fe4fc803ee5ed493a0d51cca6f569e0ef5f3",
+      "HB-102_course_v1.0.0.json": "cbd219242d544fa55e7881d69f515a9d1013ae500063504d9b2ff15704c4c890",
+      "README.md": "c7d0bdbbfec34b90b49883f2b7e8018d5e9aef7fe5b6cf9dce5675759402e44d"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final prompts include the recommended action in the scenario; revise for stronger assessment before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "HB-103",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "80c00da5-4a42-5791-acbf-f7ec6655cef7",
+    "source_files": {
+      "HB-103_complete_course_v1.0.0.md": "2ad62dbfae77946e7538f99f9b9da1acd08837e47b0d8a35c47656b90e87f735",
+      "HB-103_course_v1.0.0.json": "71a969ef250910fc5c524c124448ff8b66d3830c99814c6314de3ee57629bb64",
+      "README.md": "4e38193763016c481aac79dc626bdf0a3331273c83c7892a9a2df722ca20e20c"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final prompts include the recommended action in the scenario; revise for stronger assessment before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "HB-104",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "60bdd288-ff46-59d1-9465-d3510c8e97ed",
+    "source_files": {
+      "HB-104_complete_course_v1.0.0.md": "ca9302019975dccf97d3df9d99a511c6f1589833b98e2a1614160c8a8a47007f",
+      "HB-104_course_v1.0.0.json": "a9962fba5e25772e02710bce6715fa5219878a51306bd1c3fddee5192d546ff5",
+      "README.md": "320496bd5736595379e65a24515db8bacbe62147cc34b45f8eee367878bd94ba"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final prompts include the recommended action in the scenario; revise for stronger assessment before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "PD-101",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "dd9e2966-3774-567f-8e22-ba592b95ba4f",
+    "source_files": {
+      "PD-101_complete_course_v1.0.0.md": "e11a920394ffe1992bf156a54095254d3770a8a6a5b8a3c2f45751b7e68c423f",
+      "PD-101_structured_content_v1.0.0.json": "9679af61f3a9b06a0bd400017b1dd7990b0c7bc047c8309117883467452a22e8",
+      "README.md": "816b7015d6434a7ee963f8f102da8316753daec0ea49dcff7bce912b06b6f51a"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (BBCBB); review distractors before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "PD-102",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "29b6998d-8c0d-52fd-a62b-881dbbee91fc",
+    "source_files": {
+      "PD-102_complete_course_v1.0.0.md": "dc3eb26efb2496433eb6583d58f040409654ad2f41e861bef520e03a09ccdb58",
+      "PD-102_structured_content_v1.0.0.json": "432a6ff22921b65acdee08de3d3bf23a1579412117de83fc6bc6624436163305",
+      "README.md": "d49f1fb4e1d6ba4c53c1d8264c4482210078c4718555c8a048e4d4a8c63b8ee2"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (BCBBB); review distractors before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "PD-103",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "f8a15599-d0cc-55dc-82fd-db01b5fb85aa",
+    "source_files": {
+      "PD-103_complete_course_v1.0.0.md": "37e655f0ae4e3009fd85761ddbdeff2b2afc4a66393de63edc5191ffcc40f97a",
+      "PD-103_structured_content_v1.0.0.json": "a46dba043a7e165cc33427ea5d344e5a24642a1eb1506c07aae83225b3363977",
+      "README.md": "2dd1b0240fd36b6d9a80d6b0e7111abb32eef9019324587f465663e13bb194d6"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (CBBBB); review distractors before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "LG-101",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "0a0c493c-7058-50cc-9842-c009d63aeefa",
+    "source_files": {
+      "LG-101_complete_course_v1.0.0.md": "ff1d3fc92fcd825b293e369fe904d9fa90a8e2a39a21927732e1049efbd53816",
+      "LG-101_structured_content_v1.0.0.json": "dbf40e3b36feb356f04928b87f9ab3dcdba6faffceb494c0de2302f40362fbe7",
+      "README.md": "a0a419ccc5d0f865b232c5da5eebcdae24d8724bcdda24e300fa70586a248c33"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (BABBB); review distractors before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "LG-102",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "b278715e-e454-5f4a-bfb7-fa2dd7dee8ee",
+    "source_files": {
+      "LG-102_complete_course_v1.0.0.md": "ca07861b8cb2173f1bfbfb171e36d5358c3840987baaea5e7947373f51a131ca",
+      "LG-102_structured_content_v1.0.0.json": "500f431f7a01e1851c53833c793555642c66910e600b0081e3f1fe20c1a4b216",
+      "README.md": "3c578403880bbe870f7546406d3a2280ed3d729c42209e56cc0ed0357ad3d679"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (ABBBB); review distractors before publishing.",
+      "Product-specific/manufacturer references and technical review are still pending in the supplied source.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "BL-101",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "b960cca0-4b26-5787-9bcb-72dedb8256b0",
+    "source_files": {
+      "BL-101_complete_course_v1.0.0.md": "a5d0d21db96d2e47fed5225abe0a0282b1b2ba45288ed14cd422675afea85934",
+      "BL-101_structured_content_v1.0.0.json": "639e337de0340f5d82d87f782485ec55b5aab587d255d4cb11f29b9801ef0fb3",
+      "README.md": "2f4c607651c9cf0195e0fdf1eebda606f88ed67645091706082f0a7c22aa4bfe"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (CBBBB); review distractors before publishing.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "BL-102",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "36e11a14-abb4-5e23-9946-e55a868b8d09",
+    "source_files": {
+      "BL-102_complete_course_v1.0.0.md": "064db10c8130a6932aaac6bd2be890b0eb3541f9d08ef86f8f140193ce19f57d",
+      "BL-102_structured_content_v1.0.0.json": "b8925ef34d75a7b49e8b034190c96573bc95078949fb7541d75850efa1d685d1",
+      "README.md": "91c9ebe8b01c40dd8a5d0a93e6ee5fc1c72e2e3e38aeddc3626e1d6571e37446"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (BBBBB); review distractors before publishing.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  },
+  {
+    "course_code": "BL-103",
+    "source_version": "1.0.0",
+    "database_revision": 1,
+    "course_uuid": "a10452d3-d56b-5f78-b0ef-c1a87f2b67fa",
+    "source_files": {
+      "BL-103_complete_course_v1.0.0.md": "3eb0ff2b693ec736f4cc3bde91ab3f4388f0d3eb6933ce2914b23c6a6a75fe9c",
+      "BL-103_structured_content_v1.0.0.json": "d001583a96da71f9e3d3b5146c7fada9e2cfc62d3666d7e8d93fc560e6d8cb0f",
+      "README.md": "a4c67702ca85fc0252afdabb0178d8f613e38bc365c17503f48e7dc6d1184bb6"
+    },
+    "source_content_edits": [],
+    "published": false,
+    "review_notes": [
+      "Final answer positions are repetitive (ABBBB); review distractors before publishing.",
+      "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+    ]
+  }
+]

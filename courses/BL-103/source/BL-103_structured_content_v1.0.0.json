@@ -1,0 +1,574 @@
+{
+  "course_information": {
+    "code": "BL-103",
+    "title": "Time Management & Prioritization",
+    "description": "Prioritize customer needs, safety, assigned work, interruptions, and shift handoffs in a busy hardware store.",
+    "academy": "Business Operations & Leadership",
+    "skill_level": "Foundations",
+    "catalog_designation": "Foundational",
+    "intended_audience": "All employees",
+    "relevant_departments": [
+      "All departments"
+    ],
+    "scope": "General independent hardware retail; store-specific rules are not supplied",
+    "restrictions": "No legal, tax, HR, accounting, or licensed-professional advice. Follow store procedures and refer restricted decisions.",
+    "estimated_completion_minutes": 29,
+    "lesson_minutes": 25,
+    "quiz_minutes": 4,
+    "prerequisites": [
+      "RF-101 recommended"
+    ],
+    "learning_objectives": [
+      "Distinguish urgent work from important planned work.",
+      "Choose safe priorities when several tasks compete.",
+      "Break a task into a practical next step.",
+      "Respond to interruptions without losing track of work.",
+      "Use brief handoffs and checklists to support follow-through."
+    ],
+    "version": "1.0.0",
+    "review_date": "2026-10-18",
+    "status": "Ready for review — not published",
+    "learning_progression": {
+      "current_level": "Foundations",
+      "future_application": "[Proposed; not in approved launch catalog]",
+      "future_expertise": "[Proposed; not in approved launch catalog]"
+    }
+  },
+  "source_materials": [
+    {
+      "title": "General retail training and basic arithmetic",
+      "organization": "colTRAIN original instructional material",
+      "file_or_url": "Internal course text; no external source provided",
+      "supported_claims": "Retail scenarios and foundational coaching principles; BL-101 arithmetic is shown with worked examples",
+      "verification": "Confirm store accounting definitions, policies, and local legal requirements before publication."
+    },
+    {
+      "title": "Store-specific policies and operating procedures",
+      "organization": "Each participating retailer",
+      "file_or_url": "[Needed]",
+      "supported_claims": "Price overrides, promotions, HR reporting, delegated authority, safety priorities, handoffs",
+      "verification": "Required for store-specific adaptation; do not imply a universal store policy."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "id": "BL-103-L01",
+      "title": "Recognize Priorities During a Shift",
+      "estimated_minutes": 5,
+      "objective": "Identify which tasks need attention first."
+    },
+    {
+      "id": "BL-103-L02",
+      "title": "Plan the Next Useful Step",
+      "estimated_minutes": 5,
+      "objective": "Turn a broad task into manageable actions."
+    },
+    {
+      "id": "BL-103-L03",
+      "title": "Handle Interruptions Without Losing Your Place",
+      "estimated_minutes": 5,
+      "objective": "Respond to customers while keeping track of unfinished work."
+    },
+    {
+      "id": "BL-103-L04",
+      "title": "Communicate When Priorities Change",
+      "estimated_minutes": 5,
+      "objective": "Tell the right person when work must be rescheduled."
+    },
+    {
+      "id": "BL-103-L05",
+      "title": "Close the Shift with a Useful Handoff",
+      "estimated_minutes": 5,
+      "objective": "Leave clear information for the next employee."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "BL-103-L01",
+      "title": "Recognize Priorities During a Shift",
+      "estimated_minutes": 5,
+      "objective": "Identify which tasks need attention first.",
+      "why_this_matters": "Hardware stores have customer questions, deliveries, and planned work happening at the same time.",
+      "content_sections": [
+        {
+          "heading": "Safety comes first",
+          "text": "A spill, blocked emergency exit, or other immediate hazard needs prompt action under store procedure. Do not walk past a hazard to finish routine stocking."
+        },
+        {
+          "heading": "Consider urgency and importance",
+          "text": "An urgent issue needs attention soon. Important work supports service and operations even when no one is asking about it right now."
+        },
+        {
+          "heading": "Confirm the order",
+          "text": "When priorities compete, tell the manager what is happening and ask which task should come next."
+        }
+      ],
+      "hardware_store_example": "You are restocking screws when you notice liquid on the floor. Secure the area and follow spill procedures before returning to the shelf.",
+      "what_to_say_or_do": "Say: “I found a spill. I’m following the safety procedure, then I’ll return to stocking.”",
+      "common_mistakes": "Treating the longest task as most important; ignoring hazards; silently dropping assigned work.",
+      "when_to_ask_for_help": "Ask for help with hazardous spills, injuries, or competing demands you cannot resolve safely.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 1 content",
+          "purpose": "Simple priority graphic showing safety, customer needs, and planned tasks.",
+          "accessibility_alt": "Simple priority graphic showing safety, customer needs, and planned tasks.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "A spill, blocked emergency exit, or other immediate hazard needs prompt action under store procedure.",
+        "An urgent issue needs attention soon.",
+        "When priorities compete, tell the manager what is happening and ask which task should come next."
+      ],
+      "optional_practice": {
+        "id": "BL-103-L01-P01",
+        "scored": false,
+        "question": "What should take priority over routine stocking?",
+        "options": {
+          "A": "An immediate aisle hazard",
+          "B": "Straightening a display",
+          "C": "Counting extra shelf tags",
+          "D": "Choosing music"
+        },
+        "correct_answer": "A",
+        "explanation": "Immediate safety concerns require prompt action under store procedure."
+      }
+    },
+    {
+      "id": "BL-103-L02",
+      "title": "Plan the Next Useful Step",
+      "estimated_minutes": 5,
+      "objective": "Turn a broad task into manageable actions.",
+      "why_this_matters": "A clear next step helps employees start and finish work.",
+      "content_sections": [
+        {
+          "heading": "Define the outcome",
+          "text": "Instead of “fix receiving,” identify the specific result, such as sorting today’s delivery into labeled staging areas."
+        },
+        {
+          "heading": "Break work into steps",
+          "text": "Check instructions, gather supplies, complete one section, and verify the result. Use a short checklist when several details matter."
+        },
+        {
+          "heading": "Estimate realistically",
+          "text": "Ask about deadlines and available time. Do not promise a completion time without considering interruptions and resources."
+        }
+      ],
+      "hardware_store_example": "An associate is told to prepare an endcap. They check the approved display plan, gather products and labels, build the display, and request a final check.",
+      "what_to_say_or_do": "Say: “I’ll gather the products and labels first, then set the display and verify the prices.”",
+      "common_mistakes": "Starting without instructions; doing easy tasks instead of required tasks; skipping verification.",
+      "when_to_ask_for_help": "Ask a manager when the assignment, display rules, or available time is unclear.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 2 content",
+          "purpose": "Four-step visual checklist for a fictional endcap task.",
+          "accessibility_alt": "Four-step visual checklist for a fictional endcap task.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Instead of “fix receiving,” identify the specific result, such as sorting today’s delivery into labeled staging areas.",
+        "Check instructions, gather supplies, complete one section, and verify the result.",
+        "Ask about deadlines and available time."
+      ],
+      "optional_practice": {
+        "id": "BL-103-L02-P01",
+        "scored": false,
+        "question": "What is the best first step for an unfamiliar display assignment?",
+        "options": {
+          "A": "Start placing any nearby products",
+          "B": "Review the approved plan and needed materials",
+          "C": "Ignore the deadline",
+          "D": "Change the prices to match your idea"
+        },
+        "correct_answer": "B",
+        "explanation": "A clear plan reduces mistakes and rework."
+      }
+    },
+    {
+      "id": "BL-103-L03",
+      "title": "Handle Interruptions Without Losing Your Place",
+      "estimated_minutes": 5,
+      "objective": "Respond to customers while keeping track of unfinished work.",
+      "why_this_matters": "Helping a customer should not mean forgetting a half-completed task.",
+      "content_sections": [
+        {
+          "heading": "Pause safely",
+          "text": "Put down tools and materials safely. Do not leave sharp objects, unstable stacks, or open cartons where customers could be hurt."
+        },
+        {
+          "heading": "Capture your place",
+          "text": "Use a permitted checklist or brief note to mark the next step. Never record unnecessary customer personal information."
+        },
+        {
+          "heading": "Return or hand off",
+          "text": "After helping, resume from the note. If the shift changes or a new priority takes over, tell the next person what remains."
+        }
+      ],
+      "hardware_store_example": "While checking shelf labels, a customer asks for help finding a faucet connector. You make the area safe, mark the aisle section you were checking, and return after assisting.",
+      "what_to_say_or_do": "Say: “I’m helping this customer. I’ve marked where I stopped so I can finish the label check.”",
+      "common_mistakes": "Leaving trip hazards; relying on memory for many unfinished tasks; refusing reasonable customer help.",
+      "when_to_ask_for_help": "Ask a coworker or manager when multiple customers need help or a safety-sensitive task cannot be paused.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 3 content",
+          "purpose": "Photo of a tidy, safely paused stocking cart with checklist.",
+          "accessibility_alt": "Photo of a tidy, safely paused stocking cart with checklist.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Put down tools and materials safely.",
+        "Use a permitted checklist or brief note to mark the next step.",
+        "After helping, resume from the note."
+      ],
+      "optional_practice": {
+        "id": "BL-103-L03-P01",
+        "scored": false,
+        "question": "What should you do before leaving a stocking task to help a customer?",
+        "options": {
+          "A": "Leave an open carton in the aisle",
+          "B": "Make the area safe and note where to resume",
+          "C": "Forget the task",
+          "D": "Move products into an exit path"
+        },
+        "correct_answer": "B",
+        "explanation": "A safe pause and clear note protect customers and help you finish later."
+      }
+    },
+    {
+      "id": "BL-103-L04",
+      "title": "Communicate When Priorities Change",
+      "estimated_minutes": 5,
+      "objective": "Tell the right person when work must be rescheduled.",
+      "why_this_matters": "A silent change can leave important tasks unfinished.",
+      "content_sections": [
+        {
+          "heading": "Give a short update",
+          "text": "State what was planned, what interrupted it, and what remains. Keep the update factual and concise."
+        },
+        {
+          "heading": "Ask for a decision",
+          "text": "If two tasks cannot both be completed, ask the responsible leader which has priority. Do not guess when a deadline or safety concern matters."
+        },
+        {
+          "heading": "Use teamwork",
+          "text": "Request a handoff or help when appropriate. Share enough context for the other person to continue without starting over."
+        }
+      ],
+      "hardware_store_example": "A delivery arrives while you are setting a promotional display. You tell the manager the display is half finished and ask whether to help receive the truck.",
+      "what_to_say_or_do": "Say: “The display needs about one more section. The truck is here. Which should I handle first?”",
+      "common_mistakes": "Pretending both tasks are done; changing priorities without notice; blaming others for unclear handoffs.",
+      "when_to_ask_for_help": "Escalate missed deadlines, customer commitments, or work requiring special authorization.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 4 content",
+          "purpose": "Two-task priority board with a clear manager decision point.",
+          "accessibility_alt": "Two-task priority board with a clear manager decision point.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "State what was planned, what interrupted it, and what remains.",
+        "If two tasks cannot both be completed, ask the responsible leader which has priority.",
+        "Request a handoff or help when appropriate."
+      ],
+      "optional_practice": {
+        "id": "BL-103-L04-P01",
+        "scored": false,
+        "question": "Which update is most useful?",
+        "options": {
+          "A": "I got busy",
+          "B": "The display is half complete; the delivery arrived; which task comes first?",
+          "C": "It is someone else’s problem",
+          "D": "Nothing changed"
+        },
+        "correct_answer": "B",
+        "explanation": "A specific update lets the manager make an informed decision."
+      }
+    },
+    {
+      "id": "BL-103-L05",
+      "title": "Close the Shift with a Useful Handoff",
+      "estimated_minutes": 5,
+      "objective": "Leave clear information for the next employee.",
+      "why_this_matters": "Good handoffs prevent repeated work and missed customer promises.",
+      "content_sections": [
+        {
+          "heading": "Record what is done",
+          "text": "Check off completed tasks and confirm any important results, such as corrected shelf labels or received cartons."
+        },
+        {
+          "heading": "Name what remains",
+          "text": "List unfinished tasks, location, urgency, and any relevant next step. Follow approved systems and privacy rules."
+        },
+        {
+          "heading": "Confirm ownership",
+          "text": "Tell the incoming employee or manager who will take the next action. Do not assume a note alone guarantees follow-through."
+        }
+      ],
+      "hardware_store_example": "At shift change, you report that aisle four is stocked but two labels need printing, and you identify where the label request was saved.",
+      "what_to_say_or_do": "Say: “Aisle four is stocked. Two labels are pending in the approved system, and the next shift has the request.”",
+      "common_mistakes": "Saying only “not done”; leaving customer promises undocumented; sharing private details in open notes.",
+      "when_to_ask_for_help": "Escalate urgent safety issues and time-sensitive customer commitments directly, not only in a written note.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 5 content",
+          "purpose": "Sample handoff checklist with done, pending, and owner columns.",
+          "accessibility_alt": "Sample handoff checklist with done, pending, and owner columns.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Check off completed tasks and confirm any important results, such as corrected shelf labels or received cartons.",
+        "List unfinished tasks, location, urgency, and any relevant next step.",
+        "Tell the incoming employee or manager who will take the next action."
+      ],
+      "optional_practice": {
+        "id": "BL-103-L05-P01",
+        "scored": false,
+        "question": "What belongs in a useful shift handoff?",
+        "options": {
+          "A": "Only a general complaint",
+          "B": "Completed work, unfinished items, and who owns the next step",
+          "C": "Private customer details unrelated to the task",
+          "D": "Nothing if you are tired"
+        },
+        "correct_answer": "B",
+        "explanation": "Specific status and ownership help the next shift continue smoothly."
+      }
+    }
+  ],
+  "final_quiz": {
+    "instructions": "Complete required lessons before attempting the final quiz. Choose one answer per question.",
+    "questions": [
+      {
+        "id": "BL-103-Q01",
+        "objective_assessed": "Distinguish urgent work from important planned work.",
+        "related_lesson": "BL-103-L01",
+        "question": "What should take priority over routine stocking?",
+        "options": {
+          "A": "An immediate aisle hazard",
+          "B": "Straightening a display",
+          "C": "Counting extra shelf tags",
+          "D": "Choosing music"
+        },
+        "correct_answer": "A",
+        "points": 10,
+        "explanation": "Immediate safety concerns require prompt action under store procedure.",
+        "review_reference": "BL-103-L01",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-103-Q02",
+        "objective_assessed": "Choose safe priorities when several tasks compete.",
+        "related_lesson": "BL-103-L02",
+        "question": "What is the best first step for an unfamiliar display assignment?",
+        "options": {
+          "A": "Start placing any nearby products",
+          "B": "Review the approved plan and needed materials",
+          "C": "Ignore the deadline",
+          "D": "Change the prices to match your idea"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "A clear plan reduces mistakes and rework.",
+        "review_reference": "BL-103-L02",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-103-Q03",
+        "objective_assessed": "Break a task into a practical next step.",
+        "related_lesson": "BL-103-L03",
+        "question": "What should you do before leaving a stocking task to help a customer?",
+        "options": {
+          "A": "Leave an open carton in the aisle",
+          "B": "Make the area safe and note where to resume",
+          "C": "Forget the task",
+          "D": "Move products into an exit path"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "A safe pause and clear note protect customers and help you finish later.",
+        "review_reference": "BL-103-L03",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-103-Q04",
+        "objective_assessed": "Respond to interruptions without losing track of work.",
+        "related_lesson": "BL-103-L04",
+        "question": "Which update is most useful?",
+        "options": {
+          "A": "I got busy",
+          "B": "The display is half complete; the delivery arrived; which task comes first?",
+          "C": "It is someone else’s problem",
+          "D": "Nothing changed"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "A specific update lets the manager make an informed decision.",
+        "review_reference": "BL-103-L04",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-103-Q05",
+        "objective_assessed": "Use brief handoffs and checklists to support follow-through.",
+        "related_lesson": "BL-103-L05",
+        "question": "What belongs in a useful shift handoff?",
+        "options": {
+          "A": "Only a general complaint",
+          "B": "Completed work, unfinished items, and who owns the next step",
+          "C": "Private customer details unrelated to the task",
+          "D": "Nothing if you are tired"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Specific status and ownership help the next shift continue smoothly.",
+        "review_reference": "BL-103-L05",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      }
+    ],
+    "employee_facing_questions": [
+      {
+        "id": "BL-103-Q01",
+        "question": "What should take priority over routine stocking?",
+        "options": {
+          "A": "An immediate aisle hazard",
+          "B": "Straightening a display",
+          "C": "Counting extra shelf tags",
+          "D": "Choosing music"
+        }
+      },
+      {
+        "id": "BL-103-Q02",
+        "question": "What is the best first step for an unfamiliar display assignment?",
+        "options": {
+          "A": "Start placing any nearby products",
+          "B": "Review the approved plan and needed materials",
+          "C": "Ignore the deadline",
+          "D": "Change the prices to match your idea"
+        }
+      },
+      {
+        "id": "BL-103-Q03",
+        "question": "What should you do before leaving a stocking task to help a customer?",
+        "options": {
+          "A": "Leave an open carton in the aisle",
+          "B": "Make the area safe and note where to resume",
+          "C": "Forget the task",
+          "D": "Move products into an exit path"
+        }
+      },
+      {
+        "id": "BL-103-Q04",
+        "question": "Which update is most useful?",
+        "options": {
+          "A": "I got busy",
+          "B": "The display is half complete; the delivery arrived; which task comes first?",
+          "C": "It is someone else’s problem",
+          "D": "Nothing changed"
+        }
+      },
+      {
+        "id": "BL-103-Q05",
+        "question": "What belongs in a useful shift handoff?",
+        "options": {
+          "A": "Only a general complaint",
+          "B": "Completed work, unfinished items, and who owns the next step",
+          "C": "Private customer details unrelated to the task",
+          "D": "Nothing if you are tired"
+        }
+      }
+    ],
+    "answer_key": [
+      {
+        "id": "BL-103-Q01",
+        "correct_answer": "A",
+        "explanation": "Immediate safety concerns require prompt action under store procedure.",
+        "review_reference": "BL-103-L01"
+      },
+      {
+        "id": "BL-103-Q02",
+        "correct_answer": "B",
+        "explanation": "A clear plan reduces mistakes and rework.",
+        "review_reference": "BL-103-L02"
+      },
+      {
+        "id": "BL-103-Q03",
+        "correct_answer": "B",
+        "explanation": "A safe pause and clear note protect customers and help you finish later.",
+        "review_reference": "BL-103-L03"
+      },
+      {
+        "id": "BL-103-Q04",
+        "correct_answer": "B",
+        "explanation": "A specific update lets the manager make an informed decision.",
+        "review_reference": "BL-103-L04"
+      },
+      {
+        "id": "BL-103-Q05",
+        "correct_answer": "B",
+        "explanation": "Specific status and ownership help the next shift continue smoothly.",
+        "review_reference": "BL-103-L05"
+      }
+    ]
+  },
+  "completion_content": {
+    "pass_percentage": 80,
+    "correct_required": 4,
+    "points_per_correct_question": 10,
+    "lifetime_points_rule": "Award once per unique scored question across all attempts, never again for a previously credited correct answer.",
+    "attempts_before_manager_assistance": 3,
+    "failed_quiz_feedback": "Show missed-question explanations after failed attempts.",
+    "lessons_before_first_attempt": true,
+    "standard_trophy": "Award once on passing.",
+    "replay": "Passed learners may replay quiz for competition; no duplicate lifetime points or trophy. Competition points tracked separately.",
+    "availability": "Administrator controls store availability; publishing does not automatically assign course to every store.",
+    "completion_message": "You passed BL-103: Time Management & Prioritization. Use these skills during your next shift, and ask for help when a decision is outside your role.",
+    "practical_next_step": "Use one question or technique from this course in a relevant customer or team interaction."
+  },
+  "manager_guidance": {
+    "suggested_audience": "All employees",
+    "recommended_completion_window_days": 30,
+    "completion_window_adjustable": true,
+    "coaching_prompts": [
+      "What did you learn from Recognize Priorities During a Shift?",
+      "How would you handle the example in Handle Interruptions Without Losing Your Place?",
+      "What decisions in your store require manager approval?"
+    ],
+    "optional_unscored_team_activity": "Discuss a fictional store scenario and identify a clear next action; no workplace activity required for completion.",
+    "optional_competition_name": "BL-103 Skills Challenge",
+    "optional_reward": "Manager chooses any reward; no reward is included or promised."
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lessons": true,
+    "sources_verified_or_flagged": true,
+    "missing_media_listed": true,
+    "store_specific_material_identified": true,
+    "mobile_readable": true,
+    "no_employee_personal_information": true,
+    "remaining_issues": [
+      "Confirm retailer-specific policies and authority limits.",
+      "Validate factual and legal claims for relevant locations.",
+      "Add licensed or original visuals only where they improve learning.",
+      "Pilot-test duration and assessment clarity."
+    ]
+  },
+  "items_needed_from_me": [
+    "Store policy on price overrides, promotions, and gross margin reporting (BL-101).",
+    "Store HR reporting, delegation, and supervisor guidelines (BL-102).",
+    "Store safety priorities, task-tracking, and shift handoff procedures (BL-103).",
+    "Approval of any instructional photographs or diagrams before publication."
+  ]
+}

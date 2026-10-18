@@ -1,6 +1,6 @@
 # Course library: skill level, topic, learning path, keywords
 
-Prepared for the next website release. No hosted deployment has been performed.
+Owner confirmed migration 011 succeeded, published the filter website update, and verified that searching RF-101 returns the course. The later compact-card update is prepared separately and still needs its website upload. Do not rerun migration 011 on this pilot.
 
 ## Approved direction
 

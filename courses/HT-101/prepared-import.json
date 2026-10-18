@@ -1,0 +1,782 @@
+{
+  "course": {
+    "id": "224c41ca-92a8-5ed9-bc21-6a8f9cbe669e",
+    "slug": "ht-101-hardware-fasteners-fundamentals",
+    "version": 1,
+    "title": "Hardware & Fasteners Fundamentals",
+    "description": "Learn to recognize common fasteners, read sizes, and help customers choose products using verified requirements.",
+    "category": "Hardware & Tools",
+    "passing_percent": 80
+  },
+  "lessons": [
+    {
+      "id": "5d0cc621-710c-5847-a90d-d7d2c45ff4ae",
+      "position": 1,
+      "title": "Recognize Common Fasteners",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer asks for “a bolt” but holds a wood screw. Knowing the basic shapes helps you ask the right question."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Five everyday fasteners"
+        },
+        {
+          "type": "paragraph",
+          "text": "Nails are driven into material, usually with a hammer or nailer. Screws have threads and are turned with a matching driver. Bolts commonly work with nuts or threaded holes. Nuts have internal threads. Washers can spread pressure or serve another purpose specified by the assembly."
+        },
+        {
+          "type": "heading",
+          "text": "Name the parts"
+        },
+        {
+          "type": "paragraph",
+          "text": "On a screw or bolt, the head is the top. The shank is the body. Threads are the spiral ridges. A drive is the recess or shape used to turn the fastener. Common drives include slotted, Phillips, hex, and Torx."
+        },
+        {
+          "type": "heading",
+          "text": "Match names to actual items"
+        },
+        {
+          "type": "paragraph",
+          "text": "Some customers use “screw” and “bolt” interchangeably. Show examples. Ask what the fastener joins and whether they have the old part or packaging."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer brings in a loose fastener from a patio chair. You identify its head and threads, then compare it with labeled samples instead of guessing its size."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Ask what materials are being joined."
+        },
+        {
+          "type": "bullet",
+          "text": "Look at the original fastener if available."
+        },
+        {
+          "type": "bullet",
+          "text": "Identify the head, threads, and drive."
+        },
+        {
+          "type": "bullet",
+          "text": "Use labeled samples to narrow choices."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Calling every threaded fastener a bolt."
+        },
+        {
+          "type": "bullet",
+          "text": "Choosing by appearance alone."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "If a fastener is part of a structural, safety-critical, or manufacturer-specified assembly, consult the instructions or a qualified specialist."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Nails are driven into material, usually with a hammer or nailer."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask what materials are being joined."
+        },
+        {
+          "type": "bullet",
+          "text": "If a fastener is part of a structural, safety-critical, or manufacturer-specified assembly, consult the instructions or a qualified specialist."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "HT-101-P01: Before recommending a product, what would you check in this situation? A customer brings in a loose fastener from a patio chair. You identify its head and threads, then compare it with labeled samples instead of guessing its size."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sample answer: Ask what materials are being joined. Look at the original fastener if available."
+        },
+        {
+          "type": "paragraph",
+          "text": "Why: A customer asks for “a bolt” but holds a wood screw. Knowing the basic shapes helps you ask the right question. If a fastener is part of a structural, safety-critical, or manufacturer-specified assembly, consult the instructions or a qualified specialist."
+        },
+        {
+          "type": "heading",
+          "text": "Optional workplace activity"
+        },
+        {
+          "type": "bullet",
+          "text": "None required."
+        }
+      ]
+    },
+    {
+      "id": "228c9e12-c000-5ad3-aff1-a56a2a544d30",
+      "position": 2,
+      "title": "Read Fastener Sizes and Labels",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "A fastener that looks close may not fit. Labels help avoid damaged parts and wasted trips."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Diameter and length"
+        },
+        {
+          "type": "paragraph",
+          "text": "Diameter describes how wide a fastener is. Length describes how long it is. Length conventions can vary by fastener head type, so check the product label or manufacturer diagram."
+        },
+        {
+          "type": "heading",
+          "text": "Threads and units"
+        },
+        {
+          "type": "paragraph",
+          "text": "Thread pitch describes spacing between threads. Inch-series fasteners may show threads per inch. Metric fasteners often show pitch in millimeters. Do not mix thread systems because they look similar."
+        },
+        {
+          "type": "heading",
+          "text": "Read the package"
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the listed diameter, length, thread information, quantity, material, and any use limitations. Compare against the old fastener or product instructions when possible."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer needs a replacement machine screw. The old one looks similar to several options. You use a thread gauge or labeled sample board and confirm the marking before recommending a replacement."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Read all size markings aloud."
+        },
+        {
+          "type": "bullet",
+          "text": "Compare the old part with a gauge if one is available."
+        },
+        {
+          "type": "bullet",
+          "text": "Check the unit system."
+        },
+        {
+          "type": "bullet",
+          "text": "Never force a test fit."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Guessing a thread from its appearance."
+        },
+        {
+          "type": "bullet",
+          "text": "Assuming length is measured the same way for every head."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Refer uncertain thread identification, load requirements, and manufacturer assemblies to a trained employee or the product documentation."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Diameter describes how wide a fastener is."
+        },
+        {
+          "type": "bullet",
+          "text": "Read all size markings aloud."
+        },
+        {
+          "type": "bullet",
+          "text": "Refer uncertain thread identification, load requirements, and manufacturer assemblies to a trained employee or the product documentation."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "HT-101-P02: Before recommending a product, what would you check in this situation? A customer needs a replacement machine screw. The old one looks similar to several options. You use a thread gauge or labeled sample board and confirm the marking before recommending a replacement."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sample answer: Read all size markings aloud. Compare the old part with a gauge if one is available."
+        },
+        {
+          "type": "paragraph",
+          "text": "Why: A fastener that looks close may not fit. Labels help avoid damaged parts and wasted trips. Refer uncertain thread identification, load requirements, and manufacturer assemblies to a trained employee or the product documentation."
+        },
+        {
+          "type": "heading",
+          "text": "Optional workplace activity"
+        },
+        {
+          "type": "bullet",
+          "text": "None required."
+        }
+      ]
+    },
+    {
+      "id": "bc825b0c-4603-5876-8d62-8c6d7a8b2b13",
+      "position": 3,
+      "title": "Choose Fasteners for the Material",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Wood, metal, masonry, and drywall do not always use the same fasteners or anchors."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Identify the base material"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask what material receives the fastener. Is it wood, sheet metal, masonry, drywall, or something else? Ask what is being attached and whether the attachment is indoors or outdoors."
+        },
+        {
+          "type": "heading",
+          "text": "Understand anchors"
+        },
+        {
+          "type": "paragraph",
+          "text": "An anchor helps a fastener hold in a material when the fastener alone is not suitable. Anchors vary by base material and installation method. Never treat an anchor rating as universal."
+        },
+        {
+          "type": "heading",
+          "text": "Check the environment"
+        },
+        {
+          "type": "paragraph",
+          "text": "Outdoor moisture and other exposure can affect fastener selection. Corrosion-resistant products exist, but suitability depends on the material combination and manufacturer instructions."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer wants to hang a heavy shelf on drywall. You ask whether the shelf can attach to framing and how much weight it must support. You avoid guessing at an anchor without verified ratings and instructions."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Ask about the base material."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask about weight and installation location."
+        },
+        {
+          "type": "bullet",
+          "text": "Check packaging for intended use."
+        },
+        {
+          "type": "bullet",
+          "text": "Escalate safety-critical installations."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Assuming a wood screw is suitable for masonry."
+        },
+        {
+          "type": "bullet",
+          "text": "Promising a load rating without checking conditions."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask for help with overhead, structural, safety-critical, or heavy-load installations; follow manufacturer instructions and local requirements."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Ask what material receives the fastener."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask about the base material."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask for help with overhead, structural, safety-critical, or heavy-load installations; follow manufacturer instructions and local requirements."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "HT-101-P03: Before recommending a product, what would you check in this situation? A customer wants to hang a heavy shelf on drywall. You ask whether the shelf can attach to framing and how much weight it must support. You avoid guessing at an anchor without verified ratings and instructions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sample answer: Ask about the base material. Ask about weight and installation location."
+        },
+        {
+          "type": "paragraph",
+          "text": "Why: Wood, metal, masonry, and drywall do not always use the same fasteners or anchors. Ask for help with overhead, structural, safety-critical, or heavy-load installations; follow manufacturer instructions and local requirements."
+        },
+        {
+          "type": "heading",
+          "text": "Optional workplace activity"
+        },
+        {
+          "type": "bullet",
+          "text": "None required."
+        }
+      ]
+    },
+    {
+      "id": "ff96463b-4c93-5448-b9d4-fbc6367c174f",
+      "position": 4,
+      "title": "Understand Heads, Drives, and Tools",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Using the wrong bit or wrench can strip a head or damage a project."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Head shapes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Common screw heads include flat or countersunk, pan, and hex. Head shape affects how the fastener sits and which tool engages it."
+        },
+        {
+          "type": "heading",
+          "text": "Drive shapes"
+        },
+        {
+          "type": "paragraph",
+          "text": "A Phillips bit is different from a Torx bit. Hex-head fasteners may need a socket or wrench. Size matters as much as shape."
+        },
+        {
+          "type": "heading",
+          "text": "Avoid damage"
+        },
+        {
+          "type": "paragraph",
+          "text": "A poorly fitting bit can slip. Encourage customers to check packaging and test fit the correct size without forcing it. Power tools require safe use according to instructions."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer says a screw head keeps stripping. You ask which bit they use and compare the drive marking on the screw package with available bits."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Identify drive type and size."
+        },
+        {
+          "type": "bullet",
+          "text": "Check head clearance and access."
+        },
+        {
+          "type": "bullet",
+          "text": "Recommend the matching hand tool or bit when verified."
+        },
+        {
+          "type": "bullet",
+          "text": "Avoid promising a bit will fix an already damaged head."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Assuming all cross-shaped drives are the same."
+        },
+        {
+          "type": "bullet",
+          "text": "Using a loose-fitting bit."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Escalate damaged fasteners, specialized drives, and safety-sensitive assemblies."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Common screw heads include flat or countersunk, pan, and hex."
+        },
+        {
+          "type": "bullet",
+          "text": "Identify drive type and size."
+        },
+        {
+          "type": "bullet",
+          "text": "Escalate damaged fasteners, specialized drives, and safety-sensitive assemblies."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "HT-101-P04: Before recommending a product, what would you check in this situation? A customer says a screw head keeps stripping. You ask which bit they use and compare the drive marking on the screw package with available bits."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sample answer: Identify drive type and size. Check head clearance and access."
+        },
+        {
+          "type": "paragraph",
+          "text": "Why: Using the wrong bit or wrench can strip a head or damage a project. Escalate damaged fasteners, specialized drives, and safety-sensitive assemblies."
+        },
+        {
+          "type": "heading",
+          "text": "Optional workplace activity"
+        },
+        {
+          "type": "bullet",
+          "text": "None required."
+        }
+      ]
+    },
+    {
+      "id": "2bc58560-5b16-5633-9c27-f8353d131595",
+      "position": 5,
+      "title": "Help a Customer Complete a Fastener Purchase",
+      "body": [
+        {
+          "type": "heading",
+          "text": "Why this matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Customers often need the right quantity and a matching tool, not just one fastener."
+        },
+        {
+          "type": "heading",
+          "text": "Lesson content"
+        },
+        {
+          "type": "heading",
+          "text": "Confirm the project"
+        },
+        {
+          "type": "paragraph",
+          "text": "Repeat the material, use, and fastener requirements. Check the customer’s original instructions when available."
+        },
+        {
+          "type": "heading",
+          "text": "Check companion items"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask whether they have the matching driver, drill bit, nut, washer, or anchor required by the assembly. Do not add items that the customer does not need."
+        },
+        {
+          "type": "heading",
+          "text": "Close with limits"
+        },
+        {
+          "type": "paragraph",
+          "text": "Confirm package quantity and measurements. Explain that product labels and instructions control proper installation. Escalate technical uncertainties."
+        },
+        {
+          "type": "heading",
+          "text": "Hardware-store example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer replacing a gate latch has the manufacturer instructions. You help locate the specified fastener size, confirm package quantity, and ask if they already have the correct driver."
+        },
+        {
+          "type": "heading",
+          "text": "What to say or do"
+        },
+        {
+          "type": "bullet",
+          "text": "Confirm size, material, and quantity."
+        },
+        {
+          "type": "bullet",
+          "text": "Ask what tools the customer owns."
+        },
+        {
+          "type": "bullet",
+          "text": "Check product instructions."
+        },
+        {
+          "type": "bullet",
+          "text": "Summarize the selection before checkout."
+        },
+        {
+          "type": "heading",
+          "text": "Common mistakes"
+        },
+        {
+          "type": "bullet",
+          "text": "Adding accessories without asking."
+        },
+        {
+          "type": "bullet",
+          "text": "Substituting a different fastener without verifying suitability."
+        },
+        {
+          "type": "heading",
+          "text": "When to ask for help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Get specialist help when required fasteners are unavailable or a substitution would change a rated assembly."
+        },
+        {
+          "type": "heading",
+          "text": "Key takeaways"
+        },
+        {
+          "type": "bullet",
+          "text": "Repeat the material, use, and fastener requirements."
+        },
+        {
+          "type": "bullet",
+          "text": "Confirm size, material, and quantity."
+        },
+        {
+          "type": "bullet",
+          "text": "Get specialist help when required fasteners are unavailable or a substitution would change a rated assembly."
+        },
+        {
+          "type": "heading",
+          "text": "Unscored practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "HT-101-P05: Before recommending a product, what would you check in this situation? A customer replacing a gate latch has the manufacturer instructions. You help locate the specified fastener size, confirm package quantity, and ask if they already have the correct driver."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sample answer: Confirm size, material, and quantity. Ask what tools the customer owns."
+        },
+        {
+          "type": "paragraph",
+          "text": "Why: Customers often need the right quantity and a matching tool, not just one fastener. Get specialist help when required fasteners are unavailable or a substitution would change a rated assembly."
+        },
+        {
+          "type": "heading",
+          "text": "Optional workplace activity"
+        },
+        {
+          "type": "bullet",
+          "text": "None required."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "b76013e8-0497-5982-b343-9d7d88ec7401",
+      "position": 1,
+      "prompt": "A customer has a threaded fastener that turns into a matching nut. What should you examine first?",
+      "options": [
+        "Its color only",
+        "Its head, thread, and size",
+        "The price tag",
+        "The packaging color"
+      ],
+      "correct_option": 1,
+      "explanation": "Head, thread, and size help identify a match; color and price do not."
+    },
+    {
+      "id": "a7b07134-6022-576a-b86b-e6373f0754f1",
+      "position": 2,
+      "prompt": "Two screws have the same length but different thread markings. What is the best action?",
+      "options": [
+        "Treat them as interchangeable",
+        "Choose the cheaper one",
+        "Confirm the required thread specification",
+        "Choose by color"
+      ],
+      "correct_option": 2,
+      "explanation": "The correct thread must match the application."
+    },
+    {
+      "id": "bfaa0b8f-2e58-5b17-bfd4-f9798b7ec9cb",
+      "position": 3,
+      "prompt": "A customer needs a fastener for a masonry wall. What is the most useful first question?",
+      "options": [
+        "What is your favorite brand?",
+        "What material is the wall, and what are you attaching?",
+        "Do you want the longest screw?",
+        "Would you like a larger bag?"
+      ],
+      "correct_option": 1,
+      "explanation": "The base material and project determine the relevant product category."
+    },
+    {
+      "id": "6d4b6e6c-4cff-5be2-9462-4696621c8cc5",
+      "position": 4,
+      "prompt": "A screw package identifies a Torx drive. Which advice is best?",
+      "options": [
+        "Use any Phillips bit",
+        "Use the matching Torx bit and size",
+        "Use pliers on the threads",
+        "Hammer in any bit"
+      ],
+      "correct_option": 1,
+      "explanation": "Matching the drive reduces the chance of slipping and damage."
+    },
+    {
+      "id": "f3e2261e-9d17-5748-933f-2afc6bd3ba89",
+      "position": 5,
+      "prompt": "A customer has a specific fastener size from assembly instructions. What should you do?",
+      "options": [
+        "Substitute any similar-looking fastener",
+        "Match the specified fastener and verify details",
+        "Ignore the instructions",
+        "Recommend the largest option"
+      ],
+      "correct_option": 1,
+      "explanation": "Manufacturer-specified details take priority over guesswork."
+    }
+  ],
+  "catalog": {
+    "course_code": "HT-101",
+    "skill_level": "foundations",
+    "topics": [
+      "Hardware & Fasteners"
+    ],
+    "keywords": [
+      "Recognize Common Fasteners",
+      "Read Fastener Sizes and Labels",
+      "Choose Fasteners for the Material",
+      "Understand Heads, Drives, and Tools",
+      "Help a Customer Complete a Fastener Purchase",
+      "Why this matters",
+      "Lesson content",
+      "Five everyday fasteners",
+      "Name the parts",
+      "Match names to actual items",
+      "Hardware-store example",
+      "What to say or do",
+      "Common mistakes",
+      "When to ask for help",
+      "Key takeaways",
+      "Unscored practice",
+      "Optional workplace activity",
+      "Diameter and length",
+      "Threads and units",
+      "Read the package",
+      "Identify the base material",
+      "Understand anchors",
+      "Check the environment",
+      "Head shapes",
+      "Drive shapes",
+      "Avoid damage",
+      "Confirm the project",
+      "Check companion items",
+      "Close with limits",
+      "HT-101-",
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05"
+    ],
+    "learning_paths": [
+      "Sales Floor Associate"
+    ]
+  }
+}

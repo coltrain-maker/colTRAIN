@@ -1,0 +1,17 @@
+{
+  "course_code": "BL-103",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "a10452d3-d56b-5f78-b0ef-c1a87f2b67fa",
+  "source_files": {
+    "BL-103_complete_course_v1.0.0.md": "3eb0ff2b693ec736f4cc3bde91ab3f4388f0d3eb6933ce2914b23c6a6a75fe9c",
+    "BL-103_structured_content_v1.0.0.json": "d001583a96da71f9e3d3b5146c7fada9e2cfc62d3666d7e8d93fc560e6d8cb0f",
+    "README.md": "a4c67702ca85fc0252afdabb0178d8f613e38bc365c17503f48e7dc6d1184bb6"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "Final answer positions are repetitive (ABBBB); review distractors before publishing.",
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

@@ -1,0 +1,588 @@
+{
+  "course_code": "HB-103",
+  "title": "Heating & Cooling Fundamentals",
+  "description": "Build basic retail product knowledge and safe customer guidance for heating and cooling.",
+  "academy": "Home Systems & Building Materials",
+  "skill_level": "Foundations",
+  "original_catalog_designation": "Foundational",
+  "scope": "General; no store-specific policy",
+  "intended_audience": [
+    "All store employees",
+    "New employees and employees unfamiliar with this department"
+  ],
+  "relevant_departments": [
+    "Heating and Cooling",
+    "Customer service"
+  ],
+  "restrictions": [
+    "Product identification and customer consultation only; no installation certification or licensed trade instruction.",
+    "Never diagnose hazards or promise compliance with codes or product compatibility."
+  ],
+  "estimated_completion_minutes": {
+    "lessons": 25,
+    "quiz": 5,
+    "total": 30,
+    "validated": false
+  },
+  "prerequisites": {
+    "required": [],
+    "recommended": [
+      "RF-102",
+      "RF-103",
+      "CS-103"
+    ]
+  },
+  "learning_objectives": [
+    "Recognize common HVAC categories.",
+    "Read filter size and performance information.",
+    "Gather compatibility details.",
+    "Ask questions about intended use.",
+    "Refer hazardous symptoms promptly."
+  ],
+  "version": "1.0.0",
+  "review_date": "2026-10-18",
+  "status": "Ready for review",
+  "source_materials": [
+    {
+      "title": "colTRAIN original course draft",
+      "organization": "colTRAIN",
+      "url": null,
+      "supported_claims": "Original retail explanations, examples, and scenarios; not external verification.",
+      "verification_needed": "Review technical statements with qualified subject-matter expert and manufacturer guidance before publication."
+    },
+    {
+      "title": "Manufacturer product labels, manuals, and compatibility guides",
+      "organization": "Applicable product manufacturer",
+      "url": null,
+      "supported_claims": "Product ratings, permitted use, compatibility, installation restrictions.",
+      "verification_needed": "Select specific current documents for products sold by each store; URLs and permissions not supplied."
+    },
+    {
+      "title": "Applicable local building, electrical, plumbing, and mechanical codes",
+      "organization": "Authority having jurisdiction",
+      "url": null,
+      "supported_claims": "Installation and licensing requirements",
+      "verification_needed": "Jurisdiction-specific rules are outside this general course and must be confirmed."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "lesson_id": "HB-103-L01",
+      "title": "Understand Basic Heating and Cooling Systems",
+      "estimated_minutes": 5,
+      "main_objective": "Recognize common HVAC categories"
+    },
+    {
+      "lesson_id": "HB-103-L02",
+      "title": "Help Customers Select Air Filters",
+      "estimated_minutes": 5,
+      "main_objective": "Read filter size and performance information"
+    },
+    {
+      "lesson_id": "HB-103-L03",
+      "title": "Recognize Thermostat and Control Differences",
+      "estimated_minutes": 5,
+      "main_objective": "Gather compatibility details"
+    },
+    {
+      "lesson_id": "HB-103-L04",
+      "title": "Compare Portable Comfort Products",
+      "estimated_minutes": 5,
+      "main_objective": "Ask questions about intended use"
+    },
+    {
+      "lesson_id": "HB-103-L05",
+      "title": "Recognize HVAC Warning Signs",
+      "estimated_minutes": 5,
+      "main_objective": "Refer hazardous symptoms promptly"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "HB-103-L01",
+      "title": "Understand Basic Heating and Cooling Systems",
+      "estimated_minutes": 5,
+      "objective": "Recognize common HVAC categories",
+      "why_this_matters": "Customers may describe comfort problems without knowing their equipment type.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Heating and cooling systems move or produce heat to control indoor comfort. Common systems include furnaces, heat pumps, air conditioners, and portable room units."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "A thermostat controls temperature settings for compatible equipment. Air filters help capture particles in systems designed for them. Ventilation moves air between spaces or outdoors."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Product names do not establish system compatibility. Start by asking what equipment the customer owns and what task they are trying to complete."
+        }
+      ],
+      "hardware_store_example": "A customer asks for a “heater filter.” Ask whether they have a furnace, heat pump air handler, or portable unit.",
+      "what_to_say_or_do": "Say: “Do you know the equipment model, or can you show the filter label?”",
+      "common_mistakes": [
+        "Assuming every heating system uses the same filter."
+      ],
+      "when_to_ask_for_help": "Escalate unfamiliar equipment, combustion systems, or mechanical problems to a qualified technician.",
+      "supporting_materials": [
+        {
+          "id": "HB-103-IMG01",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 1, after content",
+          "purpose": "Labeled comparison of furnace, outdoor heat pump, window AC, and thermostat",
+          "alt_text_draft": "Labeled comparison of furnace, outdoor heat pump, window AC, and thermostat",
+          "caption_draft": "Labeled comparison of furnace, outdoor heat pump, window AC, and thermostat",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Heating and cooling systems move or produce heat to control indoor comfort.",
+        "A thermostat controls temperature settings for compatible equipment.",
+        "Product names do not establish system compatibility."
+      ],
+      "optional_practice": {
+        "id": "HB-103-P01",
+        "scored": false,
+        "question": "Which detail best helps identify a replacement HVAC accessory?",
+        "choices": {
+          "A": "Equipment model and existing accessory label",
+          "B": "House paint color",
+          "C": "Customer ZIP code alone",
+          "D": "Package popularity"
+        },
+        "correct_answer": "A",
+        "explanation": "Equipment and accessory labels help establish the correct category and compatibility."
+      }
+    },
+    {
+      "id": "HB-103-L02",
+      "title": "Help Customers Select Air Filters",
+      "estimated_minutes": 5,
+      "objective": "Read filter size and performance information",
+      "why_this_matters": "The wrong filter may not fit or suit the equipment.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Filter labels often list a nominal size and an actual size. These can differ. Compare the existing filter markings and equipment instructions."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Filter performance may be described using MERV ratings. Higher numbers generally indicate greater particle capture under the rating method, but not every system can use every filter."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Airflow requirements matter. Do not claim that the highest-rated filter is always best. Check manufacturer guidance when performance or compatibility is unclear."
+        }
+      ],
+      "hardware_store_example": "A customer wants the thickest, highest-rated filter available. Ask for the system’s recommended size and filter specifications first.",
+      "what_to_say_or_do": "Say: “Let’s match the size and check what your equipment allows.”",
+      "common_mistakes": [
+        "Choosing solely by MERV rating or nominal dimensions."
+      ],
+      "when_to_ask_for_help": "Escalate airflow complaints or uncertainty about approved filters to HVAC support.",
+      "supporting_materials": [
+        {
+          "id": "HB-103-IMG02",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 2, after content",
+          "purpose": "Photo comparing nominal and actual filter size labels",
+          "alt_text_draft": "Photo comparing nominal and actual filter size labels",
+          "caption_draft": "Photo comparing nominal and actual filter size labels",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Filter labels often list a nominal size and an actual size.",
+        "Filter performance may be described using MERV ratings.",
+        "Airflow requirements matter."
+      ],
+      "optional_practice": {
+        "id": "HB-103-P02",
+        "scored": false,
+        "question": "Why is the highest MERV rating not automatically the best choice?",
+        "choices": {
+          "A": "It is always the wrong size",
+          "B": "Equipment airflow requirements may limit suitable filters",
+          "C": "It only measures color",
+          "D": "It cannot capture particles"
+        },
+        "correct_answer": "B",
+        "explanation": "Filter selection must consider the equipment’s airflow requirements."
+      }
+    },
+    {
+      "id": "HB-103-L03",
+      "title": "Recognize Thermostat and Control Differences",
+      "estimated_minutes": 5,
+      "objective": "Gather compatibility details",
+      "why_this_matters": "A thermostat that looks similar may not work with a particular system.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Thermostats vary by supported equipment type, voltage, wiring, and features. Some systems use proprietary controls. A basic thermostat is not automatically compatible with a heat pump or multistage system."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Ask for the HVAC equipment model and the existing thermostat model. Manufacturer compatibility tools can help, but wiring questions belong to qualified support."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Never instruct a customer to connect unknown wires or bypass a safety control. Do not assume wire color alone identifies its function."
+        }
+      ],
+      "hardware_store_example": "A customer wants a smart thermostat for a heat pump. Ask for model details and point them to the manufacturer’s compatibility process.",
+      "what_to_say_or_do": "Say: “We need to confirm your system and wiring requirements before recommending a thermostat.”",
+      "common_mistakes": [
+        "Claiming compatibility based on thermostat appearance."
+      ],
+      "when_to_ask_for_help": "Escalate unknown wiring, line-voltage controls, and system modifications.",
+      "supporting_materials": [
+        {
+          "id": "HB-103-IMG03",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 3, after content",
+          "purpose": "Photo showing different thermostat form factors with compatibility callouts",
+          "alt_text_draft": "Photo showing different thermostat form factors with compatibility callouts",
+          "caption_draft": "Photo showing different thermostat form factors with compatibility callouts",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Thermostats vary by supported equipment type, voltage, wiring, and features.",
+        "Ask for the HVAC equipment model and the existing thermostat model.",
+        "Never instruct a customer to connect unknown wires or bypass a safety control."
+      ],
+      "optional_practice": {
+        "id": "HB-103-P03",
+        "scored": false,
+        "question": "What should an associate avoid when helping with thermostat selection?",
+        "choices": {
+          "A": "Checking model numbers",
+          "B": "Reviewing official compatibility guidance",
+          "C": "Guessing wire functions by color",
+          "D": "Referring complex wiring to a professional"
+        },
+        "correct_answer": "C",
+        "explanation": "Wire colors are not a reliable substitute for verified wiring information."
+      }
+    },
+    {
+      "id": "HB-103-L04",
+      "title": "Compare Portable Comfort Products",
+      "estimated_minutes": 5,
+      "objective": "Ask questions about intended use",
+      "why_this_matters": "Portable heaters and fans have different limitations and hazards.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Fans move air but do not necessarily lower the room’s air temperature. Portable air conditioners require appropriate venting and electrical supply. Dehumidifiers remove moisture from air."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Portable heaters require careful attention to manufacturer clearances, electrical ratings, and use restrictions. They should not be recommended with extension cords or power strips unless the manufacturer explicitly permits the setup."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Ask about room size, moisture, outlet availability, and intended location. Do not promise a particular temperature change without verified product data."
+        }
+      ],
+      "hardware_store_example": "A customer wants a space heater for a small workshop. Discuss the listed room application and safety clearances, then review the manufacturer instructions.",
+      "what_to_say_or_do": "Ask: “Where will you use it, and what does the product label say about the space and power supply?”",
+      "common_mistakes": [
+        "Recommending a heater based only on advertised wattage."
+      ],
+      "when_to_ask_for_help": "Escalate unsafe wiring, fuel-burning heaters, or unusual installation needs.",
+      "supporting_materials": [
+        {
+          "id": "HB-103-IMG04",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 4, after content",
+          "purpose": "Side-by-side fan, dehumidifier, portable AC, and space heater",
+          "alt_text_draft": "Side-by-side fan, dehumidifier, portable AC, and space heater",
+          "caption_draft": "Side-by-side fan, dehumidifier, portable AC, and space heater",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Fans move air but do not necessarily lower the room’s air temperature.",
+        "Portable heaters require careful attention to manufacturer clearances, electrical ratings, and use restrictions.",
+        "Ask about room size, moisture, outlet availability, and intended location."
+      ],
+      "optional_practice": {
+        "id": "HB-103-P04",
+        "scored": false,
+        "question": "Which product is intended primarily to remove moisture from indoor air?",
+        "choices": {
+          "A": "Fan",
+          "B": "Dehumidifier",
+          "C": "Thermostat",
+          "D": "Air filter"
+        },
+        "correct_answer": "B",
+        "explanation": "A dehumidifier is designed to remove moisture from the air."
+      }
+    },
+    {
+      "id": "HB-103-L05",
+      "title": "Recognize HVAC Warning Signs",
+      "estimated_minutes": 5,
+      "objective": "Refer hazardous symptoms promptly",
+      "why_this_matters": "Some comfort complaints indicate safety issues, not accessory needs.",
+      "lesson_content": [
+        {
+          "heading": "Know the basics",
+          "text": "Gas odors, carbon monoxide alarm activation, suspected refrigerant leaks, and electrical burning smells are not routine retail troubleshooting questions."
+        },
+        {
+          "heading": "Check before recommending",
+          "text": "Carbon monoxide is a dangerous gas that people cannot reliably detect by smell. A CO alarm requires following emergency guidance and contacting appropriate responders. Never suggest ignoring or disabling an alarm."
+        },
+        {
+          "heading": "Put it into practice",
+          "text": "Employees can identify packaged accessories and explain labels. They should not diagnose combustion equipment, handle refrigerants, or coach unsafe repairs."
+        }
+      ],
+      "hardware_store_example": "A customer says a carbon monoxide alarm sounded near a gas furnace. Do not recommend a new filter as the solution.",
+      "what_to_say_or_do": "Say: “Follow the alarm’s emergency instructions and contact emergency services or the appropriate utility or qualified professional.”",
+      "common_mistakes": [
+        "Treating a CO alarm as a minor equipment nuisance."
+      ],
+      "when_to_ask_for_help": "Escalate gas, CO, refrigerant, combustion, and serious electrical concerns immediately.",
+      "supporting_materials": [
+        {
+          "id": "HB-103-IMG05",
+          "type": "instructional stock photo or annotated illustration",
+          "file": null,
+          "status": "Needed — not embedded",
+          "placement": "Lesson 5, after content",
+          "purpose": "Safety decision graphic showing CO alarm and qualified-help handoff",
+          "alt_text_draft": "Safety decision graphic showing CO alarm and qualified-help handoff",
+          "caption_draft": "Safety decision graphic showing CO alarm and qualified-help handoff",
+          "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+        }
+      ],
+      "key_takeaways": [
+        "Gas odors, carbon monoxide alarm activation, suspected refrigerant leaks, and electrical burning smells are not routine retail troubleshooting questions.",
+        "Carbon monoxide is a dangerous gas that people cannot reliably detect by smell.",
+        "Employees can identify packaged accessories and explain labels."
+      ],
+      "optional_practice": {
+        "id": "HB-103-P05",
+        "scored": false,
+        "question": "A customer reports a carbon monoxide alarm. What should you recommend?",
+        "choices": {
+          "A": "Ignore it if the house feels warm",
+          "B": "Follow emergency guidance and seek appropriate help",
+          "C": "Change the thermostat setting",
+          "D": "Cover the alarm"
+        },
+        "correct_answer": "B",
+        "explanation": "A CO alarm is a safety warning requiring appropriate emergency action."
+      }
+    }
+  ],
+  "final_quiz": {
+    "scored": true,
+    "question_count": 5,
+    "questions": [
+      {
+        "id": "HB-103-Q01",
+        "objective_assessed": "Recognize common HVAC categories",
+        "related_lesson_id": "HB-103-L01",
+        "question": "Which response best follows this lesson when a customer needs help? Situation: A customer asks for a “heater filter.” Ask whether they have a furnace, heat pump air handler, or portable unit.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Promise compatibility without reading product instructions.",
+          "C": "Say: “Do you know the equipment model, or can you show the filter label?”",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Say: “Do you know the equipment model, or can you show the filter label?” Equipment and accessory labels help establish the correct category and compatibility. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-103-L01",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-103-Q02",
+        "objective_assessed": "Read filter size and performance information",
+        "related_lesson_id": "HB-103-L02",
+        "question": "What is the safest way to confirm the right product? Situation: A customer wants the thickest, highest-rated filter available. Ask for the system’s recommended size and filter specifications first.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Promise compatibility without reading product instructions.",
+          "C": "Ignore the customer’s application and select a popular item.",
+          "D": "Say: “Let’s match the size and check what your equipment allows.”"
+        },
+        "correct_answer": "D",
+        "points": 10,
+        "explanation": "Say: “Let’s match the size and check what your equipment allows.” Filter selection must consider the equipment’s airflow requirements. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-103-L02",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-103-Q03",
+        "objective_assessed": "Gather compatibility details",
+        "related_lesson_id": "HB-103-L03",
+        "question": "Which approach best avoids a mistaken recommendation? Situation: A customer wants a smart thermostat for a heat pump. Ask for model details and point them to the manufacturer’s compatibility process.",
+        "choices": {
+          "A": "Say: “We need to confirm your system and wiring requirements before recommending a thermostat.”",
+          "B": "Choose by appearance without checking details.",
+          "C": "Promise compatibility without reading product instructions.",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "A",
+        "points": 10,
+        "explanation": "Say: “We need to confirm your system and wiring requirements before recommending a thermostat.” Wire colors are not a reliable substitute for verified wiring information. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-103-L03",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-103-Q04",
+        "objective_assessed": "Ask questions about intended use",
+        "related_lesson_id": "HB-103-L04",
+        "question": "What should an employee do when product requirements are uncertain? Situation: A customer wants a space heater for a small workshop. Discuss the listed room application and safety clearances, then review the manufacturer instructions.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Ask: “Where will you use it, and what does the product label say about the space and power supply?”",
+          "C": "Promise compatibility without reading product instructions.",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Ask: “Where will you use it, and what does the product label say about the space and power supply?” A dehumidifier is designed to remove moisture from the air. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-103-L04",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      },
+      {
+        "id": "HB-103-Q05",
+        "objective_assessed": "Refer hazardous symptoms promptly",
+        "related_lesson_id": "HB-103-L05",
+        "question": "Which response best demonstrates responsible customer service? Situation: A customer says a carbon monoxide alarm sounded near a gas furnace. Do not recommend a new filter as the solution.",
+        "choices": {
+          "A": "Choose by appearance without checking details.",
+          "B": "Promise compatibility without reading product instructions.",
+          "C": "Say: “Follow the alarm’s emergency instructions and contact emergency services or the appropriate utility or qualified professional.”",
+          "D": "Ignore the customer’s application and select a popular item."
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "Say: “Follow the alarm’s emergency instructions and contact emergency services or the appropriate utility or qualified professional.” A CO alarm is a safety warning requiring appropriate emergency action. The other choices skip verification or necessary safety checks.",
+        "review_reference": "HB-103-L05",
+        "source_reference": "Internal instructional draft; verify applicable manufacturer guidance."
+      }
+    ],
+    "employee_facing_hide_answer_key": true
+  },
+  "completion_rules": {
+    "pass_percentage": 80,
+    "points_per_correct_question": 10,
+    "lifetime_points_once_per_question_across_attempts": true,
+    "max_attempts_before_manager_assistance": 3,
+    "missed_question_explanations_after_failed_quiz": true,
+    "required_lessons_before_first_attempt": true,
+    "standard_trophy_once_on_pass": true,
+    "competition_replay_allowed_after_pass": true,
+    "competition_points_separate": true,
+    "store_availability_administrator_controlled": true,
+    "publication_does_not_auto_assign": true
+  },
+  "completion_message": "You completed Heating & Cooling Fundamentals. Use product labels and verified guidance when helping customers.",
+  "practical_next_step": "Use the lesson questions during your next relevant customer interaction. Ask for help when requirements are unclear.",
+  "manager_guidance": {
+    "suggested_audience": "New hires and associates working in or supporting Heating and Cooling",
+    "suggested_completion_window_days": 30,
+    "manager_adjustable": true,
+    "coaching_prompts": [
+      "Which product label would you check first?",
+      "What customer detail changes your recommendation?",
+      "When should you refer to a qualified professional?"
+    ],
+    "optional_unscored_team_activity": "Compare two actual product packages and identify what must be verified before recommending either.",
+    "optional_competition": {
+      "name": "Heating and Cooling Label Detective",
+      "reward": "Manager chooses a suitable reward; no automatic reward."
+    }
+  },
+  "media": [
+    {
+      "id": "HB-103-IMG01",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 1, after content",
+      "purpose": "Labeled comparison of furnace, outdoor heat pump, window AC, and thermostat",
+      "alt_text_draft": "Labeled comparison of furnace, outdoor heat pump, window AC, and thermostat",
+      "caption_draft": "Labeled comparison of furnace, outdoor heat pump, window AC, and thermostat",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-103-IMG02",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 2, after content",
+      "purpose": "Photo comparing nominal and actual filter size labels",
+      "alt_text_draft": "Photo comparing nominal and actual filter size labels",
+      "caption_draft": "Photo comparing nominal and actual filter size labels",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-103-IMG03",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 3, after content",
+      "purpose": "Photo showing different thermostat form factors with compatibility callouts",
+      "alt_text_draft": "Photo showing different thermostat form factors with compatibility callouts",
+      "caption_draft": "Photo showing different thermostat form factors with compatibility callouts",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-103-IMG04",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 4, after content",
+      "purpose": "Side-by-side fan, dehumidifier, portable AC, and space heater",
+      "alt_text_draft": "Side-by-side fan, dehumidifier, portable AC, and space heater",
+      "caption_draft": "Side-by-side fan, dehumidifier, portable AC, and space heater",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    },
+    {
+      "id": "HB-103-IMG05",
+      "type": "instructional stock photo or annotated illustration",
+      "file": null,
+      "status": "Needed — not embedded",
+      "placement": "Lesson 5, after content",
+      "purpose": "Safety decision graphic showing CO alarm and qualified-help handoff",
+      "alt_text_draft": "Safety decision graphic showing CO alarm and qualified-help handoff",
+      "caption_draft": "Safety decision graphic showing CO alarm and qualified-help handoff",
+      "licensing": "Select properly licensed stock photo or create original diagram; verify technical details and retain attribution/license evidence."
+    }
+  ],
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lessons": true,
+    "sources_verified": false,
+    "missing_media_listed": true,
+    "store_specific_material_identified": true,
+    "mobile_readable": true,
+    "employee_personal_information_included": false,
+    "timing_validated": false
+  },
+  "items_needed_from_user": [
+    "Confirm actual brands and product categories stocked.",
+    "Confirm store escalation contacts and policies.",
+    "Supply approved manufacturer documentation for technical verification.",
+    "Choose and license appropriate instructional photos or approve original diagrams.",
+    "Confirm jurisdiction-specific restrictions where applicable."
+  ]
+}

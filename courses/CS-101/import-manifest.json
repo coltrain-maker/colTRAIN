@@ -1,0 +1,16 @@
+{
+  "course_code": "CS-101",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "00d22f7c-a06f-52b5-84d2-45569901ca4b",
+  "source_files": {
+    "CS-101_complete_course_v1.0.0.md": "81903536a8d7c6e82192233e75e128ca9f5d1f52944b1cb91753d5d9bb7d5599"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "Markdown-only handoff; matching structured import generated here.",
+    "Final answer positions are repetitive (BCBCB); review distractors before publishing.",
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}

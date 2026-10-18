@@ -1,0 +1,574 @@
+{
+  "course_information": {
+    "code": "BL-102",
+    "title": "Leadership & Managing a Retail Team",
+    "description": "Build foundational skills in expectations, coaching, delegation, scheduling communication, and respectful team leadership.",
+    "academy": "Business Operations & Leadership",
+    "skill_level": "Foundations",
+    "catalog_designation": "Foundational",
+    "intended_audience": "Managers",
+    "relevant_departments": [
+      "All departments"
+    ],
+    "scope": "General independent hardware retail; store-specific rules are not supplied",
+    "restrictions": "No legal, tax, HR, accounting, or licensed-professional advice. Follow store procedures and refer restricted decisions.",
+    "estimated_completion_minutes": 29,
+    "lesson_minutes": 25,
+    "quiz_minutes": 4,
+    "prerequisites": [
+      "RF-101 recommended"
+    ],
+    "learning_objectives": [
+      "Set clear and observable expectations.",
+      "Give timely coaching based on behavior and outcomes.",
+      "Delegate work with authority, deadlines, and follow-up.",
+      "Respond fairly to team concerns and conflict.",
+      "Support safe, consistent customer service through daily leadership habits."
+    ],
+    "version": "1.0.0",
+    "review_date": "2026-10-18",
+    "status": "Ready for review — not published",
+    "learning_progression": {
+      "current_level": "Foundations",
+      "future_application": "[Proposed; not in approved launch catalog]",
+      "future_expertise": "[Proposed; not in approved launch catalog]"
+    }
+  },
+  "source_materials": [
+    {
+      "title": "General retail training and basic arithmetic",
+      "organization": "colTRAIN original instructional material",
+      "file_or_url": "Internal course text; no external source provided",
+      "supported_claims": "Retail scenarios and foundational coaching principles; BL-101 arithmetic is shown with worked examples",
+      "verification": "Confirm store accounting definitions, policies, and local legal requirements before publication."
+    },
+    {
+      "title": "Store-specific policies and operating procedures",
+      "organization": "Each participating retailer",
+      "file_or_url": "[Needed]",
+      "supported_claims": "Price overrides, promotions, HR reporting, delegated authority, safety priorities, handoffs",
+      "verification": "Required for store-specific adaptation; do not imply a universal store policy."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "id": "BL-102-L01",
+      "title": "Set Clear Expectations",
+      "estimated_minutes": 5,
+      "objective": "Explain what successful work looks like."
+    },
+    {
+      "id": "BL-102-L02",
+      "title": "Coach in the Moment",
+      "estimated_minutes": 5,
+      "objective": "Use specific, respectful feedback to improve performance."
+    },
+    {
+      "id": "BL-102-L03",
+      "title": "Delegate with Follow-Through",
+      "estimated_minutes": 5,
+      "objective": "Assign work without losing accountability."
+    },
+    {
+      "id": "BL-102-L04",
+      "title": "Handle Concerns and Conflict Respectfully",
+      "estimated_minutes": 5,
+      "objective": "Respond fairly to team disagreements and concerns."
+    },
+    {
+      "id": "BL-102-L05",
+      "title": "Lead a Consistent Daily Huddle",
+      "estimated_minutes": 5,
+      "objective": "Use short team check-ins to align priorities."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "BL-102-L01",
+      "title": "Set Clear Expectations",
+      "estimated_minutes": 5,
+      "objective": "Explain what successful work looks like.",
+      "why_this_matters": "Employees cannot reliably meet expectations they have not heard or understood.",
+      "content_sections": [
+        {
+          "heading": "Make work observable",
+          "text": "Replace “keep the store nice” with specific tasks such as checking shelf labels, removing empty cartons, and clearing aisle hazards."
+        },
+        {
+          "heading": "Define the standard",
+          "text": "Explain what needs doing, when it is due, and how to know it is complete. Ask employees to repeat the plan in their own words when helpful."
+        },
+        {
+          "heading": "Keep standards consistent",
+          "text": "Use the same core expectations for similar roles. Adjust tasks for training, ability, accommodation, and authorized responsibilities as appropriate."
+        }
+      ],
+      "hardware_store_example": "Before opening, a supervisor asks an associate to check the fastener aisle, remove empty packaging, and report missing shelf labels by 9:30.",
+      "what_to_say_or_do": "Say: “Please check the fastener aisle before 9:30 and tell me which labels need replacing.”",
+      "common_mistakes": "Giving vague instructions; assuming understanding; changing priorities without telling the team.",
+      "when_to_ask_for_help": "Ask the store manager or HR contact about accommodations, policy interpretation, or unclear job responsibilities.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 1 content",
+          "purpose": "Photo of a simple pre-opening checklist with fictional tasks.",
+          "accessibility_alt": "Photo of a simple pre-opening checklist with fictional tasks.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Replace “keep the store nice” with specific tasks such as checking shelf labels, removing empty cartons, and clearing aisle hazards.",
+        "Explain what needs doing, when it is due, and how to know it is complete.",
+        "Use the same core expectations for similar roles."
+      ],
+      "optional_practice": {
+        "id": "BL-102-L01-P01",
+        "scored": false,
+        "question": "Which instruction is clearest?",
+        "options": {
+          "A": "Make the store look better",
+          "B": "Check aisle three for missing shelf labels and report them by 10 a.m.",
+          "C": "Stay busy",
+          "D": "Do what you think is best"
+        },
+        "correct_answer": "B",
+        "explanation": "The instruction identifies the task, location, and deadline."
+      }
+    },
+    {
+      "id": "BL-102-L02",
+      "title": "Coach in the Moment",
+      "estimated_minutes": 5,
+      "objective": "Use specific, respectful feedback to improve performance.",
+      "why_this_matters": "Small corrections made early are easier to act on than vague criticism later.",
+      "content_sections": [
+        {
+          "heading": "Describe what happened",
+          "text": "Focus on observable behavior rather than labels about a person. “The customer waited while you searched” is more useful than “You are careless.”"
+        },
+        {
+          "heading": "Explain the effect",
+          "text": "Connect the behavior to safety, customer experience, or team workflow. Invite the employee to describe what happened."
+        },
+        {
+          "heading": "Agree on a next step",
+          "text": "Demonstrate the expected action, invite practice, and follow up. Recognize improvement when you see it."
+        }
+      ],
+      "hardware_store_example": "An employee leaves a customer without explaining they are checking inventory. A supervisor privately models a short update and practices it with the employee.",
+      "what_to_say_or_do": "Say: “When you need to check stock, tell the customer what you are doing and when you’ll return.”",
+      "common_mistakes": "Correcting someone publicly when privacy is possible; making assumptions about intent; offering no next step.",
+      "when_to_ask_for_help": "Use established HR procedures for repeated misconduct, discrimination concerns, or serious safety violations.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 2 content",
+          "purpose": "Two-frame communication example: unclear departure versus clear customer update.",
+          "accessibility_alt": "Two-frame communication example: unclear departure versus clear customer update.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Focus on observable behavior rather than labels about a person.",
+        "Connect the behavior to safety, customer experience, or team workflow.",
+        "Demonstrate the expected action, invite practice, and follow up."
+      ],
+      "optional_practice": {
+        "id": "BL-102-L02-P01",
+        "scored": false,
+        "question": "Which feedback is most useful?",
+        "options": {
+          "A": "You always do this wrong",
+          "B": "Next time, tell the customer you are checking stock before you walk away",
+          "C": "Everyone knows better",
+          "D": "Try harder"
+        },
+        "correct_answer": "B",
+        "explanation": "Specific feedback gives the employee an action to practice."
+      }
+    },
+    {
+      "id": "BL-102-L03",
+      "title": "Delegate with Follow-Through",
+      "estimated_minutes": 5,
+      "objective": "Assign work without losing accountability.",
+      "why_this_matters": "Delegation creates capacity only when employees have the information and authority to succeed.",
+      "content_sections": [
+        {
+          "heading": "Match task and readiness",
+          "text": "Consider training, workload, and safety authorization. Do not delegate regulated or hazardous work to an unqualified employee."
+        },
+        {
+          "heading": "Clarify the handoff",
+          "text": "State the outcome, deadline, resources, decision limits, and check-in time. Give employees room to complete the task within those boundaries."
+        },
+        {
+          "heading": "Close the loop",
+          "text": "Review completion, remove obstacles, and recognize progress. Avoid repeatedly taking the task back unless safety or urgency requires it."
+        }
+      ],
+      "hardware_store_example": "A manager delegates an endcap refresh to a trained associate, shares the approved planogram, sets a noon check-in, and identifies who can approve substitutions.",
+      "what_to_say_or_do": "Say: “Use this approved layout. Let me know by noon if an item is unavailable.”",
+      "common_mistakes": "Delegating without a deadline; assigning work without authority; micromanaging every step.",
+      "when_to_ask_for_help": "Escalate staffing constraints, restricted equipment use, and decisions outside the employee’s role.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 3 content",
+          "purpose": "Simple delegation card with outcome, owner, deadline, and check-in.",
+          "accessibility_alt": "Simple delegation card with outcome, owner, deadline, and check-in.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Consider training, workload, and safety authorization.",
+        "State the outcome, deadline, resources, decision limits, and check-in time.",
+        "Review completion, remove obstacles, and recognize progress."
+      ],
+      "optional_practice": {
+        "id": "BL-102-L03-P01",
+        "scored": false,
+        "question": "Which detail belongs in a good delegation handoff?",
+        "options": {
+          "A": "Only the employee’s name",
+          "B": "Expected result, deadline, resources, and decision limits",
+          "C": "A reminder to work faster",
+          "D": "No follow-up plan"
+        },
+        "correct_answer": "B",
+        "explanation": "A complete handoff reduces rework and confusion."
+      }
+    },
+    {
+      "id": "BL-102-L04",
+      "title": "Handle Concerns and Conflict Respectfully",
+      "estimated_minutes": 5,
+      "objective": "Respond fairly to team disagreements and concerns.",
+      "why_this_matters": "Unresolved conflict can affect service, safety, and trust.",
+      "content_sections": [
+        {
+          "heading": "Listen separately when needed",
+          "text": "Hear each person’s account without assuming who is right. Ask about specific actions and dates, not rumors."
+        },
+        {
+          "heading": "Use the right channel",
+          "text": "Handle routine task disagreements with coaching. Follow HR and reporting policies for harassment, discrimination, threats, retaliation, or other serious concerns."
+        },
+        {
+          "heading": "Agree on practical next steps",
+          "text": "Clarify expectations, document as required by policy, and check whether the problem is resolved. Protect confidentiality to the extent appropriate."
+        }
+      ],
+      "hardware_store_example": "Two associates disagree over who should restock a display. The supervisor reviews assignments and workload, listens to both, and clarifies the next shift’s responsibilities.",
+      "what_to_say_or_do": "Say: “I want to understand what happened and clarify the work so this does not repeat.”",
+      "common_mistakes": "Taking sides before hearing facts; discussing private concerns with unrelated coworkers; ignoring serious reports.",
+      "when_to_ask_for_help": "Immediately involve the designated manager or HR contact for threats, harassment, discrimination, or safety risks.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 4 content",
+          "purpose": "Fictional team assignment board showing clear responsibilities.",
+          "accessibility_alt": "Fictional team assignment board showing clear responsibilities.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Hear each person’s account without assuming who is right.",
+        "Handle routine task disagreements with coaching.",
+        "Clarify expectations, document as required by policy, and check whether the problem is resolved."
+      ],
+      "optional_practice": {
+        "id": "BL-102-L04-P01",
+        "scored": false,
+        "question": "What should a supervisor do first with a routine task disagreement?",
+        "options": {
+          "A": "Choose the louder employee’s side",
+          "B": "Hear the facts and clarify expectations",
+          "C": "Share the story with the team",
+          "D": "Ignore it indefinitely"
+        },
+        "correct_answer": "B",
+        "explanation": "Fact-finding and clear expectations support fair resolution."
+      }
+    },
+    {
+      "id": "BL-102-L05",
+      "title": "Lead a Consistent Daily Huddle",
+      "estimated_minutes": 5,
+      "objective": "Use short team check-ins to align priorities.",
+      "why_this_matters": "A few minutes of clear communication can prevent repeated questions and missed tasks.",
+      "content_sections": [
+        {
+          "heading": "Start with priorities",
+          "text": "Share the day’s key customer-service goals, deliveries, promotions, and safety reminders. Keep the message short."
+        },
+        {
+          "heading": "Invite useful questions",
+          "text": "Ask what could block progress and who needs support. Confirm which employee owns each priority."
+        },
+        {
+          "heading": "Review and adjust",
+          "text": "At the end of the shift, note what was completed and what needs handoff. Do not share confidential employee or customer information in a group huddle."
+        }
+      ],
+      "hardware_store_example": "A morning huddle covers an incoming truck, a weekend paint promotion, and a blocked receiving aisle. The team assigns owners and a check-in time.",
+      "what_to_say_or_do": "Say: “Our priorities are a clear receiving aisle, accurate sale signs, and helping customers quickly. What might get in the way?”",
+      "common_mistakes": "Listing too many priorities; using huddles to embarrass staff; skipping follow-up.",
+      "when_to_ask_for_help": "Escalate unsafe conditions, staffing shortages, or unresolved customer issues to the responsible leader.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 5 content",
+          "purpose": "Photo mockup of a three-priority daily huddle board.",
+          "accessibility_alt": "Photo mockup of a three-priority daily huddle board.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Share the day’s key customer-service goals, deliveries, promotions, and safety reminders.",
+        "Ask what could block progress and who needs support.",
+        "At the end of the shift, note what was completed and what needs handoff."
+      ],
+      "optional_practice": {
+        "id": "BL-102-L05-P01",
+        "scored": false,
+        "question": "Which is the best daily huddle practice?",
+        "options": {
+          "A": "Discuss private personnel issues in detail",
+          "B": "Share top priorities, owners, and safety reminders",
+          "C": "Avoid questions",
+          "D": "Give every employee ten unrelated goals"
+        },
+        "correct_answer": "B",
+        "explanation": "A focused huddle improves alignment without overloading staff."
+      }
+    }
+  ],
+  "final_quiz": {
+    "instructions": "Complete required lessons before attempting the final quiz. Choose one answer per question.",
+    "questions": [
+      {
+        "id": "BL-102-Q01",
+        "objective_assessed": "Set clear and observable expectations.",
+        "related_lesson": "BL-102-L01",
+        "question": "Which instruction is clearest?",
+        "options": {
+          "A": "Make the store look better",
+          "B": "Check aisle three for missing shelf labels and report them by 10 a.m.",
+          "C": "Stay busy",
+          "D": "Do what you think is best"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "The instruction identifies the task, location, and deadline.",
+        "review_reference": "BL-102-L01",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-102-Q02",
+        "objective_assessed": "Give timely coaching based on behavior and outcomes.",
+        "related_lesson": "BL-102-L02",
+        "question": "Which feedback is most useful?",
+        "options": {
+          "A": "You always do this wrong",
+          "B": "Next time, tell the customer you are checking stock before you walk away",
+          "C": "Everyone knows better",
+          "D": "Try harder"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Specific feedback gives the employee an action to practice.",
+        "review_reference": "BL-102-L02",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-102-Q03",
+        "objective_assessed": "Delegate work with authority, deadlines, and follow-up.",
+        "related_lesson": "BL-102-L03",
+        "question": "Which detail belongs in a good delegation handoff?",
+        "options": {
+          "A": "Only the employee’s name",
+          "B": "Expected result, deadline, resources, and decision limits",
+          "C": "A reminder to work faster",
+          "D": "No follow-up plan"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "A complete handoff reduces rework and confusion.",
+        "review_reference": "BL-102-L03",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-102-Q04",
+        "objective_assessed": "Respond fairly to team concerns and conflict.",
+        "related_lesson": "BL-102-L04",
+        "question": "What should a supervisor do first with a routine task disagreement?",
+        "options": {
+          "A": "Choose the louder employee’s side",
+          "B": "Hear the facts and clarify expectations",
+          "C": "Share the story with the team",
+          "D": "Ignore it indefinitely"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Fact-finding and clear expectations support fair resolution.",
+        "review_reference": "BL-102-L04",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-102-Q05",
+        "objective_assessed": "Support safe, consistent customer service through daily leadership habits.",
+        "related_lesson": "BL-102-L05",
+        "question": "Which is the best daily huddle practice?",
+        "options": {
+          "A": "Discuss private personnel issues in detail",
+          "B": "Share top priorities, owners, and safety reminders",
+          "C": "Avoid questions",
+          "D": "Give every employee ten unrelated goals"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "A focused huddle improves alignment without overloading staff.",
+        "review_reference": "BL-102-L05",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      }
+    ],
+    "employee_facing_questions": [
+      {
+        "id": "BL-102-Q01",
+        "question": "Which instruction is clearest?",
+        "options": {
+          "A": "Make the store look better",
+          "B": "Check aisle three for missing shelf labels and report them by 10 a.m.",
+          "C": "Stay busy",
+          "D": "Do what you think is best"
+        }
+      },
+      {
+        "id": "BL-102-Q02",
+        "question": "Which feedback is most useful?",
+        "options": {
+          "A": "You always do this wrong",
+          "B": "Next time, tell the customer you are checking stock before you walk away",
+          "C": "Everyone knows better",
+          "D": "Try harder"
+        }
+      },
+      {
+        "id": "BL-102-Q03",
+        "question": "Which detail belongs in a good delegation handoff?",
+        "options": {
+          "A": "Only the employee’s name",
+          "B": "Expected result, deadline, resources, and decision limits",
+          "C": "A reminder to work faster",
+          "D": "No follow-up plan"
+        }
+      },
+      {
+        "id": "BL-102-Q04",
+        "question": "What should a supervisor do first with a routine task disagreement?",
+        "options": {
+          "A": "Choose the louder employee’s side",
+          "B": "Hear the facts and clarify expectations",
+          "C": "Share the story with the team",
+          "D": "Ignore it indefinitely"
+        }
+      },
+      {
+        "id": "BL-102-Q05",
+        "question": "Which is the best daily huddle practice?",
+        "options": {
+          "A": "Discuss private personnel issues in detail",
+          "B": "Share top priorities, owners, and safety reminders",
+          "C": "Avoid questions",
+          "D": "Give every employee ten unrelated goals"
+        }
+      }
+    ],
+    "answer_key": [
+      {
+        "id": "BL-102-Q01",
+        "correct_answer": "B",
+        "explanation": "The instruction identifies the task, location, and deadline.",
+        "review_reference": "BL-102-L01"
+      },
+      {
+        "id": "BL-102-Q02",
+        "correct_answer": "B",
+        "explanation": "Specific feedback gives the employee an action to practice.",
+        "review_reference": "BL-102-L02"
+      },
+      {
+        "id": "BL-102-Q03",
+        "correct_answer": "B",
+        "explanation": "A complete handoff reduces rework and confusion.",
+        "review_reference": "BL-102-L03"
+      },
+      {
+        "id": "BL-102-Q04",
+        "correct_answer": "B",
+        "explanation": "Fact-finding and clear expectations support fair resolution.",
+        "review_reference": "BL-102-L04"
+      },
+      {
+        "id": "BL-102-Q05",
+        "correct_answer": "B",
+        "explanation": "A focused huddle improves alignment without overloading staff.",
+        "review_reference": "BL-102-L05"
+      }
+    ]
+  },
+  "completion_content": {
+    "pass_percentage": 80,
+    "correct_required": 4,
+    "points_per_correct_question": 10,
+    "lifetime_points_rule": "Award once per unique scored question across all attempts, never again for a previously credited correct answer.",
+    "attempts_before_manager_assistance": 3,
+    "failed_quiz_feedback": "Show missed-question explanations after failed attempts.",
+    "lessons_before_first_attempt": true,
+    "standard_trophy": "Award once on passing.",
+    "replay": "Passed learners may replay quiz for competition; no duplicate lifetime points or trophy. Competition points tracked separately.",
+    "availability": "Administrator controls store availability; publishing does not automatically assign course to every store.",
+    "completion_message": "You passed BL-102: Leadership & Managing a Retail Team. Use these skills during your next shift, and ask for help when a decision is outside your role.",
+    "practical_next_step": "Use one question or technique from this course in a relevant customer or team interaction."
+  },
+  "manager_guidance": {
+    "suggested_audience": "Managers",
+    "recommended_completion_window_days": 30,
+    "completion_window_adjustable": true,
+    "coaching_prompts": [
+      "What did you learn from Set Clear Expectations?",
+      "How would you handle the example in Delegate with Follow-Through?",
+      "What decisions in your store require manager approval?"
+    ],
+    "optional_unscored_team_activity": "Discuss a fictional store scenario and identify a clear next action; no workplace activity required for completion.",
+    "optional_competition_name": "BL-102 Skills Challenge",
+    "optional_reward": "Manager chooses any reward; no reward is included or promised."
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lessons": true,
+    "sources_verified_or_flagged": true,
+    "missing_media_listed": true,
+    "store_specific_material_identified": true,
+    "mobile_readable": true,
+    "no_employee_personal_information": true,
+    "remaining_issues": [
+      "Confirm retailer-specific policies and authority limits.",
+      "Validate factual and legal claims for relevant locations.",
+      "Add licensed or original visuals only where they improve learning.",
+      "Pilot-test duration and assessment clarity."
+    ]
+  },
+  "items_needed_from_me": [
+    "Store policy on price overrides, promotions, and gross margin reporting (BL-101).",
+    "Store HR reporting, delegation, and supervisor guidelines (BL-102).",
+    "Store safety priorities, task-tracking, and shift handoff procedures (BL-103).",
+    "Approval of any instructional photographs or diagrams before publication."
+  ]
+}

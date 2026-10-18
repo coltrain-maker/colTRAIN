@@ -1,0 +1,574 @@
+{
+  "course_information": {
+    "code": "BL-101",
+    "title": "Retail Pricing Fundamentals",
+    "description": "Understand retail price, cost, gross profit, margin, markup, promotions, and responsible price communication.",
+    "academy": "Business Operations & Leadership",
+    "skill_level": "Foundations",
+    "catalog_designation": "Foundational",
+    "intended_audience": "Managers",
+    "relevant_departments": [
+      "All departments"
+    ],
+    "scope": "General independent hardware retail; store-specific rules are not supplied",
+    "restrictions": "No legal, tax, HR, accounting, or licensed-professional advice. Follow store procedures and refer restricted decisions.",
+    "estimated_completion_minutes": 29,
+    "lesson_minutes": 25,
+    "quiz_minutes": 4,
+    "prerequisites": [
+      "RF-101 recommended"
+    ],
+    "learning_objectives": [
+      "Distinguish retail price, item cost, gross profit, margin, and markup.",
+      "Calculate a basic gross margin and explain how it differs from markup.",
+      "Recognize how discounts and fees affect gross profit.",
+      "Use approved procedures to investigate price differences.",
+      "Explain prices and promotions clearly without making unauthorized changes."
+    ],
+    "version": "1.0.0",
+    "review_date": "2026-10-18",
+    "status": "Ready for review — not published",
+    "learning_progression": {
+      "current_level": "Foundations",
+      "future_application": "[Proposed; not in approved launch catalog]",
+      "future_expertise": "[Proposed; not in approved launch catalog]"
+    }
+  },
+  "source_materials": [
+    {
+      "title": "General retail training and basic arithmetic",
+      "organization": "colTRAIN original instructional material",
+      "file_or_url": "Internal course text; no external source provided",
+      "supported_claims": "Retail scenarios and foundational coaching principles; BL-101 arithmetic is shown with worked examples",
+      "verification": "Confirm store accounting definitions, policies, and local legal requirements before publication."
+    },
+    {
+      "title": "Store-specific policies and operating procedures",
+      "organization": "Each participating retailer",
+      "file_or_url": "[Needed]",
+      "supported_claims": "Price overrides, promotions, HR reporting, delegated authority, safety priorities, handoffs",
+      "verification": "Required for store-specific adaptation; do not imply a universal store policy."
+    }
+  ],
+  "lesson_outline": [
+    {
+      "id": "BL-101-L01",
+      "title": "Understand Price, Cost, and Gross Profit",
+      "estimated_minutes": 5,
+      "objective": "Identify the main numbers behind a retail sale."
+    },
+    {
+      "id": "BL-101-L02",
+      "title": "Separate Margin from Markup",
+      "estimated_minutes": 5,
+      "objective": "Calculate margin and markup using the correct denominator."
+    },
+    {
+      "id": "BL-101-L03",
+      "title": "See How Discounts Change Profit",
+      "estimated_minutes": 5,
+      "objective": "Explain how a discount affects gross profit."
+    },
+    {
+      "id": "BL-101-L04",
+      "title": "Investigate Price Differences",
+      "estimated_minutes": 5,
+      "objective": "Respond to mismatched shelf and register prices."
+    },
+    {
+      "id": "BL-101-L05",
+      "title": "Explain Pricing Clearly and Fairly",
+      "estimated_minutes": 5,
+      "objective": "Communicate value and promotions accurately."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "BL-101-L01",
+      "title": "Understand Price, Cost, and Gross Profit",
+      "estimated_minutes": 5,
+      "objective": "Identify the main numbers behind a retail sale.",
+      "why_this_matters": "A selling price does not tell you how much a store earns.",
+      "content_sections": [
+        {
+          "heading": "Start with the selling price",
+          "text": "Retail price is the amount charged to the customer before applicable taxes. Product cost is what the business pays for an item under its accounting method. The two amounts are not the same."
+        },
+        {
+          "heading": "Calculate gross profit",
+          "text": "For a simple single-item example, gross profit dollars equal selling price minus item cost. A $20 item that costs $12 produces $8 of gross profit before other expenses."
+        },
+        {
+          "heading": "Know what is missing",
+          "text": "Gross profit is not net profit. Rent, wages, payment fees, freight treatment, shrink, and other expenses affect the business. Stores may account for costs differently."
+        }
+      ],
+      "hardware_store_example": "A manager sees a $20 shelf price and assumes the store earns $20. The item cost is $12, so the simple gross profit is $8, not $20.",
+      "what_to_say_or_do": "Say: “Let’s look at selling price and item cost before discussing profitability.”",
+      "common_mistakes": "Confusing revenue with profit; assuming gross profit pays every expense.",
+      "when_to_ask_for_help": "Ask the owner or finance lead when item costs, freight allocations, or accounting definitions are unclear.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 1 content",
+          "purpose": "Simple two-bar diagram: $20 sale split into $12 item cost and $8 gross profit.",
+          "accessibility_alt": "Simple two-bar diagram: $20 sale split into $12 item cost and $8 gross profit.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Retail price is the amount charged to the customer before applicable taxes.",
+        "For a simple single-item example, gross profit dollars equal selling price minus item cost.",
+        "Gross profit is not net profit."
+      ],
+      "optional_practice": {
+        "id": "BL-101-L01-P01",
+        "scored": false,
+        "question": "A $20 sale with a $12 item cost has how many dollars of gross profit?",
+        "options": {
+          "A": "$20",
+          "B": "$12",
+          "C": "$8",
+          "D": "$32"
+        },
+        "correct_answer": "C",
+        "explanation": "$20 minus $12 equals $8 before other expenses."
+      }
+    },
+    {
+      "id": "BL-101-L02",
+      "title": "Separate Margin from Markup",
+      "estimated_minutes": 5,
+      "objective": "Calculate margin and markup using the correct denominator.",
+      "why_this_matters": "These percentages look similar but answer different questions.",
+      "content_sections": [
+        {
+          "heading": "Gross margin",
+          "text": "Gross margin percentage is gross profit divided by selling price, multiplied by 100. For a $20 sale and $12 cost, $8 ÷ $20 = 40%."
+        },
+        {
+          "heading": "Markup",
+          "text": "Markup percentage is gross profit divided by cost, multiplied by 100. For the same item, $8 ÷ $12 is about 66.7%."
+        },
+        {
+          "heading": "Avoid mix-ups",
+          "text": "A 40% margin is not a 40% markup. Verify which measure your POS or report uses before comparing numbers."
+        }
+      ],
+      "hardware_store_example": "A department lead says the item has a 40% markup. You review the $20 price and $12 cost and explain that it has a 40% margin and about a 66.7% markup.",
+      "what_to_say_or_do": "Say: “Margin divides by selling price; markup divides by cost.”",
+      "common_mistakes": "Using cost as the margin denominator; comparing markup with margin reports.",
+      "when_to_ask_for_help": "Escalate when reports use different cost definitions or include returns and discounts differently.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 2 content",
+          "purpose": "Side-by-side labeled formula cards for gross margin and markup.",
+          "accessibility_alt": "Side-by-side labeled formula cards for gross margin and markup.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Gross margin percentage is gross profit divided by selling price, multiplied by 100.",
+        "Markup percentage is gross profit divided by cost, multiplied by 100.",
+        "A 40% margin is not a 40% markup."
+      ],
+      "optional_practice": {
+        "id": "BL-101-L02-P01",
+        "scored": false,
+        "question": "An item sells for $20 and costs $12. What is its gross margin?",
+        "options": {
+          "A": "20%",
+          "B": "40%",
+          "C": "66.7%",
+          "D": "80%"
+        },
+        "correct_answer": "B",
+        "explanation": "($20 − $12) ÷ $20 = 40%."
+      }
+    },
+    {
+      "id": "BL-101-L03",
+      "title": "See How Discounts Change Profit",
+      "estimated_minutes": 5,
+      "objective": "Explain how a discount affects gross profit.",
+      "why_this_matters": "A small price change can create a large change in gross profit.",
+      "content_sections": [
+        {
+          "heading": "Run the numbers",
+          "text": "If an item sells for $20 and costs $12, gross profit is $8. Discount the selling price to $16 and gross profit falls to $4, assuming cost stays the same."
+        },
+        {
+          "heading": "Look beyond one item",
+          "text": "A promotion may increase unit sales or bring in related purchases. Those results are not guaranteed. Compare sales, gross profit, and the promotion goal."
+        },
+        {
+          "heading": "Check the full offer",
+          "text": "Coupons, bundles, vendor support, and loyalty discounts may change the effective price or cost. Follow approved promotion rules and confirm the actual terms."
+        }
+      ],
+      "hardware_store_example": "A customer asks for 20% off a $20 item. You calculate the new price as $16 and recognize that gross profit drops from $8 to $4 at the assumed $12 cost.",
+      "what_to_say_or_do": "Say: “Before approving a discount, I need to check the promotion rules and its impact.”",
+      "common_mistakes": "Treating 20% off as a 20% reduction in profit; promising unapproved discounts.",
+      "when_to_ask_for_help": "Ask a manager or pricing owner before overriding prices or stacking offers.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 3 content",
+          "purpose": "Before-and-after price tag comparison with gross-profit calculation.",
+          "accessibility_alt": "Before-and-after price tag comparison with gross-profit calculation.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "If an item sells for $20 and costs $12, gross profit is $8.",
+        "A promotion may increase unit sales or bring in related purchases.",
+        "Coupons, bundles, vendor support, and loyalty discounts may change the effective price or cost."
+      ],
+      "optional_practice": {
+        "id": "BL-101-L03-P01",
+        "scored": false,
+        "question": "A $20 item costing $12 is discounted to $16. What is the new gross profit?",
+        "options": {
+          "A": "$8",
+          "B": "$4",
+          "C": "$12",
+          "D": "$16"
+        },
+        "correct_answer": "B",
+        "explanation": "$16 minus $12 equals $4."
+      }
+    },
+    {
+      "id": "BL-101-L04",
+      "title": "Investigate Price Differences",
+      "estimated_minutes": 5,
+      "objective": "Respond to mismatched shelf and register prices.",
+      "why_this_matters": "A mismatch can frustrate customers and undermine trust.",
+      "content_sections": [
+        {
+          "heading": "Check the evidence",
+          "text": "Confirm the product identifier, package size, shelf label, advertised offer, and register entry. Similar-looking items may have different prices."
+        },
+        {
+          "heading": "Follow store policy",
+          "text": "Do not invent a price-match or adjustment policy. Escalate corrections and customer resolutions to the authorized person."
+        },
+        {
+          "heading": "Fix the cause",
+          "text": "Once the immediate customer issue is addressed, report the mismatch so the shelf tag, system record, or promotion sign can be corrected."
+        }
+      ],
+      "hardware_store_example": "A customer points to a $9.99 shelf label, but the register shows $12.99. Verify the SKU and promotion details, then follow the store’s price-discrepancy procedure.",
+      "what_to_say_or_do": "Say: “Thank you for showing me. I’ll check the item and shelf label, then get the right person to resolve it.”",
+      "common_mistakes": "Blaming the customer; changing a price without authority; leaving a wrong shelf tag in place.",
+      "when_to_ask_for_help": "Escalate disputed promotions, tax issues, and overrides beyond your authorization.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 4 content",
+          "purpose": "Photo mockup of a shelf label and POS price mismatch, marked as fictional.",
+          "accessibility_alt": "Photo mockup of a shelf label and POS price mismatch, marked as fictional.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "Confirm the product identifier, package size, shelf label, advertised offer, and register entry.",
+        "Do not invent a price-match or adjustment policy.",
+        "Once the immediate customer issue is addressed, report the mismatch so the shelf tag, system record, or promotion sign can be corrected."
+      ],
+      "optional_practice": {
+        "id": "BL-101-L04-P01",
+        "scored": false,
+        "question": "What should you do first when a shelf price and register price disagree?",
+        "options": {
+          "A": "Assume the register is always right",
+          "B": "Verify the item and signage, then follow store policy",
+          "C": "Remove the shelf label without reporting it",
+          "D": "Promise any price the customer wants"
+        },
+        "correct_answer": "B",
+        "explanation": "Verification and approved resolution protect the customer and store."
+      }
+    },
+    {
+      "id": "BL-101-L05",
+      "title": "Explain Pricing Clearly and Fairly",
+      "estimated_minutes": 5,
+      "objective": "Communicate value and promotions accurately.",
+      "why_this_matters": "Clear pricing builds trust even when customers decide not to buy.",
+      "content_sections": [
+        {
+          "heading": "Describe the offer",
+          "text": "State the actual selling price, promotion conditions, quantity limits, and dates when applicable. Verify advertised details before making a claim."
+        },
+        {
+          "heading": "Discuss value",
+          "text": "Compare useful differences such as pack quantity, durability, included accessories, and warranty terms when supported by the product information."
+        },
+        {
+          "heading": "Stay within authority",
+          "text": "Do not promise competitor matching, future pricing, tax treatment, or special discounts without confirmation. Avoid claims that an item is “the best” without a clear basis."
+        }
+      ],
+      "hardware_store_example": "A customer compares two packs of screws. One costs more but contains twice as many pieces. You compare the unit count and price per piece before recommending a choice.",
+      "what_to_say_or_do": "Say: “Let’s compare what is included and the cost per piece.”",
+      "common_mistakes": "Using vague “better quality” claims; omitting offer conditions; making unauthorized promises.",
+      "when_to_ask_for_help": "Refer unusual price requests, complaints about advertising, and unclear warranty terms to management.",
+      "supporting_materials": [
+        {
+          "type": "instructional visual",
+          "file": "[Needed — licensed stock photo, original diagram, or fictional illustration]",
+          "placement": "After lesson 5 content",
+          "purpose": "Two fictional screw packages with quantities and unit-price comparison.",
+          "accessibility_alt": "Two fictional screw packages with quantities and unit-price comparison.",
+          "status": "Not included; obtain rights and verify details before publishing"
+        }
+      ],
+      "key_takeaways": [
+        "State the actual selling price, promotion conditions, quantity limits, and dates when applicable.",
+        "Compare useful differences such as pack quantity, durability, included accessories, and warranty terms when supported by the product information.",
+        "Do not promise competitor matching, future pricing, tax treatment, or special discounts without confirmation."
+      ],
+      "optional_practice": {
+        "id": "BL-101-L05-P01",
+        "scored": false,
+        "question": "What is the best way to explain a two-pack price difference?",
+        "options": {
+          "A": "Focus only on the more expensive sticker",
+          "B": "Compare quantity, features, and verified terms",
+          "C": "Promise a discount",
+          "D": "Say the cheaper product is always worse"
+        },
+        "correct_answer": "B",
+        "explanation": "A clear comparison helps customers judge value for their project."
+      }
+    }
+  ],
+  "final_quiz": {
+    "instructions": "Complete required lessons before attempting the final quiz. Choose one answer per question.",
+    "questions": [
+      {
+        "id": "BL-101-Q01",
+        "objective_assessed": "Distinguish retail price, item cost, gross profit, margin, and markup.",
+        "related_lesson": "BL-101-L01",
+        "question": "A $20 sale with a $12 item cost has how many dollars of gross profit?",
+        "options": {
+          "A": "$20",
+          "B": "$12",
+          "C": "$8",
+          "D": "$32"
+        },
+        "correct_answer": "C",
+        "points": 10,
+        "explanation": "$20 minus $12 equals $8 before other expenses.",
+        "review_reference": "BL-101-L01",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-101-Q02",
+        "objective_assessed": "Calculate a basic gross margin and explain how it differs from markup.",
+        "related_lesson": "BL-101-L02",
+        "question": "An item sells for $20 and costs $12. What is its gross margin?",
+        "options": {
+          "A": "20%",
+          "B": "40%",
+          "C": "66.7%",
+          "D": "80%"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "($20 − $12) ÷ $20 = 40%.",
+        "review_reference": "BL-101-L02",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-101-Q03",
+        "objective_assessed": "Recognize how discounts and fees affect gross profit.",
+        "related_lesson": "BL-101-L03",
+        "question": "A $20 item costing $12 is discounted to $16. What is the new gross profit?",
+        "options": {
+          "A": "$8",
+          "B": "$4",
+          "C": "$12",
+          "D": "$16"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "$16 minus $12 equals $4.",
+        "review_reference": "BL-101-L03",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-101-Q04",
+        "objective_assessed": "Use approved procedures to investigate price differences.",
+        "related_lesson": "BL-101-L04",
+        "question": "What should you do first when a shelf price and register price disagree?",
+        "options": {
+          "A": "Assume the register is always right",
+          "B": "Verify the item and signage, then follow store policy",
+          "C": "Remove the shelf label without reporting it",
+          "D": "Promise any price the customer wants"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "Verification and approved resolution protect the customer and store.",
+        "review_reference": "BL-101-L04",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      },
+      {
+        "id": "BL-101-Q05",
+        "objective_assessed": "Explain prices and promotions clearly without making unauthorized changes.",
+        "related_lesson": "BL-101-L05",
+        "question": "What is the best way to explain a two-pack price difference?",
+        "options": {
+          "A": "Focus only on the more expensive sticker",
+          "B": "Compare quantity, features, and verified terms",
+          "C": "Promise a discount",
+          "D": "Say the cheaper product is always worse"
+        },
+        "correct_answer": "B",
+        "points": 10,
+        "explanation": "A clear comparison helps customers judge value for their project.",
+        "review_reference": "BL-101-L05",
+        "source_reference": "Course lesson and worked example; verify store-specific procedure where applicable"
+      }
+    ],
+    "employee_facing_questions": [
+      {
+        "id": "BL-101-Q01",
+        "question": "A $20 sale with a $12 item cost has how many dollars of gross profit?",
+        "options": {
+          "A": "$20",
+          "B": "$12",
+          "C": "$8",
+          "D": "$32"
+        }
+      },
+      {
+        "id": "BL-101-Q02",
+        "question": "An item sells for $20 and costs $12. What is its gross margin?",
+        "options": {
+          "A": "20%",
+          "B": "40%",
+          "C": "66.7%",
+          "D": "80%"
+        }
+      },
+      {
+        "id": "BL-101-Q03",
+        "question": "A $20 item costing $12 is discounted to $16. What is the new gross profit?",
+        "options": {
+          "A": "$8",
+          "B": "$4",
+          "C": "$12",
+          "D": "$16"
+        }
+      },
+      {
+        "id": "BL-101-Q04",
+        "question": "What should you do first when a shelf price and register price disagree?",
+        "options": {
+          "A": "Assume the register is always right",
+          "B": "Verify the item and signage, then follow store policy",
+          "C": "Remove the shelf label without reporting it",
+          "D": "Promise any price the customer wants"
+        }
+      },
+      {
+        "id": "BL-101-Q05",
+        "question": "What is the best way to explain a two-pack price difference?",
+        "options": {
+          "A": "Focus only on the more expensive sticker",
+          "B": "Compare quantity, features, and verified terms",
+          "C": "Promise a discount",
+          "D": "Say the cheaper product is always worse"
+        }
+      }
+    ],
+    "answer_key": [
+      {
+        "id": "BL-101-Q01",
+        "correct_answer": "C",
+        "explanation": "$20 minus $12 equals $8 before other expenses.",
+        "review_reference": "BL-101-L01"
+      },
+      {
+        "id": "BL-101-Q02",
+        "correct_answer": "B",
+        "explanation": "($20 − $12) ÷ $20 = 40%.",
+        "review_reference": "BL-101-L02"
+      },
+      {
+        "id": "BL-101-Q03",
+        "correct_answer": "B",
+        "explanation": "$16 minus $12 equals $4.",
+        "review_reference": "BL-101-L03"
+      },
+      {
+        "id": "BL-101-Q04",
+        "correct_answer": "B",
+        "explanation": "Verification and approved resolution protect the customer and store.",
+        "review_reference": "BL-101-L04"
+      },
+      {
+        "id": "BL-101-Q05",
+        "correct_answer": "B",
+        "explanation": "A clear comparison helps customers judge value for their project.",
+        "review_reference": "BL-101-L05"
+      }
+    ]
+  },
+  "completion_content": {
+    "pass_percentage": 80,
+    "correct_required": 4,
+    "points_per_correct_question": 10,
+    "lifetime_points_rule": "Award once per unique scored question across all attempts, never again for a previously credited correct answer.",
+    "attempts_before_manager_assistance": 3,
+    "failed_quiz_feedback": "Show missed-question explanations after failed attempts.",
+    "lessons_before_first_attempt": true,
+    "standard_trophy": "Award once on passing.",
+    "replay": "Passed learners may replay quiz for competition; no duplicate lifetime points or trophy. Competition points tracked separately.",
+    "availability": "Administrator controls store availability; publishing does not automatically assign course to every store.",
+    "completion_message": "You passed BL-101: Retail Pricing Fundamentals. Use these skills during your next shift, and ask for help when a decision is outside your role.",
+    "practical_next_step": "Use one question or technique from this course in a relevant customer or team interaction."
+  },
+  "manager_guidance": {
+    "suggested_audience": "Managers",
+    "recommended_completion_window_days": 30,
+    "completion_window_adjustable": true,
+    "coaching_prompts": [
+      "What did you learn from Understand Price, Cost, and Gross Profit?",
+      "How would you handle the example in See How Discounts Change Profit?",
+      "What decisions in your store require manager approval?"
+    ],
+    "optional_unscored_team_activity": "Discuss a fictional store scenario and identify a clear next action; no workplace activity required for completion.",
+    "optional_competition_name": "BL-101 Skills Challenge",
+    "optional_reward": "Manager chooses any reward; no reward is included or promised."
+  },
+  "final_review_checklist": {
+    "objectives_taught_and_assessed": true,
+    "quiz_answers_supported_by_lessons": true,
+    "sources_verified_or_flagged": true,
+    "missing_media_listed": true,
+    "store_specific_material_identified": true,
+    "mobile_readable": true,
+    "no_employee_personal_information": true,
+    "remaining_issues": [
+      "Confirm retailer-specific policies and authority limits.",
+      "Validate factual and legal claims for relevant locations.",
+      "Add licensed or original visuals only where they improve learning.",
+      "Pilot-test duration and assessment clarity."
+    ]
+  },
+  "items_needed_from_me": [
+    "Store policy on price overrides, promotions, and gross margin reporting (BL-101).",
+    "Store HR reporting, delegation, and supervisor guidelines (BL-102).",
+    "Store safety priorities, task-tracking, and shift handoff procedures (BL-103).",
+    "Approval of any instructional photographs or diagrams before publication."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "course_code": "CS-103",
+  "source_version": "1.0.0",
+  "database_revision": 1,
+  "course_uuid": "f03c1354-7aec-596c-b72e-7df51d92be50",
+  "source_files": {
+    "CS-103_complete_course_v1.0.0.md": "61bce7c9326c50fdaf760e92f568d7e47bdcc566487acb38b0c1dfb5692a2223",
+    "CS-103_course_v1.0.0.json": "2be107fd1cd22fd6f04b32ab8537c2bdcdd2f4e4fcd038f10f3a466fafeac579",
+    "README.md": "65e07e194739f5832e886a44f86ce772e21e30e98d48c4b02554b5b2b031b34d"
+  },
+  "source_content_edits": [],
+  "published": false,
+  "review_notes": [
+    "No media assets supplied; retain text-only draft or add reviewed, licensed instructional media later."
+  ]
+}
