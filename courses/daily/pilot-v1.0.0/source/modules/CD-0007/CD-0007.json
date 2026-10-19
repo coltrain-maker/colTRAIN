@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0007",
+    "Title": "Read a Fertilizer’s Three Numbers",
+    "Academy": "Lawn, Garden & Outdoor Equipment",
+    "Skill level": "Foundations",
+    "Relevant departments": "Lawn and garden; fertilizer; garden center",
+    "Estimated completion time": "5 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "fertilizer, N-P-K, nitrogen, phosphorus, potassium, phosphate, potash, guaranteed analysis",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-19",
+    "publication_status": "not published",
+    "note": "User content approval does not resolve listed technical and store-specific review needs."
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Explain what a fertilizer’s three analysis numbers represent without treating them as a complete product recommendation."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "Customers may assume larger fertilizer numbers mean a better product. Reading the analysis correctly helps you explain what is in the package before discussing whether it fits the customer’s needs."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**The three numbers describe nutrient percentages by weight, in a fixed order.** They are commonly called the **N-P-K analysis**.\n\n| Position | Nutrient represented | U.S. label reporting basis |\n|---|---|---|\n| **First — N** | Nitrogen | Total nitrogen |\n| **Second — P** | Phosphorus | Available phosphate, expressed as P₂O₅ |\n| **Third — K** | Potassium | Soluble potash, expressed as K₂O |\n\nYou do not need to memorize the chemical formulas to explain the order. Recognize that “phosphate” and “potash” are the reporting terms customers may see in the guaranteed analysis. The second and third numbers are not percentages of pure elemental phosphorus and potassium. [Sources 1 and 2]\n\nFor example, **10-10-10** means 10% nitrogen, 10% phosphate, and 10% potash by product weight. It does **not** mean ten pounds of each in every bag. The bag’s total weight determines the pounds represented by those percentages.\n\n**Recommended action:** Point to the three numbers, explain their order, and locate the **guaranteed analysis** for more detail. Treat the numbers as a description of nutrient content.\n\n**Common mistake:** Saying the highest numbers identify the best fertilizer. The analysis alone does not tell you whether those nutrients are needed, how quickly they become available, or how much product to apply.\n\n**When to verify or seek help:** Before recommending a product, ask what the customer is growing and whether they have a soil-test recommendation. Check the product label for intended uses and application directions. Soil-test guidance helps identify nutrient needs; unresolved questions can go to a knowledgeable coworker or local Cooperative Extension office. [Source 3]"
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer points to **10-10-10** on a fertilizer bag and asks:\n\n“Does that mean this bag contains ten pounds each of nitrogen, phosphate, and potash?”"
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0007-Q01**\n\nWhich response correctly explains the numbers?\n\nA. Yes—the numbers show pounds of each nutrient, regardless of bag weight.\nB. No—the numbers show the recommended pounds to apply per garden.\nC. Yes—but only when all three numbers are equal.\nD. No—they show percentages by weight of nitrogen, phosphate, and potash, in that order."
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "Explain **what the numbers mean** before discussing **whether the product meets the plant’s needs**."
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0007-Q01",
+      "wording": "Which response correctly explains the numbers?",
+      "options": {
+        "A": "Yes—the numbers show pounds of each nutrient, regardless of bag weight.",
+        "B": "No—the numbers show the recommended pounds to apply per garden.",
+        "C": "Yes—but only when all three numbers are equal.",
+        "D": "No—they show percentages by weight of nitrogen, phosphate, and potash, in that order."
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0007-Q01",
+      "correct_answer": "D",
+      "explanation": "The analysis expresses nutrient percentages by product weight, not fixed pounds per bag or an application rate. In U.S. reporting, the order is nitrogen, available phosphate expressed as P₂O₅, and soluble potash expressed as K₂O. Equal numbers do not change that meaning.",
+      "teaching_reference": "Section 3, “Learn it,” analysis table and 10-10-10 example."
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created label illustration showing “10-10-10,” with each number connected to its corresponding guaranteed-analysis entry. Mark it “Illustrative example—not application instructions.”\n\n**Accessibility description for proposed media:** “The fertilizer analysis 10-10-10 is linked to three text labels: 10% total nitrogen, 10% available phosphate, and 10% soluble potash. All percentages are by product weight.” Keep the explanation available as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] University of Maryland Extension, [Garden Fertilizer Basics](https://extension.umd.edu/resource/garden-fertilizer-basics): Percentages by weight and the phosphorus/phosphate and potassium/potash reporting distinction.\n- [Source 2] UMass Amherst Extension, [Understanding a Turf Fertilizer Label](https://www.umass.edu/agriculture-food-environment/home-lawn-garden/fact-sheets/understanding-turf-fertilizer-label): Guaranteed analysis, nutrient order, and reporting terms.\n- [Source 3] NC State Extension, [Soil Testing and Choices of Amendments](https://extensiongardener.ces.ncsu.edu/news/soil-testing-and-choices-of-amendments/): Using soil-test recommendations to guide nutrient choices.\n\n**Verification needs:** Check any real product label before adding product-specific claims or application directions. The 10-10-10 example illustrates analysis only and is not a recommendation.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Where do our fertilizer packages show the guaranteed analysis, and what other label information would we need before recommending one?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a horticulture subject-matter reviewer confirm the nutrient terminology.\n- Confirm the module’s U.S. labeling scope.\n- If media is added, verify label wording, accessibility descriptions, and usage rights.\n- Keep application-rate calculations, nutrient-release comparisons, and diagnosis of plant problems for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "University of Maryland Extension",
+      "title": "Garden Fertilizer Basics",
+      "url": "https://extension.umd.edu/resource/garden-fertilizer-basics",
+      "supports": "Percentages by weight and the phosphorus/phosphate and potassium/potash reporting distinction.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "UMass Amherst Extension",
+      "title": "Understanding a Turf Fertilizer Label",
+      "url": "https://www.umass.edu/agriculture-food-environment/home-lawn-garden/fact-sheets/understanding-turf-fertilizer-label",
+      "supports": "Guaranteed analysis, nutrient order, and reporting terms.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "NC State Extension",
+      "title": "Soil Testing and Choices of Amendments",
+      "url": "https://extensiongardener.ces.ncsu.edu/news/soil-testing-and-choices-of-amendments/",
+      "supports": "Using soil-test recommendations to guide nutrient choices.",
+      "checked": "2026-10-19"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a horticulture subject-matter reviewer confirm the nutrient terminology.",
+    "Confirm the module’s U.S. labeling scope.",
+    "If media is added, verify label wording, accessibility descriptions, and usage rights.",
+    "Keep application-rate calculations, nutrient-release comparisons, and diagnosis of plant problems for separate modules."
+  ],
+  "complete_markdown": "# CD-0007 — Read a Fertilizer’s Three Numbers\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0007 |\n| Title | Read a Fertilizer’s Three Numbers |\n| Academy | Lawn, Garden & Outdoor Equipment |\n| Skill level | Foundations |\n| Relevant departments | Lawn and garden; fertilizer; garden center |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | fertilizer, N-P-K, nitrogen, phosphorus, potassium, phosphate, potash, guaranteed analysis |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nExplain what a fertilizer’s three analysis numbers represent without treating them as a complete product recommendation.\n\n### 2. Why it matters\n\nCustomers may assume larger fertilizer numbers mean a better product. Reading the analysis correctly helps you explain what is in the package before discussing whether it fits the customer’s needs.\n\n### 3. Learn it\n\n**The three numbers describe nutrient percentages by weight, in a fixed order.** They are commonly called the **N-P-K analysis**.\n\n| Position | Nutrient represented | U.S. label reporting basis |\n|---|---|---|\n| **First — N** | Nitrogen | Total nitrogen |\n| **Second — P** | Phosphorus | Available phosphate, expressed as P₂O₅ |\n| **Third — K** | Potassium | Soluble potash, expressed as K₂O |\n\nYou do not need to memorize the chemical formulas to explain the order. Recognize that “phosphate” and “potash” are the reporting terms customers may see in the guaranteed analysis. The second and third numbers are not percentages of pure elemental phosphorus and potassium. [Sources 1 and 2]\n\nFor example, **10-10-10** means 10% nitrogen, 10% phosphate, and 10% potash by product weight. It does **not** mean ten pounds of each in every bag. The bag’s total weight determines the pounds represented by those percentages.\n\n**Recommended action:** Point to the three numbers, explain their order, and locate the **guaranteed analysis** for more detail. Treat the numbers as a description of nutrient content.\n\n**Common mistake:** Saying the highest numbers identify the best fertilizer. The analysis alone does not tell you whether those nutrients are needed, how quickly they become available, or how much product to apply.\n\n**When to verify or seek help:** Before recommending a product, ask what the customer is growing and whether they have a soil-test recommendation. Check the product label for intended uses and application directions. Soil-test guidance helps identify nutrient needs; unresolved questions can go to a knowledgeable coworker or local Cooperative Extension office. [Source 3]\n\n### 4. Customer scenario\n\nA customer points to **10-10-10** on a fertilizer bag and asks:\n\n“Does that mean this bag contains ten pounds each of nitrogen, phosphate, and potash?”\n\n### 5. Quick check\n\n**Question ID: CD-0007-Q01**\n\nWhich response correctly explains the numbers?\n\nA. Yes—the numbers show pounds of each nutrient, regardless of bag weight.\nB. No—the numbers show the recommended pounds to apply per garden.\nC. Yes—but only when all three numbers are equal.\nD. No—they show percentages by weight of nitrogen, phosphate, and potash, in that order.\n\n### 6. Take it to the floor\n\nExplain **what the numbers mean** before discussing **whether the product meets the plant’s needs**.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0007-Q01\n- **Correct answer:** D. No—they show percentages by weight of nitrogen, phosphate, and potash, in that order.\n- **Explanation:** The analysis expresses nutrient percentages by product weight, not fixed pounds per bag or an application rate. In U.S. reporting, the order is nitrogen, available phosphate expressed as P₂O₅, and soluble potash expressed as K₂O. Equal numbers do not change that meaning.\n- **Teaching reference:** Section 3, “Learn it,” analysis table and 10-10-10 example.\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created label illustration showing “10-10-10,” with each number connected to its corresponding guaranteed-analysis entry. Mark it “Illustrative example—not application instructions.”\n\n**Accessibility description for proposed media:** “The fertilizer analysis 10-10-10 is linked to three text labels: 10% total nitrogen, 10% available phosphate, and 10% soluble potash. All percentages are by product weight.” Keep the explanation available as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] University of Maryland Extension, [Garden Fertilizer Basics](https://extension.umd.edu/resource/garden-fertilizer-basics): Percentages by weight and the phosphorus/phosphate and potassium/potash reporting distinction.\n- [Source 2] UMass Amherst Extension, [Understanding a Turf Fertilizer Label](https://www.umass.edu/agriculture-food-environment/home-lawn-garden/fact-sheets/understanding-turf-fertilizer-label): Guaranteed analysis, nutrient order, and reporting terms.\n- [Source 3] NC State Extension, [Soil Testing and Choices of Amendments](https://extensiongardener.ces.ncsu.edu/news/soil-testing-and-choices-of-amendments/): Using soil-test recommendations to guide nutrient choices.\n\n**Verification needs:** Check any real product label before adding product-specific claims or application directions. The 10-10-10 example illustrates analysis only and is not a recommendation.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhere do our fertilizer packages show the guaranteed analysis, and what other label information would we need before recommending one?\n\n### 9. Review needs\n\n- Have a horticulture subject-matter reviewer confirm the nutrient terminology.\n- Confirm the module’s U.S. labeling scope.\n- If media is added, verify label wording, accessibility descriptions, and usage rights.\n- Keep application-rate calculations, nutrient-release comparisons, and diagnosis of plant problems for separate modules.\n"
+}

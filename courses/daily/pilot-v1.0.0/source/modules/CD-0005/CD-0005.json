@@ -1,0 +1,147 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0005",
+    "Title": "Match the Screwdriver to the Screw",
+    "Academy": "Hand Tools & Fasteners",
+    "Skill level": "Foundations",
+    "Relevant departments": "Hand tools; fasteners; hardware",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "screwdriver, screw drive, slotted, flathead, flat-blade, Phillips, square, TORX, tip size, fit",
+    "Version": "0.2.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-19",
+    "publication_status": "not published",
+    "note": "User approved revised slotted/flathead terminology. Approval does not resolve listed technical and store-specific review needs."
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Match common screw-drive shapes to the corresponding hand screwdriver and recognize when tip size still needs confirmation."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "A screwdriver can look close to the right choice without fitting correctly. Matching both drive type and tip size helps reduce slipping and damage to the screw or tool."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Match the drive shape first, then confirm the tip size.** The drive is the slot or recess where the screwdriver engages—not the screw head’s outer shape.\n\nStart with these common patterns:\n\n| Drive type | Recognition clue | Matching hand tool |\n|---|---|---|\n| **Slotted** | One straight slot across the screw head | Slotted screwdriver, commonly called a **flathead**, **flathead screwdriver**, or **flat-blade screwdriver** |\n| **Phillips** | A cross-shaped recess | Phillips screwdriver |\n| **Square** | A square recess | Square-drive screwdriver |\n| **TORX** | A six-lobed, star-like recess | Correctly sized TORX screwdriver |\n\n**Why “slotted”?** The name describes the straight slot that receives the screwdriver’s blade. Customers commonly call the matching tool a **flathead**—recognize both names. When discussing screws, keep drive type separate from head shape: “slotted” identifies where the tool engages, while “flat head” can describe the screw’s outer head shape. [Sources 6 and 7]\n\nThese are starting clues. Unfamiliar, combination, or specialty drives need closer identification before you choose a tool.\n\n**Recommended action:** Check the screw package or manufacturer information for the specified drive type and size. Then match that designation to the screwdriver’s marking. Shape identifies the family; it does not establish the size.\n\nFor example, Phillips screwdrivers come in different tip sizes. Choosing “a Phillips” is only the first step. Klein Tools advises matching both screwdriver type and size to the screw. [Source 1]\n\n**Common mistake:** Choosing by handle size or shaft length. A longer screwdriver does not necessarily have a larger tip. Read the tip designation.\n\n**When to verify or seek help:** If a tip will not seat properly or slips, stop and recheck the type, size, and condition rather than forcing it. Ask a knowledgeable coworker when the drive is unfamiliar or damaged.\n\nSome cross-shaped drives, including Phillips and Pozidriv, have separate tool designations. Likewise, do not assume every star-like recess uses the same driver. Verify the exact designation. [Sources 3 and 5]"
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer is assembling a cabinet by hand. The screw package specifies **“Phillips #2.”** They have found the Phillips screwdrivers but see several tip sizes and shaft lengths.\n\nThey ask which detail to match before choosing one."
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0005-Q01**\n\nWhich selection best matches the package specification?\n\nA. A Phillips screwdriver with the longest shaft\nB. A square-drive screwdriver marked #2\nC. A Phillips screwdriver with a #2 tip\nD. A Phillips screwdriver with the largest handle"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "Match **drive type + tip size**. Choose shaft length and handle features after establishing the correct tip."
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0005-Q01",
+      "wording": "Which selection best matches the package specification?",
+      "options": {
+        "A": "A Phillips screwdriver with the longest shaft",
+        "B": "A square-drive screwdriver marked #2",
+        "C": "A Phillips screwdriver with a #2 tip",
+        "D": "A Phillips screwdriver with the largest handle"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0005-Q01",
+      "correct_answer": "C",
+      "explanation": "“Phillips #2” identifies both the drive type and tip size. A square #2 is a different drive type. Shaft length and handle size do not establish the required tip designation.",
+      "teaching_reference": "Section 3, “Learn it,” opening rule, “Recommended action,” and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison of four screw recesses and their matching screwdriver tips. A second image could show different Phillips tip sizes with their markings.\n\n**Accessibility description for proposed media:** “Four labeled screw recesses appear beside matching tips: a straight slot and flat blade; a Phillips cross and Phillips tip; a square recess and square tip; and a six-lobed TORX recess and matching tip.” Keep the recognition table available as text; do not rely on color.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Klein Tools/Hand Tools Institute, [Proper Use and Care of Hand Tools](https://data.kleintools.com/sites/all/product_assets/documents/brochures/klein/KleinTools_Proper-Use-and-Care-of-Hand-Tools_98016.pdf): Screwdriver section: matching screwdriver type and size, proper fit, and avoiding misuse.\n- [Source 2] Wera, [350 PH Screwdriver for Phillips Screws](https://www.wera.de/en/tools/350-ph-screwdriver-for-phillips-screws): Phillips cross-recess terminology.\n- [Source 3] Wera, [83 Combination Blade for Phillips/Pozidriv Screws](https://www.wera.de/en/tools/83-combination-blade-for-phillips-pozidriv-screws): Separate Phillips and Pozidriv designations.\n- [Source 4] Klein Tools, [#2 Square Screwdriver](https://www.kleintools.com/catalog/fixed-blade-screwdrivers/2-square-screwdriver-4-inch-round-shank): Square-recess tip terminology and sizing.\n- [Source 5] TORX Products, [Frequently Asked Questions](https://torxproducts.com/faq/): Distinction between the TORX designation and generic star/six-lobe descriptions.\n- [Source 6] Klein Tools, [Slotted Screw Holding Driver, 3/16-Inch — 6013K](https://www.kleintools.com/catalog/fixed-blade-screwdrivers/slotted-screw-holding-driver-316-inch): Manufacturer terminology connects a slotted screwdriver blade to the screw slot.\n- [Source 7] ASME, [B18.6.3-2013 — public preview](https://www.asme.org/getmedia/c0cd5b72-b6a7-4cf2-871f-08f3ec78cbe3/35224.pdf): Public contents distinguish slotted drives and flat countersunk head shapes. Historical terminology evidence, not a current compliance claim or attribution of the name to an inventor.\n\n**Verification needs:** Check any proposed visual against the exact drive geometry it represents. The cabinet scenario and package wording are fictional; they do not describe a particular manufacturer’s product.\n\nAll teaching and assessment wording is independently authored. No manufacturer illustrations or proprietary assessments are included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Where do our screwdriver packages show tip type and size, and which markings might confuse a first-time customer?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a hand-tool subject-matter reviewer check drive descriptions and fit guidance.\n- Confirm terminology against participating stores’ assortments.\n- If media is added, verify geometry, labels, accessibility descriptions, and usage rights.\n- Keep powered driving, damaged-screw removal, and electrical work for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Klein Tools/Hand Tools Institute",
+      "title": "Proper Use and Care of Hand Tools",
+      "url": "https://data.kleintools.com/sites/all/product_assets/documents/brochures/klein/KleinTools_Proper-Use-and-Care-of-Hand-Tools_98016.pdf",
+      "supports": "Screwdriver section: matching screwdriver type and size, proper fit, and avoiding misuse.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "Wera",
+      "title": "350 PH Screwdriver for Phillips Screws",
+      "url": "https://www.wera.de/en/tools/350-ph-screwdriver-for-phillips-screws",
+      "supports": "Phillips cross-recess terminology.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "Wera",
+      "title": "83 Combination Blade for Phillips/Pozidriv Screws",
+      "url": "https://www.wera.de/en/tools/83-combination-blade-for-phillips-pozidriv-screws",
+      "supports": "Separate Phillips and Pozidriv designations.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 4",
+      "publisher": "Klein Tools",
+      "title": "#2 Square Screwdriver",
+      "url": "https://www.kleintools.com/catalog/fixed-blade-screwdrivers/2-square-screwdriver-4-inch-round-shank",
+      "supports": "Square-recess tip terminology and sizing.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 5",
+      "publisher": "TORX Products",
+      "title": "Frequently Asked Questions",
+      "url": "https://torxproducts.com/faq/",
+      "supports": "Distinction between the TORX designation and generic star/six-lobe descriptions.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 6",
+      "publisher": "Klein Tools",
+      "title": "Slotted Screw Holding Driver, 3/16-Inch — 6013K",
+      "url": "https://www.kleintools.com/catalog/fixed-blade-screwdrivers/slotted-screw-holding-driver-316-inch",
+      "supports": "Manufacturer terminology connects a slotted screwdriver blade to the screw slot.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 7",
+      "publisher": "ASME",
+      "title": "B18.6.3-2013 — public preview",
+      "url": "https://www.asme.org/getmedia/c0cd5b72-b6a7-4cf2-871f-08f3ec78cbe3/35224.pdf",
+      "supports": "Public contents distinguish slotted drives and flat countersunk head shapes. Historical terminology evidence, not a current compliance claim or attribution of the name to an inventor.",
+      "checked": "2026-10-19"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a hand-tool subject-matter reviewer check drive descriptions and fit guidance.",
+    "Confirm terminology against participating stores’ assortments.",
+    "If media is added, verify geometry, labels, accessibility descriptions, and usage rights.",
+    "Keep powered driving, damaged-screw removal, and electrical work for separate modules."
+  ],
+  "complete_markdown": "# CD-0005 — Match the Screwdriver to the Screw\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0005 |\n| Title | Match the Screwdriver to the Screw |\n| Academy | Hand Tools & Fasteners |\n| Skill level | Foundations |\n| Relevant departments | Hand tools; fasteners; hardware |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | screwdriver, screw drive, slotted, flathead, flat-blade, Phillips, square, TORX, tip size, fit |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nMatch common screw-drive shapes to the corresponding hand screwdriver and recognize when tip size still needs confirmation.\n\n### 2. Why it matters\n\nA screwdriver can look close to the right choice without fitting correctly. Matching both drive type and tip size helps reduce slipping and damage to the screw or tool.\n\n### 3. Learn it\n\n**Match the drive shape first, then confirm the tip size.** The drive is the slot or recess where the screwdriver engages—not the screw head’s outer shape.\n\nStart with these common patterns:\n\n| Drive type | Recognition clue | Matching hand tool |\n|---|---|---|\n| **Slotted** | One straight slot across the screw head | Slotted screwdriver, commonly called a **flathead**, **flathead screwdriver**, or **flat-blade screwdriver** |\n| **Phillips** | A cross-shaped recess | Phillips screwdriver |\n| **Square** | A square recess | Square-drive screwdriver |\n| **TORX** | A six-lobed, star-like recess | Correctly sized TORX screwdriver |\n\n**Why “slotted”?** The name describes the straight slot that receives the screwdriver’s blade. Customers commonly call the matching tool a **flathead**—recognize both names. When discussing screws, keep drive type separate from head shape: “slotted” identifies where the tool engages, while “flat head” can describe the screw’s outer head shape. [Sources 6 and 7]\n\nThese are starting clues. Unfamiliar, combination, or specialty drives need closer identification before you choose a tool.\n\n**Recommended action:** Check the screw package or manufacturer information for the specified drive type and size. Then match that designation to the screwdriver’s marking. Shape identifies the family; it does not establish the size.\n\nFor example, Phillips screwdrivers come in different tip sizes. Choosing “a Phillips” is only the first step. Klein Tools advises matching both screwdriver type and size to the screw. [Source 1]\n\n**Common mistake:** Choosing by handle size or shaft length. A longer screwdriver does not necessarily have a larger tip. Read the tip designation.\n\n**When to verify or seek help:** If a tip will not seat properly or slips, stop and recheck the type, size, and condition rather than forcing it. Ask a knowledgeable coworker when the drive is unfamiliar or damaged.\n\nSome cross-shaped drives, including Phillips and Pozidriv, have separate tool designations. Likewise, do not assume every star-like recess uses the same driver. Verify the exact designation. [Sources 3 and 5]\n\n### 4. Customer scenario\n\nA customer is assembling a cabinet by hand. The screw package specifies **“Phillips #2.”** They have found the Phillips screwdrivers but see several tip sizes and shaft lengths.\n\nThey ask which detail to match before choosing one.\n\n### 5. Quick check\n\n**Question ID: CD-0005-Q01**\n\nWhich selection best matches the package specification?\n\nA. A Phillips screwdriver with the longest shaft\nB. A square-drive screwdriver marked #2\nC. A Phillips screwdriver with a #2 tip\nD. A Phillips screwdriver with the largest handle\n\n### 6. Take it to the floor\n\nMatch **drive type + tip size**. Choose shaft length and handle features after establishing the correct tip.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0005-Q01\n- **Correct answer:** C. A Phillips screwdriver with a #2 tip\n- **Explanation:** “Phillips #2” identifies both the drive type and tip size. A square #2 is a different drive type. Shaft length and handle size do not establish the required tip designation.\n- **Teaching reference:** Section 3, “Learn it,” opening rule, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison of four screw recesses and their matching screwdriver tips. A second image could show different Phillips tip sizes with their markings.\n\n**Accessibility description for proposed media:** “Four labeled screw recesses appear beside matching tips: a straight slot and flat blade; a Phillips cross and Phillips tip; a square recess and square tip; and a six-lobed TORX recess and matching tip.” Keep the recognition table available as text; do not rely on color.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Klein Tools/Hand Tools Institute, [Proper Use and Care of Hand Tools](https://data.kleintools.com/sites/all/product_assets/documents/brochures/klein/KleinTools_Proper-Use-and-Care-of-Hand-Tools_98016.pdf): Screwdriver section: matching screwdriver type and size, proper fit, and avoiding misuse.\n- [Source 2] Wera, [350 PH Screwdriver for Phillips Screws](https://www.wera.de/en/tools/350-ph-screwdriver-for-phillips-screws): Phillips cross-recess terminology.\n- [Source 3] Wera, [83 Combination Blade for Phillips/Pozidriv Screws](https://www.wera.de/en/tools/83-combination-blade-for-phillips-pozidriv-screws): Separate Phillips and Pozidriv designations.\n- [Source 4] Klein Tools, [#2 Square Screwdriver](https://www.kleintools.com/catalog/fixed-blade-screwdrivers/2-square-screwdriver-4-inch-round-shank): Square-recess tip terminology and sizing.\n- [Source 5] TORX Products, [Frequently Asked Questions](https://torxproducts.com/faq/): Distinction between the TORX designation and generic star/six-lobe descriptions.\n- [Source 6] Klein Tools, [Slotted Screw Holding Driver, 3/16-Inch — 6013K](https://www.kleintools.com/catalog/fixed-blade-screwdrivers/slotted-screw-holding-driver-316-inch): Manufacturer terminology connects a slotted screwdriver blade to the screw slot.\n- [Source 7] ASME, [B18.6.3-2013 — public preview](https://www.asme.org/getmedia/c0cd5b72-b6a7-4cf2-871f-08f3ec78cbe3/35224.pdf): Public contents distinguish slotted drives and flat countersunk head shapes. Historical terminology evidence, not a current compliance claim or attribution of the name to an inventor.\n\n**Verification needs:** Check any proposed visual against the exact drive geometry it represents. The cabinet scenario and package wording are fictional; they do not describe a particular manufacturer’s product.\n\nAll teaching and assessment wording is independently authored. No manufacturer illustrations or proprietary assessments are included.\n\n### 8. Optional manager discussion prompt\n\nWhere do our screwdriver packages show tip type and size, and which markings might confuse a first-time customer?\n\n### 9. Review needs\n\n- Have a hand-tool subject-matter reviewer check drive descriptions and fit guidance.\n- Confirm terminology against participating stores’ assortments.\n- If media is added, verify geometry, labels, accessibility descriptions, and usage rights.\n- Keep powered driving, damaged-screw removal, and electrical work for separate modules.\n"
+}

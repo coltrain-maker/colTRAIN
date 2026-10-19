@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0008",
+    "Title": "Weatherstripping or Door Sweep?",
+    "Academy": "Building & Home Maintenance",
+    "Skill level": "Foundations",
+    "Relevant departments": "Hardware; weatherization; doors and windows",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "weatherstripping, door sweep, door seal, drafts, threshold, door bottom, air sealing",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-19",
+    "publication_status": "not published",
+    "note": "User content approval does not resolve listed technical and store-specific review needs."
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Distinguish the basic sealing locations served by door-frame weatherstripping and door sweeps."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "A customer asking for “something to stop a door draft” may need help identifying where air is getting through. Starting with the gap’s location helps you guide them toward the right product category."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Ask where the gap is before choosing a seal.** For a typical swinging exterior door, separate the top and sides from the bottom.\n\n| Gap location | Product category to investigate | Basic purpose |\n|---|---|---|\n| Between the closed door and its frame at the top or sides | Door-frame weatherstripping | Forms a seal where the door meets the frame |\n| Beneath the door | Door sweep or another compatible door-bottom seal | Helps seal the gap along the bottom edge |\n\nDoor sweeps are part of the broader weatherstripping family. In a customer conversation, “frame weatherstripping” and “door sweep” help distinguish their locations. Building guidance identifies perimeter weatherstripping at the top and sides and a sweep along the bottom. [Source 1]\n\n**Recommended action:** Ask, “Is the draft coming around the top or sides, or underneath?” Then ask about the existing seal and request a clear photo or product information when needed.\n\n**Common mistake:** Treating every draft as a reason to add more material. Weatherstripping should seal when the door closes while still allowing the door to operate properly. A product that prevents normal closing is not a successful match. [Source 2]\n\nLocation narrows the search; it does not identify the exact replacement. Door construction, the existing attachment method, gap size, and the threshold—the piece beneath the doorway—can affect the choice.\n\n**When to verify or seek help:** Check the seal manufacturer’s fit and installation information before recommending a specific product. If the door rubs, sags, or will not latch, avoid promising that a new seal will fix it. Ask a knowledgeable coworker or refer the customer to a door professional when the cause remains unclear."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer says the flexible sealing strip along the latch side of their exterior door is torn. They want to replace that strip.\n\nThey ask which aisle category to start with."
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0008-Q01**\n\nWhich category should you investigate first?\n\nA. Door sweeps for the bottom edge\nB. Door-frame weatherstripping for the sides and top\nC. Replacement thresholds beneath the doorway\nD. Door-bottom shoes that fit around the lower edge"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "Start with **“around the frame or underneath?”** Then verify the exact seal and fit."
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0008-Q01",
+      "wording": "Which category should you investigate first?",
+      "options": {
+        "A": "Door sweeps for the bottom edge",
+        "B": "Door-frame weatherstripping for the sides and top",
+        "C": "Replacement thresholds beneath the doorway",
+        "D": "Door-bottom shoes that fit around the lower edge"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0008-Q01",
+      "correct_answer": "B",
+      "explanation": "The damaged strip is at the latch side, where the door meets its frame. Frame weatherstripping is the appropriate starting category. Sweeps, thresholds, and door-bottom shoes address the bottom area. The exact replacement still requires verification.",
+      "teaching_reference": "Section 3, “Learn it,” gap-location table and “Recommended action.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created diagram of a closed swinging exterior door, labeling top-and-side frame weatherstripping separately from a bottom sweep.\n\n**Accessibility description for proposed media:** “A closed exterior door has labels pointing to weatherstripping along the top and both sides. A separate label identifies a door sweep along the bottom edge and the threshold beneath the doorway.” Keep the location table available as text; do not rely on color alone.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Pacific Northwest National Laboratory, Building America Solution Center, [Air Sealing Doors Adjacent to Unconditioned Space](https://basc.pnnl.gov/resource-guides/air-sealing-doors-adjacent-unconditioned-space): Top-and-side perimeter weatherstripping and bottom door sweep.\n- [Source 2] Virginia Cooperative Extension, [ENERGY SERIES: What about Caulking and Weather-Stripping?](https://www.pubs.ext.vt.edu/content/pubs_ext_vt_edu/en/2908/2908-9017/2908-9017.html): Sections “What about weather-stripping?” and “Doors”: sealing locations, door-bottom product categories, and maintaining proper door operation.\n\n**Verification needs:** Confirm the specific product’s intended location, attachment method, fit range, and door compatibility before adding a product example. No universal gap allowance or installation method is prescribed.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "How are frame weatherstripping and door-bottom seals labeled and organized in our store?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a hardware or building-maintenance subject-matter reviewer check terminology and referral wording.\n- Confirm product-category names against participating stores’ assortments.\n- If media is added, verify labels, accessibility descriptions, and usage rights.\n- Keep installation, door adjustment, specialty door requirements, and water-entry diagnosis for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Pacific Northwest National Laboratory, Building America Solution Center",
+      "title": "Air Sealing Doors Adjacent to Unconditioned Space",
+      "url": "https://basc.pnnl.gov/resource-guides/air-sealing-doors-adjacent-unconditioned-space",
+      "supports": "Top-and-side perimeter weatherstripping and bottom door sweep.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "Virginia Cooperative Extension",
+      "title": "ENERGY SERIES: What about Caulking and Weather-Stripping?",
+      "url": "https://www.pubs.ext.vt.edu/content/pubs_ext_vt_edu/en/2908/2908-9017/2908-9017.html",
+      "supports": "Sections “What about weather-stripping?” and “Doors”: sealing locations, door-bottom product categories, and maintaining proper door operation.",
+      "checked": "2026-10-19"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a hardware or building-maintenance subject-matter reviewer check terminology and referral wording.",
+    "Confirm product-category names against participating stores’ assortments.",
+    "If media is added, verify labels, accessibility descriptions, and usage rights.",
+    "Keep installation, door adjustment, specialty door requirements, and water-entry diagnosis for separate modules."
+  ],
+  "complete_markdown": "# CD-0008 — Weatherstripping or Door Sweep?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0008 |\n| Title | Weatherstripping or Door Sweep? |\n| Academy | Building & Home Maintenance |\n| Skill level | Foundations |\n| Relevant departments | Hardware; weatherization; doors and windows |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | weatherstripping, door sweep, door seal, drafts, threshold, door bottom, air sealing |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish the basic sealing locations served by door-frame weatherstripping and door sweeps.\n\n### 2. Why it matters\n\nA customer asking for “something to stop a door draft” may need help identifying where air is getting through. Starting with the gap’s location helps you guide them toward the right product category.\n\n### 3. Learn it\n\n**Ask where the gap is before choosing a seal.** For a typical swinging exterior door, separate the top and sides from the bottom.\n\n| Gap location | Product category to investigate | Basic purpose |\n|---|---|---|\n| Between the closed door and its frame at the top or sides | Door-frame weatherstripping | Forms a seal where the door meets the frame |\n| Beneath the door | Door sweep or another compatible door-bottom seal | Helps seal the gap along the bottom edge |\n\nDoor sweeps are part of the broader weatherstripping family. In a customer conversation, “frame weatherstripping” and “door sweep” help distinguish their locations. Building guidance identifies perimeter weatherstripping at the top and sides and a sweep along the bottom. [Source 1]\n\n**Recommended action:** Ask, “Is the draft coming around the top or sides, or underneath?” Then ask about the existing seal and request a clear photo or product information when needed.\n\n**Common mistake:** Treating every draft as a reason to add more material. Weatherstripping should seal when the door closes while still allowing the door to operate properly. A product that prevents normal closing is not a successful match. [Source 2]\n\nLocation narrows the search; it does not identify the exact replacement. Door construction, the existing attachment method, gap size, and the threshold—the piece beneath the doorway—can affect the choice.\n\n**When to verify or seek help:** Check the seal manufacturer’s fit and installation information before recommending a specific product. If the door rubs, sags, or will not latch, avoid promising that a new seal will fix it. Ask a knowledgeable coworker or refer the customer to a door professional when the cause remains unclear.\n\n### 4. Customer scenario\n\nA customer says the flexible sealing strip along the latch side of their exterior door is torn. They want to replace that strip.\n\nThey ask which aisle category to start with.\n\n### 5. Quick check\n\n**Question ID: CD-0008-Q01**\n\nWhich category should you investigate first?\n\nA. Door sweeps for the bottom edge\nB. Door-frame weatherstripping for the sides and top\nC. Replacement thresholds beneath the doorway\nD. Door-bottom shoes that fit around the lower edge\n\n### 6. Take it to the floor\n\nStart with **“around the frame or underneath?”** Then verify the exact seal and fit.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0008-Q01\n- **Correct answer:** B. Door-frame weatherstripping for the sides and top\n- **Explanation:** The damaged strip is at the latch side, where the door meets its frame. Frame weatherstripping is the appropriate starting category. Sweeps, thresholds, and door-bottom shoes address the bottom area. The exact replacement still requires verification.\n- **Teaching reference:** Section 3, “Learn it,” gap-location table and “Recommended action.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created diagram of a closed swinging exterior door, labeling top-and-side frame weatherstripping separately from a bottom sweep.\n\n**Accessibility description for proposed media:** “A closed exterior door has labels pointing to weatherstripping along the top and both sides. A separate label identifies a door sweep along the bottom edge and the threshold beneath the doorway.” Keep the location table available as text; do not rely on color alone.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Pacific Northwest National Laboratory, Building America Solution Center, [Air Sealing Doors Adjacent to Unconditioned Space](https://basc.pnnl.gov/resource-guides/air-sealing-doors-adjacent-unconditioned-space): Top-and-side perimeter weatherstripping and bottom door sweep.\n- [Source 2] Virginia Cooperative Extension, [ENERGY SERIES: What about Caulking and Weather-Stripping?](https://www.pubs.ext.vt.edu/content/pubs_ext_vt_edu/en/2908/2908-9017/2908-9017.html): Sections “What about weather-stripping?” and “Doors”: sealing locations, door-bottom product categories, and maintaining proper door operation.\n\n**Verification needs:** Confirm the specific product’s intended location, attachment method, fit range, and door compatibility before adding a product example. No universal gap allowance or installation method is prescribed.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nHow are frame weatherstripping and door-bottom seals labeled and organized in our store?\n\n### 9. Review needs\n\n- Have a hardware or building-maintenance subject-matter reviewer check terminology and referral wording.\n- Confirm product-category names against participating stores’ assortments.\n- If media is added, verify labels, accessibility descriptions, and usage rights.\n- Keep installation, door adjustment, specialty door requirements, and water-entry diagnosis for separate modules.\n"
+}

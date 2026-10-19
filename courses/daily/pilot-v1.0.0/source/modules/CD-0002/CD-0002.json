@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0002",
+    "Title": "Name the Plumbing Connection",
+    "Academy": "Plumbing",
+    "Skill level": "Foundations",
+    "Relevant departments": "Plumbing; sink drains; pipe and fittings",
+    "Estimated completion time": "5 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "plumbing, connections, threaded, slip joint, solvent weld, push-to-connect, fittings",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-19",
+    "publication_status": "not published",
+    "note": "User content approval does not resolve the listed technical and store-specific review needs."
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Distinguish four common plumbing connection types using their joining features, without assuming that similar-looking parts are compatible."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "A customer may call every connection that turns a “screw-on fitting.” Recognizing how the connection actually joins helps you ask better questions before selecting a replacement."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "Start with **how the parts join**, rather than the fitting’s color or overall shape.\n\n| Connection type | Recognition clue |\n|---|---|\n| **Threaded pipe connection** | External threads on one part screw into matching internal threads on another. |\n| **Slip joint** | Common on tubular sink drains: a nut tightens around a tube, with a washer providing the seal. |\n| **Solvent weld** | A plastic pipe fits into a socket designed for joining with the appropriate solvent cement. |\n| **Push-to-connect** | A compatible pipe pushes into a fitting with an internal gripping and sealing mechanism. |\n\nThreaded pipe connections and solvent-welded connections use different joining methods. Solvent welding chemically joins compatible plastic surfaces; it is not simply a friction fit. [Source 1]\n\n**Recommended action:** Identify the connection at **each end**. One adapter can have a slip-joint connection at one end and a solvent-weld socket at the other. Naming one end does not describe the entire fitting. [Source 2]\n\n**Common mistake:** Seeing threads on a slip-joint nut and treating it as a threaded pipe connection. Look at the whole assembly: the tube, nut, and sealing washer.\n\nPush-to-connect fittings may hide their working parts. For example, SharkBite describes an internal grab ring that holds the pipe and an O-ring that seals it. Do not assume every push fitting accepts the same pipe materials. [Source 3]\n\n**When to verify or seek help:** Before recommending a replacement, confirm pipe material, size, connection type, and intended use against the specific product’s instructions. A smooth socket alone does not prove that a fitting is intended for solvent welding. If identification remains uncertain, ask a knowledgeable coworker or manufacturer representative."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer brings in a loose nut and washer from beneath a bathroom sink. Their photo shows a smooth drain tube passing through the nut into another fitting.\n\nThey ask, “What kind of connection should I look for?”"
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0002-Q01**\n\nWhich connection type best matches the assembly shown and described?\n\nA. Slip joint\nB. Threaded pipe connection\nC. Solvent weld\nD. Push-to-connect"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "Name the connection at each end before matching the replacement. Connection type is one part of the match—not proof of compatibility."
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0002-Q01",
+      "wording": "Which connection type best matches the assembly shown and described?",
+      "options": {
+        "A": "Slip joint",
+        "B": "Threaded pipe connection",
+        "C": "Solvent weld",
+        "D": "Push-to-connect"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0002-Q01",
+      "correct_answer": "A",
+      "explanation": "A smooth tubular sink drain passing through a nut with a sealing washer identifies a slip-joint assembly. The nut has threads, but the tube itself is not screwed into matching pipe threads. The described assembly does not use a solvent-weld socket or an internal push-to-connect gripping mechanism.",
+      "teaching_reference": "Section 3, “Learn it,” connection table and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** Four independently photographed, uninstalled example connections, with both ends visible where applicable. An exploded slip-joint example would help distinguish its nut, washer, and tube.\n\n**Accessibility description for proposed media:** “Four labeled connection examples: mating internal and external pipe threads; a tubular drain with a separate nut and washer; a plastic solvent-weld socket; and a push-to-connect fitting. The slip-joint example labels the tube, nut, and washer.” Provide the recognition table as text; do not rely on color alone.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Oatey, [Complete Guide to Pipe Fittings](https://www.oatey.com/faqs-blog-videos-case-studies/blog/complete-guide-pipe-fittings): Threaded connections and solvent-welding principles. Used only for these high-level distinctions.\n- [Source 2] Oatey, [Plastic Trap Adapter, HDC9000A](https://www.oatey.com/products/p_038753005386/oatey-plastic-trap-adapter): Documents a slip-joint inlet, nut and washer, and solvent-weld outlet on one adapter.\n- [Source 3] SharkBite, [See What’s Inside a SharkBite Push-to-Connect Fitting](https://www.sharkbite.com/us/en/resources/blog/service-and-repair/fitting-tips-guides/see-whats-inside-a-sharkbite-push-to-connect-fitting): Internal gripping and sealing components for the manufacturer’s described design.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n**Verification needs:** Any product examples added later must be checked against their exact manufacturer documentation. This module does not specify installation procedures, sealants, cure times, pressure ratings, or approved applications."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Which fittings in our assortment have different connection types at opposite ends?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a plumbing subject-matter reviewer confirm the recognition clues and scenario.\n- Confirm terminology against participating stores’ assortments.\n- If photographs are added, verify that each example clearly shows the intended connection.\n- Keep this module focused on identification; compatibility and installation require additional product-specific information."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Oatey",
+      "title": "Complete Guide to Pipe Fittings",
+      "url": "https://www.oatey.com/faqs-blog-videos-case-studies/blog/complete-guide-pipe-fittings",
+      "supports": "Threaded connections and solvent-welding principles. Used only for these high-level distinctions.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "Oatey",
+      "title": "Plastic Trap Adapter, HDC9000A",
+      "url": "https://www.oatey.com/products/p_038753005386/oatey-plastic-trap-adapter",
+      "supports": "Documents a slip-joint inlet, nut and washer, and solvent-weld outlet on one adapter.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "SharkBite",
+      "title": "See What’s Inside a SharkBite Push-to-Connect Fitting",
+      "url": "https://www.sharkbite.com/us/en/resources/blog/service-and-repair/fitting-tips-guides/see-whats-inside-a-sharkbite-push-to-connect-fitting",
+      "supports": "Internal gripping and sealing components for the manufacturer’s described design.",
+      "checked": "2026-10-19"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a plumbing subject-matter reviewer confirm the recognition clues and scenario.",
+    "Confirm terminology against participating stores’ assortments.",
+    "If photographs are added, verify that each example clearly shows the intended connection.",
+    "Keep this module focused on identification; compatibility and installation require additional product-specific information."
+  ],
+  "complete_markdown": "# CD-0002 — Name the Plumbing Connection\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0002 |\n| Title | Name the Plumbing Connection |\n| Academy | Plumbing |\n| Skill level | Foundations |\n| Relevant departments | Plumbing; sink drains; pipe and fittings |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | plumbing, connections, threaded, slip joint, solvent weld, push-to-connect, fittings |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish four common plumbing connection types using their joining features, without assuming that similar-looking parts are compatible.\n\n### 2. Why it matters\n\nA customer may call every connection that turns a “screw-on fitting.” Recognizing how the connection actually joins helps you ask better questions before selecting a replacement.\n\n### 3. Learn it\n\nStart with **how the parts join**, rather than the fitting’s color or overall shape.\n\n| Connection type | Recognition clue |\n|---|---|\n| **Threaded pipe connection** | External threads on one part screw into matching internal threads on another. |\n| **Slip joint** | Common on tubular sink drains: a nut tightens around a tube, with a washer providing the seal. |\n| **Solvent weld** | A plastic pipe fits into a socket designed for joining with the appropriate solvent cement. |\n| **Push-to-connect** | A compatible pipe pushes into a fitting with an internal gripping and sealing mechanism. |\n\nThreaded pipe connections and solvent-welded connections use different joining methods. Solvent welding chemically joins compatible plastic surfaces; it is not simply a friction fit. [Source 1]\n\n**Recommended action:** Identify the connection at **each end**. One adapter can have a slip-joint connection at one end and a solvent-weld socket at the other. Naming one end does not describe the entire fitting. [Source 2]\n\n**Common mistake:** Seeing threads on a slip-joint nut and treating it as a threaded pipe connection. Look at the whole assembly: the tube, nut, and sealing washer.\n\nPush-to-connect fittings may hide their working parts. For example, SharkBite describes an internal grab ring that holds the pipe and an O-ring that seals it. Do not assume every push fitting accepts the same pipe materials. [Source 3]\n\n**When to verify or seek help:** Before recommending a replacement, confirm pipe material, size, connection type, and intended use against the specific product’s instructions. A smooth socket alone does not prove that a fitting is intended for solvent welding. If identification remains uncertain, ask a knowledgeable coworker or manufacturer representative.\n\n### 4. Customer scenario\n\nA customer brings in a loose nut and washer from beneath a bathroom sink. Their photo shows a smooth drain tube passing through the nut into another fitting.\n\nThey ask, “What kind of connection should I look for?”\n\n### 5. Quick check\n\n**Question ID: CD-0002-Q01**\n\nWhich connection type best matches the assembly shown and described?\n\nA. Slip joint\nB. Threaded pipe connection\nC. Solvent weld\nD. Push-to-connect\n\n### 6. Take it to the floor\n\nName the connection at each end before matching the replacement. Connection type is one part of the match—not proof of compatibility.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0002-Q01\n- **Correct answer:** A. Slip joint\n- **Explanation:** A smooth tubular sink drain passing through a nut with a sealing washer identifies a slip-joint assembly. The nut has threads, but the tube itself is not screwed into matching pipe threads. The described assembly does not use a solvent-weld socket or an internal push-to-connect gripping mechanism.\n- **Teaching reference:** Section 3, “Learn it,” connection table and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** Four independently photographed, uninstalled example connections, with both ends visible where applicable. An exploded slip-joint example would help distinguish its nut, washer, and tube.\n\n**Accessibility description for proposed media:** “Four labeled connection examples: mating internal and external pipe threads; a tubular drain with a separate nut and washer; a plastic solvent-weld socket; and a push-to-connect fitting. The slip-joint example labels the tube, nut, and washer.” Provide the recognition table as text; do not rely on color alone.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Oatey, [Complete Guide to Pipe Fittings](https://www.oatey.com/faqs-blog-videos-case-studies/blog/complete-guide-pipe-fittings): Threaded connections and solvent-welding principles. Used only for these high-level distinctions.\n- [Source 2] Oatey, [Plastic Trap Adapter, HDC9000A](https://www.oatey.com/products/p_038753005386/oatey-plastic-trap-adapter): Documents a slip-joint inlet, nut and washer, and solvent-weld outlet on one adapter.\n- [Source 3] SharkBite, [See What’s Inside a SharkBite Push-to-Connect Fitting](https://www.sharkbite.com/us/en/resources/blog/service-and-repair/fitting-tips-guides/see-whats-inside-a-sharkbite-push-to-connect-fitting): Internal gripping and sealing components for the manufacturer’s described design.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n**Verification needs:** Any product examples added later must be checked against their exact manufacturer documentation. This module does not specify installation procedures, sealants, cure times, pressure ratings, or approved applications.\n\n### 8. Optional manager discussion prompt\n\nWhich fittings in our assortment have different connection types at opposite ends?\n\n### 9. Review needs\n\n- Have a plumbing subject-matter reviewer confirm the recognition clues and scenario.\n- Confirm terminology against participating stores’ assortments.\n- If photographs are added, verify that each example clearly shows the intended connection.\n- Keep this module focused on identification; compatibility and installation require additional product-specific information.\n"
+}

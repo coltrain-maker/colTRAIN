@@ -1,0 +1,96 @@
+{
+  "package_version": "1.0.0",
+  "module_count": 10,
+  "modules": [
+    {
+      "module_id": "CD-0001",
+      "title": "Paint Sheen: Recognize the Finish",
+      "version": "0.1.0",
+      "academy": "Paint & Surface Care",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0001/CD-0001.md",
+      "json_file": "modules/CD-0001/CD-0001.json"
+    },
+    {
+      "module_id": "CD-0002",
+      "title": "Name the Plumbing Connection",
+      "version": "0.1.0",
+      "academy": "Plumbing",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0002/CD-0002.md",
+      "json_file": "modules/CD-0002/CD-0002.json"
+    },
+    {
+      "module_id": "CD-0003",
+      "title": "Amps, Volts, and Watts on a Label",
+      "version": "0.1.0",
+      "academy": "Electrical",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0003/CD-0003.md",
+      "json_file": "modules/CD-0003/CD-0003.json"
+    },
+    {
+      "module_id": "CD-0004",
+      "title": "Read an HVAC Filter Size",
+      "version": "0.2.0",
+      "academy": "HVAC",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0004/CD-0004.md",
+      "json_file": "modules/CD-0004/CD-0004.json"
+    },
+    {
+      "module_id": "CD-0005",
+      "title": "Match the Screwdriver to the Screw",
+      "version": "0.2.0",
+      "academy": "Hand Tools & Fasteners",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0005/CD-0005.md",
+      "json_file": "modules/CD-0005/CD-0005.json"
+    },
+    {
+      "module_id": "CD-0006",
+      "title": "Drill or Impact Driver?",
+      "version": "0.1.0",
+      "academy": "Power Tools & Accessories",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0006/CD-0006.md",
+      "json_file": "modules/CD-0006/CD-0006.json"
+    },
+    {
+      "module_id": "CD-0007",
+      "title": "Read a Fertilizer’s Three Numbers",
+      "version": "0.1.0",
+      "academy": "Lawn, Garden & Outdoor Equipment",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0007/CD-0007.md",
+      "json_file": "modules/CD-0007/CD-0007.json"
+    },
+    {
+      "module_id": "CD-0008",
+      "title": "Weatherstripping or Door Sweep?",
+      "version": "0.1.0",
+      "academy": "Building & Home Maintenance",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0008/CD-0008.md",
+      "json_file": "modules/CD-0008/CD-0008.json"
+    },
+    {
+      "module_id": "CD-0009",
+      "title": "Spot a Trip Hazard in the Aisle",
+      "version": "0.2.0",
+      "academy": "Customer Service & Retail Readiness",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0009/CD-0009.md",
+      "json_file": "modules/CD-0009/CD-0009.json"
+    },
+    {
+      "module_id": "CD-0010",
+      "title": "Write a Useful Shift Handoff",
+      "version": "0.2.0",
+      "academy": "Operations & Leadership",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0010/CD-0010.md",
+      "json_file": "modules/CD-0010/CD-0010.json"
+    }
+  ]
+}

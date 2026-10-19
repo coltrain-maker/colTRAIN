@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0001",
+    "Title": "Paint Sheen: Recognize the Finish",
+    "Academy": "Paint & Surface Care",
+    "Skill level": "Foundations",
+    "Relevant departments": "Paint; decorating; surface care",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "paint, sheen, finish, flat, matte, eggshell, satin, semi-gloss, gloss",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-19",
+    "publication_status": "not published",
+    "note": "User content approval does not resolve the listed technical and store-specific review needs."
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Distinguish common paint finishes by their relative shine and identify when to check the product’s sheen guide."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "Customers may choose a paint color without realizing they also need to choose a finish. Understanding sheen helps you explain how shiny the dried paint will look."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Sheen describes the shine of dried paint.** Color and sheen are separate choices: naming a color does not identify its finish.\n\nUse this general progression to explain common finish names:\n\n| Finish | General appearance |\n|---|---|\n| Flat or matte | Little to very little visible shine |\n| Eggshell | A soft, low shine |\n| Satin | More noticeable shine than eggshell |\n| Semi-gloss | A distinctly shiny finish |\n| Gloss or high-gloss | The shiniest end of the range |\n\nThis is a guide to relative appearance, not a universal measurement chart. Flat and matte can be separate finishes. Manufacturers may also use names such as pearl, low lustre, or soft gloss. Check the selected product’s guide before treating those names as equivalent. [Source 1]\n\n**Recommended action:** Ask, “How much shine would you like?” Then use the manufacturer’s finish guide or an available physical sheen sample to clarify the choices.\n\n**Common mistake:** Promising cleaning performance from the sheen name alone. The paint formulation also matters; some low-sheen products are designed for washability. Confirm the specific product’s claims before making that promise. [Source 2]\n\n**When to verify or seek help:** Check the product label, manufacturer’s guide, or technical data sheet when comparing unfamiliar finish names or answering performance questions. If the information does not resolve the question, ask a knowledgeable coworker or manufacturer representative."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer has selected a wall color. Within the same paint line, the store offers flat, eggshell, satin, and semi-gloss.\n\nThe customer says, “I want a little shine—more than flat, but less than satin.”"
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0001-Q01**\n\nWhich finish best matches the customer’s description?\n\nA. Semi-gloss\nB. Flat\nC. Eggshell\nD. Satin"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "Use finish names to explain relative shine. Use the specific product’s information to confirm performance."
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0001-Q01",
+      "wording": "Which finish best matches the customer’s description?",
+      "options": {
+        "A": "Semi-gloss",
+        "B": "Flat",
+        "C": "Eggshell",
+        "D": "Satin"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0001-Q01",
+      "correct_answer": "C",
+      "explanation": "Eggshell generally has a soft shine above flat and below satin. Flat does not provide the requested increase in shine; satin is the finish the customer wants less shine than; semi-gloss is farther toward the shiny end.",
+      "teaching_reference": "Section 3, “Learn it,” finish comparison table."
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None. This module works as text without images or video.\n\n**Suggested optional media:** An independently created finish comparison illustration or an authorized physical sheen sample.\n\n**Accessibility description for a proposed illustration:** “Five labeled paint finishes progress from little visible shine to high shine: flat or matte, eggshell, satin, semi-gloss, and gloss or high-gloss.” Keep the comparison table available as text; a screen image should not serve as an exact sheen reference.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Benjamin Moore, [Choosing an Interior Paint Finish: Sheen and Gloss 101](https://www.benjaminmoore.com/en-us/interior-exterior-paints-stains/how-to-advice/painting-101/choosing-paint-finish). Supports finish terminology and relative shine.\n- [Source 2] Sherwin-Williams, [Paint Gloss & Sheen Guide](https://www.sherwin-williams.com/architects-specifiers-designers/inspiration/styles-and-techniques/sw-art-gloss-sheen-differences). Supports the distinction between sheen and product performance, including washable low-sheen formulations.\n\nThe teaching and question are independently authored. No manufacturer or NHPA images, lessons, videos, or assessments are included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Which finish names on our shelves might need clarification before we compare them for a customer?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Confirm that the terminology fits the paint lines participating stores carry.\n- Have a paint subject-matter reviewer check the general sheen progression and performance wording.\n- If media is added, confirm usage rights and provide its final accessibility description.\n- The scenario assumes all four listed finishes are available within one paint line; no actual store assortment is asserted."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Benjamin Moore",
+      "title": "Choosing an Interior Paint Finish: Sheen and Gloss 101",
+      "url": "https://www.benjaminmoore.com/en-us/interior-exterior-paints-stains/how-to-advice/painting-101/choosing-paint-finish",
+      "checked": "2026-10-19",
+      "supports": "Finish terminology and relative shine."
+    },
+    {
+      "id": "Source 2",
+      "publisher": "Sherwin-Williams",
+      "title": "Paint Gloss & Sheen Guide",
+      "url": "https://www.sherwin-williams.com/architects-specifiers-designers/inspiration/styles-and-techniques/sw-art-gloss-sheen-differences",
+      "checked": "2026-10-19",
+      "supports": "The distinction between sheen and product performance, including washable low-sheen formulations."
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Confirm that the terminology fits the paint lines participating stores carry.",
+    "Have a paint subject-matter reviewer check the general sheen progression and performance wording.",
+    "If media is added, confirm usage rights and provide its final accessibility description.",
+    "The scenario assumes all four listed finishes are available within one paint line; no actual store assortment is asserted."
+  ],
+  "complete_markdown": "# CD-0001 — Paint Sheen: Recognize the Finish\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0001 |\n| Title | Paint Sheen: Recognize the Finish |\n| Academy | Paint & Surface Care |\n| Skill level | Foundations |\n| Relevant departments | Paint; decorating; surface care |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | paint, sheen, finish, flat, matte, eggshell, satin, semi-gloss, gloss |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish common paint finishes by their relative shine and identify when to check the product’s sheen guide.\n\n### 2. Why it matters\n\nCustomers may choose a paint color without realizing they also need to choose a finish. Understanding sheen helps you explain how shiny the dried paint will look.\n\n### 3. Learn it\n\n**Sheen describes the shine of dried paint.** Color and sheen are separate choices: naming a color does not identify its finish.\n\nUse this general progression to explain common finish names:\n\n| Finish | General appearance |\n|---|---|\n| Flat or matte | Little to very little visible shine |\n| Eggshell | A soft, low shine |\n| Satin | More noticeable shine than eggshell |\n| Semi-gloss | A distinctly shiny finish |\n| Gloss or high-gloss | The shiniest end of the range |\n\nThis is a guide to relative appearance, not a universal measurement chart. Flat and matte can be separate finishes. Manufacturers may also use names such as pearl, low lustre, or soft gloss. Check the selected product’s guide before treating those names as equivalent. [Source 1]\n\n**Recommended action:** Ask, “How much shine would you like?” Then use the manufacturer’s finish guide or an available physical sheen sample to clarify the choices.\n\n**Common mistake:** Promising cleaning performance from the sheen name alone. The paint formulation also matters; some low-sheen products are designed for washability. Confirm the specific product’s claims before making that promise. [Source 2]\n\n**When to verify or seek help:** Check the product label, manufacturer’s guide, or technical data sheet when comparing unfamiliar finish names or answering performance questions. If the information does not resolve the question, ask a knowledgeable coworker or manufacturer representative.\n\n### 4. Customer scenario\n\nA customer has selected a wall color. Within the same paint line, the store offers flat, eggshell, satin, and semi-gloss.\n\nThe customer says, “I want a little shine—more than flat, but less than satin.”\n\n### 5. Quick check\n\n**Question ID: CD-0001-Q01**\n\nWhich finish best matches the customer’s description?\n\nA. Semi-gloss\nB. Flat\nC. Eggshell\nD. Satin\n\n### 6. Take it to the floor\n\nUse finish names to explain relative shine. Use the specific product’s information to confirm performance.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — keep separate from employee-facing content\n\n- **Question ID:** CD-0001-Q01\n- **Correct answer:** C. Eggshell\n- **Explanation:** Eggshell generally has a soft shine above flat and below satin. Flat does not provide the requested increase in shine; satin is the finish the customer wants less shine than; semi-gloss is farther toward the shiny end.\n- **Teaching reference:** Section 3, “Learn it,” finish comparison table.\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None. This module works as text without images or video.\n\n**Suggested optional media:** An independently created finish comparison illustration or an authorized physical sheen sample.\n\n**Accessibility description for a proposed illustration:** “Five labeled paint finishes progress from little visible shine to high shine: flat or matte, eggshell, satin, semi-gloss, and gloss or high-gloss.” Keep the comparison table available as text; a screen image should not serve as an exact sheen reference.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Benjamin Moore, [Choosing an Interior Paint Finish: Sheen and Gloss 101](https://www.benjaminmoore.com/en-us/interior-exterior-paints-stains/how-to-advice/painting-101/choosing-paint-finish). Supports finish terminology and relative shine.\n- [Source 2] Sherwin-Williams, [Paint Gloss & Sheen Guide](https://www.sherwin-williams.com/architects-specifiers-designers/inspiration/styles-and-techniques/sw-art-gloss-sheen-differences). Supports the distinction between sheen and product performance, including washable low-sheen formulations.\n\nThe teaching and question are independently authored. No manufacturer or NHPA images, lessons, videos, or assessments are included.\n\n### 8. Optional manager discussion prompt\n\nWhich finish names on our shelves might need clarification before we compare them for a customer?\n\n### 9. Review needs\n\n- Confirm that the terminology fits the paint lines participating stores carry.\n- Have a paint subject-matter reviewer check the general sheen progression and performance wording.\n- If media is added, confirm usage rights and provide its final accessibility description.\n- The scenario assumes all four listed finishes are available within one paint line; no actual store assortment is asserted.\n"
+}

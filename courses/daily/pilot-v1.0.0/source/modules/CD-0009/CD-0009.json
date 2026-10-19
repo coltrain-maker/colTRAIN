@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0009",
+    "Title": "Spot a Trip Hazard in the Aisle",
+    "Academy": "Customer Service & Retail Readiness",
+    "Skill level": "Foundations",
+    "Relevant departments": "All sales-floor departments; receiving; checkout",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "RF-103 Store Safety Fundamentals",
+    "Search keywords": "store safety, trip hazard, aisle, obstruction, housekeeping, hazard reporting",
+    "Version": "0.2.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-19",
+    "publication_status": "not published",
+    "note": "User approved the revised workplace scenario. Approval does not resolve listed safety and store-specific review needs."
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Recognize an aisle trip hazard and select an immediate response that protects people while following store procedure."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "An ordinary stocking item can become a hazard when it enters someone’s walking path. Responding when you notice it helps protect customers and coworkers before someone trips."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Look at the walking path, not just the object.** An empty box may be harmless in its designated storage location but create a trip hazard in an aisle.\n\nCommon examples include loose packaging, cords across walkways, and clutter where people need to step. NIOSH recommends keeping walkways clear of these obstacles. [Source 1]\n\n**Recommended action:** When you spot a hazard, address people’s immediate exposure:\n\n- **If you can safely remove a simple obstruction within your training and store procedure,** move it to its designated location and check that the path is clear.\n- **If you cannot safely correct it immediately,** keep people away using the store’s hazard-control procedure and call for help. Do not leave the area unprotected while seeking assistance.\n\nOSHA’s workplace guidance requires hazardous walking surfaces to be corrected or, when correction cannot happen immediately, guarded against use. [Source 2]\n\n**Common mistake:** Assuming that reporting the problem means the hazard has been controlled. A message to a coworker does not remove an obstruction or prevent someone from walking into it.\n\nChoose a response that does not create another hazard. Moving a box into the next aisle simply relocates the problem. Avoid trying to move an unstable load or handling something unfamiliar just to clear the path quickly.\n\n**When to verify or seek help:** Ask for assistance when correction involves heavy or unstable items, damaged flooring, equipment, or an unknown substance. Follow the store’s instructions for barriers, reporting, and reopening the area. This lesson does not authorize repairs or unfamiliar cleanup work."
+    },
+    {
+      "heading": "4. Workplace scenario",
+      "content_markdown": "During stocking, employees are working near an empty cardboard box that extends into the customer aisle. The box is still in the walking path, and a customer is approaching it.\n\nThe box is light and safe for you to handle, and the designated cardboard collection area is nearby. No one has moved it yet."
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0009-Q01**\n\nWhat is the best immediate response?\n\nA. Message the stocker and continue helping customers while waiting.\nB. Move the box into the neighboring aisle so this customer can pass.\nC. Alert the approaching customer, safely remove the box to its designated area, and check that the path is clear.\nD. Tell the customer to step over the box until stocking is finished."
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "When you notice a trip hazard, think: **protect the path, correct it safely, or keep people away and get help.**"
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0009-Q01",
+      "wording": "What is the best immediate response?",
+      "options": {
+        "A": "Message the stocker and continue helping customers while waiting.",
+        "B": "Move the box into the neighboring aisle so this customer can pass.",
+        "C": "Alert the approaching customer, safely remove the box to its designated area, and check that the path is clear.",
+        "D": "Tell the customer to step over the box until stocking is finished."
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0009-Q01",
+      "correct_answer": "C",
+      "explanation": "The scenario establishes that the simple obstruction can be moved safely to a designated location. Alerting the customer and removing it addresses the immediate exposure. Reporting alone leaves the hazard present; moving it to another aisle relocates it; asking someone to step over it does not clear the path.",
+      "teaching_reference": "Section 3, “Learn it,” “Recommended action” and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently staged illustration of loose packaging extending into an aisle. Do not create an actual exposed hazard in an operating store for a photograph.\n\n**Accessibility description for proposed media:** “An empty cardboard box projects from a stocking area into the aisle’s walking path. A customer approaches from the opposite end.” Include the scenario as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] CDC/NIOSH, [Young Worker Slips, Trips, and Falls](https://www.cdc.gov/niosh/young-workers/slips-trips-falls/index.html): Walkway hazards, including cords, boxes, and clutter.\n- [Source 2] OSHA, [29 CFR 1910.22—General Requirements](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.22): Particularly paragraphs (a)(1), (a)(3), and (d)(2): orderly walking surfaces, hazard correction, and guarding when immediate correction is not possible.\n- [Source 3] CDC/NIOSH, [Preventing Slips, Trips, and Falls in Wholesale and Retail Trade Establishments](https://www.cdc.gov/niosh/publications/numbered/2013-100.html): Retail-specific prevention context.\n\n**Verification needs:** OSHA’s cited standard concerns employee walking-working surfaces. The customer scenario applies the same prevention principle; it does not claim to state customer-liability law. Participating stores must supply their actual hazard-control and reporting procedures.\n\nThe related full-course code was supplied by you. Its lesson content was not provided or reviewed. Completing this Daily module does not complete RF-103.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "How can an employee summon help while keeping people away from a hazard in our store?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a workplace-safety reviewer check the response sequence.\n- Confirm store-specific methods for guarding an area, obtaining help, reporting, and reopening.\n- Confirm designated locations for removed stocking materials.\n- If media is added, verify accessibility descriptions and usage rights.\n- Keep spill cleanup, lifting, incident response, and floor repairs for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "CDC/NIOSH",
+      "title": "Young Worker Slips, Trips, and Falls",
+      "url": "https://www.cdc.gov/niosh/young-workers/slips-trips-falls/index.html",
+      "supports": "Walkway hazards, including cords, boxes, and clutter.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "OSHA",
+      "title": "29 CFR 1910.22—General Requirements",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.22",
+      "supports": "Particularly paragraphs (a)(1), (a)(3), and (d)(2): orderly walking surfaces, hazard correction, and guarding when immediate correction is not possible.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "CDC/NIOSH",
+      "title": "Preventing Slips, Trips, and Falls in Wholesale and Retail Trade Establishments",
+      "url": "https://www.cdc.gov/niosh/publications/numbered/2013-100.html",
+      "supports": "Retail-specific prevention context.",
+      "checked": "2026-10-19"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a workplace-safety reviewer check the response sequence.",
+    "Confirm store-specific methods for guarding an area, obtaining help, reporting, and reopening.",
+    "Confirm designated locations for removed stocking materials.",
+    "If media is added, verify accessibility descriptions and usage rights.",
+    "Keep spill cleanup, lifting, incident response, and floor repairs for separate modules."
+  ],
+  "complete_markdown": "# CD-0009 — Spot a Trip Hazard in the Aisle\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0009 |\n| Title | Spot a Trip Hazard in the Aisle |\n| Academy | Customer Service & Retail Readiness |\n| Skill level | Foundations |\n| Relevant departments | All sales-floor departments; receiving; checkout |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | RF-103 Store Safety Fundamentals |\n| Search keywords | store safety, trip hazard, aisle, obstruction, housekeeping, hazard reporting |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nRecognize an aisle trip hazard and select an immediate response that protects people while following store procedure.\n\n### 2. Why it matters\n\nAn ordinary stocking item can become a hazard when it enters someone’s walking path. Responding when you notice it helps protect customers and coworkers before someone trips.\n\n### 3. Learn it\n\n**Look at the walking path, not just the object.** An empty box may be harmless in its designated storage location but create a trip hazard in an aisle.\n\nCommon examples include loose packaging, cords across walkways, and clutter where people need to step. NIOSH recommends keeping walkways clear of these obstacles. [Source 1]\n\n**Recommended action:** When you spot a hazard, address people’s immediate exposure:\n\n- **If you can safely remove a simple obstruction within your training and store procedure,** move it to its designated location and check that the path is clear.\n- **If you cannot safely correct it immediately,** keep people away using the store’s hazard-control procedure and call for help. Do not leave the area unprotected while seeking assistance.\n\nOSHA’s workplace guidance requires hazardous walking surfaces to be corrected or, when correction cannot happen immediately, guarded against use. [Source 2]\n\n**Common mistake:** Assuming that reporting the problem means the hazard has been controlled. A message to a coworker does not remove an obstruction or prevent someone from walking into it.\n\nChoose a response that does not create another hazard. Moving a box into the next aisle simply relocates the problem. Avoid trying to move an unstable load or handling something unfamiliar just to clear the path quickly.\n\n**When to verify or seek help:** Ask for assistance when correction involves heavy or unstable items, damaged flooring, equipment, or an unknown substance. Follow the store’s instructions for barriers, reporting, and reopening the area. This lesson does not authorize repairs or unfamiliar cleanup work.\n\n### 4. Workplace scenario\n\nDuring stocking, employees are working near an empty cardboard box that extends into the customer aisle. The box is still in the walking path, and a customer is approaching it.\n\nThe box is light and safe for you to handle, and the designated cardboard collection area is nearby. No one has moved it yet.\n\n### 5. Quick check\n\n**Question ID: CD-0009-Q01**\n\nWhat is the best immediate response?\n\nA. Message the stocker and continue helping customers while waiting.\nB. Move the box into the neighboring aisle so this customer can pass.\nC. Alert the approaching customer, safely remove the box to its designated area, and check that the path is clear.\nD. Tell the customer to step over the box until stocking is finished.\n\n### 6. Take it to the floor\n\nWhen you notice a trip hazard, think: **protect the path, correct it safely, or keep people away and get help.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0009-Q01\n- **Correct answer:** C. Alert the approaching customer, safely remove the box to its designated area, and check that the path is clear.\n- **Explanation:** The scenario establishes that the simple obstruction can be moved safely to a designated location. Alerting the customer and removing it addresses the immediate exposure. Reporting alone leaves the hazard present; moving it to another aisle relocates it; asking someone to step over it does not clear the path.\n- **Teaching reference:** Section 3, “Learn it,” “Recommended action” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently staged illustration of loose packaging extending into an aisle. Do not create an actual exposed hazard in an operating store for a photograph.\n\n**Accessibility description for proposed media:** “An empty cardboard box projects from a stocking area into the aisle’s walking path. A customer approaches from the opposite end.” Include the scenario as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] CDC/NIOSH, [Young Worker Slips, Trips, and Falls](https://www.cdc.gov/niosh/young-workers/slips-trips-falls/index.html): Walkway hazards, including cords, boxes, and clutter.\n- [Source 2] OSHA, [29 CFR 1910.22—General Requirements](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.22): Particularly paragraphs (a)(1), (a)(3), and (d)(2): orderly walking surfaces, hazard correction, and guarding when immediate correction is not possible.\n- [Source 3] CDC/NIOSH, [Preventing Slips, Trips, and Falls in Wholesale and Retail Trade Establishments](https://www.cdc.gov/niosh/publications/numbered/2013-100.html): Retail-specific prevention context.\n\n**Verification needs:** OSHA’s cited standard concerns employee walking-working surfaces. The customer scenario applies the same prevention principle; it does not claim to state customer-liability law. Participating stores must supply their actual hazard-control and reporting procedures.\n\nThe related full-course code was supplied by you. Its lesson content was not provided or reviewed. Completing this Daily module does not complete RF-103.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nHow can an employee summon help while keeping people away from a hazard in our store?\n\n### 9. Review needs\n\n- Have a workplace-safety reviewer check the response sequence.\n- Confirm store-specific methods for guarding an area, obtaining help, reporting, and reopening.\n- Confirm designated locations for removed stocking materials.\n- If media is added, verify accessibility descriptions and usage rights.\n- Keep spill cleanup, lifting, incident response, and floor repairs for separate modules.\n"
+}

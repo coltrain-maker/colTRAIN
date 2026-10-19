@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0003",
+    "Title": "Amps, Volts, and Watts on a Label",
+    "Academy": "Electrical",
+    "Skill level": "Foundations",
+    "Relevant departments": "Electrical; lighting; power tools; appliances",
+    "Estimated completion time": "5 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "amps, amperes, volts, watts, current, voltage, power, electrical label",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-19",
+    "publication_status": "not published",
+    "note": "User content approval does not resolve the listed technical and store-specific review needs."
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Identify which label markings describe voltage, electric current, and electrical power."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "Electrical labels can place several numbers close together. Knowing what each unit means helps you explain the label without confusing a product’s voltage with its current or power."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Read the unit beside the number.** The number alone does not tell you what is being measured.\n\n| Label marking | What it measures | Plain-language meaning |\n|---|---|---|\n| **V — volts** | Voltage | The electrical potential difference, sometimes described as electrical “push.” |\n| **A — amperes, or amps** | Electric current | The rate at which electric charge flows. |\n| **W — watts** | Power | The rate at which energy is transferred or used. |\n\nThese units describe different quantities. They are related, but their numbers are not interchangeable. [Sources 1 and 2]\n\n**Recommended action:** Read both the number and its unit aloud: “This marking says eight amps.” Then check the surrounding label text to understand what that rating describes.\n\nFor a device that uses an adapter, pay attention to **input** and **output**. Input describes what the device or adapter receives; output describes what it supplies. Do not combine numbers from different parts of a label.\n\n**Common mistake:** Calling every electrical number “wattage.” A number followed by **A** is an amperage marking, even when a wattage marking appears nearby.\n\nWatts also differ from **kilowatt-hours (kWh)**. Watts describe power; kilowatt-hours describe energy used over time. A wattage number alone does not tell you the total energy a customer will use. [Source 3]\n\n**When to verify or seek help:** If a marking is missing, unclear, or unfamiliar, check the exact model’s manufacturer instructions. Identifying these units does not establish that a cord, adapter, outlet, or circuit is suitable. Refer compatibility questions to the product documentation and unresolved wiring or circuit questions to a qualified electrician."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer shows you a product label with several electrical markings. One line reads **“Rated current: 8 A.”**\n\nThe customer asks, “What does that line tell me?”"
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0003-Q01**\n\nWhat does the **8 A** marking describe?\n\nA. The product’s rated voltage\nB. The product’s rated power\nC. The product’s energy use over eight hours\nD. The product’s rated electric current"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "Read the number, unit, and surrounding label text together before explaining an electrical rating."
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0003-Q01",
+      "wording": "What does the **8 A** marking describe?",
+      "options": {
+        "A": "The product’s rated voltage",
+        "B": "The product’s rated power",
+        "C": "The product’s energy use over eight hours",
+        "D": "The product’s rated electric current"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0003-Q01",
+      "correct_answer": "D",
+      "explanation": "A stands for amperes, commonly called amps, which measure electric current. Voltage is measured in volts, and power is measured in watts. The marking does not describe energy use over a period of time.",
+      "teaching_reference": "Section 3, “Learn it,” unit comparison table and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created example label with separate V, A, and W markings. Clearly label it “Illustrative example—not a product specification.”\n\n**Accessibility description for proposed media:** “An illustrative electrical label highlights three unit symbols: V for voltage, A for electric current, and W for power.” Supply every label marking as readable text; do not use color alone to distinguish units.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] NIST, [SP 330, Section 2](https://www.nist.gov/pml/special-publication-330/sp-330-section-2): Electrical quantities, unit names, and symbols.\n- [Source 2] NIST, [SI Units](https://www.nist.gov/pml/owm/metric-si/si-units): Ampere as the unit of electric current.\n- [Source 3] U.S. Energy Information Administration, [Measuring Electricity](https://www.eia.gov/energyexplained/electricity/measuring-electricity.php): Distinction between power in watts and energy in watt-hours or kilowatt-hours.\n\n**Verification needs:** The input/output paragraph needs confirmation against the exact manufacturer documentation if a real adapter example is added. The 8 A scenario is fictional and makes no claim about a specific product or its compatibility.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Which electrical labels in our assortment are hardest to explain, and what manufacturer reference helps clarify them?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have an electrical subject-matter reviewer check terminology and referral wording.\n- Confirm the input/output explanation against a manufacturer reference before publication.\n- If a real label is added, verify the model, every marking, and image usage rights.\n- Keep calculations, circuit sizing, and cord selection outside this module’s scope."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "NIST",
+      "title": "SP 330, Section 2",
+      "url": "https://www.nist.gov/pml/special-publication-330/sp-330-section-2",
+      "supports": "Electrical quantities, unit names, and symbols.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "NIST",
+      "title": "SI Units",
+      "url": "https://www.nist.gov/pml/owm/metric-si/si-units",
+      "supports": "Ampere as the unit of electric current.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "U.S. Energy Information Administration",
+      "title": "Measuring Electricity",
+      "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+      "supports": "Distinction between power in watts and energy in watt-hours or kilowatt-hours.",
+      "checked": "2026-10-19"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have an electrical subject-matter reviewer check terminology and referral wording.",
+    "Confirm the input/output explanation against a manufacturer reference before publication.",
+    "If a real label is added, verify the model, every marking, and image usage rights.",
+    "Keep calculations, circuit sizing, and cord selection outside this module’s scope."
+  ],
+  "complete_markdown": "# CD-0003 — Amps, Volts, and Watts on a Label\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0003 |\n| Title | Amps, Volts, and Watts on a Label |\n| Academy | Electrical |\n| Skill level | Foundations |\n| Relevant departments | Electrical; lighting; power tools; appliances |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | amps, amperes, volts, watts, current, voltage, power, electrical label |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nIdentify which label markings describe voltage, electric current, and electrical power.\n\n### 2. Why it matters\n\nElectrical labels can place several numbers close together. Knowing what each unit means helps you explain the label without confusing a product’s voltage with its current or power.\n\n### 3. Learn it\n\n**Read the unit beside the number.** The number alone does not tell you what is being measured.\n\n| Label marking | What it measures | Plain-language meaning |\n|---|---|---|\n| **V — volts** | Voltage | The electrical potential difference, sometimes described as electrical “push.” |\n| **A — amperes, or amps** | Electric current | The rate at which electric charge flows. |\n| **W — watts** | Power | The rate at which energy is transferred or used. |\n\nThese units describe different quantities. They are related, but their numbers are not interchangeable. [Sources 1 and 2]\n\n**Recommended action:** Read both the number and its unit aloud: “This marking says eight amps.” Then check the surrounding label text to understand what that rating describes.\n\nFor a device that uses an adapter, pay attention to **input** and **output**. Input describes what the device or adapter receives; output describes what it supplies. Do not combine numbers from different parts of a label.\n\n**Common mistake:** Calling every electrical number “wattage.” A number followed by **A** is an amperage marking, even when a wattage marking appears nearby.\n\nWatts also differ from **kilowatt-hours (kWh)**. Watts describe power; kilowatt-hours describe energy used over time. A wattage number alone does not tell you the total energy a customer will use. [Source 3]\n\n**When to verify or seek help:** If a marking is missing, unclear, or unfamiliar, check the exact model’s manufacturer instructions. Identifying these units does not establish that a cord, adapter, outlet, or circuit is suitable. Refer compatibility questions to the product documentation and unresolved wiring or circuit questions to a qualified electrician.\n\n### 4. Customer scenario\n\nA customer shows you a product label with several electrical markings. One line reads **“Rated current: 8 A.”**\n\nThe customer asks, “What does that line tell me?”\n\n### 5. Quick check\n\n**Question ID: CD-0003-Q01**\n\nWhat does the **8 A** marking describe?\n\nA. The product’s rated voltage\nB. The product’s rated power\nC. The product’s energy use over eight hours\nD. The product’s rated electric current\n\n### 6. Take it to the floor\n\nRead the number, unit, and surrounding label text together before explaining an electrical rating.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0003-Q01\n- **Correct answer:** D. The product’s rated electric current\n- **Explanation:** A stands for amperes, commonly called amps, which measure electric current. Voltage is measured in volts, and power is measured in watts. The marking does not describe energy use over a period of time.\n- **Teaching reference:** Section 3, “Learn it,” unit comparison table and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created example label with separate V, A, and W markings. Clearly label it “Illustrative example—not a product specification.”\n\n**Accessibility description for proposed media:** “An illustrative electrical label highlights three unit symbols: V for voltage, A for electric current, and W for power.” Supply every label marking as readable text; do not use color alone to distinguish units.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] NIST, [SP 330, Section 2](https://www.nist.gov/pml/special-publication-330/sp-330-section-2): Electrical quantities, unit names, and symbols.\n- [Source 2] NIST, [SI Units](https://www.nist.gov/pml/owm/metric-si/si-units): Ampere as the unit of electric current.\n- [Source 3] U.S. Energy Information Administration, [Measuring Electricity](https://www.eia.gov/energyexplained/electricity/measuring-electricity.php): Distinction between power in watts and energy in watt-hours or kilowatt-hours.\n\n**Verification needs:** The input/output paragraph needs confirmation against the exact manufacturer documentation if a real adapter example is added. The 8 A scenario is fictional and makes no claim about a specific product or its compatibility.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhich electrical labels in our assortment are hardest to explain, and what manufacturer reference helps clarify them?\n\n### 9. Review needs\n\n- Have an electrical subject-matter reviewer check terminology and referral wording.\n- Confirm the input/output explanation against a manufacturer reference before publication.\n- If a real label is added, verify the model, every marking, and image usage rights.\n- Keep calculations, circuit sizing, and cord selection outside this module’s scope.\n"
+}

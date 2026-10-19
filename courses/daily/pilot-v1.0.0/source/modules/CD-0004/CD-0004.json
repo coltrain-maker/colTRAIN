@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0004",
+    "Title": "Read an HVAC Filter Size",
+    "Academy": "HVAC",
+    "Skill level": "Foundations",
+    "Relevant departments": "HVAC; air filters; home maintenance",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "HVAC, furnace filter, air filter, nominal size, actual dimensions, thickness, depth",
+    "Version": "0.2.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-19",
+    "publication_status": "not published",
+    "note": "User approved revision explaining nominal versus actual dimensions. Approval does not resolve listed technical and store-specific review needs."
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Distinguish nominal filter size from actual dimensions and identify the information needed to verify a replacement."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "A customer may notice that a filter’s measurements differ from the size printed prominently on its package. Explaining the two size descriptions helps you investigate the fit without assuming the filter is mislabeled."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Air filters can have a nominal size and actual dimensions.**\n\n| Size description | What it means |\n|---|---|\n| **Nominal size** | The designated size used to identify and shop for the filter. It is often rounded. |\n| **Actual dimensions** | The filter’s physical measurements, which may differ from its nominal size. |\n\n**Why are they different?** Nominal sizes provide convenient shopping labels. Many filters are manufactured slightly smaller than their nominal dimensions to allow clearance when inserting and removing them from the intended slot. [Source 4]\n\nHowever, **there is no universal amount to subtract**. Some filters—especially filters designed for specific cabinets—have actual dimensions that differ in other ways. Use the manufacturer’s published measurements rather than assuming every “one-inch” or “four-inch” filter measures exactly that thickness. [Sources 2 and 3]\n\nFilter dimensions describe the two sides of the face and the depth, or thickness. Read all three numbers and their units. A matching face size alone does not establish a matching depth. Manufacturer product information distinguishes nominal sizes from actual measurements. [Source 1]\n\n**Recommended action:** Ask for the complete size marking and any filter model or part number. A clear photo of the existing filter label can help. Then compare the proposed replacement’s published dimensions and compatibility information with the equipment or filter cabinet’s requirements.\n\nTreat an old filter as a useful clue, rather than proof that it was the correct replacement.\n\n**Common mistake:** Assuming that every filter with the same nominal size has identical physical dimensions. Filtrete specifically advises checking actual frame size because nominal descriptions can differ by brand or system. [Source 2]\n\n**When to verify or seek help:** Check the exact replacement’s manufacturer information when changing brands, comparing depths, or resolving conflicting measurements. If the label and equipment requirements do not establish a match, ask a knowledgeable coworker or manufacturer representative. Unresolved equipment-fit questions may need an HVAC technician.\n\nDo not promise a fit by rounding measurements alone. Size identification is the first step; it does not settle every question about filter suitability."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer brings a photo of a filter package. It shows a nominal size and a separate set of actual dimensions. The numbers are slightly different.\n\nThe customer asks, “Which information should we use to check whether a replacement fits?”"
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0004-Q01**\n\nWhich response is most accurate?\n\nA. Match the nominal face dimensions; the depth does not affect fit.\nB. Use the nominal size to locate candidates, then verify actual dimensions and equipment compatibility.\nC. Round the actual dimensions to whole inches and select the nearest filter.\nD. Choose any brand with the same nominal size; physical dimensions will be identical."
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "Use nominal size to start the search. Verify the replacement using all three dimensions and the equipment requirements."
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0004-Q01",
+      "wording": "Which response is most accurate?",
+      "options": {
+        "A": "Match the nominal face dimensions; the depth does not affect fit.",
+        "B": "Use the nominal size to locate candidates, then verify actual dimensions and equipment compatibility.",
+        "C": "Round the actual dimensions to whole inches and select the nearest filter.",
+        "D": "Choose any brand with the same nominal size; physical dimensions will be identical."
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0004-Q01",
+      "correct_answer": "B",
+      "explanation": "Nominal size identifies a shopping size; actual dimensions describe physical measurements. Checking all three dimensions and the equipment’s requirements helps establish whether the proposed replacement is suitable. Ignoring depth, rounding alone, or assuming identical dimensions across brands does not verify a fit.",
+      "teaching_reference": "Section 3, “Learn it,” size comparison table, “Recommended action,” and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created illustration showing the two face dimensions and filter depth, alongside separate “Nominal size” and “Actual dimensions” labels. Use verified product data if numerical measurements are included.\n\n**Accessibility description for proposed media:** “A rectangular air filter has labeled arrows showing its two face dimensions and its depth. Separate text identifies nominal size as the shopping designation and actual dimensions as physical measurements.” Provide every measurement as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Filterbuy, [Air Filter Sizes Chart: Standard AC, HVAC & Furnace Sizes](https://filterbuy.com/resources/air-filter-basics/air-filter-sizes/): Manufacturer guidance on nominal size, actual dimensions, and dimension order.\n- [Source 2] Filtrete/3M, [Frequently Asked Questions — Refillable Air Filters: What sizes are available?](https://www.filtrete.com/3M/en_US/filtrete/about-us/faq/): Advises checking actual frame size because nominal descriptions can differ by brand or system.\n- [Source 3] AprilAire, [210 Replacement Filter](https://shop.aprilaire.com/products/aprilaire-210-replacement-filter): Manufacturer example listing nominal and actual measurements separately. No numerical specifications from this product are reproduced in the lesson.\n- [Source 4] Filterbuy, [12x27x2 MERV 8 Pleated Air Filter](https://filterbuy.com/air-filters/12x27x2/merv-8/): Explains that filters are made slightly smaller to slide into the filter slot without forcing. This is not a universal sizing allowance.\n\n**Verification needs:** Any product example added later must use the exact model’s current dimensions and compatibility documentation. Do not generalize one manufacturer’s sizing allowance to other filters.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Where can we find actual dimensions and equipment compatibility information for the filters we stock?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have an HVAC subject-matter reviewer confirm the fit-verification wording.\n- Confirm where participating stores can access manufacturer dimensions and compatibility information.\n- If media is added, verify measurement labels, source data, and usage rights.\n- Keep filtration ratings, replacement intervals, airflow direction, and installation procedures for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Filterbuy",
+      "title": "Air Filter Sizes Chart: Standard AC, HVAC & Furnace Sizes",
+      "url": "https://filterbuy.com/resources/air-filter-basics/air-filter-sizes/",
+      "supports": "Manufacturer guidance on nominal size, actual dimensions, and dimension order.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "Filtrete/3M",
+      "title": "Frequently Asked Questions — Refillable Air Filters: What sizes are available?",
+      "url": "https://www.filtrete.com/3M/en_US/filtrete/about-us/faq/",
+      "supports": "Advises checking actual frame size because nominal descriptions can differ by brand or system.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "AprilAire",
+      "title": "210 Replacement Filter",
+      "url": "https://shop.aprilaire.com/products/aprilaire-210-replacement-filter",
+      "supports": "Manufacturer example listing nominal and actual measurements separately. No numerical specifications from this product are reproduced in the lesson.",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "Source 4",
+      "publisher": "Filterbuy",
+      "title": "12x27x2 MERV 8 Pleated Air Filter",
+      "url": "https://filterbuy.com/air-filters/12x27x2/merv-8/",
+      "supports": "Explains that filters are made slightly smaller to slide into the filter slot without forcing. This is not a universal sizing allowance.",
+      "checked": "2026-10-19"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have an HVAC subject-matter reviewer confirm the fit-verification wording.",
+    "Confirm where participating stores can access manufacturer dimensions and compatibility information.",
+    "If media is added, verify measurement labels, source data, and usage rights.",
+    "Keep filtration ratings, replacement intervals, airflow direction, and installation procedures for separate modules."
+  ],
+  "complete_markdown": "# CD-0004 — Read an HVAC Filter Size\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0004 |\n| Title | Read an HVAC Filter Size |\n| Academy | HVAC |\n| Skill level | Foundations |\n| Relevant departments | HVAC; air filters; home maintenance |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | HVAC, furnace filter, air filter, nominal size, actual dimensions, thickness, depth |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish nominal filter size from actual dimensions and identify the information needed to verify a replacement.\n\n### 2. Why it matters\n\nA customer may notice that a filter’s measurements differ from the size printed prominently on its package. Explaining the two size descriptions helps you investigate the fit without assuming the filter is mislabeled.\n\n### 3. Learn it\n\n**Air filters can have a nominal size and actual dimensions.**\n\n| Size description | What it means |\n|---|---|\n| **Nominal size** | The designated size used to identify and shop for the filter. It is often rounded. |\n| **Actual dimensions** | The filter’s physical measurements, which may differ from its nominal size. |\n\n**Why are they different?** Nominal sizes provide convenient shopping labels. Many filters are manufactured slightly smaller than their nominal dimensions to allow clearance when inserting and removing them from the intended slot. [Source 4]\n\nHowever, **there is no universal amount to subtract**. Some filters—especially filters designed for specific cabinets—have actual dimensions that differ in other ways. Use the manufacturer’s published measurements rather than assuming every “one-inch” or “four-inch” filter measures exactly that thickness. [Sources 2 and 3]\n\nFilter dimensions describe the two sides of the face and the depth, or thickness. Read all three numbers and their units. A matching face size alone does not establish a matching depth. Manufacturer product information distinguishes nominal sizes from actual measurements. [Source 1]\n\n**Recommended action:** Ask for the complete size marking and any filter model or part number. A clear photo of the existing filter label can help. Then compare the proposed replacement’s published dimensions and compatibility information with the equipment or filter cabinet’s requirements.\n\nTreat an old filter as a useful clue, rather than proof that it was the correct replacement.\n\n**Common mistake:** Assuming that every filter with the same nominal size has identical physical dimensions. Filtrete specifically advises checking actual frame size because nominal descriptions can differ by brand or system. [Source 2]\n\n**When to verify or seek help:** Check the exact replacement’s manufacturer information when changing brands, comparing depths, or resolving conflicting measurements. If the label and equipment requirements do not establish a match, ask a knowledgeable coworker or manufacturer representative. Unresolved equipment-fit questions may need an HVAC technician.\n\nDo not promise a fit by rounding measurements alone. Size identification is the first step; it does not settle every question about filter suitability.\n\n### 4. Customer scenario\n\nA customer brings a photo of a filter package. It shows a nominal size and a separate set of actual dimensions. The numbers are slightly different.\n\nThe customer asks, “Which information should we use to check whether a replacement fits?”\n\n### 5. Quick check\n\n**Question ID: CD-0004-Q01**\n\nWhich response is most accurate?\n\nA. Match the nominal face dimensions; the depth does not affect fit.\nB. Use the nominal size to locate candidates, then verify actual dimensions and equipment compatibility.\nC. Round the actual dimensions to whole inches and select the nearest filter.\nD. Choose any brand with the same nominal size; physical dimensions will be identical.\n\n### 6. Take it to the floor\n\nUse nominal size to start the search. Verify the replacement using all three dimensions and the equipment requirements.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0004-Q01\n- **Correct answer:** B. Use the nominal size to locate candidates, then verify actual dimensions and equipment compatibility.\n- **Explanation:** Nominal size identifies a shopping size; actual dimensions describe physical measurements. Checking all three dimensions and the equipment’s requirements helps establish whether the proposed replacement is suitable. Ignoring depth, rounding alone, or assuming identical dimensions across brands does not verify a fit.\n- **Teaching reference:** Section 3, “Learn it,” size comparison table, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created illustration showing the two face dimensions and filter depth, alongside separate “Nominal size” and “Actual dimensions” labels. Use verified product data if numerical measurements are included.\n\n**Accessibility description for proposed media:** “A rectangular air filter has labeled arrows showing its two face dimensions and its depth. Separate text identifies nominal size as the shopping designation and actual dimensions as physical measurements.” Provide every measurement as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Filterbuy, [Air Filter Sizes Chart: Standard AC, HVAC & Furnace Sizes](https://filterbuy.com/resources/air-filter-basics/air-filter-sizes/): Manufacturer guidance on nominal size, actual dimensions, and dimension order.\n- [Source 2] Filtrete/3M, [Frequently Asked Questions — Refillable Air Filters: What sizes are available?](https://www.filtrete.com/3M/en_US/filtrete/about-us/faq/): Advises checking actual frame size because nominal descriptions can differ by brand or system.\n- [Source 3] AprilAire, [210 Replacement Filter](https://shop.aprilaire.com/products/aprilaire-210-replacement-filter): Manufacturer example listing nominal and actual measurements separately. No numerical specifications from this product are reproduced in the lesson.\n- [Source 4] Filterbuy, [12x27x2 MERV 8 Pleated Air Filter](https://filterbuy.com/air-filters/12x27x2/merv-8/): Explains that filters are made slightly smaller to slide into the filter slot without forcing. This is not a universal sizing allowance.\n\n**Verification needs:** Any product example added later must use the exact model’s current dimensions and compatibility documentation. Do not generalize one manufacturer’s sizing allowance to other filters.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhere can we find actual dimensions and equipment compatibility information for the filters we stock?\n\n### 9. Review needs\n\n- Have an HVAC subject-matter reviewer confirm the fit-verification wording.\n- Confirm where participating stores can access manufacturer dimensions and compatibility information.\n- If media is added, verify measurement labels, source data, and usage rights.\n- Keep filtration ratings, replacement intervals, airflow direction, and installation procedures for separate modules.\n"
+}
