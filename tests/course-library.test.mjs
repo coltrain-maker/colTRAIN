@@ -55,7 +55,7 @@ test('active academy allocations total 260 without creating course content',()=>
  assert.deepEqual(totals,{foundations:88,application:112,expertise:60,total:260});
  assert.deepEqual(totals,academyPlan.planned_module_totals);
  const codes=academyPlan.academies.flatMap(a=>a.existing_course_codes);
- assert.equal(codes.length,24);assert.equal(new Set(codes).size,24);
+ assert.equal(codes.length,25);assert.equal(new Set(codes).size,25);
  const old=JSON.parse(readFileSync(new URL('../courses/approved-launch-catalog.json',import.meta.url)));
  const originalCodes=old.academies.flatMap(a=>a.courses.map(c=>c.code));
  assert.deepEqual([...codes,...academyPlan.unresolved_mappings.map(m=>m.code)].sort(),originalCodes.sort());
@@ -79,9 +79,9 @@ test('split academies resolve from stable codes and preserve search, identity an
  assert.equal(JSON.stringify(courses),snapshot);
  assert.deepEqual(libraryTopics([courses[1]]),['HVAC']);
 });
-test('ambiguous and store-specific courses retain category, sample keeps separate identity',()=>{
- assert.equal(academyLabel({course_code:'RF-103',category:'Retail Foundations'}),'Retail Foundations');
+test('approved safety mapping and store-specific categories preserve separate identities',()=>{
+ assert.equal(academyLabel({course_code:'RF-103',category:'Retail Foundations'}),'Customer Service & Retail Readiness');
  assert.equal(academyLabel({slug:'my-store-orientation',category:'My store'}),'My store');
  assert.equal(academyLabel({slug:'customer-trust',category:'Customer Service'}),'Customer Service & Retail Readiness');
- assert.equal(academyPlan.unresolved_mappings[0].code,'RF-103');
+ assert.deepEqual(academyPlan.unresolved_mappings,[]);
 });

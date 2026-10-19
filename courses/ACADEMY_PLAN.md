@@ -12,13 +12,13 @@ Version 3.0 supersedes the previous eight-academy grouping. Machine-readable sou
 | Power Tools & Accessories | 10 | 12 | 6 | 28 | HT-103 |
 | Lawn, Garden & Outdoor Equipment | 10 | 14 | 8 | 32 | LG-101, LG-102 |
 | Building & Home Maintenance | 10 | 12 | 6 | 28 | HB-104 |
-| Customer Service & Retail Readiness | 8 | 10 | 6 | 24 | RF-101, RF-102, RF-104, CS-101, CS-102, CS-103 |
+| Customer Service & Retail Readiness | 8 | 10 | 6 | 24 | CS-101, CS-102, CS-103, RF-101, RF-102, RF-103, RF-104 |
 | Operations & Leadership | 8 | 8 | 4 | 20 | IM-101, IM-102, IM-103, BL-101, BL-102, BL-103 |
-| **Total planned** | **88** | **112** | **60** | **260** | **24 mapped; RF-103 pending** |
+| **Total planned** | **88** | **112** | **60** | **260** | **25 mapped** |
 
 ## Mapping review
 
-RF-103 Store Safety Fundamentals spans retail readiness and operations. It keeps its current category and remains available under existing permissions until the owner chooses an academy. Store-specific courses with no explicit mapping keep their current category; no title-based guesses. The original customer-trust sample maps to Customer Service & Retail Readiness without merging it with CS-101.
+The owner confirmed RF-103 Store Safety Fundamentals belongs to Customer Service & Retail Readiness. Store-specific courses with no explicit mapping keep their current category; no title-based guesses. The original customer-trust sample maps to Customer Service & Retail Readiness without merging it with CS-101.
 
 RF onboarding courses map to Customer Service & Retail Readiness; inventory, merchandising and loss prevention map to Operations & Leadership. HB-101 electrical, HB-102 plumbing, HB-103 HVAC and HB-104 building materials are split individually. HT-101 and HT-102 stay together; HT-103 moves to Power Tools & Accessories.
 
@@ -40,4 +40,4 @@ Prepared locally; not deployed. Batch `design/coltrain-website.zip` with the nex
 
 ## Validation
 
-Nine library/configuration tests passed, including exact allocation totals, full 25-code mapping coverage (24 mapped plus one pending), split-academy filtering, legacy keyword search and unchanged source objects. The full Chromium training/Team Corner integration suite passed against isolated PostgreSQL/RLS, including admin planning display, real HVAC course filtering, mobile cards, lesson/quiz/award persistence and competition retries. PWA/package checks passed. Hosted deployment remains pending.
+Nine library/configuration tests passed, including exact allocation totals, full 25-code mapping coverage (all 25 mapped), split-academy filtering, legacy keyword search and unchanged source objects. The full Chromium training/Team Corner integration suite passed against isolated PostgreSQL/RLS, including admin planning display, real HVAC course filtering, mobile cards, lesson/quiz/award persistence and competition retries. PWA/package checks passed. Hosted deployment remains pending.
