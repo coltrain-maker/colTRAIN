@@ -1,0 +1,2177 @@
+-- Apply AFTER migration 012, as postgres. Imports 10 UNPUBLISHED Daily drafts only.
+-- Does not publish, release, schedule, assign, award points or change full courses.
+-- Identical reruns are safe; different content under an existing ID aborts the whole transaction.
+begin;
+do $dailyimport$
+declare payload jsonb := $dailypayload$[
+  {
+    "module": {
+      "id": "db87a4e2-a48e-5d8d-9a08-bf8eb2355c8c",
+      "code": "CD-0001",
+      "version": "0.1.0",
+      "title": "Paint Sheen: Recognize the Finish",
+      "academy": "Paint & Surface Care",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish common paint finishes by their relative shine and identify when to check the product’s sheen guide."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers may choose a paint color without realizing they also need to choose a finish. Understanding sheen helps you explain how shiny the dried paint will look."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Sheen describes the shine of dried paint.** Color and sheen are separate choices: naming a color does not identify its finish.\n\nUse this general progression to explain common finish names:\n\n| Finish | General appearance |\n|---|---|\n| Flat or matte | Little to very little visible shine |\n| Eggshell | A soft, low shine |\n| Satin | More noticeable shine than eggshell |\n| Semi-gloss | A distinctly shiny finish |\n| Gloss or high-gloss | The shiniest end of the range |\n\nThis is a guide to relative appearance, not a universal measurement chart. Flat and matte can be separate finishes. Manufacturers may also use names such as pearl, low lustre, or soft gloss. Check the selected product’s guide before treating those names as equivalent. [Source 1]\n\n**Recommended action:** Ask, “How much shine would you like?” Then use the manufacturer’s finish guide or an available physical sheen sample to clarify the choices.\n\n**Common mistake:** Promising cleaning performance from the sheen name alone. The paint formulation also matters; some low-sheen products are designed for washability. Confirm the specific product’s claims before making that promise. [Source 2]\n\n**When to verify or seek help:** Check the product label, manufacturer’s guide, or technical data sheet when comparing unfamiliar finish names or answering performance questions. If the information does not resolve the question, ask a knowledgeable coworker or manufacturer representative."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer has selected a wall color. Within the same paint line, the store offers flat, eggshell, satin, and semi-gloss.\n\nThe customer says, “I want a little shine—more than flat, but less than satin.”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Use finish names to explain relative shine. Use the specific product’s information to confirm performance."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Benjamin Moore",
+          "title": "Choosing an Interior Paint Finish: Sheen and Gloss 101",
+          "url": "https://www.benjaminmoore.com/en-us/interior-exterior-paints-stains/how-to-advice/painting-101/choosing-paint-finish",
+          "checked": "2026-10-19",
+          "supports": "Finish terminology and relative shine."
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Sherwin-Williams",
+          "title": "Paint Gloss & Sheen Guide",
+          "url": "https://www.sherwin-williams.com/architects-specifiers-designers/inspiration/styles-and-techniques/sw-art-gloss-sheen-differences",
+          "checked": "2026-10-19",
+          "supports": "The distinction between sheen and product performance, including washable low-sheen formulations."
+        }
+      ],
+      "keywords": [
+        "paint",
+        "sheen",
+        "finish",
+        "flat",
+        "matte",
+        "eggshell",
+        "satin",
+        "semi-gloss",
+        "gloss"
+      ],
+      "relevant_departments": [
+        "Paint",
+        "decorating",
+        "surface care"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "db87a4e2-a48e-5d8d-9a08-bf8eb2355c8c",
+        "id": "CD-0001-Q01",
+        "position": 1,
+        "prompt": "Which finish best matches the customer’s description?",
+        "options": [
+          "Semi-gloss",
+          "Flat",
+          "Eggshell",
+          "Satin"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "db87a4e2-a48e-5d8d-9a08-bf8eb2355c8c",
+        "question_id": "CD-0001-Q01",
+        "correct_option": 2,
+        "explanation": "Eggshell generally has a soft shine above flat and below satin. Flat does not provide the requested increase in shine; satin is the finish the customer wants less shine than; semi-gloss is farther toward the shiny end.",
+        "teaching_reference": "Section 3, “Learn it,” finish comparison table."
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0001",
+        "Title": "Paint Sheen: Recognize the Finish",
+        "Academy": "Paint & Surface Care",
+        "Skill level": "Foundations",
+        "Relevant departments": "Paint; decorating; surface care",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "paint, sheen, finish, flat, matte, eggshell, satin, semi-gloss, gloss",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User content approval does not resolve the listed technical and store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish common paint finishes by their relative shine and identify when to check the product’s sheen guide."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers may choose a paint color without realizing they also need to choose a finish. Understanding sheen helps you explain how shiny the dried paint will look."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Sheen describes the shine of dried paint.** Color and sheen are separate choices: naming a color does not identify its finish.\n\nUse this general progression to explain common finish names:\n\n| Finish | General appearance |\n|---|---|\n| Flat or matte | Little to very little visible shine |\n| Eggshell | A soft, low shine |\n| Satin | More noticeable shine than eggshell |\n| Semi-gloss | A distinctly shiny finish |\n| Gloss or high-gloss | The shiniest end of the range |\n\nThis is a guide to relative appearance, not a universal measurement chart. Flat and matte can be separate finishes. Manufacturers may also use names such as pearl, low lustre, or soft gloss. Check the selected product’s guide before treating those names as equivalent. [Source 1]\n\n**Recommended action:** Ask, “How much shine would you like?” Then use the manufacturer’s finish guide or an available physical sheen sample to clarify the choices.\n\n**Common mistake:** Promising cleaning performance from the sheen name alone. The paint formulation also matters; some low-sheen products are designed for washability. Confirm the specific product’s claims before making that promise. [Source 2]\n\n**When to verify or seek help:** Check the product label, manufacturer’s guide, or technical data sheet when comparing unfamiliar finish names or answering performance questions. If the information does not resolve the question, ask a knowledgeable coworker or manufacturer representative."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer has selected a wall color. Within the same paint line, the store offers flat, eggshell, satin, and semi-gloss.\n\nThe customer says, “I want a little shine—more than flat, but less than satin.”"
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0001-Q01**\n\nWhich finish best matches the customer’s description?\n\nA. Semi-gloss\nB. Flat\nC. Eggshell\nD. Satin"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Use finish names to explain relative shine. Use the specific product’s information to confirm performance."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0001-Q01",
+          "wording": "Which finish best matches the customer’s description?",
+          "options": {
+            "A": "Semi-gloss",
+            "B": "Flat",
+            "C": "Eggshell",
+            "D": "Satin"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0001-Q01",
+          "correct_answer": "C",
+          "explanation": "Eggshell generally has a soft shine above flat and below satin. Flat does not provide the requested increase in shine; satin is the finish the customer wants less shine than; semi-gloss is farther toward the shiny end.",
+          "teaching_reference": "Section 3, “Learn it,” finish comparison table."
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None. This module works as text without images or video.\n\n**Suggested optional media:** An independently created finish comparison illustration or an authorized physical sheen sample.\n\n**Accessibility description for a proposed illustration:** “Five labeled paint finishes progress from little visible shine to high shine: flat or matte, eggshell, satin, semi-gloss, and gloss or high-gloss.” Keep the comparison table available as text; a screen image should not serve as an exact sheen reference.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Benjamin Moore, [Choosing an Interior Paint Finish: Sheen and Gloss 101](https://www.benjaminmoore.com/en-us/interior-exterior-paints-stains/how-to-advice/painting-101/choosing-paint-finish). Supports finish terminology and relative shine.\n- [Source 2] Sherwin-Williams, [Paint Gloss & Sheen Guide](https://www.sherwin-williams.com/architects-specifiers-designers/inspiration/styles-and-techniques/sw-art-gloss-sheen-differences). Supports the distinction between sheen and product performance, including washable low-sheen formulations.\n\nThe teaching and question are independently authored. No manufacturer or NHPA images, lessons, videos, or assessments are included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Which finish names on our shelves might need clarification before we compare them for a customer?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Confirm that the terminology fits the paint lines participating stores carry.\n- Have a paint subject-matter reviewer check the general sheen progression and performance wording.\n- If media is added, confirm usage rights and provide its final accessibility description.\n- The scenario assumes all four listed finishes are available within one paint line; no actual store assortment is asserted."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Benjamin Moore",
+          "title": "Choosing an Interior Paint Finish: Sheen and Gloss 101",
+          "url": "https://www.benjaminmoore.com/en-us/interior-exterior-paints-stains/how-to-advice/painting-101/choosing-paint-finish",
+          "checked": "2026-10-19",
+          "supports": "Finish terminology and relative shine."
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Sherwin-Williams",
+          "title": "Paint Gloss & Sheen Guide",
+          "url": "https://www.sherwin-williams.com/architects-specifiers-designers/inspiration/styles-and-techniques/sw-art-gloss-sheen-differences",
+          "checked": "2026-10-19",
+          "supports": "The distinction between sheen and product performance, including washable low-sheen formulations."
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Confirm that the terminology fits the paint lines participating stores carry.",
+        "Have a paint subject-matter reviewer check the general sheen progression and performance wording.",
+        "If media is added, confirm usage rights and provide its final accessibility description.",
+        "The scenario assumes all four listed finishes are available within one paint line; no actual store assortment is asserted."
+      ],
+      "complete_markdown": "# CD-0001 — Paint Sheen: Recognize the Finish\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0001 |\n| Title | Paint Sheen: Recognize the Finish |\n| Academy | Paint & Surface Care |\n| Skill level | Foundations |\n| Relevant departments | Paint; decorating; surface care |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | paint, sheen, finish, flat, matte, eggshell, satin, semi-gloss, gloss |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish common paint finishes by their relative shine and identify when to check the product’s sheen guide.\n\n### 2. Why it matters\n\nCustomers may choose a paint color without realizing they also need to choose a finish. Understanding sheen helps you explain how shiny the dried paint will look.\n\n### 3. Learn it\n\n**Sheen describes the shine of dried paint.** Color and sheen are separate choices: naming a color does not identify its finish.\n\nUse this general progression to explain common finish names:\n\n| Finish | General appearance |\n|---|---|\n| Flat or matte | Little to very little visible shine |\n| Eggshell | A soft, low shine |\n| Satin | More noticeable shine than eggshell |\n| Semi-gloss | A distinctly shiny finish |\n| Gloss or high-gloss | The shiniest end of the range |\n\nThis is a guide to relative appearance, not a universal measurement chart. Flat and matte can be separate finishes. Manufacturers may also use names such as pearl, low lustre, or soft gloss. Check the selected product’s guide before treating those names as equivalent. [Source 1]\n\n**Recommended action:** Ask, “How much shine would you like?” Then use the manufacturer’s finish guide or an available physical sheen sample to clarify the choices.\n\n**Common mistake:** Promising cleaning performance from the sheen name alone. The paint formulation also matters; some low-sheen products are designed for washability. Confirm the specific product’s claims before making that promise. [Source 2]\n\n**When to verify or seek help:** Check the product label, manufacturer’s guide, or technical data sheet when comparing unfamiliar finish names or answering performance questions. If the information does not resolve the question, ask a knowledgeable coworker or manufacturer representative.\n\n### 4. Customer scenario\n\nA customer has selected a wall color. Within the same paint line, the store offers flat, eggshell, satin, and semi-gloss.\n\nThe customer says, “I want a little shine—more than flat, but less than satin.”\n\n### 5. Quick check\n\n**Question ID: CD-0001-Q01**\n\nWhich finish best matches the customer’s description?\n\nA. Semi-gloss\nB. Flat\nC. Eggshell\nD. Satin\n\n### 6. Take it to the floor\n\nUse finish names to explain relative shine. Use the specific product’s information to confirm performance.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — keep separate from employee-facing content\n\n- **Question ID:** CD-0001-Q01\n- **Correct answer:** C. Eggshell\n- **Explanation:** Eggshell generally has a soft shine above flat and below satin. Flat does not provide the requested increase in shine; satin is the finish the customer wants less shine than; semi-gloss is farther toward the shiny end.\n- **Teaching reference:** Section 3, “Learn it,” finish comparison table.\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None. This module works as text without images or video.\n\n**Suggested optional media:** An independently created finish comparison illustration or an authorized physical sheen sample.\n\n**Accessibility description for a proposed illustration:** “Five labeled paint finishes progress from little visible shine to high shine: flat or matte, eggshell, satin, semi-gloss, and gloss or high-gloss.” Keep the comparison table available as text; a screen image should not serve as an exact sheen reference.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Benjamin Moore, [Choosing an Interior Paint Finish: Sheen and Gloss 101](https://www.benjaminmoore.com/en-us/interior-exterior-paints-stains/how-to-advice/painting-101/choosing-paint-finish). Supports finish terminology and relative shine.\n- [Source 2] Sherwin-Williams, [Paint Gloss & Sheen Guide](https://www.sherwin-williams.com/architects-specifiers-designers/inspiration/styles-and-techniques/sw-art-gloss-sheen-differences). Supports the distinction between sheen and product performance, including washable low-sheen formulations.\n\nThe teaching and question are independently authored. No manufacturer or NHPA images, lessons, videos, or assessments are included.\n\n### 8. Optional manager discussion prompt\n\nWhich finish names on our shelves might need clarification before we compare them for a customer?\n\n### 9. Review needs\n\n- Confirm that the terminology fits the paint lines participating stores carry.\n- Have a paint subject-matter reviewer check the general sheen progression and performance wording.\n- If media is added, confirm usage rights and provide its final accessibility description.\n- The scenario assumes all four listed finishes are available within one paint line; no actual store assortment is asserted.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "efa9d26e-de7a-539f-b702-8588fdca0ddd",
+      "code": "CD-0002",
+      "version": "0.1.0",
+      "title": "Name the Plumbing Connection",
+      "academy": "Plumbing",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish four common plumbing connection types using their joining features, without assuming that similar-looking parts are compatible."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer may call every connection that turns a “screw-on fitting.” Recognizing how the connection actually joins helps you ask better questions before selecting a replacement."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "Start with **how the parts join**, rather than the fitting’s color or overall shape.\n\n| Connection type | Recognition clue |\n|---|---|\n| **Threaded pipe connection** | External threads on one part screw into matching internal threads on another. |\n| **Slip joint** | Common on tubular sink drains: a nut tightens around a tube, with a washer providing the seal. |\n| **Solvent weld** | A plastic pipe fits into a socket designed for joining with the appropriate solvent cement. |\n| **Push-to-connect** | A compatible pipe pushes into a fitting with an internal gripping and sealing mechanism. |\n\nThreaded pipe connections and solvent-welded connections use different joining methods. Solvent welding chemically joins compatible plastic surfaces; it is not simply a friction fit. [Source 1]\n\n**Recommended action:** Identify the connection at **each end**. One adapter can have a slip-joint connection at one end and a solvent-weld socket at the other. Naming one end does not describe the entire fitting. [Source 2]\n\n**Common mistake:** Seeing threads on a slip-joint nut and treating it as a threaded pipe connection. Look at the whole assembly: the tube, nut, and sealing washer.\n\nPush-to-connect fittings may hide their working parts. For example, SharkBite describes an internal grab ring that holds the pipe and an O-ring that seals it. Do not assume every push fitting accepts the same pipe materials. [Source 3]\n\n**When to verify or seek help:** Before recommending a replacement, confirm pipe material, size, connection type, and intended use against the specific product’s instructions. A smooth socket alone does not prove that a fitting is intended for solvent welding. If identification remains uncertain, ask a knowledgeable coworker or manufacturer representative."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings in a loose nut and washer from beneath a bathroom sink. Their photo shows a smooth drain tube passing through the nut into another fitting.\n\nThey ask, “What kind of connection should I look for?”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Name the connection at each end before matching the replacement. Connection type is one part of the match—not proof of compatibility."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Oatey",
+          "title": "Complete Guide to Pipe Fittings",
+          "url": "https://www.oatey.com/faqs-blog-videos-case-studies/blog/complete-guide-pipe-fittings",
+          "supports": "Threaded connections and solvent-welding principles. Used only for these high-level distinctions.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Oatey",
+          "title": "Plastic Trap Adapter, HDC9000A",
+          "url": "https://www.oatey.com/products/p_038753005386/oatey-plastic-trap-adapter",
+          "supports": "Documents a slip-joint inlet, nut and washer, and solvent-weld outlet on one adapter.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "SharkBite",
+          "title": "See What’s Inside a SharkBite Push-to-Connect Fitting",
+          "url": "https://www.sharkbite.com/us/en/resources/blog/service-and-repair/fitting-tips-guides/see-whats-inside-a-sharkbite-push-to-connect-fitting",
+          "supports": "Internal gripping and sealing components for the manufacturer’s described design.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "keywords": [
+        "plumbing",
+        "connections",
+        "threaded",
+        "slip joint",
+        "solvent weld",
+        "push-to-connect",
+        "fittings"
+      ],
+      "relevant_departments": [
+        "Plumbing",
+        "sink drains",
+        "pipe and fittings"
+      ],
+      "estimated_minutes": 5,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "efa9d26e-de7a-539f-b702-8588fdca0ddd",
+        "id": "CD-0002-Q01",
+        "position": 1,
+        "prompt": "Which connection type best matches the assembly shown and described?",
+        "options": [
+          "Slip joint",
+          "Threaded pipe connection",
+          "Solvent weld",
+          "Push-to-connect"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "efa9d26e-de7a-539f-b702-8588fdca0ddd",
+        "question_id": "CD-0002-Q01",
+        "correct_option": 0,
+        "explanation": "A smooth tubular sink drain passing through a nut with a sealing washer identifies a slip-joint assembly. The nut has threads, but the tube itself is not screwed into matching pipe threads. The described assembly does not use a solvent-weld socket or an internal push-to-connect gripping mechanism.",
+        "teaching_reference": "Section 3, “Learn it,” connection table and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0002",
+        "Title": "Name the Plumbing Connection",
+        "Academy": "Plumbing",
+        "Skill level": "Foundations",
+        "Relevant departments": "Plumbing; sink drains; pipe and fittings",
+        "Estimated completion time": "5 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "plumbing, connections, threaded, slip joint, solvent weld, push-to-connect, fittings",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User content approval does not resolve the listed technical and store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish four common plumbing connection types using their joining features, without assuming that similar-looking parts are compatible."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer may call every connection that turns a “screw-on fitting.” Recognizing how the connection actually joins helps you ask better questions before selecting a replacement."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "Start with **how the parts join**, rather than the fitting’s color or overall shape.\n\n| Connection type | Recognition clue |\n|---|---|\n| **Threaded pipe connection** | External threads on one part screw into matching internal threads on another. |\n| **Slip joint** | Common on tubular sink drains: a nut tightens around a tube, with a washer providing the seal. |\n| **Solvent weld** | A plastic pipe fits into a socket designed for joining with the appropriate solvent cement. |\n| **Push-to-connect** | A compatible pipe pushes into a fitting with an internal gripping and sealing mechanism. |\n\nThreaded pipe connections and solvent-welded connections use different joining methods. Solvent welding chemically joins compatible plastic surfaces; it is not simply a friction fit. [Source 1]\n\n**Recommended action:** Identify the connection at **each end**. One adapter can have a slip-joint connection at one end and a solvent-weld socket at the other. Naming one end does not describe the entire fitting. [Source 2]\n\n**Common mistake:** Seeing threads on a slip-joint nut and treating it as a threaded pipe connection. Look at the whole assembly: the tube, nut, and sealing washer.\n\nPush-to-connect fittings may hide their working parts. For example, SharkBite describes an internal grab ring that holds the pipe and an O-ring that seals it. Do not assume every push fitting accepts the same pipe materials. [Source 3]\n\n**When to verify or seek help:** Before recommending a replacement, confirm pipe material, size, connection type, and intended use against the specific product’s instructions. A smooth socket alone does not prove that a fitting is intended for solvent welding. If identification remains uncertain, ask a knowledgeable coworker or manufacturer representative."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings in a loose nut and washer from beneath a bathroom sink. Their photo shows a smooth drain tube passing through the nut into another fitting.\n\nThey ask, “What kind of connection should I look for?”"
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0002-Q01**\n\nWhich connection type best matches the assembly shown and described?\n\nA. Slip joint\nB. Threaded pipe connection\nC. Solvent weld\nD. Push-to-connect"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Name the connection at each end before matching the replacement. Connection type is one part of the match—not proof of compatibility."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0002-Q01",
+          "wording": "Which connection type best matches the assembly shown and described?",
+          "options": {
+            "A": "Slip joint",
+            "B": "Threaded pipe connection",
+            "C": "Solvent weld",
+            "D": "Push-to-connect"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0002-Q01",
+          "correct_answer": "A",
+          "explanation": "A smooth tubular sink drain passing through a nut with a sealing washer identifies a slip-joint assembly. The nut has threads, but the tube itself is not screwed into matching pipe threads. The described assembly does not use a solvent-weld socket or an internal push-to-connect gripping mechanism.",
+          "teaching_reference": "Section 3, “Learn it,” connection table and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** Four independently photographed, uninstalled example connections, with both ends visible where applicable. An exploded slip-joint example would help distinguish its nut, washer, and tube.\n\n**Accessibility description for proposed media:** “Four labeled connection examples: mating internal and external pipe threads; a tubular drain with a separate nut and washer; a plastic solvent-weld socket; and a push-to-connect fitting. The slip-joint example labels the tube, nut, and washer.” Provide the recognition table as text; do not rely on color alone.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Oatey, [Complete Guide to Pipe Fittings](https://www.oatey.com/faqs-blog-videos-case-studies/blog/complete-guide-pipe-fittings): Threaded connections and solvent-welding principles. Used only for these high-level distinctions.\n- [Source 2] Oatey, [Plastic Trap Adapter, HDC9000A](https://www.oatey.com/products/p_038753005386/oatey-plastic-trap-adapter): Documents a slip-joint inlet, nut and washer, and solvent-weld outlet on one adapter.\n- [Source 3] SharkBite, [See What’s Inside a SharkBite Push-to-Connect Fitting](https://www.sharkbite.com/us/en/resources/blog/service-and-repair/fitting-tips-guides/see-whats-inside-a-sharkbite-push-to-connect-fitting): Internal gripping and sealing components for the manufacturer’s described design.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n**Verification needs:** Any product examples added later must be checked against their exact manufacturer documentation. This module does not specify installation procedures, sealants, cure times, pressure ratings, or approved applications."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Which fittings in our assortment have different connection types at opposite ends?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a plumbing subject-matter reviewer confirm the recognition clues and scenario.\n- Confirm terminology against participating stores’ assortments.\n- If photographs are added, verify that each example clearly shows the intended connection.\n- Keep this module focused on identification; compatibility and installation require additional product-specific information."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Oatey",
+          "title": "Complete Guide to Pipe Fittings",
+          "url": "https://www.oatey.com/faqs-blog-videos-case-studies/blog/complete-guide-pipe-fittings",
+          "supports": "Threaded connections and solvent-welding principles. Used only for these high-level distinctions.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Oatey",
+          "title": "Plastic Trap Adapter, HDC9000A",
+          "url": "https://www.oatey.com/products/p_038753005386/oatey-plastic-trap-adapter",
+          "supports": "Documents a slip-joint inlet, nut and washer, and solvent-weld outlet on one adapter.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "SharkBite",
+          "title": "See What’s Inside a SharkBite Push-to-Connect Fitting",
+          "url": "https://www.sharkbite.com/us/en/resources/blog/service-and-repair/fitting-tips-guides/see-whats-inside-a-sharkbite-push-to-connect-fitting",
+          "supports": "Internal gripping and sealing components for the manufacturer’s described design.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a plumbing subject-matter reviewer confirm the recognition clues and scenario.",
+        "Confirm terminology against participating stores’ assortments.",
+        "If photographs are added, verify that each example clearly shows the intended connection.",
+        "Keep this module focused on identification; compatibility and installation require additional product-specific information."
+      ],
+      "complete_markdown": "# CD-0002 — Name the Plumbing Connection\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0002 |\n| Title | Name the Plumbing Connection |\n| Academy | Plumbing |\n| Skill level | Foundations |\n| Relevant departments | Plumbing; sink drains; pipe and fittings |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | plumbing, connections, threaded, slip joint, solvent weld, push-to-connect, fittings |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish four common plumbing connection types using their joining features, without assuming that similar-looking parts are compatible.\n\n### 2. Why it matters\n\nA customer may call every connection that turns a “screw-on fitting.” Recognizing how the connection actually joins helps you ask better questions before selecting a replacement.\n\n### 3. Learn it\n\nStart with **how the parts join**, rather than the fitting’s color or overall shape.\n\n| Connection type | Recognition clue |\n|---|---|\n| **Threaded pipe connection** | External threads on one part screw into matching internal threads on another. |\n| **Slip joint** | Common on tubular sink drains: a nut tightens around a tube, with a washer providing the seal. |\n| **Solvent weld** | A plastic pipe fits into a socket designed for joining with the appropriate solvent cement. |\n| **Push-to-connect** | A compatible pipe pushes into a fitting with an internal gripping and sealing mechanism. |\n\nThreaded pipe connections and solvent-welded connections use different joining methods. Solvent welding chemically joins compatible plastic surfaces; it is not simply a friction fit. [Source 1]\n\n**Recommended action:** Identify the connection at **each end**. One adapter can have a slip-joint connection at one end and a solvent-weld socket at the other. Naming one end does not describe the entire fitting. [Source 2]\n\n**Common mistake:** Seeing threads on a slip-joint nut and treating it as a threaded pipe connection. Look at the whole assembly: the tube, nut, and sealing washer.\n\nPush-to-connect fittings may hide their working parts. For example, SharkBite describes an internal grab ring that holds the pipe and an O-ring that seals it. Do not assume every push fitting accepts the same pipe materials. [Source 3]\n\n**When to verify or seek help:** Before recommending a replacement, confirm pipe material, size, connection type, and intended use against the specific product’s instructions. A smooth socket alone does not prove that a fitting is intended for solvent welding. If identification remains uncertain, ask a knowledgeable coworker or manufacturer representative.\n\n### 4. Customer scenario\n\nA customer brings in a loose nut and washer from beneath a bathroom sink. Their photo shows a smooth drain tube passing through the nut into another fitting.\n\nThey ask, “What kind of connection should I look for?”\n\n### 5. Quick check\n\n**Question ID: CD-0002-Q01**\n\nWhich connection type best matches the assembly shown and described?\n\nA. Slip joint\nB. Threaded pipe connection\nC. Solvent weld\nD. Push-to-connect\n\n### 6. Take it to the floor\n\nName the connection at each end before matching the replacement. Connection type is one part of the match—not proof of compatibility.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0002-Q01\n- **Correct answer:** A. Slip joint\n- **Explanation:** A smooth tubular sink drain passing through a nut with a sealing washer identifies a slip-joint assembly. The nut has threads, but the tube itself is not screwed into matching pipe threads. The described assembly does not use a solvent-weld socket or an internal push-to-connect gripping mechanism.\n- **Teaching reference:** Section 3, “Learn it,” connection table and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** Four independently photographed, uninstalled example connections, with both ends visible where applicable. An exploded slip-joint example would help distinguish its nut, washer, and tube.\n\n**Accessibility description for proposed media:** “Four labeled connection examples: mating internal and external pipe threads; a tubular drain with a separate nut and washer; a plastic solvent-weld socket; and a push-to-connect fitting. The slip-joint example labels the tube, nut, and washer.” Provide the recognition table as text; do not rely on color alone.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Oatey, [Complete Guide to Pipe Fittings](https://www.oatey.com/faqs-blog-videos-case-studies/blog/complete-guide-pipe-fittings): Threaded connections and solvent-welding principles. Used only for these high-level distinctions.\n- [Source 2] Oatey, [Plastic Trap Adapter, HDC9000A](https://www.oatey.com/products/p_038753005386/oatey-plastic-trap-adapter): Documents a slip-joint inlet, nut and washer, and solvent-weld outlet on one adapter.\n- [Source 3] SharkBite, [See What’s Inside a SharkBite Push-to-Connect Fitting](https://www.sharkbite.com/us/en/resources/blog/service-and-repair/fitting-tips-guides/see-whats-inside-a-sharkbite-push-to-connect-fitting): Internal gripping and sealing components for the manufacturer’s described design.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n**Verification needs:** Any product examples added later must be checked against their exact manufacturer documentation. This module does not specify installation procedures, sealants, cure times, pressure ratings, or approved applications.\n\n### 8. Optional manager discussion prompt\n\nWhich fittings in our assortment have different connection types at opposite ends?\n\n### 9. Review needs\n\n- Have a plumbing subject-matter reviewer confirm the recognition clues and scenario.\n- Confirm terminology against participating stores’ assortments.\n- If photographs are added, verify that each example clearly shows the intended connection.\n- Keep this module focused on identification; compatibility and installation require additional product-specific information.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "bb3f33ae-d715-5555-8861-ad7006e9945d",
+      "code": "CD-0003",
+      "version": "0.1.0",
+      "title": "Amps, Volts, and Watts on a Label",
+      "academy": "Electrical",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify which label markings describe voltage, electric current, and electrical power."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Electrical labels can place several numbers close together. Knowing what each unit means helps you explain the label without confusing a product’s voltage with its current or power."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Read the unit beside the number.** The number alone does not tell you what is being measured.\n\n| Label marking | What it measures | Plain-language meaning |\n|---|---|---|\n| **V — volts** | Voltage | The electrical potential difference, sometimes described as electrical “push.” |\n| **A — amperes, or amps** | Electric current | The rate at which electric charge flows. |\n| **W — watts** | Power | The rate at which energy is transferred or used. |\n\nThese units describe different quantities. They are related, but their numbers are not interchangeable. [Sources 1 and 2]\n\n**Recommended action:** Read both the number and its unit aloud: “This marking says eight amps.” Then check the surrounding label text to understand what that rating describes.\n\nFor a device that uses an adapter, pay attention to **input** and **output**. Input describes what the device or adapter receives; output describes what it supplies. Do not combine numbers from different parts of a label.\n\n**Common mistake:** Calling every electrical number “wattage.” A number followed by **A** is an amperage marking, even when a wattage marking appears nearby.\n\nWatts also differ from **kilowatt-hours (kWh)**. Watts describe power; kilowatt-hours describe energy used over time. A wattage number alone does not tell you the total energy a customer will use. [Source 3]\n\n**When to verify or seek help:** If a marking is missing, unclear, or unfamiliar, check the exact model’s manufacturer instructions. Identifying these units does not establish that a cord, adapter, outlet, or circuit is suitable. Refer compatibility questions to the product documentation and unresolved wiring or circuit questions to a qualified electrician."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer shows you a product label with several electrical markings. One line reads **“Rated current: 8 A.”**\n\nThe customer asks, “What does that line tell me?”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Read the number, unit, and surrounding label text together before explaining an electrical rating."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "NIST",
+          "title": "SP 330, Section 2",
+          "url": "https://www.nist.gov/pml/special-publication-330/sp-330-section-2",
+          "supports": "Electrical quantities, unit names, and symbols.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "NIST",
+          "title": "SI Units",
+          "url": "https://www.nist.gov/pml/owm/metric-si/si-units",
+          "supports": "Ampere as the unit of electric current.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "U.S. Energy Information Administration",
+          "title": "Measuring Electricity",
+          "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+          "supports": "Distinction between power in watts and energy in watt-hours or kilowatt-hours.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "keywords": [
+        "amps",
+        "amperes",
+        "volts",
+        "watts",
+        "current",
+        "voltage",
+        "power",
+        "electrical label"
+      ],
+      "relevant_departments": [
+        "Electrical",
+        "lighting",
+        "power tools",
+        "appliances"
+      ],
+      "estimated_minutes": 5,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "bb3f33ae-d715-5555-8861-ad7006e9945d",
+        "id": "CD-0003-Q01",
+        "position": 1,
+        "prompt": "What does the **8 A** marking describe?",
+        "options": [
+          "The product’s rated voltage",
+          "The product’s rated power",
+          "The product’s energy use over eight hours",
+          "The product’s rated electric current"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "bb3f33ae-d715-5555-8861-ad7006e9945d",
+        "question_id": "CD-0003-Q01",
+        "correct_option": 3,
+        "explanation": "A stands for amperes, commonly called amps, which measure electric current. Voltage is measured in volts, and power is measured in watts. The marking does not describe energy use over a period of time.",
+        "teaching_reference": "Section 3, “Learn it,” unit comparison table and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0003",
+        "Title": "Amps, Volts, and Watts on a Label",
+        "Academy": "Electrical",
+        "Skill level": "Foundations",
+        "Relevant departments": "Electrical; lighting; power tools; appliances",
+        "Estimated completion time": "5 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "amps, amperes, volts, watts, current, voltage, power, electrical label",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User content approval does not resolve the listed technical and store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify which label markings describe voltage, electric current, and electrical power."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Electrical labels can place several numbers close together. Knowing what each unit means helps you explain the label without confusing a product’s voltage with its current or power."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Read the unit beside the number.** The number alone does not tell you what is being measured.\n\n| Label marking | What it measures | Plain-language meaning |\n|---|---|---|\n| **V — volts** | Voltage | The electrical potential difference, sometimes described as electrical “push.” |\n| **A — amperes, or amps** | Electric current | The rate at which electric charge flows. |\n| **W — watts** | Power | The rate at which energy is transferred or used. |\n\nThese units describe different quantities. They are related, but their numbers are not interchangeable. [Sources 1 and 2]\n\n**Recommended action:** Read both the number and its unit aloud: “This marking says eight amps.” Then check the surrounding label text to understand what that rating describes.\n\nFor a device that uses an adapter, pay attention to **input** and **output**. Input describes what the device or adapter receives; output describes what it supplies. Do not combine numbers from different parts of a label.\n\n**Common mistake:** Calling every electrical number “wattage.” A number followed by **A** is an amperage marking, even when a wattage marking appears nearby.\n\nWatts also differ from **kilowatt-hours (kWh)**. Watts describe power; kilowatt-hours describe energy used over time. A wattage number alone does not tell you the total energy a customer will use. [Source 3]\n\n**When to verify or seek help:** If a marking is missing, unclear, or unfamiliar, check the exact model’s manufacturer instructions. Identifying these units does not establish that a cord, adapter, outlet, or circuit is suitable. Refer compatibility questions to the product documentation and unresolved wiring or circuit questions to a qualified electrician."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer shows you a product label with several electrical markings. One line reads **“Rated current: 8 A.”**\n\nThe customer asks, “What does that line tell me?”"
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0003-Q01**\n\nWhat does the **8 A** marking describe?\n\nA. The product’s rated voltage\nB. The product’s rated power\nC. The product’s energy use over eight hours\nD. The product’s rated electric current"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Read the number, unit, and surrounding label text together before explaining an electrical rating."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0003-Q01",
+          "wording": "What does the **8 A** marking describe?",
+          "options": {
+            "A": "The product’s rated voltage",
+            "B": "The product’s rated power",
+            "C": "The product’s energy use over eight hours",
+            "D": "The product’s rated electric current"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0003-Q01",
+          "correct_answer": "D",
+          "explanation": "A stands for amperes, commonly called amps, which measure electric current. Voltage is measured in volts, and power is measured in watts. The marking does not describe energy use over a period of time.",
+          "teaching_reference": "Section 3, “Learn it,” unit comparison table and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created example label with separate V, A, and W markings. Clearly label it “Illustrative example—not a product specification.”\n\n**Accessibility description for proposed media:** “An illustrative electrical label highlights three unit symbols: V for voltage, A for electric current, and W for power.” Supply every label marking as readable text; do not use color alone to distinguish units.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] NIST, [SP 330, Section 2](https://www.nist.gov/pml/special-publication-330/sp-330-section-2): Electrical quantities, unit names, and symbols.\n- [Source 2] NIST, [SI Units](https://www.nist.gov/pml/owm/metric-si/si-units): Ampere as the unit of electric current.\n- [Source 3] U.S. Energy Information Administration, [Measuring Electricity](https://www.eia.gov/energyexplained/electricity/measuring-electricity.php): Distinction between power in watts and energy in watt-hours or kilowatt-hours.\n\n**Verification needs:** The input/output paragraph needs confirmation against the exact manufacturer documentation if a real adapter example is added. The 8 A scenario is fictional and makes no claim about a specific product or its compatibility.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Which electrical labels in our assortment are hardest to explain, and what manufacturer reference helps clarify them?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have an electrical subject-matter reviewer check terminology and referral wording.\n- Confirm the input/output explanation against a manufacturer reference before publication.\n- If a real label is added, verify the model, every marking, and image usage rights.\n- Keep calculations, circuit sizing, and cord selection outside this module’s scope."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "NIST",
+          "title": "SP 330, Section 2",
+          "url": "https://www.nist.gov/pml/special-publication-330/sp-330-section-2",
+          "supports": "Electrical quantities, unit names, and symbols.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "NIST",
+          "title": "SI Units",
+          "url": "https://www.nist.gov/pml/owm/metric-si/si-units",
+          "supports": "Ampere as the unit of electric current.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "U.S. Energy Information Administration",
+          "title": "Measuring Electricity",
+          "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+          "supports": "Distinction between power in watts and energy in watt-hours or kilowatt-hours.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have an electrical subject-matter reviewer check terminology and referral wording.",
+        "Confirm the input/output explanation against a manufacturer reference before publication.",
+        "If a real label is added, verify the model, every marking, and image usage rights.",
+        "Keep calculations, circuit sizing, and cord selection outside this module’s scope."
+      ],
+      "complete_markdown": "# CD-0003 — Amps, Volts, and Watts on a Label\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0003 |\n| Title | Amps, Volts, and Watts on a Label |\n| Academy | Electrical |\n| Skill level | Foundations |\n| Relevant departments | Electrical; lighting; power tools; appliances |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | amps, amperes, volts, watts, current, voltage, power, electrical label |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nIdentify which label markings describe voltage, electric current, and electrical power.\n\n### 2. Why it matters\n\nElectrical labels can place several numbers close together. Knowing what each unit means helps you explain the label without confusing a product’s voltage with its current or power.\n\n### 3. Learn it\n\n**Read the unit beside the number.** The number alone does not tell you what is being measured.\n\n| Label marking | What it measures | Plain-language meaning |\n|---|---|---|\n| **V — volts** | Voltage | The electrical potential difference, sometimes described as electrical “push.” |\n| **A — amperes, or amps** | Electric current | The rate at which electric charge flows. |\n| **W — watts** | Power | The rate at which energy is transferred or used. |\n\nThese units describe different quantities. They are related, but their numbers are not interchangeable. [Sources 1 and 2]\n\n**Recommended action:** Read both the number and its unit aloud: “This marking says eight amps.” Then check the surrounding label text to understand what that rating describes.\n\nFor a device that uses an adapter, pay attention to **input** and **output**. Input describes what the device or adapter receives; output describes what it supplies. Do not combine numbers from different parts of a label.\n\n**Common mistake:** Calling every electrical number “wattage.” A number followed by **A** is an amperage marking, even when a wattage marking appears nearby.\n\nWatts also differ from **kilowatt-hours (kWh)**. Watts describe power; kilowatt-hours describe energy used over time. A wattage number alone does not tell you the total energy a customer will use. [Source 3]\n\n**When to verify or seek help:** If a marking is missing, unclear, or unfamiliar, check the exact model’s manufacturer instructions. Identifying these units does not establish that a cord, adapter, outlet, or circuit is suitable. Refer compatibility questions to the product documentation and unresolved wiring or circuit questions to a qualified electrician.\n\n### 4. Customer scenario\n\nA customer shows you a product label with several electrical markings. One line reads **“Rated current: 8 A.”**\n\nThe customer asks, “What does that line tell me?”\n\n### 5. Quick check\n\n**Question ID: CD-0003-Q01**\n\nWhat does the **8 A** marking describe?\n\nA. The product’s rated voltage\nB. The product’s rated power\nC. The product’s energy use over eight hours\nD. The product’s rated electric current\n\n### 6. Take it to the floor\n\nRead the number, unit, and surrounding label text together before explaining an electrical rating.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0003-Q01\n- **Correct answer:** D. The product’s rated electric current\n- **Explanation:** A stands for amperes, commonly called amps, which measure electric current. Voltage is measured in volts, and power is measured in watts. The marking does not describe energy use over a period of time.\n- **Teaching reference:** Section 3, “Learn it,” unit comparison table and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created example label with separate V, A, and W markings. Clearly label it “Illustrative example—not a product specification.”\n\n**Accessibility description for proposed media:** “An illustrative electrical label highlights three unit symbols: V for voltage, A for electric current, and W for power.” Supply every label marking as readable text; do not use color alone to distinguish units.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] NIST, [SP 330, Section 2](https://www.nist.gov/pml/special-publication-330/sp-330-section-2): Electrical quantities, unit names, and symbols.\n- [Source 2] NIST, [SI Units](https://www.nist.gov/pml/owm/metric-si/si-units): Ampere as the unit of electric current.\n- [Source 3] U.S. Energy Information Administration, [Measuring Electricity](https://www.eia.gov/energyexplained/electricity/measuring-electricity.php): Distinction between power in watts and energy in watt-hours or kilowatt-hours.\n\n**Verification needs:** The input/output paragraph needs confirmation against the exact manufacturer documentation if a real adapter example is added. The 8 A scenario is fictional and makes no claim about a specific product or its compatibility.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhich electrical labels in our assortment are hardest to explain, and what manufacturer reference helps clarify them?\n\n### 9. Review needs\n\n- Have an electrical subject-matter reviewer check terminology and referral wording.\n- Confirm the input/output explanation against a manufacturer reference before publication.\n- If a real label is added, verify the model, every marking, and image usage rights.\n- Keep calculations, circuit sizing, and cord selection outside this module’s scope.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "7c27d8c7-50d1-56c8-891e-84c6b1af50c9",
+      "code": "CD-0004",
+      "version": "0.2.0",
+      "title": "Read an HVAC Filter Size",
+      "academy": "HVAC",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish nominal filter size from actual dimensions and identify the information needed to verify a replacement."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer may notice that a filter’s measurements differ from the size printed prominently on its package. Explaining the two size descriptions helps you investigate the fit without assuming the filter is mislabeled."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Air filters can have a nominal size and actual dimensions.**\n\n| Size description | What it means |\n|---|---|\n| **Nominal size** | The designated size used to identify and shop for the filter. It is often rounded. |\n| **Actual dimensions** | The filter’s physical measurements, which may differ from its nominal size. |\n\n**Why are they different?** Nominal sizes provide convenient shopping labels. Many filters are manufactured slightly smaller than their nominal dimensions to allow clearance when inserting and removing them from the intended slot. [Source 4]\n\nHowever, **there is no universal amount to subtract**. Some filters—especially filters designed for specific cabinets—have actual dimensions that differ in other ways. Use the manufacturer’s published measurements rather than assuming every “one-inch” or “four-inch” filter measures exactly that thickness. [Sources 2 and 3]\n\nFilter dimensions describe the two sides of the face and the depth, or thickness. Read all three numbers and their units. A matching face size alone does not establish a matching depth. Manufacturer product information distinguishes nominal sizes from actual measurements. [Source 1]\n\n**Recommended action:** Ask for the complete size marking and any filter model or part number. A clear photo of the existing filter label can help. Then compare the proposed replacement’s published dimensions and compatibility information with the equipment or filter cabinet’s requirements.\n\nTreat an old filter as a useful clue, rather than proof that it was the correct replacement.\n\n**Common mistake:** Assuming that every filter with the same nominal size has identical physical dimensions. Filtrete specifically advises checking actual frame size because nominal descriptions can differ by brand or system. [Source 2]\n\n**When to verify or seek help:** Check the exact replacement’s manufacturer information when changing brands, comparing depths, or resolving conflicting measurements. If the label and equipment requirements do not establish a match, ask a knowledgeable coworker or manufacturer representative. Unresolved equipment-fit questions may need an HVAC technician.\n\nDo not promise a fit by rounding measurements alone. Size identification is the first step; it does not settle every question about filter suitability."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings a photo of a filter package. It shows a nominal size and a separate set of actual dimensions. The numbers are slightly different.\n\nThe customer asks, “Which information should we use to check whether a replacement fits?”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Use nominal size to start the search. Verify the replacement using all three dimensions and the equipment requirements."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Filterbuy",
+          "title": "Air Filter Sizes Chart: Standard AC, HVAC & Furnace Sizes",
+          "url": "https://filterbuy.com/resources/air-filter-basics/air-filter-sizes/",
+          "supports": "Manufacturer guidance on nominal size, actual dimensions, and dimension order.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Filtrete/3M",
+          "title": "Frequently Asked Questions — Refillable Air Filters: What sizes are available?",
+          "url": "https://www.filtrete.com/3M/en_US/filtrete/about-us/faq/",
+          "supports": "Advises checking actual frame size because nominal descriptions can differ by brand or system.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "AprilAire",
+          "title": "210 Replacement Filter",
+          "url": "https://shop.aprilaire.com/products/aprilaire-210-replacement-filter",
+          "supports": "Manufacturer example listing nominal and actual measurements separately. No numerical specifications from this product are reproduced in the lesson.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 4",
+          "publisher": "Filterbuy",
+          "title": "12x27x2 MERV 8 Pleated Air Filter",
+          "url": "https://filterbuy.com/air-filters/12x27x2/merv-8/",
+          "supports": "Explains that filters are made slightly smaller to slide into the filter slot without forcing. This is not a universal sizing allowance.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "keywords": [
+        "HVAC",
+        "furnace filter",
+        "air filter",
+        "nominal size",
+        "actual dimensions",
+        "thickness",
+        "depth"
+      ],
+      "relevant_departments": [
+        "HVAC",
+        "air filters",
+        "home maintenance"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "7c27d8c7-50d1-56c8-891e-84c6b1af50c9",
+        "id": "CD-0004-Q01",
+        "position": 1,
+        "prompt": "Which response is most accurate?",
+        "options": [
+          "Match the nominal face dimensions; the depth does not affect fit.",
+          "Use the nominal size to locate candidates, then verify actual dimensions and equipment compatibility.",
+          "Round the actual dimensions to whole inches and select the nearest filter.",
+          "Choose any brand with the same nominal size; physical dimensions will be identical."
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "7c27d8c7-50d1-56c8-891e-84c6b1af50c9",
+        "question_id": "CD-0004-Q01",
+        "correct_option": 1,
+        "explanation": "Nominal size identifies a shopping size; actual dimensions describe physical measurements. Checking all three dimensions and the equipment’s requirements helps establish whether the proposed replacement is suitable. Ignoring depth, rounding alone, or assuming identical dimensions across brands does not verify a fit.",
+        "teaching_reference": "Section 3, “Learn it,” size comparison table, “Recommended action,” and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0004",
+        "Title": "Read an HVAC Filter Size",
+        "Academy": "HVAC",
+        "Skill level": "Foundations",
+        "Relevant departments": "HVAC; air filters; home maintenance",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "HVAC, furnace filter, air filter, nominal size, actual dimensions, thickness, depth",
+        "Version": "0.2.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User approved revision explaining nominal versus actual dimensions. Approval does not resolve listed technical and store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish nominal filter size from actual dimensions and identify the information needed to verify a replacement."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer may notice that a filter’s measurements differ from the size printed prominently on its package. Explaining the two size descriptions helps you investigate the fit without assuming the filter is mislabeled."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Air filters can have a nominal size and actual dimensions.**\n\n| Size description | What it means |\n|---|---|\n| **Nominal size** | The designated size used to identify and shop for the filter. It is often rounded. |\n| **Actual dimensions** | The filter’s physical measurements, which may differ from its nominal size. |\n\n**Why are they different?** Nominal sizes provide convenient shopping labels. Many filters are manufactured slightly smaller than their nominal dimensions to allow clearance when inserting and removing them from the intended slot. [Source 4]\n\nHowever, **there is no universal amount to subtract**. Some filters—especially filters designed for specific cabinets—have actual dimensions that differ in other ways. Use the manufacturer’s published measurements rather than assuming every “one-inch” or “four-inch” filter measures exactly that thickness. [Sources 2 and 3]\n\nFilter dimensions describe the two sides of the face and the depth, or thickness. Read all three numbers and their units. A matching face size alone does not establish a matching depth. Manufacturer product information distinguishes nominal sizes from actual measurements. [Source 1]\n\n**Recommended action:** Ask for the complete size marking and any filter model or part number. A clear photo of the existing filter label can help. Then compare the proposed replacement’s published dimensions and compatibility information with the equipment or filter cabinet’s requirements.\n\nTreat an old filter as a useful clue, rather than proof that it was the correct replacement.\n\n**Common mistake:** Assuming that every filter with the same nominal size has identical physical dimensions. Filtrete specifically advises checking actual frame size because nominal descriptions can differ by brand or system. [Source 2]\n\n**When to verify or seek help:** Check the exact replacement’s manufacturer information when changing brands, comparing depths, or resolving conflicting measurements. If the label and equipment requirements do not establish a match, ask a knowledgeable coworker or manufacturer representative. Unresolved equipment-fit questions may need an HVAC technician.\n\nDo not promise a fit by rounding measurements alone. Size identification is the first step; it does not settle every question about filter suitability."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings a photo of a filter package. It shows a nominal size and a separate set of actual dimensions. The numbers are slightly different.\n\nThe customer asks, “Which information should we use to check whether a replacement fits?”"
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0004-Q01**\n\nWhich response is most accurate?\n\nA. Match the nominal face dimensions; the depth does not affect fit.\nB. Use the nominal size to locate candidates, then verify actual dimensions and equipment compatibility.\nC. Round the actual dimensions to whole inches and select the nearest filter.\nD. Choose any brand with the same nominal size; physical dimensions will be identical."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Use nominal size to start the search. Verify the replacement using all three dimensions and the equipment requirements."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0004-Q01",
+          "wording": "Which response is most accurate?",
+          "options": {
+            "A": "Match the nominal face dimensions; the depth does not affect fit.",
+            "B": "Use the nominal size to locate candidates, then verify actual dimensions and equipment compatibility.",
+            "C": "Round the actual dimensions to whole inches and select the nearest filter.",
+            "D": "Choose any brand with the same nominal size; physical dimensions will be identical."
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0004-Q01",
+          "correct_answer": "B",
+          "explanation": "Nominal size identifies a shopping size; actual dimensions describe physical measurements. Checking all three dimensions and the equipment’s requirements helps establish whether the proposed replacement is suitable. Ignoring depth, rounding alone, or assuming identical dimensions across brands does not verify a fit.",
+          "teaching_reference": "Section 3, “Learn it,” size comparison table, “Recommended action,” and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created illustration showing the two face dimensions and filter depth, alongside separate “Nominal size” and “Actual dimensions” labels. Use verified product data if numerical measurements are included.\n\n**Accessibility description for proposed media:** “A rectangular air filter has labeled arrows showing its two face dimensions and its depth. Separate text identifies nominal size as the shopping designation and actual dimensions as physical measurements.” Provide every measurement as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Filterbuy, [Air Filter Sizes Chart: Standard AC, HVAC & Furnace Sizes](https://filterbuy.com/resources/air-filter-basics/air-filter-sizes/): Manufacturer guidance on nominal size, actual dimensions, and dimension order.\n- [Source 2] Filtrete/3M, [Frequently Asked Questions — Refillable Air Filters: What sizes are available?](https://www.filtrete.com/3M/en_US/filtrete/about-us/faq/): Advises checking actual frame size because nominal descriptions can differ by brand or system.\n- [Source 3] AprilAire, [210 Replacement Filter](https://shop.aprilaire.com/products/aprilaire-210-replacement-filter): Manufacturer example listing nominal and actual measurements separately. No numerical specifications from this product are reproduced in the lesson.\n- [Source 4] Filterbuy, [12x27x2 MERV 8 Pleated Air Filter](https://filterbuy.com/air-filters/12x27x2/merv-8/): Explains that filters are made slightly smaller to slide into the filter slot without forcing. This is not a universal sizing allowance.\n\n**Verification needs:** Any product example added later must use the exact model’s current dimensions and compatibility documentation. Do not generalize one manufacturer’s sizing allowance to other filters.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Where can we find actual dimensions and equipment compatibility information for the filters we stock?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have an HVAC subject-matter reviewer confirm the fit-verification wording.\n- Confirm where participating stores can access manufacturer dimensions and compatibility information.\n- If media is added, verify measurement labels, source data, and usage rights.\n- Keep filtration ratings, replacement intervals, airflow direction, and installation procedures for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Filterbuy",
+          "title": "Air Filter Sizes Chart: Standard AC, HVAC & Furnace Sizes",
+          "url": "https://filterbuy.com/resources/air-filter-basics/air-filter-sizes/",
+          "supports": "Manufacturer guidance on nominal size, actual dimensions, and dimension order.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Filtrete/3M",
+          "title": "Frequently Asked Questions — Refillable Air Filters: What sizes are available?",
+          "url": "https://www.filtrete.com/3M/en_US/filtrete/about-us/faq/",
+          "supports": "Advises checking actual frame size because nominal descriptions can differ by brand or system.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "AprilAire",
+          "title": "210 Replacement Filter",
+          "url": "https://shop.aprilaire.com/products/aprilaire-210-replacement-filter",
+          "supports": "Manufacturer example listing nominal and actual measurements separately. No numerical specifications from this product are reproduced in the lesson.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 4",
+          "publisher": "Filterbuy",
+          "title": "12x27x2 MERV 8 Pleated Air Filter",
+          "url": "https://filterbuy.com/air-filters/12x27x2/merv-8/",
+          "supports": "Explains that filters are made slightly smaller to slide into the filter slot without forcing. This is not a universal sizing allowance.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have an HVAC subject-matter reviewer confirm the fit-verification wording.",
+        "Confirm where participating stores can access manufacturer dimensions and compatibility information.",
+        "If media is added, verify measurement labels, source data, and usage rights.",
+        "Keep filtration ratings, replacement intervals, airflow direction, and installation procedures for separate modules."
+      ],
+      "complete_markdown": "# CD-0004 — Read an HVAC Filter Size\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0004 |\n| Title | Read an HVAC Filter Size |\n| Academy | HVAC |\n| Skill level | Foundations |\n| Relevant departments | HVAC; air filters; home maintenance |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | HVAC, furnace filter, air filter, nominal size, actual dimensions, thickness, depth |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish nominal filter size from actual dimensions and identify the information needed to verify a replacement.\n\n### 2. Why it matters\n\nA customer may notice that a filter’s measurements differ from the size printed prominently on its package. Explaining the two size descriptions helps you investigate the fit without assuming the filter is mislabeled.\n\n### 3. Learn it\n\n**Air filters can have a nominal size and actual dimensions.**\n\n| Size description | What it means |\n|---|---|\n| **Nominal size** | The designated size used to identify and shop for the filter. It is often rounded. |\n| **Actual dimensions** | The filter’s physical measurements, which may differ from its nominal size. |\n\n**Why are they different?** Nominal sizes provide convenient shopping labels. Many filters are manufactured slightly smaller than their nominal dimensions to allow clearance when inserting and removing them from the intended slot. [Source 4]\n\nHowever, **there is no universal amount to subtract**. Some filters—especially filters designed for specific cabinets—have actual dimensions that differ in other ways. Use the manufacturer’s published measurements rather than assuming every “one-inch” or “four-inch” filter measures exactly that thickness. [Sources 2 and 3]\n\nFilter dimensions describe the two sides of the face and the depth, or thickness. Read all three numbers and their units. A matching face size alone does not establish a matching depth. Manufacturer product information distinguishes nominal sizes from actual measurements. [Source 1]\n\n**Recommended action:** Ask for the complete size marking and any filter model or part number. A clear photo of the existing filter label can help. Then compare the proposed replacement’s published dimensions and compatibility information with the equipment or filter cabinet’s requirements.\n\nTreat an old filter as a useful clue, rather than proof that it was the correct replacement.\n\n**Common mistake:** Assuming that every filter with the same nominal size has identical physical dimensions. Filtrete specifically advises checking actual frame size because nominal descriptions can differ by brand or system. [Source 2]\n\n**When to verify or seek help:** Check the exact replacement’s manufacturer information when changing brands, comparing depths, or resolving conflicting measurements. If the label and equipment requirements do not establish a match, ask a knowledgeable coworker or manufacturer representative. Unresolved equipment-fit questions may need an HVAC technician.\n\nDo not promise a fit by rounding measurements alone. Size identification is the first step; it does not settle every question about filter suitability.\n\n### 4. Customer scenario\n\nA customer brings a photo of a filter package. It shows a nominal size and a separate set of actual dimensions. The numbers are slightly different.\n\nThe customer asks, “Which information should we use to check whether a replacement fits?”\n\n### 5. Quick check\n\n**Question ID: CD-0004-Q01**\n\nWhich response is most accurate?\n\nA. Match the nominal face dimensions; the depth does not affect fit.\nB. Use the nominal size to locate candidates, then verify actual dimensions and equipment compatibility.\nC. Round the actual dimensions to whole inches and select the nearest filter.\nD. Choose any brand with the same nominal size; physical dimensions will be identical.\n\n### 6. Take it to the floor\n\nUse nominal size to start the search. Verify the replacement using all three dimensions and the equipment requirements.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0004-Q01\n- **Correct answer:** B. Use the nominal size to locate candidates, then verify actual dimensions and equipment compatibility.\n- **Explanation:** Nominal size identifies a shopping size; actual dimensions describe physical measurements. Checking all three dimensions and the equipment’s requirements helps establish whether the proposed replacement is suitable. Ignoring depth, rounding alone, or assuming identical dimensions across brands does not verify a fit.\n- **Teaching reference:** Section 3, “Learn it,” size comparison table, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created illustration showing the two face dimensions and filter depth, alongside separate “Nominal size” and “Actual dimensions” labels. Use verified product data if numerical measurements are included.\n\n**Accessibility description for proposed media:** “A rectangular air filter has labeled arrows showing its two face dimensions and its depth. Separate text identifies nominal size as the shopping designation and actual dimensions as physical measurements.” Provide every measurement as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Filterbuy, [Air Filter Sizes Chart: Standard AC, HVAC & Furnace Sizes](https://filterbuy.com/resources/air-filter-basics/air-filter-sizes/): Manufacturer guidance on nominal size, actual dimensions, and dimension order.\n- [Source 2] Filtrete/3M, [Frequently Asked Questions — Refillable Air Filters: What sizes are available?](https://www.filtrete.com/3M/en_US/filtrete/about-us/faq/): Advises checking actual frame size because nominal descriptions can differ by brand or system.\n- [Source 3] AprilAire, [210 Replacement Filter](https://shop.aprilaire.com/products/aprilaire-210-replacement-filter): Manufacturer example listing nominal and actual measurements separately. No numerical specifications from this product are reproduced in the lesson.\n- [Source 4] Filterbuy, [12x27x2 MERV 8 Pleated Air Filter](https://filterbuy.com/air-filters/12x27x2/merv-8/): Explains that filters are made slightly smaller to slide into the filter slot without forcing. This is not a universal sizing allowance.\n\n**Verification needs:** Any product example added later must use the exact model’s current dimensions and compatibility documentation. Do not generalize one manufacturer’s sizing allowance to other filters.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhere can we find actual dimensions and equipment compatibility information for the filters we stock?\n\n### 9. Review needs\n\n- Have an HVAC subject-matter reviewer confirm the fit-verification wording.\n- Confirm where participating stores can access manufacturer dimensions and compatibility information.\n- If media is added, verify measurement labels, source data, and usage rights.\n- Keep filtration ratings, replacement intervals, airflow direction, and installation procedures for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "15bea75b-3ca2-54b3-9268-ef0b1769ac61",
+      "code": "CD-0005",
+      "version": "0.2.0",
+      "title": "Match the Screwdriver to the Screw",
+      "academy": "Hand Tools & Fasteners",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Match common screw-drive shapes to the corresponding hand screwdriver and recognize when tip size still needs confirmation."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A screwdriver can look close to the right choice without fitting correctly. Matching both drive type and tip size helps reduce slipping and damage to the screw or tool."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Match the drive shape first, then confirm the tip size.** The drive is the slot or recess where the screwdriver engages—not the screw head’s outer shape.\n\nStart with these common patterns:\n\n| Drive type | Recognition clue | Matching hand tool |\n|---|---|---|\n| **Slotted** | One straight slot across the screw head | Slotted screwdriver, commonly called a **flathead**, **flathead screwdriver**, or **flat-blade screwdriver** |\n| **Phillips** | A cross-shaped recess | Phillips screwdriver |\n| **Square** | A square recess | Square-drive screwdriver |\n| **TORX** | A six-lobed, star-like recess | Correctly sized TORX screwdriver |\n\n**Why “slotted”?** The name describes the straight slot that receives the screwdriver’s blade. Customers commonly call the matching tool a **flathead**—recognize both names. When discussing screws, keep drive type separate from head shape: “slotted” identifies where the tool engages, while “flat head” can describe the screw’s outer head shape. [Sources 6 and 7]\n\nThese are starting clues. Unfamiliar, combination, or specialty drives need closer identification before you choose a tool.\n\n**Recommended action:** Check the screw package or manufacturer information for the specified drive type and size. Then match that designation to the screwdriver’s marking. Shape identifies the family; it does not establish the size.\n\nFor example, Phillips screwdrivers come in different tip sizes. Choosing “a Phillips” is only the first step. Klein Tools advises matching both screwdriver type and size to the screw. [Source 1]\n\n**Common mistake:** Choosing by handle size or shaft length. A longer screwdriver does not necessarily have a larger tip. Read the tip designation.\n\n**When to verify or seek help:** If a tip will not seat properly or slips, stop and recheck the type, size, and condition rather than forcing it. Ask a knowledgeable coworker when the drive is unfamiliar or damaged.\n\nSome cross-shaped drives, including Phillips and Pozidriv, have separate tool designations. Likewise, do not assume every star-like recess uses the same driver. Verify the exact designation. [Sources 3 and 5]"
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer is assembling a cabinet by hand. The screw package specifies **“Phillips #2.”** They have found the Phillips screwdrivers but see several tip sizes and shaft lengths.\n\nThey ask which detail to match before choosing one."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Match **drive type + tip size**. Choose shaft length and handle features after establishing the correct tip."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Klein Tools/Hand Tools Institute",
+          "title": "Proper Use and Care of Hand Tools",
+          "url": "https://data.kleintools.com/sites/all/product_assets/documents/brochures/klein/KleinTools_Proper-Use-and-Care-of-Hand-Tools_98016.pdf",
+          "supports": "Screwdriver section: matching screwdriver type and size, proper fit, and avoiding misuse.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Wera",
+          "title": "350 PH Screwdriver for Phillips Screws",
+          "url": "https://www.wera.de/en/tools/350-ph-screwdriver-for-phillips-screws",
+          "supports": "Phillips cross-recess terminology.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Wera",
+          "title": "83 Combination Blade for Phillips/Pozidriv Screws",
+          "url": "https://www.wera.de/en/tools/83-combination-blade-for-phillips-pozidriv-screws",
+          "supports": "Separate Phillips and Pozidriv designations.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 4",
+          "publisher": "Klein Tools",
+          "title": "#2 Square Screwdriver",
+          "url": "https://www.kleintools.com/catalog/fixed-blade-screwdrivers/2-square-screwdriver-4-inch-round-shank",
+          "supports": "Square-recess tip terminology and sizing.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 5",
+          "publisher": "TORX Products",
+          "title": "Frequently Asked Questions",
+          "url": "https://torxproducts.com/faq/",
+          "supports": "Distinction between the TORX designation and generic star/six-lobe descriptions.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 6",
+          "publisher": "Klein Tools",
+          "title": "Slotted Screw Holding Driver, 3/16-Inch — 6013K",
+          "url": "https://www.kleintools.com/catalog/fixed-blade-screwdrivers/slotted-screw-holding-driver-316-inch",
+          "supports": "Manufacturer terminology connects a slotted screwdriver blade to the screw slot.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 7",
+          "publisher": "ASME",
+          "title": "B18.6.3-2013 — public preview",
+          "url": "https://www.asme.org/getmedia/c0cd5b72-b6a7-4cf2-871f-08f3ec78cbe3/35224.pdf",
+          "supports": "Public contents distinguish slotted drives and flat countersunk head shapes. Historical terminology evidence, not a current compliance claim or attribution of the name to an inventor.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "keywords": [
+        "screwdriver",
+        "screw drive",
+        "slotted",
+        "flathead",
+        "flat-blade",
+        "Phillips",
+        "square",
+        "TORX",
+        "tip size",
+        "fit"
+      ],
+      "relevant_departments": [
+        "Hand tools",
+        "fasteners",
+        "hardware"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "15bea75b-3ca2-54b3-9268-ef0b1769ac61",
+        "id": "CD-0005-Q01",
+        "position": 1,
+        "prompt": "Which selection best matches the package specification?",
+        "options": [
+          "A Phillips screwdriver with the longest shaft",
+          "A square-drive screwdriver marked #2",
+          "A Phillips screwdriver with a #2 tip",
+          "A Phillips screwdriver with the largest handle"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "15bea75b-3ca2-54b3-9268-ef0b1769ac61",
+        "question_id": "CD-0005-Q01",
+        "correct_option": 2,
+        "explanation": "“Phillips #2” identifies both the drive type and tip size. A square #2 is a different drive type. Shaft length and handle size do not establish the required tip designation.",
+        "teaching_reference": "Section 3, “Learn it,” opening rule, “Recommended action,” and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0005",
+        "Title": "Match the Screwdriver to the Screw",
+        "Academy": "Hand Tools & Fasteners",
+        "Skill level": "Foundations",
+        "Relevant departments": "Hand tools; fasteners; hardware",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "screwdriver, screw drive, slotted, flathead, flat-blade, Phillips, square, TORX, tip size, fit",
+        "Version": "0.2.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User approved revised slotted/flathead terminology. Approval does not resolve listed technical and store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Match common screw-drive shapes to the corresponding hand screwdriver and recognize when tip size still needs confirmation."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A screwdriver can look close to the right choice without fitting correctly. Matching both drive type and tip size helps reduce slipping and damage to the screw or tool."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Match the drive shape first, then confirm the tip size.** The drive is the slot or recess where the screwdriver engages—not the screw head’s outer shape.\n\nStart with these common patterns:\n\n| Drive type | Recognition clue | Matching hand tool |\n|---|---|---|\n| **Slotted** | One straight slot across the screw head | Slotted screwdriver, commonly called a **flathead**, **flathead screwdriver**, or **flat-blade screwdriver** |\n| **Phillips** | A cross-shaped recess | Phillips screwdriver |\n| **Square** | A square recess | Square-drive screwdriver |\n| **TORX** | A six-lobed, star-like recess | Correctly sized TORX screwdriver |\n\n**Why “slotted”?** The name describes the straight slot that receives the screwdriver’s blade. Customers commonly call the matching tool a **flathead**—recognize both names. When discussing screws, keep drive type separate from head shape: “slotted” identifies where the tool engages, while “flat head” can describe the screw’s outer head shape. [Sources 6 and 7]\n\nThese are starting clues. Unfamiliar, combination, or specialty drives need closer identification before you choose a tool.\n\n**Recommended action:** Check the screw package or manufacturer information for the specified drive type and size. Then match that designation to the screwdriver’s marking. Shape identifies the family; it does not establish the size.\n\nFor example, Phillips screwdrivers come in different tip sizes. Choosing “a Phillips” is only the first step. Klein Tools advises matching both screwdriver type and size to the screw. [Source 1]\n\n**Common mistake:** Choosing by handle size or shaft length. A longer screwdriver does not necessarily have a larger tip. Read the tip designation.\n\n**When to verify or seek help:** If a tip will not seat properly or slips, stop and recheck the type, size, and condition rather than forcing it. Ask a knowledgeable coworker when the drive is unfamiliar or damaged.\n\nSome cross-shaped drives, including Phillips and Pozidriv, have separate tool designations. Likewise, do not assume every star-like recess uses the same driver. Verify the exact designation. [Sources 3 and 5]"
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer is assembling a cabinet by hand. The screw package specifies **“Phillips #2.”** They have found the Phillips screwdrivers but see several tip sizes and shaft lengths.\n\nThey ask which detail to match before choosing one."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0005-Q01**\n\nWhich selection best matches the package specification?\n\nA. A Phillips screwdriver with the longest shaft\nB. A square-drive screwdriver marked #2\nC. A Phillips screwdriver with a #2 tip\nD. A Phillips screwdriver with the largest handle"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Match **drive type + tip size**. Choose shaft length and handle features after establishing the correct tip."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0005-Q01",
+          "wording": "Which selection best matches the package specification?",
+          "options": {
+            "A": "A Phillips screwdriver with the longest shaft",
+            "B": "A square-drive screwdriver marked #2",
+            "C": "A Phillips screwdriver with a #2 tip",
+            "D": "A Phillips screwdriver with the largest handle"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0005-Q01",
+          "correct_answer": "C",
+          "explanation": "“Phillips #2” identifies both the drive type and tip size. A square #2 is a different drive type. Shaft length and handle size do not establish the required tip designation.",
+          "teaching_reference": "Section 3, “Learn it,” opening rule, “Recommended action,” and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison of four screw recesses and their matching screwdriver tips. A second image could show different Phillips tip sizes with their markings.\n\n**Accessibility description for proposed media:** “Four labeled screw recesses appear beside matching tips: a straight slot and flat blade; a Phillips cross and Phillips tip; a square recess and square tip; and a six-lobed TORX recess and matching tip.” Keep the recognition table available as text; do not rely on color.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Klein Tools/Hand Tools Institute, [Proper Use and Care of Hand Tools](https://data.kleintools.com/sites/all/product_assets/documents/brochures/klein/KleinTools_Proper-Use-and-Care-of-Hand-Tools_98016.pdf): Screwdriver section: matching screwdriver type and size, proper fit, and avoiding misuse.\n- [Source 2] Wera, [350 PH Screwdriver for Phillips Screws](https://www.wera.de/en/tools/350-ph-screwdriver-for-phillips-screws): Phillips cross-recess terminology.\n- [Source 3] Wera, [83 Combination Blade for Phillips/Pozidriv Screws](https://www.wera.de/en/tools/83-combination-blade-for-phillips-pozidriv-screws): Separate Phillips and Pozidriv designations.\n- [Source 4] Klein Tools, [#2 Square Screwdriver](https://www.kleintools.com/catalog/fixed-blade-screwdrivers/2-square-screwdriver-4-inch-round-shank): Square-recess tip terminology and sizing.\n- [Source 5] TORX Products, [Frequently Asked Questions](https://torxproducts.com/faq/): Distinction between the TORX designation and generic star/six-lobe descriptions.\n- [Source 6] Klein Tools, [Slotted Screw Holding Driver, 3/16-Inch — 6013K](https://www.kleintools.com/catalog/fixed-blade-screwdrivers/slotted-screw-holding-driver-316-inch): Manufacturer terminology connects a slotted screwdriver blade to the screw slot.\n- [Source 7] ASME, [B18.6.3-2013 — public preview](https://www.asme.org/getmedia/c0cd5b72-b6a7-4cf2-871f-08f3ec78cbe3/35224.pdf): Public contents distinguish slotted drives and flat countersunk head shapes. Historical terminology evidence, not a current compliance claim or attribution of the name to an inventor.\n\n**Verification needs:** Check any proposed visual against the exact drive geometry it represents. The cabinet scenario and package wording are fictional; they do not describe a particular manufacturer’s product.\n\nAll teaching and assessment wording is independently authored. No manufacturer illustrations or proprietary assessments are included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Where do our screwdriver packages show tip type and size, and which markings might confuse a first-time customer?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a hand-tool subject-matter reviewer check drive descriptions and fit guidance.\n- Confirm terminology against participating stores’ assortments.\n- If media is added, verify geometry, labels, accessibility descriptions, and usage rights.\n- Keep powered driving, damaged-screw removal, and electrical work for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Klein Tools/Hand Tools Institute",
+          "title": "Proper Use and Care of Hand Tools",
+          "url": "https://data.kleintools.com/sites/all/product_assets/documents/brochures/klein/KleinTools_Proper-Use-and-Care-of-Hand-Tools_98016.pdf",
+          "supports": "Screwdriver section: matching screwdriver type and size, proper fit, and avoiding misuse.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Wera",
+          "title": "350 PH Screwdriver for Phillips Screws",
+          "url": "https://www.wera.de/en/tools/350-ph-screwdriver-for-phillips-screws",
+          "supports": "Phillips cross-recess terminology.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Wera",
+          "title": "83 Combination Blade for Phillips/Pozidriv Screws",
+          "url": "https://www.wera.de/en/tools/83-combination-blade-for-phillips-pozidriv-screws",
+          "supports": "Separate Phillips and Pozidriv designations.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 4",
+          "publisher": "Klein Tools",
+          "title": "#2 Square Screwdriver",
+          "url": "https://www.kleintools.com/catalog/fixed-blade-screwdrivers/2-square-screwdriver-4-inch-round-shank",
+          "supports": "Square-recess tip terminology and sizing.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 5",
+          "publisher": "TORX Products",
+          "title": "Frequently Asked Questions",
+          "url": "https://torxproducts.com/faq/",
+          "supports": "Distinction between the TORX designation and generic star/six-lobe descriptions.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 6",
+          "publisher": "Klein Tools",
+          "title": "Slotted Screw Holding Driver, 3/16-Inch — 6013K",
+          "url": "https://www.kleintools.com/catalog/fixed-blade-screwdrivers/slotted-screw-holding-driver-316-inch",
+          "supports": "Manufacturer terminology connects a slotted screwdriver blade to the screw slot.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 7",
+          "publisher": "ASME",
+          "title": "B18.6.3-2013 — public preview",
+          "url": "https://www.asme.org/getmedia/c0cd5b72-b6a7-4cf2-871f-08f3ec78cbe3/35224.pdf",
+          "supports": "Public contents distinguish slotted drives and flat countersunk head shapes. Historical terminology evidence, not a current compliance claim or attribution of the name to an inventor.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a hand-tool subject-matter reviewer check drive descriptions and fit guidance.",
+        "Confirm terminology against participating stores’ assortments.",
+        "If media is added, verify geometry, labels, accessibility descriptions, and usage rights.",
+        "Keep powered driving, damaged-screw removal, and electrical work for separate modules."
+      ],
+      "complete_markdown": "# CD-0005 — Match the Screwdriver to the Screw\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0005 |\n| Title | Match the Screwdriver to the Screw |\n| Academy | Hand Tools & Fasteners |\n| Skill level | Foundations |\n| Relevant departments | Hand tools; fasteners; hardware |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | screwdriver, screw drive, slotted, flathead, flat-blade, Phillips, square, TORX, tip size, fit |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nMatch common screw-drive shapes to the corresponding hand screwdriver and recognize when tip size still needs confirmation.\n\n### 2. Why it matters\n\nA screwdriver can look close to the right choice without fitting correctly. Matching both drive type and tip size helps reduce slipping and damage to the screw or tool.\n\n### 3. Learn it\n\n**Match the drive shape first, then confirm the tip size.** The drive is the slot or recess where the screwdriver engages—not the screw head’s outer shape.\n\nStart with these common patterns:\n\n| Drive type | Recognition clue | Matching hand tool |\n|---|---|---|\n| **Slotted** | One straight slot across the screw head | Slotted screwdriver, commonly called a **flathead**, **flathead screwdriver**, or **flat-blade screwdriver** |\n| **Phillips** | A cross-shaped recess | Phillips screwdriver |\n| **Square** | A square recess | Square-drive screwdriver |\n| **TORX** | A six-lobed, star-like recess | Correctly sized TORX screwdriver |\n\n**Why “slotted”?** The name describes the straight slot that receives the screwdriver’s blade. Customers commonly call the matching tool a **flathead**—recognize both names. When discussing screws, keep drive type separate from head shape: “slotted” identifies where the tool engages, while “flat head” can describe the screw’s outer head shape. [Sources 6 and 7]\n\nThese are starting clues. Unfamiliar, combination, or specialty drives need closer identification before you choose a tool.\n\n**Recommended action:** Check the screw package or manufacturer information for the specified drive type and size. Then match that designation to the screwdriver’s marking. Shape identifies the family; it does not establish the size.\n\nFor example, Phillips screwdrivers come in different tip sizes. Choosing “a Phillips” is only the first step. Klein Tools advises matching both screwdriver type and size to the screw. [Source 1]\n\n**Common mistake:** Choosing by handle size or shaft length. A longer screwdriver does not necessarily have a larger tip. Read the tip designation.\n\n**When to verify or seek help:** If a tip will not seat properly or slips, stop and recheck the type, size, and condition rather than forcing it. Ask a knowledgeable coworker when the drive is unfamiliar or damaged.\n\nSome cross-shaped drives, including Phillips and Pozidriv, have separate tool designations. Likewise, do not assume every star-like recess uses the same driver. Verify the exact designation. [Sources 3 and 5]\n\n### 4. Customer scenario\n\nA customer is assembling a cabinet by hand. The screw package specifies **“Phillips #2.”** They have found the Phillips screwdrivers but see several tip sizes and shaft lengths.\n\nThey ask which detail to match before choosing one.\n\n### 5. Quick check\n\n**Question ID: CD-0005-Q01**\n\nWhich selection best matches the package specification?\n\nA. A Phillips screwdriver with the longest shaft\nB. A square-drive screwdriver marked #2\nC. A Phillips screwdriver with a #2 tip\nD. A Phillips screwdriver with the largest handle\n\n### 6. Take it to the floor\n\nMatch **drive type + tip size**. Choose shaft length and handle features after establishing the correct tip.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0005-Q01\n- **Correct answer:** C. A Phillips screwdriver with a #2 tip\n- **Explanation:** “Phillips #2” identifies both the drive type and tip size. A square #2 is a different drive type. Shaft length and handle size do not establish the required tip designation.\n- **Teaching reference:** Section 3, “Learn it,” opening rule, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison of four screw recesses and their matching screwdriver tips. A second image could show different Phillips tip sizes with their markings.\n\n**Accessibility description for proposed media:** “Four labeled screw recesses appear beside matching tips: a straight slot and flat blade; a Phillips cross and Phillips tip; a square recess and square tip; and a six-lobed TORX recess and matching tip.” Keep the recognition table available as text; do not rely on color.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Klein Tools/Hand Tools Institute, [Proper Use and Care of Hand Tools](https://data.kleintools.com/sites/all/product_assets/documents/brochures/klein/KleinTools_Proper-Use-and-Care-of-Hand-Tools_98016.pdf): Screwdriver section: matching screwdriver type and size, proper fit, and avoiding misuse.\n- [Source 2] Wera, [350 PH Screwdriver for Phillips Screws](https://www.wera.de/en/tools/350-ph-screwdriver-for-phillips-screws): Phillips cross-recess terminology.\n- [Source 3] Wera, [83 Combination Blade for Phillips/Pozidriv Screws](https://www.wera.de/en/tools/83-combination-blade-for-phillips-pozidriv-screws): Separate Phillips and Pozidriv designations.\n- [Source 4] Klein Tools, [#2 Square Screwdriver](https://www.kleintools.com/catalog/fixed-blade-screwdrivers/2-square-screwdriver-4-inch-round-shank): Square-recess tip terminology and sizing.\n- [Source 5] TORX Products, [Frequently Asked Questions](https://torxproducts.com/faq/): Distinction between the TORX designation and generic star/six-lobe descriptions.\n- [Source 6] Klein Tools, [Slotted Screw Holding Driver, 3/16-Inch — 6013K](https://www.kleintools.com/catalog/fixed-blade-screwdrivers/slotted-screw-holding-driver-316-inch): Manufacturer terminology connects a slotted screwdriver blade to the screw slot.\n- [Source 7] ASME, [B18.6.3-2013 — public preview](https://www.asme.org/getmedia/c0cd5b72-b6a7-4cf2-871f-08f3ec78cbe3/35224.pdf): Public contents distinguish slotted drives and flat countersunk head shapes. Historical terminology evidence, not a current compliance claim or attribution of the name to an inventor.\n\n**Verification needs:** Check any proposed visual against the exact drive geometry it represents. The cabinet scenario and package wording are fictional; they do not describe a particular manufacturer’s product.\n\nAll teaching and assessment wording is independently authored. No manufacturer illustrations or proprietary assessments are included.\n\n### 8. Optional manager discussion prompt\n\nWhere do our screwdriver packages show tip type and size, and which markings might confuse a first-time customer?\n\n### 9. Review needs\n\n- Have a hand-tool subject-matter reviewer check drive descriptions and fit guidance.\n- Confirm terminology against participating stores’ assortments.\n- If media is added, verify geometry, labels, accessibility descriptions, and usage rights.\n- Keep powered driving, damaged-screw removal, and electrical work for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "b353a01d-52eb-57fa-b89a-1e0f14595d8c",
+      "code": "CD-0006",
+      "version": "0.1.0",
+      "title": "Drill or Impact Driver?",
+      "academy": "Power Tools & Accessories",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish the basic uses of a drill/driver and an impact driver."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Both tools can drive screws, so customers may assume they do the same job. Explaining their basic differences helps customers understand why a combination kit includes both."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**A drill/driver is a general-purpose drilling and screwdriving tool. An impact driver is primarily a fastening tool.**\n\n| Tool | Basic use | Common identifying feature |\n|---|---|---|\n| **Drill/driver** | Drilling holes and driving screws | An adjustable chuck with jaws that tighten around a compatible bit |\n| **Impact driver** | Driving fasteners, including demanding screwdriving tasks | A quick-change holder commonly accepting compatible ¼-inch hex-shank accessories |\n\nA drill/driver turns the bit continuously. Many models have an **adjustable clutch** for screwdriving. The clutch limits the turning force delivered at the selected setting, helping control how deeply a screw is driven. It does not guarantee that a screw cannot be overdriven. Follow the model’s instructions for selecting drilling or screwdriving settings. [Source 1]\n\nAn impact driver adds **repeated twisting blows** when its impact mechanism operates. These rotational impacts help with demanding fastening work. That makes it useful for tasks such as driving longer screws, subject to the tool’s and fastener manufacturer’s instructions. [Source 2]\n\n**Recommended action:** Start by asking, “Are you mainly making holes, driving fasteners, or doing both?” Use the answer to explain the tools before comparing individual models.\n\n**Common mistake:** Saying a drill cannot drive screws or an impact driver cannot drill holes. Their capabilities overlap. Some impact drivers can drill with suitable accessories, but accessory fit, ratings, and permitted applications must be checked. [Source 3]\n\n**When to verify or seek help:** Check the exact tool manual and accessory instructions before recommending a bit or application. Confirm that accessories are suitable for impact use when applicable. If compatibility is unclear, ask a knowledgeable coworker or manufacturer representative."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer is looking at a kit containing a drill/driver and an impact driver. They plan to make holes in wood and install screws.\n\nThey ask, “Why would I want two tools that look so similar?”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Ask **“holes, fasteners, or both?”** before explaining which tool fits the customer’s work."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Milwaukee Tool",
+          "title": "Operator instructions—publication 58-14-7047d1",
+          "url": "https://documents.milwaukeetool.com/58-14-7047d1.pdf",
+          "supports": "Operation section: drilling mode and adjustable clutch function. This illustrates the documented model’s operation; it does not establish identical features across all models.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "DEWALT",
+          "title": "What Is the Difference Between an Impact Driver and Impact Wrench?",
+          "url": "https://support.dewalt.com/hc/en-us/articles/360012659318-What-is-the-difference-between-an-impact-driver-and-impact-wrench",
+          "supports": "Rotational impact mechanism, typical hex drive, and fastening uses.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "DEWALT",
+          "title": "Can I Use My Impact Driver as a Drill?",
+          "url": "https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill",
+          "supports": "Drilling capability with suitable accessories.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "keywords": [
+        "drill",
+        "drill/driver",
+        "impact driver",
+        "drilling",
+        "screwdriving",
+        "clutch",
+        "chuck",
+        "hex shank"
+      ],
+      "relevant_departments": [
+        "Power tools",
+        "tool accessories",
+        "fasteners"
+      ],
+      "estimated_minutes": 5,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "b353a01d-52eb-57fa-b89a-1e0f14595d8c",
+        "id": "CD-0006-Q01",
+        "position": 1,
+        "prompt": "Which explanation best describes their basic roles?",
+        "options": [
+          "The drill/driver handles drilling and screwdriving; the impact driver primarily drives fasteners using rotational impacts.",
+          "The drill/driver only makes holes; the impact driver is required for every screw.",
+          "The impact driver is primarily for drilling; the drill/driver is primarily for fastening.",
+          "Both tools work the same way; their main difference is the bit-holder shape."
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "b353a01d-52eb-57fa-b89a-1e0f14595d8c",
+        "question_id": "CD-0006-Q01",
+        "correct_option": 0,
+        "explanation": "A drill/driver combines general drilling and screwdriving capability. An impact driver primarily supports fastening through repeated rotational impacts. Their capabilities overlap, but their mechanisms and basic roles differ.",
+        "teaching_reference": "Section 3, “Learn it,” comparison table, mechanism explanations, and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0006",
+        "Title": "Drill or Impact Driver?",
+        "Academy": "Power Tools & Accessories",
+        "Skill level": "Foundations",
+        "Relevant departments": "Power tools; tool accessories; fasteners",
+        "Estimated completion time": "5 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "drill, drill/driver, impact driver, drilling, screwdriving, clutch, chuck, hex shank",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User content approval does not resolve listed technical and store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish the basic uses of a drill/driver and an impact driver."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Both tools can drive screws, so customers may assume they do the same job. Explaining their basic differences helps customers understand why a combination kit includes both."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**A drill/driver is a general-purpose drilling and screwdriving tool. An impact driver is primarily a fastening tool.**\n\n| Tool | Basic use | Common identifying feature |\n|---|---|---|\n| **Drill/driver** | Drilling holes and driving screws | An adjustable chuck with jaws that tighten around a compatible bit |\n| **Impact driver** | Driving fasteners, including demanding screwdriving tasks | A quick-change holder commonly accepting compatible ¼-inch hex-shank accessories |\n\nA drill/driver turns the bit continuously. Many models have an **adjustable clutch** for screwdriving. The clutch limits the turning force delivered at the selected setting, helping control how deeply a screw is driven. It does not guarantee that a screw cannot be overdriven. Follow the model’s instructions for selecting drilling or screwdriving settings. [Source 1]\n\nAn impact driver adds **repeated twisting blows** when its impact mechanism operates. These rotational impacts help with demanding fastening work. That makes it useful for tasks such as driving longer screws, subject to the tool’s and fastener manufacturer’s instructions. [Source 2]\n\n**Recommended action:** Start by asking, “Are you mainly making holes, driving fasteners, or doing both?” Use the answer to explain the tools before comparing individual models.\n\n**Common mistake:** Saying a drill cannot drive screws or an impact driver cannot drill holes. Their capabilities overlap. Some impact drivers can drill with suitable accessories, but accessory fit, ratings, and permitted applications must be checked. [Source 3]\n\n**When to verify or seek help:** Check the exact tool manual and accessory instructions before recommending a bit or application. Confirm that accessories are suitable for impact use when applicable. If compatibility is unclear, ask a knowledgeable coworker or manufacturer representative."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer is looking at a kit containing a drill/driver and an impact driver. They plan to make holes in wood and install screws.\n\nThey ask, “Why would I want two tools that look so similar?”"
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0006-Q01**\n\nWhich explanation best describes their basic roles?\n\nA. The drill/driver handles drilling and screwdriving; the impact driver primarily drives fasteners using rotational impacts.\nB. The drill/driver only makes holes; the impact driver is required for every screw.\nC. The impact driver is primarily for drilling; the drill/driver is primarily for fastening.\nD. Both tools work the same way; their main difference is the bit-holder shape."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Ask **“holes, fasteners, or both?”** before explaining which tool fits the customer’s work."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0006-Q01",
+          "wording": "Which explanation best describes their basic roles?",
+          "options": {
+            "A": "The drill/driver handles drilling and screwdriving; the impact driver primarily drives fasteners using rotational impacts.",
+            "B": "The drill/driver only makes holes; the impact driver is required for every screw.",
+            "C": "The impact driver is primarily for drilling; the drill/driver is primarily for fastening.",
+            "D": "Both tools work the same way; their main difference is the bit-holder shape."
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0006-Q01",
+          "correct_answer": "A",
+          "explanation": "A drill/driver combines general drilling and screwdriving capability. An impact driver primarily supports fastening through repeated rotational impacts. Their capabilities overlap, but their mechanisms and basic roles differ.",
+          "teaching_reference": "Section 3, “Learn it,” comparison table, mechanism explanations, and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** Independently photographed examples of a drill/driver chuck and an impact driver’s hex accessory holder. Label the tools and holders without implying that every model has identical features.\n\n**Accessibility description for proposed media:** “A drill/driver has an adjustable three-jaw chuck. Beside it, an impact driver has a compact hex accessory holder. Labels identify the drill/driver’s general drilling and screwdriving role and the impact driver’s primary fastening role.” Retain the comparison table as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Milwaukee Tool, [Operator instructions—publication 58-14-7047d1](https://documents.milwaukeetool.com/58-14-7047d1.pdf): Operation section: drilling mode and adjustable clutch function. This illustrates the documented model’s operation; it does not establish identical features across all models.\n- [Source 2] DEWALT, [What Is the Difference Between an Impact Driver and Impact Wrench?](https://support.dewalt.com/hc/en-us/articles/360012659318-What-is-the-difference-between-an-impact-driver-and-impact-wrench): Rotational impact mechanism, typical hex drive, and fastening uses.\n- [Source 3] DEWALT, [Can I Use My Impact Driver as a Drill?](https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill): Drilling capability with suitable accessories.\n\n**Verification needs:** Check the exact models and accessories before adding examples or recommending combinations. No torque ratings, clutch settings, battery compatibility, or accessory specifications are prescribed in this module.\n\nAll teaching and assessment wording is independently authored. No manufacturer media or proprietary assessments are included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Which drill/driver and impact driver in our assortment would help us demonstrate these differences, and where are their manuals available?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a power-tool subject-matter reviewer check the mechanism and clutch explanations.\n- Confirm model-specific features before adding product examples.\n- If media is added, verify labels, accessibility descriptions, and usage rights.\n- Keep hammer drills, impact wrenches, accessory selection details, and operating procedures for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Milwaukee Tool",
+          "title": "Operator instructions—publication 58-14-7047d1",
+          "url": "https://documents.milwaukeetool.com/58-14-7047d1.pdf",
+          "supports": "Operation section: drilling mode and adjustable clutch function. This illustrates the documented model’s operation; it does not establish identical features across all models.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "DEWALT",
+          "title": "What Is the Difference Between an Impact Driver and Impact Wrench?",
+          "url": "https://support.dewalt.com/hc/en-us/articles/360012659318-What-is-the-difference-between-an-impact-driver-and-impact-wrench",
+          "supports": "Rotational impact mechanism, typical hex drive, and fastening uses.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "DEWALT",
+          "title": "Can I Use My Impact Driver as a Drill?",
+          "url": "https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill",
+          "supports": "Drilling capability with suitable accessories.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a power-tool subject-matter reviewer check the mechanism and clutch explanations.",
+        "Confirm model-specific features before adding product examples.",
+        "If media is added, verify labels, accessibility descriptions, and usage rights.",
+        "Keep hammer drills, impact wrenches, accessory selection details, and operating procedures for separate modules."
+      ],
+      "complete_markdown": "# CD-0006 — Drill or Impact Driver?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0006 |\n| Title | Drill or Impact Driver? |\n| Academy | Power Tools & Accessories |\n| Skill level | Foundations |\n| Relevant departments | Power tools; tool accessories; fasteners |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | drill, drill/driver, impact driver, drilling, screwdriving, clutch, chuck, hex shank |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish the basic uses of a drill/driver and an impact driver.\n\n### 2. Why it matters\n\nBoth tools can drive screws, so customers may assume they do the same job. Explaining their basic differences helps customers understand why a combination kit includes both.\n\n### 3. Learn it\n\n**A drill/driver is a general-purpose drilling and screwdriving tool. An impact driver is primarily a fastening tool.**\n\n| Tool | Basic use | Common identifying feature |\n|---|---|---|\n| **Drill/driver** | Drilling holes and driving screws | An adjustable chuck with jaws that tighten around a compatible bit |\n| **Impact driver** | Driving fasteners, including demanding screwdriving tasks | A quick-change holder commonly accepting compatible ¼-inch hex-shank accessories |\n\nA drill/driver turns the bit continuously. Many models have an **adjustable clutch** for screwdriving. The clutch limits the turning force delivered at the selected setting, helping control how deeply a screw is driven. It does not guarantee that a screw cannot be overdriven. Follow the model’s instructions for selecting drilling or screwdriving settings. [Source 1]\n\nAn impact driver adds **repeated twisting blows** when its impact mechanism operates. These rotational impacts help with demanding fastening work. That makes it useful for tasks such as driving longer screws, subject to the tool’s and fastener manufacturer’s instructions. [Source 2]\n\n**Recommended action:** Start by asking, “Are you mainly making holes, driving fasteners, or doing both?” Use the answer to explain the tools before comparing individual models.\n\n**Common mistake:** Saying a drill cannot drive screws or an impact driver cannot drill holes. Their capabilities overlap. Some impact drivers can drill with suitable accessories, but accessory fit, ratings, and permitted applications must be checked. [Source 3]\n\n**When to verify or seek help:** Check the exact tool manual and accessory instructions before recommending a bit or application. Confirm that accessories are suitable for impact use when applicable. If compatibility is unclear, ask a knowledgeable coworker or manufacturer representative.\n\n### 4. Customer scenario\n\nA customer is looking at a kit containing a drill/driver and an impact driver. They plan to make holes in wood and install screws.\n\nThey ask, “Why would I want two tools that look so similar?”\n\n### 5. Quick check\n\n**Question ID: CD-0006-Q01**\n\nWhich explanation best describes their basic roles?\n\nA. The drill/driver handles drilling and screwdriving; the impact driver primarily drives fasteners using rotational impacts.\nB. The drill/driver only makes holes; the impact driver is required for every screw.\nC. The impact driver is primarily for drilling; the drill/driver is primarily for fastening.\nD. Both tools work the same way; their main difference is the bit-holder shape.\n\n### 6. Take it to the floor\n\nAsk **“holes, fasteners, or both?”** before explaining which tool fits the customer’s work.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0006-Q01\n- **Correct answer:** A. The drill/driver handles drilling and screwdriving; the impact driver primarily drives fasteners using rotational impacts.\n- **Explanation:** A drill/driver combines general drilling and screwdriving capability. An impact driver primarily supports fastening through repeated rotational impacts. Their capabilities overlap, but their mechanisms and basic roles differ.\n- **Teaching reference:** Section 3, “Learn it,” comparison table, mechanism explanations, and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** Independently photographed examples of a drill/driver chuck and an impact driver’s hex accessory holder. Label the tools and holders without implying that every model has identical features.\n\n**Accessibility description for proposed media:** “A drill/driver has an adjustable three-jaw chuck. Beside it, an impact driver has a compact hex accessory holder. Labels identify the drill/driver’s general drilling and screwdriving role and the impact driver’s primary fastening role.” Retain the comparison table as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Milwaukee Tool, [Operator instructions—publication 58-14-7047d1](https://documents.milwaukeetool.com/58-14-7047d1.pdf): Operation section: drilling mode and adjustable clutch function. This illustrates the documented model’s operation; it does not establish identical features across all models.\n- [Source 2] DEWALT, [What Is the Difference Between an Impact Driver and Impact Wrench?](https://support.dewalt.com/hc/en-us/articles/360012659318-What-is-the-difference-between-an-impact-driver-and-impact-wrench): Rotational impact mechanism, typical hex drive, and fastening uses.\n- [Source 3] DEWALT, [Can I Use My Impact Driver as a Drill?](https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill): Drilling capability with suitable accessories.\n\n**Verification needs:** Check the exact models and accessories before adding examples or recommending combinations. No torque ratings, clutch settings, battery compatibility, or accessory specifications are prescribed in this module.\n\nAll teaching and assessment wording is independently authored. No manufacturer media or proprietary assessments are included.\n\n### 8. Optional manager discussion prompt\n\nWhich drill/driver and impact driver in our assortment would help us demonstrate these differences, and where are their manuals available?\n\n### 9. Review needs\n\n- Have a power-tool subject-matter reviewer check the mechanism and clutch explanations.\n- Confirm model-specific features before adding product examples.\n- If media is added, verify labels, accessibility descriptions, and usage rights.\n- Keep hammer drills, impact wrenches, accessory selection details, and operating procedures for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "3c15145a-85bd-5822-bd45-a7b9173043f7",
+      "code": "CD-0007",
+      "version": "0.1.0",
+      "title": "Read a Fertilizer’s Three Numbers",
+      "academy": "Lawn, Garden & Outdoor Equipment",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Explain what a fertilizer’s three analysis numbers represent without treating them as a complete product recommendation."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers may assume larger fertilizer numbers mean a better product. Reading the analysis correctly helps you explain what is in the package before discussing whether it fits the customer’s needs."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**The three numbers describe nutrient percentages by weight, in a fixed order.** They are commonly called the **N-P-K analysis**.\n\n| Position | Nutrient represented | U.S. label reporting basis |\n|---|---|---|\n| **First — N** | Nitrogen | Total nitrogen |\n| **Second — P** | Phosphorus | Available phosphate, expressed as P₂O₅ |\n| **Third — K** | Potassium | Soluble potash, expressed as K₂O |\n\nYou do not need to memorize the chemical formulas to explain the order. Recognize that “phosphate” and “potash” are the reporting terms customers may see in the guaranteed analysis. The second and third numbers are not percentages of pure elemental phosphorus and potassium. [Sources 1 and 2]\n\nFor example, **10-10-10** means 10% nitrogen, 10% phosphate, and 10% potash by product weight. It does **not** mean ten pounds of each in every bag. The bag’s total weight determines the pounds represented by those percentages.\n\n**Recommended action:** Point to the three numbers, explain their order, and locate the **guaranteed analysis** for more detail. Treat the numbers as a description of nutrient content.\n\n**Common mistake:** Saying the highest numbers identify the best fertilizer. The analysis alone does not tell you whether those nutrients are needed, how quickly they become available, or how much product to apply.\n\n**When to verify or seek help:** Before recommending a product, ask what the customer is growing and whether they have a soil-test recommendation. Check the product label for intended uses and application directions. Soil-test guidance helps identify nutrient needs; unresolved questions can go to a knowledgeable coworker or local Cooperative Extension office. [Source 3]"
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer points to **10-10-10** on a fertilizer bag and asks:\n\n“Does that mean this bag contains ten pounds each of nitrogen, phosphate, and potash?”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Explain **what the numbers mean** before discussing **whether the product meets the plant’s needs**."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "University of Maryland Extension",
+          "title": "Garden Fertilizer Basics",
+          "url": "https://extension.umd.edu/resource/garden-fertilizer-basics",
+          "supports": "Percentages by weight and the phosphorus/phosphate and potassium/potash reporting distinction.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "UMass Amherst Extension",
+          "title": "Understanding a Turf Fertilizer Label",
+          "url": "https://www.umass.edu/agriculture-food-environment/home-lawn-garden/fact-sheets/understanding-turf-fertilizer-label",
+          "supports": "Guaranteed analysis, nutrient order, and reporting terms.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "NC State Extension",
+          "title": "Soil Testing and Choices of Amendments",
+          "url": "https://extensiongardener.ces.ncsu.edu/news/soil-testing-and-choices-of-amendments/",
+          "supports": "Using soil-test recommendations to guide nutrient choices.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "keywords": [
+        "fertilizer",
+        "N-P-K",
+        "nitrogen",
+        "phosphorus",
+        "potassium",
+        "phosphate",
+        "potash",
+        "guaranteed analysis"
+      ],
+      "relevant_departments": [
+        "Lawn and garden",
+        "fertilizer",
+        "garden center"
+      ],
+      "estimated_minutes": 5,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "3c15145a-85bd-5822-bd45-a7b9173043f7",
+        "id": "CD-0007-Q01",
+        "position": 1,
+        "prompt": "Which response correctly explains the numbers?",
+        "options": [
+          "Yes—the numbers show pounds of each nutrient, regardless of bag weight.",
+          "No—the numbers show the recommended pounds to apply per garden.",
+          "Yes—but only when all three numbers are equal.",
+          "No—they show percentages by weight of nitrogen, phosphate, and potash, in that order."
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "3c15145a-85bd-5822-bd45-a7b9173043f7",
+        "question_id": "CD-0007-Q01",
+        "correct_option": 3,
+        "explanation": "The analysis expresses nutrient percentages by product weight, not fixed pounds per bag or an application rate. In U.S. reporting, the order is nitrogen, available phosphate expressed as P₂O₅, and soluble potash expressed as K₂O. Equal numbers do not change that meaning.",
+        "teaching_reference": "Section 3, “Learn it,” analysis table and 10-10-10 example."
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0007",
+        "Title": "Read a Fertilizer’s Three Numbers",
+        "Academy": "Lawn, Garden & Outdoor Equipment",
+        "Skill level": "Foundations",
+        "Relevant departments": "Lawn and garden; fertilizer; garden center",
+        "Estimated completion time": "5 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "fertilizer, N-P-K, nitrogen, phosphorus, potassium, phosphate, potash, guaranteed analysis",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User content approval does not resolve listed technical and store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Explain what a fertilizer’s three analysis numbers represent without treating them as a complete product recommendation."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers may assume larger fertilizer numbers mean a better product. Reading the analysis correctly helps you explain what is in the package before discussing whether it fits the customer’s needs."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**The three numbers describe nutrient percentages by weight, in a fixed order.** They are commonly called the **N-P-K analysis**.\n\n| Position | Nutrient represented | U.S. label reporting basis |\n|---|---|---|\n| **First — N** | Nitrogen | Total nitrogen |\n| **Second — P** | Phosphorus | Available phosphate, expressed as P₂O₅ |\n| **Third — K** | Potassium | Soluble potash, expressed as K₂O |\n\nYou do not need to memorize the chemical formulas to explain the order. Recognize that “phosphate” and “potash” are the reporting terms customers may see in the guaranteed analysis. The second and third numbers are not percentages of pure elemental phosphorus and potassium. [Sources 1 and 2]\n\nFor example, **10-10-10** means 10% nitrogen, 10% phosphate, and 10% potash by product weight. It does **not** mean ten pounds of each in every bag. The bag’s total weight determines the pounds represented by those percentages.\n\n**Recommended action:** Point to the three numbers, explain their order, and locate the **guaranteed analysis** for more detail. Treat the numbers as a description of nutrient content.\n\n**Common mistake:** Saying the highest numbers identify the best fertilizer. The analysis alone does not tell you whether those nutrients are needed, how quickly they become available, or how much product to apply.\n\n**When to verify or seek help:** Before recommending a product, ask what the customer is growing and whether they have a soil-test recommendation. Check the product label for intended uses and application directions. Soil-test guidance helps identify nutrient needs; unresolved questions can go to a knowledgeable coworker or local Cooperative Extension office. [Source 3]"
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer points to **10-10-10** on a fertilizer bag and asks:\n\n“Does that mean this bag contains ten pounds each of nitrogen, phosphate, and potash?”"
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0007-Q01**\n\nWhich response correctly explains the numbers?\n\nA. Yes—the numbers show pounds of each nutrient, regardless of bag weight.\nB. No—the numbers show the recommended pounds to apply per garden.\nC. Yes—but only when all three numbers are equal.\nD. No—they show percentages by weight of nitrogen, phosphate, and potash, in that order."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Explain **what the numbers mean** before discussing **whether the product meets the plant’s needs**."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0007-Q01",
+          "wording": "Which response correctly explains the numbers?",
+          "options": {
+            "A": "Yes—the numbers show pounds of each nutrient, regardless of bag weight.",
+            "B": "No—the numbers show the recommended pounds to apply per garden.",
+            "C": "Yes—but only when all three numbers are equal.",
+            "D": "No—they show percentages by weight of nitrogen, phosphate, and potash, in that order."
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0007-Q01",
+          "correct_answer": "D",
+          "explanation": "The analysis expresses nutrient percentages by product weight, not fixed pounds per bag or an application rate. In U.S. reporting, the order is nitrogen, available phosphate expressed as P₂O₅, and soluble potash expressed as K₂O. Equal numbers do not change that meaning.",
+          "teaching_reference": "Section 3, “Learn it,” analysis table and 10-10-10 example."
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created label illustration showing “10-10-10,” with each number connected to its corresponding guaranteed-analysis entry. Mark it “Illustrative example—not application instructions.”\n\n**Accessibility description for proposed media:** “The fertilizer analysis 10-10-10 is linked to three text labels: 10% total nitrogen, 10% available phosphate, and 10% soluble potash. All percentages are by product weight.” Keep the explanation available as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] University of Maryland Extension, [Garden Fertilizer Basics](https://extension.umd.edu/resource/garden-fertilizer-basics): Percentages by weight and the phosphorus/phosphate and potassium/potash reporting distinction.\n- [Source 2] UMass Amherst Extension, [Understanding a Turf Fertilizer Label](https://www.umass.edu/agriculture-food-environment/home-lawn-garden/fact-sheets/understanding-turf-fertilizer-label): Guaranteed analysis, nutrient order, and reporting terms.\n- [Source 3] NC State Extension, [Soil Testing and Choices of Amendments](https://extensiongardener.ces.ncsu.edu/news/soil-testing-and-choices-of-amendments/): Using soil-test recommendations to guide nutrient choices.\n\n**Verification needs:** Check any real product label before adding product-specific claims or application directions. The 10-10-10 example illustrates analysis only and is not a recommendation.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Where do our fertilizer packages show the guaranteed analysis, and what other label information would we need before recommending one?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a horticulture subject-matter reviewer confirm the nutrient terminology.\n- Confirm the module’s U.S. labeling scope.\n- If media is added, verify label wording, accessibility descriptions, and usage rights.\n- Keep application-rate calculations, nutrient-release comparisons, and diagnosis of plant problems for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "University of Maryland Extension",
+          "title": "Garden Fertilizer Basics",
+          "url": "https://extension.umd.edu/resource/garden-fertilizer-basics",
+          "supports": "Percentages by weight and the phosphorus/phosphate and potassium/potash reporting distinction.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "UMass Amherst Extension",
+          "title": "Understanding a Turf Fertilizer Label",
+          "url": "https://www.umass.edu/agriculture-food-environment/home-lawn-garden/fact-sheets/understanding-turf-fertilizer-label",
+          "supports": "Guaranteed analysis, nutrient order, and reporting terms.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "NC State Extension",
+          "title": "Soil Testing and Choices of Amendments",
+          "url": "https://extensiongardener.ces.ncsu.edu/news/soil-testing-and-choices-of-amendments/",
+          "supports": "Using soil-test recommendations to guide nutrient choices.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a horticulture subject-matter reviewer confirm the nutrient terminology.",
+        "Confirm the module’s U.S. labeling scope.",
+        "If media is added, verify label wording, accessibility descriptions, and usage rights.",
+        "Keep application-rate calculations, nutrient-release comparisons, and diagnosis of plant problems for separate modules."
+      ],
+      "complete_markdown": "# CD-0007 — Read a Fertilizer’s Three Numbers\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0007 |\n| Title | Read a Fertilizer’s Three Numbers |\n| Academy | Lawn, Garden & Outdoor Equipment |\n| Skill level | Foundations |\n| Relevant departments | Lawn and garden; fertilizer; garden center |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | fertilizer, N-P-K, nitrogen, phosphorus, potassium, phosphate, potash, guaranteed analysis |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nExplain what a fertilizer’s three analysis numbers represent without treating them as a complete product recommendation.\n\n### 2. Why it matters\n\nCustomers may assume larger fertilizer numbers mean a better product. Reading the analysis correctly helps you explain what is in the package before discussing whether it fits the customer’s needs.\n\n### 3. Learn it\n\n**The three numbers describe nutrient percentages by weight, in a fixed order.** They are commonly called the **N-P-K analysis**.\n\n| Position | Nutrient represented | U.S. label reporting basis |\n|---|---|---|\n| **First — N** | Nitrogen | Total nitrogen |\n| **Second — P** | Phosphorus | Available phosphate, expressed as P₂O₅ |\n| **Third — K** | Potassium | Soluble potash, expressed as K₂O |\n\nYou do not need to memorize the chemical formulas to explain the order. Recognize that “phosphate” and “potash” are the reporting terms customers may see in the guaranteed analysis. The second and third numbers are not percentages of pure elemental phosphorus and potassium. [Sources 1 and 2]\n\nFor example, **10-10-10** means 10% nitrogen, 10% phosphate, and 10% potash by product weight. It does **not** mean ten pounds of each in every bag. The bag’s total weight determines the pounds represented by those percentages.\n\n**Recommended action:** Point to the three numbers, explain their order, and locate the **guaranteed analysis** for more detail. Treat the numbers as a description of nutrient content.\n\n**Common mistake:** Saying the highest numbers identify the best fertilizer. The analysis alone does not tell you whether those nutrients are needed, how quickly they become available, or how much product to apply.\n\n**When to verify or seek help:** Before recommending a product, ask what the customer is growing and whether they have a soil-test recommendation. Check the product label for intended uses and application directions. Soil-test guidance helps identify nutrient needs; unresolved questions can go to a knowledgeable coworker or local Cooperative Extension office. [Source 3]\n\n### 4. Customer scenario\n\nA customer points to **10-10-10** on a fertilizer bag and asks:\n\n“Does that mean this bag contains ten pounds each of nitrogen, phosphate, and potash?”\n\n### 5. Quick check\n\n**Question ID: CD-0007-Q01**\n\nWhich response correctly explains the numbers?\n\nA. Yes—the numbers show pounds of each nutrient, regardless of bag weight.\nB. No—the numbers show the recommended pounds to apply per garden.\nC. Yes—but only when all three numbers are equal.\nD. No—they show percentages by weight of nitrogen, phosphate, and potash, in that order.\n\n### 6. Take it to the floor\n\nExplain **what the numbers mean** before discussing **whether the product meets the plant’s needs**.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0007-Q01\n- **Correct answer:** D. No—they show percentages by weight of nitrogen, phosphate, and potash, in that order.\n- **Explanation:** The analysis expresses nutrient percentages by product weight, not fixed pounds per bag or an application rate. In U.S. reporting, the order is nitrogen, available phosphate expressed as P₂O₅, and soluble potash expressed as K₂O. Equal numbers do not change that meaning.\n- **Teaching reference:** Section 3, “Learn it,” analysis table and 10-10-10 example.\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created label illustration showing “10-10-10,” with each number connected to its corresponding guaranteed-analysis entry. Mark it “Illustrative example—not application instructions.”\n\n**Accessibility description for proposed media:** “The fertilizer analysis 10-10-10 is linked to three text labels: 10% total nitrogen, 10% available phosphate, and 10% soluble potash. All percentages are by product weight.” Keep the explanation available as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] University of Maryland Extension, [Garden Fertilizer Basics](https://extension.umd.edu/resource/garden-fertilizer-basics): Percentages by weight and the phosphorus/phosphate and potassium/potash reporting distinction.\n- [Source 2] UMass Amherst Extension, [Understanding a Turf Fertilizer Label](https://www.umass.edu/agriculture-food-environment/home-lawn-garden/fact-sheets/understanding-turf-fertilizer-label): Guaranteed analysis, nutrient order, and reporting terms.\n- [Source 3] NC State Extension, [Soil Testing and Choices of Amendments](https://extensiongardener.ces.ncsu.edu/news/soil-testing-and-choices-of-amendments/): Using soil-test recommendations to guide nutrient choices.\n\n**Verification needs:** Check any real product label before adding product-specific claims or application directions. The 10-10-10 example illustrates analysis only and is not a recommendation.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhere do our fertilizer packages show the guaranteed analysis, and what other label information would we need before recommending one?\n\n### 9. Review needs\n\n- Have a horticulture subject-matter reviewer confirm the nutrient terminology.\n- Confirm the module’s U.S. labeling scope.\n- If media is added, verify label wording, accessibility descriptions, and usage rights.\n- Keep application-rate calculations, nutrient-release comparisons, and diagnosis of plant problems for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "c982a324-c83f-54eb-946a-e10ec58aa8d3",
+      "code": "CD-0008",
+      "version": "0.1.0",
+      "title": "Weatherstripping or Door Sweep?",
+      "academy": "Building & Home Maintenance",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish the basic sealing locations served by door-frame weatherstripping and door sweeps."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer asking for “something to stop a door draft” may need help identifying where air is getting through. Starting with the gap’s location helps you guide them toward the right product category."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Ask where the gap is before choosing a seal.** For a typical swinging exterior door, separate the top and sides from the bottom.\n\n| Gap location | Product category to investigate | Basic purpose |\n|---|---|---|\n| Between the closed door and its frame at the top or sides | Door-frame weatherstripping | Forms a seal where the door meets the frame |\n| Beneath the door | Door sweep or another compatible door-bottom seal | Helps seal the gap along the bottom edge |\n\nDoor sweeps are part of the broader weatherstripping family. In a customer conversation, “frame weatherstripping” and “door sweep” help distinguish their locations. Building guidance identifies perimeter weatherstripping at the top and sides and a sweep along the bottom. [Source 1]\n\n**Recommended action:** Ask, “Is the draft coming around the top or sides, or underneath?” Then ask about the existing seal and request a clear photo or product information when needed.\n\n**Common mistake:** Treating every draft as a reason to add more material. Weatherstripping should seal when the door closes while still allowing the door to operate properly. A product that prevents normal closing is not a successful match. [Source 2]\n\nLocation narrows the search; it does not identify the exact replacement. Door construction, the existing attachment method, gap size, and the threshold—the piece beneath the doorway—can affect the choice.\n\n**When to verify or seek help:** Check the seal manufacturer’s fit and installation information before recommending a specific product. If the door rubs, sags, or will not latch, avoid promising that a new seal will fix it. Ask a knowledgeable coworker or refer the customer to a door professional when the cause remains unclear."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer says the flexible sealing strip along the latch side of their exterior door is torn. They want to replace that strip.\n\nThey ask which aisle category to start with."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Start with **“around the frame or underneath?”** Then verify the exact seal and fit."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Pacific Northwest National Laboratory, Building America Solution Center",
+          "title": "Air Sealing Doors Adjacent to Unconditioned Space",
+          "url": "https://basc.pnnl.gov/resource-guides/air-sealing-doors-adjacent-unconditioned-space",
+          "supports": "Top-and-side perimeter weatherstripping and bottom door sweep.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Virginia Cooperative Extension",
+          "title": "ENERGY SERIES: What about Caulking and Weather-Stripping?",
+          "url": "https://www.pubs.ext.vt.edu/content/pubs_ext_vt_edu/en/2908/2908-9017/2908-9017.html",
+          "supports": "Sections “What about weather-stripping?” and “Doors”: sealing locations, door-bottom product categories, and maintaining proper door operation.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "keywords": [
+        "weatherstripping",
+        "door sweep",
+        "door seal",
+        "drafts",
+        "threshold",
+        "door bottom",
+        "air sealing"
+      ],
+      "relevant_departments": [
+        "Hardware",
+        "weatherization",
+        "doors and windows"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "c982a324-c83f-54eb-946a-e10ec58aa8d3",
+        "id": "CD-0008-Q01",
+        "position": 1,
+        "prompt": "Which category should you investigate first?",
+        "options": [
+          "Door sweeps for the bottom edge",
+          "Door-frame weatherstripping for the sides and top",
+          "Replacement thresholds beneath the doorway",
+          "Door-bottom shoes that fit around the lower edge"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "c982a324-c83f-54eb-946a-e10ec58aa8d3",
+        "question_id": "CD-0008-Q01",
+        "correct_option": 1,
+        "explanation": "The damaged strip is at the latch side, where the door meets its frame. Frame weatherstripping is the appropriate starting category. Sweeps, thresholds, and door-bottom shoes address the bottom area. The exact replacement still requires verification.",
+        "teaching_reference": "Section 3, “Learn it,” gap-location table and “Recommended action.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0008",
+        "Title": "Weatherstripping or Door Sweep?",
+        "Academy": "Building & Home Maintenance",
+        "Skill level": "Foundations",
+        "Relevant departments": "Hardware; weatherization; doors and windows",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "weatherstripping, door sweep, door seal, drafts, threshold, door bottom, air sealing",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User content approval does not resolve listed technical and store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish the basic sealing locations served by door-frame weatherstripping and door sweeps."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer asking for “something to stop a door draft” may need help identifying where air is getting through. Starting with the gap’s location helps you guide them toward the right product category."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Ask where the gap is before choosing a seal.** For a typical swinging exterior door, separate the top and sides from the bottom.\n\n| Gap location | Product category to investigate | Basic purpose |\n|---|---|---|\n| Between the closed door and its frame at the top or sides | Door-frame weatherstripping | Forms a seal where the door meets the frame |\n| Beneath the door | Door sweep or another compatible door-bottom seal | Helps seal the gap along the bottom edge |\n\nDoor sweeps are part of the broader weatherstripping family. In a customer conversation, “frame weatherstripping” and “door sweep” help distinguish their locations. Building guidance identifies perimeter weatherstripping at the top and sides and a sweep along the bottom. [Source 1]\n\n**Recommended action:** Ask, “Is the draft coming around the top or sides, or underneath?” Then ask about the existing seal and request a clear photo or product information when needed.\n\n**Common mistake:** Treating every draft as a reason to add more material. Weatherstripping should seal when the door closes while still allowing the door to operate properly. A product that prevents normal closing is not a successful match. [Source 2]\n\nLocation narrows the search; it does not identify the exact replacement. Door construction, the existing attachment method, gap size, and the threshold—the piece beneath the doorway—can affect the choice.\n\n**When to verify or seek help:** Check the seal manufacturer’s fit and installation information before recommending a specific product. If the door rubs, sags, or will not latch, avoid promising that a new seal will fix it. Ask a knowledgeable coworker or refer the customer to a door professional when the cause remains unclear."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer says the flexible sealing strip along the latch side of their exterior door is torn. They want to replace that strip.\n\nThey ask which aisle category to start with."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0008-Q01**\n\nWhich category should you investigate first?\n\nA. Door sweeps for the bottom edge\nB. Door-frame weatherstripping for the sides and top\nC. Replacement thresholds beneath the doorway\nD. Door-bottom shoes that fit around the lower edge"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Start with **“around the frame or underneath?”** Then verify the exact seal and fit."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0008-Q01",
+          "wording": "Which category should you investigate first?",
+          "options": {
+            "A": "Door sweeps for the bottom edge",
+            "B": "Door-frame weatherstripping for the sides and top",
+            "C": "Replacement thresholds beneath the doorway",
+            "D": "Door-bottom shoes that fit around the lower edge"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0008-Q01",
+          "correct_answer": "B",
+          "explanation": "The damaged strip is at the latch side, where the door meets its frame. Frame weatherstripping is the appropriate starting category. Sweeps, thresholds, and door-bottom shoes address the bottom area. The exact replacement still requires verification.",
+          "teaching_reference": "Section 3, “Learn it,” gap-location table and “Recommended action.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created diagram of a closed swinging exterior door, labeling top-and-side frame weatherstripping separately from a bottom sweep.\n\n**Accessibility description for proposed media:** “A closed exterior door has labels pointing to weatherstripping along the top and both sides. A separate label identifies a door sweep along the bottom edge and the threshold beneath the doorway.” Keep the location table available as text; do not rely on color alone.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Pacific Northwest National Laboratory, Building America Solution Center, [Air Sealing Doors Adjacent to Unconditioned Space](https://basc.pnnl.gov/resource-guides/air-sealing-doors-adjacent-unconditioned-space): Top-and-side perimeter weatherstripping and bottom door sweep.\n- [Source 2] Virginia Cooperative Extension, [ENERGY SERIES: What about Caulking and Weather-Stripping?](https://www.pubs.ext.vt.edu/content/pubs_ext_vt_edu/en/2908/2908-9017/2908-9017.html): Sections “What about weather-stripping?” and “Doors”: sealing locations, door-bottom product categories, and maintaining proper door operation.\n\n**Verification needs:** Confirm the specific product’s intended location, attachment method, fit range, and door compatibility before adding a product example. No universal gap allowance or installation method is prescribed.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "How are frame weatherstripping and door-bottom seals labeled and organized in our store?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a hardware or building-maintenance subject-matter reviewer check terminology and referral wording.\n- Confirm product-category names against participating stores’ assortments.\n- If media is added, verify labels, accessibility descriptions, and usage rights.\n- Keep installation, door adjustment, specialty door requirements, and water-entry diagnosis for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Pacific Northwest National Laboratory, Building America Solution Center",
+          "title": "Air Sealing Doors Adjacent to Unconditioned Space",
+          "url": "https://basc.pnnl.gov/resource-guides/air-sealing-doors-adjacent-unconditioned-space",
+          "supports": "Top-and-side perimeter weatherstripping and bottom door sweep.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Virginia Cooperative Extension",
+          "title": "ENERGY SERIES: What about Caulking and Weather-Stripping?",
+          "url": "https://www.pubs.ext.vt.edu/content/pubs_ext_vt_edu/en/2908/2908-9017/2908-9017.html",
+          "supports": "Sections “What about weather-stripping?” and “Doors”: sealing locations, door-bottom product categories, and maintaining proper door operation.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a hardware or building-maintenance subject-matter reviewer check terminology and referral wording.",
+        "Confirm product-category names against participating stores’ assortments.",
+        "If media is added, verify labels, accessibility descriptions, and usage rights.",
+        "Keep installation, door adjustment, specialty door requirements, and water-entry diagnosis for separate modules."
+      ],
+      "complete_markdown": "# CD-0008 — Weatherstripping or Door Sweep?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0008 |\n| Title | Weatherstripping or Door Sweep? |\n| Academy | Building & Home Maintenance |\n| Skill level | Foundations |\n| Relevant departments | Hardware; weatherization; doors and windows |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | weatherstripping, door sweep, door seal, drafts, threshold, door bottom, air sealing |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish the basic sealing locations served by door-frame weatherstripping and door sweeps.\n\n### 2. Why it matters\n\nA customer asking for “something to stop a door draft” may need help identifying where air is getting through. Starting with the gap’s location helps you guide them toward the right product category.\n\n### 3. Learn it\n\n**Ask where the gap is before choosing a seal.** For a typical swinging exterior door, separate the top and sides from the bottom.\n\n| Gap location | Product category to investigate | Basic purpose |\n|---|---|---|\n| Between the closed door and its frame at the top or sides | Door-frame weatherstripping | Forms a seal where the door meets the frame |\n| Beneath the door | Door sweep or another compatible door-bottom seal | Helps seal the gap along the bottom edge |\n\nDoor sweeps are part of the broader weatherstripping family. In a customer conversation, “frame weatherstripping” and “door sweep” help distinguish their locations. Building guidance identifies perimeter weatherstripping at the top and sides and a sweep along the bottom. [Source 1]\n\n**Recommended action:** Ask, “Is the draft coming around the top or sides, or underneath?” Then ask about the existing seal and request a clear photo or product information when needed.\n\n**Common mistake:** Treating every draft as a reason to add more material. Weatherstripping should seal when the door closes while still allowing the door to operate properly. A product that prevents normal closing is not a successful match. [Source 2]\n\nLocation narrows the search; it does not identify the exact replacement. Door construction, the existing attachment method, gap size, and the threshold—the piece beneath the doorway—can affect the choice.\n\n**When to verify or seek help:** Check the seal manufacturer’s fit and installation information before recommending a specific product. If the door rubs, sags, or will not latch, avoid promising that a new seal will fix it. Ask a knowledgeable coworker or refer the customer to a door professional when the cause remains unclear.\n\n### 4. Customer scenario\n\nA customer says the flexible sealing strip along the latch side of their exterior door is torn. They want to replace that strip.\n\nThey ask which aisle category to start with.\n\n### 5. Quick check\n\n**Question ID: CD-0008-Q01**\n\nWhich category should you investigate first?\n\nA. Door sweeps for the bottom edge\nB. Door-frame weatherstripping for the sides and top\nC. Replacement thresholds beneath the doorway\nD. Door-bottom shoes that fit around the lower edge\n\n### 6. Take it to the floor\n\nStart with **“around the frame or underneath?”** Then verify the exact seal and fit.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0008-Q01\n- **Correct answer:** B. Door-frame weatherstripping for the sides and top\n- **Explanation:** The damaged strip is at the latch side, where the door meets its frame. Frame weatherstripping is the appropriate starting category. Sweeps, thresholds, and door-bottom shoes address the bottom area. The exact replacement still requires verification.\n- **Teaching reference:** Section 3, “Learn it,” gap-location table and “Recommended action.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created diagram of a closed swinging exterior door, labeling top-and-side frame weatherstripping separately from a bottom sweep.\n\n**Accessibility description for proposed media:** “A closed exterior door has labels pointing to weatherstripping along the top and both sides. A separate label identifies a door sweep along the bottom edge and the threshold beneath the doorway.” Keep the location table available as text; do not rely on color alone.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] Pacific Northwest National Laboratory, Building America Solution Center, [Air Sealing Doors Adjacent to Unconditioned Space](https://basc.pnnl.gov/resource-guides/air-sealing-doors-adjacent-unconditioned-space): Top-and-side perimeter weatherstripping and bottom door sweep.\n- [Source 2] Virginia Cooperative Extension, [ENERGY SERIES: What about Caulking and Weather-Stripping?](https://www.pubs.ext.vt.edu/content/pubs_ext_vt_edu/en/2908/2908-9017/2908-9017.html): Sections “What about weather-stripping?” and “Doors”: sealing locations, door-bottom product categories, and maintaining proper door operation.\n\n**Verification needs:** Confirm the specific product’s intended location, attachment method, fit range, and door compatibility before adding a product example. No universal gap allowance or installation method is prescribed.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nHow are frame weatherstripping and door-bottom seals labeled and organized in our store?\n\n### 9. Review needs\n\n- Have a hardware or building-maintenance subject-matter reviewer check terminology and referral wording.\n- Confirm product-category names against participating stores’ assortments.\n- If media is added, verify labels, accessibility descriptions, and usage rights.\n- Keep installation, door adjustment, specialty door requirements, and water-entry diagnosis for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "e70f9b09-4a6e-5d1f-8fd9-b671c5e12f75",
+      "code": "CD-0009",
+      "version": "0.2.0",
+      "title": "Spot a Trip Hazard in the Aisle",
+      "academy": "Customer Service & Retail Readiness",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Recognize an aisle trip hazard and select an immediate response that protects people while following store procedure."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "An ordinary stocking item can become a hazard when it enters someone’s walking path. Responding when you notice it helps protect customers and coworkers before someone trips."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Look at the walking path, not just the object.** An empty box may be harmless in its designated storage location but create a trip hazard in an aisle.\n\nCommon examples include loose packaging, cords across walkways, and clutter where people need to step. NIOSH recommends keeping walkways clear of these obstacles. [Source 1]\n\n**Recommended action:** When you spot a hazard, address people’s immediate exposure:\n\n- **If you can safely remove a simple obstruction within your training and store procedure,** move it to its designated location and check that the path is clear.\n- **If you cannot safely correct it immediately,** keep people away using the store’s hazard-control procedure and call for help. Do not leave the area unprotected while seeking assistance.\n\nOSHA’s workplace guidance requires hazardous walking surfaces to be corrected or, when correction cannot happen immediately, guarded against use. [Source 2]\n\n**Common mistake:** Assuming that reporting the problem means the hazard has been controlled. A message to a coworker does not remove an obstruction or prevent someone from walking into it.\n\nChoose a response that does not create another hazard. Moving a box into the next aisle simply relocates the problem. Avoid trying to move an unstable load or handling something unfamiliar just to clear the path quickly.\n\n**When to verify or seek help:** Ask for assistance when correction involves heavy or unstable items, damaged flooring, equipment, or an unknown substance. Follow the store’s instructions for barriers, reporting, and reopening the area. This lesson does not authorize repairs or unfamiliar cleanup work."
+        },
+        {
+          "heading": "4. Workplace scenario",
+          "content_markdown": "During stocking, employees are working near an empty cardboard box that extends into the customer aisle. The box is still in the walking path, and a customer is approaching it.\n\nThe box is light and safe for you to handle, and the designated cardboard collection area is nearby. No one has moved it yet."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "When you notice a trip hazard, think: **protect the path, correct it safely, or keep people away and get help.**"
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "CDC/NIOSH",
+          "title": "Young Worker Slips, Trips, and Falls",
+          "url": "https://www.cdc.gov/niosh/young-workers/slips-trips-falls/index.html",
+          "supports": "Walkway hazards, including cords, boxes, and clutter.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "OSHA",
+          "title": "29 CFR 1910.22—General Requirements",
+          "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.22",
+          "supports": "Particularly paragraphs (a)(1), (a)(3), and (d)(2): orderly walking surfaces, hazard correction, and guarding when immediate correction is not possible.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "CDC/NIOSH",
+          "title": "Preventing Slips, Trips, and Falls in Wholesale and Retail Trade Establishments",
+          "url": "https://www.cdc.gov/niosh/publications/numbered/2013-100.html",
+          "supports": "Retail-specific prevention context.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "keywords": [
+        "store safety",
+        "trip hazard",
+        "aisle",
+        "obstruction",
+        "housekeeping",
+        "hazard reporting"
+      ],
+      "relevant_departments": [
+        "All sales-floor departments",
+        "receiving",
+        "checkout"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": "RF-103 Store Safety Fundamentals"
+    },
+    "questions": [
+      {
+        "module_id": "e70f9b09-4a6e-5d1f-8fd9-b671c5e12f75",
+        "id": "CD-0009-Q01",
+        "position": 1,
+        "prompt": "What is the best immediate response?",
+        "options": [
+          "Message the stocker and continue helping customers while waiting.",
+          "Move the box into the neighboring aisle so this customer can pass.",
+          "Alert the approaching customer, safely remove the box to its designated area, and check that the path is clear.",
+          "Tell the customer to step over the box until stocking is finished."
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "e70f9b09-4a6e-5d1f-8fd9-b671c5e12f75",
+        "question_id": "CD-0009-Q01",
+        "correct_option": 2,
+        "explanation": "The scenario establishes that the simple obstruction can be moved safely to a designated location. Alerting the customer and removing it addresses the immediate exposure. Reporting alone leaves the hazard present; moving it to another aisle relocates it; asking someone to step over it does not clear the path.",
+        "teaching_reference": "Section 3, “Learn it,” “Recommended action” and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0009",
+        "Title": "Spot a Trip Hazard in the Aisle",
+        "Academy": "Customer Service & Retail Readiness",
+        "Skill level": "Foundations",
+        "Relevant departments": "All sales-floor departments; receiving; checkout",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "RF-103 Store Safety Fundamentals",
+        "Search keywords": "store safety, trip hazard, aisle, obstruction, housekeeping, hazard reporting",
+        "Version": "0.2.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User approved the revised workplace scenario. Approval does not resolve listed safety and store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Recognize an aisle trip hazard and select an immediate response that protects people while following store procedure."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "An ordinary stocking item can become a hazard when it enters someone’s walking path. Responding when you notice it helps protect customers and coworkers before someone trips."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Look at the walking path, not just the object.** An empty box may be harmless in its designated storage location but create a trip hazard in an aisle.\n\nCommon examples include loose packaging, cords across walkways, and clutter where people need to step. NIOSH recommends keeping walkways clear of these obstacles. [Source 1]\n\n**Recommended action:** When you spot a hazard, address people’s immediate exposure:\n\n- **If you can safely remove a simple obstruction within your training and store procedure,** move it to its designated location and check that the path is clear.\n- **If you cannot safely correct it immediately,** keep people away using the store’s hazard-control procedure and call for help. Do not leave the area unprotected while seeking assistance.\n\nOSHA’s workplace guidance requires hazardous walking surfaces to be corrected or, when correction cannot happen immediately, guarded against use. [Source 2]\n\n**Common mistake:** Assuming that reporting the problem means the hazard has been controlled. A message to a coworker does not remove an obstruction or prevent someone from walking into it.\n\nChoose a response that does not create another hazard. Moving a box into the next aisle simply relocates the problem. Avoid trying to move an unstable load or handling something unfamiliar just to clear the path quickly.\n\n**When to verify or seek help:** Ask for assistance when correction involves heavy or unstable items, damaged flooring, equipment, or an unknown substance. Follow the store’s instructions for barriers, reporting, and reopening the area. This lesson does not authorize repairs or unfamiliar cleanup work."
+        },
+        {
+          "heading": "4. Workplace scenario",
+          "content_markdown": "During stocking, employees are working near an empty cardboard box that extends into the customer aisle. The box is still in the walking path, and a customer is approaching it.\n\nThe box is light and safe for you to handle, and the designated cardboard collection area is nearby. No one has moved it yet."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0009-Q01**\n\nWhat is the best immediate response?\n\nA. Message the stocker and continue helping customers while waiting.\nB. Move the box into the neighboring aisle so this customer can pass.\nC. Alert the approaching customer, safely remove the box to its designated area, and check that the path is clear.\nD. Tell the customer to step over the box until stocking is finished."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "When you notice a trip hazard, think: **protect the path, correct it safely, or keep people away and get help.**"
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0009-Q01",
+          "wording": "What is the best immediate response?",
+          "options": {
+            "A": "Message the stocker and continue helping customers while waiting.",
+            "B": "Move the box into the neighboring aisle so this customer can pass.",
+            "C": "Alert the approaching customer, safely remove the box to its designated area, and check that the path is clear.",
+            "D": "Tell the customer to step over the box until stocking is finished."
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0009-Q01",
+          "correct_answer": "C",
+          "explanation": "The scenario establishes that the simple obstruction can be moved safely to a designated location. Alerting the customer and removing it addresses the immediate exposure. Reporting alone leaves the hazard present; moving it to another aisle relocates it; asking someone to step over it does not clear the path.",
+          "teaching_reference": "Section 3, “Learn it,” “Recommended action” and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently staged illustration of loose packaging extending into an aisle. Do not create an actual exposed hazard in an operating store for a photograph.\n\n**Accessibility description for proposed media:** “An empty cardboard box projects from a stocking area into the aisle’s walking path. A customer approaches from the opposite end.” Include the scenario as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] CDC/NIOSH, [Young Worker Slips, Trips, and Falls](https://www.cdc.gov/niosh/young-workers/slips-trips-falls/index.html): Walkway hazards, including cords, boxes, and clutter.\n- [Source 2] OSHA, [29 CFR 1910.22—General Requirements](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.22): Particularly paragraphs (a)(1), (a)(3), and (d)(2): orderly walking surfaces, hazard correction, and guarding when immediate correction is not possible.\n- [Source 3] CDC/NIOSH, [Preventing Slips, Trips, and Falls in Wholesale and Retail Trade Establishments](https://www.cdc.gov/niosh/publications/numbered/2013-100.html): Retail-specific prevention context.\n\n**Verification needs:** OSHA’s cited standard concerns employee walking-working surfaces. The customer scenario applies the same prevention principle; it does not claim to state customer-liability law. Participating stores must supply their actual hazard-control and reporting procedures.\n\nThe related full-course code was supplied by you. Its lesson content was not provided or reviewed. Completing this Daily module does not complete RF-103.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "How can an employee summon help while keeping people away from a hazard in our store?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a workplace-safety reviewer check the response sequence.\n- Confirm store-specific methods for guarding an area, obtaining help, reporting, and reopening.\n- Confirm designated locations for removed stocking materials.\n- If media is added, verify accessibility descriptions and usage rights.\n- Keep spill cleanup, lifting, incident response, and floor repairs for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "CDC/NIOSH",
+          "title": "Young Worker Slips, Trips, and Falls",
+          "url": "https://www.cdc.gov/niosh/young-workers/slips-trips-falls/index.html",
+          "supports": "Walkway hazards, including cords, boxes, and clutter.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "OSHA",
+          "title": "29 CFR 1910.22—General Requirements",
+          "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.22",
+          "supports": "Particularly paragraphs (a)(1), (a)(3), and (d)(2): orderly walking surfaces, hazard correction, and guarding when immediate correction is not possible.",
+          "checked": "2026-10-19"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "CDC/NIOSH",
+          "title": "Preventing Slips, Trips, and Falls in Wholesale and Retail Trade Establishments",
+          "url": "https://www.cdc.gov/niosh/publications/numbered/2013-100.html",
+          "supports": "Retail-specific prevention context.",
+          "checked": "2026-10-19"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a workplace-safety reviewer check the response sequence.",
+        "Confirm store-specific methods for guarding an area, obtaining help, reporting, and reopening.",
+        "Confirm designated locations for removed stocking materials.",
+        "If media is added, verify accessibility descriptions and usage rights.",
+        "Keep spill cleanup, lifting, incident response, and floor repairs for separate modules."
+      ],
+      "complete_markdown": "# CD-0009 — Spot a Trip Hazard in the Aisle\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0009 |\n| Title | Spot a Trip Hazard in the Aisle |\n| Academy | Customer Service & Retail Readiness |\n| Skill level | Foundations |\n| Relevant departments | All sales-floor departments; receiving; checkout |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | RF-103 Store Safety Fundamentals |\n| Search keywords | store safety, trip hazard, aisle, obstruction, housekeeping, hazard reporting |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nRecognize an aisle trip hazard and select an immediate response that protects people while following store procedure.\n\n### 2. Why it matters\n\nAn ordinary stocking item can become a hazard when it enters someone’s walking path. Responding when you notice it helps protect customers and coworkers before someone trips.\n\n### 3. Learn it\n\n**Look at the walking path, not just the object.** An empty box may be harmless in its designated storage location but create a trip hazard in an aisle.\n\nCommon examples include loose packaging, cords across walkways, and clutter where people need to step. NIOSH recommends keeping walkways clear of these obstacles. [Source 1]\n\n**Recommended action:** When you spot a hazard, address people’s immediate exposure:\n\n- **If you can safely remove a simple obstruction within your training and store procedure,** move it to its designated location and check that the path is clear.\n- **If you cannot safely correct it immediately,** keep people away using the store’s hazard-control procedure and call for help. Do not leave the area unprotected while seeking assistance.\n\nOSHA’s workplace guidance requires hazardous walking surfaces to be corrected or, when correction cannot happen immediately, guarded against use. [Source 2]\n\n**Common mistake:** Assuming that reporting the problem means the hazard has been controlled. A message to a coworker does not remove an obstruction or prevent someone from walking into it.\n\nChoose a response that does not create another hazard. Moving a box into the next aisle simply relocates the problem. Avoid trying to move an unstable load or handling something unfamiliar just to clear the path quickly.\n\n**When to verify or seek help:** Ask for assistance when correction involves heavy or unstable items, damaged flooring, equipment, or an unknown substance. Follow the store’s instructions for barriers, reporting, and reopening the area. This lesson does not authorize repairs or unfamiliar cleanup work.\n\n### 4. Workplace scenario\n\nDuring stocking, employees are working near an empty cardboard box that extends into the customer aisle. The box is still in the walking path, and a customer is approaching it.\n\nThe box is light and safe for you to handle, and the designated cardboard collection area is nearby. No one has moved it yet.\n\n### 5. Quick check\n\n**Question ID: CD-0009-Q01**\n\nWhat is the best immediate response?\n\nA. Message the stocker and continue helping customers while waiting.\nB. Move the box into the neighboring aisle so this customer can pass.\nC. Alert the approaching customer, safely remove the box to its designated area, and check that the path is clear.\nD. Tell the customer to step over the box until stocking is finished.\n\n### 6. Take it to the floor\n\nWhen you notice a trip hazard, think: **protect the path, correct it safely, or keep people away and get help.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0009-Q01\n- **Correct answer:** C. Alert the approaching customer, safely remove the box to its designated area, and check that the path is clear.\n- **Explanation:** The scenario establishes that the simple obstruction can be moved safely to a designated location. Alerting the customer and removing it addresses the immediate exposure. Reporting alone leaves the hazard present; moving it to another aisle relocates it; asking someone to step over it does not clear the path.\n- **Teaching reference:** Section 3, “Learn it,” “Recommended action” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently staged illustration of loose packaging extending into an aisle. Do not create an actual exposed hazard in an operating store for a photograph.\n\n**Accessibility description for proposed media:** “An empty cardboard box projects from a stocking area into the aisle’s walking path. A customer approaches from the opposite end.” Include the scenario as readable text.\n\n**Sources checked October 19, 2026:**\n\n- [Source 1] CDC/NIOSH, [Young Worker Slips, Trips, and Falls](https://www.cdc.gov/niosh/young-workers/slips-trips-falls/index.html): Walkway hazards, including cords, boxes, and clutter.\n- [Source 2] OSHA, [29 CFR 1910.22—General Requirements](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.22): Particularly paragraphs (a)(1), (a)(3), and (d)(2): orderly walking surfaces, hazard correction, and guarding when immediate correction is not possible.\n- [Source 3] CDC/NIOSH, [Preventing Slips, Trips, and Falls in Wholesale and Retail Trade Establishments](https://www.cdc.gov/niosh/publications/numbered/2013-100.html): Retail-specific prevention context.\n\n**Verification needs:** OSHA’s cited standard concerns employee walking-working surfaces. The customer scenario applies the same prevention principle; it does not claim to state customer-liability law. Participating stores must supply their actual hazard-control and reporting procedures.\n\nThe related full-course code was supplied by you. Its lesson content was not provided or reviewed. Completing this Daily module does not complete RF-103.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nHow can an employee summon help while keeping people away from a hazard in our store?\n\n### 9. Review needs\n\n- Have a workplace-safety reviewer check the response sequence.\n- Confirm store-specific methods for guarding an area, obtaining help, reporting, and reopening.\n- Confirm designated locations for removed stocking materials.\n- If media is added, verify accessibility descriptions and usage rights.\n- Keep spill cleanup, lifting, incident response, and floor repairs for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "e04c98b5-91f3-5bb7-a4ad-f81c44e0cf10",
+      "code": "CD-0010",
+      "version": "0.2.0",
+      "title": "Write a Useful Shift Handoff",
+      "academy": "Operations & Leadership",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify the information a coworker needs to continue an unfinished customer task."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer’s request may outlast your shift. A clear handoff helps the next employee continue the work without making the customer start over or guessing what was promised."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**A useful handoff explains where the task stands and what needs to happen next.**\n\nUse these five prompts:\n\n| Prompt | Information to include |\n|---|---|\n| **What is the request?** | The customer’s goal and relevant product or order reference |\n| **What is already done?** | Completed checks, actions, and confirmed findings |\n| **What is still open?** | Missing information or an unresolved decision |\n| **What happens next?** | The specific next action and any actual commitment already made |\n| **Who is taking over?** | The person accepting responsibility, or the fact that acceptance is still needed |\n\n**Recommended action:** Communicate the handoff in a way the receiving coworker can access and understand. Options include a direct conversation, a written note, a shared shift log, an internal message, or a note in an existing customer or order record. Follow store procedures where they exist.\n\nFor a verbal handoff, ask the receiving coworker to confirm the next action. If you leave a note or send a message, confirm they received it and accepted responsibility rather than assuming the task has transferred.\n\nKeep the handoff short and factual. Separate confirmed information from anything that still needs checking. For example, “Supplier availability not yet confirmed” is clearer than “Should be here soon.”\n\nInclude a follow-up time only when one was actually agreed upon. Share customer details only with coworkers who need them, using a method appropriate for that information.\n\n**Common mistake:** Writing “Please handle this” without identifying the next action or confirming who will take it. A person’s name in a note does not establish that they have accepted the task.\n\nWhen possible, confirm that the receiving coworker understands and accepts the handoff. If no one has accepted it, use the store’s usual method, or ask a supervisor if no process is established, instead of treating the task as transferred.\n\n**When to verify or seek help:** Check the order record or original message when a price, product detail, or customer commitment is uncertain. Ask a supervisor when responsibility remains unclear. Reference existing customer records where available, using the store’s usual method, or ask a supervisor if no process is established. Avoid copying unnecessary personal details into a general shift note."
+        },
+        {
+          "heading": "4. Workplace scenario",
+          "content_markdown": "Your shift is ending. A customer has asked whether a replacement mower belt can be ordered.\n\nYou recorded the mower model and requested a supplier availability check. No supplier response has arrived, no price or arrival date has been promised, and Jamie has agreed to continue the task."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Leave the next person with **the current status, the next action, and clear ownership**."
+        }
+      ],
+      "sources": [],
+      "keywords": [
+        "shift handoff",
+        "communication",
+        "customer follow-up",
+        "unfinished task",
+        "next step",
+        "ownership"
+      ],
+      "relevant_departments": [
+        "All departments",
+        "customer service",
+        "special orders",
+        "service counter"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "e04c98b5-91f3-5bb7-a4ad-f81c44e0cf10",
+        "id": "CD-0010-Q01",
+        "position": 1,
+        "prompt": "Which note gives Jamie the most useful handoff?",
+        "options": [
+          "“Mower belt customer needs help. Details should be somewhere in the system.”",
+          "“Jamie—replacement belt will probably arrive soon. Please call the customer.”",
+          "“Belt request recorded under the customer’s service inquiry, including mower model. Supplier availability check requested; reply pending. Price and arrival date unconfirmed; neither promised. Jamie accepted follow-up: review the supplier response and update the customer through the inquiry record.”",
+          "“Supplier contacted about a mower belt. Task complete.”"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "e04c98b5-91f3-5bb7-a4ad-f81c44e0cf10",
+        "question_id": "CD-0010-Q01",
+        "correct_option": 2,
+        "explanation": "This note identifies the request record, completed action, unresolved information, limits of customer commitments, next action, and accepted ownership. The other notes omit essential information, introduce an unsupported expectation, or incorrectly mark unfinished work complete.",
+        "teaching_reference": "Section 3, “Learn it,” five-prompt table, “Recommended action,” and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0010",
+        "Title": "Write a Useful Shift Handoff",
+        "Academy": "Operations & Leadership",
+        "Skill level": "Foundations",
+        "Relevant departments": "All departments; customer service; special orders; service counter",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "shift handoff, communication, customer follow-up, unfinished task, next step, ownership",
+        "Version": "0.2.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-19",
+        "publication_status": "not published",
+        "note": "User approved revised handoff methods and removal of assumptions about established store processes. Approval does not resolve listed store-specific review needs."
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify the information a coworker needs to continue an unfinished customer task."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer’s request may outlast your shift. A clear handoff helps the next employee continue the work without making the customer start over or guessing what was promised."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**A useful handoff explains where the task stands and what needs to happen next.**\n\nUse these five prompts:\n\n| Prompt | Information to include |\n|---|---|\n| **What is the request?** | The customer’s goal and relevant product or order reference |\n| **What is already done?** | Completed checks, actions, and confirmed findings |\n| **What is still open?** | Missing information or an unresolved decision |\n| **What happens next?** | The specific next action and any actual commitment already made |\n| **Who is taking over?** | The person accepting responsibility, or the fact that acceptance is still needed |\n\n**Recommended action:** Communicate the handoff in a way the receiving coworker can access and understand. Options include a direct conversation, a written note, a shared shift log, an internal message, or a note in an existing customer or order record. Follow store procedures where they exist.\n\nFor a verbal handoff, ask the receiving coworker to confirm the next action. If you leave a note or send a message, confirm they received it and accepted responsibility rather than assuming the task has transferred.\n\nKeep the handoff short and factual. Separate confirmed information from anything that still needs checking. For example, “Supplier availability not yet confirmed” is clearer than “Should be here soon.”\n\nInclude a follow-up time only when one was actually agreed upon. Share customer details only with coworkers who need them, using a method appropriate for that information.\n\n**Common mistake:** Writing “Please handle this” without identifying the next action or confirming who will take it. A person’s name in a note does not establish that they have accepted the task.\n\nWhen possible, confirm that the receiving coworker understands and accepts the handoff. If no one has accepted it, use the store’s usual method, or ask a supervisor if no process is established, instead of treating the task as transferred.\n\n**When to verify or seek help:** Check the order record or original message when a price, product detail, or customer commitment is uncertain. Ask a supervisor when responsibility remains unclear. Reference existing customer records where available, using the store’s usual method, or ask a supervisor if no process is established. Avoid copying unnecessary personal details into a general shift note."
+        },
+        {
+          "heading": "4. Workplace scenario",
+          "content_markdown": "Your shift is ending. A customer has asked whether a replacement mower belt can be ordered.\n\nYou recorded the mower model and requested a supplier availability check. No supplier response has arrived, no price or arrival date has been promised, and Jamie has agreed to continue the task."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0010-Q01**\n\nWhich note gives Jamie the most useful handoff?\n\nA. “Mower belt customer needs help. Details should be somewhere in the system.”\n\nB. “Jamie—replacement belt will probably arrive soon. Please call the customer.”\n\nC. “Belt request recorded under the customer’s service inquiry, including mower model. Supplier availability check requested; reply pending. Price and arrival date unconfirmed; neither promised. Jamie accepted follow-up: review the supplier response and update the customer through the inquiry record.”\n\nD. “Supplier contacted about a mower belt. Task complete.”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Leave the next person with **the current status, the next action, and clear ownership**."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0010-Q01",
+          "wording": "Which note gives Jamie the most useful handoff?",
+          "options": {
+            "A": "“Mower belt customer needs help. Details should be somewhere in the system.”",
+            "B": "“Jamie—replacement belt will probably arrive soon. Please call the customer.”",
+            "C": "“Belt request recorded under the customer’s service inquiry, including mower model. Supplier availability check requested; reply pending. Price and arrival date unconfirmed; neither promised. Jamie accepted follow-up: review the supplier response and update the customer through the inquiry record.”",
+            "D": "“Supplier contacted about a mower belt. Task complete.”"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0010-Q01",
+          "correct_answer": "C",
+          "explanation": "This note identifies the request record, completed action, unresolved information, limits of customer commitments, next action, and accepted ownership. The other notes omit essential information, introduce an unsupported expectation, or incorrectly mark unfinished work complete.",
+          "teaching_reference": "Section 3, “Learn it,” five-prompt table, “Recommended action,” and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional material:** An independently created handoff card with five fields: request, completed work, open items, next action and commitments, and receiving person.\n\n**Accessibility description for proposed media:** “A handoff card contains five clearly labeled text fields covering the request, completed work, unresolved information, next action and existing commitments, and the person accepting responsibility.” Provide the card as readable text with a clear reading order.\n\n**Sources and authorship:** This is an independently authored retail communication framework proposed for colTRAIN. No external framework, technical standard, manufacturer requirement, or proprietary curriculum is claimed.\n\n**Verification needs:** Participating stores should identify practical handoff methods, customer-information practices, and a person to ask when responsibility is unclear; no established handoff location or process is assumed. The service inquiry record and Jamie’s acceptance are fictional scenario details, not assertions about a store’s systems or policies."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Which handoff methods are practical in our store, and how do we confirm someone has accepted responsibility?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Confirm that the framework fits participating stores’ communication methods.\n- Identify practical handoff methods and an escalation contact.\n- Confirm how customer information should be referenced and protected.\n- Review the example for clarity and realistic task ownership.\n- Keep prioritizing multiple handoffs and resolving missed commitments for higher-level modules."
+        }
+      ],
+      "sources": [],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Confirm that the framework fits participating stores’ communication methods.",
+        "Identify practical handoff methods and an escalation contact.",
+        "Confirm how customer information should be referenced and protected.",
+        "Review the example for clarity and realistic task ownership.",
+        "Keep prioritizing multiple handoffs and resolving missed commitments for higher-level modules."
+      ],
+      "complete_markdown": "# CD-0010 — Write a Useful Shift Handoff\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0010 |\n| Title | Write a Useful Shift Handoff |\n| Academy | Operations & Leadership |\n| Skill level | Foundations |\n| Relevant departments | All departments; customer service; special orders; service counter |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | shift handoff, communication, customer follow-up, unfinished task, next step, ownership |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nIdentify the information a coworker needs to continue an unfinished customer task.\n\n### 2. Why it matters\n\nA customer’s request may outlast your shift. A clear handoff helps the next employee continue the work without making the customer start over or guessing what was promised.\n\n### 3. Learn it\n\n**A useful handoff explains where the task stands and what needs to happen next.**\n\nUse these five prompts:\n\n| Prompt | Information to include |\n|---|---|\n| **What is the request?** | The customer’s goal and relevant product or order reference |\n| **What is already done?** | Completed checks, actions, and confirmed findings |\n| **What is still open?** | Missing information or an unresolved decision |\n| **What happens next?** | The specific next action and any actual commitment already made |\n| **Who is taking over?** | The person accepting responsibility, or the fact that acceptance is still needed |\n\n**Recommended action:** Communicate the handoff in a way the receiving coworker can access and understand. Options include a direct conversation, a written note, a shared shift log, an internal message, or a note in an existing customer or order record. Follow store procedures where they exist.\n\nFor a verbal handoff, ask the receiving coworker to confirm the next action. If you leave a note or send a message, confirm they received it and accepted responsibility rather than assuming the task has transferred.\n\nKeep the handoff short and factual. Separate confirmed information from anything that still needs checking. For example, “Supplier availability not yet confirmed” is clearer than “Should be here soon.”\n\nInclude a follow-up time only when one was actually agreed upon. Share customer details only with coworkers who need them, using a method appropriate for that information.\n\n**Common mistake:** Writing “Please handle this” without identifying the next action or confirming who will take it. A person’s name in a note does not establish that they have accepted the task.\n\nWhen possible, confirm that the receiving coworker understands and accepts the handoff. If no one has accepted it, use the store’s usual method, or ask a supervisor if no process is established, instead of treating the task as transferred.\n\n**When to verify or seek help:** Check the order record or original message when a price, product detail, or customer commitment is uncertain. Ask a supervisor when responsibility remains unclear. Reference existing customer records where available, using the store’s usual method, or ask a supervisor if no process is established. Avoid copying unnecessary personal details into a general shift note.\n\n### 4. Workplace scenario\n\nYour shift is ending. A customer has asked whether a replacement mower belt can be ordered.\n\nYou recorded the mower model and requested a supplier availability check. No supplier response has arrived, no price or arrival date has been promised, and Jamie has agreed to continue the task.\n\n### 5. Quick check\n\n**Question ID: CD-0010-Q01**\n\nWhich note gives Jamie the most useful handoff?\n\nA. “Mower belt customer needs help. Details should be somewhere in the system.”\n\nB. “Jamie—replacement belt will probably arrive soon. Please call the customer.”\n\nC. “Belt request recorded under the customer’s service inquiry, including mower model. Supplier availability check requested; reply pending. Price and arrival date unconfirmed; neither promised. Jamie accepted follow-up: review the supplier response and update the customer through the inquiry record.”\n\nD. “Supplier contacted about a mower belt. Task complete.”\n\n### 6. Take it to the floor\n\nLeave the next person with **the current status, the next action, and clear ownership**.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0010-Q01\n- **Correct answer:** C.\n- **Explanation:** This note identifies the request record, completed action, unresolved information, limits of customer commitments, next action, and accepted ownership. The other notes omit essential information, introduce an unsupported expectation, or incorrectly mark unfinished work complete.\n- **Teaching reference:** Section 3, “Learn it,” five-prompt table, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional material:** An independently created handoff card with five fields: request, completed work, open items, next action and commitments, and receiving person.\n\n**Accessibility description for proposed media:** “A handoff card contains five clearly labeled text fields covering the request, completed work, unresolved information, next action and existing commitments, and the person accepting responsibility.” Provide the card as readable text with a clear reading order.\n\n**Sources and authorship:** This is an independently authored retail communication framework proposed for colTRAIN. No external framework, technical standard, manufacturer requirement, or proprietary curriculum is claimed.\n\n**Verification needs:** Participating stores should identify practical handoff methods, customer-information practices, and a person to ask when responsibility is unclear; no established handoff location or process is assumed. The service inquiry record and Jamie’s acceptance are fictional scenario details, not assertions about a store’s systems or policies.\n\n### 8. Optional manager discussion prompt\n\nWhich handoff methods are practical in our store, and how do we confirm someone has accepted responsibility?\n\n### 9. Review needs\n\n- Confirm that the framework fits participating stores’ communication methods.\n- Identify practical handoff methods and an escalation contact.\n- Confirm how customer information should be referenced and protected.\n- Review the example for clarity and realistic task ownership.\n- Keep prioritizing multiple handoffs and resolving missed commitments for higher-level modules.\n"
+    }
+  }
+]$dailypayload$::jsonb;
+ item jsonb; c jsonb; q jsonb; k jsonb; target uuid;
+begin
+ for item in select value from jsonb_array_elements(payload) loop
+  c:=item->'module'; target:=(c->>'id')::uuid;
+  perform pg_advisory_xact_lock(hashtextextended('coltrain-daily:'||target::text,0));
+  if exists(select 1 from public.daily_modules where id=target) then
+   if (select to_jsonb(d)-'published'-'created_at' from public.daily_modules d where id=target)<>c
+   or (select coalesce(jsonb_agg(to_jsonb(question_row) order by question_row.position),'[]') from public.daily_questions question_row where module_id=target)<>item->'questions'
+   or (select coalesce(jsonb_agg(to_jsonb(key_row) order by key_row.question_id),'[]') from private.daily_answer_keys key_row where module_id=target)<>item->'keys'
+   or not exists(select 1 from private.daily_editorial e where e.module_id=target and e.source_document=item->'source_document') then
+    raise exception 'Daily % content differs; create a new version rather than overwrite',c->>'code';
+   end if;
+  else
+   insert into public.daily_modules(id,code,version,title,academy,skill_level,sections,sources,keywords,relevant_departments,estimated_minutes,prior_knowledge,related_course_code)
+   values(target,c->>'code',c->>'version',c->>'title',c->>'academy',c->>'skill_level',c->'sections',c->'sources',
+    array(select jsonb_array_elements_text(c->'keywords')),array(select jsonb_array_elements_text(c->'relevant_departments')),
+    (c->>'estimated_minutes')::integer,c->>'prior_knowledge',c->>'related_course_code');
+   for q in select value from jsonb_array_elements(item->'questions') loop
+    insert into public.daily_questions(module_id,id,position,prompt,options) values(target,q->>'id',(q->>'position')::integer,q->>'prompt',q->'options');
+   end loop;
+   for k in select value from jsonb_array_elements(item->'keys') loop
+    insert into private.daily_answer_keys(module_id,question_id,correct_option,explanation,teaching_reference) values(target,k->>'question_id',(k->>'correct_option')::integer,k->>'explanation',k->>'teaching_reference');
+   end loop;
+   insert into private.daily_editorial(module_id,source_document) values(target,item->'source_document');
+  end if;
+ end loop;
+end;
+$dailyimport$;
+commit;
+select code,version,title,published,
+ (select count(*) from public.daily_questions q where q.module_id=d.id) as questions
+from public.daily_modules d where id in ('db87a4e2-a48e-5d8d-9a08-bf8eb2355c8c','efa9d26e-de7a-539f-b702-8588fdca0ddd','bb3f33ae-d715-5555-8861-ad7006e9945d','7c27d8c7-50d1-56c8-891e-84c6b1af50c9','15bea75b-3ca2-54b3-9268-ef0b1769ac61','b353a01d-52eb-57fa-b89a-1e0f14595d8c','3c15145a-85bd-5822-bd45-a7b9173043f7','c982a324-c83f-54eb-946a-e10ec58aa8d3','e70f9b09-4a6e-5d1f-8fd9-b671c5e12f75','e04c98b5-91f3-5bb7-a4ad-f81c44e0cf10') order by code;

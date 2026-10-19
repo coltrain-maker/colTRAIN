@@ -64,7 +64,7 @@ assert ids == {f'CD-{i:04}' for i in range(1,11)}
 assert set(counts) == academies and set(counts.values()) == {1}
 # Reproducible local handoff, never part of the public hosting allowlist.
 report = {'package_version':'1.0.0', 'content_approval_source':'User confirmed text reviewed and approved in chat on 2026-10-19',
-          'integration_status':'Source staged only; Daily database and UI not implemented',
+          'integration_status':'Daily database migration and draft import prepared and locally tested; hosted application and Daily UI pending',
           'approved_modules':10, 'remaining_planned_modules':250,
           'counts_by_academy':dict(counts), 'modules':modules}
 (pilot / 'handoff-manifest.json').write_text(json.dumps(report, indent=2, ensure_ascii=False)+'\n')
