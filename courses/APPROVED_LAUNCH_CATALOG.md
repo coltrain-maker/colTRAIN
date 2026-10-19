@@ -1,3 +1,5 @@
+> Academy structure update: the active 10-academy plan is in [ACADEMY_PLAN.md](ACADEMY_PLAN.md). The eight-academy grouping below is historical; existing course codes, content and learning paths remain valid.
+
 # Approved colTRAIN launch catalog
 
 Catalog version 2.0. Eight academies, 25 courses, six learning paths. All launch courses are Level 1 — Foundations.

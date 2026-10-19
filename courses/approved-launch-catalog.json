@@ -211,5 +211,6 @@
       ],
       "future_advanced_courses": true
     }
-  ]
+  ],
+  "academy_structure_status": "Historical version 2.0 grouping; active academy mapping and planned allocations are in academy-plan.json. Course codes, titles and six learning paths remain approved."
 }

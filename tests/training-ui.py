@@ -215,6 +215,15 @@ try:
     sql((root/'supabase/course-imports'/filename).read_text())
    navigate('Course library')
    expect(page.locator('.library-course-card')).to_have_count(26) # 25 + original sample
+   expect(page.get_by_text('Academy plan: 10 academies · 260 planned modules',exact=True)).to_be_visible()
+   page.get_by_text('Academy plan: 10 academies · 260 planned modules',exact=True).click()
+   expect(page.get_by_role('table',name='Planned modules by skill level')).to_be_visible()
+   expect(page.locator('tfoot')).to_contain_text('260')
+   page.get_by_text('Academy plan: 10 academies · 260 planned modules',exact=True).click()
+   page.get_by_label('Topic or academy',exact=True).select_option('HVAC')
+   page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
+   expect(page.locator('.library-course-card h2')).to_have_text('Heating & Cooling Fundamentals')
+   page.get_by_role('button',name='Clear filters',exact=True).click()
    assert page.locator('.library-cards .course-cover').count()==0
    rects=page.locator('.library-course-card').evaluate_all('nodes=>nodes.slice(0,3).map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height}})')
    assert len({round(r['y']) for r in rects})==1,rects
@@ -226,7 +235,7 @@ try:
    expect(page.locator('.library-course-card')).to_have_count(3)
    page.get_by_role('button',name='Clear filters',exact=True).click()
    page.get_by_label('Skill level',exact=True).select_option('foundations')
-   page.get_by_label('Topic or academy',exact=True).select_option('Paint & Decorating')
+   page.get_by_label('Topic or academy',exact=True).select_option('Paint & Surface Care')
    page.locator('#training-search-form').get_by_role('button',name='Search',exact=True).click()
    expect(page.locator('.library-course-card')).to_have_count(3)
    page.get_by_label('Search courses',exact=True).fill('sheen')

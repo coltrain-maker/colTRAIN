@@ -1,10 +1,10 @@
 # Course library: skill level, topic, learning path, keywords
 
-Owner confirmed migration 011 succeeded, published the filter website update, and verified that searching RF-101 returns the course. The later compact-card update is prepared separately and still needs its website upload. Do not rerun migration 011 on this pilot.
+Owner confirmed migration 011 succeeded, published the filter website update, and verified that searching RF-101 returns the course. Owner subsequently confirmed the compact-card website update was published. The new 10-academy configuration is prepared for a later upload; see `courses/ACADEMY_PLAN.md`. It needs no database migration or reimport. Do not rerun migration 011 on this pilot.
 
 ## Approved direction
 
-`courses/THREE_LEVEL_LEARNING_FRAMEWORK.md` preserves the owner's framework. `courses/approved-launch-catalog.json` preserves the approved eight academies, 25 course codes/titles, and six learning paths. All launch courses are **Level 1 — Foundations**. **Level 2 — Application** and **Level 3 — Expertise** are future expansions. These are course classifications, not employee roles or permission groups.
+`courses/THREE_LEVEL_LEARNING_FRAMEWORK.md` preserves the owner's framework. `courses/approved-launch-catalog.json` preserves the approved eight academies, 25 course codes/titles, and six learning paths. The eight-academy grouping is historical; `courses/academy-plan.json` is now the active 10-academy planning baseline. Stable course codes and all six paths remain approved. All launch courses are **Level 1 — Foundations**. **Level 2 — Application** and **Level 3 — Expertise** are future expansions. These are course classifications, not employee roles or permission groups.
 
 The library now combines four optional filters:
 

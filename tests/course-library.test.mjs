@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {filterLibrary,libraryTopics,libraryPaths,skillLabel} from '../accounts/course-library.js';
+import {academyPlan,academyLabel,filterLibrary,libraryTopics,libraryPaths,skillLabel} from '../accounts/course-library.js';
 import {readFileSync} from 'node:fs';
 const courses=[
  {title:'Paint Basics',slug:'pt-101',category:'Paint & Decorating',skill_level:'foundations',topics:['Paint'],keywords:['roller']},
@@ -18,7 +18,7 @@ test('paths are browse filters and do not duplicate courses',()=>{
  assert.deepEqual(libraryPaths(courses),['New Retail Employee']);
  assert.deepEqual(filterLibrary(courses,{path:'Unlisted path'}),[]);
 });
-test('approved catalog preserves 25 distinct courses, eight academies and six paths',()=>{
+test('historical launch registry preserves 25 stable courses and six paths',()=>{
  const catalog=JSON.parse(readFileSync(new URL('../courses/approved-launch-catalog.json',import.meta.url)));
  const codes=catalog.academies.flatMap(a=>a.courses.map(c=>c.code));
  assert.equal(catalog.academies.length,8);assert.equal(codes.length,25);assert.equal(new Set(codes).size,25);
@@ -42,4 +42,46 @@ test('launch course compatibility and course labels use training levels',()=>{
  assert.equal(skillLabel(courses[3]),'Level 1 — Foundations');
  assert.deepEqual(filterLibrary(courses,{level:'foundations'}),[courses[0],courses[3]]);
  assert.deepEqual(filterLibrary(courses,{topic:'paint & decorating',search:'préparation'}),[courses[1]]);
+});
+
+test('active academy allocations total 260 without creating course content',()=>{
+ assert.equal(academyPlan.academies.length,10);
+ const totals={foundations:0,application:0,expertise:0,total:0};
+ for(const academy of academyPlan.academies){
+  const p=academy.planned_modules;
+  assert.equal(p.total,p.foundations+p.application+p.expertise);
+  for(const key of Object.keys(totals))totals[key]+=p[key];
+ }
+ assert.deepEqual(totals,{foundations:88,application:112,expertise:60,total:260});
+ assert.deepEqual(totals,academyPlan.planned_module_totals);
+ const codes=academyPlan.academies.flatMap(a=>a.existing_course_codes);
+ assert.equal(codes.length,24);assert.equal(new Set(codes).size,24);
+ const old=JSON.parse(readFileSync(new URL('../courses/approved-launch-catalog.json',import.meta.url)));
+ const originalCodes=old.academies.flatMap(a=>a.courses.map(c=>c.code));
+ assert.deepEqual([...codes,...academyPlan.unresolved_mappings.map(m=>m.code)].sort(),originalCodes.sort());
+});
+test('split academies resolve from stable codes and preserve search, identity and paths',()=>{
+ const courses=[
+  {id:'electrical',course_code:'HB-101',category:'Home Systems & Building Materials',topics:['Home Systems & Building Materials','Wiring'],learning_paths:['Department Specialist']},
+  {id:'hvac',slug:'hb-103-heating-and-cooling-fundamentals',category:'Home Systems & Building Materials'},
+  {id:'power',course_code:'HT-103',category:'Hardware & Tools'},
+  {id:'hand',course_code:'HT-102',category:'Hardware & Tools'}
+ ];
+ const snapshot=JSON.stringify(courses);
+ assert.equal(academyLabel(courses[0]),'Electrical');
+ assert.equal(academyLabel(courses[1]),'HVAC');
+ assert.equal(academyLabel(courses[2]),'Power Tools & Accessories');
+ assert.equal(academyLabel(courses[3]),'Hand Tools & Fasteners');
+ assert.deepEqual(filterLibrary(courses,{topic:'Electrical',path:'Department Specialist'}),[courses[0]]);
+ assert.deepEqual(filterLibrary(courses,{topic:'HVAC'}),[courses[1]]);
+ assert.deepEqual(filterLibrary(courses,{search:'home systems'}),courses.slice(0,2));
+ assert.deepEqual(libraryTopics(courses),['Electrical','Hand Tools & Fasteners','HVAC','Power Tools & Accessories','Wiring']);
+ assert.equal(JSON.stringify(courses),snapshot);
+ assert.deepEqual(libraryTopics([courses[1]]),['HVAC']);
+});
+test('ambiguous and store-specific courses retain category, sample keeps separate identity',()=>{
+ assert.equal(academyLabel({course_code:'RF-103',category:'Retail Foundations'}),'Retail Foundations');
+ assert.equal(academyLabel({slug:'my-store-orientation',category:'My store'}),'My store');
+ assert.equal(academyLabel({slug:'customer-trust',category:'Customer Service'}),'Customer Service & Retail Readiness');
+ assert.equal(academyPlan.unresolved_mappings[0].code,'RF-103');
 });

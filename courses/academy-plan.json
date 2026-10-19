@@ -1,0 +1,161 @@
+{
+  "version": "3.0",
+  "status": "Approved planning baseline; allocations are not available content",
+  "planned_module_totals": {
+    "foundations": 88,
+    "application": 112,
+    "expertise": 60,
+    "total": 260
+  },
+  "academies": [
+    {
+      "name": "Paint & Surface Care",
+      "planned_modules": {
+        "foundations": 10,
+        "application": 14,
+        "expertise": 8,
+        "total": 32
+      },
+      "existing_course_codes": [
+        "PD-101",
+        "PD-102",
+        "PD-103"
+      ]
+    },
+    {
+      "name": "Plumbing",
+      "planned_modules": {
+        "foundations": 10,
+        "application": 14,
+        "expertise": 8,
+        "total": 32
+      },
+      "existing_course_codes": [
+        "HB-102"
+      ]
+    },
+    {
+      "name": "Electrical",
+      "planned_modules": {
+        "foundations": 8,
+        "application": 10,
+        "expertise": 6,
+        "total": 24
+      },
+      "existing_course_codes": [
+        "HB-101"
+      ]
+    },
+    {
+      "name": "HVAC",
+      "planned_modules": {
+        "foundations": 6,
+        "application": 8,
+        "expertise": 4,
+        "total": 18
+      },
+      "existing_course_codes": [
+        "HB-103"
+      ]
+    },
+    {
+      "name": "Hand Tools & Fasteners",
+      "planned_modules": {
+        "foundations": 8,
+        "application": 10,
+        "expertise": 4,
+        "total": 22
+      },
+      "existing_course_codes": [
+        "HT-101",
+        "HT-102"
+      ]
+    },
+    {
+      "name": "Power Tools & Accessories",
+      "planned_modules": {
+        "foundations": 10,
+        "application": 12,
+        "expertise": 6,
+        "total": 28
+      },
+      "existing_course_codes": [
+        "HT-103"
+      ]
+    },
+    {
+      "name": "Lawn, Garden & Outdoor Equipment",
+      "planned_modules": {
+        "foundations": 10,
+        "application": 14,
+        "expertise": 8,
+        "total": 32
+      },
+      "existing_course_codes": [
+        "LG-101",
+        "LG-102"
+      ]
+    },
+    {
+      "name": "Building & Home Maintenance",
+      "planned_modules": {
+        "foundations": 10,
+        "application": 12,
+        "expertise": 6,
+        "total": 28
+      },
+      "existing_course_codes": [
+        "HB-104"
+      ]
+    },
+    {
+      "name": "Customer Service & Retail Readiness",
+      "planned_modules": {
+        "foundations": 8,
+        "application": 10,
+        "expertise": 6,
+        "total": 24
+      },
+      "existing_course_codes": [
+        "RF-101",
+        "RF-102",
+        "RF-104",
+        "CS-101",
+        "CS-102",
+        "CS-103"
+      ]
+    },
+    {
+      "name": "Operations & Leadership",
+      "planned_modules": {
+        "foundations": 8,
+        "application": 8,
+        "expertise": 4,
+        "total": 20
+      },
+      "existing_course_codes": [
+        "IM-101",
+        "IM-102",
+        "IM-103",
+        "BL-101",
+        "BL-102",
+        "BL-103"
+      ]
+    }
+  ],
+  "unresolved_mappings": [
+    {
+      "code": "RF-103",
+      "reason": "Store safety spans retail readiness and operations. Retain current category pending owner decision."
+    }
+  ],
+  "legacy_slug_mappings": {
+    "customer-trust": "Customer Service & Retail Readiness"
+  },
+  "boundaries": {
+    "HVAC": "Retail knowledge of heating, ventilation, cooling, filters, thermostats and related maintenance.",
+    "Power Tools & Accessories": "Portable and benchtop tools, batteries, chargers, blades, bits, abrasives and compatible attachments.",
+    "Lawn, Garden & Outdoor Equipment": "Includes mowers, chainsaws, trimmers and similar outdoor equipment.",
+    "Expertise": "Advanced retail competence; not a trade license or professional certification."
+  }
+}

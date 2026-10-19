@@ -1,3 +1,5 @@
+> Academy structure update: the active 10-academy plan is in [ACADEMY_PLAN.md](ACADEMY_PLAN.md). The eight-academy grouping below is historical; existing course codes, content and learning paths remain valid.
+
 # colTRAIN | Three-Level Learning Framework
 
 Course Development Standard · Version 2.0 · October 2026
