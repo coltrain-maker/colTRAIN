@@ -1,5 +1,7 @@
 # colTRAIN Daily: existing pilot setup
 
+**Updated requirement:** after the two files below, apply migration 013 using `DAILY_SEQUENCE_SETUP.md`. It replaces manual department/date assignment with automatic enrollment for every active member and a shared Foundations → Application → Expertise sequence. The manual-assignment contract described below is the historical migration-012 foundation, not the final behavior.
+
 Prepared October 19, 2026. This adds Daily tables/functions alongside the existing full-course training flow. It requires account/training migrations 001–011 already installed. Do not rerun older migrations or the combined SETUP.sql against the existing project.
 
 ## Owner steps: two SQL queries, in this order
@@ -10,7 +12,7 @@ Prepared October 19, 2026. This adds Daily tables/functions alongside the existi
 4. Select **Run**. Expected: **Success. No rows returned**. Run this migration only once. If an error occurs, stop and share the exact error; do not continue to the import.
 5. Create another **New query**. Open `supabase/daily-imports/PILOT_10_IMPORT_DRAFTS.sql`, select **Raw**, and copy its entire contents into that query. Optionally name it “colTRAIN Daily 10 pilot modules.”
 6. Select **Run**. Expected: **10 result rows**, CD-0001 through CD-0010, each `published=false` and `questions=1`. Module versions are 0.1.0 or 0.2.0; package version 1.0.0 does not replace these source versions.
-7. Leave these as drafts. There is no website deployment for this step; the existing website will look the same. Publication, store release and employee scheduling will be tested with the Daily screens next.
+7. Leave these as drafts. There is no website deployment for this step; the existing website will look the same. Next apply migration 013 using DAILY_SEQUENCE_SETUP.md. Publication and store release will be tested with the Daily screens later.
 
 Use the SQL Editor's default postgres role. Do not paste keys, passwords or personal employee details into either file. Query 2 contains private answer keys for the private database tables; do not put it into a public website or browser application.
 

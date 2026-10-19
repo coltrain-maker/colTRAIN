@@ -1,7 +1,7 @@
 {
   "package_version": "1.0.0",
   "content_approval_source": "User confirmed text reviewed and approved in chat on 2026-10-19",
-  "integration_status": "Daily database migration and draft import prepared and locally tested; hosted application and Daily UI pending",
+  "integration_status": "Daily database, automatic shared sequence and draft import prepared; hosted application and Daily UI pending",
   "approved_modules": 10,
   "remaining_planned_modules": 250,
   "counts_by_academy": {

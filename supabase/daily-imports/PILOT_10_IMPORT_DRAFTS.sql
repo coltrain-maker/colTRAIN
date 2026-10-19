@@ -2143,9 +2143,10 @@ declare payload jsonb := $dailypayload$[
     }
   }
 ]$dailypayload$::jsonb;
- item jsonb; c jsonb; q jsonb; k jsonb; target uuid;
+ item jsonb; c jsonb; q jsonb; k jsonb; target uuid; pilot_slot integer:=0;
 begin
  for item in select value from jsonb_array_elements(payload) loop
+  pilot_slot:=pilot_slot+1;
   c:=item->'module'; target:=(c->>'id')::uuid;
   perform pg_advisory_xact_lock(hashtextextended('coltrain-daily:'||target::text,0));
   if exists(select 1 from public.daily_modules where id=target) then
@@ -2167,6 +2168,11 @@ begin
     insert into private.daily_answer_keys(module_id,question_id,correct_option,explanation,teaching_reference) values(target,k->>'question_id',(k->>'correct_option')::integer,k->>'explanation',k->>'teaching_reference');
    end loop;
    insert into private.daily_editorial(module_id,source_document) values(target,item->'source_document');
+  end if;
+  -- Also support fresh projects where migration 013 preceded the pilot import.
+  if to_regclass('public.daily_sequence') is not null then
+   insert into public.daily_sequence(module_id,skill_level,position)
+   values(target,c->>'skill_level',pilot_slot) on conflict(module_id) do nothing;
   end if;
  end loop;
 end;
