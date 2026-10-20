@@ -1,3 +1,4 @@
+import {createDailyDrill} from './daily-drill.js';
 import {avatarMarkup} from './avatars.js';
 import {academyPlan,academyLabel,skillLevels,skillLabel,libraryTopics,libraryPaths,filterLibrary} from './course-library.js';
 import { notificationsPage } from './notifications.js';
@@ -30,6 +31,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   const timer = learningTimer(client);
   let selectedCompetition, leaderboardTab = "competition", challengeMode = false, challengeResult = null, refresherCompetition = null;
   let active = true, busy = false, view = initialView, menu = false, storeId = initialStore, workspace, selectedCourse, assignment, lessons = [], questions = [], completions = [], lessonIndex = 0, quizQuestions = [], questionIndex = 0, answers = {}, submissionKey = null, result = null, review = [], librarySearch = "";
+  const daily = createDailyDrill({client,notify,isVisible:()=>active&&view==='daily'&&!menu});
   let notifications = {items:[],unread_count:0};
   let libraryLevel='',libraryTopic='',libraryPath='';
   let accountMarkup = "", corner = null, cornerStore = null, supportRequests = [];
@@ -54,6 +56,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   async function refresh() {
     workspace = await rpc("get_training_workspace", { store: storeId });
     notifications = await rpc("get_my_training_notifications", { store: storeId });
+    await daily.load(storeId);
     const role = workspace.is_admin ? 'Administrator' : workspace.members.find(m => m.id === workspace.my_membership)?.role === 'manager' ? 'Manager' : 'Employee';
     setAccountHeader({storeName:workspace.store.name,profile,user,role});
     avatars?.hydrate(document.querySelector("header"));
@@ -81,7 +84,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     const items = mine();
     const first = items.find((a) => !a.completed_at);
     const c = first && courseById(first.course_id);
-    return title(`Welcome, ${profile?.full_name?.split(" ")[0] || "teammate"}`, "One useful lesson at a time.") + competitionSpotlight(workspace) + `<div class="stats">${stat(workspace.totals.lifetime_points, "Lifetime points")}${stat(workspace.totals.completed_courses, "Courses completed")}${stat(workspace.totals.trophies, "Trophies earned")}</div><section class="learning-section"><div class="section-title"><h2>Your next chapter</h2>${btn("All my training", "navigate", 'data-view="courses"', "secondary")}</div>${first ? `<section class="panel training-progress"><h2>Your course progress</h2><p>${progress(first)}% complete \xB7 ${first.lessons_completed} of ${c.lesson_count} lessons</p>${bar(progress(first))}</section>${courseCard(c, first)}` : `<section class="panel"><h2>${items.length ? "You\u2019re all caught up." : "Your training starts here."}</h2><p class="muted">${items.length ? "Your completed courses and trophies are saved." : "Your manager will assign courses and set deadlines. You can explore the store\u2019s course library while you wait."}</p></section>`}</section>`;
+    return title(`Welcome, ${profile?.full_name?.split(" ")[0] || "teammate"}`, "One useful lesson at a time.") + competitionSpotlight(workspace) + daily.card() + `<div class="stats">${stat(workspace.totals.lifetime_points, "Lifetime points")}${stat(workspace.totals.completed_courses, "Courses completed")}${stat(workspace.totals.trophies, "Trophies earned")}</div><section class="learning-section"><div class="section-title"><h2>Your next chapter</h2>${btn("All my training", "navigate", 'data-view="courses"', "secondary")}</div>${first ? `<section class="panel training-progress"><h2>Your course progress</h2><p>${progress(first)}% complete \xB7 ${first.lessons_completed} of ${c.lesson_count} lessons</p>${bar(progress(first))}</section>${courseCard(c, first)}` : `<section class="panel"><h2>${items.length ? "You\u2019re all caught up." : "Your training starts here."}</h2><p class="muted">${items.length ? "Your completed courses and trophies are saved." : "Your manager will assign courses and set deadlines. You can explore the store\u2019s course library while you wait."}</p></section>`}</section>`;
   }
   function alerts(items, heading) {
     return items?.length ? `<section class="panel training-alerts"><h2>${heading}</h2><p class="muted">At least three different employees missed these questions on their first attempt. Review the lesson with your team.</p>${items.map((a) => `<div class="training-alert"><strong>${esc(a.course_title)}</strong><p>${esc(a.prompt)}</p><span>${a.missed_count} employees \xB7 no individual answers shown</span></div>`).join("")}</section>` : "";
@@ -90,7 +93,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     const members = workspace.members.filter((m) => m.status === "active" && m.role === "employee");
     const assignments = workspace.assignments.filter((a) => workspace.members.some((m) => m.id === a.membership_id && m.status === "active"));
     const locked = assignments.filter((a) => !a.completed_at && a.attempts_used >= a.attempt_limit);
-    return title("Your team, learning together.", "Assignments, deadlines, and lifelong progress in one place.", btn("Assign training", "navigate", 'data-view="assign"')) + competitionSpotlight(workspace) + `<div class="stats manager-stats">${stat(members.length, "Active employees")}${stat(assignments.filter((a) => a.completed_at).length, "Completed assignments")}${stat(assignments.filter((a) => a.overdue).length, "Overdue assignments")}${stat(members.reduce((sum, m) => sum + m.lifetime_points, 0), "Team lifetime points")}</div><section class="panel"><h2>Your team: current competition & lifetime points</h2><p class="muted">Competition scores come from the separate challenge. Lifetime points stay saved.</p><div class="manager-table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Course status</th><th>Current course</th><th>Competition points</th><th>Lifetime points</th></tr></thead><tbody>${members.length ? members.flatMap((m) => {
+    return title("Your team, learning together.", "Assignments, deadlines, and lifelong progress in one place.", btn("Assign training", "navigate", 'data-view="assign"')) + competitionSpotlight(workspace) + daily.card() + `<div class="stats manager-stats">${stat(members.length, "Active employees")}${stat(assignments.filter((a) => a.completed_at).length, "Completed assignments")}${stat(assignments.filter((a) => a.overdue).length, "Overdue assignments")}${stat(members.reduce((sum, m) => sum + m.lifetime_points, 0), "Team lifetime points")}</div><section class="panel"><h2>Your team: current competition & lifetime points</h2><p class="muted">Competition scores come from the separate challenge. Lifetime points stay saved.</p><div class="manager-table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Course status</th><th>Current course</th><th>Competition points</th><th>Lifetime points</th></tr></thead><tbody>${members.length ? members.flatMap((m) => {
       const assigned = assignments.filter((a) => a.membership_id === m.id);
       return (assigned.length ? assigned : [null]).map((a) => `<tr><td><div class="person-with-avatar">${avatarMarkup(m.name,m.avatar_path)}<div><strong>${esc(m.name)}</strong><small>${m.departments.map((d) => esc(workspace.departments.find((x) => x.id === d)?.name || "")).join(", ") || "No department"}</small></div></div></td><td>${esc(status(a))}${a ? `<small>${progress(a)}% \xB7 ${a.attempts_used} attempts${a.latest_attempt ? ` \xB7 Latest score ${a.latest_attempt.score}%` : ""}</small>` : ""}</td><td>${a ? `${esc(courseById(a.course_id)?.title)}<small class="${a.overdue ? "account-danger" : ""}">${a.overdue ? "Overdue \xB7 " : ""}Due ${day(a.due_date)}</small>` : "\u2014"}</td><td>${competitionPoints(workspace,m.id)}</td><td>${m.lifetime_points}</td></tr>`);
     }).join("") : '<tr><td colspan="5">Invite employees in Account & team settings to get started.</td></tr>'}</tbody></table></div></section>${locked.length ? `<section class="panel"><h2>Help an employee retry</h2><p class="muted">Review the material together, then unlock one additional attempt. Previous points and attempts stay saved.</p><form id="training-unlock-form"><label class="field">Assignment<select name="assignment">${locked.map((a) => `<option value="${a.id}">${esc(workspace.members.find((m) => m.id === a.membership_id)?.name)} \xB7 ${esc(courseById(a.course_id)?.title)}</option>`).join("")}</select></label><label class="field">How did you help?<textarea name="reason" minlength="5" maxlength="500" required></textarea></label><button class="button">Unlock one attempt</button></form></section>` : ""}${alerts(workspace.question_alerts, "Questions to revisit with your store")}${workspace.is_admin ? alerts(workspace.global_question_alerts, "Questions to revisit across all stores") : ""}`;
@@ -200,7 +203,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     headerButton.setAttribute("aria-expanded", String(menu));
     headerButton.innerHTML = `☰${notifications.unread_count?'<span class="notification-dot" aria-hidden="true"></span>':''}`;
     headerButton.setAttribute('aria-description',`${notifications.unread_count} unread notifications`);
-    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "notifications" ? notificationsPage(notifications,workspace.store.name) : view === "team-support" ? teamSupportRequests(supportRequests) : view === "team" ? corner?.html() || "" : view === "accounts" ? `<div class="training-account-settings">${accountMarkup}</div>` : view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
+    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "daily" ? daily.page() : view === "notifications" ? notificationsPage(notifications,workspace.store.name) : view === "team-support" ? teamSupportRequests(supportRequests) : view === "team" ? corner?.html() || "" : view === "accounts" ? `<div class="training-account-settings">${accountMarkup}</div>` : view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
+    daily.setVisible(view==='daily'&&!menu);
     avatars?.hydrate(root);
     if(view==='team')corner?.hydrate(root);else corner?.pause();
     timer.set(!menu && (view === "course" || view === "quiz" && (challengeMode || assignment && !assignment.completed_at && assignment.attempts_used < assignment.attempt_limit)) ? assignment?.id || null : null);
@@ -270,8 +274,10 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     view = "results";
     render();
   }
+  function focusDaily(){if(view!=='daily')return;const heading=root.querySelector('.page-heading h1');if(heading){heading.tabIndex=-1;heading.focus();heading.scrollIntoView({block:'start'});}}
   async function handleForm(form) {
     if(form.dataset.teamForm){await corner.submit(form);render();return;}
+    if(form.id==='training-daily-form'){await daily.submit(form);render();focusDaily();return;}
     const data = new FormData(form);
     if (form.id === "training-search-form") {
       librarySearch = data.get("search").trim();
@@ -341,6 +347,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   document.addEventListener("change", (e) => {
     if (!active) return;
     if(view==='team')corner?.input(e.target);
+    daily.input(e.target);
     if(e.target.matches('[data-team-files]')){run(async()=>{await corner.choosePhotos(e.target);render();});return;}
     if(e.target.id==='training-competition-course')document.querySelector('#training-competition-recipients').innerHTML=competitionRecipients(workspace,e.target.value);
     if(e.target.matches('#training-competition-form input[name=start]'))document.querySelector('#training-competition-form input[name=end]').min=e.target.value;
@@ -360,6 +367,14 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
       e.preventDefault();
       if (submit.form.reportValidity()) run(() => handleForm(submit.form));
       return;
+    }
+    const dailyTarget=e.target.closest('[data-daily-action]');
+    if(dailyTarget&&root.contains(dailyTarget)){
+      run(async()=>{
+        if(dailyTarget.dataset.dailyAction==='home'){view='home';await refresh();}
+        else{await daily.action(dailyTarget.dataset.dailyAction,dailyTarget.dataset.assignment);if(dailyTarget.dataset.dailyAction!=='reload')view='daily';}
+        menu=false;render();focusDaily();
+      });return;
     }
     const target = e.target.closest("[data-training-action]");
     if (!target) return;
@@ -482,6 +497,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     if (!active) return;
     active = false;
     timer.close();
+    daily.close();
     corner?.close();
     events.abort();
     headerButton.remove();
@@ -490,6 +506,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   }
   try {
     await refresh();
+    if(view==='daily')await daily.resume();
     if (view === "accounts") accountMarkup = await onAccounts();
     if (view === "team") await loadTeam();
     if (view === "team-support") supportRequests=await rpc('get_team_corner_support_requests',{});

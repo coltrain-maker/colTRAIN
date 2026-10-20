@@ -6,7 +6,8 @@
     "build:accounts": "node scripts/build-accounts.mjs",
     "build:preview": "python scripts/build-preview.py",
     "test:database": "python tests/run-database-tests.py",
-    "test:daily": "python tests/daily-database.py && python tests/daily-sequence.py && python tests/daily-sequence.py --fresh"
+    "test:daily": "python tests/daily-database.py && python tests/daily-sequence.py && python tests/daily-sequence.py --fresh",
+    "test:daily:ui": "node --test tests/daily-drill.test.mjs && python tests/daily-ui.py"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.118.0"
