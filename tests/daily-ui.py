@@ -146,7 +146,7 @@ try:
   login('employee.a@example.test')
   expect(page.locator('.daily-dashboard h3')).to_have_text('Paint Sheen: Recognize the Finish')
   assert page.locator('.daily-dashboard').evaluate('n=>n.compareDocumentPosition(document.querySelector(".learning-section")) & Node.DOCUMENT_POSITION_FOLLOWING')
-  expect(page.locator('.daily-levels')).to_contain_text('0 completed · 88 planned')
+  expect(page.locator('.daily-levels')).to_contain_text('0 completed · 10 available')
   page.screenshot(path=str(root/'design/daily-drill-dashboard.png'),full_page=True)
   page.get_by_role('button',name='Start your drill',exact=True).click()
   expect(page.locator('.page-heading h1')).to_have_text('The Daily Drill')
@@ -184,7 +184,7 @@ try:
   assert sql(f"select attempt_count from public.daily_assignments where module_id='{rows[0]['id']}' and membership_id='20000000-0000-0000-0000-000000000004'")=='2'
   page.screenshot(path=str(root/'design/daily-drill-result.png'),full_page=True)
   page.get_by_role('button',name='Continue to next drill',exact=True).click();expect(page.locator('.daily-reader h2')).to_have_text(rows[1]['title'])
-  dashboard();expect(page.locator('.daily-dashboard')).to_contain_text('1 completed · 88 planned')
+  dashboard();expect(page.locator('.daily-dashboard')).to_contain_text('1 completed · 10 available')
   page.get_by_role('button',name='Review completed drills',exact=True).click();expect(page.locator('.daily-history-item')).to_have_count(1)
   page.get_by_role('button',name='Review lesson',exact=True).click();expect(page.locator('.daily-reader')).to_contain_text('Completed — review anytime')
   assert page.get_by_role('button',name='Take the quick check',exact=True).count()==0
@@ -200,10 +200,10 @@ try:
    query_as(employee,f"select public.get_daily_module('{a}')");answer=key(m['id']);body=json.dumps([{'question_id':answer['id'],'option':answer['option']}])
    query_as(employee,f"select public.submit_daily_check('{a}','{body}',gen_random_uuid())")
   page.reload();expect(page.locator('.daily-dashboard')).to_contain_text('You’re caught up.')
-  expect(page.locator('.daily-dashboard')).to_contain_text('10 completed · 88 planned')
+  expect(page.locator('.daily-dashboard')).to_contain_text('10 completed · 10 available')
   assert page.get_by_role('button',name='Start your drill',exact=True).count()==0
   assert sql('select count(*) from public.training_trophies')=='0'
-  signout();login('manager.a@example.test');expect(page.locator('.daily-dashboard')).to_contain_text('0 completed · 88 planned')
+  signout();login('manager.a@example.test');expect(page.locator('.daily-dashboard')).to_contain_text('0 completed · 10 available')
   page.get_by_role('button',name='Start your drill',exact=True).click();expect(page.locator('.daily-reader h2')).to_have_text(rows[0]['title'])
   signout();assert page.locator('.daily-reader,.daily-dashboard').count()==0
   assert not errors,errors
