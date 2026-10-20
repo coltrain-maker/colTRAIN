@@ -2,3 +2,7 @@
 # Browser publishable keys are not legacy JWTs. The handler explicitly validates
 # the caller's session with Auth and performs seat/role checks using that JWT.
 verify_jwt = false
+
+[functions.admin-update]
+# Handler verifies Auth identity and platform-admin permission before privileged queue access.
+verify_jwt = false
