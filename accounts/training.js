@@ -1,6 +1,7 @@
+import {coursePicker,updateCoursePicker} from './course-picker.js';
 import {createDailyDrill} from './daily-drill.js';
 import {avatarMarkup} from './avatars.js';
-import {academyPlan,academyLabel,skillLevels,skillLabel,libraryTopics,libraryPaths,filterLibrary} from './course-library.js';
+import {academyPlan,academyLabel,skillLevels,skillLabel,libraryPaths,filterLibrary} from './course-library.js';
 import { notificationsPage } from './notifications.js';
 import { createTeamCorner, teamSupportRequests } from './team-corner.js';
 import { setAccountHeader } from './header.js';
@@ -33,7 +34,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   let active = true, busy = false, view = initialView, menu = false, storeId = initialStore, workspace, selectedCourse, assignment, lessons = [], questions = [], completions = [], lessonIndex = 0, quizQuestions = [], questionIndex = 0, answers = {}, submissionKey = null, result = null, review = [], librarySearch = "";
   const daily = createDailyDrill({client,notify,isVisible:()=>active&&view==='daily'&&!menu});
   let notifications = {items:[],unread_count:0};
-  let libraryLevel='',libraryTopic='',libraryPath='';
+  let libraryLevel='',libraryTopic='',libraryPath='',libraryAcademy='',libraryCourse='';
   let accountMarkup = "", corner = null, cornerStore = null, supportRequests = [];
   async function loadTeam(){
     if(!corner || cornerStore !== storeId){corner?.close();cornerStore=storeId;corner=createTeamCorner({client,store:storeId,user,notify,onRender:()=>{if(active&&view==='team')render();},isVisible:()=>active&&view==='team'});}
@@ -105,13 +106,13 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     return `<details class="panel academy-plan"><summary>Academy plan: 10 academies · 260 planned modules</summary><p>Planned allocations only. These modules are not all created or available. Full courses and colTRAIN Daily lessons remain separate completion records. The library result count below reflects actual courses visible to this account; your completed courses appear on Home.</p><div style="overflow-x:auto"><table><caption>Planned modules by skill level</caption><thead><tr><th>Academy</th><th>Foundations</th><th>Application</th><th>Expertise</th><th>Total planned</th></tr></thead><tbody>${academyPlan.academies.map(a=>`<tr><th scope="row">${esc(a.name)}</th><td>${a.planned_modules.foundations}</td><td>${a.planned_modules.application}</td><td>${a.planned_modules.expertise}</td><td>${a.planned_modules.total}</td></tr>`).join('')}</tbody><tfoot><tr><th>Total planned</th><td>88</td><td>112</td><td>60</td><td>260</td></tr></tfoot></table></div></details>`;
   }
   function library() {
-    const visible=filterLibrary(workspace.courses,{search:librarySearch,level:libraryLevel,topic:libraryTopic,path:libraryPath});
-    const filtered=Boolean(librarySearch||libraryLevel||libraryTopic||libraryPath);
-    return title("Course library", `Explore training for ${workspace.store.name}. Your manager assigns courses and deadlines.`) + (workspace.is_admin ? academyPlanning() : "") + `<form id="training-search-form" class="panel library-filters"><div class="library-filter-fields"><label class="field">Skill level<select name="level" aria-label="Skill level"><option value="">All skill levels</option>${skillLevels.map(([value,label])=>`<option value="${value}" ${libraryLevel===value?'selected':''}>${label}</option>`).join('')}</select></label><label class="field">Topic or academy<select name="topic" aria-label="Topic or academy"><option value="">All topics and academies</option>${libraryTopics(workspace.courses).map(topic=>`<option value="${esc(topic)}" ${libraryTopic===topic?'selected':''}>${esc(topic)}</option>`).join('')}</select></label><label class="field">Learning path<select name="path" aria-label="Learning path"><option value="">All learning paths</option>${libraryPaths(workspace.courses).map(path=>`<option value="${esc(path)}" ${libraryPath===path?'selected':''}>${esc(path)}</option>`).join('')}</select></label><label class="field library-keywords">Search courses<input name="search" type="search" placeholder="Course name, code, or keywords" value="${esc(librarySearch)}"></label></div><div class="library-filter-actions"><button class="button" type="submit">Search</button>${btn('Clear filters','clear-library','','secondary')}</div></form><p class="library-result-count" role="status">${visible.length} ${visible.length===1?'course':'courses'}${filtered?(visible.length===1?' matches your search':' match your search'):' available to browse'}</p><div class="library-cards">${visible.length ? visible.map((c) => courseCard(c, mine().find((a) => a.course_id === c.id), true)).join("") : `<section class="panel"><h2>${workspace.courses.length?'No matching courses':'No courses available'}</h2><p class="muted">${workspace.courses.length?'Try another skill level, topic, learning path, or keyword, or clear your filters.':'Your colTRAIN administrator releases courses to this store.'}</p></section>`}</div>`;
+    const visible=filterLibrary(workspace.courses,{search:librarySearch,level:libraryLevel,subtopic:libraryTopic,path:libraryPath,academy:libraryAcademy,course:libraryCourse});
+    const filtered=Boolean(librarySearch||libraryLevel||libraryTopic||libraryPath||libraryAcademy||libraryCourse);
+    return title("Course library", `Explore training for ${workspace.store.name}. Your manager assigns courses and deadlines.`) + (workspace.is_admin ? academyPlanning() : "") + `<form id="training-search-form" class="panel library-filters"><div class="library-filter-fields">${coursePicker(workspace.courses,{academy:libraryAcademy,subtopic:libraryTopic,course:libraryCourse,allowAll:true})}<label class="field">Skill level<select name="level" aria-label="Skill level"><option value="">All skill levels</option>${skillLevels.map(([value,label])=>`<option value="${value}" ${libraryLevel===value?'selected':''}>${label}</option>`).join('')}</select></label><label class="field">Learning path<select name="path" aria-label="Learning path"><option value="">All learning paths</option>${libraryPaths(workspace.courses).map(path=>`<option value="${esc(path)}" ${libraryPath===path?'selected':''}>${esc(path)}</option>`).join('')}</select></label><label class="field library-keywords">Search courses<input name="search" type="search" placeholder="Course name, code, or keywords" value="${esc(librarySearch)}"></label></div><div class="library-filter-actions"><button class="button" type="submit">Search</button>${btn('Clear filters','clear-library','','secondary')}</div></form><p class="library-result-count" role="status">${visible.length} ${visible.length===1?'course':'courses'}${filtered?(visible.length===1?' matches your search':' match your search'):' available to browse'}</p><div class="library-cards">${visible.length ? visible.map((c) => courseCard(c, mine().find((a) => a.course_id === c.id), true)).join("") : `<section class="panel"><h2>${workspace.courses.length?'No matching courses':'No courses available'}</h2><p class="muted">${workspace.courses.length?'Try another skill level, topic, learning path, or keyword, or clear your filters.':'Your colTRAIN administrator releases courses to this store.'}</p></section>`}</div>`;
   }
   function assignPage() {
     const released = workspace.courses.filter((c) => c.released);
-    return title("Assign training", "Choose employees, departments, or the whole team. Existing progress is kept when you change a deadline.") + `<section class="panel">${released.length ? `<form id="training-assign-form"><label class="field">Course<select name="course">${released.map((c) => `<option value="${c.id}" ${c.id === selectedCourse ? "selected" : ""}>${esc(c.title)}</option>`).join("")}</select></label><label class="field">Deadline<input type="date" name="deadline" value="${defaultDeadline(workspace.store.time_zone)}" required></label><p class="muted">The starting deadline is 30 days from today. Assign a new hire separately to give them their own deadline.</p><fieldset><legend>Employees</legend><label class="training-check"><input type="checkbox" name="all" value="yes">All active employees</label>${workspace.members.filter((m) => m.status === "active").map((m) => `<label class="training-check"><input type="checkbox" name="employee" value="${m.id}">${esc(m.name)}${m.role === "manager" ? " (manager)" : ""}</label>`).join("")}</fieldset><fieldset><legend>Departments</legend>${workspace.departments.length ? workspace.departments.map((d) => `<label class="training-check"><input type="checkbox" name="department" value="${d.id}">${esc(d.name)}</label>`).join("") : '<p class="muted">Create departments and place employees in them on the Departments page.</p>'}</fieldset><button class="button">Assign course</button></form>` : '<h2>No released courses yet</h2><p class="muted">Ask the colTRAIN administrator to make a course available to your store first.</p>'}</section>`;
+    return title("Assign training", "Choose employees, departments, or the whole team. Existing progress is kept when you change a deadline.") + `<section class="panel">${released.length ? `<form id="training-assign-form">${coursePicker(released,{course:selectedCourse})}<label class="field">Deadline<input type="date" name="deadline" value="${defaultDeadline(workspace.store.time_zone)}" required></label><p class="muted">The starting deadline is 30 days from today. Assign a new hire separately to give them their own deadline.</p><fieldset><legend>Employees</legend><label class="training-check"><input type="checkbox" name="all" value="yes">All active employees</label>${workspace.members.filter((m) => m.status === "active").map((m) => `<label class="training-check"><input type="checkbox" name="employee" value="${m.id}">${esc(m.name)}${m.role === "manager" ? " (manager)" : ""}</label>`).join("")}</fieldset><fieldset><legend>Departments</legend>${workspace.departments.length ? workspace.departments.map((d) => `<label class="training-check"><input type="checkbox" name="department" value="${d.id}">${esc(d.name)}</label>`).join("") : '<p class="muted">Create departments and place employees in them on the Departments page.</p>'}</fieldset><button class="button">Assign course</button></form>` : '<h2>No released courses yet</h2><p class="muted">Ask the colTRAIN administrator to make a course available to your store first.</p>'}</section>`;
   }
   function missingStarterDepartments() {
     const existing = new Set(workspace.departments.map((d) => d.name.trim().toLocaleLowerCase()));
@@ -282,7 +283,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     if (form.id === "training-search-form") {
       librarySearch = data.get("search").trim();
       libraryLevel=data.get('level')||'';
-      libraryTopic=data.get('topic')||'';
+      libraryTopic=data.get('subtopic')||'';
+      libraryAcademy=data.get('academy')||'';libraryCourse=data.get('course')||'';
       libraryPath=data.get('path')||'';
       render();
       return;
@@ -349,19 +351,27 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     if(view==='team')corner?.input(e.target);
     daily.input(e.target);
     if(e.target.matches('[data-team-files]')){run(async()=>{await corner.choosePhotos(e.target);render();});return;}
-    if(e.target.id==='training-competition-course')document.querySelector('#training-competition-recipients').innerHTML=competitionRecipients(workspace,e.target.value);
+    const picker=e.target.closest('[data-course-picker]');
+    if(picker){
+      const form=picker.closest('form'),course=picker.querySelector('[name=course]');
+      if(e.target.name!=='course')updateCoursePicker(picker,form.id==='training-search-form'?workspace.courses:workspace.courses.filter(c=>c.released));
+      if(form.id==='training-competition-form'){selectedCourse=course.value;document.querySelector('#training-competition-recipients').innerHTML=competitionRecipients(workspace,course.value);}
+      if(form.id==='training-assign-form')selectedCourse=course.value;
+    }
     if(e.target.matches('#training-competition-form input[name=start]'))document.querySelector('#training-competition-form input[name=end]').min=e.target.value;
     if (e.target.id === "training-department-member") document.querySelector("#training-department-options").innerHTML = departmentOptions(workspace.members.find((m) => m.id === e.target.value));
     if (e.target.id === "training-store") run(async () => {
-      storeId = e.target.value;librarySearch='';libraryLevel='';libraryTopic='';libraryPath='';
+      storeId = e.target.value;librarySearch='';libraryLevel='';libraryTopic='';libraryPath='';libraryAcademy='';libraryCourse='';
       await refresh();
       view = "home";
       render();
     });
     if (e.target.closest("#training-quiz-form") && e.target.name === "answer") answers[quizQuestions[questionIndex].id] = Number(e.target.value);
   }, { signal: events.signal });
+  document.addEventListener('keydown',e=>{if(active&&menu&&e.key==='Escape'){menu=false;render();headerButton.focus();}},{signal:events.signal});
   document.addEventListener("click", (e) => {
     if (!active) return;
+    if(menu&&e.target.classList.contains('training-menu-shade')){menu=false;render();headerButton.focus();return;}
     const submit = e.target.closest("button");
     if (submit?.form?.id.startsWith("training-") && submit.type === "submit") {
       e.preventDefault();
@@ -401,7 +411,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         render();
         return;
       }
-      if(action==='clear-library'){librarySearch='';libraryLevel='';libraryTopic='';libraryPath='';render();return;}
+      if(action==='clear-library'){librarySearch='';libraryLevel='';libraryTopic='';libraryPath='';libraryAcademy='';libraryCourse='';render();return;}
       if(action==='notifications-refresh'){await refresh();render();return;}
       if(action==='notifications-read-all'||action==='notifications-read'||action==='notifications-open'){
         const item=notifications.items.find(n=>n.id===target.dataset.notification);
@@ -417,7 +427,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         render();return;
       }
       if(action==='team-support-open'){
-        storeId=target.dataset.store;librarySearch='';libraryLevel='';libraryTopic='';libraryPath='';await refresh();await loadTeam();view='team';menu=false;render();return;
+        storeId=target.dataset.store;librarySearch='';libraryLevel='';libraryTopic='';libraryPath='';libraryAcademy='';libraryCourse='';await refresh();await loadTeam();view='team';menu=false;render();return;
       }
       if(action==='team-support-refresh'){supportRequests=await rpc('get_team_corner_support_requests',{});render();return;}
       if(action.startsWith('team-')){await corner.action(target);render();return;}

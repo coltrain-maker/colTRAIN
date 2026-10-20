@@ -8,11 +8,15 @@ export const skillLevels=[['foundations','Level 1 — Foundations'],['applicatio
 export const skillLabel=course=>skillLevels.find(([value])=>value===(course.skill_level||'foundations'))?.[1]||'Skill level not set';
 const normalized=value=>String(value??'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('en-US').trim();
 export function courseTopics(course){return [...new Set([academyLabel(course),...(course.topics||[]).filter(topic=>topic!==course.category||academyLabel(course)===course.category)].filter(value=>typeof value==='string'&&value.trim()).map(value=>value.trim()))];}
+export function courseSubtopics(course){const topics=(course.topics||[]).filter(t=>typeof t==='string'&&t.trim()&&normalized(t)!==normalized(course.category)&&normalized(t)!==normalized(academyLabel(course)));return topics.length?[...new Set(topics.map(t=>t.trim()))]:['General'];}
 export function libraryTopics(courses){const names=new Map();for(const topic of courses.flatMap(courseTopics)){if(!names.has(normalized(topic)))names.set(normalized(topic),topic);}return [...names.values()].sort((a,b)=>a.localeCompare(b));}
 export function libraryPaths(courses){return [...new Set(courses.flatMap(course=>course.learning_paths||[]))].sort((a,b)=>a.localeCompare(b));}
-export function filterLibrary(courses,{search='',level='',topic='',path=''}={}){
+export function filterLibrary(courses,{search='',level='',topic='',path='',academy='',subtopic='',course:courseId=''}={}){
  const terms=normalized(search).split(/\s+/).filter(Boolean);
  return courses.filter(course=>{
+  if(academy&&normalized(academyLabel(course))!==normalized(academy))return false;
+  if(subtopic&&!courseSubtopics(course).some(t=>normalized(t)===normalized(subtopic)))return false;
+  if(courseId&&course.id!==courseId)return false;
   if(level&&(course.skill_level||'foundations')!==level)return false;
   if(topic&&!courseTopics(course).some(value=>normalized(value)===normalized(topic)))return false;
   if(path&&!(course.learning_paths||[]).includes(path))return false;
