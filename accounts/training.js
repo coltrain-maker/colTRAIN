@@ -1,3 +1,4 @@
+import {createTeamSupport} from './team-support.js';
 import {pointSummary,pointHeaders,pointCells} from './points.js';
 import {createAdminUpdates} from './admin-updates.js';
 import {coursePicker,updateCoursePicker} from './course-picker.js';
@@ -39,6 +40,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   let notifications = {items:[],unread_count:0};
   let libraryLevel='',libraryTopic='',libraryPath='',libraryAcademy='',libraryCourse='';
   let adminUpdates=null;
+  const support=createTeamSupport({client,notify});
+  const loadSupport=()=>support.load(storeId);
   let accountMarkup = "", corner = null, cornerStore = null, supportRequests = [];
   async function loadTeam(){
     if(!corner || cornerStore !== storeId){corner?.close();cornerStore=storeId;corner=createTeamCorner({client,store:storeId,user,notify,onRender:()=>{if(active&&view==='team')render();},isVisible:()=>active&&view==='team'});}
@@ -77,7 +80,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     if (!menu) return "";
     const link = (page, label) => `<button type="button" data-training-action="navigate" data-view="${page}" ${page === "notifications" ? 'aria-label="Notifications"' : ""} ${view === page ? 'aria-current="page"' : ""}>${label}${page === "notifications" && notifications.unread_count ? `<span class="notification-count" aria-hidden="true">${notifications.unread_count}</span>` : ""}</button>`;
     const group = (name, content) => `<div class="training-menu-group" role="group" aria-label="${name}">${content}</div>`;
-    return `<div class="training-menu-shade"><nav class="training-drawer" aria-label="Main navigation"><div class="panel-top"><h2>colTRAIN</h2>${btn("Close", "menu", "", "secondary")}</div>${link("home", workspace.can_manage ? "Dashboard" : "Home")}${group("Training", link("courses", "My training") + link("library", "Course library") + (workspace.can_manage ? link("assign", "Assign training") : "") + link("notifications", "Notifications") + (workspace.is_admin?link("admin-updates","Admin updates"):""))}${group("Team Corner", link("team", "Team Corner") + (workspace.is_admin ? link("team-support", "Team support") : ""))}${group("Competitions", link("competitions", "Competitions") + link("leaderboard", "Store leaderboard"))}${group("Settings", `<button type="button" data-training-action="accounts" ${view === "accounts" ? 'aria-current="page"' : ""}>Account & team settings</button>${workspace.can_manage ? link("departments", "Departments") : ""}<button type="button" data-install-action="open">Add to home screen</button>`)}<button type="button" class="account-danger training-menu-signout" data-action="signout">Sign out and switch accounts</button></nav></div>`;
+    return `<div class="training-menu-shade"><nav class="training-drawer" aria-label="Main navigation"><div class="panel-top"><h2>colTRAIN</h2>${btn("Close", "menu", "", "secondary")}</div>${link("home", workspace.can_manage ? "Dashboard" : "Home")}${group("Training", link("courses", "My training") + link("library", "Course library") + (workspace.can_manage ? link("assign", "Assign training") : "") + link("notifications", "Notifications") + (workspace.is_admin?link("admin-updates","Admin updates"):""))}${group("Team Corner", link("team", "Team Corner") + (workspace.my_membership?link("messages", "Team support"):"") + (workspace.is_admin ? link("team-support", "Store feed support") : ""))}${group("Competitions", link("competitions", "Competitions") + link("leaderboard", "Store leaderboard"))}${group("Settings", `<button type="button" data-training-action="accounts" ${view === "accounts" ? 'aria-current="page"' : ""}>Account & team settings</button>${workspace.can_manage ? link("departments", "Departments") : ""}<button type="button" data-install-action="open">Add to home screen</button>`)}<button type="button" class="account-danger training-menu-signout" data-action="signout">Sign out and switch accounts</button></nav></div>`;
   }
   function cover() {
     return '<div class="course-cover"><div class="cover-grid"></div><div class="cover-scene"><div class="scene-person"></div><div class="scene-person second"></div><div class="scene-desk"></div><div class="scene-chat">\xB7\xB7\xB7</div></div></div>';
@@ -209,7 +212,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     headerButton.setAttribute("aria-expanded", String(menu));
     headerButton.innerHTML = `☰${notifications.unread_count?'<span class="notification-dot" aria-hidden="true"></span>':''}`;
     headerButton.setAttribute('aria-description',`${notifications.unread_count} unread notifications`);
-    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "admin-updates" ? adminUpdates?.page()||"" : view === "daily" ? daily.page() : view === "notifications" ? notificationsPage(notifications,workspace.store.name) : view === "team-support" ? teamSupportRequests(supportRequests) : view === "team" ? corner?.html() || "" : view === "accounts" ? `<div class="training-account-settings">${accountMarkup}</div>` : view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
+    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "messages" ? support.html() : view === "admin-updates" ? adminUpdates?.page()||"" : view === "daily" ? daily.page() : view === "notifications" ? notificationsPage(notifications,workspace.store.name) : view === "team-support" ? teamSupportRequests(supportRequests) : view === "team" ? corner?.html() || "" : view === "accounts" ? `<div class="training-account-settings">${accountMarkup}</div>` : view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
     daily.setVisible(view==='daily'&&!menu);
     avatars?.hydrate(root);
     if(view==='team')corner?.hydrate(root);else corner?.pause();
@@ -282,6 +285,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   }
   function focusDaily(){if(view!=='daily')return;const heading=root.querySelector('.page-heading h1');if(heading){heading.tabIndex=-1;heading.focus();heading.scrollIntoView({block:'start'});}}
   async function handleForm(form) {
+    if(form.dataset.supportForm){await support.submit(form);notifications=await rpc('get_my_training_notifications',{store:storeId});render();return;}
     if(form.id==='training-admin-update-form'){await adminUpdates.prepare(form);render();return;}
     if(form.dataset.teamForm){await corner.submit(form);render();return;}
     if(form.id==='training-daily-form'){await daily.submit(form);render();focusDaily();return;}
@@ -351,9 +355,10 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     e.preventDefault();
     run(() => handleForm(e.target));
   }, { signal: events.signal });
-  document.addEventListener('input',e=>{if(active&&view==='team')corner?.input(e.target);if(active&&view==='admin-updates')adminUpdates?.capture(e.target.closest('form'));},{signal:events.signal});
+  document.addEventListener('input',e=>{if(active&&view==='messages')support.input(e.target);if(active&&view==='team')corner?.input(e.target);if(active&&view==='admin-updates')adminUpdates?.capture(e.target.closest('form'));},{signal:events.signal});
   document.addEventListener("change", (e) => {
     if (!active) return;
+    if(view==='messages')support.input(e.target);
     if(view==='team')corner?.input(e.target);
     daily.input(e.target);
     if(view==='admin-updates')adminUpdates?.capture(e.target.closest('form'));
@@ -385,6 +390,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
       if (submit.form.reportValidity()) run(() => handleForm(submit.form));
       return;
     }
+    const supportTarget=e.target.closest('[data-support-action]');
+    if(supportTarget&&root.contains(supportTarget)){run(async()=>{await support.action(supportTarget.dataset.supportAction,supportTarget.dataset.thread,supportTarget.dataset.folder);notifications=await rpc('get_my_training_notifications',{store:storeId});render();});return;}
     const adminTarget=e.target.closest('[data-admin-update-action]');
     if(adminTarget&&root.contains(adminTarget)){run(async()=>{await adminUpdates.action(adminTarget.dataset.adminUpdateAction,adminTarget.dataset.update);await refresh();render();});return;}
     const dailyTarget=e.target.closest('[data-daily-action]');
@@ -415,6 +422,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         view = target.dataset.view;
         menu = false;
         await refresh();
+        if(view==='messages')await loadSupport();
         if(view==='team')await loadTeam();
         if(view==='admin-updates')await loadAdminUpdates();
         if(view==='team-support')supportRequests=await rpc('get_team_corner_support_requests',{});
@@ -431,6 +439,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
         if(action==='notifications-open'){
           const current=notifications.items.find(n=>n.id===item.id);
           if(!current){view='notifications';render();return;}
+          if(current.target_view==='messages'){await loadSupport();await support.open(current.support_thread_id);view='messages';menu=false;notifications=await rpc('get_my_training_notifications',{store:storeId});render();return;}
           if(current.target_view==='course'){await openCourse(current.course_id);return;}
           selectedCompetition=current.competition_id;view=current.target_view;menu=false;
         }
@@ -513,12 +522,15 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
       }
     });
   }, { signal: events.signal });
+  const notificationPoll=setInterval(async()=>{if(!active||busy||document.hidden||!workspace.my_membership)return;try{const pollStore=storeId;const incoming=await rpc('get_my_training_notifications',{store:pollStore});if(!active||busy||storeId!==pollStore)return;notifications=incoming;headerButton.innerHTML=`☰${notifications.unread_count?'<span class="notification-dot" aria-hidden="true"></span>':''}`;headerButton.setAttribute('aria-description',`${notifications.unread_count} unread notifications`);if(view==='notifications'&&!menu)render();else if(view==='messages'&&!menu&&!root.querySelector('form:focus-within')){await loadSupport();if(active&&!busy&&storeId===pollStore&&view==='messages'&&!menu&&!root.querySelector('form:focus-within'))render();}}catch{}},20000);
   function close() {
     if (!active) return;
     active = false;
     timer.close();
     daily.close();
     adminUpdates?.close();
+    support.close();
+    clearInterval(notificationPoll);
     corner?.close();
     events.abort();
     headerButton.remove();
@@ -527,6 +539,13 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   }
   try {
     await refresh();
+    if(workspace.my_membership)void support.deliver();
+    const supportLink=new URLSearchParams(location.search).get('support_thread');
+    if(supportLink&&/^[0-9a-f-]{36}$/i.test(supportLink)){
+      try{await loadSupport();await support.open(supportLink);view='messages';}catch{view='home';notify('This private conversation is not available for your signed-in account.',true);}
+      const url=new URL(location.href);url.searchParams.delete('support_thread');history.replaceState(null,'',url.pathname+url.search+url.hash);
+    }
+    if(view==='messages')await loadSupport();
     if(view==='daily')await daily.resume();
     if(view==='admin-updates')await loadAdminUpdates();
     if (view === "accounts") accountMarkup = await onAccounts();

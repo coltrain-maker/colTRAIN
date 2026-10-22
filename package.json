@@ -9,7 +9,8 @@
     "test:daily": "python tests/daily-database.py && python tests/daily-sequence.py && python tests/daily-sequence.py --fresh",
     "test:daily:ui": "node --test tests/daily-drill.test.mjs tests/points.test.mjs && python tests/daily-ui.py",
     "test:admin-updates": "python tests/admin-updates-database.py && node --test tests/admin-update-handler.test.mjs && python tests/admin-updates-ui.py",
-    "test:employee-portal": "python tests/employee-portal-database.py && node --test tests/employee-login-handler.test.mjs"
+    "test:employee-portal": "python tests/employee-portal-database.py && node --test tests/employee-login-handler.test.mjs",
+    "test:private-support": "python tests/private-support-database.py && node --test tests/support-email-handler.test.mjs && python tests/private-support-ui.py"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.118.0"

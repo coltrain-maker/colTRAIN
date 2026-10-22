@@ -9,3 +9,6 @@ verify_jwt = false
 
 [functions.employee-login]
 verify_jwt = false
+
+[functions.team-support-email]
+verify_jwt = false

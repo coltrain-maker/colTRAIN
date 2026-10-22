@@ -49,6 +49,7 @@ def handle(route):
    uid=people[route.request.post_data_json['email']];result={'access_token':token(uid),'refresh_token':'local-refresh','expires_in':3600,'token_type':'bearer','user':person(uid)}
   elif path=='/auth/v1/user':result=person(uid)
   elif path=='/auth/v1/logout':result={}
+  elif path=='/functions/v1/team-support-email':result={'delivery_status':'processed','processed':0} # Mock email transport; private messages use real SQL.
   elif path=='/functions/v1/employee-login':result={'delivery_status':'processed','processed':0} # Email transport stub; first-login RPC remains real SQL.
   elif path.startswith('/storage/v1/object/'):
    storage_path=path.removeprefix('/storage/v1/object/').removeprefix('authenticated/')
