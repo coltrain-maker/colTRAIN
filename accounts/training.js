@@ -31,7 +31,7 @@ function defaultDeadline(zone, offset = 0) {
   today.setUTCDate(today.getUTCDate() + offset);
   return today.toISOString().slice(0, 10);
 }
-async function mountTraining({ client, root, user, profile, stores, initialStore, initialView = "home", avatars, onNavigate, onAccounts, notify }) {
+async function mountTraining({ client, root, user, profile, stores, initialStore, initialView = "home", avatars, push, onNavigate, onAccounts, notify }) {
   const events = new AbortController();
   const timer = learningTimer(client);
   let selectedCompetition, leaderboardTab = "competition", challengeMode = false, challengeResult = null, refresherCompetition = null;
@@ -208,11 +208,12 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   }
   function render() {
     if (!active) return;
+    void push?.badge(notifications.unread_count);
     onNavigate?.(view,storeId);
     headerButton.setAttribute("aria-expanded", String(menu));
     headerButton.innerHTML = `☰${notifications.unread_count?'<span class="notification-dot" aria-hidden="true"></span>':''}`;
     headerButton.setAttribute('aria-description',`${notifications.unread_count} unread notifications`);
-    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "messages" ? support.html() : view === "admin-updates" ? adminUpdates?.page()||"" : view === "daily" ? daily.page() : view === "notifications" ? notificationsPage(notifications,workspace.store.name) : view === "team-support" ? teamSupportRequests(supportRequests) : view === "team" ? corner?.html() || "" : view === "accounts" ? `<div class="training-account-settings">${accountMarkup}</div>` : view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
+    root.innerHTML = `${workspace.is_admin && stores.length > 1 ? `<label class="training-store-selector">View store<select id="training-store">${stores.map((s) => `<option value="${s.id}" ${s.id === storeId ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>` : ""}<div class="stack">${view === "messages" ? support.html() : view === "admin-updates" ? adminUpdates?.page()||"" : view === "daily" ? daily.page() : view === "notifications" ? notificationsPage(notifications,workspace.store.name)+(push?.html()||"") : view === "team-support" ? teamSupportRequests(supportRequests) : view === "team" ? corner?.html() || "" : view === "accounts" ? `<div class="training-account-settings">${accountMarkup}</div>` : view === "home" ? workspace.can_manage ? managerHome() : learningHome() : view === "courses" ? myCourses() : view === "library" ? library() : view === "assign" ? assignPage() : view === "departments" ? departmentsPage() : view === "course" ? lessonPage() : view === "quiz" ? quizPage() : view === "results" ? resultsPage() : view === "competitions" ? competitionsPage(workspace) : view === "competition-new" ? startCompetitionPage(workspace,selectedCourse,defaultDeadline(workspace.store.time_zone,0),defaultDeadline(workspace.store.time_zone,14)) : view === "leaderboard" ? leaderboardPage(workspace,selectedCompetition,leaderboardTab) : view === "challenge-results" ? challengeResultsPage() : ""}</div>${navigation()}`;
     daily.setVisible(view==='daily'&&!menu);
     avatars?.hydrate(root);
     if(view==='team')corner?.hydrate(root);else corner?.pause();
@@ -406,6 +407,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     if (!target) return;
     run(async () => {
       const action = target.dataset.trainingAction;
+      if(action?.startsWith('push-')){await push.action(action);render();return;}
       if (action === "menu") {
         menu = !menu;
         render();
@@ -420,6 +422,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
       }
       if (action === "navigate") {
         view = target.dataset.view;
+        if(view==='notifications')await push?.load();
         menu = false;
         await refresh();
         if(view==='messages')await loadSupport();
@@ -522,7 +525,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
       }
     });
   }, { signal: events.signal });
-  const notificationPoll=setInterval(async()=>{if(!active||busy||document.hidden||!workspace.my_membership)return;try{const pollStore=storeId;const incoming=await rpc('get_my_training_notifications',{store:pollStore});if(!active||busy||storeId!==pollStore)return;notifications=incoming;headerButton.innerHTML=`☰${notifications.unread_count?'<span class="notification-dot" aria-hidden="true"></span>':''}`;headerButton.setAttribute('aria-description',`${notifications.unread_count} unread notifications`);if(view==='notifications'&&!menu)render();else if(view==='messages'&&!menu&&!root.querySelector('form:focus-within')){await loadSupport();if(active&&!busy&&storeId===pollStore&&view==='messages'&&!menu&&!root.querySelector('form:focus-within'))render();}}catch{}},20000);
+  const notificationPoll=setInterval(async()=>{if(!active||busy||document.hidden||!workspace.my_membership)return;try{const pollStore=storeId;const incoming=await rpc('get_my_training_notifications',{store:pollStore});if(!active||busy||storeId!==pollStore)return;notifications=incoming;void push?.badge(incoming.unread_count);headerButton.innerHTML=`☰${notifications.unread_count?'<span class="notification-dot" aria-hidden="true"></span>':''}`;headerButton.setAttribute('aria-description',`${notifications.unread_count} unread notifications`);if(view==='notifications'&&!menu)render();else if(view==='messages'&&!menu&&!root.querySelector('form:focus-within')){await loadSupport();if(active&&!busy&&storeId===pollStore&&view==='messages'&&!menu&&!root.querySelector('form:focus-within'))render();}}catch{}},20000);
   function close() {
     if (!active) return;
     active = false;
@@ -540,6 +543,8 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   try {
     await refresh();
     if(workspace.my_membership)void support.deliver();
+    const notificationLink=new URLSearchParams(location.search).get('notifications');
+    if(notificationLink==='1'){view='notifications';await push?.load();const url=new URL(location.href);url.searchParams.delete('notifications');history.replaceState(null,'',url.pathname+url.search+url.hash);}
     const supportLink=new URLSearchParams(location.search).get('support_thread');
     if(supportLink&&/^[0-9a-f-]{36}$/i.test(supportLink)){
       try{await loadSupport();await support.open(supportLink);view='messages';}catch{view='home';notify('This private conversation is not available for your signed-in account.',true);}

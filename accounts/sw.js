@@ -10,3 +10,37 @@ self.addEventListener('fetch', event => {
     status:503, headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}
   })));
 });
+
+// Encrypted Web Push contains only an unread count. No tokens or private message text.
+self.addEventListener('push',event=>{
+ event.waitUntil((async()=>{
+  let data={};try{data=event.data?.json()||{};}catch{}
+  const count=Number.isSafeInteger(data.count)&&data.count>0?Math.min(data.count,9999):1;
+  try{await self.navigator.setAppBadge?.(count);}catch{}
+  await self.registration.showNotification('colTRAIN',{
+   body:`You have ${count} unread update${count===1?'':'s'}. Sign in to view them.`,
+   icon:'/accounts/icons/icon-192.png',badge:'/accounts/icons/icon-192.png',tag:'coltrain-unread',
+   data:{url:'/accounts/?notifications=1'},renotify:false
+  });
+ })());
+});
+self.addEventListener('notificationclick',event=>{
+ event.notification.close();
+ event.waitUntil((async()=>{
+  const url=new URL('/accounts/?notifications=1',self.location.origin).href;
+  const windows=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+  const existing=windows.find(c=>new URL(c.url).origin===self.location.origin&&new URL(c.url).pathname.startsWith('/accounts/'));
+  // Navigate to a fixed same-origin inbox; authentication and recipient checks remain in-app.
+  if(existing){await existing.navigate(url);await existing.focus();}else await self.clients.openWindow(url);
+ })());
+});
+
+self.addEventListener('message',event=>{
+ if(event.data?.type!=='coltrain-signout')return;
+ event.waitUntil((async()=>{
+  try{await self.navigator.clearAppBadge?.();}catch{}
+  const alerts=await self.registration.getNotifications();alerts.forEach(alert=>alert.close());
+  const subscription=await self.registration.pushManager.getSubscription();
+  if(subscription)await subscription.unsubscribe();
+ })());
+});

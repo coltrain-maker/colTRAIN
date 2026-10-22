@@ -1,3 +1,4 @@
+import {createPushNotifications} from './push.js';
 import {confirmEmployeeLogin} from './employee-login.js';
 import {createSharedDeviceGuard} from './shared-device.js';
 import {avatarMarkup,createAvatarLoader,prepareAvatar} from './avatars.js';
@@ -21,6 +22,7 @@ function eraseStoredAuth(){for(const suffix of ['','-code-verifier','-user']){tr
 if(startupReason){eraseStoredAuth();deviceGuard.end(false);}
 const client=__SUPABASE_KEY__?createClient(__SUPABASE_URL__,__SUPABASE_KEY__,{auth:{storage:authStorage,storageKey:authKey,persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
 const avatars=createAvatarLoader(client);
+const push=createPushNotifications({client,isShared:()=>deviceGuard.isShared(),notify:notice});
 let photoDraft=null,memberProfiles=[];
 function clearPhotoDraft(){if(photoDraft)URL.revokeObjectURL(photoDraft.preview);photoDraft=null;}
 const emailRedirect=/^https?:$/.test(location.protocol)?location.origin+location.pathname:undefined;
@@ -32,6 +34,7 @@ let view='signin',user=null,profile=null,members=[],admin=false,stores=[],seats=
 function endSession(reason='switch',broadcast=true){
  if(sessionEnding)return;
  let token;try{token=JSON.parse(baseStorage.getItem(authKey)||'null')?.access_token;}catch{}
+ push.signout({url:__SUPABASE_URL__,key:__SUPABASE_KEY__,token});
  sessionEnding=true;deviceGuard.end(broadcast);eraseStoredAuth();
  avatars.clear();clearPhotoDraft();memberProfiles=[];
  trainingController?.close();trainingController=null;
@@ -95,7 +98,8 @@ async function loadWorkspace(){
  trainingController?.close();trainingController=null;
  if((own||admin)&&stores.length){
   const initialStore=stores.find(s=>s.id===activeStoreId)?.id||own?.organization_id||stores[0].id;
-  trainingController=await mountTraining({client,root,user,profile,stores,initialStore,initialView:trainingView,avatars,onNavigate:(page,store)=>{trainingView=page;activeStoreId=store;},onAccounts:async()=>{await loadAccountSettings(own,canManage);return accountMarkup(own,canManage);},notify:notice});
+  await push.load();
+  trainingController=await mountTraining({client,root,user,profile,stores,initialStore,initialView:trainingView,avatars,push,onNavigate:(page,store)=>{trainingView=page;activeStoreId=store;},onAccounts:async()=>{await loadAccountSettings(own,canManage);return accountMarkup(own,canManage);},notify:notice});
   return;
  }
  setAccountHeader({user,profile,role:admin?'Administrator':undefined});
@@ -142,7 +146,7 @@ function submitForm(form){const data=new FormData(form);perform(async()=>{
   else{const submit=form.querySelector('button[type=submit]');submit.textContent='Signing in…';try{const {data:result,error}=await client.auth.signInWithPassword({email:data.get('email').trim(),password:data.get('password')});if(error)throw error;user=result.user;if(!deviceGuard.start(user.id,{fresh:true}))return;await loadWorkspace();notice('Signed in.');}finally{if(submit.isConnected)submit.textContent='Sign in';}}
  }
  if(form.id==='password-form'){const {error}=await client.auth.updateUser({password:data.get('password')});if(error)throw error;if(invitationId){const accepted=await client.rpc('accept_email_invitation',{invitation:invitationId});if(accepted.error)throw accepted.error;}recovering=false;history.replaceState(null,'',location.pathname);await loadWorkspace();notice(invitationId?'Your password is saved and you have joined your store.':'Password updated.');}
- if(form.id==='device-form'){deviceGuard.setShared(data.get('shared-device')==='on');notice(deviceGuard.isShared()?'Shared-device protection is on. You will get a warning before inactivity sign-out.':'Shared-device inactivity sign-out is off for this browser.');}
+ if(form.id==='device-form'){deviceGuard.setShared(data.get('shared-device')==='on');if(deviceGuard.isShared())await push.disable();notice(deviceGuard.isShared()?'Shared-device protection is on. You will get a warning before inactivity sign-out.':'Shared-device inactivity sign-out is off for this browser.');}
  if(form.id==='profile-photo-form'){notice('Saving your profile picture…');await savePhoto();}
  if(form.id==='profile-form'){notice('Saving your preferences…');const {error}=await client.rpc('save_my_account_preferences',{display_name:data.get('name').trim(),email_notifications:data.get('notifications')==='on',team_nickname:data.get('team_nickname').trim()||null});if(error)throw error;await loadWorkspace();notice('Profile and email preference saved.');}
  if(form.id==='join-form'){const {error}=await client.rpc('accept_invitation',{invitation_code:data.get('code').trim()});if(error)throw error;await loadWorkspace();notice('You joined your store.');}

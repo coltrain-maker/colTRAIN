@@ -42,6 +42,12 @@ def handle(route):
  elif path=='/rest/v1/organization_memberships':result=[{'id':member,'organization_id':store,'user_id':uid,'email':person['email'],'role':'employee','status':'active'}]
  elif path=='/rest/v1/platform_admins':result=[]
  elif path=='/rest/v1/organizations':result=[{'id':store,'name':'Shared Hardware'}]
+ elif path=='/rest/v1/rpc/record_employee_first_login':result={'first_login':False}
+ elif path in ('/functions/v1/employee-login','/functions/v1/team-support-email'):result={'delivery_status':'processed'}
+ elif path=='/rest/v1/rpc/get_daily_workspace':result=None
+ elif path=='/rest/v1/rpc/get_my_web_push_count':result=0
+ elif path=='/rest/v1/rpc/get_web_push_status':result=False
+ elif path=='/rest/v1/rpc/remove_web_push':result=None
  elif path=='/rest/v1/rpc/get_my_training_notifications':result={'items':[],'unread_count':0}
  elif path=='/rest/v1/rpc/get_team_corner':result={'can_read':True,'can_post':True,'is_manager':False,'pinned':[],'posts':[],'has_more':False}
  elif path=='/rest/v1/rpc/get_training_workspace':

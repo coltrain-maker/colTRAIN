@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'"><title>colTRAIN Web Push setup keys</title><style>body{font:17px system-ui;max-width:720px;margin:48px auto;padding:24px;color:#182744}button{font:inherit;padding:12px}textarea{width:100%;min-height:80px;font:15px monospace;overflow-wrap:anywhere}label{display:block;margin-top:24px}p{line-height:1.6}</style><h1>colTRAIN Web Push setup</h1><p>This local file generates a new pair of notification-signing keys in your browser. It makes no network requests. Generate once, save both values securely, and enter them only in Supabase Edge Function Secrets. Do not paste the private key into chat or GitHub.</p><button id="generate">Generate keys</button><p id="status" role="status"></p><label>WEB_PUSH_PUBLIC_KEY<textarea id="public" readonly></textarea></label><label>WEB_PUSH_PRIVATE_KEY<textarea id="private" readonly></textarea></label><p>Close this file after saving the keys securely. Generate a replacement pair only when you intend to re-enroll devices: changing keys invalidates existing device subscriptions.</p><script>
+const encode=bytes=>btoa(String.fromCharCode(...bytes)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const decode=text=>Uint8Array.from(atob(text.replace(/-/g,'+').replace(/_/g,'/')+'='.repeat((4-text.length%4)%4)),c=>c.charCodeAt(0));
+document.querySelector('#generate').onclick=async()=>{try{
+ const pair=await crypto.subtle.generateKey({name:'ECDSA',namedCurve:'P-256'},true,['sign','verify']);
+ const key=await crypto.subtle.exportKey('jwk',pair.privateKey);
+ document.querySelector('#public').value=encode(new Uint8Array([4,...decode(key.x),...decode(key.y)]));
+ document.querySelector('#private').value=key.d;
+ document.querySelector('#status').textContent='Keys generated locally. Save them securely before closing this page.';
+ document.querySelector('#generate').disabled=true;
+}catch{document.querySelector('#status').textContent='Open this downloaded file in an up-to-date browser and try again.';}};
+</script></html>
