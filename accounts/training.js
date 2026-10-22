@@ -43,9 +43,9 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   const support=createTeamSupport({client,notify});
   const loadSupport=()=>support.load(storeId);
   let accountMarkup = "", corner = null, cornerStore = null, supportRequests = [];
-  async function loadTeam(){
+  async function loadTeam(postId=null){
     if(!corner || cornerStore !== storeId){corner?.close();cornerStore=storeId;corner=createTeamCorner({client,store:storeId,user,notify,onRender:()=>{if(active&&view==='team')render();},isVisible:()=>active&&view==='team'});}
-    await corner.load();
+    await corner.load(postId);
   }
   const headerButton = document.createElement("button");
   headerButton.className = "icon-button training-menu-toggle";
@@ -443,6 +443,11 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
           const current=notifications.items.find(n=>n.id===item.id);
           if(!current){view='notifications';render();return;}
           if(current.target_view==='messages'){await loadSupport();await support.open(current.support_thread_id);view='messages';menu=false;notifications=await rpc('get_my_training_notifications',{store:storeId});render();return;}
+          if(current.target_view==='team'){
+            await loadTeam(current.team_post_id);view='team';menu=false;render();
+            const post=root.querySelector(`.team-post[data-post="${current.team_post_id}"]`);
+            if(post){post.tabIndex=-1;post.focus();post.scrollIntoView({block:'start'});}return;
+          }
           if(current.target_view==='course'){await openCourse(current.course_id);return;}
           selectedCompetition=current.competition_id;view=current.target_view;menu=false;
         }

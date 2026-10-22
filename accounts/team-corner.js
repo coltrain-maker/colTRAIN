@@ -32,7 +32,7 @@ async function preparePhoto(file) {
   }
 }
 function createTeamCorner({ client, store, user, onRender, notify, isVisible }) {
-  let data = null, postDraft = emptyDraft(), closed = false, morePosts = [], supportTimer = null, observer = null;
+  let data = null, postDraft = emptyDraft(), closed = false, morePosts = [], focusedPost = null, supportTimer = null, observer = null;
   const drafts = /* @__PURE__ */ new Map(), images = /* @__PURE__ */ new Map(), pendingImages = /* @__PURE__ */ new Set();
   const commentsDraft = (id) => {
     if (!drafts.has(id)) drafts.set(id, emptyDraft());
@@ -61,10 +61,19 @@ function createTeamCorner({ client, store, user, onRender, notify, isVisible }) 
       }, Math.max(0, Math.min(2147483647, new Date(data.support.expires_at) - Date.now() + 100)));
     }
   }
-  async function load() {
+  async function load(postId = null) {
+    if(postId)focusedPost=postId;
     const result = await rpc("get_team_corner", { store });
     if (closed) return;
     data = result;
+    if(focusedPost&&data.can_read){
+      try{
+        const selected=await rpc('get_team_corner_post',{post:focusedPost});
+        if(closed)return;
+        data.pinned=data.pinned.filter(p=>p.id!==focusedPost);data.posts=data.posts.filter(p=>p.id!==focusedPost);
+        (selected.pinned?data.pinned:data.posts).unshift(selected);
+      }catch(error){focusedPost=null;if(postId)throw error;}
+    }
     morePosts = [];
     clearImages();
     scheduleSupportCheck();
@@ -200,6 +209,7 @@ function createTeamCorner({ client, store, user, onRender, notify, isVisible }) 
   }
   async function action(target) {
     const action2 = target.dataset.trainingAction;
+    if(action2==='team-refresh')focusedPost=null;
     if (action2 === "team-remove-photo") {
       const draft = target.dataset.draft === "post" ? postDraft : commentsDraft(target.dataset.draft), photo = draft.photos.find((p) => p.id === target.dataset.photo);
       if (photo) {

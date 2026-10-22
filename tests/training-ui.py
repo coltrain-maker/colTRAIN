@@ -700,6 +700,24 @@ try:
   assert sql('select count(*) from public.team_corner_posts where deleted_at is not null')=='1'
   assert query_as(people['employee.a@example.test'],"select count(*) from storage.objects")=='0'
   print('Passed Team Corner browser + SQL/RLS: draft preservation, lost upload response/retry without duplicates, private photos in posts/comments, escaped text, likes, manager pin/comment controls/removal, admin lock, read-only support and revocation, mobile layout.')
+  # A new-post alert opens its exact post even after it leaves the first feed page.
+  older_post=query_as(people['manager.a@example.test'],"select public.create_team_corner_post('10000000-0000-0000-0000-000000000099',gen_random_uuid(),'Read this older team announcement')")
+  for i in range(22):
+   query_as(people['manager.a@example.test'],f"select public.create_team_corner_post('10000000-0000-0000-0000-000000000099',gen_random_uuid(),'Newer team update {i}')")
+  signout();login('employee.a@example.test');navigate('Notifications')
+  expect(page.get_by_role('button',name='View team post',exact=True)).to_have_count(23)
+  note=sql("select id from private.training_notifications where user_id='"+people['employee.a@example.test']+"' and event_key='team-post:"+older_post+"'")
+  page.locator('.training-notification[data-notification="'+note+'"]').get_by_role('button',name='View team post',exact=True).click()
+  target_post=page.locator('.team-post[data-post="'+older_post+'"]')
+  expect(target_post).to_have_count(1)
+  expect(target_post.locator('.team-message').first).to_have_text('Read this older team announcement')
+  target_post.locator('textarea[name=message]').fill('Thanks for the refresher')
+  target_post.get_by_role('button',name='Comment',exact=True).click()
+  expect(target_post.locator('.team-comment')).to_contain_text('Thanks for the refresher')
+  navigate('Notifications')
+  expect(page.locator('.training-notification[data-notification="'+note+'"]')).not_to_have_class(re.compile('notification-unread'))
+  signout();login('manager.a@example.test')
+  print('Passed Team Corner post notifications: recipient inbox, exact older post, comment after opening, persistent read receipt.')
   navigate('Account & team settings')
   expect(page.get_by_role('button',name='Make store manager',exact=True)).to_have_count(1)
   page.get_by_role('button',name='Make store manager',exact=True).click()
