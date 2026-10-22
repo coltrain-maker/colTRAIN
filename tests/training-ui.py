@@ -698,6 +698,16 @@ try:
   assert sql('select count(*) from public.team_corner_posts where deleted_at is not null')=='1'
   assert query_as(people['employee.a@example.test'],"select count(*) from storage.objects")=='0'
   print('Passed Team Corner browser + SQL/RLS: draft preservation, lost upload response/retry without duplicates, private photos in posts/comments, escaped text, likes, manager pin/comment controls/removal, admin lock, read-only support and revocation, mobile layout.')
+  navigate('Account & team settings')
+  expect(page.get_by_role('button',name='Make store manager',exact=True)).to_have_count(1)
+  page.get_by_role('button',name='Make store manager',exact=True).click()
+  expect(page.locator('#account-message')).to_contain_text('Store manager role saved.')
+  navigate('Account & team settings')
+  expect(page.get_by_role('button',name='Make store manager',exact=True)).to_have_count(0)
+  signout();login('employee.a@example.test')
+  expect(page.get_by_role('heading',name='Your team, learning together.',exact=True)).to_be_visible()
+  assert sql('select count(*) from private.store_role_changes')=='1'
+  print('Passed manager promotion UI: same-store manager control, confirmation/save, updated role and manager dashboard on the existing login.')
   assert not errors,errors
   assert sql('select count(*) from public.training_trophies')=='1'
   assert sql('select sum(points) from private.training_point_awards')=='40'

@@ -34,9 +34,19 @@ Use an email/account you control before more staff invitations. Inviting creates
 
 ## Local verification
 
-- `python tests/employee-portal-database.py`: 41 real isolated PostgreSQL checks of enrollment/versions, optional manager-selected deadlines and reactivation, baseline and concurrent first logins, store/role/consent isolation, delivery leases, retroactive points, failed/correct checks, replay/concurrency, stable code across versions, combined totals and direct access restrictions.
+- `python tests/employee-portal-database.py`: 52 real isolated PostgreSQL checks of enrollment/versions, optional manager-selected deadlines and reactivation, baseline and concurrent first logins, store/role/consent isolation, delivery leases, retroactive points, failed/correct checks, replay/concurrency, stable code across versions, combined totals and direct access restrictions.
 - `node --test tests/employee-login-handler.test.mjs`: Auth/origin isolation, verified-user scoping, provider idempotency, private responses and configuration/provider failures. All email HTTP calls mocked.
 - `python tests/daily-ui.py`: real local SQL/RLS + browser, including earned-point feedback, dashboard points, manager column, mobile, review and committed-submission retry.
 - Existing database and training/browser suites exercise accounts, seat replacement, permissions, courses, quizzes, competitions, Team Corner, read receipts and account switching with the new migrations installed.
 
 No hosted SQL, website deployment or real test email is performed by these checks. All local database containers are disposable and expose no ports.
+
+## Promote an existing employee to store manager (update 018)
+
+Apply `supabase/migrations/202610220018_promote_store_manager.sql` once in a new SQL Editor query, after 017. Expect **Success. No rows returned**. Include the latest combined website ZIP in the next Netlify upload; no extra Edge Function or email key is needed for role changes.
+
+In **Settings → Account & team settings**, the administrator or an active manager of that store can select **Make store manager** beside an active employee, review the permission-change confirmation, and confirm. Managers cannot promote employees of another store; employees cannot promote themselves. This grants store-manager permissions only and never creates a colTRAIN platform administrator. There is no demotion control in this change.
+
+The same account, store membership, paid seat, assignments, deadlines, course progress, points, trophies and profile are preserved. A private audit record identifies the actor and actual change; repeat requests do not create another change. Ask the promoted person to refresh or sign out/back in to load their manager dashboard. Server-side manager permissions apply as soon as the role is saved.
+
+Test with an owner-controlled employee: promote it using the existing store manager account, confirm the same login opens the manager dashboard, and verify training records/seat count are unchanged.
