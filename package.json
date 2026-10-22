@@ -10,7 +10,7 @@
     "test:daily:ui": "node --test tests/daily-drill.test.mjs tests/points.test.mjs && python tests/daily-ui.py",
     "test:admin-updates": "python tests/admin-updates-database.py && node --test tests/admin-update-handler.test.mjs && python tests/admin-updates-ui.py",
     "test:employee-portal": "python tests/employee-portal-database.py && node --test tests/employee-login-handler.test.mjs",
-    "test:private-support": "python tests/private-support-database.py && node --test tests/support-email-handler.test.mjs && python tests/private-support-ui.py",
+    "test:private-support": "python tests/private-support-database.py && python tests/group-support-database.py && node --test tests/support-email-handler.test.mjs && python tests/private-support-ui.py",
     "test:web-push": "python tests/web-push-database.py && node --test tests/web-push-handler.test.mjs tests/web-push-worker.test.mjs && python tests/web-push-ui.py",
     "test:team-post-notifications": "python tests/team-post-notifications.py"
   },

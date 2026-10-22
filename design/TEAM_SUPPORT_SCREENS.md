@@ -1,13 +1,10 @@
-# Team support
+# Team support: private messages
 
-Private one-to-one conversations between an employee and their selected manager. Both roles can start and reply; coworkers, other managers and platform admins have no inherited access. Emergency, Work related, App related, Customer, General and Other are the supported categories.
+Every active employee and manager can choose one teammate or a group within their store. Everyone selected sees all replies and participant names. Searchable recipient checkboxes keep selection practical on phones. Groups are fixed at creation; a different group starts a new conversation.
 
-Inbox and searchable Archive are available to both participants. The selected manager has Mark as read, Archive, Move to inbox and Delete controls, plus a 30-day recoverable Trash. New replies reopen archived threads. Each message notifies the other participant. Emergency messages also email the selected manager regardless of optional email settings.
+Each person has independent read state, Inbox, searchable Archive and 30-day recoverable Trash. Deleting a personal copy leaves others' copies intact. Emergency messages require an active included manager and email the included managers regardless of optional email preference. In-app notifications and optional personal-device push alert the other active participants.
 
-Subjects and messages are plain text. The board preserves unsent drafts only in memory within the current session and clears them on sign-out/account or store switch. The general notification badge checks for incoming updates without re-rendering message forms.
-
-The former admin-only Team Corner support list is now labeled Store feed support. Temporary access to the store's team feed does not unlock these conversations.
-
-- [Manager Archive/thread view](team-support-manager.png)
-- [Employee phone conversation](team-support-employee-mobile.png)
-- [Deployment and acceptance checks](../supabase/TEAM_SUPPORT_SETUP.md)
+- [Direct conversation and personal Archive](team-support-manager.png)
+- [Employee conversation on a phone](team-support-employee-mobile.png)
+- [Group conversation on a phone](team-support-group-mobile.png)
+- [Deployment and acceptance checks](../supabase/GROUP_MESSAGING_SETUP.md)

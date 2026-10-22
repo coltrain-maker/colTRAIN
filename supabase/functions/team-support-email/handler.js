@@ -32,7 +32,7 @@ export function createSupportEmailHandler({createClient,env,fetcher=fetch,pause=
     if(claimed.error)throw Error();const job=claimed.data;if(!job)break;if(job.skip)continue;
     let success=false,providerId=null;
     try{
-     const response=await fetcher('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json','Idempotency-Key':`coltrain-support-emergency/${job.id}`},body:JSON.stringify({from,to:[job.email],subject:'Emergency message in colTRAIN',text:`${job.body}\n\nOpen your private conversation: ${app.origin}/accounts/?support_thread=${job.thread_id}\n\nEmergency Team support alerts are emailed to the selected manager regardless of optional email preferences.`}),signal:AbortSignal.timeout(12000)});
+     const response=await fetcher('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json','Idempotency-Key':`coltrain-support-emergency/${job.id}`},body:JSON.stringify({from,to:[job.email],subject:'Emergency message in colTRAIN',text:`${job.body}\n\nOpen your private conversation: ${app.origin}/accounts/?support_thread=${job.thread_id}\n\nEmergency Team support alerts are emailed to managers included in the conversation regardless of optional email preferences.`}),signal:AbortSignal.timeout(12000)});
      const result=await response.json();success=response.ok&&typeof result.id==='string';if(success)providerId=result.id;
     }catch{/* No credentials, addresses or provider payloads in logs or responses. */}
     const saved=await service.rpc('finish_support_email',{delivery_id:job.id,lease:job.lease_id,success,provider_id:providerId});

@@ -1,4 +1,4 @@
-"""Isolated PostgreSQL checks; no hosted account access or email provider traffic."""
+"""Historical selected-pair behavior through migration 021; see group-support-database.py for 022+ migration/current policy checks. No hosted traffic."""
 from pathlib import Path
 import json,subprocess,time,uuid,concurrent.futures
 root=Path(__file__).resolve().parent.parent
@@ -36,7 +36,8 @@ try:
   if subprocess.run(['docker','exec',name,'pg_isready','-h','127.0.0.1','-U','postgres'],capture_output=True).returncode==0:break
   time.sleep(.25)
  sql((root/'tests/supabase-auth-fixture.sql').read_text())
- for p in sorted((root/'supabase/migrations').glob('*.sql')):sql(p.read_text())
+ for p in sorted((root/'supabase/migrations').glob('*.sql')):
+  if p.name<'202610220022':sql(p.read_text())
  sql(f"""insert into auth.users(id,email,email_confirmed_at) select ('00000000-0000-0000-0000-'||lpad(n::text,12,'0'))::uuid,'support'||n||'@example.test',now() from generate_series(200,207) n;
  insert into public.profiles(user_id,full_name,optional_email_notifications) select id,'Support '||email,false from auth.users;
  insert into public.platform_admins values('{uid(200)}');

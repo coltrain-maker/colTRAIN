@@ -1,5 +1,7 @@
 # Private Team support: employee ↔ selected manager
 
+> This describes the original version. For the current expansion, see [Direct and group messaging](GROUP_MESSAGING_SETUP.md).
+
 Prepared for owner deployment. Codex has not run hosted SQL, installed live jobs, sent real emails, or deployed Netlify for this update.
 
 ## Approved behavior
