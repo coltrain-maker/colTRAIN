@@ -120,7 +120,7 @@ select test.rejects($q$select public.complete_training_lesson((select code::uuid
 select test.rejects($q$select public.get_training_attempt_review((select (code::jsonb->>'id')::uuid from test.codes where label='training-failed-attempt'))$q$,'Only the active learner','removed employee cannot read store quiz history');
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000024';
 select public.accept_invitation((select code from test.codes where label='training-replacement-invite'));
-select test.ok((select count(*) from public.training_assignments)=0,'replacement never inherits prior seat holder training');
+select test.ok(not exists(select 1 from public.training_assignments where started_at is not null or completed_at is not null) and not exists(select 1 from public.training_lesson_completions),'replacement gets fresh assignments without inheriting prior seat holder progress');
 select test.ok(public.get_training_workspace('10000000-0000-0000-0000-000000000020')->'totals'->>'lifetime_points'='0','replacement starts with their own points');
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000020';
 select test.ok((select count(*) from public.training_assignments where id=(select code::uuid from test.codes where label='training-a1'))=1,'manager retains departed employee training history');
@@ -142,7 +142,7 @@ select public.release_training_course('10000000-0000-0000-0000-000000000020','c1
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000022';
 select test.ok((select count(*) from public.training_courses)=1,'removing availability preserves existing assigned version access');
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000024';
-select test.ok((select count(*) from public.training_courses)=0,'unassigned replacement cannot read a withdrawn library course');
+select test.ok((select count(*) from public.training_courses)=1,'auto-assigned replacement retains only their assigned withdrawn course');
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000020';
 select test.rejects($q$select public.assign_training('c1000000-0000-4000-8000-000000000001','10000000-0000-0000-0000-000000000020',all_employees=>true)$q$,'Release this course','withdrawn course cannot receive new assignments');
 reset role;

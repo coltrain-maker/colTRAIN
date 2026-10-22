@@ -49,6 +49,7 @@ def handle(route):
    uid=people[route.request.post_data_json['email']];result={'access_token':token(uid),'refresh_token':'local-refresh','expires_in':3600,'token_type':'bearer','user':person(uid)}
   elif path=='/auth/v1/user':result=person(uid)
   elif path=='/auth/v1/logout':result={}
+  elif path=='/functions/v1/employee-login':result={'delivery_status':'processed','processed':0} # Email transport stub; first-login RPC remains real SQL.
   elif path.startswith('/storage/v1/object/'):
    storage_path=path.removeprefix('/storage/v1/object/').removeprefix('authenticated/')
    bucket,_,object_name=storage_path.partition('/')
@@ -400,8 +401,12 @@ try:
   check_install_entry()
   expect(page.get_by_role('heading',name='Help an employee retry')).to_be_visible()
   navigate('Notifications')
-  expect(page.locator('.training-notification h2')).to_have_text('An employee needs quiz help')
-  page.get_by_role('button',name='Go to dashboard',exact=True).click()
+  login_notice=page.locator('.training-notification').filter(has=page.get_by_role('heading',name='An employee has signed in',exact=True))
+  expect(login_notice).to_have_count(1)
+  expect(login_notice).to_contain_text('for the first time.')
+  help_notice=page.locator('.training-notification').filter(has=page.get_by_role('heading',name='An employee needs quiz help',exact=True))
+  expect(help_notice).to_be_visible()
+  help_notice.get_by_role('button',name='Go to dashboard',exact=True).click()
   expect(page.get_by_role('heading',name='Help an employee retry')).to_be_visible()
   page.locator('#training-unlock-form textarea').fill('Reviewed reliable product resources together.')
   page.get_by_role('button',name='Unlock one attempt',exact=True).click()
@@ -491,6 +496,8 @@ try:
   expect(page.get_by_text('All challenge attempts used. Ask your manager for help.',exact=True)).to_be_visible()
   page.get_by_role('button',name='Lifetime',exact=True).click()
   expect(page.locator('.training-standings tbody tr td').nth(2)).to_have_text('40')
+  expect(page.locator('.training-standings tbody tr td').nth(3)).to_have_text('0')
+  expect(page.locator('.training-standings tbody tr td').nth(4)).to_have_text('40')
   assert sql('select count(*) from public.training_attempts')=='4'
   assert sql('select count(*) from public.training_trophies')=='1'
   page.set_viewport_size({'width':390,'height':844})
@@ -500,7 +507,8 @@ try:
   login('manager.a@example.test')
   row=page.locator('.table tbody tr').filter(has_text='Pilot Employee')
   expect(row.locator('td').nth(3)).to_have_text('50')
-  expect(row.locator('td').nth(4)).to_have_text('40')
+  expect(row.locator('td').nth(4)).to_have_text('0')
+  expect(row.locator('td').nth(5)).to_have_text('40')
   navigate('Competitions')
   expect(page.locator('.competition-metrics').first).to_contain_text('100%')
   page.locator('#training-challenge-unlock-form textarea').fill('Reviewed the competition questions together.')

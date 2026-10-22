@@ -1,5 +1,8 @@
 # Daily shared learning path: automatic enrollment and sequence
 
+**Later update:** [Employee portal update](EMPLOYEE_PORTAL_UPDATE.md) adds 5 Daily Drill points per first correct completion, including past completions, through migration 016. The no-awards statements below describe migration 013 by itself; the final Expertise badge remains future work.
+
+
 Owner-approved direction, October 19, 2026: every active store member receives Daily training regardless of role, job or department. Everyone progresses through Foundations, Application, then Expertise. A final badge is planned for completing the Expertise stage and all earlier required training. This replaces the earlier manager-selected Daily assignment/date design.
 
 ## Apply to the existing pilot

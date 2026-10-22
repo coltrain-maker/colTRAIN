@@ -6,3 +6,6 @@ verify_jwt = false
 [functions.admin-update]
 # Handler verifies Auth identity and platform-admin permission before privileged queue access.
 verify_jwt = false
+
+[functions.employee-login]
+verify_jwt = false

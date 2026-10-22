@@ -49,6 +49,7 @@ def handle(route):
    uid=people[route.request.post_data_json['email']];result={'access_token':token(uid),'refresh_token':'local-refresh','expires_in':3600,'token_type':'bearer','user':person(uid)}
   elif path=='/auth/v1/user':result=person(uid)
   elif path=='/auth/v1/logout':result={}
+  elif path=='/functions/v1/employee-login':result={'delivery_status':'processed','processed':0} # Email transport stub; first-login RPC remains real SQL.
   elif path.startswith('/storage/v1/object/'):
    storage_path=path.removeprefix('/storage/v1/object/').removeprefix('authenticated/')
    bucket,_,object_name=storage_path.partition('/')
@@ -173,7 +174,7 @@ try:
   expect(page.locator('.training-notification a')).to_have_count(2);assert page.locator('.training-notification script').count()==0
   page.get_by_role('button',name='Mark all as read',exact=True).click();page.get_by_role('button',name='Refresh notifications',exact=True).click();expect(page.locator('.notification-unread')).to_have_count(0)
   page.set_viewport_size({'width':390,'height':844});assert page.locator('body').evaluate('n=>n.scrollWidth<=innerWidth');page.screenshot(path=str(root/'design/admin-update-inbox-mobile.png'),full_page=True)
-  logout();login('manager.a@example.test');navigate('Notifications');expect(page.locator('.training-notification')).to_have_count(2);expect(page.locator('main')).to_contain_text('Manager-only news');assert 'Employee news' not in page.locator('main').inner_text()
+  logout();login('manager.a@example.test');navigate('Notifications');expect(page.locator('.training-notification')).to_have_count(3);expect(page.get_by_role('heading',name='An employee has signed in',exact=True)).to_be_visible();expect(page.locator('main')).to_contain_text('Manager-only news');assert 'Employee news' not in page.locator('main').inner_text()
   logout();login('employee.b@example.test');navigate('Notifications');expect(page.locator('.training-notification')).to_have_count(1);expect(page.locator('main')).to_contain_text('Employee news')
   logout();login('admin@example.test');navigate('Admin updates');page.locator('.admin-update-history').filter(has=page.get_by_role('heading',name='Everyone news',exact=True)).get_by_role('button',name='Archive update',exact=True).click();expect(page.locator('.admin-update-history').filter(has=page.get_by_role('heading',name='Everyone news',exact=True))).to_contain_text('Archived')
   assert not errors,errors;browser.close()

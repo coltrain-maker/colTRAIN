@@ -49,6 +49,7 @@ def handle(route):
    uid=people[route.request.post_data_json['email']];result={'access_token':token(uid),'refresh_token':'local-refresh','expires_in':3600,'token_type':'bearer','user':person(uid)}
   elif path=='/auth/v1/user':result=person(uid)
   elif path=='/auth/v1/logout':result={}
+  elif path=='/functions/v1/employee-login':result={'delivery_status':'processed','processed':0} # Email transport stub; first-login RPC remains real SQL.
   elif path.startswith('/storage/v1/object/'):
    storage_path=path.removeprefix('/storage/v1/object/').removeprefix('authenticated/')
    bucket,_,object_name=storage_path.partition('/')
@@ -182,9 +183,12 @@ try:
   expect(page.locator('#training-daily-form')).to_be_visible();expect(page.locator('#account-message.error')).to_be_visible()
   page.get_by_role('button',name='Check my answer',exact=True).click();expect(page.locator('.daily-feedback')).to_contain_text('Drill complete.')
   assert sql(f"select attempt_count from public.daily_assignments where module_id='{rows[0]['id']}' and membership_id='20000000-0000-0000-0000-000000000004'")=='2'
+  expect(page.locator('.daily-feedback')).to_contain_text('+5 Daily Drill points earned.')
   page.screenshot(path=str(root/'design/daily-drill-result.png'),full_page=True)
   page.get_by_role('button',name='Continue to next drill',exact=True).click();expect(page.locator('.daily-reader h2')).to_have_text(rows[1]['title'])
   dashboard();expect(page.locator('.daily-dashboard')).to_contain_text('1 completed · 10 available')
+  expect(page.locator('.daily-dashboard')).to_contain_text('5 Daily Drill points')
+  expect(page.locator('.stats')).to_contain_text('Daily Drill points')
   page.get_by_role('button',name='Review completed drills',exact=True).click();expect(page.locator('.daily-history-item')).to_have_count(1)
   page.get_by_role('button',name='Review lesson',exact=True).click();expect(page.locator('.daily-reader')).to_contain_text('Completed — review anytime')
   assert page.get_by_role('button',name='Take the quick check',exact=True).count()==0
@@ -203,7 +207,7 @@ try:
   expect(page.locator('.daily-dashboard')).to_contain_text('10 completed · 10 available')
   assert page.get_by_role('button',name='Start your drill',exact=True).count()==0
   assert sql('select count(*) from public.training_trophies')=='0'
-  signout();login('manager.a@example.test');expect(page.locator('.daily-dashboard')).to_contain_text('0 completed · 10 available')
+  signout();login('manager.a@example.test');expect(page.locator('table').first).to_contain_text('Daily Drill points');expect(page.locator('.daily-dashboard')).to_contain_text('0 completed · 10 available')
   page.get_by_role('button',name='Start your drill',exact=True).click();expect(page.locator('.daily-reader h2')).to_have_text(rows[0]['title'])
   signout();assert page.locator('.daily-reader,.daily-dashboard').count()==0
   assert not errors,errors
