@@ -50,3 +50,11 @@ In **Settings → Account & team settings**, the administrator or an active mana
 The same account, store membership, paid seat, assignments, deadlines, course progress, points, trophies and profile are preserved. A private audit record identifies the actor and actual change; repeat requests do not create another change. Ask the promoted person to refresh or sign out/back in to load their manager dashboard. Server-side manager permissions apply as soon as the role is saved.
 
 Test with an owner-controlled employee: promote it using the existing store manager account, confirm the same login opens the manager dashboard, and verify training records/seat count are unchanged.
+
+## Consistent point displays (website-only refinement)
+
+The latest website uses **Course points → Daily Drill points → Lifetime points** in that order for personal totals, manager team totals/member rows, both leaderboard tabs, personal milestones, course results, Daily Drill feedback and competition results. Context-specific earning amounts are labeled as course, Daily Drill or competition points. Lifetime uses the authoritative server total, preserving any future earning sources rather than recomputing it from only the two visible categories. Competition scores stay separate and do not award duplicate lifetime credit.
+
+Daily Drill completion refreshes the learner's server totals before displaying the breakdown. A failed totals refresh never re-submits a completed quiz; the dashboard refresh can recover totals. No new SQL, secrets, function deployment or scoring-rule changes are required for this presentation update. Upload the latest combined website ZIP to Netlify and refresh.
+
+`node --test tests/points.test.mjs` checks category separation, ordered table/cards, safe labels and preservation of future lifetime earning sources. The real SQL/browser Daily and training checks verify updated dashboards/results/tables and mobile layouts.

@@ -184,11 +184,13 @@ try:
   page.get_by_role('button',name='Check my answer',exact=True).click();expect(page.locator('.daily-feedback')).to_contain_text('Drill complete.')
   assert sql(f"select attempt_count from public.daily_assignments where module_id='{rows[0]['id']}' and membership_id='20000000-0000-0000-0000-000000000004'")=='2'
   expect(page.locator('.daily-feedback')).to_contain_text('+5 Daily Drill points earned.')
+  expect(page.locator('.daily-feedback .point-summary strong')).to_have_text(['0','5','5'])
   page.screenshot(path=str(root/'design/daily-drill-result.png'),full_page=True)
   page.get_by_role('button',name='Continue to next drill',exact=True).click();expect(page.locator('.daily-reader h2')).to_have_text(rows[1]['title'])
   dashboard();expect(page.locator('.daily-dashboard')).to_contain_text('1 completed · 10 available')
-  expect(page.locator('.daily-dashboard')).to_contain_text('5 Daily Drill points')
-  expect(page.locator('.stats')).to_contain_text('Daily Drill points')
+  expect(page.locator('.point-summary[aria-label="Your points"]>div').nth(1)).to_contain_text('5')
+  expect(page.locator('.point-summary[aria-label="Your points"]>div').nth(1)).to_contain_text('Daily Drill points')
+  expect(page.locator('.point-summary[aria-label="Your points"]')).to_contain_text('Daily Drill points')
   page.get_by_role('button',name='Review completed drills',exact=True).click();expect(page.locator('.daily-history-item')).to_have_count(1)
   page.get_by_role('button',name='Review lesson',exact=True).click();expect(page.locator('.daily-reader')).to_contain_text('Completed — review anytime')
   assert page.get_by_role('button',name='Take the quick check',exact=True).count()==0
@@ -208,6 +210,20 @@ try:
   assert page.get_by_role('button',name='Start your drill',exact=True).count()==0
   assert sql('select count(*) from public.training_trophies')=='0'
   signout();login('manager.a@example.test');expect(page.locator('table').first).to_contain_text('Daily Drill points');expect(page.locator('.daily-dashboard')).to_contain_text('0 completed · 10 available')
+  team_row=page.locator('.table tbody tr').filter(has_text='Pilot Employee')
+  expect(team_row.locator('td').nth(4)).to_have_text('0')
+  expect(team_row.locator('td').nth(5)).to_have_text('50')
+  expect(team_row.locator('td').nth(6)).to_have_text('50')
+  page.screenshot(path=str(root/'design/points-manager-dashboard.png'),full_page=True)
+  page.get_by_role('button',name='Open menu').click();page.get_by_role('button',name='Store leaderboard',exact=True).click()
+  page.get_by_role('button',name='Lifetime',exact=True).click()
+  expect(page.locator('.training-standings thead th')).to_have_text(['Rank','Employee','Course points','Daily Drill points','Lifetime points'])
+  expect(page.locator('.training-standings tbody tr td').nth(2)).to_have_text('0')
+  expect(page.locator('.training-standings tbody tr td').nth(3)).to_have_text('50')
+  expect(page.locator('.training-standings tbody tr td').nth(4)).to_have_text('50')
+  page.screenshot(path=str(root/'design/points-lifetime-standings-mobile.png'),full_page=True)
+  assert page.locator('body').evaluate('n=>n.scrollWidth<=innerWidth')
+  page.get_by_role('button',name='Open menu').click();page.get_by_role('button',name='Dashboard',exact=True).click()
   page.get_by_role('button',name='Start your drill',exact=True).click();expect(page.locator('.daily-reader h2')).to_have_text(rows[0]['title'])
   signout();assert page.locator('.daily-reader,.daily-dashboard').count()==0
   assert not errors,errors

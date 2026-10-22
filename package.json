@@ -7,7 +7,7 @@
     "build:preview": "python scripts/build-preview.py",
     "test:database": "python tests/run-database-tests.py",
     "test:daily": "python tests/daily-database.py && python tests/daily-sequence.py && python tests/daily-sequence.py --fresh",
-    "test:daily:ui": "node --test tests/daily-drill.test.mjs && python tests/daily-ui.py",
+    "test:daily:ui": "node --test tests/daily-drill.test.mjs tests/points.test.mjs && python tests/daily-ui.py",
     "test:admin-updates": "python tests/admin-updates-database.py && node --test tests/admin-update-handler.test.mjs && python tests/admin-updates-ui.py",
     "test:employee-portal": "python tests/employee-portal-database.py && node --test tests/employee-login-handler.test.mjs"
   },
