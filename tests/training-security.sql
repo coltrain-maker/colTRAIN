@@ -34,7 +34,7 @@ select public.set_training_departments('20000000-0000-0000-0000-000000000021',ar
 select public.set_training_departments('20000000-0000-0000-0000-000000000022',array[(select code::uuid from test.codes where label='paint-dept')]);
 select test.ok((select count(*) from public.training_member_departments where membership_id='20000000-0000-0000-0000-000000000021')=2,'employee can belong to multiple departments');
 select test.ok(public.assign_training('c1000000-0000-4000-8000-000000000001','10000000-0000-0000-0000-000000000020',array['20000000-0000-0000-0000-000000000021'::uuid],array[(select code::uuid from test.codes where label='paint-dept')])=2,'department and individual targets are deduplicated');
-select test.ok((select bool_and(due_date=(now() at time zone 'America/New_York')::date+30) from public.training_assignments),'new assignments default to a 30-day deadline');
+select test.ok((select bool_and(due_date is null) from public.training_assignments),'new assignments have no automatic deadline');
 select test.ok(public.assign_training('c1000000-0000-4000-8000-000000000001','10000000-0000-0000-0000-000000000020',array['20000000-0000-0000-0000-000000000023'::uuid],deadline=>(now() at time zone 'America/New_York')::date-1)=1,'new employee can have a separate deadline');
 insert into test.codes select 'training-a1',id::text from public.training_assignments where membership_id='20000000-0000-0000-0000-000000000021';
 insert into test.codes select 'training-a2',id::text from public.training_assignments where membership_id='20000000-0000-0000-0000-000000000022';

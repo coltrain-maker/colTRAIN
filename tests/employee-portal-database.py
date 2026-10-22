@@ -49,6 +49,7 @@ try:
   actor(180,f"select public.publish_daily_module('{module}');select public.release_daily_module('{store}','{module}')")
  pass_drill(182,first)
  sql((root/'supabase/migrations/202610220015_employee_onboarding.sql').read_text())
+ sql((root/'supabase/migrations/202610220017_manager_course_deadlines.sql').read_text())
  ok(not data(182,'select public.record_employee_first_login()')['recorded'],'old member baseline produces no new-login alert')
  ok(not any(x['kind']=='employee_first_login' for x in inbox(181)['items']),'baseline sends no manager alerts')
  # Published ready courses, two versions of one slug, an unreleased course, and a draft.
@@ -59,7 +60,7 @@ try:
   if released:sql(f"insert into public.training_course_releases values('{store}','{c}','{uid(180)}',now())")
  member(183)
  ok(sql(f"select course_id from public.training_assignments where membership_id='{mid(183)}'").stdout.strip()==courses[1],'new employee receives latest ready released course only, no draft/unreleased/old version')
- ok(sql(f"select due_date=(now() at time zone o.time_zone)::date+30 from public.training_assignments a join public.organizations o on o.id=a.organization_id where a.membership_id='{mid(183)}'").stdout.strip()=='t','new deadline thirty store-local days')
+ ok(sql(f"select due_date is null from public.training_assignments a where a.membership_id='{mid(183)}'").stdout.strip()=='t','new course has no deadline until manager chooses one')
  sql(f"update public.training_assignments set due_date=current_date+40 where membership_id='{mid(183)}';update public.organization_memberships set status='inactive' where id='{mid(183)}';update public.organization_memberships set status='active' where id='{mid(183)}'")
  ok(sql(f"select count(*)=1 and min(due_date)=current_date+40 from public.training_assignments where membership_id='{mid(183)}'").stdout.strip()=='t','reactivation preserves assignment and manager deadline')
  ok(sql(f"select count(*) from public.training_assignments where membership_id='{mid(182)}'").stdout.strip()=='0','existing employee not bulk assigned')
@@ -100,6 +101,14 @@ try:
  reject(183,f"select private.learner_point_totals('{uid(182)}')")
  reject(185,f"select public.get_training_workspace('{store}')",'Active store access required')
  ok(sql('select count(*) from public.training_trophies').stdout.strip()=='0','Daily points do not invent full-course trophies')
+ # Managers may set or remove deadlines without resetting assignments/progress.
+ actor(181,f"select public.assign_training('{courses[1]}','{store}',array['{mid(183)}'::uuid],deadline=>current_date+12)")
+ ok(sql(f"select due_date=current_date+12 from public.training_assignments where membership_id='{mid(183)}'").stdout.strip()=='t','manager explicitly sets deadline')
+ actor(181,f"select public.assign_training('{courses[1]}','{store}',array['{mid(183)}'::uuid])")
+ ok(sql(f"select due_date is null from public.training_assignments where membership_id='{mid(183)}'").stdout.strip()=='t','manager can clear deadline without default date')
+ notices=inbox(183)['items'];ok(any(n['kind']=='assignment' and 'No deadline set' in n['body'] for n in notices),'undated assignment still has a stable in-app notification')
+ ok(not any(n['kind']=='deadline' for n in notices),'undated course never generates deadline/overdue alerts')
+ reject(183,f"select public.assign_training('{courses[1]}','{store}',array['{mid(183)}'::uuid],deadline=>current_date)",'Manager access required')
  # Concurrent successful submissions must share one saved award and one attempt.
  a=assignment(186,first);actor(186,f"select public.get_daily_module('{a}')")
  answers=sql(f"select jsonb_agg(jsonb_build_object('question_id',question_id,'option',correct_option)) from private.daily_answer_keys where module_id='{first}'").stdout.strip();key=str(uuid.uuid4())

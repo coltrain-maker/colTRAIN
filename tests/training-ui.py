@@ -228,6 +228,8 @@ try:
     navigate('Assign training')
     page.locator('#training-assign-form input[name=all]').check()
     deadline=page.locator('#training-assign-form input[name=deadline]').input_value()
+    assert deadline==''
+    assert page.locator('#training-assign-form input[name=deadline]').get_attribute('required') is None
     page.get_by_label('Academy',exact=True).select_option('Paint & Decorating')
     page.get_by_label('Subtopic',exact=True).select_option('Paint')
     page.get_by_label('Course',exact=True).select_option('c9000000-0000-4000-8000-000000000001')
@@ -462,7 +464,7 @@ try:
   expect(page.locator('#account-message')).to_have_text('Competition saved for 1 employee.')
   expect(page.locator('.training-competition-card')).to_contain_text('Service review challenge')
   expect(page.locator('.competition-metrics').first).to_contain_text('0%')
-  assert sql("select due_date=(now() at time zone 'America/New_York')::date+30 from public.training_assignments")=='t'
+  assert sql("select due_date is null from public.training_assignments")=='t'
   signout()
   login('employee.a@example.test')
   spotlight=page.locator('.training-competition-spotlight')

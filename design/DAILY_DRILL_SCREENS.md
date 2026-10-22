@@ -1,6 +1,6 @@
 # The Daily Drill: employee screens
 
-**Points update:** The current employee portal adds a Daily Drill points total to this card, 5-point completion feedback, and separate course/Daily/lifetime totals. See [deployment instructions](../supabase/EMPLOYEE_PORTAL_UPDATE.md) for migrations 015–016 and first-login alerts.
+**Points update:** The current employee portal adds a Daily Drill points total to this card, 5-point completion feedback, and separate course/Daily/lifetime totals. See [deployment instructions](../supabase/EMPLOYEE_PORTAL_UPDATE.md) for migrations 015–017 and first-login alerts.
 
 
 The owner named the feature **The Daily Drill** and asked for it on the employee dashboard. The interface uses the approved text-only pilot; no source text, module IDs, versions, SQL or scoring rules were changed for this screen work.
