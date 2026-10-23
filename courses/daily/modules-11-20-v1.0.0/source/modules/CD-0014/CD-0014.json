@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0014",
+    "Title": "Find the Filter’s Airflow Arrow",
+    "Academy": "HVAC",
+    "Skill level": "Foundations",
+    "Relevant departments": "HVAC; air filters; home maintenance",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "air filter, airflow arrow, direction, return air, blower, furnace, air handler",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-22",
+    "publication_status": "not published"
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Explain what a filter’s airflow arrow indicates and identify the information needed to establish its correct direction."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "Customers may find an arrow on a replacement filter without knowing which way it should face. Understanding the marking helps you explain its purpose without guessing about their equipment’s layout."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**An airflow arrow shows the intended direction of air traveling through the filter.** It does not automatically mean “up,” “down,” or “toward the room.”\n\nLook for an arrow marked **“Air Flow”** or similar wording on the filter’s frame. Manufacturer guidance directs users to align it with the system’s airflow. [Source 2]\n\nThe direction depends on the filter’s location:\n\n| Filter location | Direction to verify |\n|---|---|\n| At a typical furnace or air-handler return-side filter slot | Air travels through the filter toward the equipment’s blower. |\n| Behind a return-air grille in a wall or ceiling | Air travels from the room through the filter into the return duct. |\n\nFiltrete describes its arrow as pointing toward the blower. Guidance for a return-air grille specifies pointing the arrow into the duct. These describe the airflow path at different filter locations. [Sources 1 and 3]\n\n**Recommended action:** Ask, “Where is the filter located?” Then use the equipment instructions, filter instructions, and any clearly identified airflow marking at that location to establish the direction.\n\n**Common mistake:** Telling every customer to point the arrow upward—or copying the old filter’s orientation without checking it. The previous filter is a clue, not proof that it was installed correctly.\n\nDo not aim the arrow toward the furnace’s physical location elsewhere in the building. The arrow follows air **through the filter at its installation point**.\n\n**When to verify or seek help:** If the arrow is missing or the airflow path is unclear, check the exact filter and equipment documentation. Ask a knowledgeable coworker or refer the customer to an HVAC technician when the direction cannot be established. Avoid guessing from filter color or appearance.\n\nThis lesson explains the marking; equipment-specific access and replacement procedures still require the manufacturer’s instructions."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer brings in a new filter with an airflow arrow. Their filter fits behind a return-air grille in the hallway wall.\n\nThe equipment instructions confirm that air moves from the hallway through that filter into the duct. The customer asks which way the arrow should point."
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0014-Q01**\n\nWhich direction matches the confirmed airflow?\n\nA. Out of the duct toward the hallway\nB. Upward, regardless of the duct’s direction\nC. From the hallway through the filter into the duct\nD. Toward whichever side makes the printed label easiest to read"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "**Find the arrow, identify the filter location, and verify the airflow path.**"
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0014-Q01",
+      "wording": "Which direction matches the confirmed airflow?",
+      "options": {
+        "A": "Out of the duct toward the hallway",
+        "B": "Upward, regardless of the duct’s direction",
+        "C": "From the hallway through the filter into the duct",
+        "D": "Toward whichever side makes the printed label easiest to read"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0014-Q01",
+      "correct_answer": "C",
+      "explanation": "The arrow follows airflow through the filter. The scenario confirms that air travels from the hallway into the return duct, so the arrow points in that direction. An upward direction or readable label does not establish airflow.",
+      "teaching_reference": "Section 3, “Learn it,” opening explanation, location table, and “Recommended action.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created cross-section of a wall return-air grille showing the room, filter, and duct. Include a clearly labeled airflow arrow.\n\n**Accessibility description for proposed media:** “Air moves from the hallway through a filter behind a wall return grille and into the return duct. The arrow on the filter points in the same direction.” Provide the direction in readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Filtrete/3M, [How to Install an Air Filter](https://www.filtrete.com/3M/en_US/filtrete/about-us/how-to-install-an-air-filter/): Locating the airflow arrow and pointing it toward the blower.\n- [Source 2] Trane, [Home Air Conditioner Filter Replacement 101](https://www.trane.com/residential/en/resources/troubleshooting/air-conditioners/air-conditioner-filter-replacement/): Aligning the arrow with airflow.\n- [Source 3] Pacific Northwest National Laboratory, [Replace Air Filter Located at Return Air Filter Grille](https://basc.pnnl.gov/diy-guides/replace-air-filter-located-return-air-filter-grille): Arrow direction into the duct at a return grille.\n\n**Verification needs:** Confirm the exact equipment configuration before adding a product or installation example. No universal physical direction or equipment-access procedure is prescribed.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "What information would help us answer a customer who asks, “Should my filter arrow point left or right?”"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have an HVAC subject-matter reviewer check the location and airflow explanations.\n- Confirm that proposed media clearly distinguishes a return grille from a supply register.\n- Verify any equipment-specific example against its current manual.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep equipment access, replacement procedures, and filter-performance selection for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Filtrete/3M",
+      "title": "How to Install an Air Filter",
+      "url": "https://www.filtrete.com/3M/en_US/filtrete/about-us/how-to-install-an-air-filter/",
+      "supports": "Locating the airflow arrow and pointing it toward the blower.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "Trane",
+      "title": "Home Air Conditioner Filter Replacement 101",
+      "url": "https://www.trane.com/residential/en/resources/troubleshooting/air-conditioners/air-conditioner-filter-replacement/",
+      "supports": "Aligning the arrow with airflow.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "Pacific Northwest National Laboratory",
+      "title": "Replace Air Filter Located at Return Air Filter Grille",
+      "url": "https://basc.pnnl.gov/diy-guides/replace-air-filter-located-return-air-filter-grille",
+      "supports": "Arrow direction into the duct at a return grille.",
+      "checked": "2026-10-22"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have an HVAC subject-matter reviewer check the location and airflow explanations.",
+    "Confirm that proposed media clearly distinguishes a return grille from a supply register.",
+    "Verify any equipment-specific example against its current manual.",
+    "If media is added, check accessibility descriptions and usage rights.",
+    "Keep equipment access, replacement procedures, and filter-performance selection for separate modules."
+  ],
+  "complete_markdown": "# CD-0014 — Find the Filter’s Airflow Arrow\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0014 |\n| Title | Find the Filter’s Airflow Arrow |\n| Academy | HVAC |\n| Skill level | Foundations |\n| Relevant departments | HVAC; air filters; home maintenance |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | air filter, airflow arrow, direction, return air, blower, furnace, air handler |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nExplain what a filter’s airflow arrow indicates and identify the information needed to establish its correct direction.\n\n### 2. Why it matters\n\nCustomers may find an arrow on a replacement filter without knowing which way it should face. Understanding the marking helps you explain its purpose without guessing about their equipment’s layout.\n\n### 3. Learn it\n\n**An airflow arrow shows the intended direction of air traveling through the filter.** It does not automatically mean “up,” “down,” or “toward the room.”\n\nLook for an arrow marked **“Air Flow”** or similar wording on the filter’s frame. Manufacturer guidance directs users to align it with the system’s airflow. [Source 2]\n\nThe direction depends on the filter’s location:\n\n| Filter location | Direction to verify |\n|---|---|\n| At a typical furnace or air-handler return-side filter slot | Air travels through the filter toward the equipment’s blower. |\n| Behind a return-air grille in a wall or ceiling | Air travels from the room through the filter into the return duct. |\n\nFiltrete describes its arrow as pointing toward the blower. Guidance for a return-air grille specifies pointing the arrow into the duct. These describe the airflow path at different filter locations. [Sources 1 and 3]\n\n**Recommended action:** Ask, “Where is the filter located?” Then use the equipment instructions, filter instructions, and any clearly identified airflow marking at that location to establish the direction.\n\n**Common mistake:** Telling every customer to point the arrow upward—or copying the old filter’s orientation without checking it. The previous filter is a clue, not proof that it was installed correctly.\n\nDo not aim the arrow toward the furnace’s physical location elsewhere in the building. The arrow follows air **through the filter at its installation point**.\n\n**When to verify or seek help:** If the arrow is missing or the airflow path is unclear, check the exact filter and equipment documentation. Ask a knowledgeable coworker or refer the customer to an HVAC technician when the direction cannot be established. Avoid guessing from filter color or appearance.\n\nThis lesson explains the marking; equipment-specific access and replacement procedures still require the manufacturer’s instructions.\n\n### 4. Customer scenario\n\nA customer brings in a new filter with an airflow arrow. Their filter fits behind a return-air grille in the hallway wall.\n\nThe equipment instructions confirm that air moves from the hallway through that filter into the duct. The customer asks which way the arrow should point.\n\n### 5. Quick check\n\n**Question ID: CD-0014-Q01**\n\nWhich direction matches the confirmed airflow?\n\nA. Out of the duct toward the hallway\nB. Upward, regardless of the duct’s direction\nC. From the hallway through the filter into the duct\nD. Toward whichever side makes the printed label easiest to read\n\n### 6. Take it to the floor\n\n**Find the arrow, identify the filter location, and verify the airflow path.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0014-Q01\n- **Correct answer:** C. From the hallway through the filter into the duct\n- **Explanation:** The arrow follows airflow through the filter. The scenario confirms that air travels from the hallway into the return duct, so the arrow points in that direction. An upward direction or readable label does not establish airflow.\n- **Teaching reference:** Section 3, “Learn it,” opening explanation, location table, and “Recommended action.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created cross-section of a wall return-air grille showing the room, filter, and duct. Include a clearly labeled airflow arrow.\n\n**Accessibility description for proposed media:** “Air moves from the hallway through a filter behind a wall return grille and into the return duct. The arrow on the filter points in the same direction.” Provide the direction in readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Filtrete/3M, [How to Install an Air Filter](https://www.filtrete.com/3M/en_US/filtrete/about-us/how-to-install-an-air-filter/): Locating the airflow arrow and pointing it toward the blower.\n- [Source 2] Trane, [Home Air Conditioner Filter Replacement 101](https://www.trane.com/residential/en/resources/troubleshooting/air-conditioners/air-conditioner-filter-replacement/): Aligning the arrow with airflow.\n- [Source 3] Pacific Northwest National Laboratory, [Replace Air Filter Located at Return Air Filter Grille](https://basc.pnnl.gov/diy-guides/replace-air-filter-located-return-air-filter-grille): Arrow direction into the duct at a return grille.\n\n**Verification needs:** Confirm the exact equipment configuration before adding a product or installation example. No universal physical direction or equipment-access procedure is prescribed.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhat information would help us answer a customer who asks, “Should my filter arrow point left or right?”\n\n### 9. Review needs\n\n- Have an HVAC subject-matter reviewer check the location and airflow explanations.\n- Confirm that proposed media clearly distinguishes a return grille from a supply register.\n- Verify any equipment-specific example against its current manual.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep equipment access, replacement procedures, and filter-performance selection for separate modules.\n"
+}

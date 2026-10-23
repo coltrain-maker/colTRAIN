@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0015",
+    "Title": "Screw Length: Where Does Measurement Start?",
+    "Academy": "Hand Tools & Fasteners",
+    "Skill level": "Foundations",
+    "Relevant departments": "Fasteners; hardware; hand tools",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "screw length, measuring screws, flat head, countersunk, pan head, fastener dimensions",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-22",
+    "publication_status": "not published"
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Identify the correct starting point for measuring common flat countersunk and pan-head screws."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "Customers often bring a loose screw and ask for another the same length. Starting the ruler at the wrong place can lead to a different labeled length, even when the measurement itself is accurate."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Identify the head style before measuring length.** Common screw types do not all use the same starting point.\n\n| Head style | Where measurement starts | Where it ends |\n|---|---|---|\n| **Pan head**, designed to sit above the material | Beneath the head, where it rests against the material | End of the screw |\n| **Flat countersunk head**, designed to sit flush with the material | Top of the head, including the head in the measurement | End of the screw |\n\nFor example, a pan-head screw measuring **1 inch from beneath its head to its end** has a 1-inch measured length. For a flat countersunk screw, that same length measurement includes the head.\n\n**Why the difference?** The general convention measures from the point where the installed material’s surface is intended to meet the fastener. A pan head sits above that surface; a flat countersunk head sits within it. [Source 1]\n\n**Recommended action:** Place the ruler’s zero mark at the correct starting point, then read to the screw’s end. Record the unit along with the measurement.\n\n**Common mistake:** Measuring only the threaded section. A screw may have an unthreaded section that still counts toward its length. Likewise, including a pan head adds material that is normally excluded from its labeled length.\n\nUse the head’s shape—not its drive recess—to choose the starting point. A Phillips drive does not tell you whether the screw has a pan head or a flat countersunk head.\n\n**When to verify or seek help:** Check the supplier’s dimensional drawing for unfamiliar or specialty fasteners. Do not automatically extend these two examples to oval heads, shoulder screws, or other designs. Ask a knowledgeable coworker when the measuring convention is unclear.\n\nMatching length alone does not establish a suitable replacement; other fastener characteristics still need checking."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer brings in a pan-head screw. Its head is designed to rest above the material rather than sit countersunk.\n\nThey ask you to measure its length so they can start looking for a replacement."
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0015-Q01**\n\nWhere should you measure this screw?\n\nA. From the top of the head to the screw’s end\nB. From beneath the head to the screw’s end\nC. From the first full thread to the screw’s end\nD. Across the widest part of the head"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "**Identify the head style, choose the starting point, and measure to the end.**"
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0015-Q01",
+      "wording": "Where should you measure this screw?",
+      "options": {
+        "A": "From the top of the head to the screw’s end",
+        "B": "From beneath the head to the screw’s end",
+        "C": "From the first full thread to the screw’s end",
+        "D": "Across the widest part of the head"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0015-Q01",
+      "correct_answer": "B",
+      "explanation": "A common pan-head screw is measured from beneath the head, excluding the head’s height. Measuring from the top includes extra height; measuring only from the threads may omit part of the length. Measuring across the head gives a different dimension.",
+      "teaching_reference": "Section 3, “Learn it,” measurement table, “Recommended action,” and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created side-view comparison of a pan-head screw and a flat countersunk screw, with measurement lines showing the correct endpoints.\n\n**Accessibility description for proposed media:** “The pan-head screw’s length line starts beneath its head and ends at its tip. The flat countersunk screw’s length line starts at the top of its head and ends at its tip.” Keep the measurement table available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Bolt Depot, [Measuring Fastener Length](https://boltdepot.com/fastener-information/Measuring/Measure-Length): Measurement from the intended material surface, common head-style distinctions, and specialty-fastener exceptions.\n- [Source 2] Portland Bolt, [Bolt Length](https://www.portlandbolt.com/technical/faqs/bolt-length/): Corroborates the distinction between measuring beneath a projecting head and including a countersunk head. This source concerns bolts; the screw examples follow the screw-specific supplier guidance above.\n\n**Verification needs:** Verify unfamiliar fasteners against their specific dimensional drawings. The one-inch example illustrates measurement only and does not describe a particular product.\n\nAll teaching and assessment wording is independently authored. No supplier diagrams or third-party media are included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Which measuring tools or supplier drawings can we use when a customer brings an unfamiliar fastener?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a fastener subject-matter reviewer check the measurement explanations.\n- Confirm examples against common screws in participating stores.\n- If media is added, verify head geometry, measurement endpoints, accessibility descriptions, and usage rights.\n- Keep diameter, thread identification, material selection, and required fastening length for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Bolt Depot",
+      "title": "Measuring Fastener Length",
+      "url": "https://boltdepot.com/fastener-information/Measuring/Measure-Length",
+      "supports": "Measurement from the intended material surface, common head-style distinctions, and specialty-fastener exceptions.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "Portland Bolt",
+      "title": "Bolt Length",
+      "url": "https://www.portlandbolt.com/technical/faqs/bolt-length/",
+      "supports": "Corroborates the distinction between measuring beneath a projecting head and including a countersunk head. This source concerns bolts; the screw examples follow the screw-specific supplier guidance above.",
+      "checked": "2026-10-22"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a fastener subject-matter reviewer check the measurement explanations.",
+    "Confirm examples against common screws in participating stores.",
+    "If media is added, verify head geometry, measurement endpoints, accessibility descriptions, and usage rights.",
+    "Keep diameter, thread identification, material selection, and required fastening length for separate modules."
+  ],
+  "complete_markdown": "# CD-0015 — Screw Length: Where Does Measurement Start?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0015 |\n| Title | Screw Length: Where Does Measurement Start? |\n| Academy | Hand Tools & Fasteners |\n| Skill level | Foundations |\n| Relevant departments | Fasteners; hardware; hand tools |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | screw length, measuring screws, flat head, countersunk, pan head, fastener dimensions |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nIdentify the correct starting point for measuring common flat countersunk and pan-head screws.\n\n### 2. Why it matters\n\nCustomers often bring a loose screw and ask for another the same length. Starting the ruler at the wrong place can lead to a different labeled length, even when the measurement itself is accurate.\n\n### 3. Learn it\n\n**Identify the head style before measuring length.** Common screw types do not all use the same starting point.\n\n| Head style | Where measurement starts | Where it ends |\n|---|---|---|\n| **Pan head**, designed to sit above the material | Beneath the head, where it rests against the material | End of the screw |\n| **Flat countersunk head**, designed to sit flush with the material | Top of the head, including the head in the measurement | End of the screw |\n\nFor example, a pan-head screw measuring **1 inch from beneath its head to its end** has a 1-inch measured length. For a flat countersunk screw, that same length measurement includes the head.\n\n**Why the difference?** The general convention measures from the point where the installed material’s surface is intended to meet the fastener. A pan head sits above that surface; a flat countersunk head sits within it. [Source 1]\n\n**Recommended action:** Place the ruler’s zero mark at the correct starting point, then read to the screw’s end. Record the unit along with the measurement.\n\n**Common mistake:** Measuring only the threaded section. A screw may have an unthreaded section that still counts toward its length. Likewise, including a pan head adds material that is normally excluded from its labeled length.\n\nUse the head’s shape—not its drive recess—to choose the starting point. A Phillips drive does not tell you whether the screw has a pan head or a flat countersunk head.\n\n**When to verify or seek help:** Check the supplier’s dimensional drawing for unfamiliar or specialty fasteners. Do not automatically extend these two examples to oval heads, shoulder screws, or other designs. Ask a knowledgeable coworker when the measuring convention is unclear.\n\nMatching length alone does not establish a suitable replacement; other fastener characteristics still need checking.\n\n### 4. Customer scenario\n\nA customer brings in a pan-head screw. Its head is designed to rest above the material rather than sit countersunk.\n\nThey ask you to measure its length so they can start looking for a replacement.\n\n### 5. Quick check\n\n**Question ID: CD-0015-Q01**\n\nWhere should you measure this screw?\n\nA. From the top of the head to the screw’s end\nB. From beneath the head to the screw’s end\nC. From the first full thread to the screw’s end\nD. Across the widest part of the head\n\n### 6. Take it to the floor\n\n**Identify the head style, choose the starting point, and measure to the end.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0015-Q01\n- **Correct answer:** B. From beneath the head to the screw’s end\n- **Explanation:** A common pan-head screw is measured from beneath the head, excluding the head’s height. Measuring from the top includes extra height; measuring only from the threads may omit part of the length. Measuring across the head gives a different dimension.\n- **Teaching reference:** Section 3, “Learn it,” measurement table, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created side-view comparison of a pan-head screw and a flat countersunk screw, with measurement lines showing the correct endpoints.\n\n**Accessibility description for proposed media:** “The pan-head screw’s length line starts beneath its head and ends at its tip. The flat countersunk screw’s length line starts at the top of its head and ends at its tip.” Keep the measurement table available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Bolt Depot, [Measuring Fastener Length](https://boltdepot.com/fastener-information/Measuring/Measure-Length): Measurement from the intended material surface, common head-style distinctions, and specialty-fastener exceptions.\n- [Source 2] Portland Bolt, [Bolt Length](https://www.portlandbolt.com/technical/faqs/bolt-length/): Corroborates the distinction between measuring beneath a projecting head and including a countersunk head. This source concerns bolts; the screw examples follow the screw-specific supplier guidance above.\n\n**Verification needs:** Verify unfamiliar fasteners against their specific dimensional drawings. The one-inch example illustrates measurement only and does not describe a particular product.\n\nAll teaching and assessment wording is independently authored. No supplier diagrams or third-party media are included.\n\n### 8. Optional manager discussion prompt\n\nWhich measuring tools or supplier drawings can we use when a customer brings an unfamiliar fastener?\n\n### 9. Review needs\n\n- Have a fastener subject-matter reviewer check the measurement explanations.\n- Confirm examples against common screws in participating stores.\n- If media is added, verify head geometry, measurement endpoints, accessibility descriptions, and usage rights.\n- Keep diameter, thread identification, material selection, and required fastening length for separate modules.\n"
+}

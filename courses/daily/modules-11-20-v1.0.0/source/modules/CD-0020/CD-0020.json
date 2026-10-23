@@ -1,0 +1,95 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0020",
+    "Title": "Report a Shelf-Label Mismatch Clearly",
+    "Academy": "Operations & Leadership",
+    "Skill level": "Foundations",
+    "Relevant departments": "All sales-floor departments; checkout; inventory",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "shelf label, price tag, mismatch, SKU, UPC, item number, product identification, reporting",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-23",
+    "publication_status": "not published"
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Identify the product, location, and conflicting information needed to report a shelf-label mismatch clearly."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "“The tag is wrong” leaves the next person with several unanswered questions. A clear report helps them find the item, compare the information, and determine the appropriate correction."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Report what you observed before deciding which information is wrong.** A mismatch could involve the price, product description, size, package quantity, or item identifier.\n\nUse these three parts:\n\n| Part | Information to capture |\n|---|---|\n| **Product** | Description, size or package quantity, and an available identifier such as SKU, UPC, or item number |\n| **Location** | Aisle and shelf, nearby landmark, or another description that makes the label easy to find |\n| **Conflict** | Exactly what the package, shelf label, or checkout screen shows differently |\n\n**SKU** means stock keeping unit, an identifier used within a business’s inventory system. A **UPC** is a product identification code commonly represented by a barcode. Do not assume a store’s SKU and a product’s UPC are the same number.\n\n**Recommended action:** Compare the package and label descriptions, sizes, quantities, and identifiers where available. Record the relevant differences. A photo can help if store practice allows it, but include enough written detail for someone to understand the issue.\n\nFor example: “The shelf label describes a two-pack; the package above it contains one.” That is more useful than “Wrong tag.”\n\n**Common mistake:** Reporting an assumed cause as a confirmed fact. “Someone forgot to change the price” assigns a cause you may not know. “Shelf label shows $8.49; checkout shows $9.49” describes the actual conflict.\n\nSend the report through the store’s usual method. If no process is established, ask a supervisor who should review it.\n\n**When to verify or seek help:** Follow the store’s process for checking prices and handling the customer’s purchase. If your authority or the applicable policy is unclear, involve the responsible person before changing a price, moving a label, or promising an adjustment."
+    },
+    {
+      "heading": "4. Workplace scenario",
+      "content_markdown": "A customer brings a one-pack paintbrush to checkout. The checkout screen shows **$9.49**.\n\nYou check the shelf location. Its label also describes a one-pack paintbrush, but shows **$8.49**. You have not yet compared the package’s product identifier with the label’s identifier."
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0020-Q01**\n\nWhich report gives the responsible coworker the clearest information?\n\nA. “The customer says our paintbrush prices are wrong.”\nB. “Someone forgot to update the paintbrush tag; change it to $9.49.”\nC. “One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”\nD. “Paintbrush scanned at $9.49, so I told the customer the shelf price does not apply.”"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "Report **the product, the location, and the exact conflict—plus anything still unverified.**"
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0020-Q01",
+      "wording": "Which report gives the responsible coworker the clearest information?",
+      "options": {
+        "A": "“The customer says our paintbrush prices are wrong.”",
+        "B": "“Someone forgot to update the paintbrush tag; change it to $9.49.”",
+        "C": "“One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”",
+        "D": "“Paintbrush scanned at $9.49, so I told the customer the shelf price does not apply.”"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0020-Q01",
+      "correct_answer": "C",
+      "explanation": "This report identifies the product, provides a findable location, states both observed prices, and flags the unfinished identifier check. It does not assume the cause, determine which price is correct, or promise a customer outcome.",
+      "teaching_reference": "Section 3, “Learn it,” reporting table, “Recommended action,” and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "Answer key — separate from employee-facing content",
+      "content_markdown": "- **Question ID:** CD-0020-Q01\n- **Correct answer:** C. “One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”\n- **Explanation:** This report identifies the product, provides a findable location, states both observed prices, and flags the unfinished identifier check. It does not assume the cause, determine which price is correct, or promise a customer outcome.\n- **Teaching reference:** Section 3, “Learn it,” reporting table, “Recommended action,” and “Common mistake.”"
+    },
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created package, shelf-label, and checkout-screen example showing the fictional price difference. Use clearly marked illustrative identifiers rather than a scannable barcode.\n\n**Accessibility description for proposed media:** “A fictional one-pack paintbrush has a shelf price of $8.49 and a checkout price of $9.49. Text notes that package and shelf-label identifiers have not yet been compared.” Provide all relevant information as readable text.\n\n**Sources and authorship:** The three-part reporting framework and scenario are independently authored for colTRAIN. No particular store’s pricing, adjustment, or labeling policy is asserted.\n\n**Verification needs:** Confirm the SKU and UPC terminology against an authoritative identification reference before publication. Participating stores must establish who reviews discrepancies and what employees may change or promise. The scenario does not determine a legally required selling price."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "How should employees report a label mismatch here, and who can decide the customer’s price or authorize a correction?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Verify identifier terminology before publication.\n- Review examples against participating stores’ label and checkout formats.\n- Confirm reporting methods and the person responsible for resolving discrepancies.\n- Confirm applicable store procedures for customer price questions and label changes.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep pricing-law interpretation, inventory corrections, and root-cause investigation outside this module."
+    }
+  ],
+  "sources": [],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Verify identifier terminology before publication.",
+    "Review examples against participating stores’ label and checkout formats.",
+    "Confirm reporting methods and the person responsible for resolving discrepancies.",
+    "Confirm applicable store procedures for customer price questions and label changes.",
+    "If media is added, check accessibility descriptions and usage rights.",
+    "Keep pricing-law interpretation, inventory corrections, and root-cause investigation outside this module."
+  ],
+  "complete_markdown": "# CD-0020 — Report a Shelf-Label Mismatch Clearly\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0020 |\n| Title | Report a Shelf-Label Mismatch Clearly |\n| Academy | Operations & Leadership |\n| Skill level | Foundations |\n| Relevant departments | All sales-floor departments; checkout; inventory |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | shelf label, price tag, mismatch, SKU, UPC, item number, product identification, reporting |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nIdentify the product, location, and conflicting information needed to report a shelf-label mismatch clearly.\n\n### 2. Why it matters\n\n“The tag is wrong” leaves the next person with several unanswered questions. A clear report helps them find the item, compare the information, and determine the appropriate correction.\n\n### 3. Learn it\n\n**Report what you observed before deciding which information is wrong.** A mismatch could involve the price, product description, size, package quantity, or item identifier.\n\nUse these three parts:\n\n| Part | Information to capture |\n|---|---|\n| **Product** | Description, size or package quantity, and an available identifier such as SKU, UPC, or item number |\n| **Location** | Aisle and shelf, nearby landmark, or another description that makes the label easy to find |\n| **Conflict** | Exactly what the package, shelf label, or checkout screen shows differently |\n\n**SKU** means stock keeping unit, an identifier used within a business’s inventory system. A **UPC** is a product identification code commonly represented by a barcode. Do not assume a store’s SKU and a product’s UPC are the same number.\n\n**Recommended action:** Compare the package and label descriptions, sizes, quantities, and identifiers where available. Record the relevant differences. A photo can help if store practice allows it, but include enough written detail for someone to understand the issue.\n\nFor example: “The shelf label describes a two-pack; the package above it contains one.” That is more useful than “Wrong tag.”\n\n**Common mistake:** Reporting an assumed cause as a confirmed fact. “Someone forgot to change the price” assigns a cause you may not know. “Shelf label shows $8.49; checkout shows $9.49” describes the actual conflict.\n\nSend the report through the store’s usual method. If no process is established, ask a supervisor who should review it.\n\n**When to verify or seek help:** Follow the store’s process for checking prices and handling the customer’s purchase. If your authority or the applicable policy is unclear, involve the responsible person before changing a price, moving a label, or promising an adjustment.\n\n### 4. Workplace scenario\n\nA customer brings a one-pack paintbrush to checkout. The checkout screen shows **$9.49**.\n\nYou check the shelf location. Its label also describes a one-pack paintbrush, but shows **$8.49**. You have not yet compared the package’s product identifier with the label’s identifier.\n\n### 5. Quick check\n\n**Question ID: CD-0020-Q01**\n\nWhich report gives the responsible coworker the clearest information?\n\nA. “The customer says our paintbrush prices are wrong.”\nB. “Someone forgot to update the paintbrush tag; change it to $9.49.”\nC. “One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”\nD. “Paintbrush scanned at $9.49, so I told the customer the shelf price does not apply.”\n\n### 6. Take it to the floor\n\nReport **the product, the location, and the exact conflict—plus anything still unverified.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0020-Q01\n- **Correct answer:** C. “One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”\n- **Explanation:** This report identifies the product, provides a findable location, states both observed prices, and flags the unfinished identifier check. It does not assume the cause, determine which price is correct, or promise a customer outcome.\n- **Teaching reference:** Section 3, “Learn it,” reporting table, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created package, shelf-label, and checkout-screen example showing the fictional price difference. Use clearly marked illustrative identifiers rather than a scannable barcode.\n\n**Accessibility description for proposed media:** “A fictional one-pack paintbrush has a shelf price of $8.49 and a checkout price of $9.49. Text notes that package and shelf-label identifiers have not yet been compared.” Provide all relevant information as readable text.\n\n**Sources and authorship:** The three-part reporting framework and scenario are independently authored for colTRAIN. No particular store’s pricing, adjustment, or labeling policy is asserted.\n\n**Verification needs:** Confirm the SKU and UPC terminology against an authoritative identification reference before publication. Participating stores must establish who reviews discrepancies and what employees may change or promise. The scenario does not determine a legally required selling price.\n\n### 8. Optional manager discussion prompt\n\nHow should employees report a label mismatch here, and who can decide the customer’s price or authorize a correction?\n\n### 9. Review needs\n\n- Verify identifier terminology before publication.\n- Review examples against participating stores’ label and checkout formats.\n- Confirm reporting methods and the person responsible for resolving discrepancies.\n- Confirm applicable store procedures for customer price questions and label changes.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep pricing-law interpretation, inventory corrections, and root-cause investigation outside this module.\n"
+}

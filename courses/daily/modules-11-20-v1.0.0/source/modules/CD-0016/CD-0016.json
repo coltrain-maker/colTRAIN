@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0016",
+    "Title": "Match the Bit’s Shank to the Tool",
+    "Academy": "Power Tools & Accessories",
+    "Skill level": "Foundations",
+    "Relevant departments": "Power tools; drilling and fastening accessories",
+    "Estimated completion time": "5 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "bit shank, round shank, hex shank, chuck, bit holder, impact rated, SDS-plus",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-22",
+    "publication_status": "not published"
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Distinguish common accessory shanks and recognize that fitting a tool’s holder does not establish suitability for use."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "Two bits may have similar working ends but different ends that fit into the tool. Recognizing that connection helps you narrow the choices before checking whether the accessory suits the job."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**The shank is the end of the bit held by the tool or accessory holder.** It is different from the working end that drills the hole or engages the screw.\n\nFor example, a Phillips driver bit can have a **¼-inch hex shank**. “Phillips” describes the screw-engaging tip; “¼-inch hex” describes the tool connection.\n\nStart with these common shank types:\n\n| Shank type | Recognition clue | Connection to investigate |\n|---|---|---|\n| **Round** | A cylindrical gripping section | A compatible adjustable-jaw drill chuck |\n| **Hex** | Six flat sides | A matching hex holder or compatible drill chuck |\n| **SDS-plus** | A specially grooved shank | An SDS-plus tool holder |\n\nBosch documents separate SDS-plus and three-jaw chucks for different accessory shanks. These are distinct connection systems, rather than interchangeable names for the same holder. [Source 1]\n\n**Recommended action:** Ask which tool the customer has, including its model when available. Match the specified holder type and capacity to the accessory’s shank information.\n\nThen check the accessory’s intended use. **Physical fit is only one check.** Confirm suitability for the tool’s operating action, the material, and any stated limits.\n\n**Common mistake:** Assuming every hex-shank bit is suitable for an impact driver. A hex shape describes the connection; it does not, by itself, establish an impact rating. Look for the manufacturer’s stated compatibility. DEWALT’s guidance for drilling with an impact driver specifies impact-ready bits. [Source 2]\n\n**When to verify or seek help:** Check the exact tool manual and accessory packaging when the holder, rating, or application is uncertain. Some short insert bits require a compatible holder; do not assume every bit attaches directly. Ask a knowledgeable coworker or manufacturer representative rather than recommending an unverified adapter or combination."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer brings a driver bit with a six-sided shank and says, “It fits into my impact driver, so that means it’s made for impact use, right?”\n\nThe packaging is missing, and you have not identified the bit’s manufacturer or model."
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0016-Q01**\n\nWhat is the most accurate response?\n\nA. Yes—every six-sided shank establishes an impact rating.\nB. Yes—if it locks into the holder, no further compatibility checks are needed.\nC. No—the shank’s fit does not establish an impact rating; identify the bit and verify its stated compatibility.\nD. No—impact drivers cannot use hex-shank accessories."
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "**Match the connection, then verify the rating and application.**"
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0016-Q01",
+      "wording": "What is the most accurate response?",
+      "options": {
+        "A": "Yes—every six-sided shank establishes an impact rating.",
+        "B": "Yes—if it locks into the holder, no further compatibility checks are needed.",
+        "C": "No—the shank’s fit does not establish an impact rating; identify the bit and verify its stated compatibility.",
+        "D": "No—impact drivers cannot use hex-shank accessories."
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0016-Q01",
+      "correct_answer": "C",
+      "explanation": "The shank establishes a connection type, not every aspect of suitability. Without identifying the accessory, the employee cannot confirm its impact compatibility. Physical fit alone is insufficient.",
+      "teaching_reference": "Section 3, “Learn it,” “Recommended action” and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison showing round, hex, and SDS-plus shanks. Include a separate driver-bit example labeling its Phillips working tip and hex shank.\n\n**Accessibility description for proposed media:** “Three accessory ends are labeled: round shank with a cylindrical gripping section; hex shank with six flat sides; and SDS-plus shank with grooves. A separate driver bit labels its Phillips tip and hex shank.” Keep the recognition table available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Bosch, [RH432VCQ Operating/Safety Instructions](https://ocsmedia.boschtools.com/binary/manualsmedia/o199837v2_2610048693_1017_RH432VCQ.pdf): Chuck and accessory sections: distinct SDS-plus and three-jaw chuck arrangements and straight-shank accessory use. Model-specific instructions are not generalized to every tool.\n- [Source 2] DEWALT, [Can I Use My Impact Driver as a Drill?](https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill): Impact-ready drilling accessories.\n- [Source 3] Milwaukee Tool, [SHOCKWAVE Impact Driver Bits](https://www.milwaukeetool.com/products/accessories/driving-and-fastening/shockwave-driver-bits): Examples of explicitly identified impact-duty accessories and hex-shank terminology.\n\n**Verification needs:** Check the exact holder, shank dimensions, retention requirements, operating mode, and accessory rating before recommending a combination. This module does not establish adapter compatibility or teach accessory installation.\n\nAll teaching and assessment wording is independently authored. No manufacturer diagrams or third-party media are included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Where do our accessory packages identify the shank type and whether the accessory is intended for impact use?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a power-tool subject-matter reviewer check shank descriptions and compatibility wording.\n- Verify any product examples against their current manuals and packaging.\n- Confirm that proposed media distinguishes a bit’s working tip from its shank.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep adapters, accessory installation, cutting-material selection, and specialty shank systems for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Bosch",
+      "title": "RH432VCQ Operating/Safety Instructions",
+      "url": "https://ocsmedia.boschtools.com/binary/manualsmedia/o199837v2_2610048693_1017_RH432VCQ.pdf",
+      "supports": "Chuck and accessory sections: distinct SDS-plus and three-jaw chuck arrangements and straight-shank accessory use. Model-specific instructions are not generalized to every tool.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "DEWALT",
+      "title": "Can I Use My Impact Driver as a Drill?",
+      "url": "https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill",
+      "supports": "Impact-ready drilling accessories.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "Milwaukee Tool",
+      "title": "SHOCKWAVE Impact Driver Bits",
+      "url": "https://www.milwaukeetool.com/products/accessories/driving-and-fastening/shockwave-driver-bits",
+      "supports": "Examples of explicitly identified impact-duty accessories and hex-shank terminology.",
+      "checked": "2026-10-22"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a power-tool subject-matter reviewer check shank descriptions and compatibility wording.",
+    "Verify any product examples against their current manuals and packaging.",
+    "Confirm that proposed media distinguishes a bit’s working tip from its shank.",
+    "If media is added, check accessibility descriptions and usage rights.",
+    "Keep adapters, accessory installation, cutting-material selection, and specialty shank systems for separate modules."
+  ],
+  "complete_markdown": "# CD-0016 — Match the Bit’s Shank to the Tool\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0016 |\n| Title | Match the Bit’s Shank to the Tool |\n| Academy | Power Tools & Accessories |\n| Skill level | Foundations |\n| Relevant departments | Power tools; drilling and fastening accessories |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | bit shank, round shank, hex shank, chuck, bit holder, impact rated, SDS-plus |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish common accessory shanks and recognize that fitting a tool’s holder does not establish suitability for use.\n\n### 2. Why it matters\n\nTwo bits may have similar working ends but different ends that fit into the tool. Recognizing that connection helps you narrow the choices before checking whether the accessory suits the job.\n\n### 3. Learn it\n\n**The shank is the end of the bit held by the tool or accessory holder.** It is different from the working end that drills the hole or engages the screw.\n\nFor example, a Phillips driver bit can have a **¼-inch hex shank**. “Phillips” describes the screw-engaging tip; “¼-inch hex” describes the tool connection.\n\nStart with these common shank types:\n\n| Shank type | Recognition clue | Connection to investigate |\n|---|---|---|\n| **Round** | A cylindrical gripping section | A compatible adjustable-jaw drill chuck |\n| **Hex** | Six flat sides | A matching hex holder or compatible drill chuck |\n| **SDS-plus** | A specially grooved shank | An SDS-plus tool holder |\n\nBosch documents separate SDS-plus and three-jaw chucks for different accessory shanks. These are distinct connection systems, rather than interchangeable names for the same holder. [Source 1]\n\n**Recommended action:** Ask which tool the customer has, including its model when available. Match the specified holder type and capacity to the accessory’s shank information.\n\nThen check the accessory’s intended use. **Physical fit is only one check.** Confirm suitability for the tool’s operating action, the material, and any stated limits.\n\n**Common mistake:** Assuming every hex-shank bit is suitable for an impact driver. A hex shape describes the connection; it does not, by itself, establish an impact rating. Look for the manufacturer’s stated compatibility. DEWALT’s guidance for drilling with an impact driver specifies impact-ready bits. [Source 2]\n\n**When to verify or seek help:** Check the exact tool manual and accessory packaging when the holder, rating, or application is uncertain. Some short insert bits require a compatible holder; do not assume every bit attaches directly. Ask a knowledgeable coworker or manufacturer representative rather than recommending an unverified adapter or combination.\n\n### 4. Customer scenario\n\nA customer brings a driver bit with a six-sided shank and says, “It fits into my impact driver, so that means it’s made for impact use, right?”\n\nThe packaging is missing, and you have not identified the bit’s manufacturer or model.\n\n### 5. Quick check\n\n**Question ID: CD-0016-Q01**\n\nWhat is the most accurate response?\n\nA. Yes—every six-sided shank establishes an impact rating.\nB. Yes—if it locks into the holder, no further compatibility checks are needed.\nC. No—the shank’s fit does not establish an impact rating; identify the bit and verify its stated compatibility.\nD. No—impact drivers cannot use hex-shank accessories.\n\n### 6. Take it to the floor\n\n**Match the connection, then verify the rating and application.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0016-Q01\n- **Correct answer:** C. No—the shank’s fit does not establish an impact rating; identify the bit and verify its stated compatibility.\n- **Explanation:** The shank establishes a connection type, not every aspect of suitability. Without identifying the accessory, the employee cannot confirm its impact compatibility. Physical fit alone is insufficient.\n- **Teaching reference:** Section 3, “Learn it,” “Recommended action” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison showing round, hex, and SDS-plus shanks. Include a separate driver-bit example labeling its Phillips working tip and hex shank.\n\n**Accessibility description for proposed media:** “Three accessory ends are labeled: round shank with a cylindrical gripping section; hex shank with six flat sides; and SDS-plus shank with grooves. A separate driver bit labels its Phillips tip and hex shank.” Keep the recognition table available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Bosch, [RH432VCQ Operating/Safety Instructions](https://ocsmedia.boschtools.com/binary/manualsmedia/o199837v2_2610048693_1017_RH432VCQ.pdf): Chuck and accessory sections: distinct SDS-plus and three-jaw chuck arrangements and straight-shank accessory use. Model-specific instructions are not generalized to every tool.\n- [Source 2] DEWALT, [Can I Use My Impact Driver as a Drill?](https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill): Impact-ready drilling accessories.\n- [Source 3] Milwaukee Tool, [SHOCKWAVE Impact Driver Bits](https://www.milwaukeetool.com/products/accessories/driving-and-fastening/shockwave-driver-bits): Examples of explicitly identified impact-duty accessories and hex-shank terminology.\n\n**Verification needs:** Check the exact holder, shank dimensions, retention requirements, operating mode, and accessory rating before recommending a combination. This module does not establish adapter compatibility or teach accessory installation.\n\nAll teaching and assessment wording is independently authored. No manufacturer diagrams or third-party media are included.\n\n### 8. Optional manager discussion prompt\n\nWhere do our accessory packages identify the shank type and whether the accessory is intended for impact use?\n\n### 9. Review needs\n\n- Have a power-tool subject-matter reviewer check shank descriptions and compatibility wording.\n- Verify any product examples against their current manuals and packaging.\n- Confirm that proposed media distinguishes a bit’s working tip from its shank.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep adapters, accessory installation, cutting-material selection, and specialty shank systems for separate modules.\n"
+}

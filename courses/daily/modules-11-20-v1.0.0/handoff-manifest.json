@@ -1,0 +1,141 @@
+{
+  "package_version": "1.0.0",
+  "module_count": 10,
+  "approval_source": "Uploaded package reports content approved; owner requested adding these modules on 2026-10-23.",
+  "status": "Draft and store-specific release SQL prepared; not run on hosted database",
+  "source_link_verification": "URLs preserved from package, not independently rechecked",
+  "counts_by_academy": {
+    "Paint & Surface Care": 1,
+    "Plumbing": 1,
+    "Electrical": 1,
+    "HVAC": 1,
+    "Hand Tools & Fasteners": 1,
+    "Power Tools & Accessories": 1,
+    "Lawn, Garden & Outdoor Equipment": 1,
+    "Building & Home Maintenance": 1,
+    "Customer Service & Retail Readiness": 1,
+    "Operations & Leadership": 1
+  },
+  "modules": [
+    {
+      "code": "CD-0011",
+      "version": "0.2.0",
+      "title": "Read a Paint Coverage Statement",
+      "position": 11,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 4,
+      "markdown_sha256": "a131d1da946ce6b5548bae70f4079fd8ea68459c2861f248c059933a3e42bbd7",
+      "json_sha256": "f899482f6d2f1a326497601ab58c477502bd8b9cc5561e11bf9382bc2f475a85",
+      "review_needs": "- Have a paint subject-matter reviewer check the coverage-versus-hiding explanation.\n- Confirm where participating stores can access current product data sheets.\n- Verify any real product example before adding it.\n- If media is added, check labels, accessibility descriptions, and usage rights.\n- Keep project-area calculations and purchase-quantity estimates for Application modules."
+    },
+    {
+      "code": "CD-0012",
+      "version": "0.2.0",
+      "title": "Supply Line or Drain Line?",
+      "position": 12,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 3,
+      "markdown_sha256": "952c9c673d300c89228a6dfe63ebed99ae95fe2cde1af74a584d0a36c35f5cbb",
+      "json_sha256": "bda64cdc82b639de562fdc5fac299097d638e48a1bda44467d99796ce8069388",
+      "review_needs": "- Have a plumbing subject-matter reviewer check component terminology.\n- Confirm product-category names against participating stores’ assortments.\n- If media is added, verify the depicted connections, accessibility description, and usage rights.\n- Keep leak diagnosis, disconnection, installation, and replacement selection for separate modules."
+    },
+    {
+      "code": "CD-0013",
+      "version": "0.1.0",
+      "title": "Lumens or Watts?",
+      "position": 13,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 3,
+      "markdown_sha256": "50ce7e30915fb1e2f222118c0cb29d2f995eed6b5c6702552dec4dae504e5eb1",
+      "json_sha256": "2d0708b6765190bcf1160c76ce7bbd3ab95eeaeb4f7fadeaa025ef150ae0f703",
+      "review_needs": "- Have a lighting subject-matter reviewer check terminology and compatibility wording.\n- Verify any actual product examples before adding them.\n- If media is added, check labels, accessibility descriptions, and usage rights.\n- Keep color temperature, dimmer compatibility, beam angle, and fixture ratings for separate modules."
+    },
+    {
+      "code": "CD-0014",
+      "version": "0.1.0",
+      "title": "Find the Filter’s Airflow Arrow",
+      "position": 14,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 3,
+      "markdown_sha256": "f83d03931dd4524fc1706f33c1b34966cb377a78ba89f34bf594ab1be28869bd",
+      "json_sha256": "fc75d045aaa33dd814c2ffa80588a3e1c319deca3a700ca474b1744d717cca8b",
+      "review_needs": "- Have an HVAC subject-matter reviewer check the location and airflow explanations.\n- Confirm that proposed media clearly distinguishes a return grille from a supply register.\n- Verify any equipment-specific example against its current manual.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep equipment access, replacement procedures, and filter-performance selection for separate modules."
+    },
+    {
+      "code": "CD-0015",
+      "version": "0.1.0",
+      "title": "Screw Length: Where Does Measurement Start?",
+      "position": 15,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 2,
+      "markdown_sha256": "cabde3ffcc1ddfa5e50a5bcdb2c1cd33e98dc2cbe9bfa2e2322677af5ba42304",
+      "json_sha256": "53812ea79bcb7ca3ea278443540f361a779ba60a21399f7a46bfe1a29d762032",
+      "review_needs": "- Have a fastener subject-matter reviewer check the measurement explanations.\n- Confirm examples against common screws in participating stores.\n- If media is added, verify head geometry, measurement endpoints, accessibility descriptions, and usage rights.\n- Keep diameter, thread identification, material selection, and required fastening length for separate modules."
+    },
+    {
+      "code": "CD-0016",
+      "version": "0.1.0",
+      "title": "Match the Bit’s Shank to the Tool",
+      "position": 16,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 3,
+      "markdown_sha256": "ba08c0f65c0766fc690da9de58c19f78583381c48e0e7eac4c84afde897174e9",
+      "json_sha256": "272d6dde488be1da971e514dc8b42abbf92ecd3b3762bc0a7258535beaf85138",
+      "review_needs": "- Have a power-tool subject-matter reviewer check shank descriptions and compatibility wording.\n- Verify any product examples against their current manuals and packaging.\n- Confirm that proposed media distinguishes a bit’s working tip from its shank.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep adapters, accessory installation, cutting-material selection, and specialty shank systems for separate modules."
+    },
+    {
+      "code": "CD-0017",
+      "version": "0.1.0",
+      "title": "Annual or Perennial?",
+      "position": 17,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 4,
+      "markdown_sha256": "111486d970e8664df644208d5af2b7c396d3254ba3379ff5e65530ad4a28e89f",
+      "json_sha256": "54b04cfdb5cd5f815e6d0c11ed12ef3eb52846fa1bfb562f19ffe47ba1a5b65a",
+      "review_needs": "- Have a horticulture subject-matter reviewer check the definitions and survival wording.\n- Verify any species or cultivar examples before adding them.\n- Confirm reliable local references for participating stores in different climates.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep hardiness-zone interpretation, overwintering methods, and biennial life cycles for separate modules."
+    },
+    {
+      "code": "CD-0018",
+      "version": "0.1.0",
+      "title": "Caulk or Construction Adhesive?",
+      "position": 18,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 3,
+      "markdown_sha256": "aa32b1e3edbb875cf396f0bdc4317f50e1bd33108fd72dd16a90eb27e58cf997",
+      "json_sha256": "c4625b4be568b785e92e70b06f5edf3e84714ee173721a58c819ad76172eaa71",
+      "review_needs": "- Have a building-maintenance subject-matter reviewer check category distinctions and attachment wording.\n- Verify any real product examples, especially products claiming both bonding and sealing.\n- Confirm terminology against participating stores’ assortments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep application techniques, cure times, structural bonding, and specialty sealant selection for separate modules."
+    },
+    {
+      "code": "CD-0019",
+      "version": "0.1.0",
+      "title": "Ask What the Customer Is Trying to Do",
+      "position": 19,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 1,
+      "markdown_sha256": "b7bd466ac612524e65e45ffe74014a2b81fe8bf45cd0834ca550f531c58eea60",
+      "json_sha256": "69d8a053eaa0a43578aab96d7dba32640605b52704dba2f50e810e5131c6756e",
+      "review_needs": "- Review the dialogue for a natural, respectful retail tone.\n- Confirm that examples work across participating stores’ departments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep complex needs assessment, handling disagreement, and assembling complete project purchases for higher-level modules."
+    },
+    {
+      "code": "CD-0020",
+      "version": "0.1.0",
+      "title": "Report a Shelf-Label Mismatch Clearly",
+      "position": 20,
+      "text_approved_in_package": true,
+      "media_assets": 0,
+      "sources": 1,
+      "markdown_sha256": "d934da2387900c26f3800ee06c3e988a45092d60e6b77cac07cc3b85f2fbeb2b",
+      "json_sha256": "3121f3a63707eed7e2a7e93b5af28a270670e78369e1982418a603c1df4a7e6d",
+      "review_needs": "- Verify identifier terminology before publication.\n- Review examples against participating stores’ label and checkout formats.\n- Confirm reporting methods and the person responsible for resolving discrepancies.\n- Confirm applicable store procedures for customer price questions and label changes.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep pricing-law interpretation, inventory corrections, and root-cause investigation outside this module."
+    }
+  ]
+}

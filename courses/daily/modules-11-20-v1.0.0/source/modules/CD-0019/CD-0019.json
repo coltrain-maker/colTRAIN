@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0019",
+    "Title": "Ask What the Customer Is Trying to Do",
+    "Academy": "Customer Service & Retail Readiness",
+    "Skill level": "Foundations",
+    "Relevant departments": "All sales-floor departments; customer service",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "customer service, project questions, listening, customer needs, product selection, clarification",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-22",
+    "publication_status": "not published"
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Choose an opening question that clarifies the customer’s goal before selecting a product."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "Customers may know what they want to accomplish without knowing a product’s name. A short conversation about the task helps you understand the request and avoid recommending something based on an assumption."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Start with the result the customer wants.** A request such as “I need something strong” does not yet identify the task, materials, or conditions.\n\nUse a question that invites an explanation:\n\n| Customer says | Useful opening question |\n|---|---|\n| “I need something to fix this.” | “What is happening, and what would you like to fix?” |\n| “I need a better one.” | “What would you like the replacement to do differently?” |\n| “I need something strong.” | “What are you trying to hold, attach, or repair?” |\n\nThese are examples, not a script to repeat in every conversation. Choose a question that builds on what the customer has already told you.\n\n**Recommended action:** Ask one clear question, listen to the answer, and then confirm your understanding. For example: “So you want to reattach the loose piece, rather than fill the gap—is that right?”\n\nAfter the goal is clear, ask a focused follow-up about information that affects the choice, such as the material, location, dimensions, or exact model. A photo or sample can help, but it may not tell the whole story.\n\n**Common mistake:** Offering a solution inside the opening question: “You need our strongest glue, right?” That steers the customer toward a product before establishing the task.\n\nAvoid making customers feel tested on terminology. “Can you show me where it connects?” may be more useful than asking them to name an unfamiliar fitting.\n\n**When to verify or seek help:** If the goal or product suitability remains unclear, say what still needs checking. Consult the relevant product information or involve a knowledgeable coworker. Understanding the customer’s goal is the start of a recommendation, not proof that a particular product will work."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer approaches the counter and says, “I need something stronger than what I used last time.”\n\nThey have not described the project, brought the previous product, or explained what went wrong."
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0019-Q01**\n\nWhich opening question best clarifies the customer’s goal?\n\nA. “Would you prefer the largest package or the smallest?”\nB. “What are you trying to accomplish, and what happened with the product you used?”\nC. “You’re looking for our strongest adhesive, correct?”\nD. “Which brand would you like me to recommend?”"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "**Ask about the task, listen, and confirm the goal before choosing a product.**"
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0019-Q01",
+      "wording": "Which opening question best clarifies the customer’s goal?",
+      "options": {
+        "A": "“Would you prefer the largest package or the smallest?”",
+        "B": "“What are you trying to accomplish, and what happened with the product you used?”",
+        "C": "“You’re looking for our strongest adhesive, correct?”",
+        "D": "“Which brand would you like me to recommend?”"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0019-Q01",
+      "correct_answer": "B",
+      "explanation": "This question invites the customer to explain both the goal and the previous difficulty without assuming a product category. Package size, brand, and adhesive strength are premature choices when the task is still unknown.",
+      "teaching_reference": "Section 3, “Learn it,” opening explanation, “Recommended action,” and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created two-panel conversation example contrasting an assumption-led question with a question about the customer’s task.\n\n**Accessibility description for proposed media:** “One employee asks, ‘You need our strongest glue, right?’ Another asks, ‘What are you trying to accomplish?’ Text explains that the second question establishes the task before choosing a product.” Provide the dialogue as readable text.\n\n**Sources and authorship:** This is an independently authored colTRAIN retail communication lesson. The question examples are original instructional suggestions; no external framework, research finding, store policy, or proprietary curriculum is claimed.\n\n**Verification needs:** Any later product recommendation or technical example needs its own supporting documentation. No particular product or performance claim is included here."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "What vague customer request do we hear often, and which opening question would help clarify it?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Review the dialogue for a natural, respectful retail tone.\n- Confirm that examples work across participating stores’ departments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep complex needs assessment, handling disagreement, and assembling complete project purchases for higher-level modules."
+    }
+  ],
+  "sources": [],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Review the dialogue for a natural, respectful retail tone.",
+    "Confirm that examples work across participating stores’ departments.",
+    "If media is added, check accessibility descriptions and usage rights.",
+    "Keep complex needs assessment, handling disagreement, and assembling complete project purchases for higher-level modules."
+  ],
+  "complete_markdown": "# CD-0019 — Ask What the Customer Is Trying to Do\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0019 |\n| Title | Ask What the Customer Is Trying to Do |\n| Academy | Customer Service & Retail Readiness |\n| Skill level | Foundations |\n| Relevant departments | All sales-floor departments; customer service |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | customer service, project questions, listening, customer needs, product selection, clarification |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nChoose an opening question that clarifies the customer’s goal before selecting a product.\n\n### 2. Why it matters\n\nCustomers may know what they want to accomplish without knowing a product’s name. A short conversation about the task helps you understand the request and avoid recommending something based on an assumption.\n\n### 3. Learn it\n\n**Start with the result the customer wants.** A request such as “I need something strong” does not yet identify the task, materials, or conditions.\n\nUse a question that invites an explanation:\n\n| Customer says | Useful opening question |\n|---|---|\n| “I need something to fix this.” | “What is happening, and what would you like to fix?” |\n| “I need a better one.” | “What would you like the replacement to do differently?” |\n| “I need something strong.” | “What are you trying to hold, attach, or repair?” |\n\nThese are examples, not a script to repeat in every conversation. Choose a question that builds on what the customer has already told you.\n\n**Recommended action:** Ask one clear question, listen to the answer, and then confirm your understanding. For example: “So you want to reattach the loose piece, rather than fill the gap—is that right?”\n\nAfter the goal is clear, ask a focused follow-up about information that affects the choice, such as the material, location, dimensions, or exact model. A photo or sample can help, but it may not tell the whole story.\n\n**Common mistake:** Offering a solution inside the opening question: “You need our strongest glue, right?” That steers the customer toward a product before establishing the task.\n\nAvoid making customers feel tested on terminology. “Can you show me where it connects?” may be more useful than asking them to name an unfamiliar fitting.\n\n**When to verify or seek help:** If the goal or product suitability remains unclear, say what still needs checking. Consult the relevant product information or involve a knowledgeable coworker. Understanding the customer’s goal is the start of a recommendation, not proof that a particular product will work.\n\n### 4. Customer scenario\n\nA customer approaches the counter and says, “I need something stronger than what I used last time.”\n\nThey have not described the project, brought the previous product, or explained what went wrong.\n\n### 5. Quick check\n\n**Question ID: CD-0019-Q01**\n\nWhich opening question best clarifies the customer’s goal?\n\nA. “Would you prefer the largest package or the smallest?”\nB. “What are you trying to accomplish, and what happened with the product you used?”\nC. “You’re looking for our strongest adhesive, correct?”\nD. “Which brand would you like me to recommend?”\n\n### 6. Take it to the floor\n\n**Ask about the task, listen, and confirm the goal before choosing a product.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0019-Q01\n- **Correct answer:** B. “What are you trying to accomplish, and what happened with the product you used?”\n- **Explanation:** This question invites the customer to explain both the goal and the previous difficulty without assuming a product category. Package size, brand, and adhesive strength are premature choices when the task is still unknown.\n- **Teaching reference:** Section 3, “Learn it,” opening explanation, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created two-panel conversation example contrasting an assumption-led question with a question about the customer’s task.\n\n**Accessibility description for proposed media:** “One employee asks, ‘You need our strongest glue, right?’ Another asks, ‘What are you trying to accomplish?’ Text explains that the second question establishes the task before choosing a product.” Provide the dialogue as readable text.\n\n**Sources and authorship:** This is an independently authored colTRAIN retail communication lesson. The question examples are original instructional suggestions; no external framework, research finding, store policy, or proprietary curriculum is claimed.\n\n**Verification needs:** Any later product recommendation or technical example needs its own supporting documentation. No particular product or performance claim is included here.\n\n### 8. Optional manager discussion prompt\n\nWhat vague customer request do we hear often, and which opening question would help clarify it?\n\n### 9. Review needs\n\n- Review the dialogue for a natural, respectful retail tone.\n- Confirm that examples work across participating stores’ departments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep complex needs assessment, handling disagreement, and assembling complete project purchases for higher-level modules.\n"
+}

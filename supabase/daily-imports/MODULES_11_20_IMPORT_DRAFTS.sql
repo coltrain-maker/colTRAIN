@@ -1,0 +1,2070 @@
+-- Apply AFTER migration 012, as postgres. Imports 10 UNPUBLISHED Daily drafts (CD-0011 through CD-0020) only.
+-- Does not publish, release, schedule, assign, award points or change full courses.
+-- Identical reruns are safe; different content under an existing ID aborts the whole transaction.
+begin;
+do $dailyimport$
+declare payload jsonb := $dailypayload$[
+  {
+    "module": {
+      "id": "9ae3aae9-e747-5eac-a014-9245073a7d82",
+      "code": "CD-0011",
+      "version": "0.2.0",
+      "title": "Read a Paint Coverage Statement",
+      "academy": "Paint & Surface Care",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Explain what a paint coverage statement means and identify conditions that can change actual coverage."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer may read a coverage number as a promise that one container will finish the project. Understanding the statement helps you explain what the number includes before discussing how much paint to buy."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**A coverage statement describes how much surface a stated quantity of paint can cover under specified conditions.** It may also be called the **spread rate**.\n\nFor example, a label might read **“Coverage: 300–400 square feet per gallon, per coat.”** This means one gallon is estimated to cover that much surface with one coat under the stated conditions. Look for the area, paint quantity, and any wording such as **“per coat.”**\n\n*This is an illustrative example; check the actual product’s coverage statement.*\n\nRead these details together:\n\n| Detail | What to check |\n|---|---|\n| **Surface area** | Is coverage stated in square feet or square meters? |\n| **Paint quantity** | Is the rate per gallon, per liter, or for the entire container? |\n| **Application basis** | Does it specify one coat, a recommended film thickness, or other conditions? |\n\n**One coat means one application over the surface.** A statement of coverage per coat does not mean that one coat will produce the finished result the customer needs. Manufacturer guidance distinguishes surface coverage from the additional paint that may be needed for more coats. [Source 1]\n\nActual coverage can change with:\n\n- **Texture:** Rough or textured surfaces can require more paint.\n- **Porosity:** Absorbent surfaces can take up more paint.\n- **Application method:** Brushing, rolling, and spraying can produce different product requirements.\n\nManufacturer coverage guidance identifies surface conditions and application method as factors affecting paint quantity. [Sources 2 and 3]\n\n**Recommended action:** Read the exact product’s label or technical data sheet. Explain the stated quantity, area, and application basis before treating the figure as a starting point for an estimate.\n\n**Common mistake:** Confusing **coverage** with **hiding**. Coverage concerns the area painted at the specified application. Hiding concerns how well the dried paint conceals the surface or color underneath. A surface can be painted without the previous color being fully hidden. [Source 4]\n\n**When to verify or seek help:** Check product instructions when coat requirements, surface preparation, or the coverage basis are unclear. Ask a knowledgeable coworker or manufacturer representative rather than promising the highest stated coverage."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer’s project has 300 square feet of wall surface. Their selected paint’s label states **“Coverage: 300–400 square feet per gallon, per coat.”**\n\nThey ask, “Does that mean one gallon is guaranteed to finish my walls, even if they need two coats?”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Read **area + paint quantity + application basis** before explaining a coverage number."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "BEHR",
+          "title": "How Much Interior Paint to Buy",
+          "url": "https://www.behr.com/how-to/interior/determine-how-much-interior-paint-to-buy",
+          "supports": "one-coat surface coverage and factors that may require additional paint or coats.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Sherwin-Williams",
+          "title": "Paint Calculator",
+          "url": "https://www.sherwin-williams.com/homeowners/color/color-tools/paint-calculator",
+          "supports": "approximate estimates and variation with application method and surface condition.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Manufacturer technical data sheet",
+          "title": "Magnolia Home Interior Matte Paint",
+          "url": "https://www.kilz.com/binaries/content/assets/magnolia/pdf/tds/tds-premiuim-interior-matte-paint.pdf",
+          "supports": "“Coverage Rate”: texture, porosity, and application method as coverage factors. Used for these general principles, not as a current specification for a store’s product.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 4",
+          "publisher": "Sherwin-Williams",
+          "title": "How to Fix Poor Hiding",
+          "url": "https://ltx-www.sherwin-williams.com/en-us/project-center/maintenance-repair/how-to-fix-poor-hiding",
+          "supports": "hiding as concealment of the underlying color or surface.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "keywords": [
+        "paint coverage",
+        "spread rate",
+        "square feet",
+        "gallon",
+        "coat",
+        "porosity",
+        "texture"
+      ],
+      "relevant_departments": [
+        "Paint",
+        "decorating",
+        "surface care"
+      ],
+      "estimated_minutes": 5,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "9ae3aae9-e747-5eac-a014-9245073a7d82",
+        "id": "CD-0011-Q01",
+        "position": 1,
+        "prompt": "Which response best explains the statement?",
+        "options": [
+          "Yes—the coverage range includes every coat needed to finish that area.",
+          "No—the rate applies to each coat; additional coats require additional paint, and actual coverage depends on conditions.",
+          "Yes—300 square feet is the lower number, so surface conditions cannot affect the quantity.",
+          "No—the coverage statement measures how well the paint hides the old color, rather than the area it paints."
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "9ae3aae9-e747-5eac-a014-9245073a7d82",
+        "question_id": "CD-0011-Q01",
+        "correct_option": 1,
+        "explanation": "The scenario explicitly states coverage per gallon, per coat. It does not include all coats required for the finished project or guarantee a particular result. Surface texture, porosity, and application method can affect actual requirements. Coverage and hiding describe different things.",
+        "teaching_reference": "Section 3, “Learn it,” reading-details table, one-coat explanation, and coverage factors."
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0011",
+        "Title": "Read a Paint Coverage Statement",
+        "Academy": "Paint & Surface Care",
+        "Skill level": "Foundations",
+        "Relevant departments": "Paint; decorating; surface care",
+        "Estimated completion time": "5 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "paint coverage, spread rate, square feet, gallon, coat, porosity, texture",
+        "Version": "0.2.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-22",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Explain what a paint coverage statement means and identify conditions that can change actual coverage."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "A customer may read a coverage number as a promise that one container will finish the project. Understanding the statement helps you explain what the number includes before discussing how much paint to buy."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**A coverage statement describes how much surface a stated quantity of paint can cover under specified conditions.** It may also be called the **spread rate**.\n\nFor example, a label might read **“Coverage: 300–400 square feet per gallon, per coat.”** This means one gallon is estimated to cover that much surface with one coat under the stated conditions. Look for the area, paint quantity, and any wording such as **“per coat.”**\n\n*This is an illustrative example; check the actual product’s coverage statement.*\n\nRead these details together:\n\n| Detail | What to check |\n|---|---|\n| **Surface area** | Is coverage stated in square feet or square meters? |\n| **Paint quantity** | Is the rate per gallon, per liter, or for the entire container? |\n| **Application basis** | Does it specify one coat, a recommended film thickness, or other conditions? |\n\n**One coat means one application over the surface.** A statement of coverage per coat does not mean that one coat will produce the finished result the customer needs. Manufacturer guidance distinguishes surface coverage from the additional paint that may be needed for more coats. [Source 1]\n\nActual coverage can change with:\n\n- **Texture:** Rough or textured surfaces can require more paint.\n- **Porosity:** Absorbent surfaces can take up more paint.\n- **Application method:** Brushing, rolling, and spraying can produce different product requirements.\n\nManufacturer coverage guidance identifies surface conditions and application method as factors affecting paint quantity. [Sources 2 and 3]\n\n**Recommended action:** Read the exact product’s label or technical data sheet. Explain the stated quantity, area, and application basis before treating the figure as a starting point for an estimate.\n\n**Common mistake:** Confusing **coverage** with **hiding**. Coverage concerns the area painted at the specified application. Hiding concerns how well the dried paint conceals the surface or color underneath. A surface can be painted without the previous color being fully hidden. [Source 4]\n\n**When to verify or seek help:** Check product instructions when coat requirements, surface preparation, or the coverage basis are unclear. Ask a knowledgeable coworker or manufacturer representative rather than promising the highest stated coverage."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer’s project has 300 square feet of wall surface. Their selected paint’s label states **“Coverage: 300–400 square feet per gallon, per coat.”**\n\nThey ask, “Does that mean one gallon is guaranteed to finish my walls, even if they need two coats?”"
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0011-Q01**\n\nWhich response best explains the statement?\n\nA. Yes—the coverage range includes every coat needed to finish that area.\nB. No—the rate applies to each coat; additional coats require additional paint, and actual coverage depends on conditions.\nC. Yes—300 square feet is the lower number, so surface conditions cannot affect the quantity.\nD. No—the coverage statement measures how well the paint hides the old color, rather than the area it paints."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Read **area + paint quantity + application basis** before explaining a coverage number."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0011-Q01",
+          "wording": "Which response best explains the statement?",
+          "options": {
+            "A": "Yes—the coverage range includes every coat needed to finish that area.",
+            "B": "No—the rate applies to each coat; additional coats require additional paint, and actual coverage depends on conditions.",
+            "C": "Yes—300 square feet is the lower number, so surface conditions cannot affect the quantity.",
+            "D": "No—the coverage statement measures how well the paint hides the old color, rather than the area it paints."
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0011-Q01",
+          "correct_answer": "B",
+          "explanation": "The scenario explicitly states coverage per gallon, per coat. It does not include all coats required for the finished project or guarantee a particular result. Surface texture, porosity, and application method can affect actual requirements. Coverage and hiding describe different things.",
+          "teaching_reference": "Section 3, “Learn it,” reading-details table, one-coat explanation, and coverage factors."
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "Answer key — separate from employee-facing content",
+          "content_markdown": "- **Question ID:** CD-0011-Q01\n- **Correct answer:** B. No—the rate applies to each coat; additional coats require additional paint, and actual coverage depends on conditions.\n- **Explanation:** The scenario explicitly states coverage per gallon, per coat. It does not include all coats required for the finished project or guarantee a particular result. Surface texture, porosity, and application method can affect actual requirements. Coverage and hiding describe different things.\n- **Teaching reference:** Section 3, “Learn it,” reading-details table, one-coat explanation, and coverage factors."
+        },
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created sample coverage statement with labels identifying area, quantity, and “per coat.” Mark it “Illustrative example—not a product specification.”\n\n**Accessibility description for proposed media:** “A fictional coverage statement reads ‘300–400 square feet per gallon, per coat.’ Separate labels identify the surface-area range, paint quantity, and one-coat basis.” Provide all wording as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] BEHR, [How Much Interior Paint to Buy](https://www.behr.com/how-to/interior/determine-how-much-interior-paint-to-buy): one-coat surface coverage and factors that may require additional paint or coats.\n- [Source 2] Sherwin-Williams, [Paint Calculator](https://www.sherwin-williams.com/homeowners/color/color-tools/paint-calculator): approximate estimates and variation with application method and surface condition.\n- [Source 3] Manufacturer technical data sheet, [Magnolia Home Interior Matte Paint](https://www.kilz.com/binaries/content/assets/magnolia/pdf/tds/tds-premiuim-interior-matte-paint.pdf), “Coverage Rate”: texture, porosity, and application method as coverage factors. Used for these general principles, not as a current specification for a store’s product.\n- [Source 4] Sherwin-Williams, [How to Fix Poor Hiding](https://ltx-www.sherwin-williams.com/en-us/project-center/maintenance-repair/how-to-fix-poor-hiding): hiding as concealment of the underlying color or surface.\n\n**Verification needs:** The scenario’s coverage range is fictional and explicitly stated per coat. Verify the exact current label or technical data sheet before substituting a real product. Do not assume every manufacturer expresses coverage on the same basis.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "How do the paint products we carry state coverage, and where can we find any conditions attached to those figures?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a paint subject-matter reviewer check the coverage-versus-hiding explanation.\n- Confirm where participating stores can access current product data sheets.\n- Verify any real product example before adding it.\n- If media is added, check labels, accessibility descriptions, and usage rights.\n- Keep project-area calculations and purchase-quantity estimates for Application modules."
+        }
+      ],
+      "actual_media_assets": [],
+      "complete_markdown": "# CD-0011 — Read a Paint Coverage Statement\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0011 |\n| Title | Read a Paint Coverage Statement |\n| Academy | Paint & Surface Care |\n| Skill level | Foundations |\n| Relevant departments | Paint; decorating; surface care |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | paint coverage, spread rate, square feet, gallon, coat, porosity, texture |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nExplain what a paint coverage statement means and identify conditions that can change actual coverage.\n\n### 2. Why it matters\n\nA customer may read a coverage number as a promise that one container will finish the project. Understanding the statement helps you explain what the number includes before discussing how much paint to buy.\n\n### 3. Learn it\n\n**A coverage statement describes how much surface a stated quantity of paint can cover under specified conditions.** It may also be called the **spread rate**.\n\nFor example, a label might read **“Coverage: 300–400 square feet per gallon, per coat.”** This means one gallon is estimated to cover that much surface with one coat under the stated conditions. Look for the area, paint quantity, and any wording such as **“per coat.”**\n\n*This is an illustrative example; check the actual product’s coverage statement.*\n\nRead these details together:\n\n| Detail | What to check |\n|---|---|\n| **Surface area** | Is coverage stated in square feet or square meters? |\n| **Paint quantity** | Is the rate per gallon, per liter, or for the entire container? |\n| **Application basis** | Does it specify one coat, a recommended film thickness, or other conditions? |\n\n**One coat means one application over the surface.** A statement of coverage per coat does not mean that one coat will produce the finished result the customer needs. Manufacturer guidance distinguishes surface coverage from the additional paint that may be needed for more coats. [Source 1]\n\nActual coverage can change with:\n\n- **Texture:** Rough or textured surfaces can require more paint.\n- **Porosity:** Absorbent surfaces can take up more paint.\n- **Application method:** Brushing, rolling, and spraying can produce different product requirements.\n\nManufacturer coverage guidance identifies surface conditions and application method as factors affecting paint quantity. [Sources 2 and 3]\n\n**Recommended action:** Read the exact product’s label or technical data sheet. Explain the stated quantity, area, and application basis before treating the figure as a starting point for an estimate.\n\n**Common mistake:** Confusing **coverage** with **hiding**. Coverage concerns the area painted at the specified application. Hiding concerns how well the dried paint conceals the surface or color underneath. A surface can be painted without the previous color being fully hidden. [Source 4]\n\n**When to verify or seek help:** Check product instructions when coat requirements, surface preparation, or the coverage basis are unclear. Ask a knowledgeable coworker or manufacturer representative rather than promising the highest stated coverage.\n\n### 4. Customer scenario\n\nA customer’s project has 300 square feet of wall surface. Their selected paint’s label states **“Coverage: 300–400 square feet per gallon, per coat.”**\n\nThey ask, “Does that mean one gallon is guaranteed to finish my walls, even if they need two coats?”\n\n### 5. Quick check\n\n**Question ID: CD-0011-Q01**\n\nWhich response best explains the statement?\n\nA. Yes—the coverage range includes every coat needed to finish that area.\nB. No—the rate applies to each coat; additional coats require additional paint, and actual coverage depends on conditions.\nC. Yes—300 square feet is the lower number, so surface conditions cannot affect the quantity.\nD. No—the coverage statement measures how well the paint hides the old color, rather than the area it paints.\n\n### 6. Take it to the floor\n\nRead **area + paint quantity + application basis** before explaining a coverage number.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0011-Q01\n- **Correct answer:** B. No—the rate applies to each coat; additional coats require additional paint, and actual coverage depends on conditions.\n- **Explanation:** The scenario explicitly states coverage per gallon, per coat. It does not include all coats required for the finished project or guarantee a particular result. Surface texture, porosity, and application method can affect actual requirements. Coverage and hiding describe different things.\n- **Teaching reference:** Section 3, “Learn it,” reading-details table, one-coat explanation, and coverage factors.\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created sample coverage statement with labels identifying area, quantity, and “per coat.” Mark it “Illustrative example—not a product specification.”\n\n**Accessibility description for proposed media:** “A fictional coverage statement reads ‘300–400 square feet per gallon, per coat.’ Separate labels identify the surface-area range, paint quantity, and one-coat basis.” Provide all wording as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] BEHR, [How Much Interior Paint to Buy](https://www.behr.com/how-to/interior/determine-how-much-interior-paint-to-buy): one-coat surface coverage and factors that may require additional paint or coats.\n- [Source 2] Sherwin-Williams, [Paint Calculator](https://www.sherwin-williams.com/homeowners/color/color-tools/paint-calculator): approximate estimates and variation with application method and surface condition.\n- [Source 3] Manufacturer technical data sheet, [Magnolia Home Interior Matte Paint](https://www.kilz.com/binaries/content/assets/magnolia/pdf/tds/tds-premiuim-interior-matte-paint.pdf), “Coverage Rate”: texture, porosity, and application method as coverage factors. Used for these general principles, not as a current specification for a store’s product.\n- [Source 4] Sherwin-Williams, [How to Fix Poor Hiding](https://ltx-www.sherwin-williams.com/en-us/project-center/maintenance-repair/how-to-fix-poor-hiding): hiding as concealment of the underlying color or surface.\n\n**Verification needs:** The scenario’s coverage range is fictional and explicitly stated per coat. Verify the exact current label or technical data sheet before substituting a real product. Do not assume every manufacturer expresses coverage on the same basis.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nHow do the paint products we carry state coverage, and where can we find any conditions attached to those figures?\n\n### 9. Review needs\n\n- Have a paint subject-matter reviewer check the coverage-versus-hiding explanation.\n- Confirm where participating stores can access current product data sheets.\n- Verify any real product example before adding it.\n- If media is added, check labels, accessibility descriptions, and usage rights.\n- Keep project-area calculations and purchase-quantity estimates for Application modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "c184c565-89e3-5ad7-8c75-8ebcfad81d4e",
+      "code": "CD-0012",
+      "version": "0.2.0",
+      "title": "Supply Line or Drain Line?",
+      "academy": "Plumbing",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish water-supply components from drain components by their basic function."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "“Pipe under the sink” can describe several different parts. Identifying whether a component brings water to the fixture or carries used water away helps you start in the right product category."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Start with what the component does: brings water in or carries used water away.**\n\nAt a typical household sink, you will find both systems beneath the same basin.\n\n| System | Basic function | Common under-sink examples |\n|---|---|---|\n| **Water supply** | Delivers water to the faucet | Shut-off valves and faucet supply connectors |\n| **Drainage** | Carries used water from the basin toward the building’s drain system | Drain tailpiece, P-trap, and connecting drain tubing |\n\nA **faucet supply connector** links the water supply to the faucet, often through a shut-off valve. Oatey describes its faucet supply lines by that connection and function. [Source 1]\n\nA **P-trap** belongs to the drainage side. It is part of the path beneath the sink, not a connector supplying water to the faucet. Manufacturers identify sink traps as drain components. [Sources 2 and 3]\n\n**Recommended action:** Ask, “Does that part connect to the faucet or to the drain opening beneath the basin?” A clear photo showing both ends and the surrounding connections can help establish its role.\n\n**Common mistake:** Identifying a part only by color, flexibility, or location. Both systems occupy the same cabinet, and materials vary. Use the component’s function and connections rather than appearance alone.\n\nCalling something a supply or drain component identifies its category—not the exact replacement. Size, material, connection type, and intended use still need checking.\n\n**When to verify or seek help:** Compare the specific product’s documentation with the existing component before recommending a replacement. If a photo does not establish where a part connects, ask for more information or involve a knowledgeable coworker. Refer unresolved plumbing problems to a qualified plumber rather than guessing. This lesson does not instruct customers to disconnect or test plumbing."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer places a curved plastic plumbing assembly on the counter and says, “I need another one of these. It came from under my bathroom sink.”\n\nWhen you ask where it connected, they explain, “It was attached to the pipe coming down from the drain opening in the bottom of the sink.”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Ask **“water to the faucet or used water from the basin?”** Then verify the exact replacement."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Oatey",
+          "title": "Faucet Supply Lines",
+          "url": "https://www.oatey.com/products/P_038753400426/oatey-faucet-supply-lines",
+          "supports": "Connector function between the shut-off valve and faucet.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Oatey",
+          "title": "1¼-inch P-Traps",
+          "url": "https://www.oatey.com/products/p_038753005775/oatey-114-in-ptraps",
+          "supports": "Sink drain application.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Oatey/Dearborn",
+          "title": "Space-Saving Sink Drain Kits",
+          "url": "https://www.oatey.com/space-saving-sink-drain-kits",
+          "supports": "Under-sink drainage assembly and P-trap context.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "keywords": [
+        "supply line",
+        "drain line",
+        "faucet",
+        "shut-off valve",
+        "sink",
+        "wastewater",
+        "P-trap"
+      ],
+      "relevant_departments": [
+        "Plumbing",
+        "kitchen and bath",
+        "repair parts"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "c184c565-89e3-5ad7-8c75-8ebcfad81d4e",
+        "id": "CD-0012-Q01",
+        "position": 1,
+        "prompt": "Which product category should you investigate first?",
+        "options": [
+          "Faucet supply connectors that bring water to the faucet",
+          "Sink drain components that carry used water away from the basin",
+          "Shut-off valves that control water going to the faucet",
+          "Faucet repair parts that control water coming from the spout"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "c184c565-89e3-5ad7-8c75-8ebcfad81d4e",
+        "question_id": "CD-0012-Q01",
+        "correct_option": 1,
+        "explanation": "The customer describes an assembly connected beneath the basin’s drain opening, which places it on the drainage side. Its curved plastic appearance is a clue, but the connection and function establish the category. The exact replacement still needs verification.",
+        "teaching_reference": "Section 3, comparison table, “Recommended action,” and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0012",
+        "Title": "Supply Line or Drain Line?",
+        "Academy": "Plumbing",
+        "Skill level": "Foundations",
+        "Relevant departments": "Plumbing; kitchen and bath; repair parts",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "supply line, drain line, faucet, shut-off valve, sink, wastewater, P-trap",
+        "Version": "0.2.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-22",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish water-supply components from drain components by their basic function."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "“Pipe under the sink” can describe several different parts. Identifying whether a component brings water to the fixture or carries used water away helps you start in the right product category."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Start with what the component does: brings water in or carries used water away.**\n\nAt a typical household sink, you will find both systems beneath the same basin.\n\n| System | Basic function | Common under-sink examples |\n|---|---|---|\n| **Water supply** | Delivers water to the faucet | Shut-off valves and faucet supply connectors |\n| **Drainage** | Carries used water from the basin toward the building’s drain system | Drain tailpiece, P-trap, and connecting drain tubing |\n\nA **faucet supply connector** links the water supply to the faucet, often through a shut-off valve. Oatey describes its faucet supply lines by that connection and function. [Source 1]\n\nA **P-trap** belongs to the drainage side. It is part of the path beneath the sink, not a connector supplying water to the faucet. Manufacturers identify sink traps as drain components. [Sources 2 and 3]\n\n**Recommended action:** Ask, “Does that part connect to the faucet or to the drain opening beneath the basin?” A clear photo showing both ends and the surrounding connections can help establish its role.\n\n**Common mistake:** Identifying a part only by color, flexibility, or location. Both systems occupy the same cabinet, and materials vary. Use the component’s function and connections rather than appearance alone.\n\nCalling something a supply or drain component identifies its category—not the exact replacement. Size, material, connection type, and intended use still need checking.\n\n**When to verify or seek help:** Compare the specific product’s documentation with the existing component before recommending a replacement. If a photo does not establish where a part connects, ask for more information or involve a knowledgeable coworker. Refer unresolved plumbing problems to a qualified plumber rather than guessing. This lesson does not instruct customers to disconnect or test plumbing."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer places a curved plastic plumbing assembly on the counter and says, “I need another one of these. It came from under my bathroom sink.”\n\nWhen you ask where it connected, they explain, “It was attached to the pipe coming down from the drain opening in the bottom of the sink.”"
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0012-Q01**\n\nWhich product category should you investigate first?\n\nA. Faucet supply connectors that bring water to the faucet\nB. Sink drain components that carry used water away from the basin\nC. Shut-off valves that control water going to the faucet\nD. Faucet repair parts that control water coming from the spout"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Ask **“water to the faucet or used water from the basin?”** Then verify the exact replacement."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0012-Q01",
+          "wording": "Which product category should you investigate first?",
+          "options": {
+            "A": "Faucet supply connectors that bring water to the faucet",
+            "B": "Sink drain components that carry used water away from the basin",
+            "C": "Shut-off valves that control water going to the faucet",
+            "D": "Faucet repair parts that control water coming from the spout"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0012-Q01",
+          "correct_answer": "B",
+          "explanation": "The customer describes an assembly connected beneath the basin’s drain opening, which places it on the drainage side. Its curved plastic appearance is a clue, but the connection and function establish the category. The exact replacement still needs verification.",
+          "teaching_reference": "Section 3, comparison table, “Recommended action,” and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created diagram of a typical household sink, with separate labels for faucet supply connectors and the drain assembly.\n\n**Accessibility description for proposed media:** “Two supply connectors run from shut-off valves to the faucet. A separate drain assembly runs from the basin’s drain opening through a curved P-trap toward the wall.” Provide the function of each system as readable text; do not rely on color alone.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Oatey, [Faucet Supply Lines](https://www.oatey.com/products/P_038753400426/oatey-faucet-supply-lines): Connector function between the shut-off valve and faucet.\n- [Source 2] Oatey, [1¼-inch P-Traps](https://www.oatey.com/products/p_038753005775/oatey-114-in-ptraps): Sink drain application.\n- [Source 3] Oatey/Dearborn, [Space-Saving Sink Drain Kits](https://www.oatey.com/space-saving-sink-drain-kits): Under-sink drainage assembly and P-trap context.\n\n**Verification needs:** The lesson describes a typical household sink, not every plumbing arrangement. Verify any specific replacement’s dimensions, connections, materials, and approved use. No product interchangeability is asserted.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Which shelf labels help customers distinguish faucet supply connectors from sink drain components in our store?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a plumbing subject-matter reviewer check component terminology.\n- Confirm product-category names against participating stores’ assortments.\n- If media is added, verify the depicted connections, accessibility description, and usage rights.\n- Keep leak diagnosis, disconnection, installation, and replacement selection for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Oatey",
+          "title": "Faucet Supply Lines",
+          "url": "https://www.oatey.com/products/P_038753400426/oatey-faucet-supply-lines",
+          "supports": "Connector function between the shut-off valve and faucet.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Oatey",
+          "title": "1¼-inch P-Traps",
+          "url": "https://www.oatey.com/products/p_038753005775/oatey-114-in-ptraps",
+          "supports": "Sink drain application.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Oatey/Dearborn",
+          "title": "Space-Saving Sink Drain Kits",
+          "url": "https://www.oatey.com/space-saving-sink-drain-kits",
+          "supports": "Under-sink drainage assembly and P-trap context.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a plumbing subject-matter reviewer check component terminology.",
+        "Confirm product-category names against participating stores’ assortments.",
+        "If media is added, verify the depicted connections, accessibility description, and usage rights.",
+        "Keep leak diagnosis, disconnection, installation, and replacement selection for separate modules."
+      ],
+      "complete_markdown": "# CD-0012 — Supply Line or Drain Line?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0012 |\n| Title | Supply Line or Drain Line? |\n| Academy | Plumbing |\n| Skill level | Foundations |\n| Relevant departments | Plumbing; kitchen and bath; repair parts |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | supply line, drain line, faucet, shut-off valve, sink, wastewater, P-trap |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish water-supply components from drain components by their basic function.\n\n### 2. Why it matters\n\n“Pipe under the sink” can describe several different parts. Identifying whether a component brings water to the fixture or carries used water away helps you start in the right product category.\n\n### 3. Learn it\n\n**Start with what the component does: brings water in or carries used water away.**\n\nAt a typical household sink, you will find both systems beneath the same basin.\n\n| System | Basic function | Common under-sink examples |\n|---|---|---|\n| **Water supply** | Delivers water to the faucet | Shut-off valves and faucet supply connectors |\n| **Drainage** | Carries used water from the basin toward the building’s drain system | Drain tailpiece, P-trap, and connecting drain tubing |\n\nA **faucet supply connector** links the water supply to the faucet, often through a shut-off valve. Oatey describes its faucet supply lines by that connection and function. [Source 1]\n\nA **P-trap** belongs to the drainage side. It is part of the path beneath the sink, not a connector supplying water to the faucet. Manufacturers identify sink traps as drain components. [Sources 2 and 3]\n\n**Recommended action:** Ask, “Does that part connect to the faucet or to the drain opening beneath the basin?” A clear photo showing both ends and the surrounding connections can help establish its role.\n\n**Common mistake:** Identifying a part only by color, flexibility, or location. Both systems occupy the same cabinet, and materials vary. Use the component’s function and connections rather than appearance alone.\n\nCalling something a supply or drain component identifies its category—not the exact replacement. Size, material, connection type, and intended use still need checking.\n\n**When to verify or seek help:** Compare the specific product’s documentation with the existing component before recommending a replacement. If a photo does not establish where a part connects, ask for more information or involve a knowledgeable coworker. Refer unresolved plumbing problems to a qualified plumber rather than guessing. This lesson does not instruct customers to disconnect or test plumbing.\n\n### 4. Customer scenario\n\nA customer places a curved plastic plumbing assembly on the counter and says, “I need another one of these. It came from under my bathroom sink.”\n\nWhen you ask where it connected, they explain, “It was attached to the pipe coming down from the drain opening in the bottom of the sink.”\n\n### 5. Quick check\n\n**Question ID: CD-0012-Q01**\n\nWhich product category should you investigate first?\n\nA. Faucet supply connectors that bring water to the faucet\nB. Sink drain components that carry used water away from the basin\nC. Shut-off valves that control water going to the faucet\nD. Faucet repair parts that control water coming from the spout\n\n### 6. Take it to the floor\n\nAsk **“water to the faucet or used water from the basin?”** Then verify the exact replacement.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0012-Q01\n- **Correct answer:** B. Sink drain components that carry used water away from the basin\n- **Explanation:** The customer describes an assembly connected beneath the basin’s drain opening, which places it on the drainage side. Its curved plastic appearance is a clue, but the connection and function establish the category. The exact replacement still needs verification.\n- **Teaching reference:** Section 3, comparison table, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created diagram of a typical household sink, with separate labels for faucet supply connectors and the drain assembly.\n\n**Accessibility description for proposed media:** “Two supply connectors run from shut-off valves to the faucet. A separate drain assembly runs from the basin’s drain opening through a curved P-trap toward the wall.” Provide the function of each system as readable text; do not rely on color alone.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Oatey, [Faucet Supply Lines](https://www.oatey.com/products/P_038753400426/oatey-faucet-supply-lines): Connector function between the shut-off valve and faucet.\n- [Source 2] Oatey, [1¼-inch P-Traps](https://www.oatey.com/products/p_038753005775/oatey-114-in-ptraps): Sink drain application.\n- [Source 3] Oatey/Dearborn, [Space-Saving Sink Drain Kits](https://www.oatey.com/space-saving-sink-drain-kits): Under-sink drainage assembly and P-trap context.\n\n**Verification needs:** The lesson describes a typical household sink, not every plumbing arrangement. Verify any specific replacement’s dimensions, connections, materials, and approved use. No product interchangeability is asserted.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhich shelf labels help customers distinguish faucet supply connectors from sink drain components in our store?\n\n### 9. Review needs\n\n- Have a plumbing subject-matter reviewer check component terminology.\n- Confirm product-category names against participating stores’ assortments.\n- If media is added, verify the depicted connections, accessibility description, and usage rights.\n- Keep leak diagnosis, disconnection, installation, and replacement selection for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "9a575dc0-ce8e-54a0-a9c6-98a5b01e959d",
+      "code": "CD-0013",
+      "version": "0.1.0",
+      "title": "Lumens or Watts?",
+      "academy": "Electrical",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify which light-bulb label measurement describes light output and which describes electrical power use."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers often ask for a bulb by its familiar wattage, such as “a 60-watt bulb.” With different lighting technologies, wattage alone does not reliably tell you how much light a bulb produces."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Use lumens to compare light output. Use actual watts to compare electrical power use.**\n\nFor example, an illustrative package might show **“Brightness: 800 lumens”** and **“Energy Used: 9 watts.”** These numbers describe different things.\n\n| Label information | What it tells you |\n|---|---|\n| **Lumens** | How much visible light the bulb produces—the brightness measure used on packaging |\n| **Actual watts** | The electrical power the bulb uses while operating |\n| **“60-watt replacement” or similar wording** | A comparison with a traditional incandescent bulb, rather than the replacement bulb’s actual wattage |\n\nThe FTC explains that an LED can produce approximately the same light output as a traditional incandescent bulb while using fewer watts. Check the actual package rather than assuming every replacement has identical specifications. [Source 1]\n\n**Recommended action:** When a customer asks for a brighter bulb, find the **brightness in lumens** on the package or Lighting Facts label. Compare that figure with the bulb they are replacing. More lumens means greater total light output; it does not guarantee identical lighting in every fixture. [Source 2]\n\n**Common mistake:** Comparing an LED’s actual wattage with an incandescent replacement claim as though both numbers describe brightness. A package saying “60-watt replacement” may list a much lower actual wattage.\n\n**When to verify or seek help:** Brightness is only one part of choosing a bulb. Before recommending a specific replacement, check its base, shape, voltage, and suitability for the fixture and controls against manufacturer information. If compatibility is unclear, ask a knowledgeable coworker or manufacturer representative.\n\nDo not treat the replacement-equivalent number as the bulb’s actual electrical rating."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings two bulb packages to the counter:\n\n- **Bulb A:** 800 lumens; 9 watts.\n- **Bulb B:** 1,100 lumens; 11 watts.\n\nThey ask, “Which one produces more light?”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "For **“How much light?”**, look at lumens. For **“How much electrical power?”**, look at actual watts."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Federal Trade Commission",
+          "title": "Shopping for Light Bulbs",
+          "url": "https://consumer.ftc.gov/articles/shopping-light-bulbs",
+          "supports": "Comparing brightness using lumens and distinguishing actual wattage from traditional bulb comparisons.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "ENERGY STAR",
+          "title": "Learn About Brightness",
+          "url": "https://www.energystar.gov/products/learn-about-brightness",
+          "supports": "Lumens as light output and replacement terminology.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Federal Trade Commission",
+          "title": "Lighting Facts Label: Questions and Answers",
+          "url": "https://www.ftc.gov/business-guidance/resources/ftc-lighting-facts-label-questions-answers-manufacturers",
+          "supports": "Brightness and wattage information on labeling.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "keywords": [
+        "light bulb",
+        "lumens",
+        "watts",
+        "brightness",
+        "power",
+        "Lighting Facts",
+        "watt equivalent"
+      ],
+      "relevant_departments": [
+        "Electrical",
+        "lighting"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "9a575dc0-ce8e-54a0-a9c6-98a5b01e959d",
+        "id": "CD-0013-Q01",
+        "position": 1,
+        "prompt": "Which answer uses the correct label information?",
+        "options": [
+          "Bulb A, because its lower wattage means it produces more light.",
+          "They produce the same amount of light because both are LEDs.",
+          "Bulb B, because its higher wattage is the brightness measurement.",
+          "Bulb B, because 1,100 lumens is more light output than 800 lumens."
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "9a575dc0-ce8e-54a0-a9c6-98a5b01e959d",
+        "question_id": "CD-0013-Q01",
+        "correct_option": 3,
+        "explanation": "Lumens describe light output. Bulb B has the higher lumen rating, so it produces more total light. Watts describe electrical power use; selecting the correct bulb for the wrong reason does not demonstrate the skill.",
+        "teaching_reference": "Section 3, “Learn it,” opening rule, label-information table, and “Recommended action.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0013",
+        "Title": "Lumens or Watts?",
+        "Academy": "Electrical",
+        "Skill level": "Foundations",
+        "Relevant departments": "Electrical; lighting",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "light bulb, lumens, watts, brightness, power, Lighting Facts, watt equivalent",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-22",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify which light-bulb label measurement describes light output and which describes electrical power use."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers often ask for a bulb by its familiar wattage, such as “a 60-watt bulb.” With different lighting technologies, wattage alone does not reliably tell you how much light a bulb produces."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Use lumens to compare light output. Use actual watts to compare electrical power use.**\n\nFor example, an illustrative package might show **“Brightness: 800 lumens”** and **“Energy Used: 9 watts.”** These numbers describe different things.\n\n| Label information | What it tells you |\n|---|---|\n| **Lumens** | How much visible light the bulb produces—the brightness measure used on packaging |\n| **Actual watts** | The electrical power the bulb uses while operating |\n| **“60-watt replacement” or similar wording** | A comparison with a traditional incandescent bulb, rather than the replacement bulb’s actual wattage |\n\nThe FTC explains that an LED can produce approximately the same light output as a traditional incandescent bulb while using fewer watts. Check the actual package rather than assuming every replacement has identical specifications. [Source 1]\n\n**Recommended action:** When a customer asks for a brighter bulb, find the **brightness in lumens** on the package or Lighting Facts label. Compare that figure with the bulb they are replacing. More lumens means greater total light output; it does not guarantee identical lighting in every fixture. [Source 2]\n\n**Common mistake:** Comparing an LED’s actual wattage with an incandescent replacement claim as though both numbers describe brightness. A package saying “60-watt replacement” may list a much lower actual wattage.\n\n**When to verify or seek help:** Brightness is only one part of choosing a bulb. Before recommending a specific replacement, check its base, shape, voltage, and suitability for the fixture and controls against manufacturer information. If compatibility is unclear, ask a knowledgeable coworker or manufacturer representative.\n\nDo not treat the replacement-equivalent number as the bulb’s actual electrical rating."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings two bulb packages to the counter:\n\n- **Bulb A:** 800 lumens; 9 watts.\n- **Bulb B:** 1,100 lumens; 11 watts.\n\nThey ask, “Which one produces more light?”"
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0013-Q01**\n\nWhich answer uses the correct label information?\n\nA. Bulb A, because its lower wattage means it produces more light.\nB. They produce the same amount of light because both are LEDs.\nC. Bulb B, because its higher wattage is the brightness measurement.\nD. Bulb B, because 1,100 lumens is more light output than 800 lumens."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "For **“How much light?”**, look at lumens. For **“How much electrical power?”**, look at actual watts."
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0013-Q01",
+          "wording": "Which answer uses the correct label information?",
+          "options": {
+            "A": "Bulb A, because its lower wattage means it produces more light.",
+            "B": "They produce the same amount of light because both are LEDs.",
+            "C": "Bulb B, because its higher wattage is the brightness measurement.",
+            "D": "Bulb B, because 1,100 lumens is more light output than 800 lumens."
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0013-Q01",
+          "correct_answer": "D",
+          "explanation": "Lumens describe light output. Bulb B has the higher lumen rating, so it produces more total light. Watts describe electrical power use; selecting the correct bulb for the wrong reason does not demonstrate the skill.",
+          "teaching_reference": "Section 3, “Learn it,” opening rule, label-information table, and “Recommended action.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison of two fictional Lighting Facts-style panels. Clearly mark them “Illustrative examples—not product specifications.”\n\n**Accessibility description for proposed media:** “Two fictional bulb labels appear side by side. Bulb A lists 800 lumens and 9 watts. Bulb B lists 1,100 lumens and 11 watts. Labels distinguish brightness from electrical power use.” Include all information as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Federal Trade Commission, [Shopping for Light Bulbs](https://consumer.ftc.gov/articles/shopping-light-bulbs): Comparing brightness using lumens and distinguishing actual wattage from traditional bulb comparisons.\n- [Source 2] ENERGY STAR, [Learn About Brightness](https://www.energystar.gov/products/learn-about-brightness): Lumens as light output and replacement terminology.\n- [Source 3] Federal Trade Commission, [Lighting Facts Label: Questions and Answers](https://www.ftc.gov/business-guidance/resources/ftc-lighting-facts-label-questions-answers-manufacturers): Brightness and wattage information on labeling.\n\n**Verification needs:** The two scenario labels are fictional. Verify all specifications and compatibility claims before substituting actual products. No fixture compatibility or energy-cost estimate is established by this comparison.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Where do our bulb packages show actual wattage, replacement-equivalent wording, and lumens?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a lighting subject-matter reviewer check terminology and compatibility wording.\n- Verify any actual product examples before adding them.\n- If media is added, check labels, accessibility descriptions, and usage rights.\n- Keep color temperature, dimmer compatibility, beam angle, and fixture ratings for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Federal Trade Commission",
+          "title": "Shopping for Light Bulbs",
+          "url": "https://consumer.ftc.gov/articles/shopping-light-bulbs",
+          "supports": "Comparing brightness using lumens and distinguishing actual wattage from traditional bulb comparisons.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "ENERGY STAR",
+          "title": "Learn About Brightness",
+          "url": "https://www.energystar.gov/products/learn-about-brightness",
+          "supports": "Lumens as light output and replacement terminology.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Federal Trade Commission",
+          "title": "Lighting Facts Label: Questions and Answers",
+          "url": "https://www.ftc.gov/business-guidance/resources/ftc-lighting-facts-label-questions-answers-manufacturers",
+          "supports": "Brightness and wattage information on labeling.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a lighting subject-matter reviewer check terminology and compatibility wording.",
+        "Verify any actual product examples before adding them.",
+        "If media is added, check labels, accessibility descriptions, and usage rights.",
+        "Keep color temperature, dimmer compatibility, beam angle, and fixture ratings for separate modules."
+      ],
+      "complete_markdown": "# CD-0013 — Lumens or Watts?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0013 |\n| Title | Lumens or Watts? |\n| Academy | Electrical |\n| Skill level | Foundations |\n| Relevant departments | Electrical; lighting |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | light bulb, lumens, watts, brightness, power, Lighting Facts, watt equivalent |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nIdentify which light-bulb label measurement describes light output and which describes electrical power use.\n\n### 2. Why it matters\n\nCustomers often ask for a bulb by its familiar wattage, such as “a 60-watt bulb.” With different lighting technologies, wattage alone does not reliably tell you how much light a bulb produces.\n\n### 3. Learn it\n\n**Use lumens to compare light output. Use actual watts to compare electrical power use.**\n\nFor example, an illustrative package might show **“Brightness: 800 lumens”** and **“Energy Used: 9 watts.”** These numbers describe different things.\n\n| Label information | What it tells you |\n|---|---|\n| **Lumens** | How much visible light the bulb produces—the brightness measure used on packaging |\n| **Actual watts** | The electrical power the bulb uses while operating |\n| **“60-watt replacement” or similar wording** | A comparison with a traditional incandescent bulb, rather than the replacement bulb’s actual wattage |\n\nThe FTC explains that an LED can produce approximately the same light output as a traditional incandescent bulb while using fewer watts. Check the actual package rather than assuming every replacement has identical specifications. [Source 1]\n\n**Recommended action:** When a customer asks for a brighter bulb, find the **brightness in lumens** on the package or Lighting Facts label. Compare that figure with the bulb they are replacing. More lumens means greater total light output; it does not guarantee identical lighting in every fixture. [Source 2]\n\n**Common mistake:** Comparing an LED’s actual wattage with an incandescent replacement claim as though both numbers describe brightness. A package saying “60-watt replacement” may list a much lower actual wattage.\n\n**When to verify or seek help:** Brightness is only one part of choosing a bulb. Before recommending a specific replacement, check its base, shape, voltage, and suitability for the fixture and controls against manufacturer information. If compatibility is unclear, ask a knowledgeable coworker or manufacturer representative.\n\nDo not treat the replacement-equivalent number as the bulb’s actual electrical rating.\n\n### 4. Customer scenario\n\nA customer brings two bulb packages to the counter:\n\n- **Bulb A:** 800 lumens; 9 watts.\n- **Bulb B:** 1,100 lumens; 11 watts.\n\nThey ask, “Which one produces more light?”\n\n### 5. Quick check\n\n**Question ID: CD-0013-Q01**\n\nWhich answer uses the correct label information?\n\nA. Bulb A, because its lower wattage means it produces more light.\nB. They produce the same amount of light because both are LEDs.\nC. Bulb B, because its higher wattage is the brightness measurement.\nD. Bulb B, because 1,100 lumens is more light output than 800 lumens.\n\n### 6. Take it to the floor\n\nFor **“How much light?”**, look at lumens. For **“How much electrical power?”**, look at actual watts.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0013-Q01\n- **Correct answer:** D. Bulb B, because 1,100 lumens is more light output than 800 lumens.\n- **Explanation:** Lumens describe light output. Bulb B has the higher lumen rating, so it produces more total light. Watts describe electrical power use; selecting the correct bulb for the wrong reason does not demonstrate the skill.\n- **Teaching reference:** Section 3, “Learn it,” opening rule, label-information table, and “Recommended action.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison of two fictional Lighting Facts-style panels. Clearly mark them “Illustrative examples—not product specifications.”\n\n**Accessibility description for proposed media:** “Two fictional bulb labels appear side by side. Bulb A lists 800 lumens and 9 watts. Bulb B lists 1,100 lumens and 11 watts. Labels distinguish brightness from electrical power use.” Include all information as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Federal Trade Commission, [Shopping for Light Bulbs](https://consumer.ftc.gov/articles/shopping-light-bulbs): Comparing brightness using lumens and distinguishing actual wattage from traditional bulb comparisons.\n- [Source 2] ENERGY STAR, [Learn About Brightness](https://www.energystar.gov/products/learn-about-brightness): Lumens as light output and replacement terminology.\n- [Source 3] Federal Trade Commission, [Lighting Facts Label: Questions and Answers](https://www.ftc.gov/business-guidance/resources/ftc-lighting-facts-label-questions-answers-manufacturers): Brightness and wattage information on labeling.\n\n**Verification needs:** The two scenario labels are fictional. Verify all specifications and compatibility claims before substituting actual products. No fixture compatibility or energy-cost estimate is established by this comparison.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhere do our bulb packages show actual wattage, replacement-equivalent wording, and lumens?\n\n### 9. Review needs\n\n- Have a lighting subject-matter reviewer check terminology and compatibility wording.\n- Verify any actual product examples before adding them.\n- If media is added, check labels, accessibility descriptions, and usage rights.\n- Keep color temperature, dimmer compatibility, beam angle, and fixture ratings for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "1f0a9dbe-8400-55c4-a270-015646780d47",
+      "code": "CD-0014",
+      "version": "0.1.0",
+      "title": "Find the Filter’s Airflow Arrow",
+      "academy": "HVAC",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Explain what a filter’s airflow arrow indicates and identify the information needed to establish its correct direction."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers may find an arrow on a replacement filter without knowing which way it should face. Understanding the marking helps you explain its purpose without guessing about their equipment’s layout."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**An airflow arrow shows the intended direction of air traveling through the filter.** It does not automatically mean “up,” “down,” or “toward the room.”\n\nLook for an arrow marked **“Air Flow”** or similar wording on the filter’s frame. Manufacturer guidance directs users to align it with the system’s airflow. [Source 2]\n\nThe direction depends on the filter’s location:\n\n| Filter location | Direction to verify |\n|---|---|\n| At a typical furnace or air-handler return-side filter slot | Air travels through the filter toward the equipment’s blower. |\n| Behind a return-air grille in a wall or ceiling | Air travels from the room through the filter into the return duct. |\n\nFiltrete describes its arrow as pointing toward the blower. Guidance for a return-air grille specifies pointing the arrow into the duct. These describe the airflow path at different filter locations. [Sources 1 and 3]\n\n**Recommended action:** Ask, “Where is the filter located?” Then use the equipment instructions, filter instructions, and any clearly identified airflow marking at that location to establish the direction.\n\n**Common mistake:** Telling every customer to point the arrow upward—or copying the old filter’s orientation without checking it. The previous filter is a clue, not proof that it was installed correctly.\n\nDo not aim the arrow toward the furnace’s physical location elsewhere in the building. The arrow follows air **through the filter at its installation point**.\n\n**When to verify or seek help:** If the arrow is missing or the airflow path is unclear, check the exact filter and equipment documentation. Ask a knowledgeable coworker or refer the customer to an HVAC technician when the direction cannot be established. Avoid guessing from filter color or appearance.\n\nThis lesson explains the marking; equipment-specific access and replacement procedures still require the manufacturer’s instructions."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings in a new filter with an airflow arrow. Their filter fits behind a return-air grille in the hallway wall.\n\nThe equipment instructions confirm that air moves from the hallway through that filter into the duct. The customer asks which way the arrow should point."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Find the arrow, identify the filter location, and verify the airflow path.**"
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Filtrete/3M",
+          "title": "How to Install an Air Filter",
+          "url": "https://www.filtrete.com/3M/en_US/filtrete/about-us/how-to-install-an-air-filter/",
+          "supports": "Locating the airflow arrow and pointing it toward the blower.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Trane",
+          "title": "Home Air Conditioner Filter Replacement 101",
+          "url": "https://www.trane.com/residential/en/resources/troubleshooting/air-conditioners/air-conditioner-filter-replacement/",
+          "supports": "Aligning the arrow with airflow.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Pacific Northwest National Laboratory",
+          "title": "Replace Air Filter Located at Return Air Filter Grille",
+          "url": "https://basc.pnnl.gov/diy-guides/replace-air-filter-located-return-air-filter-grille",
+          "supports": "Arrow direction into the duct at a return grille.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "keywords": [
+        "air filter",
+        "airflow arrow",
+        "direction",
+        "return air",
+        "blower",
+        "furnace",
+        "air handler"
+      ],
+      "relevant_departments": [
+        "HVAC",
+        "air filters",
+        "home maintenance"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "1f0a9dbe-8400-55c4-a270-015646780d47",
+        "id": "CD-0014-Q01",
+        "position": 1,
+        "prompt": "Which direction matches the confirmed airflow?",
+        "options": [
+          "Out of the duct toward the hallway",
+          "Upward, regardless of the duct’s direction",
+          "From the hallway through the filter into the duct",
+          "Toward whichever side makes the printed label easiest to read"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "1f0a9dbe-8400-55c4-a270-015646780d47",
+        "question_id": "CD-0014-Q01",
+        "correct_option": 2,
+        "explanation": "The arrow follows airflow through the filter. The scenario confirms that air travels from the hallway into the return duct, so the arrow points in that direction. An upward direction or readable label does not establish airflow.",
+        "teaching_reference": "Section 3, “Learn it,” opening explanation, location table, and “Recommended action.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0014",
+        "Title": "Find the Filter’s Airflow Arrow",
+        "Academy": "HVAC",
+        "Skill level": "Foundations",
+        "Relevant departments": "HVAC; air filters; home maintenance",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "air filter, airflow arrow, direction, return air, blower, furnace, air handler",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-22",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Explain what a filter’s airflow arrow indicates and identify the information needed to establish its correct direction."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers may find an arrow on a replacement filter without knowing which way it should face. Understanding the marking helps you explain its purpose without guessing about their equipment’s layout."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**An airflow arrow shows the intended direction of air traveling through the filter.** It does not automatically mean “up,” “down,” or “toward the room.”\n\nLook for an arrow marked **“Air Flow”** or similar wording on the filter’s frame. Manufacturer guidance directs users to align it with the system’s airflow. [Source 2]\n\nThe direction depends on the filter’s location:\n\n| Filter location | Direction to verify |\n|---|---|\n| At a typical furnace or air-handler return-side filter slot | Air travels through the filter toward the equipment’s blower. |\n| Behind a return-air grille in a wall or ceiling | Air travels from the room through the filter into the return duct. |\n\nFiltrete describes its arrow as pointing toward the blower. Guidance for a return-air grille specifies pointing the arrow into the duct. These describe the airflow path at different filter locations. [Sources 1 and 3]\n\n**Recommended action:** Ask, “Where is the filter located?” Then use the equipment instructions, filter instructions, and any clearly identified airflow marking at that location to establish the direction.\n\n**Common mistake:** Telling every customer to point the arrow upward—or copying the old filter’s orientation without checking it. The previous filter is a clue, not proof that it was installed correctly.\n\nDo not aim the arrow toward the furnace’s physical location elsewhere in the building. The arrow follows air **through the filter at its installation point**.\n\n**When to verify or seek help:** If the arrow is missing or the airflow path is unclear, check the exact filter and equipment documentation. Ask a knowledgeable coworker or refer the customer to an HVAC technician when the direction cannot be established. Avoid guessing from filter color or appearance.\n\nThis lesson explains the marking; equipment-specific access and replacement procedures still require the manufacturer’s instructions."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings in a new filter with an airflow arrow. Their filter fits behind a return-air grille in the hallway wall.\n\nThe equipment instructions confirm that air moves from the hallway through that filter into the duct. The customer asks which way the arrow should point."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0014-Q01**\n\nWhich direction matches the confirmed airflow?\n\nA. Out of the duct toward the hallway\nB. Upward, regardless of the duct’s direction\nC. From the hallway through the filter into the duct\nD. Toward whichever side makes the printed label easiest to read"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Find the arrow, identify the filter location, and verify the airflow path.**"
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0014-Q01",
+          "wording": "Which direction matches the confirmed airflow?",
+          "options": {
+            "A": "Out of the duct toward the hallway",
+            "B": "Upward, regardless of the duct’s direction",
+            "C": "From the hallway through the filter into the duct",
+            "D": "Toward whichever side makes the printed label easiest to read"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0014-Q01",
+          "correct_answer": "C",
+          "explanation": "The arrow follows airflow through the filter. The scenario confirms that air travels from the hallway into the return duct, so the arrow points in that direction. An upward direction or readable label does not establish airflow.",
+          "teaching_reference": "Section 3, “Learn it,” opening explanation, location table, and “Recommended action.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created cross-section of a wall return-air grille showing the room, filter, and duct. Include a clearly labeled airflow arrow.\n\n**Accessibility description for proposed media:** “Air moves from the hallway through a filter behind a wall return grille and into the return duct. The arrow on the filter points in the same direction.” Provide the direction in readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Filtrete/3M, [How to Install an Air Filter](https://www.filtrete.com/3M/en_US/filtrete/about-us/how-to-install-an-air-filter/): Locating the airflow arrow and pointing it toward the blower.\n- [Source 2] Trane, [Home Air Conditioner Filter Replacement 101](https://www.trane.com/residential/en/resources/troubleshooting/air-conditioners/air-conditioner-filter-replacement/): Aligning the arrow with airflow.\n- [Source 3] Pacific Northwest National Laboratory, [Replace Air Filter Located at Return Air Filter Grille](https://basc.pnnl.gov/diy-guides/replace-air-filter-located-return-air-filter-grille): Arrow direction into the duct at a return grille.\n\n**Verification needs:** Confirm the exact equipment configuration before adding a product or installation example. No universal physical direction or equipment-access procedure is prescribed.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "What information would help us answer a customer who asks, “Should my filter arrow point left or right?”"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have an HVAC subject-matter reviewer check the location and airflow explanations.\n- Confirm that proposed media clearly distinguishes a return grille from a supply register.\n- Verify any equipment-specific example against its current manual.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep equipment access, replacement procedures, and filter-performance selection for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Filtrete/3M",
+          "title": "How to Install an Air Filter",
+          "url": "https://www.filtrete.com/3M/en_US/filtrete/about-us/how-to-install-an-air-filter/",
+          "supports": "Locating the airflow arrow and pointing it toward the blower.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Trane",
+          "title": "Home Air Conditioner Filter Replacement 101",
+          "url": "https://www.trane.com/residential/en/resources/troubleshooting/air-conditioners/air-conditioner-filter-replacement/",
+          "supports": "Aligning the arrow with airflow.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Pacific Northwest National Laboratory",
+          "title": "Replace Air Filter Located at Return Air Filter Grille",
+          "url": "https://basc.pnnl.gov/diy-guides/replace-air-filter-located-return-air-filter-grille",
+          "supports": "Arrow direction into the duct at a return grille.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have an HVAC subject-matter reviewer check the location and airflow explanations.",
+        "Confirm that proposed media clearly distinguishes a return grille from a supply register.",
+        "Verify any equipment-specific example against its current manual.",
+        "If media is added, check accessibility descriptions and usage rights.",
+        "Keep equipment access, replacement procedures, and filter-performance selection for separate modules."
+      ],
+      "complete_markdown": "# CD-0014 — Find the Filter’s Airflow Arrow\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0014 |\n| Title | Find the Filter’s Airflow Arrow |\n| Academy | HVAC |\n| Skill level | Foundations |\n| Relevant departments | HVAC; air filters; home maintenance |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | air filter, airflow arrow, direction, return air, blower, furnace, air handler |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nExplain what a filter’s airflow arrow indicates and identify the information needed to establish its correct direction.\n\n### 2. Why it matters\n\nCustomers may find an arrow on a replacement filter without knowing which way it should face. Understanding the marking helps you explain its purpose without guessing about their equipment’s layout.\n\n### 3. Learn it\n\n**An airflow arrow shows the intended direction of air traveling through the filter.** It does not automatically mean “up,” “down,” or “toward the room.”\n\nLook for an arrow marked **“Air Flow”** or similar wording on the filter’s frame. Manufacturer guidance directs users to align it with the system’s airflow. [Source 2]\n\nThe direction depends on the filter’s location:\n\n| Filter location | Direction to verify |\n|---|---|\n| At a typical furnace or air-handler return-side filter slot | Air travels through the filter toward the equipment’s blower. |\n| Behind a return-air grille in a wall or ceiling | Air travels from the room through the filter into the return duct. |\n\nFiltrete describes its arrow as pointing toward the blower. Guidance for a return-air grille specifies pointing the arrow into the duct. These describe the airflow path at different filter locations. [Sources 1 and 3]\n\n**Recommended action:** Ask, “Where is the filter located?” Then use the equipment instructions, filter instructions, and any clearly identified airflow marking at that location to establish the direction.\n\n**Common mistake:** Telling every customer to point the arrow upward—or copying the old filter’s orientation without checking it. The previous filter is a clue, not proof that it was installed correctly.\n\nDo not aim the arrow toward the furnace’s physical location elsewhere in the building. The arrow follows air **through the filter at its installation point**.\n\n**When to verify or seek help:** If the arrow is missing or the airflow path is unclear, check the exact filter and equipment documentation. Ask a knowledgeable coworker or refer the customer to an HVAC technician when the direction cannot be established. Avoid guessing from filter color or appearance.\n\nThis lesson explains the marking; equipment-specific access and replacement procedures still require the manufacturer’s instructions.\n\n### 4. Customer scenario\n\nA customer brings in a new filter with an airflow arrow. Their filter fits behind a return-air grille in the hallway wall.\n\nThe equipment instructions confirm that air moves from the hallway through that filter into the duct. The customer asks which way the arrow should point.\n\n### 5. Quick check\n\n**Question ID: CD-0014-Q01**\n\nWhich direction matches the confirmed airflow?\n\nA. Out of the duct toward the hallway\nB. Upward, regardless of the duct’s direction\nC. From the hallway through the filter into the duct\nD. Toward whichever side makes the printed label easiest to read\n\n### 6. Take it to the floor\n\n**Find the arrow, identify the filter location, and verify the airflow path.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0014-Q01\n- **Correct answer:** C. From the hallway through the filter into the duct\n- **Explanation:** The arrow follows airflow through the filter. The scenario confirms that air travels from the hallway into the return duct, so the arrow points in that direction. An upward direction or readable label does not establish airflow.\n- **Teaching reference:** Section 3, “Learn it,” opening explanation, location table, and “Recommended action.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created cross-section of a wall return-air grille showing the room, filter, and duct. Include a clearly labeled airflow arrow.\n\n**Accessibility description for proposed media:** “Air moves from the hallway through a filter behind a wall return grille and into the return duct. The arrow on the filter points in the same direction.” Provide the direction in readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Filtrete/3M, [How to Install an Air Filter](https://www.filtrete.com/3M/en_US/filtrete/about-us/how-to-install-an-air-filter/): Locating the airflow arrow and pointing it toward the blower.\n- [Source 2] Trane, [Home Air Conditioner Filter Replacement 101](https://www.trane.com/residential/en/resources/troubleshooting/air-conditioners/air-conditioner-filter-replacement/): Aligning the arrow with airflow.\n- [Source 3] Pacific Northwest National Laboratory, [Replace Air Filter Located at Return Air Filter Grille](https://basc.pnnl.gov/diy-guides/replace-air-filter-located-return-air-filter-grille): Arrow direction into the duct at a return grille.\n\n**Verification needs:** Confirm the exact equipment configuration before adding a product or installation example. No universal physical direction or equipment-access procedure is prescribed.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhat information would help us answer a customer who asks, “Should my filter arrow point left or right?”\n\n### 9. Review needs\n\n- Have an HVAC subject-matter reviewer check the location and airflow explanations.\n- Confirm that proposed media clearly distinguishes a return grille from a supply register.\n- Verify any equipment-specific example against its current manual.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep equipment access, replacement procedures, and filter-performance selection for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "9e4908d2-ae9f-5f24-888f-e98e1618b323",
+      "code": "CD-0015",
+      "version": "0.1.0",
+      "title": "Screw Length: Where Does Measurement Start?",
+      "academy": "Hand Tools & Fasteners",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify the correct starting point for measuring common flat countersunk and pan-head screws."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers often bring a loose screw and ask for another the same length. Starting the ruler at the wrong place can lead to a different labeled length, even when the measurement itself is accurate."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Identify the head style before measuring length.** Common screw types do not all use the same starting point.\n\n| Head style | Where measurement starts | Where it ends |\n|---|---|---|\n| **Pan head**, designed to sit above the material | Beneath the head, where it rests against the material | End of the screw |\n| **Flat countersunk head**, designed to sit flush with the material | Top of the head, including the head in the measurement | End of the screw |\n\nFor example, a pan-head screw measuring **1 inch from beneath its head to its end** has a 1-inch measured length. For a flat countersunk screw, that same length measurement includes the head.\n\n**Why the difference?** The general convention measures from the point where the installed material’s surface is intended to meet the fastener. A pan head sits above that surface; a flat countersunk head sits within it. [Source 1]\n\n**Recommended action:** Place the ruler’s zero mark at the correct starting point, then read to the screw’s end. Record the unit along with the measurement.\n\n**Common mistake:** Measuring only the threaded section. A screw may have an unthreaded section that still counts toward its length. Likewise, including a pan head adds material that is normally excluded from its labeled length.\n\nUse the head’s shape—not its drive recess—to choose the starting point. A Phillips drive does not tell you whether the screw has a pan head or a flat countersunk head.\n\n**When to verify or seek help:** Check the supplier’s dimensional drawing for unfamiliar or specialty fasteners. Do not automatically extend these two examples to oval heads, shoulder screws, or other designs. Ask a knowledgeable coworker when the measuring convention is unclear.\n\nMatching length alone does not establish a suitable replacement; other fastener characteristics still need checking."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings in a pan-head screw. Its head is designed to rest above the material rather than sit countersunk.\n\nThey ask you to measure its length so they can start looking for a replacement."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Identify the head style, choose the starting point, and measure to the end.**"
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Bolt Depot",
+          "title": "Measuring Fastener Length",
+          "url": "https://boltdepot.com/fastener-information/Measuring/Measure-Length",
+          "supports": "Measurement from the intended material surface, common head-style distinctions, and specialty-fastener exceptions.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Portland Bolt",
+          "title": "Bolt Length",
+          "url": "https://www.portlandbolt.com/technical/faqs/bolt-length/",
+          "supports": "Corroborates the distinction between measuring beneath a projecting head and including a countersunk head. This source concerns bolts; the screw examples follow the screw-specific supplier guidance above.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "keywords": [
+        "screw length",
+        "measuring screws",
+        "flat head",
+        "countersunk",
+        "pan head",
+        "fastener dimensions"
+      ],
+      "relevant_departments": [
+        "Fasteners",
+        "hardware",
+        "hand tools"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "9e4908d2-ae9f-5f24-888f-e98e1618b323",
+        "id": "CD-0015-Q01",
+        "position": 1,
+        "prompt": "Where should you measure this screw?",
+        "options": [
+          "From the top of the head to the screw’s end",
+          "From beneath the head to the screw’s end",
+          "From the first full thread to the screw’s end",
+          "Across the widest part of the head"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "9e4908d2-ae9f-5f24-888f-e98e1618b323",
+        "question_id": "CD-0015-Q01",
+        "correct_option": 1,
+        "explanation": "A common pan-head screw is measured from beneath the head, excluding the head’s height. Measuring from the top includes extra height; measuring only from the threads may omit part of the length. Measuring across the head gives a different dimension.",
+        "teaching_reference": "Section 3, “Learn it,” measurement table, “Recommended action,” and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0015",
+        "Title": "Screw Length: Where Does Measurement Start?",
+        "Academy": "Hand Tools & Fasteners",
+        "Skill level": "Foundations",
+        "Relevant departments": "Fasteners; hardware; hand tools",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "screw length, measuring screws, flat head, countersunk, pan head, fastener dimensions",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-22",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify the correct starting point for measuring common flat countersunk and pan-head screws."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers often bring a loose screw and ask for another the same length. Starting the ruler at the wrong place can lead to a different labeled length, even when the measurement itself is accurate."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Identify the head style before measuring length.** Common screw types do not all use the same starting point.\n\n| Head style | Where measurement starts | Where it ends |\n|---|---|---|\n| **Pan head**, designed to sit above the material | Beneath the head, where it rests against the material | End of the screw |\n| **Flat countersunk head**, designed to sit flush with the material | Top of the head, including the head in the measurement | End of the screw |\n\nFor example, a pan-head screw measuring **1 inch from beneath its head to its end** has a 1-inch measured length. For a flat countersunk screw, that same length measurement includes the head.\n\n**Why the difference?** The general convention measures from the point where the installed material’s surface is intended to meet the fastener. A pan head sits above that surface; a flat countersunk head sits within it. [Source 1]\n\n**Recommended action:** Place the ruler’s zero mark at the correct starting point, then read to the screw’s end. Record the unit along with the measurement.\n\n**Common mistake:** Measuring only the threaded section. A screw may have an unthreaded section that still counts toward its length. Likewise, including a pan head adds material that is normally excluded from its labeled length.\n\nUse the head’s shape—not its drive recess—to choose the starting point. A Phillips drive does not tell you whether the screw has a pan head or a flat countersunk head.\n\n**When to verify or seek help:** Check the supplier’s dimensional drawing for unfamiliar or specialty fasteners. Do not automatically extend these two examples to oval heads, shoulder screws, or other designs. Ask a knowledgeable coworker when the measuring convention is unclear.\n\nMatching length alone does not establish a suitable replacement; other fastener characteristics still need checking."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings in a pan-head screw. Its head is designed to rest above the material rather than sit countersunk.\n\nThey ask you to measure its length so they can start looking for a replacement."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0015-Q01**\n\nWhere should you measure this screw?\n\nA. From the top of the head to the screw’s end\nB. From beneath the head to the screw’s end\nC. From the first full thread to the screw’s end\nD. Across the widest part of the head"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Identify the head style, choose the starting point, and measure to the end.**"
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0015-Q01",
+          "wording": "Where should you measure this screw?",
+          "options": {
+            "A": "From the top of the head to the screw’s end",
+            "B": "From beneath the head to the screw’s end",
+            "C": "From the first full thread to the screw’s end",
+            "D": "Across the widest part of the head"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0015-Q01",
+          "correct_answer": "B",
+          "explanation": "A common pan-head screw is measured from beneath the head, excluding the head’s height. Measuring from the top includes extra height; measuring only from the threads may omit part of the length. Measuring across the head gives a different dimension.",
+          "teaching_reference": "Section 3, “Learn it,” measurement table, “Recommended action,” and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created side-view comparison of a pan-head screw and a flat countersunk screw, with measurement lines showing the correct endpoints.\n\n**Accessibility description for proposed media:** “The pan-head screw’s length line starts beneath its head and ends at its tip. The flat countersunk screw’s length line starts at the top of its head and ends at its tip.” Keep the measurement table available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Bolt Depot, [Measuring Fastener Length](https://boltdepot.com/fastener-information/Measuring/Measure-Length): Measurement from the intended material surface, common head-style distinctions, and specialty-fastener exceptions.\n- [Source 2] Portland Bolt, [Bolt Length](https://www.portlandbolt.com/technical/faqs/bolt-length/): Corroborates the distinction between measuring beneath a projecting head and including a countersunk head. This source concerns bolts; the screw examples follow the screw-specific supplier guidance above.\n\n**Verification needs:** Verify unfamiliar fasteners against their specific dimensional drawings. The one-inch example illustrates measurement only and does not describe a particular product.\n\nAll teaching and assessment wording is independently authored. No supplier diagrams or third-party media are included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Which measuring tools or supplier drawings can we use when a customer brings an unfamiliar fastener?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a fastener subject-matter reviewer check the measurement explanations.\n- Confirm examples against common screws in participating stores.\n- If media is added, verify head geometry, measurement endpoints, accessibility descriptions, and usage rights.\n- Keep diameter, thread identification, material selection, and required fastening length for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Bolt Depot",
+          "title": "Measuring Fastener Length",
+          "url": "https://boltdepot.com/fastener-information/Measuring/Measure-Length",
+          "supports": "Measurement from the intended material surface, common head-style distinctions, and specialty-fastener exceptions.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "Portland Bolt",
+          "title": "Bolt Length",
+          "url": "https://www.portlandbolt.com/technical/faqs/bolt-length/",
+          "supports": "Corroborates the distinction between measuring beneath a projecting head and including a countersunk head. This source concerns bolts; the screw examples follow the screw-specific supplier guidance above.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a fastener subject-matter reviewer check the measurement explanations.",
+        "Confirm examples against common screws in participating stores.",
+        "If media is added, verify head geometry, measurement endpoints, accessibility descriptions, and usage rights.",
+        "Keep diameter, thread identification, material selection, and required fastening length for separate modules."
+      ],
+      "complete_markdown": "# CD-0015 — Screw Length: Where Does Measurement Start?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0015 |\n| Title | Screw Length: Where Does Measurement Start? |\n| Academy | Hand Tools & Fasteners |\n| Skill level | Foundations |\n| Relevant departments | Fasteners; hardware; hand tools |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | screw length, measuring screws, flat head, countersunk, pan head, fastener dimensions |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nIdentify the correct starting point for measuring common flat countersunk and pan-head screws.\n\n### 2. Why it matters\n\nCustomers often bring a loose screw and ask for another the same length. Starting the ruler at the wrong place can lead to a different labeled length, even when the measurement itself is accurate.\n\n### 3. Learn it\n\n**Identify the head style before measuring length.** Common screw types do not all use the same starting point.\n\n| Head style | Where measurement starts | Where it ends |\n|---|---|---|\n| **Pan head**, designed to sit above the material | Beneath the head, where it rests against the material | End of the screw |\n| **Flat countersunk head**, designed to sit flush with the material | Top of the head, including the head in the measurement | End of the screw |\n\nFor example, a pan-head screw measuring **1 inch from beneath its head to its end** has a 1-inch measured length. For a flat countersunk screw, that same length measurement includes the head.\n\n**Why the difference?** The general convention measures from the point where the installed material’s surface is intended to meet the fastener. A pan head sits above that surface; a flat countersunk head sits within it. [Source 1]\n\n**Recommended action:** Place the ruler’s zero mark at the correct starting point, then read to the screw’s end. Record the unit along with the measurement.\n\n**Common mistake:** Measuring only the threaded section. A screw may have an unthreaded section that still counts toward its length. Likewise, including a pan head adds material that is normally excluded from its labeled length.\n\nUse the head’s shape—not its drive recess—to choose the starting point. A Phillips drive does not tell you whether the screw has a pan head or a flat countersunk head.\n\n**When to verify or seek help:** Check the supplier’s dimensional drawing for unfamiliar or specialty fasteners. Do not automatically extend these two examples to oval heads, shoulder screws, or other designs. Ask a knowledgeable coworker when the measuring convention is unclear.\n\nMatching length alone does not establish a suitable replacement; other fastener characteristics still need checking.\n\n### 4. Customer scenario\n\nA customer brings in a pan-head screw. Its head is designed to rest above the material rather than sit countersunk.\n\nThey ask you to measure its length so they can start looking for a replacement.\n\n### 5. Quick check\n\n**Question ID: CD-0015-Q01**\n\nWhere should you measure this screw?\n\nA. From the top of the head to the screw’s end\nB. From beneath the head to the screw’s end\nC. From the first full thread to the screw’s end\nD. Across the widest part of the head\n\n### 6. Take it to the floor\n\n**Identify the head style, choose the starting point, and measure to the end.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0015-Q01\n- **Correct answer:** B. From beneath the head to the screw’s end\n- **Explanation:** A common pan-head screw is measured from beneath the head, excluding the head’s height. Measuring from the top includes extra height; measuring only from the threads may omit part of the length. Measuring across the head gives a different dimension.\n- **Teaching reference:** Section 3, “Learn it,” measurement table, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created side-view comparison of a pan-head screw and a flat countersunk screw, with measurement lines showing the correct endpoints.\n\n**Accessibility description for proposed media:** “The pan-head screw’s length line starts beneath its head and ends at its tip. The flat countersunk screw’s length line starts at the top of its head and ends at its tip.” Keep the measurement table available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Bolt Depot, [Measuring Fastener Length](https://boltdepot.com/fastener-information/Measuring/Measure-Length): Measurement from the intended material surface, common head-style distinctions, and specialty-fastener exceptions.\n- [Source 2] Portland Bolt, [Bolt Length](https://www.portlandbolt.com/technical/faqs/bolt-length/): Corroborates the distinction between measuring beneath a projecting head and including a countersunk head. This source concerns bolts; the screw examples follow the screw-specific supplier guidance above.\n\n**Verification needs:** Verify unfamiliar fasteners against their specific dimensional drawings. The one-inch example illustrates measurement only and does not describe a particular product.\n\nAll teaching and assessment wording is independently authored. No supplier diagrams or third-party media are included.\n\n### 8. Optional manager discussion prompt\n\nWhich measuring tools or supplier drawings can we use when a customer brings an unfamiliar fastener?\n\n### 9. Review needs\n\n- Have a fastener subject-matter reviewer check the measurement explanations.\n- Confirm examples against common screws in participating stores.\n- If media is added, verify head geometry, measurement endpoints, accessibility descriptions, and usage rights.\n- Keep diameter, thread identification, material selection, and required fastening length for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "7c183467-6272-5bae-8f97-699a835ea832",
+      "code": "CD-0016",
+      "version": "0.1.0",
+      "title": "Match the Bit’s Shank to the Tool",
+      "academy": "Power Tools & Accessories",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish common accessory shanks and recognize that fitting a tool’s holder does not establish suitability for use."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Two bits may have similar working ends but different ends that fit into the tool. Recognizing that connection helps you narrow the choices before checking whether the accessory suits the job."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**The shank is the end of the bit held by the tool or accessory holder.** It is different from the working end that drills the hole or engages the screw.\n\nFor example, a Phillips driver bit can have a **¼-inch hex shank**. “Phillips” describes the screw-engaging tip; “¼-inch hex” describes the tool connection.\n\nStart with these common shank types:\n\n| Shank type | Recognition clue | Connection to investigate |\n|---|---|---|\n| **Round** | A cylindrical gripping section | A compatible adjustable-jaw drill chuck |\n| **Hex** | Six flat sides | A matching hex holder or compatible drill chuck |\n| **SDS-plus** | A specially grooved shank | An SDS-plus tool holder |\n\nBosch documents separate SDS-plus and three-jaw chucks for different accessory shanks. These are distinct connection systems, rather than interchangeable names for the same holder. [Source 1]\n\n**Recommended action:** Ask which tool the customer has, including its model when available. Match the specified holder type and capacity to the accessory’s shank information.\n\nThen check the accessory’s intended use. **Physical fit is only one check.** Confirm suitability for the tool’s operating action, the material, and any stated limits.\n\n**Common mistake:** Assuming every hex-shank bit is suitable for an impact driver. A hex shape describes the connection; it does not, by itself, establish an impact rating. Look for the manufacturer’s stated compatibility. DEWALT’s guidance for drilling with an impact driver specifies impact-ready bits. [Source 2]\n\n**When to verify or seek help:** Check the exact tool manual and accessory packaging when the holder, rating, or application is uncertain. Some short insert bits require a compatible holder; do not assume every bit attaches directly. Ask a knowledgeable coworker or manufacturer representative rather than recommending an unverified adapter or combination."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings a driver bit with a six-sided shank and says, “It fits into my impact driver, so that means it’s made for impact use, right?”\n\nThe packaging is missing, and you have not identified the bit’s manufacturer or model."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Match the connection, then verify the rating and application.**"
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Bosch",
+          "title": "RH432VCQ Operating/Safety Instructions",
+          "url": "https://ocsmedia.boschtools.com/binary/manualsmedia/o199837v2_2610048693_1017_RH432VCQ.pdf",
+          "supports": "Chuck and accessory sections: distinct SDS-plus and three-jaw chuck arrangements and straight-shank accessory use. Model-specific instructions are not generalized to every tool.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "DEWALT",
+          "title": "Can I Use My Impact Driver as a Drill?",
+          "url": "https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill",
+          "supports": "Impact-ready drilling accessories.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Milwaukee Tool",
+          "title": "SHOCKWAVE Impact Driver Bits",
+          "url": "https://www.milwaukeetool.com/products/accessories/driving-and-fastening/shockwave-driver-bits",
+          "supports": "Examples of explicitly identified impact-duty accessories and hex-shank terminology.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "keywords": [
+        "bit shank",
+        "round shank",
+        "hex shank",
+        "chuck",
+        "bit holder",
+        "impact rated",
+        "SDS-plus"
+      ],
+      "relevant_departments": [
+        "Power tools",
+        "drilling and fastening accessories"
+      ],
+      "estimated_minutes": 5,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "7c183467-6272-5bae-8f97-699a835ea832",
+        "id": "CD-0016-Q01",
+        "position": 1,
+        "prompt": "What is the most accurate response?",
+        "options": [
+          "Yes—every six-sided shank establishes an impact rating.",
+          "Yes—if it locks into the holder, no further compatibility checks are needed.",
+          "No—the shank’s fit does not establish an impact rating; identify the bit and verify its stated compatibility.",
+          "No—impact drivers cannot use hex-shank accessories."
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "7c183467-6272-5bae-8f97-699a835ea832",
+        "question_id": "CD-0016-Q01",
+        "correct_option": 2,
+        "explanation": "The shank establishes a connection type, not every aspect of suitability. Without identifying the accessory, the employee cannot confirm its impact compatibility. Physical fit alone is insufficient.",
+        "teaching_reference": "Section 3, “Learn it,” “Recommended action” and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0016",
+        "Title": "Match the Bit’s Shank to the Tool",
+        "Academy": "Power Tools & Accessories",
+        "Skill level": "Foundations",
+        "Relevant departments": "Power tools; drilling and fastening accessories",
+        "Estimated completion time": "5 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "bit shank, round shank, hex shank, chuck, bit holder, impact rated, SDS-plus",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-22",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish common accessory shanks and recognize that fitting a tool’s holder does not establish suitability for use."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Two bits may have similar working ends but different ends that fit into the tool. Recognizing that connection helps you narrow the choices before checking whether the accessory suits the job."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**The shank is the end of the bit held by the tool or accessory holder.** It is different from the working end that drills the hole or engages the screw.\n\nFor example, a Phillips driver bit can have a **¼-inch hex shank**. “Phillips” describes the screw-engaging tip; “¼-inch hex” describes the tool connection.\n\nStart with these common shank types:\n\n| Shank type | Recognition clue | Connection to investigate |\n|---|---|---|\n| **Round** | A cylindrical gripping section | A compatible adjustable-jaw drill chuck |\n| **Hex** | Six flat sides | A matching hex holder or compatible drill chuck |\n| **SDS-plus** | A specially grooved shank | An SDS-plus tool holder |\n\nBosch documents separate SDS-plus and three-jaw chucks for different accessory shanks. These are distinct connection systems, rather than interchangeable names for the same holder. [Source 1]\n\n**Recommended action:** Ask which tool the customer has, including its model when available. Match the specified holder type and capacity to the accessory’s shank information.\n\nThen check the accessory’s intended use. **Physical fit is only one check.** Confirm suitability for the tool’s operating action, the material, and any stated limits.\n\n**Common mistake:** Assuming every hex-shank bit is suitable for an impact driver. A hex shape describes the connection; it does not, by itself, establish an impact rating. Look for the manufacturer’s stated compatibility. DEWALT’s guidance for drilling with an impact driver specifies impact-ready bits. [Source 2]\n\n**When to verify or seek help:** Check the exact tool manual and accessory packaging when the holder, rating, or application is uncertain. Some short insert bits require a compatible holder; do not assume every bit attaches directly. Ask a knowledgeable coworker or manufacturer representative rather than recommending an unverified adapter or combination."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer brings a driver bit with a six-sided shank and says, “It fits into my impact driver, so that means it’s made for impact use, right?”\n\nThe packaging is missing, and you have not identified the bit’s manufacturer or model."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0016-Q01**\n\nWhat is the most accurate response?\n\nA. Yes—every six-sided shank establishes an impact rating.\nB. Yes—if it locks into the holder, no further compatibility checks are needed.\nC. No—the shank’s fit does not establish an impact rating; identify the bit and verify its stated compatibility.\nD. No—impact drivers cannot use hex-shank accessories."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Match the connection, then verify the rating and application.**"
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0016-Q01",
+          "wording": "What is the most accurate response?",
+          "options": {
+            "A": "Yes—every six-sided shank establishes an impact rating.",
+            "B": "Yes—if it locks into the holder, no further compatibility checks are needed.",
+            "C": "No—the shank’s fit does not establish an impact rating; identify the bit and verify its stated compatibility.",
+            "D": "No—impact drivers cannot use hex-shank accessories."
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0016-Q01",
+          "correct_answer": "C",
+          "explanation": "The shank establishes a connection type, not every aspect of suitability. Without identifying the accessory, the employee cannot confirm its impact compatibility. Physical fit alone is insufficient.",
+          "teaching_reference": "Section 3, “Learn it,” “Recommended action” and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison showing round, hex, and SDS-plus shanks. Include a separate driver-bit example labeling its Phillips working tip and hex shank.\n\n**Accessibility description for proposed media:** “Three accessory ends are labeled: round shank with a cylindrical gripping section; hex shank with six flat sides; and SDS-plus shank with grooves. A separate driver bit labels its Phillips tip and hex shank.” Keep the recognition table available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Bosch, [RH432VCQ Operating/Safety Instructions](https://ocsmedia.boschtools.com/binary/manualsmedia/o199837v2_2610048693_1017_RH432VCQ.pdf): Chuck and accessory sections: distinct SDS-plus and three-jaw chuck arrangements and straight-shank accessory use. Model-specific instructions are not generalized to every tool.\n- [Source 2] DEWALT, [Can I Use My Impact Driver as a Drill?](https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill): Impact-ready drilling accessories.\n- [Source 3] Milwaukee Tool, [SHOCKWAVE Impact Driver Bits](https://www.milwaukeetool.com/products/accessories/driving-and-fastening/shockwave-driver-bits): Examples of explicitly identified impact-duty accessories and hex-shank terminology.\n\n**Verification needs:** Check the exact holder, shank dimensions, retention requirements, operating mode, and accessory rating before recommending a combination. This module does not establish adapter compatibility or teach accessory installation.\n\nAll teaching and assessment wording is independently authored. No manufacturer diagrams or third-party media are included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Where do our accessory packages identify the shank type and whether the accessory is intended for impact use?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a power-tool subject-matter reviewer check shank descriptions and compatibility wording.\n- Verify any product examples against their current manuals and packaging.\n- Confirm that proposed media distinguishes a bit’s working tip from its shank.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep adapters, accessory installation, cutting-material selection, and specialty shank systems for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "Bosch",
+          "title": "RH432VCQ Operating/Safety Instructions",
+          "url": "https://ocsmedia.boschtools.com/binary/manualsmedia/o199837v2_2610048693_1017_RH432VCQ.pdf",
+          "supports": "Chuck and accessory sections: distinct SDS-plus and three-jaw chuck arrangements and straight-shank accessory use. Model-specific instructions are not generalized to every tool.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "DEWALT",
+          "title": "Can I Use My Impact Driver as a Drill?",
+          "url": "https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill",
+          "supports": "Impact-ready drilling accessories.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "Milwaukee Tool",
+          "title": "SHOCKWAVE Impact Driver Bits",
+          "url": "https://www.milwaukeetool.com/products/accessories/driving-and-fastening/shockwave-driver-bits",
+          "supports": "Examples of explicitly identified impact-duty accessories and hex-shank terminology.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a power-tool subject-matter reviewer check shank descriptions and compatibility wording.",
+        "Verify any product examples against their current manuals and packaging.",
+        "Confirm that proposed media distinguishes a bit’s working tip from its shank.",
+        "If media is added, check accessibility descriptions and usage rights.",
+        "Keep adapters, accessory installation, cutting-material selection, and specialty shank systems for separate modules."
+      ],
+      "complete_markdown": "# CD-0016 — Match the Bit’s Shank to the Tool\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0016 |\n| Title | Match the Bit’s Shank to the Tool |\n| Academy | Power Tools & Accessories |\n| Skill level | Foundations |\n| Relevant departments | Power tools; drilling and fastening accessories |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | bit shank, round shank, hex shank, chuck, bit holder, impact rated, SDS-plus |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish common accessory shanks and recognize that fitting a tool’s holder does not establish suitability for use.\n\n### 2. Why it matters\n\nTwo bits may have similar working ends but different ends that fit into the tool. Recognizing that connection helps you narrow the choices before checking whether the accessory suits the job.\n\n### 3. Learn it\n\n**The shank is the end of the bit held by the tool or accessory holder.** It is different from the working end that drills the hole or engages the screw.\n\nFor example, a Phillips driver bit can have a **¼-inch hex shank**. “Phillips” describes the screw-engaging tip; “¼-inch hex” describes the tool connection.\n\nStart with these common shank types:\n\n| Shank type | Recognition clue | Connection to investigate |\n|---|---|---|\n| **Round** | A cylindrical gripping section | A compatible adjustable-jaw drill chuck |\n| **Hex** | Six flat sides | A matching hex holder or compatible drill chuck |\n| **SDS-plus** | A specially grooved shank | An SDS-plus tool holder |\n\nBosch documents separate SDS-plus and three-jaw chucks for different accessory shanks. These are distinct connection systems, rather than interchangeable names for the same holder. [Source 1]\n\n**Recommended action:** Ask which tool the customer has, including its model when available. Match the specified holder type and capacity to the accessory’s shank information.\n\nThen check the accessory’s intended use. **Physical fit is only one check.** Confirm suitability for the tool’s operating action, the material, and any stated limits.\n\n**Common mistake:** Assuming every hex-shank bit is suitable for an impact driver. A hex shape describes the connection; it does not, by itself, establish an impact rating. Look for the manufacturer’s stated compatibility. DEWALT’s guidance for drilling with an impact driver specifies impact-ready bits. [Source 2]\n\n**When to verify or seek help:** Check the exact tool manual and accessory packaging when the holder, rating, or application is uncertain. Some short insert bits require a compatible holder; do not assume every bit attaches directly. Ask a knowledgeable coworker or manufacturer representative rather than recommending an unverified adapter or combination.\n\n### 4. Customer scenario\n\nA customer brings a driver bit with a six-sided shank and says, “It fits into my impact driver, so that means it’s made for impact use, right?”\n\nThe packaging is missing, and you have not identified the bit’s manufacturer or model.\n\n### 5. Quick check\n\n**Question ID: CD-0016-Q01**\n\nWhat is the most accurate response?\n\nA. Yes—every six-sided shank establishes an impact rating.\nB. Yes—if it locks into the holder, no further compatibility checks are needed.\nC. No—the shank’s fit does not establish an impact rating; identify the bit and verify its stated compatibility.\nD. No—impact drivers cannot use hex-shank accessories.\n\n### 6. Take it to the floor\n\n**Match the connection, then verify the rating and application.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0016-Q01\n- **Correct answer:** C. No—the shank’s fit does not establish an impact rating; identify the bit and verify its stated compatibility.\n- **Explanation:** The shank establishes a connection type, not every aspect of suitability. Without identifying the accessory, the employee cannot confirm its impact compatibility. Physical fit alone is insufficient.\n- **Teaching reference:** Section 3, “Learn it,” “Recommended action” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison showing round, hex, and SDS-plus shanks. Include a separate driver-bit example labeling its Phillips working tip and hex shank.\n\n**Accessibility description for proposed media:** “Three accessory ends are labeled: round shank with a cylindrical gripping section; hex shank with six flat sides; and SDS-plus shank with grooves. A separate driver bit labels its Phillips tip and hex shank.” Keep the recognition table available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Bosch, [RH432VCQ Operating/Safety Instructions](https://ocsmedia.boschtools.com/binary/manualsmedia/o199837v2_2610048693_1017_RH432VCQ.pdf): Chuck and accessory sections: distinct SDS-plus and three-jaw chuck arrangements and straight-shank accessory use. Model-specific instructions are not generalized to every tool.\n- [Source 2] DEWALT, [Can I Use My Impact Driver as a Drill?](https://support.dewalt.com/hc/en-us/articles/360012592057-Can-I-use-my-impact-driver-as-a-drill): Impact-ready drilling accessories.\n- [Source 3] Milwaukee Tool, [SHOCKWAVE Impact Driver Bits](https://www.milwaukeetool.com/products/accessories/driving-and-fastening/shockwave-driver-bits): Examples of explicitly identified impact-duty accessories and hex-shank terminology.\n\n**Verification needs:** Check the exact holder, shank dimensions, retention requirements, operating mode, and accessory rating before recommending a combination. This module does not establish adapter compatibility or teach accessory installation.\n\nAll teaching and assessment wording is independently authored. No manufacturer diagrams or third-party media are included.\n\n### 8. Optional manager discussion prompt\n\nWhere do our accessory packages identify the shank type and whether the accessory is intended for impact use?\n\n### 9. Review needs\n\n- Have a power-tool subject-matter reviewer check shank descriptions and compatibility wording.\n- Verify any product examples against their current manuals and packaging.\n- Confirm that proposed media distinguishes a bit’s working tip from its shank.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep adapters, accessory installation, cutting-material selection, and specialty shank systems for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "2c90f1bb-3a95-5a64-abab-d7412717a069",
+      "code": "CD-0017",
+      "version": "0.1.0",
+      "title": "Annual or Perennial?",
+      "academy": "Lawn, Garden & Outdoor Equipment",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Explain the basic difference between annuals and perennials and recognize why local conditions affect whether a plant returns."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "“Will this come back next year?” is a common plant-shopping question. Understanding life-cycle terms helps you answer clearly without promising that every plant labeled perennial will survive in the customer’s garden."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Annual and perennial describe a plant’s life cycle—not how long its flowers last.**\n\n| Term | Basic meaning |\n|---|---|\n| **Annual** | Completes its life cycle, from seed to producing seed and dying, in one growing season |\n| **Perennial** | Lives for more than two years under suitable conditions |\n\nAn annual does not necessarily live for a full calendar year. Its growing season may be much shorter. A perennial can live across multiple growing seasons, but that does not mean it flowers continuously or lives forever. NC State Extension distinguishes these life cycles. [Source 1]\n\n**Climate changes the customer’s experience.** Some plants are biologically perennial but are grown as annuals where they cannot survive the winter. These are often called **tender perennials**. Their label may describe a perennial life cycle even though the customer would normally replace them each year in that location. [Source 2]\n\n**Recommended action:** When a customer asks whether a plant will return, identify the exact plant and ask where it will grow. Check its hardiness information and local Extension guidance before describing its expected outdoor survival.\n\n**Common mistake:** Saying “perennial means it always comes back.” Winter temperatures, drainage, and conditions at the planting site can affect survival. A perennial designation is not a guarantee. [Source 3]\n\nAlso, new seedlings appearing where last year’s annual grew do not mean the original plant survived. Some annuals leave seeds that produce new plants the following season. [Source 4]\n\n**When to verify or seek help:** Check the plant tag and a reliable plant reference when the identity or local hardiness is unclear. Ask a knowledgeable garden-center coworker or local Cooperative Extension office rather than guessing from the display location."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer points to a plant labeled **“tender perennial”** and asks, “Does that mean it will definitely come back outside next spring?”\n\nYou have not yet identified its hardiness range or asked where the customer plans to grow it."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Explain the life cycle, then check local survival conditions.**"
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "NC State Extension",
+          "title": "Extension Gardener Handbook—3. Botany",
+          "url": "https://content.ces.ncsu.edu/extension-gardener-handbook/3-botany",
+          "supports": "Annual and perennial life cycles.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "University of Missouri Extension",
+          "title": "Flowering Annuals: Characteristics and Culture",
+          "url": "https://extension.missouri.edu/publications/g6629",
+          "supports": "Perennial plants grown as annuals where winters prevent survival.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "NC State Extension",
+          "title": "Extension Gardener Handbook—10. Herbaceous Ornamentals",
+          "url": "https://content.ces.ncsu.edu/extension-gardener-handbook/10-herbaceous-ornamentals",
+          "supports": "Tender perennials, hardiness, microclimates, and drainage.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 4",
+          "publisher": "University of Illinois Extension",
+          "title": "Annuals",
+          "url": "https://extension.illinois.edu/flowers/annuals",
+          "supports": "New annual plants emerging from seeds left from the previous season.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "keywords": [
+        "annual",
+        "perennial",
+        "plant life cycle",
+        "tender perennial",
+        "winter survival",
+        "hardiness"
+      ],
+      "relevant_departments": [
+        "Garden center",
+        "live plants",
+        "seeds"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "2c90f1bb-3a95-5a64-abab-d7412717a069",
+        "id": "CD-0017-Q01",
+        "position": 1,
+        "prompt": "Which response best explains the label?",
+        "options": [
+          "“It can live for multiple years, but we need to check whether it can survive outdoors in your location.”",
+          "“Yes—every perennial survives winter wherever it is planted.”",
+          "“No—tender perennial means it completes its life cycle in one growing season.”",
+          "“Yes—if new seedlings appear, that proves the original plant survived.”"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "2c90f1bb-3a95-5a64-abab-d7412717a069",
+        "question_id": "CD-0017-Q01",
+        "correct_option": 0,
+        "explanation": "A tender perennial has a perennial life cycle but may not tolerate the customer’s winter conditions. Its identity, hardiness, and growing location need checking before discussing expected outdoor survival. New seedlings are different from the original plant surviving.",
+        "teaching_reference": "Section 3, “Learn it,” life-cycle table, tender-perennial explanation, and “Recommended action.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0017",
+        "Title": "Annual or Perennial?",
+        "Academy": "Lawn, Garden & Outdoor Equipment",
+        "Skill level": "Foundations",
+        "Relevant departments": "Garden center; live plants; seeds",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "annual, perennial, plant life cycle, tender perennial, winter survival, hardiness",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-22",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Explain the basic difference between annuals and perennials and recognize why local conditions affect whether a plant returns."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "“Will this come back next year?” is a common plant-shopping question. Understanding life-cycle terms helps you answer clearly without promising that every plant labeled perennial will survive in the customer’s garden."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Annual and perennial describe a plant’s life cycle—not how long its flowers last.**\n\n| Term | Basic meaning |\n|---|---|\n| **Annual** | Completes its life cycle, from seed to producing seed and dying, in one growing season |\n| **Perennial** | Lives for more than two years under suitable conditions |\n\nAn annual does not necessarily live for a full calendar year. Its growing season may be much shorter. A perennial can live across multiple growing seasons, but that does not mean it flowers continuously or lives forever. NC State Extension distinguishes these life cycles. [Source 1]\n\n**Climate changes the customer’s experience.** Some plants are biologically perennial but are grown as annuals where they cannot survive the winter. These are often called **tender perennials**. Their label may describe a perennial life cycle even though the customer would normally replace them each year in that location. [Source 2]\n\n**Recommended action:** When a customer asks whether a plant will return, identify the exact plant and ask where it will grow. Check its hardiness information and local Extension guidance before describing its expected outdoor survival.\n\n**Common mistake:** Saying “perennial means it always comes back.” Winter temperatures, drainage, and conditions at the planting site can affect survival. A perennial designation is not a guarantee. [Source 3]\n\nAlso, new seedlings appearing where last year’s annual grew do not mean the original plant survived. Some annuals leave seeds that produce new plants the following season. [Source 4]\n\n**When to verify or seek help:** Check the plant tag and a reliable plant reference when the identity or local hardiness is unclear. Ask a knowledgeable garden-center coworker or local Cooperative Extension office rather than guessing from the display location."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer points to a plant labeled **“tender perennial”** and asks, “Does that mean it will definitely come back outside next spring?”\n\nYou have not yet identified its hardiness range or asked where the customer plans to grow it."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0017-Q01**\n\nWhich response best explains the label?\n\nA. “It can live for multiple years, but we need to check whether it can survive outdoors in your location.”\nB. “Yes—every perennial survives winter wherever it is planted.”\nC. “No—tender perennial means it completes its life cycle in one growing season.”\nD. “Yes—if new seedlings appear, that proves the original plant survived.”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Explain the life cycle, then check local survival conditions.**"
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0017-Q01",
+          "wording": "Which response best explains the label?",
+          "options": {
+            "A": "“It can live for multiple years, but we need to check whether it can survive outdoors in your location.”",
+            "B": "“Yes—every perennial survives winter wherever it is planted.”",
+            "C": "“No—tender perennial means it completes its life cycle in one growing season.”",
+            "D": "“Yes—if new seedlings appear, that proves the original plant survived.”"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0017-Q01",
+          "correct_answer": "A",
+          "explanation": "A tender perennial has a perennial life cycle but may not tolerate the customer’s winter conditions. Its identity, hardiness, and growing location need checking before discussing expected outdoor survival. New seedlings are different from the original plant surviving.",
+          "teaching_reference": "Section 3, “Learn it,” life-cycle table, tender-perennial explanation, and “Recommended action.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created life-cycle comparison showing one annual plant completing its life cycle and one perennial continuing into later growing seasons under suitable conditions.\n\n**Accessibility description for proposed media:** “An annual grows, flowers, produces seed, and dies within one growing season. A perennial remains alive across more than two years under suitable conditions. A note states that local climate and growing conditions affect survival.” Keep the definitions available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] NC State Extension, [Extension Gardener Handbook—3. Botany](https://content.ces.ncsu.edu/extension-gardener-handbook/3-botany): Annual and perennial life cycles.\n- [Source 2] University of Missouri Extension, [Flowering Annuals: Characteristics and Culture](https://extension.missouri.edu/publications/g6629): Perennial plants grown as annuals where winters prevent survival.\n- [Source 3] NC State Extension, [Extension Gardener Handbook—10. Herbaceous Ornamentals](https://content.ces.ncsu.edu/extension-gardener-handbook/10-herbaceous-ornamentals): Tender perennials, hardiness, microclimates, and drainage.\n- [Source 4] University of Illinois Extension, [Annuals](https://extension.illinois.edu/flowers/annuals): New annual plants emerging from seeds left from the previous season.\n\n**Verification needs:** No specific plant or hardiness range is asserted. Verify the species or cultivar and local guidance before adding a product example or survival recommendation.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Which plants in our seasonal displays need an explanation of “perennial” versus “grown as an annual here”?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a horticulture subject-matter reviewer check the definitions and survival wording.\n- Verify any species or cultivar examples before adding them.\n- Confirm reliable local references for participating stores in different climates.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep hardiness-zone interpretation, overwintering methods, and biennial life cycles for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "NC State Extension",
+          "title": "Extension Gardener Handbook—3. Botany",
+          "url": "https://content.ces.ncsu.edu/extension-gardener-handbook/3-botany",
+          "supports": "Annual and perennial life cycles.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "University of Missouri Extension",
+          "title": "Flowering Annuals: Characteristics and Culture",
+          "url": "https://extension.missouri.edu/publications/g6629",
+          "supports": "Perennial plants grown as annuals where winters prevent survival.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "NC State Extension",
+          "title": "Extension Gardener Handbook—10. Herbaceous Ornamentals",
+          "url": "https://content.ces.ncsu.edu/extension-gardener-handbook/10-herbaceous-ornamentals",
+          "supports": "Tender perennials, hardiness, microclimates, and drainage.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 4",
+          "publisher": "University of Illinois Extension",
+          "title": "Annuals",
+          "url": "https://extension.illinois.edu/flowers/annuals",
+          "supports": "New annual plants emerging from seeds left from the previous season.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a horticulture subject-matter reviewer check the definitions and survival wording.",
+        "Verify any species or cultivar examples before adding them.",
+        "Confirm reliable local references for participating stores in different climates.",
+        "If media is added, check accessibility descriptions and usage rights.",
+        "Keep hardiness-zone interpretation, overwintering methods, and biennial life cycles for separate modules."
+      ],
+      "complete_markdown": "# CD-0017 — Annual or Perennial?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0017 |\n| Title | Annual or Perennial? |\n| Academy | Lawn, Garden & Outdoor Equipment |\n| Skill level | Foundations |\n| Relevant departments | Garden center; live plants; seeds |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | annual, perennial, plant life cycle, tender perennial, winter survival, hardiness |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nExplain the basic difference between annuals and perennials and recognize why local conditions affect whether a plant returns.\n\n### 2. Why it matters\n\n“Will this come back next year?” is a common plant-shopping question. Understanding life-cycle terms helps you answer clearly without promising that every plant labeled perennial will survive in the customer’s garden.\n\n### 3. Learn it\n\n**Annual and perennial describe a plant’s life cycle—not how long its flowers last.**\n\n| Term | Basic meaning |\n|---|---|\n| **Annual** | Completes its life cycle, from seed to producing seed and dying, in one growing season |\n| **Perennial** | Lives for more than two years under suitable conditions |\n\nAn annual does not necessarily live for a full calendar year. Its growing season may be much shorter. A perennial can live across multiple growing seasons, but that does not mean it flowers continuously or lives forever. NC State Extension distinguishes these life cycles. [Source 1]\n\n**Climate changes the customer’s experience.** Some plants are biologically perennial but are grown as annuals where they cannot survive the winter. These are often called **tender perennials**. Their label may describe a perennial life cycle even though the customer would normally replace them each year in that location. [Source 2]\n\n**Recommended action:** When a customer asks whether a plant will return, identify the exact plant and ask where it will grow. Check its hardiness information and local Extension guidance before describing its expected outdoor survival.\n\n**Common mistake:** Saying “perennial means it always comes back.” Winter temperatures, drainage, and conditions at the planting site can affect survival. A perennial designation is not a guarantee. [Source 3]\n\nAlso, new seedlings appearing where last year’s annual grew do not mean the original plant survived. Some annuals leave seeds that produce new plants the following season. [Source 4]\n\n**When to verify or seek help:** Check the plant tag and a reliable plant reference when the identity or local hardiness is unclear. Ask a knowledgeable garden-center coworker or local Cooperative Extension office rather than guessing from the display location.\n\n### 4. Customer scenario\n\nA customer points to a plant labeled **“tender perennial”** and asks, “Does that mean it will definitely come back outside next spring?”\n\nYou have not yet identified its hardiness range or asked where the customer plans to grow it.\n\n### 5. Quick check\n\n**Question ID: CD-0017-Q01**\n\nWhich response best explains the label?\n\nA. “It can live for multiple years, but we need to check whether it can survive outdoors in your location.”\nB. “Yes—every perennial survives winter wherever it is planted.”\nC. “No—tender perennial means it completes its life cycle in one growing season.”\nD. “Yes—if new seedlings appear, that proves the original plant survived.”\n\n### 6. Take it to the floor\n\n**Explain the life cycle, then check local survival conditions.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0017-Q01\n- **Correct answer:** A. “It can live for multiple years, but we need to check whether it can survive outdoors in your location.”\n- **Explanation:** A tender perennial has a perennial life cycle but may not tolerate the customer’s winter conditions. Its identity, hardiness, and growing location need checking before discussing expected outdoor survival. New seedlings are different from the original plant surviving.\n- **Teaching reference:** Section 3, “Learn it,” life-cycle table, tender-perennial explanation, and “Recommended action.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created life-cycle comparison showing one annual plant completing its life cycle and one perennial continuing into later growing seasons under suitable conditions.\n\n**Accessibility description for proposed media:** “An annual grows, flowers, produces seed, and dies within one growing season. A perennial remains alive across more than two years under suitable conditions. A note states that local climate and growing conditions affect survival.” Keep the definitions available as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] NC State Extension, [Extension Gardener Handbook—3. Botany](https://content.ces.ncsu.edu/extension-gardener-handbook/3-botany): Annual and perennial life cycles.\n- [Source 2] University of Missouri Extension, [Flowering Annuals: Characteristics and Culture](https://extension.missouri.edu/publications/g6629): Perennial plants grown as annuals where winters prevent survival.\n- [Source 3] NC State Extension, [Extension Gardener Handbook—10. Herbaceous Ornamentals](https://content.ces.ncsu.edu/extension-gardener-handbook/10-herbaceous-ornamentals): Tender perennials, hardiness, microclimates, and drainage.\n- [Source 4] University of Illinois Extension, [Annuals](https://extension.illinois.edu/flowers/annuals): New annual plants emerging from seeds left from the previous season.\n\n**Verification needs:** No specific plant or hardiness range is asserted. Verify the species or cultivar and local guidance before adding a product example or survival recommendation.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhich plants in our seasonal displays need an explanation of “perennial” versus “grown as an annual here”?\n\n### 9. Review needs\n\n- Have a horticulture subject-matter reviewer check the definitions and survival wording.\n- Verify any species or cultivar examples before adding them.\n- Confirm reliable local references for participating stores in different climates.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep hardiness-zone interpretation, overwintering methods, and biennial life cycles for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "ae611e9b-9efa-5ef2-9d04-d721369aa9c7",
+      "code": "CD-0018",
+      "version": "0.1.0",
+      "title": "Caulk or Construction Adhesive?",
+      "academy": "Building & Home Maintenance",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish sealing a joint from bonding materials and identify what to verify before selecting a product."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Caulk and construction adhesive can come in similar cartridges and use the same type of dispensing gun. Asking what the customer wants the product to do helps you identify the right starting category."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Start with the job: seal a gap or bond materials together?**\n\n| Customer’s goal | Category to investigate | Basic purpose |\n|---|---|---|\n| Seal a joint or gap | Caulk or sealant suited to that location | Close the joint or gap with an appropriate sealing material |\n| Attach one material to another | Construction adhesive suited to both materials | Create a bond between the surfaces |\n\nFor example, sealing a small joint between secured baseboard and a wall is different from attaching a loose piece of trim. The first is a sealing task; the second is a bonding task that may also require fasteners.\n\nCaulk and sealant selection depends on conditions such as movement, moisture, indoor or outdoor exposure, and whether the product needs to be painted. [Source 1]\n\nConstruction adhesives also differ. A product intended to bond certain materials is not automatically suitable for every other material. **Substrates** means the surfaces or materials being joined. Manufacturer guidance directs users to choose an adhesive for the specific materials and construction requirements. [Source 2]\n\n**Recommended action:** Ask, “Are you trying to seal this gap, hold these pieces together, or both?” Then identify the materials and location before checking a specific product’s label.\n\n**Common mistake:** Choosing by cartridge shape or assuming that anything called “caulk” will attach a loose part. Packaging does not establish purpose or performance.\n\nSome products are labeled for both bonding and sealing. Verify those claims rather than assuming the categories never overlap.\n\n**When to verify or seek help:** Check the product’s intended uses, compatible materials, limitations, preparation requirements, and any fastening or support instructions. Do not promise that adhesive replaces required nails, screws, or other attachment methods. Ask a knowledgeable coworker or manufacturer representative when the label does not establish suitability."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer says, “I need a tube of caulk for this trim.”\n\nWhen you ask what they want to accomplish, they explain that a piece of trim has come loose and they want to attach it to the wall. Their immediate goal is to hold the piece in place, rather than finish a joint along its edge."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Clarify the job first: sealing, bonding, or both. Then check the product.**"
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "DAP",
+          "title": "How to Choose the Right Caulk or Sealant",
+          "url": "https://www.dap.com/resources/how-to/choose-the-right-caulk-or-sealant",
+          "supports": "Sealing applications and selection factors including moisture, movement, exposure, and paintability.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "PPG/Liquid Nails",
+          "title": "Frequently Asked Questions",
+          "url": "https://www.ppgpaints.com/liquid-nails/faqs",
+          "supports": "Product-specific substrate compatibility and construction requirements.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "DAP",
+          "title": "Adhesives",
+          "url": "https://www.dap.com/products/adhesives",
+          "supports": "Construction adhesives as bonding products for building materials.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "keywords": [
+        "caulk",
+        "sealant",
+        "construction adhesive",
+        "bonding",
+        "sealing",
+        "trim",
+        "gaps",
+        "substrates"
+      ],
+      "relevant_departments": [
+        "Building maintenance",
+        "adhesives and sealants",
+        "paint sundries"
+      ],
+      "estimated_minutes": 5,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "ae611e9b-9efa-5ef2-9d04-d721369aa9c7",
+        "id": "CD-0018-Q01",
+        "position": 1,
+        "prompt": "Which response is the best next step?",
+        "options": [
+          "Select any paintable caulk because the customer called it caulk.",
+          "Select whichever cartridge fits the customer’s dispensing gun.",
+          "Recommend filling the visible edge gap without addressing the loose trim.",
+          "Investigate a construction adhesive compatible with the materials, and verify any required fastening or support."
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "ae611e9b-9efa-5ef2-9d04-d721369aa9c7",
+        "question_id": "CD-0018-Q01",
+        "correct_option": 3,
+        "explanation": "The customer’s immediate goal is attachment, so bonding products are the appropriate starting category. The exact materials, product suitability, and attachment requirements still need checking. The customer’s word choice, cartridge shape, or visible edge gap does not establish the right product.",
+        "teaching_reference": "Section 3, “Learn it,” category table, “Recommended action,” and “When to verify or seek help.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0018",
+        "Title": "Caulk or Construction Adhesive?",
+        "Academy": "Building & Home Maintenance",
+        "Skill level": "Foundations",
+        "Relevant departments": "Building maintenance; adhesives and sealants; paint sundries",
+        "Estimated completion time": "5 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "caulk, sealant, construction adhesive, bonding, sealing, trim, gaps, substrates",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-22",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Distinguish sealing a joint from bonding materials and identify what to verify before selecting a product."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Caulk and construction adhesive can come in similar cartridges and use the same type of dispensing gun. Asking what the customer wants the product to do helps you identify the right starting category."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Start with the job: seal a gap or bond materials together?**\n\n| Customer’s goal | Category to investigate | Basic purpose |\n|---|---|---|\n| Seal a joint or gap | Caulk or sealant suited to that location | Close the joint or gap with an appropriate sealing material |\n| Attach one material to another | Construction adhesive suited to both materials | Create a bond between the surfaces |\n\nFor example, sealing a small joint between secured baseboard and a wall is different from attaching a loose piece of trim. The first is a sealing task; the second is a bonding task that may also require fasteners.\n\nCaulk and sealant selection depends on conditions such as movement, moisture, indoor or outdoor exposure, and whether the product needs to be painted. [Source 1]\n\nConstruction adhesives also differ. A product intended to bond certain materials is not automatically suitable for every other material. **Substrates** means the surfaces or materials being joined. Manufacturer guidance directs users to choose an adhesive for the specific materials and construction requirements. [Source 2]\n\n**Recommended action:** Ask, “Are you trying to seal this gap, hold these pieces together, or both?” Then identify the materials and location before checking a specific product’s label.\n\n**Common mistake:** Choosing by cartridge shape or assuming that anything called “caulk” will attach a loose part. Packaging does not establish purpose or performance.\n\nSome products are labeled for both bonding and sealing. Verify those claims rather than assuming the categories never overlap.\n\n**When to verify or seek help:** Check the product’s intended uses, compatible materials, limitations, preparation requirements, and any fastening or support instructions. Do not promise that adhesive replaces required nails, screws, or other attachment methods. Ask a knowledgeable coworker or manufacturer representative when the label does not establish suitability."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer says, “I need a tube of caulk for this trim.”\n\nWhen you ask what they want to accomplish, they explain that a piece of trim has come loose and they want to attach it to the wall. Their immediate goal is to hold the piece in place, rather than finish a joint along its edge."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0018-Q01**\n\nWhich response is the best next step?\n\nA. Select any paintable caulk because the customer called it caulk.\nB. Select whichever cartridge fits the customer’s dispensing gun.\nC. Recommend filling the visible edge gap without addressing the loose trim.\nD. Investigate a construction adhesive compatible with the materials, and verify any required fastening or support."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Clarify the job first: sealing, bonding, or both. Then check the product.**"
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0018-Q01",
+          "wording": "Which response is the best next step?",
+          "options": {
+            "A": "Select any paintable caulk because the customer called it caulk.",
+            "B": "Select whichever cartridge fits the customer’s dispensing gun.",
+            "C": "Recommend filling the visible edge gap without addressing the loose trim.",
+            "D": "Investigate a construction adhesive compatible with the materials, and verify any required fastening or support."
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0018-Q01",
+          "correct_answer": "D",
+          "explanation": "The customer’s immediate goal is attachment, so bonding products are the appropriate starting category. The exact materials, product suitability, and attachment requirements still need checking. The customer’s word choice, cartridge shape, or visible edge gap does not establish the right product.",
+          "teaching_reference": "Section 3, “Learn it,” category table, “Recommended action,” and “When to verify or seek help.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison showing a joint along already secured trim and a separate loose piece of trim awaiting attachment.\n\n**Accessibility description for proposed media:** “One illustration labels a narrow joint between secured baseboard and a wall as a sealing task. A second labels a loose piece of trim and its mounting surface as a bonding task requiring product and attachment checks.” Provide both examples as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] DAP, [How to Choose the Right Caulk or Sealant](https://www.dap.com/resources/how-to/choose-the-right-caulk-or-sealant): Sealing applications and selection factors including moisture, movement, exposure, and paintability.\n- [Source 2] PPG/Liquid Nails, [Frequently Asked Questions](https://www.ppgpaints.com/liquid-nails/faqs): Product-specific substrate compatibility and construction requirements.\n- [Source 3] DAP, [Adhesives](https://www.dap.com/products/adhesives): Construction adhesives as bonding products for building materials.\n\n**Verification needs:** No particular adhesive, sealant, trim material, or attachment method is prescribed. Any claim that a product performs both bonding and sealing must be checked against that exact product’s current documentation.\n\nAll teaching and assessment wording is independently authored. No manufacturer media is included."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "Which questions help us distinguish “I need caulk” from a customer who actually needs to attach something?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Have a building-maintenance subject-matter reviewer check category distinctions and attachment wording.\n- Verify any real product examples, especially products claiming both bonding and sealing.\n- Confirm terminology against participating stores’ assortments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep application techniques, cure times, structural bonding, and specialty sealant selection for separate modules."
+        }
+      ],
+      "sources": [
+        {
+          "id": "Source 1",
+          "publisher": "DAP",
+          "title": "How to Choose the Right Caulk or Sealant",
+          "url": "https://www.dap.com/resources/how-to/choose-the-right-caulk-or-sealant",
+          "supports": "Sealing applications and selection factors including moisture, movement, exposure, and paintability.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 2",
+          "publisher": "PPG/Liquid Nails",
+          "title": "Frequently Asked Questions",
+          "url": "https://www.ppgpaints.com/liquid-nails/faqs",
+          "supports": "Product-specific substrate compatibility and construction requirements.",
+          "checked": "2026-10-22"
+        },
+        {
+          "id": "Source 3",
+          "publisher": "DAP",
+          "title": "Adhesives",
+          "url": "https://www.dap.com/products/adhesives",
+          "supports": "Construction adhesives as bonding products for building materials.",
+          "checked": "2026-10-22"
+        }
+      ],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Have a building-maintenance subject-matter reviewer check category distinctions and attachment wording.",
+        "Verify any real product examples, especially products claiming both bonding and sealing.",
+        "Confirm terminology against participating stores’ assortments.",
+        "If media is added, check accessibility descriptions and usage rights.",
+        "Keep application techniques, cure times, structural bonding, and specialty sealant selection for separate modules."
+      ],
+      "complete_markdown": "# CD-0018 — Caulk or Construction Adhesive?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0018 |\n| Title | Caulk or Construction Adhesive? |\n| Academy | Building & Home Maintenance |\n| Skill level | Foundations |\n| Relevant departments | Building maintenance; adhesives and sealants; paint sundries |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | caulk, sealant, construction adhesive, bonding, sealing, trim, gaps, substrates |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish sealing a joint from bonding materials and identify what to verify before selecting a product.\n\n### 2. Why it matters\n\nCaulk and construction adhesive can come in similar cartridges and use the same type of dispensing gun. Asking what the customer wants the product to do helps you identify the right starting category.\n\n### 3. Learn it\n\n**Start with the job: seal a gap or bond materials together?**\n\n| Customer’s goal | Category to investigate | Basic purpose |\n|---|---|---|\n| Seal a joint or gap | Caulk or sealant suited to that location | Close the joint or gap with an appropriate sealing material |\n| Attach one material to another | Construction adhesive suited to both materials | Create a bond between the surfaces |\n\nFor example, sealing a small joint between secured baseboard and a wall is different from attaching a loose piece of trim. The first is a sealing task; the second is a bonding task that may also require fasteners.\n\nCaulk and sealant selection depends on conditions such as movement, moisture, indoor or outdoor exposure, and whether the product needs to be painted. [Source 1]\n\nConstruction adhesives also differ. A product intended to bond certain materials is not automatically suitable for every other material. **Substrates** means the surfaces or materials being joined. Manufacturer guidance directs users to choose an adhesive for the specific materials and construction requirements. [Source 2]\n\n**Recommended action:** Ask, “Are you trying to seal this gap, hold these pieces together, or both?” Then identify the materials and location before checking a specific product’s label.\n\n**Common mistake:** Choosing by cartridge shape or assuming that anything called “caulk” will attach a loose part. Packaging does not establish purpose or performance.\n\nSome products are labeled for both bonding and sealing. Verify those claims rather than assuming the categories never overlap.\n\n**When to verify or seek help:** Check the product’s intended uses, compatible materials, limitations, preparation requirements, and any fastening or support instructions. Do not promise that adhesive replaces required nails, screws, or other attachment methods. Ask a knowledgeable coworker or manufacturer representative when the label does not establish suitability.\n\n### 4. Customer scenario\n\nA customer says, “I need a tube of caulk for this trim.”\n\nWhen you ask what they want to accomplish, they explain that a piece of trim has come loose and they want to attach it to the wall. Their immediate goal is to hold the piece in place, rather than finish a joint along its edge.\n\n### 5. Quick check\n\n**Question ID: CD-0018-Q01**\n\nWhich response is the best next step?\n\nA. Select any paintable caulk because the customer called it caulk.\nB. Select whichever cartridge fits the customer’s dispensing gun.\nC. Recommend filling the visible edge gap without addressing the loose trim.\nD. Investigate a construction adhesive compatible with the materials, and verify any required fastening or support.\n\n### 6. Take it to the floor\n\n**Clarify the job first: sealing, bonding, or both. Then check the product.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0018-Q01\n- **Correct answer:** D. Investigate a construction adhesive compatible with the materials, and verify any required fastening or support.\n- **Explanation:** The customer’s immediate goal is attachment, so bonding products are the appropriate starting category. The exact materials, product suitability, and attachment requirements still need checking. The customer’s word choice, cartridge shape, or visible edge gap does not establish the right product.\n- **Teaching reference:** Section 3, “Learn it,” category table, “Recommended action,” and “When to verify or seek help.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison showing a joint along already secured trim and a separate loose piece of trim awaiting attachment.\n\n**Accessibility description for proposed media:** “One illustration labels a narrow joint between secured baseboard and a wall as a sealing task. A second labels a loose piece of trim and its mounting surface as a bonding task requiring product and attachment checks.” Provide both examples as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] DAP, [How to Choose the Right Caulk or Sealant](https://www.dap.com/resources/how-to/choose-the-right-caulk-or-sealant): Sealing applications and selection factors including moisture, movement, exposure, and paintability.\n- [Source 2] PPG/Liquid Nails, [Frequently Asked Questions](https://www.ppgpaints.com/liquid-nails/faqs): Product-specific substrate compatibility and construction requirements.\n- [Source 3] DAP, [Adhesives](https://www.dap.com/products/adhesives): Construction adhesives as bonding products for building materials.\n\n**Verification needs:** No particular adhesive, sealant, trim material, or attachment method is prescribed. Any claim that a product performs both bonding and sealing must be checked against that exact product’s current documentation.\n\nAll teaching and assessment wording is independently authored. No manufacturer media is included.\n\n### 8. Optional manager discussion prompt\n\nWhich questions help us distinguish “I need caulk” from a customer who actually needs to attach something?\n\n### 9. Review needs\n\n- Have a building-maintenance subject-matter reviewer check category distinctions and attachment wording.\n- Verify any real product examples, especially products claiming both bonding and sealing.\n- Confirm terminology against participating stores’ assortments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep application techniques, cure times, structural bonding, and specialty sealant selection for separate modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "94ed37f7-4df5-5087-a5a8-c355317b2cd0",
+      "code": "CD-0019",
+      "version": "0.1.0",
+      "title": "Ask What the Customer Is Trying to Do",
+      "academy": "Customer Service & Retail Readiness",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Choose an opening question that clarifies the customer’s goal before selecting a product."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers may know what they want to accomplish without knowing a product’s name. A short conversation about the task helps you understand the request and avoid recommending something based on an assumption."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Start with the result the customer wants.** A request such as “I need something strong” does not yet identify the task, materials, or conditions.\n\nUse a question that invites an explanation:\n\n| Customer says | Useful opening question |\n|---|---|\n| “I need something to fix this.” | “What is happening, and what would you like to fix?” |\n| “I need a better one.” | “What would you like the replacement to do differently?” |\n| “I need something strong.” | “What are you trying to hold, attach, or repair?” |\n\nThese are examples, not a script to repeat in every conversation. Choose a question that builds on what the customer has already told you.\n\n**Recommended action:** Ask one clear question, listen to the answer, and then confirm your understanding. For example: “So you want to reattach the loose piece, rather than fill the gap—is that right?”\n\nAfter the goal is clear, ask a focused follow-up about information that affects the choice, such as the material, location, dimensions, or exact model. A photo or sample can help, but it may not tell the whole story.\n\n**Common mistake:** Offering a solution inside the opening question: “You need our strongest glue, right?” That steers the customer toward a product before establishing the task.\n\nAvoid making customers feel tested on terminology. “Can you show me where it connects?” may be more useful than asking them to name an unfamiliar fitting.\n\n**When to verify or seek help:** If the goal or product suitability remains unclear, say what still needs checking. Consult the relevant product information or involve a knowledgeable coworker. Understanding the customer’s goal is the start of a recommendation, not proof that a particular product will work."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer approaches the counter and says, “I need something stronger than what I used last time.”\n\nThey have not described the project, brought the previous product, or explained what went wrong."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Ask about the task, listen, and confirm the goal before choosing a product.**"
+        }
+      ],
+      "sources": [
+        {
+          "id": "Authorship",
+          "publisher": "colTRAIN",
+          "title": "This is an independently authored colTRAIN retail communication lesson. The question examples are original instructional suggestions; no external framework, research finding, store policy, or proprietary curriculum is claimed.",
+          "url": ""
+        }
+      ],
+      "keywords": [
+        "customer service",
+        "project questions",
+        "listening",
+        "customer needs",
+        "product selection",
+        "clarification"
+      ],
+      "relevant_departments": [
+        "All sales-floor departments",
+        "customer service"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "94ed37f7-4df5-5087-a5a8-c355317b2cd0",
+        "id": "CD-0019-Q01",
+        "position": 1,
+        "prompt": "Which opening question best clarifies the customer’s goal?",
+        "options": [
+          "“Would you prefer the largest package or the smallest?”",
+          "“What are you trying to accomplish, and what happened with the product you used?”",
+          "“You’re looking for our strongest adhesive, correct?”",
+          "“Which brand would you like me to recommend?”"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "94ed37f7-4df5-5087-a5a8-c355317b2cd0",
+        "question_id": "CD-0019-Q01",
+        "correct_option": 1,
+        "explanation": "This question invites the customer to explain both the goal and the previous difficulty without assuming a product category. Package size, brand, and adhesive strength are premature choices when the task is still unknown.",
+        "teaching_reference": "Section 3, “Learn it,” opening explanation, “Recommended action,” and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0019",
+        "Title": "Ask What the Customer Is Trying to Do",
+        "Academy": "Customer Service & Retail Readiness",
+        "Skill level": "Foundations",
+        "Relevant departments": "All sales-floor departments; customer service",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "customer service, project questions, listening, customer needs, product selection, clarification",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-22",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Choose an opening question that clarifies the customer’s goal before selecting a product."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "Customers may know what they want to accomplish without knowing a product’s name. A short conversation about the task helps you understand the request and avoid recommending something based on an assumption."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Start with the result the customer wants.** A request such as “I need something strong” does not yet identify the task, materials, or conditions.\n\nUse a question that invites an explanation:\n\n| Customer says | Useful opening question |\n|---|---|\n| “I need something to fix this.” | “What is happening, and what would you like to fix?” |\n| “I need a better one.” | “What would you like the replacement to do differently?” |\n| “I need something strong.” | “What are you trying to hold, attach, or repair?” |\n\nThese are examples, not a script to repeat in every conversation. Choose a question that builds on what the customer has already told you.\n\n**Recommended action:** Ask one clear question, listen to the answer, and then confirm your understanding. For example: “So you want to reattach the loose piece, rather than fill the gap—is that right?”\n\nAfter the goal is clear, ask a focused follow-up about information that affects the choice, such as the material, location, dimensions, or exact model. A photo or sample can help, but it may not tell the whole story.\n\n**Common mistake:** Offering a solution inside the opening question: “You need our strongest glue, right?” That steers the customer toward a product before establishing the task.\n\nAvoid making customers feel tested on terminology. “Can you show me where it connects?” may be more useful than asking them to name an unfamiliar fitting.\n\n**When to verify or seek help:** If the goal or product suitability remains unclear, say what still needs checking. Consult the relevant product information or involve a knowledgeable coworker. Understanding the customer’s goal is the start of a recommendation, not proof that a particular product will work."
+        },
+        {
+          "heading": "4. Customer scenario",
+          "content_markdown": "A customer approaches the counter and says, “I need something stronger than what I used last time.”\n\nThey have not described the project, brought the previous product, or explained what went wrong."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0019-Q01**\n\nWhich opening question best clarifies the customer’s goal?\n\nA. “Would you prefer the largest package or the smallest?”\nB. “What are you trying to accomplish, and what happened with the product you used?”\nC. “You’re looking for our strongest adhesive, correct?”\nD. “Which brand would you like me to recommend?”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "**Ask about the task, listen, and confirm the goal before choosing a product.**"
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0019-Q01",
+          "wording": "Which opening question best clarifies the customer’s goal?",
+          "options": {
+            "A": "“Would you prefer the largest package or the smallest?”",
+            "B": "“What are you trying to accomplish, and what happened with the product you used?”",
+            "C": "“You’re looking for our strongest adhesive, correct?”",
+            "D": "“Which brand would you like me to recommend?”"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0019-Q01",
+          "correct_answer": "B",
+          "explanation": "This question invites the customer to explain both the goal and the previous difficulty without assuming a product category. Package size, brand, and adhesive strength are premature choices when the task is still unknown.",
+          "teaching_reference": "Section 3, “Learn it,” opening explanation, “Recommended action,” and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created two-panel conversation example contrasting an assumption-led question with a question about the customer’s task.\n\n**Accessibility description for proposed media:** “One employee asks, ‘You need our strongest glue, right?’ Another asks, ‘What are you trying to accomplish?’ Text explains that the second question establishes the task before choosing a product.” Provide the dialogue as readable text.\n\n**Sources and authorship:** This is an independently authored colTRAIN retail communication lesson. The question examples are original instructional suggestions; no external framework, research finding, store policy, or proprietary curriculum is claimed.\n\n**Verification needs:** Any later product recommendation or technical example needs its own supporting documentation. No particular product or performance claim is included here."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "What vague customer request do we hear often, and which opening question would help clarify it?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Review the dialogue for a natural, respectful retail tone.\n- Confirm that examples work across participating stores’ departments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep complex needs assessment, handling disagreement, and assembling complete project purchases for higher-level modules."
+        }
+      ],
+      "sources": [],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Review the dialogue for a natural, respectful retail tone.",
+        "Confirm that examples work across participating stores’ departments.",
+        "If media is added, check accessibility descriptions and usage rights.",
+        "Keep complex needs assessment, handling disagreement, and assembling complete project purchases for higher-level modules."
+      ],
+      "complete_markdown": "# CD-0019 — Ask What the Customer Is Trying to Do\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0019 |\n| Title | Ask What the Customer Is Trying to Do |\n| Academy | Customer Service & Retail Readiness |\n| Skill level | Foundations |\n| Relevant departments | All sales-floor departments; customer service |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | customer service, project questions, listening, customer needs, product selection, clarification |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nChoose an opening question that clarifies the customer’s goal before selecting a product.\n\n### 2. Why it matters\n\nCustomers may know what they want to accomplish without knowing a product’s name. A short conversation about the task helps you understand the request and avoid recommending something based on an assumption.\n\n### 3. Learn it\n\n**Start with the result the customer wants.** A request such as “I need something strong” does not yet identify the task, materials, or conditions.\n\nUse a question that invites an explanation:\n\n| Customer says | Useful opening question |\n|---|---|\n| “I need something to fix this.” | “What is happening, and what would you like to fix?” |\n| “I need a better one.” | “What would you like the replacement to do differently?” |\n| “I need something strong.” | “What are you trying to hold, attach, or repair?” |\n\nThese are examples, not a script to repeat in every conversation. Choose a question that builds on what the customer has already told you.\n\n**Recommended action:** Ask one clear question, listen to the answer, and then confirm your understanding. For example: “So you want to reattach the loose piece, rather than fill the gap—is that right?”\n\nAfter the goal is clear, ask a focused follow-up about information that affects the choice, such as the material, location, dimensions, or exact model. A photo or sample can help, but it may not tell the whole story.\n\n**Common mistake:** Offering a solution inside the opening question: “You need our strongest glue, right?” That steers the customer toward a product before establishing the task.\n\nAvoid making customers feel tested on terminology. “Can you show me where it connects?” may be more useful than asking them to name an unfamiliar fitting.\n\n**When to verify or seek help:** If the goal or product suitability remains unclear, say what still needs checking. Consult the relevant product information or involve a knowledgeable coworker. Understanding the customer’s goal is the start of a recommendation, not proof that a particular product will work.\n\n### 4. Customer scenario\n\nA customer approaches the counter and says, “I need something stronger than what I used last time.”\n\nThey have not described the project, brought the previous product, or explained what went wrong.\n\n### 5. Quick check\n\n**Question ID: CD-0019-Q01**\n\nWhich opening question best clarifies the customer’s goal?\n\nA. “Would you prefer the largest package or the smallest?”\nB. “What are you trying to accomplish, and what happened with the product you used?”\nC. “You’re looking for our strongest adhesive, correct?”\nD. “Which brand would you like me to recommend?”\n\n### 6. Take it to the floor\n\n**Ask about the task, listen, and confirm the goal before choosing a product.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0019-Q01\n- **Correct answer:** B. “What are you trying to accomplish, and what happened with the product you used?”\n- **Explanation:** This question invites the customer to explain both the goal and the previous difficulty without assuming a product category. Package size, brand, and adhesive strength are premature choices when the task is still unknown.\n- **Teaching reference:** Section 3, “Learn it,” opening explanation, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created two-panel conversation example contrasting an assumption-led question with a question about the customer’s task.\n\n**Accessibility description for proposed media:** “One employee asks, ‘You need our strongest glue, right?’ Another asks, ‘What are you trying to accomplish?’ Text explains that the second question establishes the task before choosing a product.” Provide the dialogue as readable text.\n\n**Sources and authorship:** This is an independently authored colTRAIN retail communication lesson. The question examples are original instructional suggestions; no external framework, research finding, store policy, or proprietary curriculum is claimed.\n\n**Verification needs:** Any later product recommendation or technical example needs its own supporting documentation. No particular product or performance claim is included here.\n\n### 8. Optional manager discussion prompt\n\nWhat vague customer request do we hear often, and which opening question would help clarify it?\n\n### 9. Review needs\n\n- Review the dialogue for a natural, respectful retail tone.\n- Confirm that examples work across participating stores’ departments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep complex needs assessment, handling disagreement, and assembling complete project purchases for higher-level modules.\n"
+    }
+  },
+  {
+    "module": {
+      "id": "e18a448a-042a-5b40-adb1-f4a7c6c63970",
+      "code": "CD-0020",
+      "version": "0.1.0",
+      "title": "Report a Shelf-Label Mismatch Clearly",
+      "academy": "Operations & Leadership",
+      "skill_level": "foundations",
+      "sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify the product, location, and conflicting information needed to report a shelf-label mismatch clearly."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "“The tag is wrong” leaves the next person with several unanswered questions. A clear report helps them find the item, compare the information, and determine the appropriate correction."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Report what you observed before deciding which information is wrong.** A mismatch could involve the price, product description, size, package quantity, or item identifier.\n\nUse these three parts:\n\n| Part | Information to capture |\n|---|---|\n| **Product** | Description, size or package quantity, and an available identifier such as SKU, UPC, or item number |\n| **Location** | Aisle and shelf, nearby landmark, or another description that makes the label easy to find |\n| **Conflict** | Exactly what the package, shelf label, or checkout screen shows differently |\n\n**SKU** means stock keeping unit, an identifier used within a business’s inventory system. A **UPC** is a product identification code commonly represented by a barcode. Do not assume a store’s SKU and a product’s UPC are the same number.\n\n**Recommended action:** Compare the package and label descriptions, sizes, quantities, and identifiers where available. Record the relevant differences. A photo can help if store practice allows it, but include enough written detail for someone to understand the issue.\n\nFor example: “The shelf label describes a two-pack; the package above it contains one.” That is more useful than “Wrong tag.”\n\n**Common mistake:** Reporting an assumed cause as a confirmed fact. “Someone forgot to change the price” assigns a cause you may not know. “Shelf label shows $8.49; checkout shows $9.49” describes the actual conflict.\n\nSend the report through the store’s usual method. If no process is established, ask a supervisor who should review it.\n\n**When to verify or seek help:** Follow the store’s process for checking prices and handling the customer’s purchase. If your authority or the applicable policy is unclear, involve the responsible person before changing a price, moving a label, or promising an adjustment."
+        },
+        {
+          "heading": "4. Workplace scenario",
+          "content_markdown": "A customer brings a one-pack paintbrush to checkout. The checkout screen shows **$9.49**.\n\nYou check the shelf location. Its label also describes a one-pack paintbrush, but shows **$8.49**. You have not yet compared the package’s product identifier with the label’s identifier."
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Report **the product, the location, and the exact conflict—plus anything still unverified.**"
+        }
+      ],
+      "sources": [
+        {
+          "id": "Authorship",
+          "publisher": "colTRAIN",
+          "title": "The three-part reporting framework and scenario are independently authored for colTRAIN. No particular store’s pricing, adjustment, or labeling policy is asserted.",
+          "url": ""
+        }
+      ],
+      "keywords": [
+        "shelf label",
+        "price tag",
+        "mismatch",
+        "SKU",
+        "UPC",
+        "item number",
+        "product identification",
+        "reporting"
+      ],
+      "relevant_departments": [
+        "All sales-floor departments",
+        "checkout",
+        "inventory"
+      ],
+      "estimated_minutes": 4,
+      "prior_knowledge": "None",
+      "related_course_code": null
+    },
+    "questions": [
+      {
+        "module_id": "e18a448a-042a-5b40-adb1-f4a7c6c63970",
+        "id": "CD-0020-Q01",
+        "position": 1,
+        "prompt": "Which report gives the responsible coworker the clearest information?",
+        "options": [
+          "“The customer says our paintbrush prices are wrong.”",
+          "“Someone forgot to update the paintbrush tag; change it to $9.49.”",
+          "“One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”",
+          "“Paintbrush scanned at $9.49, so I told the customer the shelf price does not apply.”"
+        ]
+      }
+    ],
+    "keys": [
+      {
+        "module_id": "e18a448a-042a-5b40-adb1-f4a7c6c63970",
+        "question_id": "CD-0020-Q01",
+        "correct_option": 2,
+        "explanation": "This report identifies the product, provides a findable location, states both observed prices, and flags the unfinished identifier check. It does not assume the cause, determine which price is correct, or promise a customer outcome.",
+        "teaching_reference": "Section 3, “Learn it,” reporting table, “Recommended action,” and “Common mistake.”"
+      }
+    ],
+    "source_document": {
+      "metadata": {
+        "Stable module ID": "CD-0020",
+        "Title": "Report a Shelf-Label Mismatch Clearly",
+        "Academy": "Operations & Leadership",
+        "Skill level": "Foundations",
+        "Relevant departments": "All sales-floor departments; checkout; inventory",
+        "Estimated completion time": "4 minutes — estimate",
+        "Prior knowledge": "None",
+        "Related existing full-course code": "None specified",
+        "Search keywords": "shelf label, price tag, mismatch, SKU, UPC, item number, product identification, reporting",
+        "Version": "0.1.0",
+        "Status": "Ready for review—not published"
+      },
+      "approval": {
+        "content_approved": true,
+        "approved_on": "2026-10-23",
+        "publication_status": "not published"
+      },
+      "employee_facing_sections": [
+        {
+          "heading": "1. Today’s skill",
+          "content_markdown": "Identify the product, location, and conflicting information needed to report a shelf-label mismatch clearly."
+        },
+        {
+          "heading": "2. Why it matters",
+          "content_markdown": "“The tag is wrong” leaves the next person with several unanswered questions. A clear report helps them find the item, compare the information, and determine the appropriate correction."
+        },
+        {
+          "heading": "3. Learn it",
+          "content_markdown": "**Report what you observed before deciding which information is wrong.** A mismatch could involve the price, product description, size, package quantity, or item identifier.\n\nUse these three parts:\n\n| Part | Information to capture |\n|---|---|\n| **Product** | Description, size or package quantity, and an available identifier such as SKU, UPC, or item number |\n| **Location** | Aisle and shelf, nearby landmark, or another description that makes the label easy to find |\n| **Conflict** | Exactly what the package, shelf label, or checkout screen shows differently |\n\n**SKU** means stock keeping unit, an identifier used within a business’s inventory system. A **UPC** is a product identification code commonly represented by a barcode. Do not assume a store’s SKU and a product’s UPC are the same number.\n\n**Recommended action:** Compare the package and label descriptions, sizes, quantities, and identifiers where available. Record the relevant differences. A photo can help if store practice allows it, but include enough written detail for someone to understand the issue.\n\nFor example: “The shelf label describes a two-pack; the package above it contains one.” That is more useful than “Wrong tag.”\n\n**Common mistake:** Reporting an assumed cause as a confirmed fact. “Someone forgot to change the price” assigns a cause you may not know. “Shelf label shows $8.49; checkout shows $9.49” describes the actual conflict.\n\nSend the report through the store’s usual method. If no process is established, ask a supervisor who should review it.\n\n**When to verify or seek help:** Follow the store’s process for checking prices and handling the customer’s purchase. If your authority or the applicable policy is unclear, involve the responsible person before changing a price, moving a label, or promising an adjustment."
+        },
+        {
+          "heading": "4. Workplace scenario",
+          "content_markdown": "A customer brings a one-pack paintbrush to checkout. The checkout screen shows **$9.49**.\n\nYou check the shelf location. Its label also describes a one-pack paintbrush, but shows **$8.49**. You have not yet compared the package’s product identifier with the label’s identifier."
+        },
+        {
+          "heading": "5. Quick check",
+          "content_markdown": "**Question ID: CD-0020-Q01**\n\nWhich report gives the responsible coworker the clearest information?\n\nA. “The customer says our paintbrush prices are wrong.”\nB. “Someone forgot to update the paintbrush tag; change it to $9.49.”\nC. “One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”\nD. “Paintbrush scanned at $9.49, so I told the customer the shelf price does not apply.”"
+        },
+        {
+          "heading": "6. Take it to the floor",
+          "content_markdown": "Report **the product, the location, and the exact conflict—plus anything still unverified.**"
+        }
+      ],
+      "questions": [
+        {
+          "id": "CD-0020-Q01",
+          "wording": "Which report gives the responsible coworker the clearest information?",
+          "options": {
+            "A": "“The customer says our paintbrush prices are wrong.”",
+            "B": "“Someone forgot to update the paintbrush tag; change it to $9.49.”",
+            "C": "“One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”",
+            "D": "“Paintbrush scanned at $9.49, so I told the customer the shelf price does not apply.”"
+          }
+        }
+      ],
+      "answer_key": [
+        {
+          "question_id": "CD-0020-Q01",
+          "correct_answer": "C",
+          "explanation": "This report identifies the product, provides a findable location, states both observed prices, and flags the unfinished identifier check. It does not assume the cause, determine which price is correct, or promise a customer outcome.",
+          "teaching_reference": "Section 3, “Learn it,” reporting table, “Recommended action,” and “Common mistake.”"
+        }
+      ],
+      "reviewer_sections": [
+        {
+          "heading": "Answer key — separate from employee-facing content",
+          "content_markdown": "- **Question ID:** CD-0020-Q01\n- **Correct answer:** C. “One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”\n- **Explanation:** This report identifies the product, provides a findable location, states both observed prices, and flags the unfinished identifier check. It does not assume the cause, determine which price is correct, or promise a customer outcome.\n- **Teaching reference:** Section 3, “Learn it,” reporting table, “Recommended action,” and “Common mistake.”"
+        },
+        {
+          "heading": "7. Supporting materials and sources",
+          "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created package, shelf-label, and checkout-screen example showing the fictional price difference. Use clearly marked illustrative identifiers rather than a scannable barcode.\n\n**Accessibility description for proposed media:** “A fictional one-pack paintbrush has a shelf price of $8.49 and a checkout price of $9.49. Text notes that package and shelf-label identifiers have not yet been compared.” Provide all relevant information as readable text.\n\n**Sources and authorship:** The three-part reporting framework and scenario are independently authored for colTRAIN. No particular store’s pricing, adjustment, or labeling policy is asserted.\n\n**Verification needs:** Confirm the SKU and UPC terminology against an authoritative identification reference before publication. Participating stores must establish who reviews discrepancies and what employees may change or promise. The scenario does not determine a legally required selling price."
+        },
+        {
+          "heading": "8. Optional manager discussion prompt",
+          "content_markdown": "How should employees report a label mismatch here, and who can decide the customer’s price or authorize a correction?"
+        },
+        {
+          "heading": "9. Review needs",
+          "content_markdown": "- Verify identifier terminology before publication.\n- Review examples against participating stores’ label and checkout formats.\n- Confirm reporting methods and the person responsible for resolving discrepancies.\n- Confirm applicable store procedures for customer price questions and label changes.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep pricing-law interpretation, inventory corrections, and root-cause investigation outside this module."
+        }
+      ],
+      "sources": [],
+      "actual_media_assets": [],
+      "review_needs": [
+        "Verify identifier terminology before publication.",
+        "Review examples against participating stores’ label and checkout formats.",
+        "Confirm reporting methods and the person responsible for resolving discrepancies.",
+        "Confirm applicable store procedures for customer price questions and label changes.",
+        "If media is added, check accessibility descriptions and usage rights.",
+        "Keep pricing-law interpretation, inventory corrections, and root-cause investigation outside this module."
+      ],
+      "complete_markdown": "# CD-0020 — Report a Shelf-Label Mismatch Clearly\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0020 |\n| Title | Report a Shelf-Label Mismatch Clearly |\n| Academy | Operations & Leadership |\n| Skill level | Foundations |\n| Relevant departments | All sales-floor departments; checkout; inventory |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | shelf label, price tag, mismatch, SKU, UPC, item number, product identification, reporting |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nIdentify the product, location, and conflicting information needed to report a shelf-label mismatch clearly.\n\n### 2. Why it matters\n\n“The tag is wrong” leaves the next person with several unanswered questions. A clear report helps them find the item, compare the information, and determine the appropriate correction.\n\n### 3. Learn it\n\n**Report what you observed before deciding which information is wrong.** A mismatch could involve the price, product description, size, package quantity, or item identifier.\n\nUse these three parts:\n\n| Part | Information to capture |\n|---|---|\n| **Product** | Description, size or package quantity, and an available identifier such as SKU, UPC, or item number |\n| **Location** | Aisle and shelf, nearby landmark, or another description that makes the label easy to find |\n| **Conflict** | Exactly what the package, shelf label, or checkout screen shows differently |\n\n**SKU** means stock keeping unit, an identifier used within a business’s inventory system. A **UPC** is a product identification code commonly represented by a barcode. Do not assume a store’s SKU and a product’s UPC are the same number.\n\n**Recommended action:** Compare the package and label descriptions, sizes, quantities, and identifiers where available. Record the relevant differences. A photo can help if store practice allows it, but include enough written detail for someone to understand the issue.\n\nFor example: “The shelf label describes a two-pack; the package above it contains one.” That is more useful than “Wrong tag.”\n\n**Common mistake:** Reporting an assumed cause as a confirmed fact. “Someone forgot to change the price” assigns a cause you may not know. “Shelf label shows $8.49; checkout shows $9.49” describes the actual conflict.\n\nSend the report through the store’s usual method. If no process is established, ask a supervisor who should review it.\n\n**When to verify or seek help:** Follow the store’s process for checking prices and handling the customer’s purchase. If your authority or the applicable policy is unclear, involve the responsible person before changing a price, moving a label, or promising an adjustment.\n\n### 4. Workplace scenario\n\nA customer brings a one-pack paintbrush to checkout. The checkout screen shows **$9.49**.\n\nYou check the shelf location. Its label also describes a one-pack paintbrush, but shows **$8.49**. You have not yet compared the package’s product identifier with the label’s identifier.\n\n### 5. Quick check\n\n**Question ID: CD-0020-Q01**\n\nWhich report gives the responsible coworker the clearest information?\n\nA. “The customer says our paintbrush prices are wrong.”\nB. “Someone forgot to update the paintbrush tag; change it to $9.49.”\nC. “One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”\nD. “Paintbrush scanned at $9.49, so I told the customer the shelf price does not apply.”\n\n### 6. Take it to the floor\n\nReport **the product, the location, and the exact conflict—plus anything still unverified.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0020-Q01\n- **Correct answer:** C. “One-pack paintbrush in the paint aisle, middle shelf beside the roller covers: shelf label $8.49; checkout $9.49. Package and label identifiers still need comparison.”\n- **Explanation:** This report identifies the product, provides a findable location, states both observed prices, and flags the unfinished identifier check. It does not assume the cause, determine which price is correct, or promise a customer outcome.\n- **Teaching reference:** Section 3, “Learn it,” reporting table, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created package, shelf-label, and checkout-screen example showing the fictional price difference. Use clearly marked illustrative identifiers rather than a scannable barcode.\n\n**Accessibility description for proposed media:** “A fictional one-pack paintbrush has a shelf price of $8.49 and a checkout price of $9.49. Text notes that package and shelf-label identifiers have not yet been compared.” Provide all relevant information as readable text.\n\n**Sources and authorship:** The three-part reporting framework and scenario are independently authored for colTRAIN. No particular store’s pricing, adjustment, or labeling policy is asserted.\n\n**Verification needs:** Confirm the SKU and UPC terminology against an authoritative identification reference before publication. Participating stores must establish who reviews discrepancies and what employees may change or promise. The scenario does not determine a legally required selling price.\n\n### 8. Optional manager discussion prompt\n\nHow should employees report a label mismatch here, and who can decide the customer’s price or authorize a correction?\n\n### 9. Review needs\n\n- Verify identifier terminology before publication.\n- Review examples against participating stores’ label and checkout formats.\n- Confirm reporting methods and the person responsible for resolving discrepancies.\n- Confirm applicable store procedures for customer price questions and label changes.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep pricing-law interpretation, inventory corrections, and root-cause investigation outside this module.\n"
+    }
+  }
+]$dailypayload$::jsonb;
+ item jsonb; c jsonb; q jsonb; k jsonb; target uuid; pilot_slot integer:=10;
+begin
+ for item in select value from jsonb_array_elements(payload) loop
+  pilot_slot:=pilot_slot+1;
+  c:=item->'module'; target:=(c->>'id')::uuid;
+  perform pg_advisory_xact_lock(hashtextextended('coltrain-daily:'||target::text,0));
+  if exists(select 1 from public.daily_modules where id=target) then
+   if (select to_jsonb(d)-'published'-'created_at' from public.daily_modules d where id=target)<>c
+   or (select coalesce(jsonb_agg(to_jsonb(question_row) order by question_row.position),'[]') from public.daily_questions question_row where module_id=target)<>item->'questions'
+   or (select coalesce(jsonb_agg(to_jsonb(key_row) order by key_row.question_id),'[]') from private.daily_answer_keys key_row where module_id=target)<>item->'keys'
+   or not exists(select 1 from private.daily_editorial e where e.module_id=target and e.source_document=item->'source_document') then
+    raise exception 'Daily % content differs; create a new version rather than overwrite',c->>'code';
+   end if;
+  else
+   insert into public.daily_modules(id,code,version,title,academy,skill_level,sections,sources,keywords,relevant_departments,estimated_minutes,prior_knowledge,related_course_code)
+   values(target,c->>'code',c->>'version',c->>'title',c->>'academy',c->>'skill_level',c->'sections',c->'sources',
+    array(select jsonb_array_elements_text(c->'keywords')),array(select jsonb_array_elements_text(c->'relevant_departments')),
+    (c->>'estimated_minutes')::integer,c->>'prior_knowledge',c->>'related_course_code');
+   for q in select value from jsonb_array_elements(item->'questions') loop
+    insert into public.daily_questions(module_id,id,position,prompt,options) values(target,q->>'id',(q->>'position')::integer,q->>'prompt',q->'options');
+   end loop;
+   for k in select value from jsonb_array_elements(item->'keys') loop
+    insert into private.daily_answer_keys(module_id,question_id,correct_option,explanation,teaching_reference) values(target,k->>'question_id',(k->>'correct_option')::integer,k->>'explanation',k->>'teaching_reference');
+   end loop;
+   insert into private.daily_editorial(module_id,source_document) values(target,item->'source_document');
+  end if;
+  -- Also support fresh projects where migration 013 preceded this import.
+  if to_regclass('public.daily_sequence') is null then raise exception 'Apply the Daily sequence migration 013 first';end if;
+  if to_regclass('public.daily_sequence') is not null then
+   if exists(select 1 from public.daily_sequence where module_id=target and (skill_level<>c->>'skill_level' or position<>pilot_slot))
+    or exists(select 1 from public.daily_sequence where skill_level=c->>'skill_level' and position=pilot_slot and module_id<>target) then
+    raise exception 'Daily sequence slot % conflicts with %; no changes made',pilot_slot,c->>'code';
+   end if;
+   insert into public.daily_sequence(module_id,skill_level,position)
+   values(target,c->>'skill_level',pilot_slot) on conflict(module_id) do nothing;
+  end if;
+ end loop;
+end;
+$dailyimport$;
+commit;
+select code,version,title,published,
+ (select count(*) from public.daily_questions q where q.module_id=d.id) as questions
+from public.daily_modules d where id in ('9ae3aae9-e747-5eac-a014-9245073a7d82','c184c565-89e3-5ad7-8c75-8ebcfad81d4e','9a575dc0-ce8e-54a0-a9c6-98a5b01e959d','1f0a9dbe-8400-55c4-a270-015646780d47','9e4908d2-ae9f-5f24-888f-e98e1618b323','7c183467-6272-5bae-8f97-699a835ea832','2c90f1bb-3a95-5a64-abab-d7412717a069','ae611e9b-9efa-5ef2-9d04-d721369aa9c7','94ed37f7-4df5-5087-a5a8-c355317b2cd0','e18a448a-042a-5b40-adb1-f4a7c6c63970') order by code;

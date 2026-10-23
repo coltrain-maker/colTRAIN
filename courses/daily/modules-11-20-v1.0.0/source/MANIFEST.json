@@ -1,0 +1,96 @@
+{
+  "package_version": "1.0.0",
+  "module_count": 10,
+  "modules": [
+    {
+      "module_id": "CD-0011",
+      "title": "Read a Paint Coverage Statement",
+      "version": "0.2.0",
+      "academy": "Paint & Surface Care",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0011/CD-0011.md",
+      "json_file": "modules/CD-0011/CD-0011.json"
+    },
+    {
+      "module_id": "CD-0012",
+      "title": "Supply Line or Drain Line?",
+      "version": "0.2.0",
+      "academy": "Plumbing",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0012/CD-0012.md",
+      "json_file": "modules/CD-0012/CD-0012.json"
+    },
+    {
+      "module_id": "CD-0013",
+      "title": "Lumens or Watts?",
+      "version": "0.1.0",
+      "academy": "Electrical",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0013/CD-0013.md",
+      "json_file": "modules/CD-0013/CD-0013.json"
+    },
+    {
+      "module_id": "CD-0014",
+      "title": "Find the Filter’s Airflow Arrow",
+      "version": "0.1.0",
+      "academy": "HVAC",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0014/CD-0014.md",
+      "json_file": "modules/CD-0014/CD-0014.json"
+    },
+    {
+      "module_id": "CD-0015",
+      "title": "Screw Length: Where Does Measurement Start?",
+      "version": "0.1.0",
+      "academy": "Hand Tools & Fasteners",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0015/CD-0015.md",
+      "json_file": "modules/CD-0015/CD-0015.json"
+    },
+    {
+      "module_id": "CD-0016",
+      "title": "Match the Bit’s Shank to the Tool",
+      "version": "0.1.0",
+      "academy": "Power Tools & Accessories",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0016/CD-0016.md",
+      "json_file": "modules/CD-0016/CD-0016.json"
+    },
+    {
+      "module_id": "CD-0017",
+      "title": "Annual or Perennial?",
+      "version": "0.1.0",
+      "academy": "Lawn, Garden & Outdoor Equipment",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0017/CD-0017.md",
+      "json_file": "modules/CD-0017/CD-0017.json"
+    },
+    {
+      "module_id": "CD-0018",
+      "title": "Caulk or Construction Adhesive?",
+      "version": "0.1.0",
+      "academy": "Building & Home Maintenance",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0018/CD-0018.md",
+      "json_file": "modules/CD-0018/CD-0018.json"
+    },
+    {
+      "module_id": "CD-0019",
+      "title": "Ask What the Customer Is Trying to Do",
+      "version": "0.1.0",
+      "academy": "Customer Service & Retail Readiness",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0019/CD-0019.md",
+      "json_file": "modules/CD-0019/CD-0019.json"
+    },
+    {
+      "module_id": "CD-0020",
+      "title": "Report a Shelf-Label Mismatch Clearly",
+      "version": "0.1.0",
+      "academy": "Operations & Leadership",
+      "level": "Foundations",
+      "markdown_file": "modules/CD-0020/CD-0020.md",
+      "json_file": "modules/CD-0020/CD-0020.json"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0012",
+    "Title": "Supply Line or Drain Line?",
+    "Academy": "Plumbing",
+    "Skill level": "Foundations",
+    "Relevant departments": "Plumbing; kitchen and bath; repair parts",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "supply line, drain line, faucet, shut-off valve, sink, wastewater, P-trap",
+    "Version": "0.2.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-22",
+    "publication_status": "not published"
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Distinguish water-supply components from drain components by their basic function."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "“Pipe under the sink” can describe several different parts. Identifying whether a component brings water to the fixture or carries used water away helps you start in the right product category."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Start with what the component does: brings water in or carries used water away.**\n\nAt a typical household sink, you will find both systems beneath the same basin.\n\n| System | Basic function | Common under-sink examples |\n|---|---|---|\n| **Water supply** | Delivers water to the faucet | Shut-off valves and faucet supply connectors |\n| **Drainage** | Carries used water from the basin toward the building’s drain system | Drain tailpiece, P-trap, and connecting drain tubing |\n\nA **faucet supply connector** links the water supply to the faucet, often through a shut-off valve. Oatey describes its faucet supply lines by that connection and function. [Source 1]\n\nA **P-trap** belongs to the drainage side. It is part of the path beneath the sink, not a connector supplying water to the faucet. Manufacturers identify sink traps as drain components. [Sources 2 and 3]\n\n**Recommended action:** Ask, “Does that part connect to the faucet or to the drain opening beneath the basin?” A clear photo showing both ends and the surrounding connections can help establish its role.\n\n**Common mistake:** Identifying a part only by color, flexibility, or location. Both systems occupy the same cabinet, and materials vary. Use the component’s function and connections rather than appearance alone.\n\nCalling something a supply or drain component identifies its category—not the exact replacement. Size, material, connection type, and intended use still need checking.\n\n**When to verify or seek help:** Compare the specific product’s documentation with the existing component before recommending a replacement. If a photo does not establish where a part connects, ask for more information or involve a knowledgeable coworker. Refer unresolved plumbing problems to a qualified plumber rather than guessing. This lesson does not instruct customers to disconnect or test plumbing."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer places a curved plastic plumbing assembly on the counter and says, “I need another one of these. It came from under my bathroom sink.”\n\nWhen you ask where it connected, they explain, “It was attached to the pipe coming down from the drain opening in the bottom of the sink.”"
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0012-Q01**\n\nWhich product category should you investigate first?\n\nA. Faucet supply connectors that bring water to the faucet\nB. Sink drain components that carry used water away from the basin\nC. Shut-off valves that control water going to the faucet\nD. Faucet repair parts that control water coming from the spout"
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "Ask **“water to the faucet or used water from the basin?”** Then verify the exact replacement."
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0012-Q01",
+      "wording": "Which product category should you investigate first?",
+      "options": {
+        "A": "Faucet supply connectors that bring water to the faucet",
+        "B": "Sink drain components that carry used water away from the basin",
+        "C": "Shut-off valves that control water going to the faucet",
+        "D": "Faucet repair parts that control water coming from the spout"
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0012-Q01",
+      "correct_answer": "B",
+      "explanation": "The customer describes an assembly connected beneath the basin’s drain opening, which places it on the drainage side. Its curved plastic appearance is a clue, but the connection and function establish the category. The exact replacement still needs verification.",
+      "teaching_reference": "Section 3, comparison table, “Recommended action,” and “Common mistake.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created diagram of a typical household sink, with separate labels for faucet supply connectors and the drain assembly.\n\n**Accessibility description for proposed media:** “Two supply connectors run from shut-off valves to the faucet. A separate drain assembly runs from the basin’s drain opening through a curved P-trap toward the wall.” Provide the function of each system as readable text; do not rely on color alone.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Oatey, [Faucet Supply Lines](https://www.oatey.com/products/P_038753400426/oatey-faucet-supply-lines): Connector function between the shut-off valve and faucet.\n- [Source 2] Oatey, [1¼-inch P-Traps](https://www.oatey.com/products/p_038753005775/oatey-114-in-ptraps): Sink drain application.\n- [Source 3] Oatey/Dearborn, [Space-Saving Sink Drain Kits](https://www.oatey.com/space-saving-sink-drain-kits): Under-sink drainage assembly and P-trap context.\n\n**Verification needs:** The lesson describes a typical household sink, not every plumbing arrangement. Verify any specific replacement’s dimensions, connections, materials, and approved use. No product interchangeability is asserted.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Which shelf labels help customers distinguish faucet supply connectors from sink drain components in our store?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a plumbing subject-matter reviewer check component terminology.\n- Confirm product-category names against participating stores’ assortments.\n- If media is added, verify the depicted connections, accessibility description, and usage rights.\n- Keep leak diagnosis, disconnection, installation, and replacement selection for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Oatey",
+      "title": "Faucet Supply Lines",
+      "url": "https://www.oatey.com/products/P_038753400426/oatey-faucet-supply-lines",
+      "supports": "Connector function between the shut-off valve and faucet.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "Oatey",
+      "title": "1¼-inch P-Traps",
+      "url": "https://www.oatey.com/products/p_038753005775/oatey-114-in-ptraps",
+      "supports": "Sink drain application.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "Oatey/Dearborn",
+      "title": "Space-Saving Sink Drain Kits",
+      "url": "https://www.oatey.com/space-saving-sink-drain-kits",
+      "supports": "Under-sink drainage assembly and P-trap context.",
+      "checked": "2026-10-22"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a plumbing subject-matter reviewer check component terminology.",
+    "Confirm product-category names against participating stores’ assortments.",
+    "If media is added, verify the depicted connections, accessibility description, and usage rights.",
+    "Keep leak diagnosis, disconnection, installation, and replacement selection for separate modules."
+  ],
+  "complete_markdown": "# CD-0012 — Supply Line or Drain Line?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0012 |\n| Title | Supply Line or Drain Line? |\n| Academy | Plumbing |\n| Skill level | Foundations |\n| Relevant departments | Plumbing; kitchen and bath; repair parts |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | supply line, drain line, faucet, shut-off valve, sink, wastewater, P-trap |\n| Version | 0.2.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish water-supply components from drain components by their basic function.\n\n### 2. Why it matters\n\n“Pipe under the sink” can describe several different parts. Identifying whether a component brings water to the fixture or carries used water away helps you start in the right product category.\n\n### 3. Learn it\n\n**Start with what the component does: brings water in or carries used water away.**\n\nAt a typical household sink, you will find both systems beneath the same basin.\n\n| System | Basic function | Common under-sink examples |\n|---|---|---|\n| **Water supply** | Delivers water to the faucet | Shut-off valves and faucet supply connectors |\n| **Drainage** | Carries used water from the basin toward the building’s drain system | Drain tailpiece, P-trap, and connecting drain tubing |\n\nA **faucet supply connector** links the water supply to the faucet, often through a shut-off valve. Oatey describes its faucet supply lines by that connection and function. [Source 1]\n\nA **P-trap** belongs to the drainage side. It is part of the path beneath the sink, not a connector supplying water to the faucet. Manufacturers identify sink traps as drain components. [Sources 2 and 3]\n\n**Recommended action:** Ask, “Does that part connect to the faucet or to the drain opening beneath the basin?” A clear photo showing both ends and the surrounding connections can help establish its role.\n\n**Common mistake:** Identifying a part only by color, flexibility, or location. Both systems occupy the same cabinet, and materials vary. Use the component’s function and connections rather than appearance alone.\n\nCalling something a supply or drain component identifies its category—not the exact replacement. Size, material, connection type, and intended use still need checking.\n\n**When to verify or seek help:** Compare the specific product’s documentation with the existing component before recommending a replacement. If a photo does not establish where a part connects, ask for more information or involve a knowledgeable coworker. Refer unresolved plumbing problems to a qualified plumber rather than guessing. This lesson does not instruct customers to disconnect or test plumbing.\n\n### 4. Customer scenario\n\nA customer places a curved plastic plumbing assembly on the counter and says, “I need another one of these. It came from under my bathroom sink.”\n\nWhen you ask where it connected, they explain, “It was attached to the pipe coming down from the drain opening in the bottom of the sink.”\n\n### 5. Quick check\n\n**Question ID: CD-0012-Q01**\n\nWhich product category should you investigate first?\n\nA. Faucet supply connectors that bring water to the faucet\nB. Sink drain components that carry used water away from the basin\nC. Shut-off valves that control water going to the faucet\nD. Faucet repair parts that control water coming from the spout\n\n### 6. Take it to the floor\n\nAsk **“water to the faucet or used water from the basin?”** Then verify the exact replacement.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0012-Q01\n- **Correct answer:** B. Sink drain components that carry used water away from the basin\n- **Explanation:** The customer describes an assembly connected beneath the basin’s drain opening, which places it on the drainage side. Its curved plastic appearance is a clue, but the connection and function establish the category. The exact replacement still needs verification.\n- **Teaching reference:** Section 3, comparison table, “Recommended action,” and “Common mistake.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created diagram of a typical household sink, with separate labels for faucet supply connectors and the drain assembly.\n\n**Accessibility description for proposed media:** “Two supply connectors run from shut-off valves to the faucet. A separate drain assembly runs from the basin’s drain opening through a curved P-trap toward the wall.” Provide the function of each system as readable text; do not rely on color alone.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Oatey, [Faucet Supply Lines](https://www.oatey.com/products/P_038753400426/oatey-faucet-supply-lines): Connector function between the shut-off valve and faucet.\n- [Source 2] Oatey, [1¼-inch P-Traps](https://www.oatey.com/products/p_038753005775/oatey-114-in-ptraps): Sink drain application.\n- [Source 3] Oatey/Dearborn, [Space-Saving Sink Drain Kits](https://www.oatey.com/space-saving-sink-drain-kits): Under-sink drainage assembly and P-trap context.\n\n**Verification needs:** The lesson describes a typical household sink, not every plumbing arrangement. Verify any specific replacement’s dimensions, connections, materials, and approved use. No product interchangeability is asserted.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhich shelf labels help customers distinguish faucet supply connectors from sink drain components in our store?\n\n### 9. Review needs\n\n- Have a plumbing subject-matter reviewer check component terminology.\n- Confirm product-category names against participating stores’ assortments.\n- If media is added, verify the depicted connections, accessibility description, and usage rights.\n- Keep leak diagnosis, disconnection, installation, and replacement selection for separate modules.\n"
+}

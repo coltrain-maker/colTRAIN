@@ -1,0 +1,114 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0013",
+    "Title": "Lumens or Watts?",
+    "Academy": "Electrical",
+    "Skill level": "Foundations",
+    "Relevant departments": "Electrical; lighting",
+    "Estimated completion time": "4 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "light bulb, lumens, watts, brightness, power, Lighting Facts, watt equivalent",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-22",
+    "publication_status": "not published"
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Identify which light-bulb label measurement describes light output and which describes electrical power use."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "Customers often ask for a bulb by its familiar wattage, such as “a 60-watt bulb.” With different lighting technologies, wattage alone does not reliably tell you how much light a bulb produces."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Use lumens to compare light output. Use actual watts to compare electrical power use.**\n\nFor example, an illustrative package might show **“Brightness: 800 lumens”** and **“Energy Used: 9 watts.”** These numbers describe different things.\n\n| Label information | What it tells you |\n|---|---|\n| **Lumens** | How much visible light the bulb produces—the brightness measure used on packaging |\n| **Actual watts** | The electrical power the bulb uses while operating |\n| **“60-watt replacement” or similar wording** | A comparison with a traditional incandescent bulb, rather than the replacement bulb’s actual wattage |\n\nThe FTC explains that an LED can produce approximately the same light output as a traditional incandescent bulb while using fewer watts. Check the actual package rather than assuming every replacement has identical specifications. [Source 1]\n\n**Recommended action:** When a customer asks for a brighter bulb, find the **brightness in lumens** on the package or Lighting Facts label. Compare that figure with the bulb they are replacing. More lumens means greater total light output; it does not guarantee identical lighting in every fixture. [Source 2]\n\n**Common mistake:** Comparing an LED’s actual wattage with an incandescent replacement claim as though both numbers describe brightness. A package saying “60-watt replacement” may list a much lower actual wattage.\n\n**When to verify or seek help:** Brightness is only one part of choosing a bulb. Before recommending a specific replacement, check its base, shape, voltage, and suitability for the fixture and controls against manufacturer information. If compatibility is unclear, ask a knowledgeable coworker or manufacturer representative.\n\nDo not treat the replacement-equivalent number as the bulb’s actual electrical rating."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer brings two bulb packages to the counter:\n\n- **Bulb A:** 800 lumens; 9 watts.\n- **Bulb B:** 1,100 lumens; 11 watts.\n\nThey ask, “Which one produces more light?”"
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0013-Q01**\n\nWhich answer uses the correct label information?\n\nA. Bulb A, because its lower wattage means it produces more light.\nB. They produce the same amount of light because both are LEDs.\nC. Bulb B, because its higher wattage is the brightness measurement.\nD. Bulb B, because 1,100 lumens is more light output than 800 lumens."
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "For **“How much light?”**, look at lumens. For **“How much electrical power?”**, look at actual watts."
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0013-Q01",
+      "wording": "Which answer uses the correct label information?",
+      "options": {
+        "A": "Bulb A, because its lower wattage means it produces more light.",
+        "B": "They produce the same amount of light because both are LEDs.",
+        "C": "Bulb B, because its higher wattage is the brightness measurement.",
+        "D": "Bulb B, because 1,100 lumens is more light output than 800 lumens."
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0013-Q01",
+      "correct_answer": "D",
+      "explanation": "Lumens describe light output. Bulb B has the higher lumen rating, so it produces more total light. Watts describe electrical power use; selecting the correct bulb for the wrong reason does not demonstrate the skill.",
+      "teaching_reference": "Section 3, “Learn it,” opening rule, label-information table, and “Recommended action.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison of two fictional Lighting Facts-style panels. Clearly mark them “Illustrative examples—not product specifications.”\n\n**Accessibility description for proposed media:** “Two fictional bulb labels appear side by side. Bulb A lists 800 lumens and 9 watts. Bulb B lists 1,100 lumens and 11 watts. Labels distinguish brightness from electrical power use.” Include all information as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Federal Trade Commission, [Shopping for Light Bulbs](https://consumer.ftc.gov/articles/shopping-light-bulbs): Comparing brightness using lumens and distinguishing actual wattage from traditional bulb comparisons.\n- [Source 2] ENERGY STAR, [Learn About Brightness](https://www.energystar.gov/products/learn-about-brightness): Lumens as light output and replacement terminology.\n- [Source 3] Federal Trade Commission, [Lighting Facts Label: Questions and Answers](https://www.ftc.gov/business-guidance/resources/ftc-lighting-facts-label-questions-answers-manufacturers): Brightness and wattage information on labeling.\n\n**Verification needs:** The two scenario labels are fictional. Verify all specifications and compatibility claims before substituting actual products. No fixture compatibility or energy-cost estimate is established by this comparison.\n\nAll teaching and assessment wording is independently authored. No third-party media is included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Where do our bulb packages show actual wattage, replacement-equivalent wording, and lumens?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a lighting subject-matter reviewer check terminology and compatibility wording.\n- Verify any actual product examples before adding them.\n- If media is added, check labels, accessibility descriptions, and usage rights.\n- Keep color temperature, dimmer compatibility, beam angle, and fixture ratings for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "Federal Trade Commission",
+      "title": "Shopping for Light Bulbs",
+      "url": "https://consumer.ftc.gov/articles/shopping-light-bulbs",
+      "supports": "Comparing brightness using lumens and distinguishing actual wattage from traditional bulb comparisons.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "ENERGY STAR",
+      "title": "Learn About Brightness",
+      "url": "https://www.energystar.gov/products/learn-about-brightness",
+      "supports": "Lumens as light output and replacement terminology.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "Federal Trade Commission",
+      "title": "Lighting Facts Label: Questions and Answers",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftc-lighting-facts-label-questions-answers-manufacturers",
+      "supports": "Brightness and wattage information on labeling.",
+      "checked": "2026-10-22"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a lighting subject-matter reviewer check terminology and compatibility wording.",
+    "Verify any actual product examples before adding them.",
+    "If media is added, check labels, accessibility descriptions, and usage rights.",
+    "Keep color temperature, dimmer compatibility, beam angle, and fixture ratings for separate modules."
+  ],
+  "complete_markdown": "# CD-0013 — Lumens or Watts?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0013 |\n| Title | Lumens or Watts? |\n| Academy | Electrical |\n| Skill level | Foundations |\n| Relevant departments | Electrical; lighting |\n| Estimated completion time | 4 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | light bulb, lumens, watts, brightness, power, Lighting Facts, watt equivalent |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nIdentify which light-bulb label measurement describes light output and which describes electrical power use.\n\n### 2. Why it matters\n\nCustomers often ask for a bulb by its familiar wattage, such as “a 60-watt bulb.” With different lighting technologies, wattage alone does not reliably tell you how much light a bulb produces.\n\n### 3. Learn it\n\n**Use lumens to compare light output. Use actual watts to compare electrical power use.**\n\nFor example, an illustrative package might show **“Brightness: 800 lumens”** and **“Energy Used: 9 watts.”** These numbers describe different things.\n\n| Label information | What it tells you |\n|---|---|\n| **Lumens** | How much visible light the bulb produces—the brightness measure used on packaging |\n| **Actual watts** | The electrical power the bulb uses while operating |\n| **“60-watt replacement” or similar wording** | A comparison with a traditional incandescent bulb, rather than the replacement bulb’s actual wattage |\n\nThe FTC explains that an LED can produce approximately the same light output as a traditional incandescent bulb while using fewer watts. Check the actual package rather than assuming every replacement has identical specifications. [Source 1]\n\n**Recommended action:** When a customer asks for a brighter bulb, find the **brightness in lumens** on the package or Lighting Facts label. Compare that figure with the bulb they are replacing. More lumens means greater total light output; it does not guarantee identical lighting in every fixture. [Source 2]\n\n**Common mistake:** Comparing an LED’s actual wattage with an incandescent replacement claim as though both numbers describe brightness. A package saying “60-watt replacement” may list a much lower actual wattage.\n\n**When to verify or seek help:** Brightness is only one part of choosing a bulb. Before recommending a specific replacement, check its base, shape, voltage, and suitability for the fixture and controls against manufacturer information. If compatibility is unclear, ask a knowledgeable coworker or manufacturer representative.\n\nDo not treat the replacement-equivalent number as the bulb’s actual electrical rating.\n\n### 4. Customer scenario\n\nA customer brings two bulb packages to the counter:\n\n- **Bulb A:** 800 lumens; 9 watts.\n- **Bulb B:** 1,100 lumens; 11 watts.\n\nThey ask, “Which one produces more light?”\n\n### 5. Quick check\n\n**Question ID: CD-0013-Q01**\n\nWhich answer uses the correct label information?\n\nA. Bulb A, because its lower wattage means it produces more light.\nB. They produce the same amount of light because both are LEDs.\nC. Bulb B, because its higher wattage is the brightness measurement.\nD. Bulb B, because 1,100 lumens is more light output than 800 lumens.\n\n### 6. Take it to the floor\n\nFor **“How much light?”**, look at lumens. For **“How much electrical power?”**, look at actual watts.\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0013-Q01\n- **Correct answer:** D. Bulb B, because 1,100 lumens is more light output than 800 lumens.\n- **Explanation:** Lumens describe light output. Bulb B has the higher lumen rating, so it produces more total light. Watts describe electrical power use; selecting the correct bulb for the wrong reason does not demonstrate the skill.\n- **Teaching reference:** Section 3, “Learn it,” opening rule, label-information table, and “Recommended action.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison of two fictional Lighting Facts-style panels. Clearly mark them “Illustrative examples—not product specifications.”\n\n**Accessibility description for proposed media:** “Two fictional bulb labels appear side by side. Bulb A lists 800 lumens and 9 watts. Bulb B lists 1,100 lumens and 11 watts. Labels distinguish brightness from electrical power use.” Include all information as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] Federal Trade Commission, [Shopping for Light Bulbs](https://consumer.ftc.gov/articles/shopping-light-bulbs): Comparing brightness using lumens and distinguishing actual wattage from traditional bulb comparisons.\n- [Source 2] ENERGY STAR, [Learn About Brightness](https://www.energystar.gov/products/learn-about-brightness): Lumens as light output and replacement terminology.\n- [Source 3] Federal Trade Commission, [Lighting Facts Label: Questions and Answers](https://www.ftc.gov/business-guidance/resources/ftc-lighting-facts-label-questions-answers-manufacturers): Brightness and wattage information on labeling.\n\n**Verification needs:** The two scenario labels are fictional. Verify all specifications and compatibility claims before substituting actual products. No fixture compatibility or energy-cost estimate is established by this comparison.\n\nAll teaching and assessment wording is independently authored. No third-party media is included.\n\n### 8. Optional manager discussion prompt\n\nWhere do our bulb packages show actual wattage, replacement-equivalent wording, and lumens?\n\n### 9. Review needs\n\n- Have a lighting subject-matter reviewer check terminology and compatibility wording.\n- Verify any actual product examples before adding them.\n- If media is added, check labels, accessibility descriptions, and usage rights.\n- Keep color temperature, dimmer compatibility, beam angle, and fixture ratings for separate modules.\n"
+}

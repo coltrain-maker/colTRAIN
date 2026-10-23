@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "Stable module ID": "CD-0018",
+    "Title": "Caulk or Construction Adhesive?",
+    "Academy": "Building & Home Maintenance",
+    "Skill level": "Foundations",
+    "Relevant departments": "Building maintenance; adhesives and sealants; paint sundries",
+    "Estimated completion time": "5 minutes — estimate",
+    "Prior knowledge": "None",
+    "Related existing full-course code": "None specified",
+    "Search keywords": "caulk, sealant, construction adhesive, bonding, sealing, trim, gaps, substrates",
+    "Version": "0.1.0",
+    "Status": "Ready for review—not published"
+  },
+  "approval": {
+    "content_approved": true,
+    "approved_on": "2026-10-22",
+    "publication_status": "not published"
+  },
+  "employee_facing_sections": [
+    {
+      "heading": "1. Today’s skill",
+      "content_markdown": "Distinguish sealing a joint from bonding materials and identify what to verify before selecting a product."
+    },
+    {
+      "heading": "2. Why it matters",
+      "content_markdown": "Caulk and construction adhesive can come in similar cartridges and use the same type of dispensing gun. Asking what the customer wants the product to do helps you identify the right starting category."
+    },
+    {
+      "heading": "3. Learn it",
+      "content_markdown": "**Start with the job: seal a gap or bond materials together?**\n\n| Customer’s goal | Category to investigate | Basic purpose |\n|---|---|---|\n| Seal a joint or gap | Caulk or sealant suited to that location | Close the joint or gap with an appropriate sealing material |\n| Attach one material to another | Construction adhesive suited to both materials | Create a bond between the surfaces |\n\nFor example, sealing a small joint between secured baseboard and a wall is different from attaching a loose piece of trim. The first is a sealing task; the second is a bonding task that may also require fasteners.\n\nCaulk and sealant selection depends on conditions such as movement, moisture, indoor or outdoor exposure, and whether the product needs to be painted. [Source 1]\n\nConstruction adhesives also differ. A product intended to bond certain materials is not automatically suitable for every other material. **Substrates** means the surfaces or materials being joined. Manufacturer guidance directs users to choose an adhesive for the specific materials and construction requirements. [Source 2]\n\n**Recommended action:** Ask, “Are you trying to seal this gap, hold these pieces together, or both?” Then identify the materials and location before checking a specific product’s label.\n\n**Common mistake:** Choosing by cartridge shape or assuming that anything called “caulk” will attach a loose part. Packaging does not establish purpose or performance.\n\nSome products are labeled for both bonding and sealing. Verify those claims rather than assuming the categories never overlap.\n\n**When to verify or seek help:** Check the product’s intended uses, compatible materials, limitations, preparation requirements, and any fastening or support instructions. Do not promise that adhesive replaces required nails, screws, or other attachment methods. Ask a knowledgeable coworker or manufacturer representative when the label does not establish suitability."
+    },
+    {
+      "heading": "4. Customer scenario",
+      "content_markdown": "A customer says, “I need a tube of caulk for this trim.”\n\nWhen you ask what they want to accomplish, they explain that a piece of trim has come loose and they want to attach it to the wall. Their immediate goal is to hold the piece in place, rather than finish a joint along its edge."
+    },
+    {
+      "heading": "5. Quick check",
+      "content_markdown": "**Question ID: CD-0018-Q01**\n\nWhich response is the best next step?\n\nA. Select any paintable caulk because the customer called it caulk.\nB. Select whichever cartridge fits the customer’s dispensing gun.\nC. Recommend filling the visible edge gap without addressing the loose trim.\nD. Investigate a construction adhesive compatible with the materials, and verify any required fastening or support."
+    },
+    {
+      "heading": "6. Take it to the floor",
+      "content_markdown": "**Clarify the job first: sealing, bonding, or both. Then check the product.**"
+    }
+  ],
+  "questions": [
+    {
+      "id": "CD-0018-Q01",
+      "wording": "Which response is the best next step?",
+      "options": {
+        "A": "Select any paintable caulk because the customer called it caulk.",
+        "B": "Select whichever cartridge fits the customer’s dispensing gun.",
+        "C": "Recommend filling the visible edge gap without addressing the loose trim.",
+        "D": "Investigate a construction adhesive compatible with the materials, and verify any required fastening or support."
+      }
+    }
+  ],
+  "answer_key": [
+    {
+      "question_id": "CD-0018-Q01",
+      "correct_answer": "D",
+      "explanation": "The customer’s immediate goal is attachment, so bonding products are the appropriate starting category. The exact materials, product suitability, and attachment requirements still need checking. The customer’s word choice, cartridge shape, or visible edge gap does not establish the right product.",
+      "teaching_reference": "Section 3, “Learn it,” category table, “Recommended action,” and “When to verify or seek help.”"
+    }
+  ],
+  "reviewer_sections": [
+    {
+      "heading": "7. Supporting materials and sources",
+      "content_markdown": "**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison showing a joint along already secured trim and a separate loose piece of trim awaiting attachment.\n\n**Accessibility description for proposed media:** “One illustration labels a narrow joint between secured baseboard and a wall as a sealing task. A second labels a loose piece of trim and its mounting surface as a bonding task requiring product and attachment checks.” Provide both examples as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] DAP, [How to Choose the Right Caulk or Sealant](https://www.dap.com/resources/how-to/choose-the-right-caulk-or-sealant): Sealing applications and selection factors including moisture, movement, exposure, and paintability.\n- [Source 2] PPG/Liquid Nails, [Frequently Asked Questions](https://www.ppgpaints.com/liquid-nails/faqs): Product-specific substrate compatibility and construction requirements.\n- [Source 3] DAP, [Adhesives](https://www.dap.com/products/adhesives): Construction adhesives as bonding products for building materials.\n\n**Verification needs:** No particular adhesive, sealant, trim material, or attachment method is prescribed. Any claim that a product performs both bonding and sealing must be checked against that exact product’s current documentation.\n\nAll teaching and assessment wording is independently authored. No manufacturer media is included."
+    },
+    {
+      "heading": "8. Optional manager discussion prompt",
+      "content_markdown": "Which questions help us distinguish “I need caulk” from a customer who actually needs to attach something?"
+    },
+    {
+      "heading": "9. Review needs",
+      "content_markdown": "- Have a building-maintenance subject-matter reviewer check category distinctions and attachment wording.\n- Verify any real product examples, especially products claiming both bonding and sealing.\n- Confirm terminology against participating stores’ assortments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep application techniques, cure times, structural bonding, and specialty sealant selection for separate modules."
+    }
+  ],
+  "sources": [
+    {
+      "id": "Source 1",
+      "publisher": "DAP",
+      "title": "How to Choose the Right Caulk or Sealant",
+      "url": "https://www.dap.com/resources/how-to/choose-the-right-caulk-or-sealant",
+      "supports": "Sealing applications and selection factors including moisture, movement, exposure, and paintability.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 2",
+      "publisher": "PPG/Liquid Nails",
+      "title": "Frequently Asked Questions",
+      "url": "https://www.ppgpaints.com/liquid-nails/faqs",
+      "supports": "Product-specific substrate compatibility and construction requirements.",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "Source 3",
+      "publisher": "DAP",
+      "title": "Adhesives",
+      "url": "https://www.dap.com/products/adhesives",
+      "supports": "Construction adhesives as bonding products for building materials.",
+      "checked": "2026-10-22"
+    }
+  ],
+  "actual_media_assets": [],
+  "review_needs": [
+    "Have a building-maintenance subject-matter reviewer check category distinctions and attachment wording.",
+    "Verify any real product examples, especially products claiming both bonding and sealing.",
+    "Confirm terminology against participating stores’ assortments.",
+    "If media is added, check accessibility descriptions and usage rights.",
+    "Keep application techniques, cure times, structural bonding, and specialty sealant selection for separate modules."
+  ],
+  "complete_markdown": "# CD-0018 — Caulk or Construction Adhesive?\n\n## Metadata\n\n| Field | Value |\n|---|---|\n| Stable module ID | CD-0018 |\n| Title | Caulk or Construction Adhesive? |\n| Academy | Building & Home Maintenance |\n| Skill level | Foundations |\n| Relevant departments | Building maintenance; adhesives and sealants; paint sundries |\n| Estimated completion time | 5 minutes — estimate |\n| Prior knowledge | None |\n| Related existing full-course code | None specified |\n| Search keywords | caulk, sealant, construction adhesive, bonding, sealing, trim, gaps, substrates |\n| Version | 0.1.0 |\n| Status | Ready for review—not published |\n\n## Employee-facing content\n\n### 1. Today’s skill\n\nDistinguish sealing a joint from bonding materials and identify what to verify before selecting a product.\n\n### 2. Why it matters\n\nCaulk and construction adhesive can come in similar cartridges and use the same type of dispensing gun. Asking what the customer wants the product to do helps you identify the right starting category.\n\n### 3. Learn it\n\n**Start with the job: seal a gap or bond materials together?**\n\n| Customer’s goal | Category to investigate | Basic purpose |\n|---|---|---|\n| Seal a joint or gap | Caulk or sealant suited to that location | Close the joint or gap with an appropriate sealing material |\n| Attach one material to another | Construction adhesive suited to both materials | Create a bond between the surfaces |\n\nFor example, sealing a small joint between secured baseboard and a wall is different from attaching a loose piece of trim. The first is a sealing task; the second is a bonding task that may also require fasteners.\n\nCaulk and sealant selection depends on conditions such as movement, moisture, indoor or outdoor exposure, and whether the product needs to be painted. [Source 1]\n\nConstruction adhesives also differ. A product intended to bond certain materials is not automatically suitable for every other material. **Substrates** means the surfaces or materials being joined. Manufacturer guidance directs users to choose an adhesive for the specific materials and construction requirements. [Source 2]\n\n**Recommended action:** Ask, “Are you trying to seal this gap, hold these pieces together, or both?” Then identify the materials and location before checking a specific product’s label.\n\n**Common mistake:** Choosing by cartridge shape or assuming that anything called “caulk” will attach a loose part. Packaging does not establish purpose or performance.\n\nSome products are labeled for both bonding and sealing. Verify those claims rather than assuming the categories never overlap.\n\n**When to verify or seek help:** Check the product’s intended uses, compatible materials, limitations, preparation requirements, and any fastening or support instructions. Do not promise that adhesive replaces required nails, screws, or other attachment methods. Ask a knowledgeable coworker or manufacturer representative when the label does not establish suitability.\n\n### 4. Customer scenario\n\nA customer says, “I need a tube of caulk for this trim.”\n\nWhen you ask what they want to accomplish, they explain that a piece of trim has come loose and they want to attach it to the wall. Their immediate goal is to hold the piece in place, rather than finish a joint along its edge.\n\n### 5. Quick check\n\n**Question ID: CD-0018-Q01**\n\nWhich response is the best next step?\n\nA. Select any paintable caulk because the customer called it caulk.\nB. Select whichever cartridge fits the customer’s dispensing gun.\nC. Recommend filling the visible edge gap without addressing the loose trim.\nD. Investigate a construction adhesive compatible with the materials, and verify any required fastening or support.\n\n### 6. Take it to the floor\n\n**Clarify the job first: sealing, bonding, or both. Then check the product.**\n\n---\n\n## Reviewer and manager materials\n\n### Answer key — separate from employee-facing content\n\n- **Question ID:** CD-0018-Q01\n- **Correct answer:** D. Investigate a construction adhesive compatible with the materials, and verify any required fastening or support.\n- **Explanation:** The customer’s immediate goal is attachment, so bonding products are the appropriate starting category. The exact materials, product suitability, and attachment requirements still need checking. The customer’s word choice, cartridge shape, or visible edge gap does not establish the right product.\n- **Teaching reference:** Section 3, “Learn it,” category table, “Recommended action,” and “When to verify or seek help.”\n\n### 7. Supporting materials and sources\n\n**Actual supplied media assets:** None.\n\n**Suggested optional media:** An independently created comparison showing a joint along already secured trim and a separate loose piece of trim awaiting attachment.\n\n**Accessibility description for proposed media:** “One illustration labels a narrow joint between secured baseboard and a wall as a sealing task. A second labels a loose piece of trim and its mounting surface as a bonding task requiring product and attachment checks.” Provide both examples as readable text.\n\n**Sources checked October 22, 2026:**\n\n- [Source 1] DAP, [How to Choose the Right Caulk or Sealant](https://www.dap.com/resources/how-to/choose-the-right-caulk-or-sealant): Sealing applications and selection factors including moisture, movement, exposure, and paintability.\n- [Source 2] PPG/Liquid Nails, [Frequently Asked Questions](https://www.ppgpaints.com/liquid-nails/faqs): Product-specific substrate compatibility and construction requirements.\n- [Source 3] DAP, [Adhesives](https://www.dap.com/products/adhesives): Construction adhesives as bonding products for building materials.\n\n**Verification needs:** No particular adhesive, sealant, trim material, or attachment method is prescribed. Any claim that a product performs both bonding and sealing must be checked against that exact product’s current documentation.\n\nAll teaching and assessment wording is independently authored. No manufacturer media is included.\n\n### 8. Optional manager discussion prompt\n\nWhich questions help us distinguish “I need caulk” from a customer who actually needs to attach something?\n\n### 9. Review needs\n\n- Have a building-maintenance subject-matter reviewer check category distinctions and attachment wording.\n- Verify any real product examples, especially products claiming both bonding and sealing.\n- Confirm terminology against participating stores’ assortments.\n- If media is added, check accessibility descriptions and usage rights.\n- Keep application techniques, cure times, structural bonding, and specialty sealant selection for separate modules.\n"
+}
