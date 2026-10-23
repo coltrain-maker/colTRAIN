@@ -9,3 +9,20 @@ header .store.account-identity{display:flex;flex-direction:column;gap:5px;line-h
 .profile-avatar{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#e8eeff;color:#214bd7;font-weight:700;font-size:12px;flex-shrink:0;overflow:hidden;vertical-align:middle}.profile-avatar img{width:100%;height:100%;object-fit:cover;display:block}.profile-avatar [hidden]{display:none}.profile-avatar-large{width:88px;height:88px;font-size:26px;object-fit:cover}.person-with-avatar{display:flex;align-items:center;gap:10px;min-width:0}.person-with-avatar>div{min-width:0}.account-identity-text{display:flex;flex-direction:column;gap:4px;min-width:0}header .store.account-identity{flex-direction:row;align-items:center;gap:10px}.profile-photo-label{margin-top:20px}.profile-photo-preview{display:flex;align-items:center;gap:18px;margin:18px 0}.profile-photo-preview p{font-size:12px;color:var(--muted)}.profile-photo-picker{display:inline-flex;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:9px;padding:12px 17px;background:white;font-size:12px;font-weight:600;cursor:pointer}.profile-photo-picker input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.profile-photo-picker:focus-within{outline:3px solid #eeb54c;outline-offset:3px}.profile-photo-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 24px}#profile-photo-form{border-bottom:1px solid var(--line)}.team-comment-top .profile-avatar{width:28px;height:28px;font-size:10px}.team-post .person-with-avatar>.profile-avatar{width:40px;height:40px}.account-row .person-with-avatar{overflow-wrap:anywhere}
 
 .shared-device-dialog{width:min(500px,calc(100% - 32px));max-height:calc(100dvh - 32px);border:1px solid var(--line);border-radius:18px;padding:28px;color:var(--ink);background:white;overflow:auto;box-shadow:0 18px 60px #18274433}.shared-device-dialog::backdrop{background:#182744aa}.shared-device-dialog h1{font-size:26px}.shared-device-dialog p{margin-top:16px;font-size:14px}.shared-device-dialog .account-small{font-size:12px}.shared-device-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.shared-device-away #accounts-app,.shared-device-away #account-message,.shared-device-away header .store{visibility:hidden}
+.company-settings{overflow-wrap:anywhere}
+.company-settings h3{margin:24px 0 12px}
+.company-settings p{margin:12px 0}
+.company-settings label{display:block;margin:14px 0}
+.company-settings input,.company-settings select{width:100%;min-width:0;border:1px solid var(--line);border-radius:8px;padding:12px;background:white;color:var(--ink);font:inherit;font-size:13px}
+.company-store-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;margin:20px 0}
+.company-store{border:1px solid var(--line,#dce3ee);border-radius:16px;padding:18px}
+.company-store h3{margin:0 0 10px}
+.company-management,.company-progress{border-top:1px solid var(--line,#dce3ee);padding-top:12px;margin-top:24px}
+.company-management form{max-width:640px;margin-bottom:28px}
+.company-management details{margin-top:24px}
+.company-management summary{cursor:pointer;font-weight:700}
+.company-management li{margin:10px 0}
+.company-table-scroll{overflow-x:auto}
+.company-progress table{width:100%;border-collapse:collapse;min-width:650px}
+.company-progress th,.company-progress td{padding:12px;text-align:left;border-bottom:1px solid var(--line,#dce3ee)}
+.company-progress small{display:block;font-weight:400}

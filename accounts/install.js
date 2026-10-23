@@ -30,6 +30,6 @@ export function setupHomeScreenInstall(){
  });
  // Only the hosted /accounts/ app is controlled. Downloaded HTML and previews stay independent.
  if(window.isSecureContext&&location.pathname.startsWith('/accounts/')&&'serviceWorker' in navigator){
-  navigator.serviceWorker.register('/accounts/sw.js',{scope:'/accounts/',updateViaCache:'none'}).catch(()=>{});
+  try{navigator.serviceWorker.register('/accounts/sw.js',{scope:'/accounts/',updateViaCache:'none'}).catch(()=>{});}catch{/* Sandboxed previews can expose the property but deny access to it. */}
  }
 }

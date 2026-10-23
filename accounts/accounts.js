@@ -1,3 +1,4 @@
+import {createCompanySettings} from './company-settings.js';
 import {createPersonalSessionStorage} from './personal-session.js';
 import {createPushNotifications} from './push.js';
 import {confirmEmployeeLogin} from './employee-login.js';
@@ -32,14 +33,15 @@ const emailRedirect=/^https?:$/.test(location.protocol)?location.origin+location
 setupHomeScreenInstall();
 const invitationId=new URLSearchParams(location.search).get('invitation_id');
 let trainingController=null,trainingView="home",activeStoreId=null;
-const accountForms=new Set(['auth-form','password-form','profile-form','profile-photo-form','device-form','join-form','store-form','invite-form']);
+const companySettings=createCompanySettings({client,notify:notice});
+const accountForms=new Set(['company-details-form','company-permission-form','auth-form','password-form','profile-form','profile-photo-form','device-form','join-form','store-form','invite-form']);
 let view='signin',user=null,profile=null,members=[],admin=false,stores=[],seats=[],invitations=[],busy=false,recovering=location.hash.includes('type=recovery')||location.hash.includes('type=invite');
 function endSession(reason='switch',broadcast=true){
  if(sessionEnding)return;
  let token;try{token=JSON.parse(personalSession.getItem(authKey)||'null')?.access_token;}catch{}
  push.signout({url:__SUPABASE_URL__,key:__SUPABASE_KEY__,token});
  sessionEnding=true;deviceGuard.end(broadcast);eraseStoredAuth();
- avatars.clear();clearPhotoDraft();memberProfiles=[];
+ avatars.clear();clearPhotoDraft();memberProfiles=[];companySettings.close();
  trainingController?.close();trainingController=null;
  document.querySelectorAll('.training-menu-toggle').forEach(button=>button.remove());
  document.querySelectorAll('dialog[open]').forEach(dialog=>dialog.close());
@@ -49,6 +51,7 @@ function endSession(reason='switch',broadcast=true){
  if(token)fetch(__SUPABASE_URL__+'/auth/v1/logout?scope=local',{method:'POST',headers:{apikey:__SUPABASE_KEY__,Authorization:'Bearer '+token},keepalive:true}).catch(()=>{});
  location.replace(location.pathname+'?signed_out='+encodeURIComponent(reason));
 }
+function syncCompanySettings(){const section=root.querySelector('.training-account-settings');if(section)trainingController?.updateAccountMarkup(section.innerHTML);}
 function deviceChoice(){return `<label class="account-checkbox"><input type="checkbox" name="shared-device" ${deviceGuard.isShared()?'checked':''}><span>This is a shared store device. Sign out after 15 minutes without activity.</span></label><label class="account-checkbox"><input type="checkbox" name="remember-device" ${personalSession.isRemembered()?'checked':''}><span>Keep me signed in on this personal device.</span></label>`;}
 function deviceSettings(){return `<section class="panel"><h2>This device</h2><form id="device-form">${deviceChoice()}<p class="account-small">Choose Keep me signed in only on a phone or computer you own. Shared-device mode removes the saved login and signs you out after 15 minutes without activity. This choice is separate from notification permissions.</p><button class="button" type="submit">Save device setting</button></form></section>`;}
 function notice(text,error=false){message.className=error?'error':'success';message.textContent=text;if(text)message.scrollIntoView({block:'nearest'});}
@@ -84,12 +87,13 @@ function canManageStore(store){return admin||members.some(m=>m.user_id===user.id
 function managerPanel(store){const team=members.filter(m=>m.organization_id===store.id);return `<section class="panel"><div class="panel-top"><div><h2>${esc(store.name)}</h2><p class="muted">${seats.filter(s=>s.organization_id===store.id).length} total seats · ${team.filter(m=>m.status==='active').length} active members</p></div></div><form id="invite-form" data-store="${store.id}">${field('Employee name','name','text','','maxlength="120" autocomplete="off" required')}${field('Employee email','email','email','','autocomplete="off" required')}${admin?'<label class="field">Role<select name="role"><option value="employee">Employee</option><option value="manager">Store manager</option></select></label>':''}<button class="button">Send invitation</button></form><p class="account-small">We’ll email a secure link so the employee can choose their own password and join this store. A seat is reserved until the invitation expires or is revoked.</p>${team.map(m=>`<div class="account-row"><div class="person-with-avatar">${avatarMarkup(memberProfiles.find(p=>p.user_id===m.user_id)?.full_name||m.email,memberProfiles.find(p=>p.user_id===m.user_id)?.avatar_path)}<div><strong>${esc(m.email)}</strong><small>${esc(m.role)} · ${esc(m.status)}</small></div></div>${m.status==='active'?`<div class="account-row-actions">${canManageStore(store.id)&&m.role==='employee'?`<button class="button secondary" data-action="promote-manager" data-member="${m.id}">Make store manager</button>`:''}<button class="button secondary" data-action="send-reset" data-email="${esc(m.email)}">Send reset link</button>${m.user_id!==user.id&&(admin||m.role==='employee')?`<button class="button secondary account-danger" data-action="remove" data-member="${m.id}">Remove access</button>`:''}</div>`:''}</div>`).join('')}<h3 style="margin:25px 0 12px">Pending invitations</h3>${invitations.filter(i=>i.organization_id===store.id&&!i.accepted_at&&!i.revoked_at).map(i=>`<div class="account-row"><div><strong>${esc(i.invitee_name||i.email)}</strong><small>${esc(i.email)} · ${esc(i.email_status==='sent'?'Email requested':i.email_status==='failed'?'Email could not be sent':i.email_status==='pending'?'Email request pending':'Manual invitation')} · Expires ${new Date(i.expires_at).toLocaleDateString()}</small></div><div class="account-row-actions"><button class="button secondary" data-action="reissue" data-invitation="${i.id}" data-store="${store.id}" data-email="${esc(i.email)}">${i.invitee_name?'Resend invitation':'Replace code'}</button><button class="button secondary" data-action="revoke" data-invitation="${i.id}">${i.invitee_name?'Cancel invitation':'Revoke code'}</button></div></div>`).join('')||'<p class="muted">No pending invitations.</p>'}</section>`;}
 function showInvitationCode(record,email){const box=document.createElement('section');box.className='panel';box.innerHTML=`<h2>Invitation code</h2><p class="muted">Give this code to ${esc(email)}. It is shown once and expires after 7 days.</p><p class="account-code">${esc(record.invitation_code)}</p><p class="muted">The employee creates an account with the same email address, confirms it, signs in, and enters this code.</p>`;root.prepend(box);box.scrollIntoView({behavior:'smooth'});}
 function accountMarkup(own,canManage,standalone=false){
- return `<div class="account-toolbar"><div><h1>${own?'Your store account':'Welcome, '+esc(profile?.full_name||'teammate')}</h1><p class="muted">${esc(user.email)}${admin?' · colTRAIN administrator':''}</p></div>${standalone?button('Sign out and switch accounts','signout'):''}</div>${!own&&!admin?'<div class="account-note">No active store membership. Accept your invitation below, or contact your manager if your access was removed.</div>':''}<div class="stack"><div class="account-form-grid">${profileForm()}${!own?joinForm():`<section class="panel"><h2>${esc(stores.find(s=>s.id===own.organization_id)?.name||'Your store')}</h2><p class="muted" style="margin-top:15px">Role: ${esc(own.role)}</p><p class="account-note">Your account is connected. Use the hamburger menu to return to your ${canManage?'dashboard':'home page'}, find courses, and view competitions.</p></section>`}</div>${deviceSettings()}${admin?adminPanel():''}${canManage?stores.map(managerPanel).join(''):''}</div>`;
+ return `<div class="account-toolbar"><div><h1>${own?'Your store account':'Welcome, '+esc(profile?.full_name||'teammate')}</h1><p class="muted">${esc(user.email)}${admin?' · colTRAIN administrator':''}</p></div>${standalone?button('Sign out and switch accounts','signout'):''}</div>${!own&&!admin?'<div class="account-note">No active store membership. Owners and billing administrators can open Company settings below without using a training seat. To join a training team, accept your invitation below or contact your manager.</div>':''}<div class="stack"><div class="account-form-grid">${profileForm()}${!own?joinForm():`<section class="panel"><h2>${esc(stores.find(s=>s.id===own.organization_id)?.name||'Your store')}</h2><p class="muted" style="margin-top:15px">Role: ${esc(own.role)}</p><p class="account-note">Your account is connected. Use the hamburger menu to return to your ${canManage?'dashboard':'home page'}, find courses, and view competitions.</p></section>`}</div>${deviceSettings()}${companySettings.html()}${admin?adminPanel():''}${canManage?stores.map(managerPanel).join(''):''}</div>`;
 }
 async function loadAccountSettings(own,canManage){
  if(canManage){const [s,i,p]=await Promise.all([client.from('seats').select('*'),client.from('invitations').select('id,organization_id,email,role,created_at,expires_at,accepted_at,revoked_at,invitee_name,email_status,last_email_attempt_at').order('created_at',{ascending:false}),client.from('profiles').select('user_id,full_name,avatar_path')]);if(p.error)throw p.error;memberProfiles=p.data;if(s.error)throw s.error;if(i.error)throw new Error('Invitation details could not be loaded. Please contact colTRAIN support.');seats=s.data;invitations=i.data;}
 }
 async function loadWorkspace(){
+ companySettings.close();
  if(!user){authScreen();return;}
  if(recovering){recoveryScreen();return;}
  const [p,m,a,o]=await Promise.all([client.from('profiles').select('*').eq('user_id',user.id).maybeSingle(),client.from('organization_memberships').select('*').order('joined_at'),client.from('platform_admins').select('user_id').eq('user_id',user.id),client.from('organizations').select('*').order('created_at')]);
@@ -109,11 +113,12 @@ async function loadWorkspace(){
  await loadAccountSettings(own,canManage);
  root.innerHTML=accountMarkup(own,canManage,true);avatars.hydrate(document);
 }
-async function perform(action){if(busy)return;busy=true;const buttons=[...root.querySelectorAll('button')].map(button=>({button,disabled:button.disabled}));buttons.forEach(({button})=>button.disabled=true);try{await action();}catch(error){notice(error.message||'The request could not be completed.',true);}finally{busy=false;buttons.forEach(({button,disabled})=>{if(button.isConnected)button.disabled=disabled;});}}
+async function perform(action){if(busy)return;busy=true;const buttons=[...root.querySelectorAll('button:not([data-action=signout]), #company-settings input, #company-settings select')].map(button=>({button,disabled:button.disabled}));buttons.forEach(({button})=>button.disabled=true);try{await action();}catch(error){notice(error.message||'The request could not be completed.',true);}finally{busy=false;buttons.forEach(({button,disabled})=>{if(button.isConnected)button.disabled=disabled;});}}
 document.addEventListener('click',event=>{
  // Embedded previews may allow scripts while blocking native form submissions.
  const submit=event.target.closest('button');
  if(submit?.form&&root.contains(submit)&&accountForms.has(submit.form.id)&&submit.type==='submit'){event.preventDefault();if(submit.form.reportValidity())submitForm(submit.form);return;}
+ const companyTarget=event.target.closest('[data-company-action]');if(companyTarget&&root.contains(companyTarget)){event.preventDefault();perform(async()=>{await companySettings.action(companyTarget);syncCompanySettings();});return;}
  const target=event.target.closest('[data-action]');if(!target)return;const action=target.dataset.action;
  if(action==='signout'){endSession('switch');return;}
  if(['signin','signup','reset'].includes(action)){view=action;notice('');authScreen();return;}
@@ -136,6 +141,7 @@ document.addEventListener('click',event=>{
  });
 });
 document.addEventListener('change',event=>{
+ if(root.contains(event.target)&&event.target.matches('[data-company-select]')){perform(async()=>{await companySettings.change(event.target);syncCompanySettings();});return;}
  const choice=event.target;if(choice.checked&&choice.name==='remember-device'){const shared=choice.form?.querySelector('[name=shared-device]');if(shared)shared.checked=false;}
  if(choice.checked&&choice.name==='shared-device'){const remember=choice.form?.querySelector('[name=remember-device]');if(remember)remember.checked=false;}
  if(!root.contains(event.target)||!event.target.matches('[data-profile-photo]'))return;
@@ -144,6 +150,7 @@ document.addEventListener('change',event=>{
 });
 document.addEventListener('submit',event=>{if(!root.contains(event.target)||!accountForms.has(event.target.id))return;event.preventDefault();submitForm(event.target);});
 function submitForm(form){const data=new FormData(form);perform(async()=>{
+ if(form.id==='company-details-form'||form.id==='company-permission-form'){await companySettings.submit(form,data);syncCompanySettings();return;}
  if(form.id==='auth-form'){
   if(view!=='reset'){deviceGuard.setShared(data.get('shared-device')==='on');personalSession.setRemember(!deviceGuard.isShared()&&data.get('remember-device')==='on');}
   if(view==='signup'){const {error}=await client.auth.signUp({email:data.get('email').trim(),password:data.get('password'),options:{data:{full_name:data.get('name').trim()},emailRedirectTo:emailRedirect}});if(error)throw error;view='signin';authScreen();notice('Check your email to confirm your account, then sign in.');}

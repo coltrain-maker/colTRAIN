@@ -31,6 +31,8 @@ def handle(route):
     global display_name, team_nickname
     url = route.request.url
     asset_path=urlparse(url).path
+    if url == 'https://accounts.example/preview-host':
+        return route.fulfill(content_type='text/html', body='<!doctype html><title>Secure preview host</title>')
     if url.startswith('https://accounts.example/accounts/') and asset_path in ['/accounts/manifest.webmanifest','/accounts/icons/coltrain.svg','/accounts/icons/apple-touch-icon.png','/accounts/icons/icon-192.png','/accounts/icons/icon-512.png','/accounts/icons/icon-maskable-512.png']:
         mime='application/manifest+json' if asset_path.endswith('.webmanifest') else 'image/svg+xml' if asset_path.endswith('.svg') else 'image/png'
         return route.fulfill(content_type=mime,body=(root/asset_path.lstrip('/')).read_bytes())
@@ -54,6 +56,10 @@ def handle(route):
         if invitation_read_error and 'invitee_name' in columns:
             return route.fulfill(status=403, content_type='application/json', headers={'access-control-allow-origin': '*'}, body=json.dumps({'code': '42501', 'message': 'permission denied'}))
         result = invites if columns == '*' else [{key: row.get(key) for key in columns.split(',')} for row in invites]
+    elif path == '/rest/v1/rpc/record_employee_first_login': result = {'first_login': False}
+    elif path in ['/functions/v1/employee-login', '/functions/v1/team-support-email']: result = {'delivery_status': 'processed'}
+    elif path == '/rest/v1/rpc/get_daily_workspace': result = None
+    elif path == '/rest/v1/rpc/get_my_web_push_count': result = 0
     elif path == '/rest/v1/rpc/get_my_training_notifications': result = {'items': [], 'unread_count': 0}
     elif path == '/rest/v1/rpc/get_training_workspace':
         result = {'store': {'id':store,'name':'Pilot Hardware','time_zone':'America/New_York'},'my_membership':team[0]['id'],'can_manage':True,'is_admin':False,
@@ -143,9 +149,11 @@ try:
         assert ('POST', '/functions/v1/invite-employee') in calls
         print('Passed mocked account UI: direct dashboard login, shared settings navigation, visible mobile identity, profile name refresh, sign-in/out, invite/reissue, password reset, deactivate, registration screen, mobile layout.')
         # Chat previews allow JavaScript but may omit the allow-forms sandbox permission.
-        sandbox_page = browser.new_page(service_workers='block')
+        # Playwright's worker-blocking injection itself throws in an opaque frame.
+        sandbox_page = browser.new_page(service_workers='allow')
         sandbox_page.route('**/*', handle)
         sandbox_page.on('pageerror', lambda error: errors.append(str(error)))
+        sandbox_page.goto('https://accounts.example/preview-host')
         sandbox_page.set_content('<iframe sandbox="allow-scripts" style="width:900px;height:900px"></iframe>')
         sandbox_page.locator('iframe').evaluate('(el, html) => el.srcdoc = html', html)
         frame = sandbox_page.frame_locator('iframe')

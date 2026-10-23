@@ -566,7 +566,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
     close();
     throw e;
   }
-  return { close };
+  return { close, updateAccountMarkup(markup){accountMarkup=markup;} };
 }
 export {
   mountTraining

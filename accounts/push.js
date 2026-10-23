@@ -1,7 +1,7 @@
 // Browser consent belongs to this personal device, separately from email preferences.
 export function createPushNotifications({client,isShared,notify}){
  let enabled=false,status='',closed=false,knownSubscription=null;
- const supported=()=> 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+ const supported=()=>{try{return Boolean(navigator.serviceWorker)&&'PushManager' in window&&'Notification' in window;}catch{return false;}};
  const registration=()=>Promise.race([navigator.serviceWorker.ready,new Promise((_,reject)=>setTimeout(()=>reject(Error('Please refresh colTRAIN and try again.')),10000))]);
  async function current(){const reg=supported()?await navigator.serviceWorker.getRegistration('/accounts/'):null;knownSubscription=reg?await reg.pushManager.getSubscription():null;return knownSubscription;}
  let badgeRunning=false,badgeAgain=false,lastCount=0;

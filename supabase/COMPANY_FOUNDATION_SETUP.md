@@ -2,6 +2,8 @@
 
 This is the database foundation for the approved [store signup requirements](../docs/STORE_SIGNUP_AND_SUPPORT_REQUIREMENTS.md). Signup screens, Stripe checkout, billing enforcement, support grants, automatic catalog release to new stores, and company settings screens are later steps. No real billing is enabled by this update.
 
+The follow-up [company settings release (024)](COMPANY_SETTINGS_SETUP.md) connects company details, delegated permissions, and a read-only progress view to the account interface. Apply 023 first; these instructions describe the original foundation step.
+
 ## Apply to the existing project
 
 1. Open Supabase and choose **coltrain-development**.
