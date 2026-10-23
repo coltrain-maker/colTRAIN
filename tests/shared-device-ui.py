@@ -12,7 +12,7 @@ key='sb-flhdeftduysnjvqnhhee-auth-token'
 people={email:{'id':f'00000000-0000-0000-0000-{i:012}','email':email,'aud':'authenticated','role':'authenticated','app_metadata':{},'user_metadata':{}} for i,email in [(1,'one@example.test'),(2,'two@example.test')]}
 encode=lambda value:base64.urlsafe_b64encode(json.dumps(value).encode()).decode().rstrip('=')
 def token(person):return encode({'alg':'HS256','typ':'JWT'})+'.'+encode({'sub':person['id'],'role':'authenticated','exp':int(time.time())+86400})+'.local-test'
-held=[];hold_next=False;fail_logout=False
+held=[];hold_next=False;fail_logout=False;deny_refresh=False;removed_member=False
 
 def handle(route):
  global hold_next
@@ -32,14 +32,18 @@ def handle(route):
  name='Device User One' if number==1 else 'Device User Two'
  member=f'20000000-0000-0000-0000-{number:012}'
  if path=='/auth/v1/token':
-  person=people[route.request.post_data_json['email']]
+  body=route.request.post_data_json
+  if 'refresh_token' in body:
+   if deny_refresh:return route.fulfill(status=400,content_type='application/json',body=json.dumps({'code':'refresh_token_not_found','msg':'Invalid refresh token'}))
+   person=next(p for p in people.values() if body['refresh_token']=='test-refresh-'+p['id'])
+  else:person=people[body['email']]
   result={'access_token':token(person),'refresh_token':'test-refresh-'+person['id'],'expires_in':86400,'token_type':'bearer','user':person}
  elif path=='/auth/v1/user':result=person
  elif path=='/auth/v1/logout':
   if fail_logout:return route.abort()
   result={}
  elif path=='/rest/v1/profiles':result=[{'user_id':uid,'full_name':name,'team_corner_nickname':None,'avatar_path':None}]
- elif path=='/rest/v1/organization_memberships':result=[{'id':member,'organization_id':store,'user_id':uid,'email':person['email'],'role':'employee','status':'active'}]
+ elif path=='/rest/v1/organization_memberships':result=[{'id':member,'organization_id':store,'user_id':uid,'email':person['email'],'role':'employee','status':'inactive' if removed_member else 'active'}]
  elif path=='/rest/v1/platform_admins':result=[]
  elif path=='/rest/v1/organizations':result=[{'id':store,'name':'Shared Hardware'}]
  elif path=='/rest/v1/rpc/record_employee_first_login':result={'first_login':False}
@@ -159,7 +163,72 @@ try:
   held.clear()
   login(page,'two@example.test')
   expect(page.locator('header .account-identity')).not_to_contain_text('Device User One')
-  context.close();browser.close()
- print('Passed shared-device warning/stay/expiry, clearing drafts and credentials, reload and sleep checks, personal-device choice/settings, offline revocation failure, cross-tab sign-out/identity isolation, and pending-response account switching.')
+  context.close()
+
+  # Personal-device consent survives a complete context restart, without sessionStorage.
+  context,page=fresh(browser,False)
+  page.locator('input[name=remember-device]').check()
+  expect(page.locator('input[name=shared-device]')).not_to_be_checked()
+  login(page)
+  assert page.evaluate('(key)=>localStorage.getItem(key)!==null',key)
+  remembered=context.storage_state();context.close()
+  def reopen(state):
+   c=browser.new_context(service_workers='block',storage_state=state);c.route('**/*',handle);p=c.new_page();p.goto(origin+'/accounts/');return c,p
+  context,page=reopen(remembered)
+  expect(page.locator('header .account-identity')).to_contain_text('Device User One')
+  expect(page.locator('#auth-form')).to_have_count(0)
+  navigate(page,'Account & team settings')
+  expect(page.locator('#device-form input[name=remember-device]')).to_be_checked()
+  page.locator('#device-form input[name=remember-device]').uncheck()
+  page.get_by_role('button',name='Save device setting',exact=True).click()
+  expect(page.locator('#account-message')).to_contain_text('Saved login is off')
+  assert page.evaluate('(key)=>localStorage.getItem(key)',key) is None
+  assert page.evaluate('(key)=>sessionStorage.getItem(key)!==null',key)
+  session_only=context.storage_state();context.close()
+  context,page=reopen(session_only);signed_out(page);context.close()
+
+  # Existing personal sessions can opt in from settings, then return to shared mode.
+  context,page=fresh(browser,False);page.locator('input[name=shared-device]').uncheck();login(page)
+  navigate(page,'Account & team settings');page.locator('#device-form input[name=remember-device]').check()
+  page.get_by_role('button',name='Save device setting',exact=True).click()
+  expect(page.locator('#account-message')).to_contain_text('will keep you signed in')
+  assert page.evaluate('(key)=>localStorage.getItem(key)!==null',key)
+  page.locator('#device-form input[name=shared-device]').check()
+  expect(page.locator('#device-form input[name=remember-device]')).not_to_be_checked()
+  page.get_by_role('button',name='Save device setting',exact=True).click()
+  expect(page.locator('#account-message')).to_contain_text('protection is on')
+  assert page.evaluate('(key)=>localStorage.getItem(key)',key) is None
+  context.close()
+
+  # Explicit sign-out erases remembered credentials and doesn't restore them on restart.
+  context,page=reopen(remembered);expect(page.locator('.page-heading h1')).to_be_visible()
+  navigate(page,'Sign out and switch accounts');signed_out(page)
+  assert page.evaluate('(key)=>localStorage.getItem(key)',key) is None
+  assert page.evaluate("localStorage.getItem('coltrain-remember-device')") is None
+  signedout_state=context.storage_state();context.close()
+  context,page=reopen(signedout_state);signed_out(page);login(page,'two@example.test')
+  assert page.evaluate('(key)=>localStorage.getItem(key)',key) is None
+  context.close()
+
+  # Server-rejected refresh clears persistence instead of restoring an expired login.
+  import copy
+  expired=copy.deepcopy(remembered)
+  for record in expired['origins'][0]['localStorage']:
+   if record['name']==key:
+    record_value=json.loads(record['value']);record_value['expires_at']=int(time.time())-100;record['value']=json.dumps(record_value)
+  context,page=reopen(expired);expect(page.locator('header .account-identity')).to_contain_text('Device User One')
+  assert page.evaluate('(key)=>JSON.parse(localStorage.getItem(key)).expires_at',key)>int(time.time())
+  context.close()
+  deny_refresh=True;context,page=reopen(expired);signed_out(page)
+  assert page.evaluate('(key)=>localStorage.getItem(key)',key) is None
+  context.close();deny_refresh=False
+
+  # Remembering Auth never restores removed store membership or a training dashboard.
+  removed_member=True;context,page=reopen(remembered)
+  expect(page.get_by_text('No active store membership.',exact=False)).to_be_visible()
+  expect(page.locator('.training-menu-toggle')).to_have_count(0)
+  context.close();removed_member=False
+  browser.close()
+ print('Passed personal restart/opt-in/settings/sign-out/revoked-refresh/removed-access checks and shared-device warning/stay/expiry, clearing drafts and credentials, reload and sleep checks, personal-device choice/settings, offline revocation failure, cross-tab sign-out/identity isolation, and pending-response account switching.')
 finally:
  subprocess.run(['node','scripts/build-accounts.mjs'],cwd=root,check=True)

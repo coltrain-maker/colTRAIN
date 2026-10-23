@@ -1,3 +1,4 @@
+import {createPersonalSessionStorage} from './personal-session.js';
 import {createPushNotifications} from './push.js';
 import {confirmEmployeeLogin} from './employee-login.js';
 import {createSharedDeviceGuard} from './shared-device.js';
@@ -12,13 +13,15 @@ const button=(text,action,kind='secondary')=>`<button class="button ${kind}" dat
 function sessionStorageForAuth(){try{return window.sessionStorage;}catch{const values=new Map();return {getItem:key=>values.get(key)||null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)};}}
 const baseStorage=sessionStorageForAuth();
 const authKey='sb-'+new URL(__SUPABASE_URL__).hostname.split('.')[0]+'-auth-token';
+let persistentStorage=null;try{persistentStorage=window.localStorage;}catch{}
+const personalSession=createPersonalSessionStorage({session:baseStorage,local:persistentStorage,authKey});
 let sessionEnding=false;
-const authStorage={getItem:key=>sessionEnding?null:baseStorage.getItem(key),setItem:(key,value)=>{if(!sessionEnding)baseStorage.setItem(key,value);},removeItem:key=>baseStorage.removeItem(key)};
+const authStorage={getItem:key=>sessionEnding?null:personalSession.getItem(key),setItem:(key,value)=>{if(!sessionEnding)personalSession.setItem(key,value);},removeItem:key=>personalSession.removeItem(key)};
 const deviceGuard=createSharedDeviceGuard({storage:baseStorage,onExpire:endSession});
 const callbackEntry=location.hash.includes('access_token=')||new URLSearchParams(location.search).has('code');
 let startupReason=null;
-try{startupReason=deviceGuard.preflight(JSON.parse(baseStorage.getItem(authKey)||'null'),callbackEntry);}catch{}
-function eraseStoredAuth(){for(const suffix of ['','-code-verifier','-user']){try{baseStorage.removeItem(authKey+suffix);}catch{}}}
+try{startupReason=deviceGuard.preflight(JSON.parse(personalSession.getItem(authKey)||'null'),callbackEntry);}catch{}
+function eraseStoredAuth(){personalSession.clear();}
 if(startupReason){eraseStoredAuth();deviceGuard.end(false);}
 const client=__SUPABASE_KEY__?createClient(__SUPABASE_URL__,__SUPABASE_KEY__,{auth:{storage:authStorage,storageKey:authKey,persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
 const avatars=createAvatarLoader(client);
@@ -33,7 +36,7 @@ const accountForms=new Set(['auth-form','password-form','profile-form','profile-
 let view='signin',user=null,profile=null,members=[],admin=false,stores=[],seats=[],invitations=[],busy=false,recovering=location.hash.includes('type=recovery')||location.hash.includes('type=invite');
 function endSession(reason='switch',broadcast=true){
  if(sessionEnding)return;
- let token;try{token=JSON.parse(baseStorage.getItem(authKey)||'null')?.access_token;}catch{}
+ let token;try{token=JSON.parse(personalSession.getItem(authKey)||'null')?.access_token;}catch{}
  push.signout({url:__SUPABASE_URL__,key:__SUPABASE_KEY__,token});
  sessionEnding=true;deviceGuard.end(broadcast);eraseStoredAuth();
  avatars.clear();clearPhotoDraft();memberProfiles=[];
@@ -46,8 +49,8 @@ function endSession(reason='switch',broadcast=true){
  if(token)fetch(__SUPABASE_URL__+'/auth/v1/logout?scope=local',{method:'POST',headers:{apikey:__SUPABASE_KEY__,Authorization:'Bearer '+token},keepalive:true}).catch(()=>{});
  location.replace(location.pathname+'?signed_out='+encodeURIComponent(reason));
 }
-function deviceChoice(){return `<label class="account-checkbox"><input type="checkbox" name="shared-device" ${deviceGuard.isShared()?'checked':''}><span>This is a shared store device. Sign out after 15 minutes without activity.</span></label>`;}
-function deviceSettings(){return `<section class="panel"><h2>This device</h2><form id="device-form">${deviceChoice()}<p class="account-small">This setting applies to this browser. On your personal phone, you can turn it off. Always sign out before handing a shared device to someone else.</p><button class="button" type="submit">Save device setting</button></form></section>`;}
+function deviceChoice(){return `<label class="account-checkbox"><input type="checkbox" name="shared-device" ${deviceGuard.isShared()?'checked':''}><span>This is a shared store device. Sign out after 15 minutes without activity.</span></label><label class="account-checkbox"><input type="checkbox" name="remember-device" ${personalSession.isRemembered()?'checked':''}><span>Keep me signed in on this personal device.</span></label>`;}
+function deviceSettings(){return `<section class="panel"><h2>This device</h2><form id="device-form">${deviceChoice()}<p class="account-small">Choose Keep me signed in only on a phone or computer you own. Shared-device mode removes the saved login and signs you out after 15 minutes without activity. This choice is separate from notification permissions.</p><button class="button" type="submit">Save device setting</button></form></section>`;}
 function notice(text,error=false){message.className=error?'error':'success';message.textContent=text;if(text)message.scrollIntoView({block:'nearest'});}
 async function sendEmailInvitation(body){const {data,error}=await client.functions.invoke('invite-employee',{body});if(error){let details;try{details=await error.context?.json();}catch{}throw new Error(details?.error||'Email invitations are temporarily unavailable. Please contact colTRAIN support.');}if(data?.error)throw new Error(data.error);return data;}
 function field(label,name,type='text',value='',extra=''){return `<label class="field">${label}<input type="${type}" name="${name}" value="${esc(value)}" ${extra}></label>`;}
@@ -133,6 +136,8 @@ document.addEventListener('click',event=>{
  });
 });
 document.addEventListener('change',event=>{
+ const choice=event.target;if(choice.checked&&choice.name==='remember-device'){const shared=choice.form?.querySelector('[name=shared-device]');if(shared)shared.checked=false;}
+ if(choice.checked&&choice.name==='shared-device'){const remember=choice.form?.querySelector('[name=remember-device]');if(remember)remember.checked=false;}
  if(!root.contains(event.target)||!event.target.matches('[data-profile-photo]'))return;
  const file=event.target.files?.[0],owner=user?.id;if(!file)return;
  perform(async()=>{const next=await prepareAvatar(file);if(user?.id!==owner){URL.revokeObjectURL(next.preview);return;}clearPhotoDraft();photoDraft=next;const form=root.querySelector('#profile-photo-form');if(form){form.innerHTML=photoControls();avatars.hydrate(form);}});
@@ -140,13 +145,13 @@ document.addEventListener('change',event=>{
 document.addEventListener('submit',event=>{if(!root.contains(event.target)||!accountForms.has(event.target.id))return;event.preventDefault();submitForm(event.target);});
 function submitForm(form){const data=new FormData(form);perform(async()=>{
  if(form.id==='auth-form'){
-  if(view!=='reset')deviceGuard.setShared(data.get('shared-device')==='on');
+  if(view!=='reset'){deviceGuard.setShared(data.get('shared-device')==='on');personalSession.setRemember(!deviceGuard.isShared()&&data.get('remember-device')==='on');}
   if(view==='signup'){const {error}=await client.auth.signUp({email:data.get('email').trim(),password:data.get('password'),options:{data:{full_name:data.get('name').trim()},emailRedirectTo:emailRedirect}});if(error)throw error;view='signin';authScreen();notice('Check your email to confirm your account, then sign in.');}
   else if(view==='reset'){const {error}=await client.auth.resetPasswordForEmail(data.get('email').trim(),{redirectTo:emailRedirect});if(error)throw error;notice('If an account is available, a reset link will be sent.');}
-  else{const submit=form.querySelector('button[type=submit]');submit.textContent='Signing in…';try{const {data:result,error}=await client.auth.signInWithPassword({email:data.get('email').trim(),password:data.get('password')});if(error)throw error;user=result.user;if(!deviceGuard.start(user.id,{fresh:true}))return;await loadWorkspace();notice('Signed in.');}finally{if(submit.isConnected)submit.textContent='Sign in';}}
+  else{const submit=form.querySelector('button[type=submit]');submit.textContent='Signing in…';try{const {data:result,error}=await client.auth.signInWithPassword({email:data.get('email').trim(),password:data.get('password')});if(error)throw error;user=result.user;if(!deviceGuard.start(user.id,{fresh:true}))return;await loadWorkspace();notice(personalSession.failed()?'Signed in for this session. Your browser could not save the login for reopening.':'Signed in.');}finally{if(submit.isConnected)submit.textContent='Sign in';}}
  }
  if(form.id==='password-form'){const {error}=await client.auth.updateUser({password:data.get('password')});if(error)throw error;if(invitationId){const accepted=await client.rpc('accept_email_invitation',{invitation:invitationId});if(accepted.error)throw accepted.error;}recovering=false;history.replaceState(null,'',location.pathname);await loadWorkspace();notice(invitationId?'Your password is saved and you have joined your store.':'Password updated.');}
- if(form.id==='device-form'){deviceGuard.setShared(data.get('shared-device')==='on');if(deviceGuard.isShared())await push.disable();notice(deviceGuard.isShared()?'Shared-device protection is on. You will get a warning before inactivity sign-out.':'Shared-device inactivity sign-out is off for this browser.');}
+ if(form.id==='device-form'){deviceGuard.setShared(data.get('shared-device')==='on');const saved=personalSession.setRemember(!deviceGuard.isShared()&&data.get('remember-device')==='on');if(deviceGuard.isShared())await push.disable();notice(!saved?'Your browser could not save the login. You remain signed in for this session.':deviceGuard.isShared()?'Shared-device protection is on. You will get a warning before inactivity sign-out.':personalSession.isRemembered()?'This personal device will keep you signed in until you sign out or your session expires.':'Saved login is off. You remain signed in for this session.');}
  if(form.id==='profile-photo-form'){notice('Saving your profile picture…');await savePhoto();}
  if(form.id==='profile-form'){notice('Saving your preferences…');const {error}=await client.rpc('save_my_account_preferences',{display_name:data.get('name').trim(),email_notifications:data.get('notifications')==='on',team_nickname:data.get('team_nickname').trim()||null});if(error)throw error;await loadWorkspace();notice('Profile and email preference saved.');}
  if(form.id==='join-form'){const {error}=await client.rpc('accept_invitation',{invitation_code:data.get('code').trim()});if(error)throw error;await loadWorkspace();notice('You joined your store.');}
@@ -157,8 +162,8 @@ if(!client){root.innerHTML='<section class="panel account-not-configured"><h1>Ac
 else{
  client.auth.onAuthStateChange((event,session)=>{
   if(sessionEnding)return;
-  // Auth broadcasts cross tabs, but session-storage accounts are tab-specific.
-  if(session?.user){let stored;try{stored=JSON.parse(baseStorage.getItem(authKey)||'null')?.user?.id;}catch{}if(stored&&stored!==session.user.id)return;}
+  // Auth broadcasts cross tabs; never replace this tab’s displayed account with another identity.
+  if(session?.user){let stored;try{stored=JSON.parse(personalSession.getItem(authKey)||'null')?.user?.id;}catch{}if(stored&&stored!==session.user.id||user&&user.id!==session.user.id)return;}
   user=session?.user||null;
   if(event==='PASSWORD_RECOVERY'){recovering=true;recoveryScreen();}
   if(event==='SIGNED_OUT'){endSession('expired');}
