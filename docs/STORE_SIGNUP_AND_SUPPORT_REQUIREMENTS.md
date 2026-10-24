@@ -1,6 +1,6 @@
 # colTRAIN — Store Signup, Billing, and Support Requirements
 
-Version: 1.2
+Version: 1.3
 
 Updated: October 24, 2026
 
@@ -57,11 +57,11 @@ Only owners and managers authorized to purchase may register a store. A signup c
 | Training seats | Monthly price | Signup route |
 | --- | --- | --- |
 | 1–15 | $99 USD | Self-service |
-| 16–25 | $219 USD | Self-service |
-| 26–35 | $159 USD | Self-service |
+| 16–25 | $159 USD | Self-service |
+| 26–35 | $219 USD | Self-service |
 | 36+ | Contact colTRAIN for pricing | Assisted setup |
 
-These prices reflect the owner’s latest correction: $219 for up to 25 seats and $159 for up to 35 seats. They supersede all earlier amounts for those packages. The owner confirmed the matching Stripe Price IDs and that all three prices are in a sandbox on October 24, 2026. See [Stripe sandbox configuration](../supabase/billing/stripe-sandbox-prices.json) and the [setup guide](../supabase/STRIPE_SANDBOX_SETUP.md). Sandbox prices must not be used for live billing; live configuration will be separate.
+The latest approved packages are $99 for 1–15 seats, $159 for 16–25 seats, and $219 for 26–35 seats. These supersede earlier amounts, including the previous $219.99 amount. The owner confirmed sandbox use on October 24, 2026, and reported hosted Stripe checker amounts matching the current 25- and 35-seat prices. See [Stripe sandbox configuration](../supabase/billing/stripe-sandbox-prices.json) and the [setup guide](../supabase/STRIPE_SANDBOX_SETUP.md). Sandbox prices must not be used for live billing; live configuration will be separate.
 
 - Display the packages and prices upfront. Customers choose the package that fits their needs.
 - Active managers and employees consume training seats. Billing-only access does not consume a training seat.

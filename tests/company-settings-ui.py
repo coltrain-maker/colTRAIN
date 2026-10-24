@@ -49,7 +49,7 @@ def handler(route):
  elif path=='/functions/v1/stripe-sandbox':
   assert role=='admin' and args=={'action':'verify_configuration'}
   if stripe_failed:return reply(route,{'error':'Save a sandbox secret key beginning with sk_test_ as STRIPE_SANDBOX_SECRET_KEY.'},503)
-  if stripe_amount_conflict:return reply(route,{'environment':'sandbox','all_verified':False,'error':'Stripe price check — 16–25 seats: expected $219.00/month; Stripe returned $179.00/month. Price ID: price_local_test.\nNo charges or subscriptions were created.'},409)
+  if stripe_amount_conflict:return reply(route,{'environment':'sandbox','all_verified':False,'error':'Stripe price check — 16–25 seats: expected $159.00/month; Stripe returned $179.00/month. Price ID: price_local_test.\nNo charges or subscriptions were created.'},409)
   config=json.loads((root/'supabase/billing/stripe-sandbox-prices.json').read_text())
   value={'environment':'sandbox','all_verified':stripe_ok,'plans':[{**plan,'verified':stripe_ok or plan['seat_limit']!=35,'issue':'' if stripe_ok or plan['seat_limit']!=35 else 'amount_mismatch'} for plan in config['plans']]}
  elif path=='/rest/v1/rpc/get_company_access_settings':
@@ -130,14 +130,14 @@ try:
   check=page.get_by_role('button',name='Check Stripe sandbox connection',exact=True)
   expect(check).to_be_visible();check.click()
   expect(page.locator('#account-message')).to_have_text('Stripe sandbox packages verified. No charges were created.')
-  expect(page.locator('#company-settings')).to_contain_text('26–35 seats · $159.00/month: Verified')
+  expect(page.locator('#company-settings')).to_contain_text('26–35 seats · $219.00/month: Verified')
   stripe_ok=False;check.click()
   expect(page.locator('#account-message')).to_have_text('Some Stripe sandbox packages need attention.')
   expect(page.locator('#company-settings')).to_contain_text('Monthly amount does not match')
   stripe_failed=True;check.click()
   expect(page.locator('#account-message')).to_contain_text('Save a sandbox secret key')
   stripe_failed=False;stripe_amount_conflict=True;check.click()
-  expect(page.locator('#account-message')).to_contain_text('expected $219.00/month; Stripe returned $179.00/month')
+  expect(page.locator('#account-message')).to_contain_text('expected $159.00/month; Stripe returned $179.00/month')
   expect(page.locator('#account-message')).to_contain_text('Price ID: price_local_test')
   stripe_amount_conflict=False;stripe_ok=True;context.close()
   # A delayed company response must never paint account details after sign-out.

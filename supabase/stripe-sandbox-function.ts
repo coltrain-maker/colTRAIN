@@ -22,14 +22,14 @@ const configuration={
       "code": "store_25",
       "minimum_seats": 16,
       "seat_limit": 25,
-      "unit_amount_cents": 21900,
+      "unit_amount_cents": 15900,
       "price_id": "price_1UTrnrLKSqENX3EoqGe9eX6R"
     },
     {
       "code": "store_35",
       "minimum_seats": 26,
       "seat_limit": 35,
-      "unit_amount_cents": 15900,
+      "unit_amount_cents": 21900,
       "price_id": "price_1UTroBLKSqENX3Eo7JUSvRve"
     }
   ],

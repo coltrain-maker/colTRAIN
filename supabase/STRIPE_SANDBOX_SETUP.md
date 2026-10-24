@@ -7,10 +7,10 @@ Status: Package prices and sandbox Price IDs confirmed by the owner on October 2
 | Training seats | Monthly USD price | Sandbox Price ID |
 | --- | --- | --- |
 | 1–15 | $99.00 | `price_1UTrhULKSqENX3EoVuI54JbR` |
-| 16–25 | $219.00 | `price_1UTrnrLKSqENX3EoqGe9eX6R` |
-| 26–35 | $159.00 | `price_1UTroBLKSqENX3Eo7JUSvRve` |
+| 16–25 | $159.00 | `price_1UTrnrLKSqENX3EoqGe9eX6R` |
+| 26–35 | $219.00 | `price_1UTroBLKSqENX3Eo7JUSvRve` |
 
-The owner corrected the packages to $219 for up to 25 seats and $159 for up to 35 seats. These supersede earlier amounts; the confirmed Price ID mappings are retained. The machine-readable configuration is [billing/stripe-sandbox-prices.json](billing/stripe-sandbox-prices.json). Amounts are integer cents; the package is one flat-rate subscription item per store, not a price multiplied by employee count.
+The latest approved packages are $159 for up to 25 seats and $219 for up to 35 seats. These supersede earlier amounts. The hosted checker report supplied by the owner confirms that the ID ending in `Ge9eX6R` returns $159 and the ID ending in `JUSvRve` returns $219. Rerun the hosted check after deploying the corrected expected amounts to confirm all packages. The machine-readable configuration is [billing/stripe-sandbox-prices.json](billing/stripe-sandbox-prices.json). Amounts are integer cents; the package is one flat-rate subscription item per store, not a price multiplied by employee count.
 
 Self-service signup will require a card and include a 14-day trial. Stores requiring 36+ seats or an additional location contact colTRAIN. Coltrain Hardware and Keith Hardware retain their no-charge pilot arrangements; no Stripe subscription is created for either by this setup.
 
@@ -44,7 +44,7 @@ For CLI deployment, the equivalent source is [functions/stripe-sandbox/index.ts]
 2. Wait for **Published**, refresh colTRAIN, and sign in with the platform-administrator account.
 3. Open **Hamburger menu → Account & team settings → Company settings → Open company settings**.
 4. Find **Stripe sandbox connection** and click **Check Stripe sandbox connection**.
-5. Expected result: **All three sandbox packages are verified**, with 1–15 seats at $99.00, 16–25 seats at $219.00, and 26–35 seats at $159.00 per month. No charges or subscriptions are created by the check. Pilot stores remain unchanged.
+5. Expected result: **All three sandbox packages are verified**, with 1–15 seats at $99.00, 16–25 seats at $159.00, and 26–35 seats at $219.00 per month. No charges or subscriptions are created by the check. Pilot stores remain unchanged.
 
 If the button is missing, confirm the newest website package is published and the account is the colTRAIN administrator. Company ownership alone does not expose this setup tool.
 
