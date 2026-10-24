@@ -50,6 +50,12 @@ If the button is missing, confirm the newest website package is published and th
 
 If a package needs attention, the row explains whether its price is missing, archived, incorrectly configured, or temporarily unavailable. A **Price was not found in this sandbox** result usually means the key and products came from different sandboxes. Do not send the secret key in chat; report only the displayed error. A rejected key or function configuration error is shown as a general message without forwarding Stripe's raw response.
 
+### Diagnosing an amount mismatch
+
+The updated checker returns a sanitized HTTP 409 error for an amount mismatch. The existing website displays it in the status message at the top of the page, showing the expected USD amount, the amount actually returned by Stripe, and the exact requested Price ID. Amounts must remain integer cents; strings, decimal cents, and missing fixed amounts remain rejected. This adds diagnostics without weakening price validation or changing the approved mapping.
+
+If prices and IDs look correct in Stripe but the check still fails, replace the deployed `stripe-sandbox` function's code with the latest [stripe-sandbox-function.ts](stripe-sandbox-function.ts), deploy it, and click **Check Stripe sandbox connection** again. Read or copy the new status message at the top of the page. No Netlify upload, SQL, credential change, or new Stripe price is needed to obtain this diagnostic. A previous list of results may remain visible below the new error; use the new top message for the latest expected/returned amounts.
+
 The checker result is a current read, held only in the signed-in page's memory. It is cleared on sign-out and does not change the source manifest's verification status automatically. Checkout must revalidate pricing independently when implemented.
 
 ## Validation for this release

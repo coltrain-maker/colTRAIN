@@ -14,7 +14,7 @@ member='20000000-0000-0000-0000-000000000901'
 person={'id':user_id,'email':'owner@example.test','aud':'authenticated','role':'authenticated','email_confirmed_at':'2026-10-23T00:00:00Z','app_metadata':{'provider':'email'},'user_metadata':{}}
 enc=lambda v:base64.urlsafe_b64encode(json.dumps(v).encode()).decode().rstrip('=')
 token=enc({'alg':'HS256','typ':'JWT'})+'.'+enc({'sub':user_id,'role':'authenticated','exp':int(time.time())+3600})+'.local-test-signature'
-role='owner';calls=[];fail_save=False;held=[];hold_company=False;stripe_ok=True;stripe_failed=False
+role='owner';calls=[];fail_save=False;held=[];hold_company=False;stripe_ok=True;stripe_failed=False;stripe_amount_conflict=False
 settings={'company':{'id':company,'name':'Pilot Hardware','phone':'555-0100','buying_group':'Example group','owner_user_id':user_id},'people':[{'user_id':user_id,'name':'Owner','email':'owner@example.test'}],'permissions':[],'audit':[]}
 
 def reply(route,value,status=200):route.fulfill(status=status,content_type='application/json',body=json.dumps(value))
@@ -49,6 +49,7 @@ def handler(route):
  elif path=='/functions/v1/stripe-sandbox':
   assert role=='admin' and args=={'action':'verify_configuration'}
   if stripe_failed:return reply(route,{'error':'Save a sandbox secret key beginning with sk_test_ as STRIPE_SANDBOX_SECRET_KEY.'},503)
+  if stripe_amount_conflict:return reply(route,{'environment':'sandbox','all_verified':False,'error':'Stripe price check — 16–25 seats: expected $159.00/month; Stripe returned $179.00/month. Price ID: price_local_test.\nNo charges or subscriptions were created.'},409)
   config=json.loads((root/'supabase/billing/stripe-sandbox-prices.json').read_text())
   value={'environment':'sandbox','all_verified':stripe_ok,'plans':[{**plan,'verified':stripe_ok or plan['seat_limit']!=35,'issue':'' if stripe_ok or plan['seat_limit']!=35 else 'amount_mismatch'} for plan in config['plans']]}
  elif path=='/rest/v1/rpc/get_company_access_settings':
@@ -135,7 +136,10 @@ try:
   expect(page.locator('#company-settings')).to_contain_text('Monthly amount does not match')
   stripe_failed=True;check.click()
   expect(page.locator('#account-message')).to_contain_text('Save a sandbox secret key')
-  stripe_failed=False;stripe_ok=True;context.close()
+  stripe_failed=False;stripe_amount_conflict=True;check.click()
+  expect(page.locator('#account-message')).to_contain_text('expected $159.00/month; Stripe returned $179.00/month')
+  expect(page.locator('#account-message')).to_contain_text('Price ID: price_local_test')
+  stripe_amount_conflict=False;stripe_ok=True;context.close()
   # A delayed company response must never paint account details after sign-out.
   role='billing';context,page=login(browser);hold_company=True
   page.get_by_role('button',name='Open company settings',exact=True).click()

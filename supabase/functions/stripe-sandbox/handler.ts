@@ -48,7 +48,8 @@ export function createStripeSandboxHandler({createClient,env,fetcher=fetch,clock
     return reply(503,{error:'Save a sandbox secret key beginning with sk_test_ as STRIPE_SANDBOX_SECRET_KEY.'});
    const checks=await Promise.all(configuration.plans.map(async(plan:Plan)=>{
     const result={code:plan.code,minimum_seats:plan.minimum_seats,seat_limit:plan.seat_limit,
-     unit_amount_cents:plan.unit_amount_cents,price_id:plan.price_id,currency:'usd',interval:'month',verified:false,issue:''};
+     unit_amount_cents:plan.unit_amount_cents,price_id:plan.price_id,currency:'usd',interval:'month',verified:false,issue:'',
+     stripe_unit_amount_cents:null as number|null};
     try{
      const url=new URL('https://api.stripe.com/v1/prices/'+encodeURIComponent(plan.price_id));
      url.searchParams.set('expand[]','product');
@@ -58,6 +59,11 @@ export function createStripeSandboxHandler({createClient,env,fetcher=fetch,clock
      if(!response.ok){result.issue=response.status===401?'key_not_accepted':response.status===403?'key_permission_denied':response.status===404?'price_not_found_in_sandbox':'stripe_unavailable';return result;}
      const price:Price=await response.json();
      const recurring=price.recurring as Price|null,product=price.product as Price|null;
+     // Allowlisted public pricing information only. Never coerce strings or
+     // decimal amounts into cents, or copy a raw provider object to the response.
+     if(price.id===plan.price_id&&price.livemode===false&&price.currency==='usd'
+      &&typeof price.unit_amount==='number'&&Number.isSafeInteger(price.unit_amount)&&price.unit_amount>=0)
+      result.stripe_unit_amount_cents=price.unit_amount;
      if(price.id!==plan.price_id)result.issue='price_id_mismatch';
      else if(price.livemode!==false)result.issue='live_price_rejected';
      else if(price.active!==true)result.issue='price_not_active';
@@ -71,6 +77,15 @@ export function createStripeSandboxHandler({createClient,env,fetcher=fetch,clock
     return result;
    }));
    const allVerified=checks.every(check=>check.verified);
+   const amountMismatches=checks.filter(check=>check.issue==='amount_mismatch');
+   if(amountMismatches.length){
+    const usd=(cents:number)=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(cents/100);
+    const details=amountMismatches.map(check=>`${check.minimum_seats}–${check.seat_limit} seats: expected ${usd(check.unit_amount_cents)}/month; Stripe returned ${check.stripe_unit_amount_cents===null?'an amount that is not a valid whole number of USD cents':usd(check.stripe_unit_amount_cents)+'/month'}. Price ID: ${check.price_id}.`);
+    // Existing deployed clients already display sanitized errors from non-2xx
+    // function responses. This exposes the diagnostic without a website update.
+    return reply(409,{environment:'sandbox',all_verified:false,checked_at:clock().toISOString(),plans:checks,
+     error:'Stripe price check — '+details.join('\n')+'\nNo charges or subscriptions were created.'});
+   }
    return reply(200,{environment:'sandbox',all_verified:allVerified,checked_at:clock().toISOString(),plans:checks,
     message:allVerified?'All three sandbox packages are verified. No charges or subscriptions were created.':'Some sandbox packages need attention. No charges or subscriptions were created.'});
   }catch{return reply(503,{error:'The sandbox connection could not be checked. Please try again.'});}

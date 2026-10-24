@@ -113,6 +113,27 @@ for(const [issue,mutate] of mismatches)test('rejects incorrect Stripe configurat
  assert.deepEqual(result.plans.map(p=>p.verified),[true,true,false]);
 });
 
+test('amount conflicts expose exact expected and returned dollars with Price IDs for the existing client',async()=>{
+ const f=fixture({mutate:(p,plan)=>{if(plan.seat_limit===25)p.unit_amount=17900;if(plan.seat_limit===35)p.unit_amount=23900;}});
+ const response=await f.handler(f.request()),result=await response.json();
+ assert.equal(response.status,409);assert.equal(result.all_verified,false);
+ assert.match(result.error,/16–25 seats: expected \$159\.00\/month; Stripe returned \$179\.00\/month/);
+ assert.match(result.error,/26–35 seats: expected \$219\.99\/month; Stripe returned \$239\.00\/month/);
+ for(const plan of configuration.plans.slice(1))assert.ok(result.error.includes(plan.price_id));
+ assert.deepEqual(result.plans.map(p=>p.stripe_unit_amount_cents),[9900,17900,23900]);
+ assert.ok(!result.error.includes(f.values.STRIPE_SANDBOX_SECRET_KEY));
+});
+
+test('correct integer-cent prices still pass; malformed amounts are rejected without echoing raw strings',async()=>{
+ const good=fixture(),success=await good.handler(good.request());
+ assert.equal(success.status,200);const verified=await success.json();assert.equal(verified.all_verified,true);
+ assert.deepEqual(verified.plans.map(p=>p.stripe_unit_amount_cents),[9900,15900,21999]);
+ const bad=fixture({mutate:p=>{p.unit_amount='untrusted-provider-string-with-private-details';}});
+ const response=await bad.handler(bad.request()),text=await response.text();
+ assert.equal(response.status,409);assert.ok(!text.includes('untrusted-provider-string'));
+ assert.ok(JSON.parse(text).plans.every(p=>p.stripe_unit_amount_cents===null));
+});
+
 test('provider errors and network failures are reported without provider bodies, keys or account details',async()=>{
  for(const [options,issue] of [[{status:401},'key_not_accepted'],[{status:403},'key_permission_denied'],[{status:404},'price_not_found_in_sandbox'],[{status:429},'stripe_unavailable'],[{status:500},'stripe_unavailable'],[{throwFetch:true},'stripe_unavailable']]){
   const f=fixture(options),response=await f.handler(f.request());const text=await response.text(),result=JSON.parse(text);
