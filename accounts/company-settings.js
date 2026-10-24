@@ -4,8 +4,8 @@ const accessLabel=value=>value==='billing'?'Billing administrator':'Training adm
 const date=value=>new Date(value).toLocaleString();
 const events={company_initialized:'Owner assigned',permission_changed:'Permission changed',ownership_transferred:'Ownership transferred',store_linked:'Store linked',pilot_changed:'Pilot status changed',company_details_updated:'Company details updated'};
 
-export function createCompanySettings({client,notify}){
- let generation=0,opened=false,companies=[],selected=null,settings=null,overview=null;
+export function createCompanySettings({client,notify,isPlatformAdmin=()=>false}){
+ let generation=0,opened=false,companies=[],selected=null,settings=null,overview=null,stripeCheck=null;
  const cancelled=Symbol('company request cancelled');
  async function rpc(name,args={}){
   const current=generation;
@@ -33,7 +33,11 @@ export function createCompanySettings({client,notify}){
    ${companies.length>1?`<label>Company<select data-company-select>${companies.map(c=>`<option value="${esc(c.company_id)}" ${c.company_id===selected?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>`:`<h3>${esc(company.name)}</h3>`}
    <p class="account-note">${company.is_owner?'You are the company owner.':company.can_administer?'You are viewing this company as a colTRAIN administrator.':'Your access is limited to the stores and responsibilities listed below.'} Payment setup is coming next. No payment or subscription change can be made here yet.</p>
    <div class="company-store-list">${company.stores.map(store=>`<article class="company-store"><h3>${esc(store.name)}</h3><p>${store.can_bill?`<span>${esc(mode(store.access_mode))}</span> · Billing access`:''}${store.can_bill&&store.can_oversee_training?' · ':''}${store.can_oversee_training?'Training oversight':''}</p>${store.can_oversee_training?`<button type="button" class="button secondary" data-company-action="progress" data-store="${esc(store.store_id)}">View training progress</button>`:''}</article>`).join('')}</div>
-   ${settings?management(company):''}${overview?progress():''}`}</section>`;
+   ${settings?management(company):''}${overview?progress():''}`}${isPlatformAdmin()?stripePanel():''}</section>`;
+ }
+ function stripePanel(){
+  const issues={price_id_mismatch:'Price ID does not match',live_price_rejected:'Live pricing is not allowed in sandbox',price_not_active:'Price is archived',currency_mismatch:'Currency must be USD',amount_mismatch:'Monthly amount does not match',billing_interval_mismatch:'Must bill once each month',flat_package_pricing_required:'Must use flat-rate package pricing',product_not_active_in_sandbox:'Product must be active in this sandbox',key_not_accepted:'Sandbox key was not accepted',key_permission_denied:'Key cannot read these prices',price_not_found_in_sandbox:'Price was not found in this sandbox',stripe_unavailable:'Stripe could not confirm this price; try again'};
+  return `<div class="company-management"><h3>Stripe sandbox connection</h3><p class="muted">Administrator setup check for the three monthly packages. This only reads Stripe configuration and does not create payments or subscriptions.</p><button class="button secondary" type="button" data-company-action="stripe-check">Check Stripe sandbox connection</button>${stripeCheck?`<p class="account-note">${stripeCheck.all_verified?'All three sandbox packages are verified.':'Some sandbox packages need attention.'} No charges were created.</p><ul>${stripeCheck.plans.map(p=>`<li><strong>${esc(p.minimum_seats)}–${esc(p.seat_limit)} seats · ${esc(new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(p.unit_amount_cents/100))}/month</strong>: ${p.verified?'Verified':esc(issues[p.issue]||'Not verified')}</li>`).join('')}</ul>`:''}</div>`;
  }
  function management(company){
   const c=settings.company,owner=person(c.owner_user_id);
@@ -49,6 +53,15 @@ export function createCompanySettings({client,notify}){
   try{
    const action=target.dataset.companyAction;
    if(action==='open'||action==='refresh'){await reload();opened=true;}
+   if(action==='stripe-check'){
+    if(!isPlatformAdmin())throw new Error('colTRAIN administrator access is required.');
+    const current=generation;
+    const {data,error}=await client.functions.invoke('stripe-sandbox',{body:{action:'verify_configuration'}});
+    if(current!==generation)throw cancelled;
+    if(error){let details;try{details=await error.context?.json();}catch{}if(current!==generation)throw cancelled;throw new Error(details?.error||'The Stripe sandbox check is unavailable. Confirm the stripe-sandbox function is deployed, then try again.');}
+    if(data?.environment!=='sandbox'||!Array.isArray(data.plans)||data.plans.length!==3)throw new Error('The Stripe sandbox check returned an unexpected result. Please try again.');
+    stripeCheck=data;notify(data.all_verified?'Stripe sandbox packages verified. No charges were created.':'Some Stripe sandbox packages need attention.',!data.all_verified);
+   }
    if(action==='progress'){
     if(!chosen()?.stores.some(s=>s.store_id===target.dataset.store&&s.can_oversee_training))throw new Error('Training access is required for this store.');
     overview=await rpc('get_company_training_overview',{company:selected,store:target.dataset.store});
@@ -82,6 +95,6 @@ export function createCompanySettings({client,notify}){
   try{if(!companies.some(c=>c.company_id===selectElement.value))return;await select(selectElement.value);render();}
   catch(error){if(error!==cancelled)throw error;}
  }
- function close(){generation++;opened=false;companies=[];selected=null;settings=null;overview=null;}
+ function close(){generation++;opened=false;companies=[];selected=null;settings=null;overview=null;stripeCheck=null;}
  return {html,action,submit,change,close};
 }

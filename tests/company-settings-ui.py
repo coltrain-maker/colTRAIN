@@ -14,7 +14,7 @@ member='20000000-0000-0000-0000-000000000901'
 person={'id':user_id,'email':'owner@example.test','aud':'authenticated','role':'authenticated','email_confirmed_at':'2026-10-23T00:00:00Z','app_metadata':{'provider':'email'},'user_metadata':{}}
 enc=lambda v:base64.urlsafe_b64encode(json.dumps(v).encode()).decode().rstrip('=')
 token=enc({'alg':'HS256','typ':'JWT'})+'.'+enc({'sub':user_id,'role':'authenticated','exp':int(time.time())+3600})+'.local-test-signature'
-role='owner';calls=[];fail_save=False;held=[];hold_company=False
+role='owner';calls=[];fail_save=False;held=[];hold_company=False;stripe_ok=True;stripe_failed=False
 settings={'company':{'id':company,'name':'Pilot Hardware','phone':'555-0100','buying_group':'Example group','owner_user_id':user_id},'people':[{'user_id':user_id,'name':'Owner','email':'owner@example.test'}],'permissions':[],'audit':[]}
 
 def reply(route,value,status=200):route.fulfill(status=status,content_type='application/json',body=json.dumps(value))
@@ -28,13 +28,13 @@ def handler(route):
  assert route.request.url.startswith('https://flhdeftduysnjvqnhhee.supabase.co/'),route.request.url
  args=route.request.post_data_json if route.request.method=='POST' else {}
  calls.append((path,args))
- training_member=role=='owner'
+ training_member=role in ['owner','admin']
  if path=='/auth/v1/token':value={'access_token':token,'refresh_token':'test-refresh','expires_in':3600,'token_type':'bearer','user':person}
  elif path=='/auth/v1/user':value=person
  elif path=='/auth/v1/logout':value={}
  elif path=='/rest/v1/profiles':value=[{'user_id':user_id,'full_name':'Owner','avatar_path':None,'optional_email_notifications':False}]
  elif path=='/rest/v1/organization_memberships':value=[{'id':member,'organization_id':store,'user_id':user_id,'email':person['email'],'role':'manager','status':'active'}] if training_member else []
- elif path=='/rest/v1/platform_admins':value=[]
+ elif path=='/rest/v1/platform_admins':value=[{'user_id':user_id}] if role=='admin' else []
  elif path=='/rest/v1/organizations':value=[{'id':store,'name':'Pilot Hardware','time_zone':'America/New_York'}] if training_member else []
  elif path in ['/rest/v1/seats','/rest/v1/invitations']:value=[]
  elif path=='/rest/v1/rpc/record_employee_first_login':value={'first_login':False}
@@ -42,12 +42,17 @@ def handler(route):
  elif path=='/rest/v1/rpc/get_daily_workspace':value=None
  elif path=='/rest/v1/rpc/get_my_web_push_count':value=0
  elif path=='/rest/v1/rpc/get_my_training_notifications':value={'items':[],'unread_count':0}
- elif path=='/rest/v1/rpc/get_training_workspace':value={'store':{'id':store,'name':'Pilot Hardware','time_zone':'America/New_York'},'my_membership':member,'can_manage':True,'is_admin':False,'members':[{'id':member,'name':'Owner','role':'manager','status':'active','departments':[]}],'courses':[],'assignments':[],'departments':[],'competitions':[],'lifetime_standings':[],'totals':{'lifetime_points':0,'trophies':0,'completed_courses':0},'team_learning_seconds':0}
+ elif path=='/rest/v1/rpc/get_training_workspace':value={'store':{'id':store,'name':'Pilot Hardware','time_zone':'America/New_York'},'my_membership':member,'can_manage':True,'is_admin':role=='admin','members':[{'id':member,'name':'Owner','role':'manager','status':'active','departments':[]}],'courses':[],'assignments':[],'departments':[],'competitions':[],'lifetime_standings':[],'totals':{'lifetime_points':0,'trophies':0,'completed_courses':0},'team_learning_seconds':0}
  elif path=='/rest/v1/rpc/get_my_company_accounts':
-  value=[] if role=='ordinary' else [{'company_id':company,'name':settings['company']['name'],'is_owner':role=='owner','can_administer':role=='owner','stores':[{'store_id':store,'name':'Pilot Hardware','can_bill':role in ['owner','billing'],'can_oversee_training':role in ['owner','training'],'access_mode':'pilot' if role in ['owner','billing'] else None}]}]
+  value=[] if role=='ordinary' else [{'company_id':company,'name':settings['company']['name'],'is_owner':role=='owner','can_administer':role in ['owner','admin'],'stores':[{'store_id':store,'name':'Pilot Hardware','can_bill':role in ['owner','admin','billing'],'can_oversee_training':role in ['owner','admin','training'],'access_mode':'pilot' if role in ['owner','admin','billing'] else None}]}]
   if hold_company:hold_company=False;held.append((route,value));return
+ elif path=='/functions/v1/stripe-sandbox':
+  assert role=='admin' and args=={'action':'verify_configuration'}
+  if stripe_failed:return reply(route,{'error':'Save a sandbox secret key beginning with sk_test_ as STRIPE_SANDBOX_SECRET_KEY.'},503)
+  config=json.loads((root/'supabase/billing/stripe-sandbox-prices.json').read_text())
+  value={'environment':'sandbox','all_verified':stripe_ok,'plans':[{**plan,'verified':stripe_ok or plan['seat_limit']!=35,'issue':'' if stripe_ok or plan['seat_limit']!=35 else 'amount_mismatch'} for plan in config['plans']]}
  elif path=='/rest/v1/rpc/get_company_access_settings':
-  assert role=='owner';value=copy.deepcopy(settings)
+  assert role in ['owner','admin'];value=copy.deepcopy(settings)
  elif path=='/rest/v1/rpc/save_company_details':
   assert role=='owner'
   if fail_save:return reply(route,{'message':'Company owner access required','code':'P0001'},400)
@@ -60,7 +65,7 @@ def handler(route):
   assert role=='owner' and args['person']=='billing-id' and args['enabled']==False and args['store']==store
   settings['permissions']=[];value=None
  elif path=='/rest/v1/rpc/get_company_training_overview':
-  assert role in ['owner','training'] and args=={'company':company,'store':store}
+  assert role in ['owner','admin','training'] and args=={'company':company,'store':store}
   value={'company_id':company,'stores':[{'store_id':store,'name':'Pilot Hardware','members':[{'name':'Employee One','role':'employee','completed_courses':2,'assigned_courses':4,'completed_drills':3,'points':{'course_points':20,'daily_points':15,'lifetime_points':35}}]}]}
  else:raise AssertionError('Unexpected endpoint '+path)
  reply(route,value)
@@ -70,7 +75,7 @@ def login(browser):
  page=context.new_page();page.route('**/*',handler)
  page.goto('https://company.example/accounts/');page.locator('#auth-form input[name=email]').fill(person['email']);page.locator('#auth-form input[name=password]').fill('Test password only')
  page.locator('#auth-form button[type=submit]').click()
- if role=='owner':
+ if role in ['owner','admin']:
   expect(page.get_by_role('heading',name='Your team, learning together.')).to_be_visible()
   page.get_by_role('button',name='Open menu').click();page.get_by_role('button',name='Account & team settings',exact=True).click()
  expect(page.get_by_role('button',name='Open company settings',exact=True)).to_be_visible()
@@ -82,6 +87,7 @@ try:
   context,page=login(browser)
   page.get_by_role('button',name='Open company settings',exact=True).click()
   expect(page.locator('#company-details-form')).to_be_visible()
+  expect(page.get_by_role('button',name='Check Stripe sandbox connection',exact=True)).to_have_count(0)
   expect(page.locator('#company-settings')).to_contain_text('No-charge pilot')
   page.locator('#company-details-form input[name=company_name]').fill('Hardware <script>window.companyInjected=true</script>')
   page.locator('#company-details-form button[type=submit]').click()
@@ -112,11 +118,24 @@ try:
    expect(page.locator('#company-settings')).to_contain_text('Your access is limited' if role!='ordinary' else 'does not have company ownership')
    expect(page.locator('#company-details-form')).to_have_count(0)
    expect(page.locator('#company-permission-form')).to_have_count(0)
+   expect(page.get_by_role('button',name='Check Stripe sandbox connection',exact=True)).to_have_count(0)
    assert not any(path.endswith('get_company_access_settings') for path,args in calls[before:])
    if role=='training':
     page.get_by_role('button',name='View training progress',exact=True).click();expect(page.locator('.company-progress')).to_contain_text('Employee One')
    else:expect(page.get_by_role('button',name='View training progress',exact=True)).to_have_count(0)
    context.close()
+  role='admin';context,page=login(browser)
+  page.get_by_role('button',name='Open company settings',exact=True).click()
+  check=page.get_by_role('button',name='Check Stripe sandbox connection',exact=True)
+  expect(check).to_be_visible();check.click()
+  expect(page.locator('#account-message')).to_have_text('Stripe sandbox packages verified. No charges were created.')
+  expect(page.locator('#company-settings')).to_contain_text('26–35 seats · $219.99/month: Verified')
+  stripe_ok=False;check.click()
+  expect(page.locator('#account-message')).to_have_text('Some Stripe sandbox packages need attention.')
+  expect(page.locator('#company-settings')).to_contain_text('Monthly amount does not match')
+  stripe_failed=True;check.click()
+  expect(page.locator('#account-message')).to_contain_text('Save a sandbox secret key')
+  stripe_failed=False;stripe_ok=True;context.close()
   # A delayed company response must never paint account details after sign-out.
   role='billing';context,page=login(browser);hold_company=True
   page.get_by_role('button',name='Open company settings',exact=True).click()

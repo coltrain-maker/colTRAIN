@@ -15,3 +15,7 @@ verify_jwt = false
 
 [functions.web-push]
 verify_jwt = false
+
+[functions.stripe-sandbox]
+# The handler validates the Auth user and platform-admin row explicitly.
+verify_jwt = false

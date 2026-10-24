@@ -1,6 +1,6 @@
 # Stripe sandbox setup
 
-Status: Package prices and sandbox Price IDs confirmed by the owner on October 24, 2026. They have not yet been checked against Stripe's API. Checkout, webhook provisioning, and billing lifecycle controls are not implemented by this configuration step.
+Status: Package prices and sandbox Price IDs confirmed by the owner on October 24, 2026. The owner reports saving the sandbox secret in Supabase. A read-only, administrator-only connection checker is prepared; the actual hosted connection is not verified until the owner runs it successfully. Checkout, webhook provisioning, and billing lifecycle controls are not implemented by this step.
 
 ## Approved recurring packages
 
@@ -24,6 +24,39 @@ Self-service signup will require a card and include a 14-day trial. Stores requi
 6. Click **Save**. Do not paste the value into chat, SQL, GitHub, website configuration, or a Netlify browser build.
 
 Saving this secret does not deploy a function, create a subscription, send an email, or charge a customer. No Netlify update is required for this step.
+
+## Deploy the read-only connection checker
+
+The checker reads the three configured prices from Stripe and verifies their environment, active status, currency, monthly interval, flat-rate structure, expected amount, and active sandbox product. It cannot create a checkout, subscription, payment, or store. Only a signed-in colTRAIN platform administrator can run it; store owners and billing administrators cannot.
+
+1. In Supabase, open **Edge Functions → Functions → Deploy a new function → Via Editor** (the wording may be **Create function**).
+2. Open [stripe-sandbox-function.ts](stripe-sandbox-function.ts) on GitHub, choose **Raw**, and copy the entire file.
+3. Replace all the starter code in the editor's **index.ts** file with that code. Do not add it underneath the starter code or create a second source file.
+4. Set the function name to **`stripe-sandbox`** before clicking **Deploy function**. The endpoint must end in `/functions/v1/stripe-sandbox`.
+5. Open the deployed function's **Settings**. Turn **Verify JWT with legacy secret** off and click **Save changes**. The function itself validates the signed-in user through Supabase Auth and checks the platform-admin table before reading the Stripe credential or making provider calls.
+6. Keep the existing `COLTRAIN_APP_URL` setting, which must be the exact HTTPS origin used to open the hosted application. No additional secrets or SQL migrations are needed for this checker.
+
+For CLI deployment, the equivalent source is [functions/stripe-sandbox/index.ts](functions/stripe-sandbox/index.ts). The single-file dashboard version is generated with `node scripts/build-stripe-sandbox-function.mjs`.
+
+## Publish and run the administrator check
+
+1. Download the latest [design/coltrain-website.zip](../design/coltrain-website.zip) from GitHub using **Download raw file**, unzip it, and upload the extracted website folder to the existing Netlify site's **Deploys** page.
+2. Wait for **Published**, refresh colTRAIN, and sign in with the platform-administrator account.
+3. Open **Hamburger menu → Account & team settings → Company settings → Open company settings**.
+4. Find **Stripe sandbox connection** and click **Check Stripe sandbox connection**.
+5. Expected result: **All three sandbox packages are verified**, with $99.00, $159.00, and $219.99 monthly packages. No charges or subscriptions are created by the check. Pilot stores remain unchanged.
+
+If the button is missing, confirm the newest website package is published and the account is the colTRAIN administrator. Company ownership alone does not expose this setup tool.
+
+If a package needs attention, the row explains whether its price is missing, archived, incorrectly configured, or temporarily unavailable. A **Price was not found in this sandbox** result usually means the key and products came from different sandboxes. Do not send the secret key in chat; report only the displayed error. A rejected key or function configuration error is shown as a general message without forwarding Stripe's raw response.
+
+The checker result is a current read, held only in the signed-in page's memory. It is cleared on sign-out and does not change the source manifest's verification status automatically. Checkout must revalidate pricing independently when implemented.
+
+## Validation for this release
+
+- `npm run test:stripe-sandbox`: Auth/admin restrictions, CORS, sandbox-only keys, GET-only provider access, plan injection resistance, all pricing checks, sanitized failures, and generated-file consistency. Stripe calls are mocked; no actual provider credential is needed.
+- `npm run test:companies:ui`: Administrator-only controls, success and configuration errors, unchanged ordinary-owner/billing/training views, and the existing company-settings flows.
+- Both the CLI entry and generated dashboard function are checked with Deno. The website build includes public application files only; neither the server function nor credentials belongs in the Netlify package.
 
 ## Integration requirements for the next build
 

@@ -1,0 +1,78 @@
+import type {createClient as SupabaseFactory} from 'npm:@supabase/supabase-js@2.118.0';
+import configuration from '../../billing/stripe-sandbox-prices.json' with {type:'json'};
+
+type Dependencies={
+ createClient:typeof SupabaseFactory;
+ env:(name:string)=>string|undefined;
+ fetcher?:typeof fetch;
+ clock?:()=>Date;
+};
+type Price=Record<string,unknown>;
+type Plan=typeof configuration.plans[number];
+
+// A GET-only connection check. It cannot create a checkout, customer, subscription,
+// payment, email, or store, and does not use the Supabase service-role credential.
+export function createStripeSandboxHandler({createClient,env,fetcher=fetch,clock=()=>new Date()}:Dependencies){
+ return async(request:Request):Promise<Response>=>{
+  let app:URL;
+  try{
+   app=new URL(env('COLTRAIN_APP_URL')||'');
+   if(app.protocol!=='https:'||app.pathname!=='/'||app.search||app.hash||app.username||app.password
+    ||/^(localhost|127\.|\[::1\])/.test(app.hostname))throw Error();
+  }catch{return Response.json({error:'Hosted website configuration is required.'},{status:503,headers:{'Cache-Control':'no-store'}});}
+  const origin=request.headers.get('Origin');
+  const headers:Record<string,string>={'Vary':'Origin','Cache-Control':'no-store'};
+  if(origin===app.origin)headers['Access-Control-Allow-Origin']=origin;
+  const reply=(status:number,data:unknown)=>Response.json(data,{status,headers});
+  if(origin&&origin!==app.origin)return reply(403,{error:'Open the hosted colTRAIN website to run this check.'});
+  if(request.method==='OPTIONS')return new Response(null,{status:204,headers:{...headers,
+   'Access-Control-Allow-Methods':'POST, OPTIONS','Access-Control-Allow-Headers':'authorization, apikey, content-type, x-client-info'}});
+  if(request.method!=='POST')return reply(405,{error:'Use POST.'});
+  const authorization=request.headers.get('Authorization');
+  if(!authorization?.startsWith('Bearer '))return reply(401,{error:'Sign in first.'});
+  try{
+   const caller=createClient(env('SUPABASE_URL')||'',env('SUPABASE_ANON_KEY')||'',{
+    global:{headers:{Authorization:authorization}},auth:{persistSession:false,autoRefreshToken:false}});
+   const identity=await caller.auth.getUser();
+   if(identity.error||!identity.data.user)return reply(401,{error:'Sign in again.'});
+   const admin=await caller.from('platform_admins').select('user_id').eq('user_id',identity.data.user.id).maybeSingle();
+   if(admin.error||!admin.data||admin.data.user_id!==identity.data.user.id)
+    return reply(403,{error:'colTRAIN administrator access is required.'});
+   let body:unknown;
+   try{const text=await request.text();if(text.length>1024)return reply(413,{error:'Request is too large.'});body=JSON.parse(text);}
+   catch{return reply(400,{error:'Choose the sandbox connection check.'});}
+   if(!body||typeof body!=='object'||Array.isArray(body)||(body as {action?:unknown}).action!=='verify_configuration')
+    return reply(400,{error:'Choose the sandbox connection check.'});
+   const key=env('STRIPE_SANDBOX_SECRET_KEY')||'';
+   if(!key.startsWith('sk_test_')||key.length<20||/[\s\r\n]/.test(key))
+    return reply(503,{error:'Save a sandbox secret key beginning with sk_test_ as STRIPE_SANDBOX_SECRET_KEY.'});
+   const checks=await Promise.all(configuration.plans.map(async(plan:Plan)=>{
+    const result={code:plan.code,minimum_seats:plan.minimum_seats,seat_limit:plan.seat_limit,
+     unit_amount_cents:plan.unit_amount_cents,price_id:plan.price_id,currency:'usd',interval:'month',verified:false,issue:''};
+    try{
+     const url=new URL('https://api.stripe.com/v1/prices/'+encodeURIComponent(plan.price_id));
+     url.searchParams.set('expand[]','product');
+     const response=await fetcher(url,{method:'GET',headers:{Authorization:'Bearer '+key,'Stripe-Version':'2024-06-20'},
+      redirect:'error',signal:AbortSignal.timeout(10000)});
+     // Stripe error bodies can include account details. Never forward or log them.
+     if(!response.ok){result.issue=response.status===401?'key_not_accepted':response.status===403?'key_permission_denied':response.status===404?'price_not_found_in_sandbox':'stripe_unavailable';return result;}
+     const price:Price=await response.json();
+     const recurring=price.recurring as Price|null,product=price.product as Price|null;
+     if(price.id!==plan.price_id)result.issue='price_id_mismatch';
+     else if(price.livemode!==false)result.issue='live_price_rejected';
+     else if(price.active!==true)result.issue='price_not_active';
+     else if(price.currency!=='usd')result.issue='currency_mismatch';
+     else if(!Number.isSafeInteger(price.unit_amount)||price.unit_amount!==plan.unit_amount_cents)result.issue='amount_mismatch';
+     else if(price.type!=='recurring'||!recurring||recurring.interval!=='month'||recurring.interval_count!==1)result.issue='billing_interval_mismatch';
+     else if(recurring.usage_type!=='licensed'||price.billing_scheme!=='per_unit'||price.tiers_mode!=null||price.transform_quantity!=null||price.custom_unit_amount!=null)result.issue='flat_package_pricing_required';
+     else if(!product||typeof product!=='object'||typeof product.id!=='string'||!product.id.startsWith('prod_')||product.livemode!==false||product.active!==true)result.issue='product_not_active_in_sandbox';
+     else result.verified=true;
+    }catch{result.issue='stripe_unavailable';}
+    return result;
+   }));
+   const allVerified=checks.every(check=>check.verified);
+   return reply(200,{environment:'sandbox',all_verified:allVerified,checked_at:clock().toISOString(),plans:checks,
+    message:allVerified?'All three sandbox packages are verified. No charges or subscriptions were created.':'Some sandbox packages need attention. No charges or subscriptions were created.'});
+  }catch{return reply(503,{error:'The sandbox connection could not be checked. Please try again.'});}
+ };
+}

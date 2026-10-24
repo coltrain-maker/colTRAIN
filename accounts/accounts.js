@@ -33,7 +33,7 @@ const emailRedirect=/^https?:$/.test(location.protocol)?location.origin+location
 setupHomeScreenInstall();
 const invitationId=new URLSearchParams(location.search).get('invitation_id');
 let trainingController=null,trainingView="home",activeStoreId=null;
-const companySettings=createCompanySettings({client,notify:notice});
+const companySettings=createCompanySettings({client,notify:notice,isPlatformAdmin:()=>admin});
 const accountForms=new Set(['company-details-form','company-permission-form','auth-form','password-form','profile-form','profile-photo-form','device-form','join-form','store-form','invite-form']);
 let view='signin',user=null,profile=null,members=[],admin=false,stores=[],seats=[],invitations=[],busy=false,recovering=location.hash.includes('type=recovery')||location.hash.includes('type=invite');
 function endSession(reason='switch',broadcast=true){
