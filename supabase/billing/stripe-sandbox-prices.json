@@ -1,0 +1,38 @@
+{
+  "environment": "sandbox",
+  "currency": "usd",
+  "interval": "month",
+  "interval_count": 1,
+  "trial_days": 14,
+  "payment_method_required": true,
+  "confirmed_by_owner_on": "2026-10-24",
+  "verification_status": "owner_confirmed_not_yet_verified_against_stripe_api",
+  "plans": [
+    {
+      "code": "store_15",
+      "minimum_seats": 1,
+      "seat_limit": 15,
+      "unit_amount_cents": 9900,
+      "price_id": "price_1UTrhULKSqENX3EoVuI54JbR"
+    },
+    {
+      "code": "store_25",
+      "minimum_seats": 16,
+      "seat_limit": 25,
+      "unit_amount_cents": 15900,
+      "price_id": "price_1UTrnrLKSqENX3EoqGe9eX6R"
+    },
+    {
+      "code": "store_35",
+      "minimum_seats": 26,
+      "seat_limit": 35,
+      "unit_amount_cents": 21999,
+      "price_id": "price_1UTroBLKSqENX3Eo7JUSvRve"
+    }
+  ],
+  "assisted_setup": {
+    "minimum_seats": 36,
+    "additional_locations": true,
+    "price_id": null
+  }
+}
