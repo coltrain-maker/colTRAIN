@@ -49,7 +49,7 @@ test('verified admin checks exactly the three sandbox prices with GET only',asyn
  assert.equal(response.status,200);assert.equal(response.headers.get('Cache-Control'),'no-store');
  assert.equal(result.environment,'sandbox');assert.equal(result.all_verified,true);
  assert.equal(result.checked_at,'2026-10-24T12:00:00.000Z');
- assert.deepEqual(result.plans.map(p=>[p.seat_limit,p.unit_amount_cents,p.verified]),[[15,9900,true],[25,15900,true],[35,21999,true]]);
+ assert.deepEqual(result.plans.map(p=>[p.seat_limit,p.unit_amount_cents,p.verified]),[[15,9900,true],[25,21900,true],[35,15900,true]]);
  assert.equal(f.calls.length,3);assert.equal(f.queries.length,1);
  assert.ok(!f.envReads.includes('SUPABASE_SERVICE_ROLE_KEY'));
  assert.ok(!JSON.stringify(result).includes(f.values.STRIPE_SANDBOX_SECRET_KEY));
@@ -117,8 +117,8 @@ test('amount conflicts expose exact expected and returned dollars with Price IDs
  const f=fixture({mutate:(p,plan)=>{if(plan.seat_limit===25)p.unit_amount=17900;if(plan.seat_limit===35)p.unit_amount=23900;}});
  const response=await f.handler(f.request()),result=await response.json();
  assert.equal(response.status,409);assert.equal(result.all_verified,false);
- assert.match(result.error,/16–25 seats: expected \$159\.00\/month; Stripe returned \$179\.00\/month/);
- assert.match(result.error,/26–35 seats: expected \$219\.99\/month; Stripe returned \$239\.00\/month/);
+ assert.match(result.error,/16–25 seats: expected \$219\.00\/month; Stripe returned \$179\.00\/month/);
+ assert.match(result.error,/26–35 seats: expected \$159\.00\/month; Stripe returned \$239\.00\/month/);
  for(const plan of configuration.plans.slice(1))assert.ok(result.error.includes(plan.price_id));
  assert.deepEqual(result.plans.map(p=>p.stripe_unit_amount_cents),[9900,17900,23900]);
  assert.ok(!result.error.includes(f.values.STRIPE_SANDBOX_SECRET_KEY));
@@ -127,11 +127,20 @@ test('amount conflicts expose exact expected and returned dollars with Price IDs
 test('correct integer-cent prices still pass; malformed amounts are rejected without echoing raw strings',async()=>{
  const good=fixture(),success=await good.handler(good.request());
  assert.equal(success.status,200);const verified=await success.json();assert.equal(verified.all_verified,true);
- assert.deepEqual(verified.plans.map(p=>p.stripe_unit_amount_cents),[9900,15900,21999]);
+ assert.deepEqual(verified.plans.map(p=>p.stripe_unit_amount_cents),[9900,21900,15900]);
  const bad=fixture({mutate:p=>{p.unit_amount='untrusted-provider-string-with-private-details';}});
  const response=await bad.handler(bad.request()),text=await response.text();
  assert.equal(response.status,409);assert.ok(!text.includes('untrusted-provider-string'));
  assert.ok(JSON.parse(text).plans.every(p=>p.stripe_unit_amount_cents===null));
+});
+
+test('superseded 25- and 35-seat amounts cannot pass the corrected package mapping',async()=>{
+ const f=fixture({mutate:(p,plan)=>{if(plan.seat_limit===25)p.unit_amount=15900;if(plan.seat_limit===35)p.unit_amount=21999;}});
+ const response=await f.handler(f.request()),result=await response.json();
+ assert.equal(response.status,409);assert.equal(result.all_verified,false);
+ assert.deepEqual(result.plans.map(p=>[p.seat_limit,p.unit_amount_cents,p.verified]),[[15,9900,true],[25,21900,false],[35,15900,false]]);
+ assert.match(result.error,/16–25 seats: expected \$219\.00\/month; Stripe returned \$159\.00\/month/);
+ assert.match(result.error,/26–35 seats: expected \$159\.00\/month; Stripe returned \$219\.99\/month/);
 });
 
 test('provider errors and network failures are reported without provider bodies, keys or account details',async()=>{
