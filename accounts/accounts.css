@@ -26,3 +26,10 @@ header .store.account-identity{display:flex;flex-direction:column;gap:5px;line-h
 .company-progress table{width:100%;border-collapse:collapse;min-width:650px}
 .company-progress th,.company-progress td{padding:12px;text-align:left;border-bottom:1px solid var(--line,#dce3ee)}
 .company-progress small{display:block;font-weight:400}
+.signup-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.signup-plans h2{font-size:19px}.signup-plans p{margin-top:12px}
+#store-signup{overflow-wrap:anywhere}#store-signup h1{font-size:28px}
+#store-signup .panel>p{margin:16px 0}#store-signup .field{display:block;margin:18px 0}
+#store-signup input[type=tel]{width:100%;min-width:0;border:1px solid var(--line);border-radius:8px;padding:12px;background:white}
+#store-signup .account-toolbar{flex-wrap:wrap}#store-signup summary{cursor:pointer;font-weight:700}
+@media(max-width:700px){.signup-plans{grid-template-columns:1fr}}

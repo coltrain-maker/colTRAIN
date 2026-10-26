@@ -19,3 +19,10 @@ verify_jwt = false
 [functions.stripe-sandbox]
 # The handler validates the Auth user and platform-admin row explicitly.
 verify_jwt = false
+
+[functions.stripe-checkout]
+verify_jwt = false
+
+[functions.stripe-signup-webhook]
+# Stripe's raw-body HMAC signature is verified instead of a Supabase JWT.
+verify_jwt = false

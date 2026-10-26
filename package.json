@@ -9,6 +9,8 @@
     "test:companies": "python tests/company-foundation.py",
     "test:companies:ui": "python tests/company-settings-ui.py",
     "test:stripe-sandbox": "node scripts/build-stripe-sandbox-function.mjs && node --test tests/stripe-sandbox-handler.test.mjs",
+    "test:store-signup": "node scripts/build-stripe-signup-functions.mjs && node --test tests/stripe-signup-handlers.test.mjs && python tests/store-signup-database.py",
+    "test:store-signup:ui": "python tests/store-signup-ui.py",
     "test:daily": "python tests/daily-database.py && python tests/daily-sequence.py && python tests/daily-sequence.py --fresh",
     "test:daily:ui": "node --test tests/daily-drill.test.mjs tests/points.test.mjs && python tests/daily-ui.py",
     "test:admin-updates": "python tests/admin-updates-database.py && node --test tests/admin-update-handler.test.mjs && python tests/admin-updates-ui.py",

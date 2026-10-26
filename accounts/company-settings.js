@@ -1,5 +1,5 @@
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const mode=value=>({pilot:'No-charge pilot',legacy_no_charge:'Existing no-charge arrangement',awaiting_paid_approval:'Awaiting approval for a paid subscription'}[value]||'Billing details unavailable');
+const mode=value=>({sandbox:'Sandbox test subscription',pilot:'No-charge pilot',legacy_no_charge:'Existing no-charge arrangement',awaiting_paid_approval:'Awaiting approval for a paid subscription'}[value]||'Billing details unavailable');
 const accessLabel=value=>value==='billing'?'Billing administrator':'Training administrator';
 const date=value=>new Date(value).toLocaleString();
 const events={company_initialized:'Owner assigned',permission_changed:'Permission changed',ownership_transferred:'Ownership transferred',store_linked:'Store linked',pilot_changed:'Pilot status changed',company_details_updated:'Company details updated'};
@@ -43,6 +43,7 @@ export function createCompanySettings({client,notify,isPlatformAdmin=()=>false})
   const c=settings.company,owner=person(c.owner_user_id);
   return `<div class="company-management"><h3>Company details</h3><p class="muted">Owner: ${owner?esc(owner.name)+' ('+esc(owner.email)+')':'Not assigned yet'}</p>
    <form id="company-details-form"><label>Company name<input type="text" name="company_name" value="${esc(c.name)}" maxlength="120" required></label><label>Company phone<input name="company_phone" type="tel" value="${esc(c.phone)}" maxlength="50"></label><label>Buying-group affiliation (optional)<input type="text" name="affiliation" value="${esc(c.buying_group)}" maxlength="160"></label><button class="button" type="submit">Save company details</button></form>
+   <h3>Invite a store manager</h3><p class="muted">Owners can appoint a manager without taking a training seat themselves. The invitation reserves one of the store’s seats.</p><form id="company-manager-form"><label>Store<select name="store">${company.stores.map(s=>`<option value="${esc(s.store_id)}">${esc(s.name)}</option>`).join('')}</select></label><label>Manager name<input type="text" name="name" maxlength="120" required></label><label>Manager email<input type="email" name="email" maxlength="254" required></label><button class="button" type="submit">Invite store manager</button></form>
    <h3>Authorize company access</h3><p class="muted">Use an existing, confirmed colTRAIN account. Billing and training access are separate. Granting either does not make someone a store manager or use a training seat.</p>
    <form id="company-permission-form"><label>Account email<input name="account_email" type="email" autocomplete="off" maxlength="254" required></label><label>Responsibility<select name="capability"><option value="billing">Billing administrator</option><option value="training">Training administrator</option></select></label><label>Store access<select name="store"><option value="">All company stores, including future locations</option>${company.stores.map(s=>`<option value="${esc(s.store_id)}">${esc(s.name)}</option>`).join('')}</select></label><button class="button" type="submit">Grant access</button></form>
    <h3>Authorized people</h3>${settings.permissions.length?settings.permissions.map(p=>`<div class="account-row"><div><strong>${esc(person(p.user_id)?.name||'Authorized account')}</strong><small>${esc(person(p.user_id)?.email||'')} · ${accessLabel(p.permission)} · ${esc(p.organization_id?company.stores.find(s=>s.store_id===p.organization_id)?.name||'Selected store':'All company stores')}</small></div><button class="button secondary account-danger" type="button" data-company-action="revoke" data-permission="${esc(p.id)}">Remove access</button></div>`).join(''):'<p class="muted">No additional company permissions granted.</p>'}
@@ -80,6 +81,13 @@ export function createCompanySettings({client,notify,isPlatformAdmin=()=>false})
   try{
    if(!chosen()?.can_administer)throw new Error('Company owner access required.');
    const data=capturedData||new FormData(form);
+   if(form.id==='company-manager-form'){
+    const current=generation;
+    const result=await client.functions.invoke('invite-employee',{body:{action:'create',store:data.get('store'),name:data.get('name').trim(),email:data.get('email').trim(),role:'manager'}});
+    if(current!==generation)throw cancelled;
+    if(result.error){let details;try{details=await result.error.context?.json();}catch{}if(current!==generation)throw cancelled;throw new Error(details?.error||'The manager invitation could not be sent. Contact colTRAIN support before retrying.');}
+    notify(result.data?.message||'Manager invitation requested.');
+   }
    if(form.id==='company-details-form'){
     await rpc('save_company_details',{company:selected,company_name:data.get('company_name').trim(),company_phone:data.get('company_phone').trim(),affiliation:data.get('affiliation').trim()});
     await reload();notify('Company details saved.');

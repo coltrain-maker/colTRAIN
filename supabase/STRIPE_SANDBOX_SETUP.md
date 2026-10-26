@@ -2,6 +2,8 @@
 
 Status: Package prices and sandbox Price IDs confirmed by the owner on October 24, 2026. The owner reports saving the sandbox secret in Supabase. A read-only, administrator-only connection checker is prepared; the actual hosted connection is not verified until the owner runs it successfully. Checkout, webhook provisioning, and billing lifecycle controls are not implemented by this step.
 
+The owner subsequently confirmed all three packages verified. The next [sandbox store signup release](SANDBOX_STORE_SIGNUP_SETUP.md) adds checkout and automatic provisioning; this document describes the earlier read-only connection check.
+
 ## Approved recurring packages
 
 | Training seats | Monthly USD price | Sandbox Price ID |
