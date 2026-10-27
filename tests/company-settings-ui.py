@@ -43,6 +43,7 @@ def handler(route):
  elif path=='/rest/v1/rpc/get_my_web_push_count':value=0
  elif path=='/rest/v1/rpc/get_my_training_notifications':value={'items':[],'unread_count':0}
  elif path=='/rest/v1/rpc/get_training_workspace':value={'store':{'id':store,'name':'Pilot Hardware','time_zone':'America/New_York'},'my_membership':member,'can_manage':True,'is_admin':role=='admin','members':[{'id':member,'name':'Owner','role':'manager','status':'active','departments':[]}],'courses':[],'assignments':[],'departments':[],'competitions':[],'lifetime_standings':[],'totals':{'lifetime_points':0,'trophies':0,'completed_courses':0},'team_learning_seconds':0}
+ elif path=='/rest/v1/rpc/get_my_store_signup':value=None
  elif path=='/rest/v1/rpc/get_my_company_accounts':
   value=[] if role=='ordinary' else [{'company_id':company,'name':settings['company']['name'],'is_owner':role=='owner','can_administer':role in ['owner','admin'],'stores':[{'store_id':store,'name':'Pilot Hardware','can_bill':role in ['owner','admin','billing'],'can_oversee_training':role in ['owner','admin','training'],'access_mode':'pilot' if role in ['owner','admin','billing'] else None}]}]
   if hold_company:hold_company=False;held.append((route,value));return
@@ -79,7 +80,8 @@ def login(browser):
  if role in ['owner','admin']:
   expect(page.get_by_role('heading',name='Your team, learning together.')).to_be_visible()
   page.get_by_role('button',name='Open menu').click();page.get_by_role('button',name='Account & team settings',exact=True).click()
- expect(page.get_by_role('button',name='Open company settings',exact=True)).to_be_visible()
+ if role in ['owner','admin']:expect(page.get_by_role('button',name='Open company settings',exact=True)).to_be_visible()
+ else:expect(page.locator('#company-settings')).to_be_visible()
  return context,page
 
 try:
@@ -115,7 +117,7 @@ try:
   context.close()
   for role in ['billing','training','ordinary']:
    context,page=login(browser);before=len(calls)
-   page.get_by_role('button',name='Open company settings',exact=True).click()
+   page.get_by_role('button',name='Refresh',exact=True).click()
    expect(page.locator('#company-settings')).to_contain_text('Your access is limited' if role!='ordinary' else 'does not have company ownership')
    expect(page.locator('#company-details-form')).to_have_count(0)
    expect(page.locator('#company-permission-form')).to_have_count(0)
@@ -142,7 +144,7 @@ try:
   stripe_amount_conflict=False;stripe_ok=True;context.close()
   # A delayed company response must never paint account details after sign-out.
   role='billing';context,page=login(browser);hold_company=True
-  page.get_by_role('button',name='Open company settings',exact=True).click()
+  page.get_by_role('button',name='Refresh',exact=True).click()
   page.get_by_role('button',name='Sign out and switch accounts',exact=True).click()
   expect(page.get_by_role('heading',name='Welcome to colTRAIN')).to_be_visible()
   if held:

@@ -210,3 +210,8 @@ Proposed delivery sequence:
 5. Upgrades, failed payments, cancellation, reactivation, and retention.
 
 The sequence is planning guidance. Saving these requirements does not authorize production billing changes, charges, emails, or deployment.
+
+
+### Owner setup after signup (October 27, 2026)
+
+After verified Stripe confirmation automatically creates the store, guide its purchaser through assigning responsibilities. The creator remains company owner and may also be its manager. If someone else will manage staff, the owner can invite that person by name and email. Offer an optional additional administrator with training access, billing access, or both; keep company permissions separate from store manager permissions and colTRAIN platform administration. Company administrators do not consume training seats. Owners without a staff role should land on their company/store setup, without an employee invitation-code screen. Pending signups resume existing checkout/status instead of creating another store.

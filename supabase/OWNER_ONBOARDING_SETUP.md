@@ -1,0 +1,17 @@
+# Owner onboarding and company administrator invitations
+
+Apply this update to the existing project after migration 025. It does not create another store, change Stripe subscriptions, assign an owner by email/name, or modify pilot billing.
+
+1. Supabase → SQL Editor → New query: run **migrations/202610270026_company_admin_invitations.sql**. Expected: Success. No rows returned.
+2. Supabase → Edge Functions → Deploy new function → Via Editor. Replace the entire `index.ts` with **invite-company-admin-function.ts**, name the function **invite-company-admin**, and deploy. Settings → **Verify JWT with legacy secret OFF**, then Save. Authentication and company authorization are checked inside the function and database. Existing Supabase service secrets and `COLTRAIN_APP_URL` are reused; no new API key is needed.
+3. Publish the updated **design/coltrain-website.zip** to the existing Netlify site.
+4. Sign into the existing sandbox owner account. Do not repeat checkout or register a replacement store. Owners without a training seat now see their company/store setup first, without the employee **Join your store** form. An unfinished signup automatically returns to its saved status/checkout, and a provisioned signup never starts another checkout.
+5. Invite a separate store manager using their name and email if the owner delegated training. This uses the existing `invite-employee` function and reserves one training seat. The manager's email invitation/password setup grants only that store's manager role.
+6. Optionally invite an additional company administrator. Choose **Training**, **Billing**, or **Both**, and the intended store scope. The invitee accepts the emailed link and creates a password. Existing accounts receive the existing password-reset-style acceptance flow. After acceptance they see Company settings and only their authorized responsibilities; they do not gain a platform admin role, staff membership, or private feed/message access.
+7. Test with controlled email accounts. Confirm the invited manager reaches the correct store and uses a seat, while the company administrator does not consume a training seat. Confirm pending administrator invitations can be resent after one minute or canceled. Resending invalidates the old invitation identifier; canceled and expired invitations cannot grant access. An accepted invitation disappears from the pending list and its permission appears under Authorized people.
+
+After new checkout provisioning, **Open your account** now leads to the owner setup screen before the creator's manager dashboard. The owner can continue to the dashboard if they also chose to manage training. Additional administrators are optional. Normal manager/employee sign-in still opens their existing dashboard/home page. Company delegates cannot invite other administrators; ownership or platform admin access is required.
+
+Company invitations expire after seven days, bind to the exact confirmed email, and recheck the issuer's authority on acceptance. Billing/training responsibilities remain separate from staff roles. A removed company permission is not restored by replaying an already accepted invitation. This update provides no new billing operations or live commercial signup.
+
+Validation: `npm run test:company-invitations`, `npm run test:store-signup:ui`, `npm run test:companies:ui`, and the existing account UI/provider checks. Automated email/Auth operations are mocked; real delivery is checked manually after deployment.

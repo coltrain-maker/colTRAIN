@@ -12,3 +12,5 @@ Hardware-store training, Daily Drills, and team communication.
 - [Company settings release](supabase/COMPANY_SETTINGS_SETUP.md) — company contact details, delegated billing/training permissions, and read-only training progress in the account interface.
 - [Stripe sandbox setup](supabase/STRIPE_SANDBOX_SETUP.md) — confirmed package prices, sandbox Price IDs, and secure credential setup before checkout integration.
 - [Sandbox store signup](supabase/SANDBOX_STORE_SIGNUP_SETUP.md) — card-required test checkout, signed Stripe confirmation, automatic store setup, and a hosted testing checklist.
+
+Owner setup and administrator invitation update: [deployment instructions](supabase/OWNER_ONBOARDING_SETUP.md).

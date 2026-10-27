@@ -26,3 +26,6 @@ verify_jwt = false
 [functions.stripe-signup-webhook]
 # Stripe's raw-body HMAC signature is verified instead of a Supabase JWT.
 verify_jwt = false
+
+[functions.invite-company-admin]
+verify_jwt = false

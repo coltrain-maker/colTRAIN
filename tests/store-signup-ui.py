@@ -10,9 +10,10 @@ uid='00000000-0000-0000-0000-000000000972';store='10000000-0000-0000-0000-000000
 person={'id':uid,'email':'new-owner@example.test','aud':'authenticated','role':'authenticated','email_confirmed_at':'2026-10-26T00:00:00Z','app_metadata':{'provider':'email'},'user_metadata':{}}
 enc=lambda v:base64.urlsafe_b64encode(json.dumps(v).encode()).decode().rstrip('=')
 token=enc({'alg':'HS256','typ':'JWT'})+'.'+enc({'sub':uid,'role':'authenticated','exp':int(time.time())+3600})+'.local-test-signature'
+delegated=False;accepted=False
 enabled=True;state=None;manager=True;details={};calls=[];checkout_url='https://checkout.stripe.com/c/pay/cs_test_LocalSignup'
 def handler(route):
- global state,details,manager
+ global state,details,manager,accepted
  url=route.request.url;path=urlparse(url).path
  if url.startswith('https://signup.example'):
   if path in ['/accounts/','/accounts/index.html']:return route.fulfill(content_type='text/html',body=html)
@@ -26,6 +27,8 @@ def handler(route):
   result={'user':person,'session':None}
  elif path=='/auth/v1/token':result={'access_token':token,'refresh_token':'local-refresh','expires_in':3600,'token_type':'bearer','user':person}
  elif path=='/auth/v1/user':result=person
+ elif path=='/rest/v1/rpc/accept_company_invitation':
+  assert args=={'invitation':signup};accepted=True;result=None
  elif path=='/auth/v1/logout':result={}
  elif path=='/rest/v1/profiles':result=[{'user_id':uid,'full_name':'New Owner','avatar_path':None,'optional_email_notifications':False}]
  elif path=='/rest/v1/platform_admins':result=[]
@@ -45,8 +48,11 @@ def handler(route):
  elif path=='/rest/v1/rpc/get_my_web_push_count':result=0
  elif path=='/rest/v1/rpc/get_my_training_notifications':result={'items':[],'unread_count':0}
  elif path=='/rest/v1/rpc/get_training_workspace':result={'store':{'id':store,'name':details['store_name'],'time_zone':'America/New_York'},'my_membership':member,'can_manage':True,'is_admin':False,'members':[{'id':member,'name':'New Owner','role':'manager','status':'active','departments':[]}],'courses':[],'assignments':[],'departments':[],'competitions':[],'lifetime_standings':[],'totals':{'lifetime_points':0,'trophies':0,'completed_courses':0},'team_learning_seconds':0}
- elif path=='/rest/v1/rpc/get_my_company_accounts':result=[{'company_id':store,'name':details['company_name'],'is_owner':True,'can_administer':True,'stores':[{'store_id':store,'name':details['store_name'],'can_bill':True,'can_oversee_training':True,'access_mode':'sandbox'}]}]
+ elif path=='/rest/v1/rpc/get_my_company_accounts':result=[] if state!='provisioned' else [{'company_id':store,'name':details['company_name'],'is_owner':not delegated,'can_administer':not delegated,'stores':[{'store_id':store,'name':details['store_name'],'can_bill':True,'can_oversee_training':True,'access_mode':'sandbox'}]}]
  elif path=='/rest/v1/rpc/get_company_access_settings':result={'company':{'id':store,'name':details['company_name'],'phone':details['phone'],'buying_group':'','owner_user_id':uid},'permissions':[],'people':[{'user_id':uid,'name':'New Owner','email':person['email']}],'audit':[]}
+ elif path=='/functions/v1/invite-company-admin':
+  assert args=={'action':'create','company':store,'name':'Additional Admin','email':'admin@example.test','capability':'both','store':store}
+  result={'message':'Administrator invitation requested.'}
  elif path=='/functions/v1/invite-employee':
   assert not manager and args['role']=='manager' and args['store']==store and args['email']=='manager@example.test'
   result={'message':'Manager invitation requested.'}
@@ -75,14 +81,15 @@ try:
   page.locator('#store-signup-form button[type=submit]').click();expect(page.get_by_role('heading',name='Stripe sandbox checkout')).to_be_visible()
   assert page.url.startswith('https://checkout.stripe.com/');assert state=='checkout'
   page.goto('https://signup.example/accounts/')
-  page.get_by_role('button',name='Start or resume store signup (sandbox)',exact=True).click()
   expect(page.get_by_role('button',name='Continue to secure checkout',exact=True)).to_be_visible()
   page.goto('https://signup.example/accounts/?store_signup=return')
   expect(page.get_by_role('heading',name='Your store is ready')).to_have_count(0)
   expect(page.get_by_role('button',name='Refresh store status',exact=True)).to_be_visible()
   state='provisioned';page.get_by_role('button',name='Refresh store status',exact=True).click();expect(page.get_by_role('heading',name='Your store is ready')).to_be_visible()
   assert page.locator('#store-signup img').count()==0
-  page.get_by_role('button',name='Open your account',exact=True).click();expect(page.get_by_role('heading',name='Your team, learning together.')).to_be_visible()
+  page.get_by_role('button',name='Open your account',exact=True).click();expect(page.get_by_role('heading',name='Set up your store')).to_be_visible()
+  expect(page.locator('#company-admin-invite-form')).to_be_visible()
+  page.get_by_role('button',name='Continue to dashboard',exact=True).click();expect(page.get_by_role('heading',name='Your team, learning together.')).to_be_visible()
   context.close()
   # Billing-only owner: no training membership; a separate manager can be invited.
   state=None;context=browser.new_context(service_workers='block',viewport={'width':390,'height':844});page=context.new_page();page.route('**/*',handler)
@@ -92,10 +99,31 @@ try:
   assert page.url.startswith('https://signup.example/')
   state='provisioned';page.get_by_role('button',name='Refresh store status',exact=True).click();page.get_by_role('button',name='Open your account',exact=True).click()
   expect(page.locator('.training-menu-toggle')).to_have_count(0)
-  page.get_by_role('button',name='Open company settings',exact=True).click();expect(page.locator('#company-settings')).to_contain_text('Sandbox test subscription')
+  expect(page.locator('#company-settings')).to_contain_text('Sandbox test subscription')
   page.locator('#company-manager-form input[name=name]').fill('Separate Manager');page.locator('#company-manager-form input[name=email]').fill('manager@example.test');page.locator('#company-manager-form button[type=submit]').click()
   expect(page.locator('#account-message')).to_have_text('Manager invitation requested.')
+  expect(page.get_by_role('heading',name='Join your store',exact=True)).to_have_count(0)
+  page.locator('#company-admin-invite-form input[name=name]').fill('Additional Admin');page.locator('#company-admin-invite-form input[name=email]').fill('admin@example.test');page.locator('#company-admin-invite-form select[name=capability]').select_option('both')
+  page.locator('#company-admin-invite-form button[type=submit]').click();expect(page.locator('#account-message')).to_have_text('Administrator invitation requested.')
+  # Ordinary sign-in for an owner with no training seat opens company setup, never Join your store.
+  page.goto('https://signup.example/accounts/')
+  expect(page.get_by_role('heading',name='Set up your store')).to_be_visible()
+  expect(page.get_by_role('heading',name='Join your store',exact=True)).to_have_count(0)
   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  context.close()
+  # Administrator callback accepts an email-bound company invitation after saving a password.
+  delegated=True;accepted=False;manager=False
+  context=browser.new_context(service_workers='block');page=context.new_page();page.route('**/*',handler)
+  page.goto('https://signup.example/accounts/?company_invitation_id='+signup+'#access_token='+token+'&refresh_token=local-refresh&type=invite&expires_in=3600&token_type=bearer')
+  expect(page.get_by_role('heading',name='Create your password')).to_be_visible()
+  page.locator('#password-form input[name=password]').fill('New administrator password')
+  page.get_by_role('button',name='Save password and accept access',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('Your password is saved and your company access is active.')
+  assert accepted
+  expect(page.get_by_role('heading',name='Join your store',exact=True)).to_have_count(0)
+  expect(page.locator('#company-manager-form')).to_have_count(0)
+  expect(page.locator('#company-admin-invite-form')).to_have_count(0)
+  assert '?' not in page.url and '#' not in page.url
   context.close();browser.close()
  print('Passed sandbox packages, owner registration/confirmation redirect, authorized signup, safe checkout navigation, webhook-pending/ready states, manager dashboard, billing-only ownership, separate manager invitation, escaping and mobile checks.')
 finally:subprocess.run(['node','scripts/build-accounts.mjs'],cwd=root,check=True)
