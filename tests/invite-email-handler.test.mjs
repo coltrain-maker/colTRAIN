@@ -4,11 +4,11 @@ import {createInviteHandler} from '../supabase/functions/invite-employee/handler
 const store='10000000-0000-0000-0000-000000000001', invitation='40000000-0000-0000-0000-000000000001';
 function fixture(options={}) {
  const calls=[];
- const env=name=>({COLTRAIN_APP_URL:options.appUrl??'https://training.example',SUPABASE_URL:'https://project.supabase.co',SUPABASE_ANON_KEY:'public-test-key',SUPABASE_SERVICE_ROLE_KEY:'server-test-key'})[name];
+ const env=name=>({COLTRAIN_APP_URL:options.appUrl??'https://training.example',SUPABASE_URL:'https://project.supabase.co',SUPABASE_ANON_KEY:'public-test-key',SUPABASE_SERVICE_ROLE_KEY:'server-test-key',RESEND_API_KEY:options.noResend?'':'resend-test-key',COLTRAIN_EMAIL_FROM:'colTRAIN <updates@example.test>'})[name];
  const caller={auth:{getUser:async()=>options.invalidSession?{error:{message:'Invalid'}}:{data:{user:{id:'manager-id'}}}},rpc:async(name,args)=>{calls.push(['rpc',name,args]);return options.rpcError?{error:{message:options.rpcError}}:{data:[{invitation_id:invitation,email:'employee@example.test',invitee_name:'Employee Name'}]};}};
- const server={auth:{admin:{inviteUserByEmail:async(email,opts)=>{calls.push(['invite',email,opts]);return {error:options.emailError||null};}},resetPasswordForEmail:async(email,opts)=>{calls.push(['recover',email,opts]);return {error:options.recoveryError||null};}},rpc:async(name,args)=>{calls.push(['status',args,name]);return {error:options.statusError||null};}};
+ const server={auth:{admin:{inviteUserByEmail:async(email,opts)=>{calls.push(['invite',email,opts]);return {error:options.emailError||null};}},resetPasswordForEmail:async(email,opts)=>{calls.push(['recover',email,opts]);return {error:options.recoveryError||null};}},rpc:async(name,args)=>{if(name==='get_employee_invitation_email_details'){calls.push(['email-details',args]);return {data:{email:'employee@example.test',store_name:'New Hardware',role:'manager'}};}calls.push(['status',args,name]);return {error:options.statusError||null};}};
  const createClient=(url,key,config)=>{calls.push(['client',key,config]);return key==='server-test-key'?server:caller;};
- const handle=createInviteHandler({createClient,env,log:details=>calls.push(['log',details])});
+ const handle=createInviteHandler({createClient,env,fetcher:async(url,fetchOptions)=>{calls.push(['resend',url,fetchOptions]);if(options.resendThrows)throw new Error('Network failure');return new Response('{}',{status:options.resendStatus||200});},log:details=>calls.push(['log',details])});
  const send=(body={action:'create',store,email:'employee@example.test',name:'Employee Name'},headers={Origin:'https://training.example',Authorization:'Bearer caller-session'})=>handle(new Request('https://project.supabase.co/functions/v1/invite-employee',{method:'POST',headers:{'Content-Type':'application/json',...headers},body:JSON.stringify(body)}));
  return {calls,send,handle};
 }
@@ -32,9 +32,21 @@ test('store permission, role, seat, and throttle failures never email',async()=>
   const f=fixture({rpcError});assert.equal((await f.send()).status,400);assert.ok(!f.calls.some(c=>c[0]==='invite'||(c[0]==='client'&&c[1]==='server-test-key')));
  }
 });
-test('existing account receives recovery email at same fixed callback',async()=>{
+test('existing account receives a store invitation without a password reset',async()=>{
  const f=fixture({emailError:{code:'email_exists'}});assert.equal((await f.send()).status,200);
- assert.equal(f.calls.find(c=>c[0]==='recover')[2].redirectTo,'https://training.example/accounts/?invitation_id='+invitation);
+ assert.ok(!f.calls.some(c=>c[0]==='recover'));
+ const send=f.calls.find(c=>c[0]==='resend');assert.equal(send[1],'https://api.resend.com/emails');
+ const email=JSON.parse(send[2].body);assert.deepEqual(email.to,['employee@example.test']);
+ assert.match(email.subject,/Invitation to join New Hardware/);assert.match(email.text,/store manager/);
+ assert.ok(email.text.includes('https://training.example/accounts/?invitation_id='+invitation));
+ assert.match(email.text,/existing colTRAIN email and password/);
+ assert.equal(send[2].headers['Idempotency-Key'],'coltrain-store-invitation/'+invitation);
+ assert.deepEqual(f.calls.find(c=>c[0]==='status')[1],{invitation,delivery_status:'sent'});
+});
+test('existing account without invitation email configuration preserves pending invitation and never resets its password',async()=>{
+ const f=fixture({emailError:{code:'user_already_exists'},noResend:true});const result=await f.send();
+ assert.equal(result.status,502);assert.ok(!f.calls.some(c=>['recover','resend'].includes(c[0])));
+ assert.equal(f.calls.find(c=>c[0]==='status')[1].delivery_status,'failed');
 });
 test('email failures preserve pending seat and report failure instead of success',async()=>{
  const f=fixture({emailError:{code:'unexpected_failure',message:'Internal provider details'}});const response=await f.send();assert.equal(response.status,502);
@@ -78,4 +90,13 @@ test('accepted email plus failed status write does not encourage sending a dupli
  assert.match((await response.json()).message,/email requested, but its status could not be saved/);
  assert.deepEqual(f.calls.find(c=>c[0]==='log')[1],{event:'delivery_status_failed',invitation_id:invitation,code:'42501'});
  assert.equal(f.calls.filter(c=>c[0]==='invite').length,1);
+});
+
+test('existing-account invitation delivery failures stay pending and never reset passwords',async()=>{
+ for(const options of [{resendStatus:503},{resendStatus:429},{resendThrows:true}]){
+  const f=fixture({emailError:{code:'email_exists'},...options});const response=await f.send();
+  assert.equal(response.status,options.resendStatus===429?429:502);
+  assert.equal(f.calls.find(c=>c[0]==='status')[1].delivery_status,'failed');
+  assert.ok(!f.calls.some(c=>c[0]==='recover'));
+ }
 });

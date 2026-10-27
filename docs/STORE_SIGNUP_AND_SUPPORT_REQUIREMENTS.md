@@ -220,3 +220,8 @@ After verified Stripe confirmation automatically creates the store, guide its pu
 ### Buying-group affiliations (October 27, 2026)
 
 Store signup and Company settings offer optional multiple selections: Ace, Do It Best, House Hasson, Orgil, and Other. Choosing Other reveals a required field for the additional suppliers. Owners can select more than one affiliation. Existing custom text remains available under Other. The current text-based database field stores the selections as separate lines, retaining the existing save/signup API and size limit; no database migration is needed for this interface change.
+
+
+### Staff moves and account-owned training (October 27, 2026)
+
+Employees and managers may leave one store and join another using the same personal account. The former store first deactivates their staff membership, freeing the seat. A new store invitation then grants its own recorded role and seat; one active staff store remains the limit. Returning-account invitations must name the new store and use the existing password, rather than asking for an unrelated password reset. Keep original personal training history and earned points/trophies. Carry completed matching standard courses and Daily Drills into the destination store when it provides the same content, with no duplicate points or trophies. Former store-specific onboarding, communications and materials remain private to that store. Company ownership and separate company permissions are not changed by staff deactivation. Future retention/deletion work must preserve account-owned credit before removing canceled-store records.

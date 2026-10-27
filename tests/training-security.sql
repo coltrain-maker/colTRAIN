@@ -134,8 +134,9 @@ select public.assign_training('c1000000-0000-4000-8000-000000000001','10000000-0
 insert into test.codes select 'training-rehire-assignment',id::text from public.training_assignments where membership_id=(select code::uuid from test.codes where label='training-rehire-member');
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000021';
 select test.complete_training((select code::uuid from test.codes where label='training-rehire-assignment'));
-select test.ok(public.submit_training_quiz((select code::uuid from test.codes where label='training-rehire-assignment'),test.training_answers(5),gen_random_uuid())->>'new_points'='10','rehire can earn only the one question not previously earned');
-select test.ok(public.get_training_workspace('10000000-0000-0000-0000-000000000020')->'totals'->>'lifetime_points'='50','course points remain capped at 50 across memberships');
+select test.ok((select completed_at is not null and carried_credit from public.training_assignments where id=(select code::uuid from test.codes where label='training-rehire-assignment')),'rehire carries already-passed standard training credit');
+select test.rejects($q$select public.submit_training_quiz((select code::uuid from test.codes where label='training-rehire-assignment'),test.training_answers(5),gen_random_uuid())$q$,'already passed','carried completion cannot be used to farm another quiz award');
+select test.ok(public.get_training_workspace('10000000-0000-0000-0000-000000000020')->'totals'->>'lifetime_points'='40','earned points remain unchanged when completed credit carries across memberships');
 select test.ok(public.get_training_workspace('10000000-0000-0000-0000-000000000020')->'totals'->>'trophies'='1','rehiring does not duplicate a course trophy');
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000001';
 select public.release_training_course('10000000-0000-0000-0000-000000000020','c1000000-0000-4000-8000-000000000001',false);

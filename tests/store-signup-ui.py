@@ -10,10 +10,11 @@ uid='00000000-0000-0000-0000-000000000972';store='10000000-0000-0000-0000-000000
 person={'id':uid,'email':'new-owner@example.test','aud':'authenticated','role':'authenticated','email_confirmed_at':'2026-10-26T00:00:00Z','app_metadata':{'provider':'email'},'user_metadata':{}}
 enc=lambda v:base64.urlsafe_b64encode(json.dumps(v).encode()).decode().rstrip('=')
 token=enc({'alg':'HS256','typ':'JWT'})+'.'+enc({'sub':uid,'role':'authenticated','exp':int(time.time())+3600})+'.local-test-signature'
+manager_pending=None
 delegated=False;accepted=False
 enabled=True;state=None;manager=True;details={};calls=[];checkout_url='https://checkout.stripe.com/c/pay/cs_test_LocalSignup'
 def handler(route):
- global state,details,manager,accepted
+ global state,details,manager,accepted,manager_pending
  url=route.request.url;path=urlparse(url).path
  if url.startswith('https://signup.example'):
   if path in ['/accounts/','/accounts/index.html']:return route.fulfill(content_type='text/html',body=html)
@@ -50,13 +51,18 @@ def handler(route):
  elif path=='/rest/v1/rpc/get_my_training_notifications':result={'items':[],'unread_count':0}
  elif path=='/rest/v1/rpc/get_training_workspace':result={'store':{'id':store,'name':details['store_name'],'time_zone':'America/New_York'},'my_membership':member,'can_manage':True,'is_admin':False,'members':[{'id':member,'name':'New Owner','role':'manager','status':'active','departments':[]}],'courses':[],'assignments':[],'departments':[],'competitions':[],'lifetime_standings':[],'totals':{'lifetime_points':0,'trophies':0,'completed_courses':0},'team_learning_seconds':0}
  elif path=='/rest/v1/rpc/get_my_company_accounts':result=[] if state!='provisioned' else [{'company_id':store,'name':details['company_name'],'is_owner':not delegated,'can_administer':not delegated,'stores':[{'store_id':store,'name':details['store_name'],'can_bill':True,'can_oversee_training':True,'access_mode':'sandbox'}]}]
- elif path=='/rest/v1/rpc/get_company_access_settings':result={'company':{'id':store,'name':details['company_name'],'phone':details['phone'],'buying_group':details['buying_group'],'owner_user_id':uid},'permissions':[],'people':[{'user_id':uid,'name':'New Owner','email':person['email']}],'audit':[]}
+ elif path=='/rest/v1/rpc/get_company_access_settings':result={'company':{'id':store,'name':details['company_name'],'phone':details['phone'],'buying_group':details['buying_group'],'owner_user_id':uid},'manager_invitations':[manager_pending] if manager_pending else [],'permissions':[],'people':[{'user_id':uid,'name':'New Owner','email':person['email']}],'audit':[]}
  elif path=='/functions/v1/invite-company-admin':
   assert args=={'action':'create','company':store,'name':'Additional Admin','email':'admin@example.test','capability':'both','store':store}
   result={'message':'Administrator invitation requested.'}
  elif path=='/functions/v1/invite-employee':
-  assert not manager and args['role']=='manager' and args['store']==store and args['email']=='manager@example.test'
+  assert not manager and args['store']==store
+  if args['action']=='create':
+   assert args['role']=='manager' and args['email']=='manager@example.test'
+   manager_pending={'id':signup,'invitee_name':args['name'],'email':args['email'],'organization_id':store,'store_name':details['store_name'],'email_status':'sent','expires_at':'2026-11-01T00:00:00Z'}
+  else:assert args=={'action':'resend','store':store,'invitation':signup}
   result={'message':'Manager invitation requested.'}
+ elif path=='/rest/v1/rpc/revoke_invitation':assert args=={'invitation':signup};manager_pending=None;result=None
  else:raise AssertionError('Unexpected endpoint '+path)
  route.fulfill(content_type='application/json',body=json.dumps(result))
 def signin(page):
@@ -109,6 +115,11 @@ try:
   expect(page.locator('#company-settings')).to_contain_text('Sandbox test subscription')
   page.locator('#company-manager-form input[name=name]').fill('Separate Manager');page.locator('#company-manager-form input[name=email]').fill('manager@example.test');page.locator('#company-manager-form button[type=submit]').click()
   expect(page.locator('#account-message')).to_have_text('Manager invitation requested.')
+  page.get_by_role('button',name='Resend manager invitation',exact=True).click()
+  expect(page.locator('#company-settings')).to_contain_text('Separate Manager')
+  page.get_by_role('button',name='Cancel manager invitation',exact=True).click()
+  expect(page.locator('#account-message')).to_have_text('Manager invitation canceled.')
+  expect(page.get_by_role('button',name='Resend manager invitation',exact=True)).to_have_count(0)
   expect(page.get_by_role('heading',name='Join your store',exact=True)).to_have_count(0)
   page.locator('#company-admin-invite-form input[name=name]').fill('Additional Admin');page.locator('#company-admin-invite-form input[name=email]').fill('admin@example.test');page.locator('#company-admin-invite-form select[name=capability]').select_option('both')
   page.locator('#company-admin-invite-form button[type=submit]').click();expect(page.locator('#account-message')).to_have_text('Administrator invitation requested.')

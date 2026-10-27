@@ -19,7 +19,9 @@
     "test:web-push": "python tests/web-push-database.py && node --test tests/web-push-handler.test.mjs tests/web-push-worker.test.mjs && python tests/web-push-ui.py",
     "test:team-post-notifications": "python tests/team-post-notifications.py",
     "test:personal-session": "node --test tests/personal-session.test.mjs && python tests/shared-device-ui.py",
-    "test:company-invitations": "node scripts/build-company-invite-function.mjs && node --test tests/company-invite-handler.test.mjs && python tests/company-invitations-database.py"
+    "test:company-invitations": "node scripts/build-company-invite-function.mjs && node --test tests/company-invite-handler.test.mjs && python tests/company-invitations-database.py",
+    "test:staff-transfers": "node scripts/build-invite-function.mjs && node --test tests/invite-email-handler.test.mjs && python tests/staff-store-transfers.py",
+    "test:staff-transfers:ui": "python tests/staff-transfer-ui.py"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.118.0"

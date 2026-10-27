@@ -14,3 +14,5 @@ Hardware-store training, Daily Drills, and team communication.
 - [Sandbox store signup](supabase/SANDBOX_STORE_SIGNUP_SETUP.md) — card-required test checkout, signed Stripe confirmation, automatic store setup, and a hosted testing checklist.
 
 Owner setup and administrator invitation update: [deployment instructions](supabase/OWNER_ONBOARDING_SETUP.md).
+
+Staff store moves and personal training credit: [deployment instructions](supabase/STAFF_STORE_TRANSFERS_SETUP.md).

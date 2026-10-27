@@ -4,7 +4,7 @@ import { createClient } from "npm:@supabase/supabase-js@2.118.0";
 
 // supabase/functions/invite-employee/handler.js
 var uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-function createInviteHandler({ createClient: createClient2, env, log = (details) => console.warn("colTRAIN invitation email", details) }) {
+function createInviteHandler({ createClient: createClient2, env, fetcher = fetch, log = (details) => console.warn("colTRAIN invitation email", details) }) {
   return async (request) => {
     let appUrl;
     try {
@@ -50,7 +50,27 @@ function createInviteHandler({ createClient: createClient2, env, log = (details)
       const server = createClient2(url, secret, { auth: { persistSession: false, autoRefreshToken: false } });
       let outcome = await server.auth.admin.inviteUserByEmail(invite.email, { redirectTo: callback.href, data: { full_name: invite.invitee_name } });
       if (outcome.error && ["email_exists", "user_already_exists"].includes(outcome.error.code)) {
-        outcome = await server.auth.resetPasswordForEmail(invite.email, { redirectTo: callback.href });
+        const key = env("RESEND_API_KEY"), from = env("COLTRAIN_EMAIL_FROM");
+        const details = await server.rpc("get_employee_invitation_email_details", { invitation: invite.invitation_id });
+        if (!key || !from || details.error || !details.data || details.data.email !== invite.email) {
+          outcome = { error: { code: "invitation_email_unavailable" } };
+        } else {
+          const description = details.data.role === "manager" ? "store manager" : "employee";
+          try {
+            const response = await fetcher("https://api.resend.com/emails", { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", "Idempotency-Key": `coltrain-store-invitation/${invite.invitation_id}` }, body: JSON.stringify({ from, to: [invite.email], subject: `Invitation to join ${details.data.store_name} on colTRAIN`, text: `Hello ${invite.invitee_name},
+
+You have been invited to join ${details.data.store_name} as a ${description}.
+
+Accept invitation: ${callback.href}
+
+Sign in with your existing colTRAIN email and password. You do not need to reset your password. Your training history stays with your account. You can belong to one active store at a time; your former store must remove your staff access before you join this one.
+
+This invitation expires in 7 days. If you were not expecting it, you can ignore this email.` }), signal: AbortSignal.timeout(12e3) });
+            outcome = response.ok ? { error: null } : { error: { code: "invitation_email_failed", status: response.status } };
+          } catch {
+            outcome = { error: { code: "invitation_email_failed" } };
+          }
+        }
       }
       const status = outcome.error ? "failed" : "sent";
       const { error: statusError } = await server.rpc("record_invitation_email_result", { invitation: invite.invitation_id, delivery_status: status });

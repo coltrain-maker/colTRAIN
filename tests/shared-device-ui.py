@@ -48,6 +48,8 @@ def handle(route):
  elif path=='/rest/v1/organizations':result=[{'id':store,'name':'Shared Hardware'}]
  elif path=='/rest/v1/rpc/record_employee_first_login':result={'first_login':False}
  elif path in ('/functions/v1/employee-login','/functions/v1/team-support-email'):result={'delivery_status':'processed'}
+ elif path=='/rest/v1/rpc/get_my_company_accounts':result=[]
+ elif path=='/rest/v1/rpc/get_my_store_signup':result=None
  elif path=='/rest/v1/rpc/get_daily_workspace':result=None
  elif path=='/rest/v1/rpc/get_my_web_push_count':result=0
  elif path=='/rest/v1/rpc/get_web_push_status':result=False

@@ -73,7 +73,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
   const courseById = (id) => workspace.courses.find((c) => c.id === id);
   const mine = () => workspace.assignments.filter((a) => a.membership_id === workspace.my_membership);
   const progress = (a) => a.completed_at ? 100 : Math.floor(a.lessons_completed / ((courseById(a.course_id)?.lesson_count || 0) + 1) * 100);
-  const status = (a) => !a ? "Not assigned" : a.completed_at ? "Completed" : a.attempts_used >= a.attempt_limit ? "Manager help needed" : a.started_at ? "In progress" : "Not started";
+  const status = (a) => !a ? "Not assigned" : a.completed_at ? (a.carried_credit ? "Completed (prior credit)" : "Completed") : a.attempts_used >= a.attempt_limit ? "Manager help needed" : a.started_at ? "In progress" : "Not started";
   const title = (name, copy = "", action = "") => `<div class="page-heading"><div><h1>${esc(name)}</h1>${copy ? `<p>${esc(copy)}</p>` : ""}</div>${action}</div>`;
   const stat = (number, label) => `<div class="stat"><div><strong>${esc(number)}</strong><small>${esc(label)}</small></div></div>`;
   function navigation() {
@@ -166,6 +166,7 @@ async function mountTraining({ client, root, user, profile, stores, initialStore
       return btn(available ? participant.attempts_used ? 'Retake competition quiz' : 'Take competition quiz' : 'Back to competition', available ? 'competition-challenge' : 'competition-standings', `data-competition="${refresherCompetition}"`, 'secondary');
     }
     if (!assignment) return btn("Knowledge check", "start-quiz", "disabled", "secondary");
+    if (assignment.carried_credit) return '<p class="account-note">Completed standard training credit carried with your account. You can review the lessons here.</p>';
     if (assignment.completed_at) return btn("View course result", "latest-result", `data-assignment="${assignment.id}"`, "secondary");
     const label = assignment.attempts_used >= assignment.attempt_limit ? "Get manager help" : assignment.attempts_used ? "Try knowledge check again" : "Knowledge check";
     return btn(label, "start-quiz", completions.length < lessons.length ? "disabled" : "", "secondary");

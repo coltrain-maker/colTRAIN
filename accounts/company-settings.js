@@ -45,6 +45,7 @@ export function createCompanySettings({client,notify,isPlatformAdmin=()=>false})
   return `<div class="company-management"><h3>Company details</h3><p class="muted">Owner: ${owner?esc(owner.name)+' ('+esc(owner.email)+')':'Not assigned yet'}</p>
    <form id="company-details-form"><label>Company name<input type="text" name="company_name" value="${esc(c.name)}" maxlength="120" required></label><label>Company phone<input name="company_phone" type="tel" value="${esc(c.phone)}" maxlength="50"></label>${buyingGroupsField(c.buying_group)}<button class="button" type="submit">Save company details</button></form>
    <h3>Invite a store manager</h3><p class="muted">Owners can appoint a manager without taking a training seat themselves. The invitation reserves one of the store’s seats. If you manage training yourself, you do not need to invite a separate manager.</p><form id="company-manager-form"><label>Store<select name="store">${company.stores.map(s=>`<option value="${esc(s.store_id)}">${esc(s.name)}</option>`).join('')}</select></label><label>Manager name<input type="text" name="name" maxlength="120" required></label><label>Manager email<input type="email" name="email" maxlength="254" required></label><button class="button" type="submit">Invite store manager</button></form>
+   <h3>Pending manager invitations</h3>${(settings.manager_invitations||[]).length?settings.manager_invitations.map(i=>`<div class="account-row"><div><strong>${esc(i.invitee_name)}</strong><small>${esc(i.email)} · ${esc(i.store_name)} · ${esc(i.email_status==='sent'?'Email requested':i.email_status==='failed'?'Email could not be sent':'Email request pending')} · Expires ${esc(date(i.expires_at))}</small></div><div class="account-row-actions"><button class="button secondary" data-company-action="resend-manager" data-invitation="${esc(i.id)}" data-store="${esc(i.organization_id)}">Resend manager invitation</button><button class="button secondary" data-company-action="cancel-manager" data-invitation="${esc(i.id)}">Cancel manager invitation</button></div></div>`).join(''):'<p class="muted">No pending manager invitations.</p>'}
    <h3>Invite an additional administrator (optional)</h3><p class="muted">Choose only the access this person needs. This is company access, not colTRAIN platform administration, and does not use a training seat. Invite the same person as a store manager separately if they will manage staff.</p><form id="company-admin-invite-form"><label>Administrator name<input name="name" maxlength="120" required></label><label>Administrator email<input name="email" type="email" maxlength="254" required></label><label>Responsibility<select name="capability"><option value="training">Training administrator</option><option value="billing">Billing administrator</option><option value="both">Billing and training administrator</option></select></label><label>Store access<select name="store">${company.stores.map(s=>`<option value="${esc(s.store_id)}">${esc(s.name)}</option>`).join('')}<option value="">All company stores, including future locations</option></select></label><button class="button" type="submit">Email administrator invitation</button></form>
    <h3>Pending administrator invitations</h3>${(settings.invitations||[]).length?(settings.invitations||[]).map(i=>`<div class="account-row"><div><strong>${esc(i.invitee_name)}</strong><small>${esc(i.email)} · ${esc(i.capability==='both'?'Billing and training administrator':accessLabel(i.capability))} · ${esc(i.email_status==='sent'?'Email requested':i.email_status==='failed'?'Email could not be sent':'Email request pending')} · Expires ${esc(date(i.expires_at))}</small></div><div class="account-row-actions"><button class="button secondary" data-company-action="resend-admin" data-invitation="${esc(i.id)}">Resend invitation</button><button class="button secondary" data-company-action="revoke-admin" data-invitation="${esc(i.id)}">Cancel invitation</button></div></div>`).join(''):'<p class="muted">No pending administrator invitations.</p>'}
    <h3>Authorize an existing account</h3><p class="muted">Use an existing, confirmed colTRAIN account. Billing and training access are separate. Granting either does not make someone a store manager or use a training seat.</p>
@@ -70,6 +71,8 @@ export function createCompanySettings({client,notify,isPlatformAdmin=()=>false})
     if(!chosen()?.stores.some(s=>s.store_id===target.dataset.store&&s.can_oversee_training))throw new Error('Training access is required for this store.');
     overview=await rpc('get_company_training_overview',{company:selected,store:target.dataset.store});
    }
+   if(action==='resend-manager')await inviteManager({action:'resend',store:target.dataset.store,invitation:target.dataset.invitation});
+   if(action==='cancel-manager'){await rpc('revoke_invitation',{invitation:target.dataset.invitation});await reload();notify('Manager invitation canceled.');}
    if(action==='resend-admin')await inviteAdministrator({action:'resend',company:selected,invitation:target.dataset.invitation});
    if(action==='revoke-admin'){await rpc('revoke_company_invitation',{invitation:target.dataset.invitation});await reload();notify('Administrator invitation canceled.');}
    if(action==='revoke'){
@@ -81,6 +84,13 @@ export function createCompanySettings({client,notify,isPlatformAdmin=()=>false})
    }
    render();
   }catch(error){if(error!==cancelled)throw error;}
+ }
+ async function inviteManager(body){
+  const current=generation;
+  const result=await client.functions.invoke('invite-employee',{body});
+  if(current!==generation)throw cancelled;
+  if(result.error){let details;try{details=await result.error.context?.json();}catch{}if(current!==generation)throw cancelled;await reload();render();throw new Error(details?.error||'The manager invitation could not be sent. Check pending manager invitations before retrying.');}
+  await reload();notify(result.data?.message||'Manager invitation requested.');
  }
  async function inviteAdministrator(body){
   const current=generation;
@@ -94,13 +104,7 @@ export function createCompanySettings({client,notify,isPlatformAdmin=()=>false})
    if(!chosen()?.can_administer)throw new Error('Company owner access required.');
    const data=capturedData||new FormData(form);
    if(form.id==='company-admin-invite-form')await inviteAdministrator({action:'create',company:selected,name:data.get('name').trim(),email:data.get('email').trim(),capability:data.get('capability'),store:data.get('store')||null});
-   if(form.id==='company-manager-form'){
-    const current=generation;
-    const result=await client.functions.invoke('invite-employee',{body:{action:'create',store:data.get('store'),name:data.get('name').trim(),email:data.get('email').trim(),role:'manager'}});
-    if(current!==generation)throw cancelled;
-    if(result.error){let details;try{details=await result.error.context?.json();}catch{}if(current!==generation)throw cancelled;throw new Error(details?.error||'The manager invitation could not be sent. Contact colTRAIN support before retrying.');}
-    notify(result.data?.message||'Manager invitation requested.');
-   }
+   if(form.id==='company-manager-form')await inviteManager({action:'create',store:data.get('store'),name:data.get('name').trim(),email:data.get('email').trim(),role:'manager'});
    if(form.id==='company-details-form'){
     await rpc('save_company_details',{company:selected,company_name:data.get('company_name').trim(),company_phone:data.get('company_phone').trim(),affiliation:buyingGroupsValue(data)});
     await reload();notify('Company details saved.');
