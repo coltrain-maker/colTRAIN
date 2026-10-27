@@ -90,6 +90,23 @@ try:
   context,page=login(browser)
   page.get_by_role('button',name='Open company settings',exact=True).click()
   expect(page.locator('#company-details-form')).to_be_visible()
+  # Legacy free text stays selected as Other; multiple supplier choices persist after saving.
+  expect(page.locator('#company-details-form input[name=buying_groups][value=Other]')).to_be_checked()
+  expect(page.locator('#company-details-form input[name=buying_group_other]')).to_have_value('Example group')
+  page.locator('#company-details-form input[name=buying_groups][value=Ace]').check()
+  page.locator('#company-details-form input[name=buying_groups][value="Do It Best"]').check()
+  page.locator('#company-details-form input[name=buying_group_other]').fill('Local supply company')
+  page.locator('#company-details-form button[type=submit]').click()
+  expect(page.locator('#account-message')).to_have_text('Company details saved.')
+  assert settings['company']['buying_group']=='Ace\nDo It Best\nOther: Local supply company'
+  expect(page.locator('#company-details-form input[name=buying_groups][value=Ace]')).to_be_checked()
+  expect(page.locator('#company-details-form input[name=buying_group_other]')).to_have_value('Local supply company')
+  page.locator('#company-details-form input[name=buying_groups][value=Other]').uncheck()
+  expect(page.locator('#company-details-form input[name=buying_group_other]')).to_be_disabled()
+  expect(page.locator('#company-details-form [data-buying-group-other]')).to_be_hidden()
+  page.locator('#company-details-form button[type=submit]').click()
+  expect(page.locator('#company-details-form input[name=buying_group_other]')).to_have_value('')
+  assert settings['company']['buying_group']=='Ace\nDo It Best'
   expect(page.get_by_role('button',name='Check Stripe sandbox connection',exact=True)).to_have_count(0)
   expect(page.locator('#company-settings')).to_contain_text('No-charge pilot')
   page.locator('#company-details-form input[name=company_name]').fill('Hardware <script>window.companyInjected=true</script>')

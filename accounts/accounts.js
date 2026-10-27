@@ -1,3 +1,4 @@
+import {updateBuyingGroups} from './buying-groups.js';
 import {createStoreSignup} from './store-signup.js';
 import {createCompanySettings} from './company-settings.js';
 import {createPersonalSessionStorage} from './personal-session.js';
@@ -161,6 +162,7 @@ document.addEventListener('click',event=>{
  });
 });
 document.addEventListener('change',event=>{
+ if(root.contains(event.target))updateBuyingGroups(event.target);
  if(root.contains(event.target)&&event.target.matches('[data-company-select]')){perform(async()=>{await companySettings.change(event.target);syncCompanySettings();});return;}
  const choice=event.target;if(choice.checked&&choice.name==='remember-device'){const shared=choice.form?.querySelector('[name=shared-device]');if(shared)shared.checked=false;}
  if(choice.checked&&choice.name==='shared-device'){const remember=choice.form?.querySelector('[name=remember-device]');if(remember)remember.checked=false;}

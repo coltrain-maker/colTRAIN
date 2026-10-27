@@ -39,6 +39,7 @@ def handler(route):
  elif path=='/rest/v1/rpc/get_my_store_signup':result=None if state is None else {'id':signup,'state':state,'details':details,'store_id':store if state=='provisioned' else None}
  elif path=='/rest/v1/rpc/prepare_store_signup':
   details=args['details'];assert details['terms_accepted'] is True and details['purchase_authority'] is True
+  assert details['buying_group']=='House Hasson\nOrgil\nOther: Local wholesaler';assert 'buying_groups' not in details;assert 'buying_group_other' not in details
   assert details['plan_code']=='store_25';assert 'price_id' not in details
   manager=details['become_manager'];state='prepared';result=signup
  elif path=='/functions/v1/stripe-checkout':assert args=={'signup_id':signup};state='checkout';result={'url':checkout_url}
@@ -49,7 +50,7 @@ def handler(route):
  elif path=='/rest/v1/rpc/get_my_training_notifications':result={'items':[],'unread_count':0}
  elif path=='/rest/v1/rpc/get_training_workspace':result={'store':{'id':store,'name':details['store_name'],'time_zone':'America/New_York'},'my_membership':member,'can_manage':True,'is_admin':False,'members':[{'id':member,'name':'New Owner','role':'manager','status':'active','departments':[]}],'courses':[],'assignments':[],'departments':[],'competitions':[],'lifetime_standings':[],'totals':{'lifetime_points':0,'trophies':0,'completed_courses':0},'team_learning_seconds':0}
  elif path=='/rest/v1/rpc/get_my_company_accounts':result=[] if state!='provisioned' else [{'company_id':store,'name':details['company_name'],'is_owner':not delegated,'can_administer':not delegated,'stores':[{'store_id':store,'name':details['store_name'],'can_bill':True,'can_oversee_training':True,'access_mode':'sandbox'}]}]
- elif path=='/rest/v1/rpc/get_company_access_settings':result={'company':{'id':store,'name':details['company_name'],'phone':details['phone'],'buying_group':'','owner_user_id':uid},'permissions':[],'people':[{'user_id':uid,'name':'New Owner','email':person['email']}],'audit':[]}
+ elif path=='/rest/v1/rpc/get_company_access_settings':result={'company':{'id':store,'name':details['company_name'],'phone':details['phone'],'buying_group':details['buying_group'],'owner_user_id':uid},'permissions':[],'people':[{'user_id':uid,'name':'New Owner','email':person['email']}],'audit':[]}
  elif path=='/functions/v1/invite-company-admin':
   assert args=={'action':'create','company':store,'name':'Additional Admin','email':'admin@example.test','capability':'both','store':store}
   result={'message':'Administrator invitation requested.'}
@@ -65,6 +66,12 @@ def signin(page):
 def fill(page,as_manager=True):
  for name,value in {'company_name':'Test Company','store_name':'Test Hardware <safe>','contact_name':'New Owner','phone':'555-0100','street':'100 Test St','city':'Test City','region':'NC','postal_code':'28501'}.items():page.locator(f'#store-signup-form input[name={name}]').fill(value)
  page.locator('#store-signup-form select[name=plan_code]').select_option('store_25')
+ expect(page.locator('#store-signup-form [data-buying-group-other]')).to_be_hidden()
+ page.locator('#store-signup-form input[name=buying_groups][value="House Hasson"]').check()
+ page.locator('#store-signup-form input[name=buying_groups][value=Orgil]').check()
+ page.locator('#store-signup-form input[name=buying_groups][value=Other]').check()
+ expect(page.locator('#store-signup-form input[name=buying_group_other]')).to_have_attribute('required','')
+ page.locator('#store-signup-form input[name=buying_group_other]').fill('Local wholesaler')
  page.locator('#store-signup-form input[name=become_manager]').set_checked(as_manager)
  page.locator('#store-signup-form input[name=purchase_authority]').check();page.locator('#store-signup-form input[name=terms_accepted]').check()
 try:

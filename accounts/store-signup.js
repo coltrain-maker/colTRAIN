@@ -1,3 +1,4 @@
+import {buyingGroupsField,buyingGroupsValue} from './buying-groups.js';
 import configuration from '../supabase/billing/stripe-sandbox-prices.json' with {type:'json'};
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=c=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(c/100);
@@ -32,7 +33,7 @@ export function createStoreSignup({client,root,notify,navigate=url=>location.ass
    `<section class="panel"><h2>Store details</h2><p>Signed in as ${esc(user.email)}. Your account becomes the company owner.</p><form id="store-signup-form">
     ${input('Company name','company_name','maxlength="120" autocomplete="organization"')}${input('Store name','store_name','maxlength="120"')}${input('Your name','contact_name','maxlength="120" autocomplete="name"')}
     <label class="field">Company phone<input type="tel" name="phone" maxlength="50" autocomplete="tel" required></label>
-    <label class="field">Buying-group affiliation (optional)<input type="text" name="buying_group" maxlength="160"></label>
+    ${buyingGroupsField()}
     ${input('Street address','street','maxlength="200" autocomplete="street-address"')}${input('City','city','maxlength="100" autocomplete="address-level2"')}${input('State (two-letter code)','region','minlength="2" maxlength="2" autocomplete="address-level1"')}${input('ZIP code','postal_code','pattern="[0-9]{5}(-[0-9]{4})?" autocomplete="postal-code"')}<p>Country: United States</p>
     <label class="field">Store time zone<select name="time_zone">${[['America/New_York','Eastern'],['America/Chicago','Central'],['America/Denver','Mountain'],['America/Phoenix','Arizona'],['America/Los_Angeles','Pacific'],['America/Anchorage','Alaska'],['Pacific/Honolulu','Hawaii']].map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label>
     <label class="field">Package<select name="plan_code">${configuration.plans.map(p=>`<option value="${p.code}">${p.minimum_seats}–${p.seat_limit} seats · ${money(p.unit_amount_cents)}/month</option>`).join('')}</select></label>
@@ -54,6 +55,7 @@ export function createStoreSignup({client,root,notify,navigate=url=>location.ass
  async function submit(form){
   try{
    const data=new FormData(form),details=Object.fromEntries(data);
+   details.buying_group=buyingGroupsValue(data);delete details.buying_groups;delete details.buying_group_other;
    for(const name of ['become_manager','purchase_authority','terms_accepted'])details[name]=data.get(name)==='on';
    const id=await rpc('prepare_store_signup',{details,submission_key:key});
    record=await rpc('get_my_store_signup');if(!record||record.id!==id)throw new Error('Signup status could not be loaded.');

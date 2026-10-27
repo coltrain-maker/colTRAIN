@@ -215,3 +215,8 @@ The sequence is planning guidance. Saving these requirements does not authorize 
 ### Owner setup after signup (October 27, 2026)
 
 After verified Stripe confirmation automatically creates the store, guide its purchaser through assigning responsibilities. The creator remains company owner and may also be its manager. If someone else will manage staff, the owner can invite that person by name and email. Offer an optional additional administrator with training access, billing access, or both; keep company permissions separate from store manager permissions and colTRAIN platform administration. Company administrators do not consume training seats. Owners without a staff role should land on their company/store setup, without an employee invitation-code screen. Pending signups resume existing checkout/status instead of creating another store.
+
+
+### Buying-group affiliations (October 27, 2026)
+
+Store signup and Company settings offer optional multiple selections: Ace, Do It Best, House Hasson, Orgil, and Other. Choosing Other reveals a required field for the additional suppliers. Owners can select more than one affiliation. Existing custom text remains available under Other. The current text-based database field stores the selections as separate lines, retaining the existing save/signup API and size limit; no database migration is needed for this interface change.
